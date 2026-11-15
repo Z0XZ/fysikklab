@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Myoner fra atmosfæren</title>
+  <meta name="description" content="Simulering med oppgaver om tidsforlengelse og lengdekontraksjon: Hvor mange av 1000 myoner når bakken?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Spesiell relativitetsteori</p>
+        <h1>Myoner fra atmosfæren</h1>
+        <p class="ingress">Når kosmisk stråling treffer atmosfæren, dannes det myoner høyt oppe. Et myon i ro lever i gjennomsnitt bare 2,2 µs før det henfaller. Likevel måler vi mange myoner ved bakken. Her følger vi 1000 myoner på vei ned, med og uten relativitetsteori.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="myoner" class="statisk forhold-myoner" role="img" aria-label="To kolonner med 1000 myoner hver som faller mot bakken. Til venstre uten relativitet, til høyre med relativitet."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid i valgt system</dt><dd id="tid"></dd></div>
+            <div><dt>γ</dt><dd id="gamma"></dd></div>
+            <div><dt>turen tar, sett fra jorda</dt><dd id="t-jord"></dd></div>
+            <div><dt>atmosfæren sett fra myonet</dt><dd id="l-myon"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Modell</th><th scope="col">Myonets klokke viser ved bakken</th><th scope="col">Forventet ved bakken</th><th scope="col">I lufta</th><th scope="col">Nådd bakken</th><th scope="col">Henfalt</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="f1">Uten relativitet</th><td id="u-tid"></td><td id="u-forventet"></td><td id="u-lufta"></td><td id="u-bakken"></td><td id="u-henfalt"></td></tr>
+                <tr><th scope="row" class="f2">Med relativitet</th><td id="m-tid"></td><td id="m-forventet"></td><td id="m-lufta"></td><td id="m-bakken"></td><td id="m-henfalt"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="hoyde">Høyden der myonene lages <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="1" max="20" step="0.5" value="10"></label>
+            <label for="fart">Myonenes fart v <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="0.9" max="0.999" step="0.001" value="0.995"></label>
+            <label for="system">Referansesystem<select id="system"><option value="jord">Jorda</option><option value="myon">Myonene</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="0.5">Sakte</option><option value="1" selected>Normal</option><option value="2">Rask</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nye myoner</button></div>
+          </div>
+          <figcaption class="sim-hint">Hvert myon får en tilfeldig levetid. Grå prikker viser hvor myonene henfalt. I myonenes system står myonene stille, og bakken kommer mot dem.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Antallet som er igjen etter tiden t, er N = N₀ · e<sup>−t/τ</sup>, der τ = 2,2 µs er den midlere levetiden. Det tilsvarer en halveringstid på 1,5 µs.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>1000 myoner lages 10 km over bakken og går rett ned med farten 0,995c. Hvor mange når bakken?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut hvor lang tid turen tar sett fra jorda. Hvor mange myoner skulle nådd bakken hvis myonets klokke gikk like fort som våre?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen. Hvordan går det i de to kolonnene?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk tidsforlengelse til å forklare hvorfor så mange når bakken. Hvor lang tid har gått på myonets egen klokke når det kommer ned? Regn ut hvor mange som skal nå bakken.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bytt referansesystem til myonene. Nå står myonene i ro, og klokkene deres går normalt. Hvorfor når like mange bakken likevel?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Trykk «Nye myoner» og kjør flere ganger. Hvorfor blir ikke antallet ved bakken det samme hver gang?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I 1963 målte Frisch og Smith myoner både på toppen av et fjell og ved havnivå, ca. 1900 m lenger nede. Sett høyden til 2 km og v = 0,995c. Hvor stor andel overlever turen med og uten relativitetsteori?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange tipper «nesten alle», fordi myonene går nesten med lysfarten. Andre regner raskt og tipper «ingen».</li>
+              <li>t = s/v = 10 000 m / (0,995 · 3,00 · 10⁸ m/s) ≈ 33,5 µs. Det er ca. 15 levetider. N = 1000 · e<sup>−33,5/2,2</sup> ≈ 0,0002, så i praksis når ingen bakken.</li>
+              <li>Til venstre henfaller nesten alle myonene høyt oppe. Til høyre når ca. 200 myoner bakken.</li>
+              <li>γ = 1/√(1 − 0,995²) ≈ 10,0. Myonets klokke går 10 ganger saktere sett fra jorda, så den viser bare 33,5 µs / 10,0 ≈ 3,35 µs når myonet kommer ned. N = 1000 · e<sup>−3,35/2,2</sup> ≈ 218.</li>
+              <li>I myonets system er det atmosfæren som beveger seg, og den er forkortet med faktoren γ. Avstanden til bakken er bare 10 km / 10,0 ≈ 1,0 km, og den tar 3,35 µs å tilbakelegge. Tidsforlengelse sett fra jorda og lengdekontraksjon sett fra myonet gir samme svar.</li>
+              <li>Henfall er tilfeldig. 218 er det forventede antallet, og variasjonen er typisk ±13 (√(Np(1 − p)) med p ≈ 0,22). Dette er en fin kobling til radioaktivitet og statistikk.</li>
+              <li>Med 2,0 km er t = 6,7 µs sett fra jorda. Uten relativitet overlever e<sup>−6,7/2,2</sup> ≈ 5 %. Med relativitet er myonets tid 0,67 µs, og ca. 74 % overlever. Med nøyaktig 1900 m blir det 75 %. Målingene til Frisch og Smith stemte med det relativistiske svaret.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, gjerne rett etter lysklokka. Oppgave 5 er et godt utgangspunkt for å innføre lengdekontraksjon.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/myoner.js"></script>
+</body>
+</html>

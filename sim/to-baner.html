@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>To baner med samme fallhøyde</title>
+  <meta name="description" content="Simulering med oppgaver om energibevaring og friksjon: to vogner glir ned hver sin bane fra samme høyde.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Mekanisk energi</p>
+        <h1>To baner med samme fallhøyde</h1>
+        <p class="ingress">To like vogner starter i ro i samme høyde og glir ned hver sin bane til samme mål. Bane A er rett. Bane B er krum.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="baner" class="statisk forhold-baner" role="img" aria-label="To baner fra samme høyde til samme mål, med en vogn på hver."></canvas>
+          <div class="sim-panel">
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Fartsgraf</h2>
+              <canvas id="fartsgraf" class="statisk forhold-graf" role="img" aria-label="Fartsgraf for begge vognene."></canvas>
+            </div>
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Energi</h2>
+              <div class="energi">
+                <div class="energi-rad"><span class="energi-navn f1">A</span><div class="energi-stolpe f1"><span class="ep" id="a-stolpe-ep"></span><span class="ek" id="a-stolpe-ek"></span><span class="q" id="a-stolpe-q"></span></div></div>
+                <div class="energi-rad"><span class="energi-navn f2">B</span><div class="energi-stolpe f2"><span class="ep" id="b-stolpe-ep"></span><span class="ek" id="b-stolpe-ek"></span><span class="q" id="b-stolpe-q"></span></div></div>
+                <ul class="forklaring">
+                  <li><span class="prikk ep"></span><span>E<sub>p</sub></span></li>
+                  <li><span class="prikk ek"></span><span>E<sub>k</sub> (vognas farge)</span></li>
+                  <li><span class="prikk q"></span><span>Friksjonsarbeid</span></li>
+                </ul>
+                <p class="energi-merknad">Hele stolpen er mgh, den mekaniske energien i starten.</p>
+              </div>
+            </div>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col">Vogn</th><th scope="col">Status</th><th scope="col">Tid</th><th scope="col">Fart</th><th scope="col">E<sub>k</sub></th><th scope="col">E<sub>p</sub></th><th scope="col">Friksjonsarbeid</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="f1">A: rett</th><td id="a-status"></td><td id="a-tid"></td><td id="a-fart"></td><td id="a-ek"></td><td id="a-ep"></td><td id="a-q"></td></tr>
+                <tr><th scope="row" class="f2">B: <span id="bane-b-navn"></span></th><td id="b-status"></td><td id="b-tid"></td><td id="b-fart"></td><td id="b-ek"></td><td id="b-ep"></td><td id="b-q"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="bane-b">Bane B<select id="bane-b"><option value="bratt">Bratt start</option><option value="slak">Slak start</option></select></label>
+            <label for="hoyde">Høyde h <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="0.5" max="1.5" step="0.05" value="1"></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.5" max="5" step="0.5" value="1"></label>
+            <label for="friksjon">Friksjonstall μ <output id="friksjon-ut" for="friksjon"></output><input id="friksjon" type="range" min="0" max="0.15" step="0.01" value="0"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option><option value="0.25" selected>Kvart fart</option><option value="0.1">Sakte film (0,1×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Banene er 2,0 m lange horisontalt. Vognene glir uten luftmotstand, og friksjonen er R = μN.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Jobb gjerne i par. Skriv ned tipset og begrunnelsen <em>før</em> dere trykker Start.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Bruk h = 1,00 m, μ = 0 og «Bratt start» på bane B. Hvilken vogn kommer først i mål? Hvilken vogn har størst fart i mål?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen. Stemte tipsene? Se på fartsgrafen: Hvilken vogn har størst fart underveis?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk energibevaring til å regne ut farten i mål, og sammenlign med tabellen. Forklar hvorfor B kommer først selv om farten i mål er den samme.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med tiden, farten og energien hvis massen økes til 5,0 kg? Test og forklar med likningen fra oppgave 3.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Bytt bane B til «Slak start». Hvem vinner nå? Test, og forklar ved hjelp av fartsgrafen.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sett μ = 0,10. Vis at friksjonsarbeidet på den rette banen er W<sub>R</sub> = μmgL, der L = 2,0 m er den horisontale lengden. Regn ut farten i mål for vogn A, og kontroller med simuleringen.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Med friksjon blir friksjonsarbeidet ulikt på de to banene, selv om begge er 2,0 m horisontalt. Hvorfor? Tips: Hvor stor er normalkraften i bunnen av en bue?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange elever tipper at den rette banen vinner fordi den er kortest, eller at B får størst fart fordi den er brattest.</li>
+              <li>B kommer først (0,83 s mot 1,01 s), men begge har farten 4,43 m/s i mål. B får stor fart tidlig og har derfor større gjennomsnittsfart.</li>
+              <li>mgh = ½mv² gir v = √(2gh) = √(2 · 9,81 m/s² · 1,00 m) = 4,43 m/s. Farten i mål avhenger bare av høydeforskjellen, ikke av formen på banen. Tiden avhenger av hvor fort farten bygges opp.</li>
+              <li>Tiden og farten endres ikke, fordi massen forkortes bort i likningen. E<sub>k</sub> og E<sub>p</sub> blir fem ganger så store.</li>
+              <li>Nå vinner A (1,01 s mot 1,30 s). Slak start gir liten fart i begynnelsen, så B ligger bak hele veien. Farten i mål er fortsatt 4,43 m/s.</li>
+              <li>På skråplanet er R = μmg cos θ og strekningen s. Da blir W<sub>R</sub> = μmg cos θ · s = μmgL fordi s cos θ = L. Med m = 1,0 kg: W<sub>R</sub> = 0,10 · 1,0 · 9,81 · 2,0 J = 1,96 J. mgh − W<sub>R</sub> = ½mv² gir v = √(2 · 9,81 · (1,00 − 0,10 · 2,0)) m/s = 3,96 m/s.</li>
+              <li>I en bue som krummer oppover, må normalkraften også gi sentripetalakselerasjon: N = mg cos θ + mv²/r. Da blir friksjonen større enn på et skråplan. Med μ = 0,10 blir friksjonsarbeidet 3,07 J på «Bratt start» og 1,70 J på «Slak start», mot 1,96 J på den rette banen. «Slak start» krummer nedover og får mindre normalkraft. Dette knytter an til sirkelbevegelse i Fysikk 2.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Elevene bør kjenne E<sub>k</sub>, E<sub>p</sub>, arbeid og friksjon. Oppgave 1–3 fungerer godt i plenum med tipset på tavla før dere kjører simuleringen.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/to-baner.js"></script>
+</body>
+</html>

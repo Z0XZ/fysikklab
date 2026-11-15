@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Berg-og-dal-bane</title>
+  <meta name="description" content="Simulering med oppgaver om mekanisk energi: Kommer vogna over neste topp?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Mekanisk energi</p>
+        <h1>Berg-og-dal-bane</h1>
+        <p class="ingress">Ei vogn får en liten dytt på toppen av en berg-og-dal-bane. Kommer den over de neste toppene og helt i mål? Den stiplede linja viser energinivået: så høyt kan vogna komme med den energien den har.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="bane" class="statisk forhold-berg" role="img" aria-label="En berg-og-dal-bane med tre topper, ei vogn og en stiplet linje for energinivået."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="tid"></dd></div>
+            <div><dt>fart</dt><dd><span id="fart"></span> · <span id="fart-kmt"></span></dd></div>
+            <div><dt>høyde</dt><dd id="hoyde"></dd></div>
+            <div><dt>status</dt><dd id="status"></dd></div>
+          </dl>
+          <div class="sim-panel bred-venstre">
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Energi</h2>
+              <div class="energi">
+                <div class="energi-rad"><div class="energi-stolpe f2"><span class="ep" id="stolpe-ep"></span><span class="ek" id="stolpe-ek"></span><span class="q" id="stolpe-q"></span></div></div>
+                <dl class="sim-tall tre innfelt">
+                  <div><dt>E<sub>p</sub></dt><dd id="ep"></dd></div>
+                  <div><dt>E<sub>k</sub></dt><dd id="ek"></dd></div>
+                  <div><dt>friksjonsarbeid</dt><dd id="q"></dd></div>
+                </dl>
+                <ul class="forklaring">
+                  <li><span class="prikk ep"></span><span>E<sub>p</sub></span></li>
+                  <li><span class="prikk ek f2"></span><span>E<sub>k</sub></span></li>
+                  <li><span class="prikk q"></span><span>Friksjonsarbeid</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Energi langs banen</h2>
+              <canvas id="energigraf" class="statisk forhold-graf" role="img" aria-label="Graf over energien mot posisjonen langs banen."></canvas>
+              <ul class="forklaring">
+                <li><span class="prikk linje stiplet dempet"></span><span>E<sub>p</sub> hvis vogna står der</span></li>
+                <li><span class="prikk linje f1"></span><span>Mekanisk energi</span></li>
+                <li><span class="prikk linje f2"></span><span>E<sub>k</sub></span></li>
+              </ul>
+            </div>
+          </div>
+          <div class="sim-styring mange">
+            <label for="h1">Starthøyde <output id="h1-ut" for="h1"></output><input id="h1" type="range" min="3" max="10" step="0.1" value="8"></label>
+            <label for="h2">Topp 2 <output id="h2-ut" for="h2"></output><input id="h2" type="range" min="2" max="10" step="0.1" value="7.5"></label>
+            <label for="h3">Topp 3 <output id="h3-ut" for="h3"></output><input id="h3" type="range" min="2" max="10" step="0.1" value="6"></label>
+            <label for="v0">Startfart <output id="v0-ut" for="v0"></output><input id="v0" type="range" min="0.5" max="6" step="0.1" value="1"></label>
+            <label for="friksjon">Friksjonstall μ <output id="friksjon-ut" for="friksjon"></output><input id="friksjon" type="range" min="0" max="0.05" step="0.005" value="0"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="0.5">Halv fart</option><option value="1" selected>Sanntid</option><option value="2">Dobbel fart</option><option value="5">5 ganger fortere</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Dra i de runde håndtakene for å endre høyden på toppene. Vogna veier 500 kg og er festet til skinnene. Dalene ligger 0,5 m over bakken, og målet ligger 2,0 m over bakken.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Jobb gjerne i par. Skriv ned tipset og begrunnelsen <em>før</em> dere trykker Start.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Vogna starter 8,0 m over bakken med farten 1,0 m/s. Topp 2 er 7,5 m høy, og det er ingen friksjon. Kommer vogna over topp 2? Hvor stor er farten nede i den første dalen?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen og sjekk tipsene. Se på grafen: Hva skjer med E<sub>k</sub> når E<sub>p</sub> øker?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvor høy kan topp 2 være hvis vogna skal komme over? Regn ut svaret, og test med en topp litt lavere og litt høyere enn det dere fikk.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten vogna har når den kommer i mål. Endre høyden på topp 3. Endrer det farten i mål?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Sett friksjonstallet til 0,01. Hvor på banen tror dere energinivået synker raskest? Test, og forklar hvorfor.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Sett friksjonstallet til 0,02. Hvor høy kan topp 2 være nå hvis vogna skal komme i mål? Finn svaret ved å prøve dere fram, og forklar hvorfor det ikke er så lett å regne det ut.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Ja. Uten friksjon er den mekaniske energien bevart. I dalen, 0,5 m over bakken, er v = √(v₀² + 2g · 7,5 m) = √(1,0 + 147) ≈ 12,2 m/s, eller ca. 44 km/h.</li>
+              <li>E<sub>k</sub>-grafen er et speilbilde av E<sub>p</sub>-grafen, og summen er en vannrett linje.</li>
+              <li>Vogna kan komme opp til energinivået h = h₁ + v₀²/(2g) = 8,0 m + 0,05 m ≈ 8,05 m. Med topp 2 på 8,0 m kommer vogna så vidt over. Med 8,1 m triller den tilbake til start.</li>
+              <li>Målet ligger 2,0 m over bakken, så v = √(v₀² + 2g · 6,0 m) ≈ 10,9 m/s. Høyden på topp 3 spiller ingen rolle, så lenge vogna kommer over den. Bare start- og sluttpunktet betyr noe.</li>
+              <li>Energinivået synker raskest i dalene. Der går vogna i en krum bane, og normalkraften er mye større enn mg fordi den også må gi sentripetalakselerasjonen. Friksjonen R = μN blir derfor størst i dalene. Med μ = 0,01 går ca. 11 % av energien tapt, og farten i mål blir ca. 10,1 m/s.</li>
+              <li>Ca. 7,2 m. Friksjonsarbeidet avhenger av normalkraften, og den avhenger av farten og krumningen langs hele banen. Derfor er det ikke nok å bruke W = μmg · s. Dette er en god anledning til å snakke om hva modellen R = μmg forutsetter.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Oppgave 1–4 kan gjøres uten friksjon som en ren øving i energibevaring. Oppgave 5 og 6 kobler til sirkelbevegelse og normalkraft.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/berg-og-dal.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sprettball</title>
+  <meta name="description" content="Simulering og praktisk øving om energitap: Hvor mye energi forsvinner i hvert sprett?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Mekanisk energi</p>
+        <h1>Sprettball</h1>
+        <p class="ingress">En ball slippes ned på et hardt gulv. Hvor høyt spretter den, og hvor mye av energien forsvinner i hvert sprett? Prøv først med simuleringen, og mål deretter på en ekte ball.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="sprett" class="statisk forhold-sprett" role="img" aria-label="En ball som spretter ved siden av en målestav, og en graf over høyden mot tiden."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="tid"></dd></div>
+            <div><dt>antall sprett</dt><dd id="antall"></dd></div>
+            <div><dt>andel av høyden som beholdes</dt><dd id="andel"></dd></div>
+            <div><dt>ballens masse</dt><dd id="masse"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Sprett</th><th scope="col">Høyde h<sub>n</sub></th><th scope="col">h<sub>n</sub> / h<sub>n−1</sub></th><th scope="col">E<sub>p</sub> på toppen</th><th scope="col">Tapt i spretten</th></tr></thead>
+              <tbody id="rader"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="ball">Ball<select id="ball"><option value="tennis">Tennisball</option><option value="basket">Basketball</option><option value="bordtennis">Bordtennisball</option><option value="sprett">Sprettball</option><option value="ukjent">Ukjent ball</option></select></label>
+            <label for="slipp">Slipphøyde <output id="slipp-ut" for="slipp"></output><input id="slipp" type="range" min="0.5" max="2" step="0.05" value="2"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5" selected>Halv fart</option><option value="0.2">Sakte film (0,2×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button><button id="ny-ukjent" class="knapp lys" type="button">Ny ukjent ball</button></div>
+          </div>
+          <figcaption class="sim-hint">Høyden måles til undersiden av ballen. Andelene for ballene er omtrentlige verdier, og luftmotstand er ikke med.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Egne målinger</h2>
+          <p class="del-inngang">Slipp en ekte ball foran en målestav eller en vegg med målebånd, og film med sakte film. Les av høyden på toppen av hvert sprett og skriv inn i centimeter.</p>
+          <form id="egne-data" autocomplete="off" onsubmit="return false">
+            <div class="sim-styring mange">
+              <label for="e-masse">Ballens masse i gram<input id="e-masse" type="number" min="0" step="any" inputmode="decimal"></label>
+            </div>
+            <div class="tabell-ramme">
+              <table class="sim-tabell alle">
+                <thead><tr><th scope="col">Sprett</th><th scope="col">Høyde i cm</th><th scope="col">h<sub>n</sub> / h<sub>n−1</sub></th><th scope="col">Tapt energi</th><th scope="col">Tapt andel</th></tr></thead>
+                <tbody>
+                  <tr><th scope="row">0 (slipp)</th><td><input id="e-h0" type="number" min="0" step="any" inputmode="decimal" aria-label="Slipphøyde i cm"></td><td></td><td></td><td></td></tr>
+                  <tr><th scope="row">1</th><td><input id="e-h1" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 1 i cm"></td><td id="e-andel1"></td><td id="e-tap1"></td><td id="e-tapp1"></td></tr>
+                  <tr><th scope="row">2</th><td><input id="e-h2" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 2 i cm"></td><td id="e-andel2"></td><td id="e-tap2"></td><td id="e-tapp2"></td></tr>
+                  <tr><th scope="row">3</th><td><input id="e-h3" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 3 i cm"></td><td id="e-andel3"></td><td id="e-tap3"></td><td id="e-tapp3"></td></tr>
+                  <tr><th scope="row">4</th><td><input id="e-h4" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 4 i cm"></td><td id="e-andel4"></td><td id="e-tap4"></td><td id="e-tapp4"></td></tr>
+                  <tr><th scope="row">5</th><td><input id="e-h5" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 5 i cm"></td><td id="e-andel5"></td><td id="e-tap5"></td><td id="e-tapp5"></td></tr>
+                  <tr><th scope="row">6</th><td><input id="e-h6" type="number" min="0" step="any" inputmode="decimal" aria-label="Høyde etter sprett 6 i cm"></td><td id="e-andel6"></td><td id="e-tap6"></td><td id="e-tapp6"></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
+          <dl class="sim-tall">
+            <div><dt>gjennomsnittlig andel</dt><dd id="e-snitt"></dd></div>
+            <div><dt>støttall e = √andel</dt><dd id="e-stottall"></dd></div>
+          </dl>
+          <canvas id="egne-graf" class="statisk forhold-lav" role="img" aria-label="Søylediagram over de målte høydene, med en modellkurve."></canvas>
+          <ul class="forklaring">
+            <li><span class="prikk ek f2"></span><span>Målt høyde</span></li>
+            <li><span class="prikk linje stiplet f1"></span><span>Modell h₀ · andelⁿ</span></li>
+          </ul>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="e-eksempel" class="knapp lys" type="button">Fyll inn eksempeldata</button><button id="e-kopier" class="knapp lys" type="button">Kopier høydene</button><button id="e-tom" class="knapp lys" type="button">Tøm</button></div>
+          </div>
+          <figcaption class="sim-hint">Tallene lagres bare i denne nettleseren. «Kopier høydene» gir en tabell som kan limes inn i et regneark eller brukes i Python.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Jobb gjerne i par. Skriv ned tipset og begrunnelsen <em>før</em> dere trykker Start.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>En tennisball slippes fra 2,0 m. Hvor høyt spretter den?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Les av høyden etter de tre første sprettene. Hvor stor andel av høyden beholder ballen i hvert sprett? Er andelen den samme hver gang?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvor mange prosent av den mekaniske energien forsvinner i hvert sprett? Hvor blir det av energien?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>En basketball slippes fra 2,0 m. Hvor mange sprett tar det før den spretter lavere enn 10 cm? Regn ut, og test.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør forsøket med en ekte ball og fyll inn tabellen under «Egne målinger». Stemmer modellen med en fast andel for ballen deres?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Velg «Ukjent ball». Finn andelen av høyden som ballen beholder. Vis at forholdet mellom farten rett etter og rett før et sprett er e = √andel. Dette tallet kalles støttallet.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange tipper rundt halvparten. Simuleringen gir 1,12 m.</li>
+              <li>1,12 m, 0,63 m og 0,35 m. Andelen er 0,56 hver gang i simuleringen. En ekte ball beholder ofte litt større andel i de små sprettene.</li>
+              <li>E<sub>p</sub> på toppen er proporsjonal med høyden, så 44 % av energien forsvinner i hvert sprett. Den blir til indre energi i ballen og gulvet (ballen blir litt varmere), og noe blir til lyd.</li>
+              <li>Vi trenger 2,0 m · 0,72ⁿ &lt; 0,10 m, altså n &gt; ln(0,05) / ln(0,72) ≈ 9,1. Etter 10 sprett er ballen under 10 cm. Etter 9 sprett er den 10,4 cm.</li>
+              <li>Tennisballer og fotballer gir ofte en andel på 0,5–0,7. Sjekk at elevene måler til undersiden av ballen hver gang, og at de leser av mens ballen er på toppen. Diskuter usikkerheten i avlesningen.</li>
+              <li>Rett før spretten er v<sub>før</sub> = √(2gh<sub>n−1</sub>), og rett etter er v<sub>etter</sub> = √(2gh<sub>n</sub>). Da blir v<sub>etter</sub>/v<sub>før</sub> = √(h<sub>n</sub>/h<sub>n−1</sub>) = √andel. Trykk «Ny ukjent ball» for å få en ny ball.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter med det praktiske forsøket. Én telefon med sakte film per gruppe holder. Kopier høydene og bruk dem videre i Python eller i et regneark hvis dere vil tilpasse en eksponentialmodell.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/sprettball.js"></script>
+</body>
+</html>

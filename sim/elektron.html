@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akselerer et elektron</title>
+  <meta name="description" content="Simulering med oppgaver om relativistisk energi og fart: Kan et elektron gå fortere enn lyset?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Spesiell relativitetsteori</p>
+        <h1>Akselerer et elektron</h1>
+        <p class="ingress">Et elektron i ro akselereres gjennom spenningen U og får den kinetiske energien eU. Hvor fort går det etterpå? Klassisk fysikk og relativitetsteorien gir svært forskjellige svar når spenningen blir stor. Etter akselerasjonen går partiklene gjennom et 3 m langt rør sammen med en lyspuls.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="ror" class="statisk forhold-ror" role="img" aria-label="Kappløp gjennom et 3 m langt rør mellom en lyspuls, et klassisk elektron og et relativistisk elektron."></canvas>
+          <dl class="sim-tall">
+            <div><dt>kinetisk energi eU</dt><dd><span id="ek"></span> · <span id="ek-j"></span></dd></div>
+            <div><dt>γ = 1 + E<sub>k</sub>/mc²</dt><dd id="gamma"></dd></div>
+            <div><dt>hvileenergi mc² for <span id="navn-partikkel"></span></dt><dd id="hvile"></dd></div>
+            <div><dt>klassisk fart er for høy med</dt><dd id="avvik"></dd></div>
+          </dl>
+          <div class="sim-panel bred-venstre">
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Formler</h2>
+              <p class="formel"><span class="f1">Klassisk:</span> eU = ½mv², så v = √(2eU/m)</p>
+              <p class="formel"><span class="f2">Relativistisk:</span> eU = (γ − 1)mc², så v = c√(1 − 1/γ²)</p>
+            </div>
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Fart mot spenning</h2>
+              <canvas id="fartsgraf" class="statisk forhold-graf" role="img" aria-label="Graf over farten mot spenningen med logaritmisk akse, klassisk og relativistisk."></canvas>
+            </div>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Modell</th><th scope="col">v / c</th><th scope="col">Fart</th><th scope="col">Bevegelsesmengde</th><th scope="col">Tid gjennom 3 m</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="f1">Klassisk</th><td id="k-andel"></td><td id="k-fart"></td><td id="k-p"></td><td id="k-tid"></td></tr>
+                <tr><th scope="row" class="f2">Relativistisk</th><td id="r-andel"></td><td id="r-fart"></td><td id="r-p"></td><td id="r-tid"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="partikkel">Partikkel<select id="partikkel"><option value="elektron">Elektron</option><option value="proton">Proton</option></select></label>
+            <label for="spenning">Spenning U <output id="spenning-ut" for="spenning"></output><input id="spenning" type="range" min="0" max="9" step="0.01" value="5"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="0.5">Sakte</option><option value="1" selected>Normal</option><option value="2">Rask</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Spenningen går fra 1 V til 1 GV på en logaritmisk skala. Lyset bruker 10 ns gjennom røret. Bevegelsesmengden er mv klassisk og γmv relativistisk.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Bruk m<sub>e</sub> = 9,11 · 10⁻³¹ kg, e = 1,60 · 10⁻¹⁹ C og c = 3,00 · 10⁸ m/s.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>I et røntgenrør akselereres elektroner gjennom 100 kV. Hvor stor andel av lysfarten tror dere elektronene får?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten med klassisk fysikk og med relativitetsteorien ved 100 kV. Sjekk i simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Ved hvilken spenning gir den klassiske formelen at elektronet går med lysfarten? Hva sier relativitetsteorien om farten ved denne spenningen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk E<sub>k</sub> = (γ − 1)mc² til å forklare hvorfor ingen partikkel med masse kan nå lysfarten, uansett hvor stor spenningen er.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Når er klassisk fysikk «god nok»? Finn spenningen der den klassiske farten er 1 % for høy. Bytt så til et proton. Blir grensen høyere eller lavere? Hvor mye?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I LHC ved CERN har protonene den kinetiske energien 6,8 TeV. Regn ut γ. Hvor mange meter per sekund er protonene langsommere enn lyset? Tips: Når γ er stor, er 1 − v/c ≈ 1/(2γ²).</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Tipsene varierer mye. Det er fint å samle dem på tavla før dere regner.</li>
+              <li>Klassisk: v = √(2eU/m) = √(2 · 1,60 · 10⁻¹⁹ C · 1,0 · 10⁵ V / 9,11 · 10⁻³¹ kg) ≈ 1,88 · 10⁸ m/s ≈ 0,63c. Relativistisk: γ = 1 + 100 keV / 511 keV ≈ 1,196 og v = c√(1 − 1/1,196²) ≈ 0,548c. Klassisk fart er 14 % for høy.</li>
+              <li>½mc² = eU gir U = mc²/(2e) ≈ 256 kV. Relativitetsteorien gir 0,745c ved denne spenningen. Ved 1 MV gir den klassiske formelen nesten 2c, mens den riktige farten er 0,94c.</li>
+              <li>Når v → c, går γ = 1/√(1 − v²/c²) mot uendelig. Da går også E<sub>k</sub> = (γ − 1)mc² mot uendelig. Det trengs uendelig mye energi, og derfor uendelig stor spenning, for å nå lysfarten.</li>
+              <li>For elektroner er avviket 1 % ved ca. 6,8 kV. I en gammel bilderørs-TV med ca. 25 kV er den klassiske farten ca. 4 % for høy. For protoner er grensen ca. 12,5 MV, altså 1836 ganger høyere. Det er det samme som masseforholdet, fordi avviket bare avhenger av E<sub>k</sub>/mc².</li>
+              <li>γ = 1 + 6,8 TeV / 938 MeV ≈ 7250. Da er 1 − v/c ≈ 1/(2 · 7250²) ≈ 9,5 · 10⁻⁹. Protonene er altså ca. 9,5 · 10⁻⁹ · 3,00 · 10⁸ m/s ≈ 2,9 m/s langsommere enn lyset, omtrent gangfart.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Simuleringen passer etter at elevene har lært E = γmc² og E<sub>k</sub> = (γ − 1)mc². Kappløpet i røret er en god start for å vekke nysgjerrighet ved høye spenninger.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/elektron.js"></script>
+</body>
+</html>

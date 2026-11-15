@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trappeløp</title>
+  <meta name="description" content="Praktisk øving om arbeid og effekt: Mål effekten din når du løper opp en trapp.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Mekanisk energi</p>
+        <h1>Trappeløp</h1>
+        <p class="ingress">Hvor stor effekt yter du når du løper opp en trapp? Mål høyden på trappa, ta tiden og regn ut arbeidet du gjør mot tyngden. Samle målingene til hele klassen i tabellen nederst.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="trapp" class="statisk forhold-trapp" role="img" aria-label="En trapp med en løper og en stolpe som viser den potensielle energien."></canvas>
+          <div class="sim-styring mange">
+            <label for="navn">Navn eller kallenavn<input id="navn" type="text" maxlength="40" autocomplete="off"></label>
+            <label for="masse">Masse i kg<input id="masse" type="number" min="1" step="any" inputmode="decimal" value="60"></label>
+            <label for="trinn">Antall trinn<input id="trinn" type="number" min="1" step="1" inputmode="numeric" value="20"></label>
+            <label for="trinnhoyde">Høyde på ett trinn i cm<input id="trinnhoyde" type="number" min="1" step="any" inputmode="decimal" value="17"></label>
+            <label for="tid">Tid i sekunder<input id="tid" type="number" min="0.1" step="any" inputmode="decimal" value="4"></label>
+            <div class="sim-knapper stoppeklokke">
+              <button id="stoppeklokke" class="knapp lys" type="button">Start stoppeklokke</button>
+              <output id="klokke" aria-live="polite">0,0 s</output>
+              <button id="vis-lop" class="knapp lys" type="button">Vis løpet</button>
+            </div>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>høyde h</dt><dd id="r-hoyde"></dd></div>
+            <div><dt>arbeid mot tyngden, mgh</dt><dd id="r-arbeid"></dd></div>
+            <div><dt>effekt P = W/t</dt><dd><span id="r-effekt"></span> · <span id="r-hk"></span></dd></div>
+            <div><dt>effekt per kilo</dt><dd id="r-perkg"></dd></div>
+          </dl>
+          <div class="sim-panel-del skille">
+            <h2 class="panel-tittel">Sammenligning</h2>
+            <ul id="sammenligning" class="sammenligning"></ul>
+          </div>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="legg-til" class="knapp" type="button">Legg til i klassetabellen</button></div>
+            <p id="melding" class="melding" role="status"></p>
+          </div>
+          <figcaption class="sim-hint">Stoppeklokka skriver tiden rett inn i feltet. Verdiene i sammenligningen er omtrentlige.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Klassetabell</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Navn</th><th scope="col">Masse</th><th scope="col">Høyde</th><th scope="col">Tid</th><th scope="col">Effekt</th><th scope="col">Effekt per kilo</th><th scope="col"><span class="hopp">Slett</span></th></tr></thead>
+              <tbody id="liste"></tbody>
+            </table>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>gjennomsnittlig effekt</dt><dd id="snitt"></dd></div>
+            <div><dt>høyest effekt per kilo</dt><dd id="best"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="kopier-liste" class="knapp lys" type="button">Kopier tabellen</button><button id="last-ned" class="knapp lys" type="button">Last ned som CSV</button><button id="tom-liste" class="knapp lys" type="button">Tøm tabellen</button></div>
+          </div>
+          <figcaption class="sim-hint">Tabellen lagres bare i denne nettleseren og sendes ikke noe sted. Bruk gjerne kallenavn. CSV-fila kan åpnes i Excel eller leses med pandas i Python.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Dere trenger en trapp, et målebånd og en stoppeklokke. Løp bare så fort som det er trygt.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor stor effekt tror du at du yter når du løper opp trappa? Mer eller mindre enn en vannkoker på 2000 W? Mer eller mindre enn én hestekraft?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Mål høyden på ett trinn og tell trinnene. Ta tiden når du går opp i vanlig tempo, og når du løper så fort du trygt kan.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut arbeidet du gjør mot tyngden og effekten i begge tilfellene. Sjekk svarene med kalkulatoren. Er arbeidet forskjellig når du går og når du løper? Hva med effekten?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Kroppen din bruker mye mer energi enn mgh på å komme opp trappa. Hvor blir resten av energien av?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En sjokolade inneholder 2200 kJ. Kroppen omdanner ca. 25 % av energien fra maten til mekanisk arbeid. Hvor mange ganger må du løpe opp trappa for å bruke opp energien i sjokoladen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Sammenlign målingene i klassetabellen. Hvorfor kan det være mer rettferdig å sammenligne effekt per kilo enn effekt? Hvem i klassen ville kommet best ut i et sykkelritt opp en lang bakke?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Elevene bommer ofte mye i begge retninger. Typiske verdier for ungdom som løper opp en trapp, er 400–900 W.</li>
+              <li>Et vanlig trinn er 15–19 cm høyt. Det blir mer nøyaktig å måle hele høyden fra gulv til gulv og dele på antall trinn.</li>
+              <li>Med 60 kg, 20 trinn à 17 cm (h = 3,4 m) og t = 4,0 s blir W = mgh = 60 kg · 9,81 m/s² · 3,4 m ≈ 2,0 kJ og P = W/t ≈ 500 W ≈ 0,68 hk. Arbeidet er det samme når du går, men effekten er mindre fordi tiden er lengre.</li>
+              <li>Musklene har en virkningsgrad på ca. 20–25 %. Resten blir til indre energi (du blir varm). I tillegg brukes energi på å svinge armer og bein og på å bremse i hvert steg, og du har litt E<sub>k</sub> på toppen.</li>
+              <li>Nyttig arbeid fra sjokoladen: 0,25 · 2200 kJ = 550 kJ. Med 2,0 kJ per løp blir det 550 / 2,0 ≈ 275 ganger opp trappa.</li>
+              <li>Tyngre personer må gjøre mer arbeid for å komme like høyt. Effekt per kilo forteller hvor fort man kan løfte sin egen kropp, og det er dette som avgjør i en lang motbakke. Proffsyklister i verdensklasse kan holde rundt 6 W/kg i en time.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Elevene kan jobbe i grupper der én tar tiden og én noterer. Tabellen ligger lagret i nettleseren på maskinen der dataene ble lagt inn, så bruk gjerne lærerens maskin eller prosjektor til klassetabellen.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/trappelop.js"></script>
+</body>
+</html>

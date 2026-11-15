@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toget og lynene</title>
+  <meta name="description" content="Simulering med oppgaver om relativ samtidighet: Slo lynene ned samtidig?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Spesiell relativitetsteori</p>
+        <h1>Toget og lynene</h1>
+        <p class="ingress">Et 300 m langt tog kjører forbi en perrong. To lyn slår ned i hver sin ende av toget og lager merker både på toget og på perrongen. P står på perrongen midt mellom merkene. T sitter midt i toget. Slo lynene ned samtidig?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="tog" class="statisk forhold-tog" role="img" aria-label="Et tog på en perrong. Lys fra to lynnedslag beveger seg mot observatørene P og T."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid i valgt system</dt><dd id="tid"></dd></div>
+            <div><dt>γ</dt><dd id="gamma"></dd></div>
+            <div><dt>togets lengde sett fra perrongen</dt><dd id="l-perrong"></dd></div>
+            <div><dt>tid mellom lynene i togets system</dt><dd id="dt-tog"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col">Hendelse</th><th scope="col">Tid i perrongens system</th><th scope="col">Tid i togets system</th></tr></thead>
+              <tbody id="rader"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="fart">Togets fart v <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="0" max="0.8" step="0.05" value="0.6"></label>
+            <label for="system">Referansesystem<select id="system"><option value="perrong">Perrongen</option><option value="tog">Toget</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="0.5">Sakte</option><option value="1" selected>Normal</option><option value="2">Rask</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Lyset fra forenden er oransje og lyset fra bakenden er grønt. Prikkene over P og T viser hvilke blink de har sett, i rekkefølge. Radene i tabellen markeres når hendelsen har skjedd i valgt system. Tidene er satt slik at lynene slår ned ved t = 0 i perrongens system.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Lyset har farten c i begge referansesystemene. Det er det eneste dere trenger for å løse oppgavene.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Lynene slår ned samtidig sett fra perrongen. Ser P de to blinkene samtidig? Hva med T, som sitter midt i toget?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen i perrongens system. Hvem ser hvilket blink først?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>T sitter midt i toget og vet at lyset går like fort i begge retninger. Likevel ser T blinket fra forenden først. Hva må T konkludere om rekkefølgen på lynnedslagene?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Bytt til togets system og kjør igjen. Stemmer det dere kom fram til? Hva har skjedd med lengden til toget og perrongen?</p></div></li>
+          <li><span class="fase forklar">Regn</span><div><p>Bruk tidene i tabellen for togets system: Når ser T de to blinkene? Lyset går 150 m fra hver ende. Regn ut når lynene slo ned i togets system.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hvilke ting er P og T enige om, og hvilke er de uenige om? Se på hvem som ser hva først.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Kan to hendelser bytte rekkefølge i et annet referansesystem hvis den ene er årsaken til den andre? Tips: Kunne et signal ha gått fra det ene lynnedslaget til det andre?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>De fleste svarer riktig at P ser blinkene samtidig. Mange tror også at T gjør det.</li>
+              <li>Ved v = 0,60c ser P begge blinkene ved 0,400 µs. T kjører mot lyset fra forenden og ser det ved 0,250 µs, mens lyset fra bakenden må ta igjen toget og kommer først ved 1,001 µs.</li>
+              <li>I togets system går lyset 150 m fra hver ende med farten c. Siden T ser forenden først, må lynet i forenden ha slått ned først. For T var nedslagene ikke samtidige.</li>
+              <li>Ja. I togets system slår lynet i forenden ned 0,300 µs før t = 0, og lynet i bakenden 0,300 µs etter. Toget er 300 m langt, mens perrongen er forkortet med faktoren γ = 1,25. Sett fra perrongen er toget 240 m langt.</li>
+              <li>T ser blinkene ved 0,200 µs og 0,801 µs. Lyset bruker 150 m / c = 0,500 µs fra hver ende. Lynene slo da ned ved −0,300 µs og +0,300 µs, altså med 0,600 µs mellomrom. Det stemmer med Δt′ = vL₀/c² = 0,60 · 300 m / (3,00 · 10⁸ m/s) = 0,600 µs.</li>
+              <li>De er enige om alt som skjer på ett og samme sted: P ser blinkene samtidig, og T ser blinket fra forenden først. De er uenige om hvorvidt nedslagene var samtidige, hvor lang tid som går mellom hendelsene, og hvor langt toget er.</li>
+              <li>Nei. Tidsforskjellen i togets system er vL₀/c², og det er mindre enn tiden lyset bruker mellom endene, L₀/c, fordi v &lt; c. Ingen signaler kan ha gått mellom nedslagene. To hendelser kan bare bytte rekkefølge hvis ingen av dem kan påvirke den andre. Årsak kommer alltid før virkning, i alle referansesystemer.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. La elevene diskutere oppgave 1 og 3 i par før dere ser på simuleringen sammen. Sett gjerne farten til 0 først, slik at alle ser at begge observatørene ser blinkene samtidig når toget står stille.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/samtidighet.js"></script>
+</body>
+</html>

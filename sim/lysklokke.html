@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lysklokka</title>
+  <meta name="description" content="Simulering med oppgaver om tidsforlengelse i den spesielle relativitetsteorien.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Spesiell relativitetsteori</p>
+        <h1>Lysklokka</h1>
+        <p class="ingress">En lysklokke er en lyspuls som går fram og tilbake mellom to speil. Hver tur ned og opp er ett tikk. Klokke A står på perrongen, og klokke B står på et tog som kjører forbi.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="klokker" class="statisk forhold-klokker" role="img" aria-label="To lysklokker. Lyset i klokka som beveger seg, går på skrå mellom speilene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid i dette systemet</dt><dd id="tid"></dd></div>
+            <div><dt>γ = 1/√(1 − v²/c²)</dt><dd id="gamma"></dd></div>
+            <div><dt>speilavstand L</dt><dd>1,00 m</dd></div>
+            <div><dt>tikk i ro, Δt₀ = 2L/c</dt><dd>6,67 ns</dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col">Klokke</th><th scope="col">Fart</th><th scope="col">Tid per tikk</th><th scope="col">Antall tikk</th><th scope="col">Klokka viser</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">A: på perrongen</th><td id="a-fart"></td><td id="a-periode"></td><td id="a-tikk"></td><td id="a-viser"></td></tr>
+                <tr><th scope="row" class="f2">B: på toget</th><td id="b-fart"></td><td id="b-periode"></td><td id="b-tikk"></td><td id="b-viser"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="fart">Togets fart v <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="0" max="0.95" step="0.01" value="0.6"></label>
+            <label for="system">Referansesystem<select id="system"><option value="perrong">Perrongen</option><option value="tog">Toget</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="0.5">Sakte</option><option value="1" selected>Normal</option><option value="2">Rask</option></select></label>
+            <label class="avkrysning" for="trekant"><input id="trekant" type="checkbox"> Vis trekanten</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Tiden er vist i nanosekunder og går mye saktere enn i virkeligheten. Lyset bruker 3,3 ns på én meter.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Jobb gjerne i par. Skriv ned tipset og begrunnelsen <em>før</em> dere trykker Start.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Toget kjører med farten v = 0,60c. Sett fra perrongen: Går klokke B raskere, saktere eller like fort som klokke A?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen til klokke A har tikket 10 ganger. Hvor mange ganger har klokke B tikket? Hvor lang tid bruker B per tikk?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Slå på «Vis trekanten». Bruk Pytagoras på trekanten til å vise at tiden per tikk for B er Δt = Δt₀ / √(1 − v²/c²), der Δt₀ = 2L/c.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor fort må toget kjøre for at klokke B skal gå halvparten så fort som klokke A? Regn ut svaret og test det.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Bytt referansesystem til toget. Hvilken klokke går saktest nå? Er dette en selvmotsigelse?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Et myon lever i 2,2 µs i sitt eget system. Hvor langt kommer det med farten 0,995c hvis vi ser bort fra relativitetsteorien? Hvor langt kommer det når vi tar hensyn til tidsforlengelsen?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange tipper «like fort» fordi klokkene er like. Andre tror at B går raskere fordi den beveger seg.</li>
+              <li>Ved v = 0,60c er γ = 1,25. B bruker 1,25 · 6,67 ns ≈ 8,34 ns per tikk. Når A har tikket 10 ganger (66,7 ns), har B tikket 8 ganger. Sett fra perrongen går klokke B saktere.</li>
+              <li>Lyset går c · Δt/2 på skrå mens klokka flytter seg v · Δt/2. Pytagoras gir (cΔt/2)² = L² + (vΔt/2)². Det gir Δt²(c² − v²) = 4L², altså Δt = (2L/c) / √(1 − v²/c²) = γΔt₀. Poenget er at lyset har samme fart c i begge systemene, men må gå lenger.</li>
+              <li>γ = 2 gir 1 − v²/c² = 1/4, altså v = √3/2 · c ≈ 0,87c. Ved 0,87c viser simuleringen γ ≈ 2,03.</li>
+              <li>Nå er det A som beveger seg, og A går saktest. Hver observatør måler at den andres klokke går saktere. Det er ingen selvmotsigelse, fordi klokkene bare kan sammenlignes direkte når de er på samme sted. Hvilke hendelser som er samtidige, avhenger av referansesystemet. Dette er en god inngang til samtidighet og tvillingparadokset.</li>
+              <li>Uten relativitetsteori: s = 0,995 · 3,00 · 10⁸ m/s · 2,2 · 10⁻⁶ s ≈ 660 m. γ = 1/√(1 − 0,995²) ≈ 10, så levetiden sett fra jorda blir 22 µs og strekningen ca. 6,6 km. Det forklarer hvorfor myoner fra den øvre atmosfæren når bakken.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Oppgave 3 kan gjerne gjøres på tavla etter at elevene har sett trekanten. Oppgave 5 egner seg til diskusjon i plenum.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/lysklokke.js"></script>
+</body>
+</html>

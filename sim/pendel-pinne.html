@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pendel med pinne</title>
+  <meta name="description" content="Simulering med oppgaver om energibevaring: Hvor høyt kommer pendelen når snora treffer en pinne?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Mekanisk energi</p>
+        <h1>Pendel med pinne</h1>
+        <p class="ingress">En kule henger i en 1,0 m lang snor. Rett under opphenget står en pinne. Når pendelen svinger forbi bunnen, treffer snora pinnen, og kula svinger videre i en mindre sirkel. Hvor høyt kommer den på den andre siden?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="pendel" class="dra forhold-pendel" role="img" aria-label="En pendel med en pinne rett under opphenget. Stiplede linjer viser starthøyden og det laveste punktet."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="tid"></dd></div>
+            <div><dt>fart</dt><dd id="fart"></dd></div>
+            <div><dt>høyde over laveste punkt</dt><dd id="hoyde"></dd></div>
+            <div><dt>snorkraft</dt><dd id="snorkraft"></dd></div>
+          </dl>
+          <div class="sim-panel">
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Høyder</h2>
+              <dl class="sim-tall tre innfelt">
+                <div><dt>starthøyde</dt><dd id="h-start"></dd></div>
+                <div><dt>høyest på høyre side</dt><dd id="h-maks"></dd></div>
+                <div><dt>tapt i rykk</dt><dd id="tap"></dd></div>
+              </dl>
+            </div>
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Energi</h2>
+              <div class="energi">
+                <div class="energi-rad"><div class="energi-stolpe f1"><span class="ep" id="stolpe-ep"></span><span class="ek" id="stolpe-ek"></span><span class="q" id="stolpe-q"></span></div></div>
+                <ul class="forklaring">
+                  <li><span class="prikk ep"></span><span>E<sub>p</sub></span></li>
+                  <li><span class="prikk ek f1"></span><span>E<sub>k</sub></span></li>
+                  <li><span class="prikk q"></span><span>Tapt når snora strammes</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="sim-styring mange">
+            <label for="vinkel">Startvinkel <output id="vinkel-ut" for="vinkel"></output><input id="vinkel" type="range" min="5" max="90" step="1" value="40"></label>
+            <label for="pinne">Pinnens avstand under opphenget <output id="pinne-ut" for="pinne"></output><input id="pinne" type="range" min="0" max="0.9" step="0.05" value="0.5"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5" selected>Halv fart</option><option value="0.2">Sakte film (0,2×)</option></select></label>
+            <label class="avkrysning" for="spor"><input id="spor" type="checkbox" checked> Vis sporet</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Dra i kula for å velge startvinkel. Kula har massen 0,20 kg, og det er ingen luftmotstand.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Jobb gjerne i par. Skriv ned tipset og begrunnelsen <em>før</em> dere trykker Start.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Pendelen slippes fra 40°, og pinnen står 0,50 m under opphenget. Kommer kula høyere, lavere eller like høyt på høyre side som der den startet?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen. Flytt pinnen opp og ned og prøv igjen. Hva er likt hver gang, og hva endrer seg?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk energibevaring til å forklare det dere så. Hvorfor gjør ikke snorkraften noe arbeid på kula, selv om den er stor?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten til kula i det laveste punktet når startvinkelen er 40°. Sjekk svaret i simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Slipp pendelen fra 90° med pinnen 0,50 m under opphenget. Hva skjer? Hvorfor kommer ikke kula opp til starthøyden nå?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Pendelen slippes fra 90°. Hvor langt ned må pinnen stå for at kula skal gå hele veien rundt pinnen med stram snor? Tips: På toppen må snorkraften være null eller større, så farten må oppfylle v² ≥ gR, der R er radien rundt pinnen.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange tipper «lavere» fordi pinnen bremser pendelen, eller «høyere» fordi den svinger fortere rundt pinnen.</li>
+              <li>Kula kommer opp til nøyaktig samme høyde, 0,234 m over laveste punkt, uansett hvor pinnen står. Det som endrer seg, er hvor bratt banen er og hvor fort kula snur.</li>
+              <li>Snorkraften står hele tiden vinkelrett på farten, så den gjør ikke arbeid. Bare tyngden gjør arbeid, og da er den mekaniske energien bevart. Kula stopper når all E<sub>k</sub> er blitt E<sub>p</sub>, og det skjer i samme høyde som den startet.</li>
+              <li>h = L(1 − cos 40°) = 1,0 m · 0,234 = 0,234 m. mgh = ½mv² gir v = √(2gh) = √(2 · 9,81 · 0,234) ≈ 2,14 m/s. Massen spiller ingen rolle.</li>
+              <li>Snora blir slakk når kula er kommet 132° rundt pinnen, 0,83 m over laveste punkt. Etter det følger kula en kastebane. På toppen av kastebanen har kula fortsatt fart sidelengs, så ikke all energien er blitt E<sub>p</sub>. Den kommer derfor bare 0,93 m opp. Når snora strammes igjen, blir det et rykk, og noe mekanisk energi går over til indre energi.</li>
+              <li>Med R = L − d gir energibevaring mgh = mg · 2R + ½mv². Med v² ≥ gR blir h ≥ 2,5R. Med h = 1,0 m må R ≤ 0,40 m, altså må pinnen stå minst 0,60 m under opphenget. Ved 0,60 m går kula så vidt rundt, og ved 0,65 m går den tydelig rundt.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Forsøket kan også gjøres med en snor, en mutter og en blyant som pinne. Hold en linjal vannrett ved starthøyden. Oppgave 6 kobler energi til sirkelbevegelse og passer godt som repetisjon.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/pendel.js"></script>
+</body>
+</html>

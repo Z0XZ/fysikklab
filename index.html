@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lektorbo.no</title>
+  <meta name="description" content="Fysikksimuleringer og undervisningsopplegg til Fysikk 1 og Fysikk 2.">
+  <script src="js/tema.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="simuleringer.html">Simuleringer</a></li>
+        <li><a href="undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="programmering.html">Programmering</a></li>
+        <li><a href="om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="helt">
+      <div class="ramme">
+        <div>
+          <h1>Fysikk du kan skru på.</h1>
+          <p class="inngang">Simuleringer og undervisningsopplegg til Fysikk 1 og Fysikk 2, laget av en fysikklærer for bruk i klasserommet.</p>
+          <div class="knapper">
+            <a class="knapp" href="simuleringer.html">Se simuleringene</a>
+            <a class="knapp lys" href="undervisningsopplegg.html">Undervisningsopplegg</a>
+          </div>
+        </div>
+        <figure class="sim" aria-label="Simulering av skrått kast">
+          <canvas id="kast" role="img" aria-label="Graf som viser banen til en kule i et skrått kast, med fartsvektoren og komponentene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="tid">0,00 s</dd></div>
+            <div><dt>x</dt><dd id="x">0,0 m</dd></div>
+            <div><dt>y</dt><dd id="y">0,0 m</dd></div>
+            <div><dt>fart</dt><dd id="fart">0,0 m/s</dd></div>
+          </dl>
+          <div class="sim-styring">
+            <label for="v0">Startfart <output id="v0-ut" for="v0"></output><input id="v0" type="range" min="3" max="20" step="0.5"></label>
+            <label for="vinkel">Vinkel <output id="vinkel-ut" for="vinkel"></output><input id="vinkel" type="range" min="10" max="85" step="1"></label>
+            <button id="kast-knapp" class="knapp" type="button">Kast</button>
+          </div>
+          <figcaption class="sim-hint">Klikk i grafen for å sikte og kaste. Hvor lander kula? Tipp før du kaster.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="del">
+      <div class="ramme">
+        <h2>Velg fag</h2>
+        <p class="del-inngang">Simuleringene følger temaene i fagene. Til hver simulering kommer det oppgaver som kan brukes direkte i timen.</p>
+        <div class="fag">
+          <a class="fag-kort f1" href="fysikk-1.html">
+            <span class="niva">VG2</span>
+            <h3>Fysikk 1 <span class="pil" aria-hidden="true">→</span></h3>
+            <ul class="tema">
+              <li>Bevegelse</li><li>Krefter</li><li>Mekanisk energi</li><li>Bevegelsesmengde</li><li>Elektrisitet</li><li>Termofysikk</li><li>Stråling og klima</li><li>Atommodeller</li><li>Kjerner og stjerner</li>
+            </ul>
+            <p class="status">5 simuleringer om mekanisk energi</p>
+          </a>
+          <a class="fag-kort f2" href="fysikk-2.html">
+            <span class="niva">VG3</span>
+            <h3>Fysikk 2 <span class="pil" aria-hidden="true">→</span></h3>
+            <ul class="tema">
+              <li>Krefter og bevegelse</li><li>Sirkelbevegelse</li><li>Spesiell relativitet</li><li>Elektriske felt</li><li>Magnetiske felt</li><li>Induksjon</li><li>Gravitasjon</li><li>Kvantefysikk</li>
+            </ul>
+            <p class="status">5 simuleringer om spesiell relativitetsteori</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="del">
+      <div class="ramme">
+        <h2>Tenkt for timen, ikke bare for skjermen</h2>
+        <p class="del-inngang">En simulering blir mest verdt når elevene må mene noe før de ser svaret. Oppgavene er derfor bygget opp i tre steg.</p>
+        <ol class="steg">
+          <li><h3>Tipp</h3><p>Elevene forutsier hva som skjer, og begrunner det for hverandre.</p></li>
+          <li><h3>Test</h3><p>De endrer på størrelsene i simuleringen og ser om de fikk rett.</p></li>
+          <li><h3>Forklar</h3><p>De knytter det de så til fysikken, og regner på det for å kontrollere.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="del">
+      <div class="ramme delt">
+        <div>
+          <h2>Undervisningsopplegg</h2>
+          <p>Forsøk, oppgaver og opplegg som kan brukes slik de er eller tilpasses egen klasse.</p>
+          <a class="lenke" href="undervisningsopplegg.html">Til undervisningsopplegg</a>
+        </div>
+        <div>
+          <h2>Programmering</h2>
+          <p>Python i fysikkfaget: numeriske løsninger av bevegelse og symbolsk regning med sympy.</p>
+          <a class="lenke" href="programmering.html">Til programmering</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="del">
+      <div class="ramme">
+        <h2>Om meg</h2>
+        <p class="del-inngang">Jeg heter Jon Bjarne Bø og er lektor i realfag i Rogaland. Til daglig underviser jeg i Fysikk 1, Fysikk 2 og matematikk i videregående skole, og her samler jeg simuleringene jeg lager til timene mine.</p>
+        <a class="lenke" href="om-meg.html">Mer om meg</a>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="js/kast.js"></script>
+</body>
+</html>

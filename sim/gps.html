@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GPS-klokkene</title>
+  <meta name="description" content="Simulering med oppgaver om tidsforlengelse i GPS-systemet: Hvor stor feil blir det uten relativitetsteori?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Spesiell relativitetsteori</p>
+        <h1>GPS-klokkene</h1>
+        <p class="ingress">GPS-satellittene har svært nøyaktige atomklokker. Mottakeren din finner posisjonen ved å måle hvor lang tid signalene bruker fra satellittene. En tidsfeil på 1 µs gir en avstandsfeil på 300 m. Går klokkene i satellittene like fort som klokkene på bakken?</p>
+
+        <figure class="sim sim-bred">
+          <div class="sim-panel bred-venstre uten-topp">
+            <div class="sim-panel-del">
+              <canvas id="bane" class="statisk forhold-kvadrat" role="img" aria-label="Jorda med en satellitt i sirkelbane."></canvas>
+            </div>
+            <div class="sim-panel-del">
+              <h2 class="panel-tittel">Hvor mye satellittklokka har gått for fort</h2>
+              <canvas id="avviksgraf" class="statisk forhold-graf" role="img" aria-label="Graf over tidsavviket til satellittklokka mot antall døgn."></canvas>
+              <ul class="forklaring">
+                <li><span class="prikk linje stiplet f2"></span><span>Fart (spesiell relativitet)</span></li>
+                <li><span class="prikk linje stiplet f1"></span><span>Tyngde (generell relativitet)</span></li>
+                <li><span class="prikk linje"></span><span>Sum</span></li>
+              </ul>
+            </div>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>tid på bakken</dt><dd id="dag"></dd></div>
+            <div><dt>satellittklokka</dt><dd id="hvem"></dd></div>
+            <div><dt>avvik så langt</dt><dd id="avvik-naa"></dd></div>
+            <div><dt>posisjonsfeil så langt</dt><dd id="feil-naa"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Per døgn</th><th scope="col">Avvik</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="f2">Farten: klokka går saktere</th><td id="sr-dogn"></td></tr>
+                <tr><th scope="row" class="f1">Tyngden: klokka går raskere høyere oppe</th><td id="gr-dogn"></td></tr>
+                <tr><th scope="row">Sum</th><td id="sum-dogn"></td></tr>
+                <tr><th scope="row">Posisjonsfeil uten korreksjon</th><td id="feil-dogn"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="hoyde">Banehøyde over bakken <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="2.301" max="4.602" step="any" value="4.305351"></label>
+            <label class="avkrysning" for="sr"><input id="sr" type="checkbox" checked> Fart (spesiell relativitet)</label>
+            <label class="avkrysning" for="gr"><input id="gr" type="checkbox"> Tyngde (generell relativitet)</label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">1 s = 1 time</option><option value="6" selected>1 s = 6 timer</option><option value="24">1 s = 1 døgn</option></select></label>
+            <p class="snarveier">Snarveier: <button class="knapp lys liten" type="button" data-hoyde="400">ISS, 400 km</button><button class="knapp lys liten" type="button" data-hoyde="20200">GPS, 20 200 km</button><button class="knapp lys liten" type="button" data-hoyde="35786">Geostasjonær, 35 786 km</button></p>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Klokka på bakken regnes som i ro. Vi ser bort fra at jorda roterer. Banen er en sirkel, og farten er v = √(GM/r).</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Når v er mye mindre enn c, går en klokke i bevegelse saktere med andelen v²/(2c²). Den generelle relativitetsteorien sier at en klokke høyere opp i tyngdefeltet går raskere med andelen (GM/c²)(1/R − 1/r). Bruk GM = 3,99 · 10¹⁴ m³/s² og R = 6371 km.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Se bare på farten. Går klokka i en GPS-satellitt raskere eller saktere enn klokka på bakken? Hvor mye tror dere det blir per døgn?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>GPS-satellittene går i 20 200 km høyde. Regn ut farten deres, og hvor mange mikrosekunder klokka går for sakte per døgn. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor stor posisjonsfeil gir dette etter ett døgn?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Slå på tyngden. Hvilken effekt er størst for GPS? Hvor stor blir posisjonsfeilen etter ett døgn uten korreksjon, og etter en uke?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Trykk på ISS. Hvilken effekt vinner for en klokke på romstasjonen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I hvilken høyde opphever de to effektene hverandre? Bruk v² = GM/r og vis at svaret er r = 1,5R.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Klokka i satellitten går saktere på grunn av farten. Mange tror effekten er så liten at den ikke spiller noen rolle.</li>
+              <li>r = 6371 km + 20 200 km = 26 571 km. v = √(GM/r) = √(3,99 · 10¹⁴ / 2,657 · 10⁷) m/s ≈ 3,87 km/s. v²/(2c²) ≈ 8,3 · 10⁻¹¹, og med 86 400 s per døgn blir det ca. 7,2 µs per døgn for sakte.</li>
+              <li>s = c · Δt = 3,00 · 10⁸ m/s · 7,2 · 10⁻⁶ s ≈ 2,2 km per døgn.</li>
+              <li>Tyngden gjør at satellittklokka går 45,7 µs per døgn for fort. Sammen med farten blir det +38,5 µs per døgn. Det gir en posisjonsfeil på ca. 11,5 km per døgn, eller ca. 80 km etter en uke. Derfor er klokkene i satellittene justert til å gå litt saktere før de skytes opp.</li>
+              <li>På ISS i 400 km høyde er farten 7,7 km/s. Farten gir −28,3 µs per døgn og tyngden +3,5 µs per døgn. Farten vinner, og klokka går 24,7 µs per døgn for sakte.</li>
+              <li>v²/(2c²) = (GM/c²)(1/R − 1/r) med v² = GM/r gir 1/(2r) = 1/R − 1/r, altså 3/(2r) = 1/R og r = 1,5R. Det svarer til 3190 km over bakken.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Har klassen bare jobbet med den spesielle relativitetsteorien, kan tyngdeeffekten presenteres som et faktum. GPS er et godt eksempel på at relativitetsteori er nødvendig i hverdagsteknologi.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/gps.js"></script>
+</body>
+</html>
