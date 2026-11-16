@@ -400,3 +400,8 @@ pre.kode code { background: none; padding: 0; font-size: inherit; }
 .sim-kort-tekst { min-width: 0; }
 .sim-kort-tittel { overflow-wrap: break-word; hyphens: auto; }
 h1, h2 { overflow-wrap: break-word; hyphens: auto; }
+.forklaring .linje.varme { --farge: var(--dempet); }
+.sim canvas.forhold-bakke { aspect-ratio: 16 / 4.1; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-bakke { aspect-ratio: 16 / 6.5; }
+}
