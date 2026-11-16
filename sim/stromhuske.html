@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Strømhuske</title>
+  <meta name="description" content="Simulering med oppgaver om magnetisk kraft på en strømførende leder: En metallstav henger i et magnetfelt og svinger ut når strømmen slås på.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Magnetiske felt og krefter</p>
+        <h1>Strømhuske</h1>
+        <p class="ingress">En metallstav henger i to lette snorer i et loddrett magnetfelt. Når det går strøm i staven, får den en vannrett kraft F = IlB, og huska svinger ut til siden. Her ser du staven fra enden, så strømmen går inn i eller ut av planet.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="huske" class="statisk forhold-kule" role="img" aria-label="En stav sett fra enden henger i en snor i et loddrett magnetfelt. Piler viser tyngden, snorkraften og den magnetiske kraften."></canvas>
+          <dl class="sim-tall">
+            <div><dt>magnetisk kraft F = IlB</dt><dd id="r-f"></dd></div>
+            <div><dt>tyngde G</dt><dd id="r-g"></dd></div>
+            <div><dt>vinkel α</dt><dd id="r-vinkel"></dd></div>
+            <div><dt>største vinkel</dt><dd id="r-maks"></dd></div>
+            <div><dt>magnetfelt B</dt><dd id="r-b"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="strom">Strøm I <output id="strom-ut" for="strom"></output><input id="strom" type="range" min="-8" max="8" step="0.1" value="2"></label>
+            <label for="felt" id="rad-felt">Magnetfelt B <output id="felt-ut" for="felt"></output><input id="felt" type="range" min="0" max="1" step="0.05" value="0.4"></label>
+            <label for="retning">Retning på B<select id="retning"><option value="opp">Opp</option><option value="ned">Ned</option></select></label>
+            <label for="lengde">Lengde på staven l <output id="lengde-ut" for="lengde"></output><input id="lengde" type="range" min="2" max="20" step="1" value="10"></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="10" max="100" step="5" value="40"></label>
+            <label for="modus">Magnetfeltet<select id="modus"><option value="kjent">Velg selv</option><option value="ukjent">Ukjent (regn det ut)</option></select></label>
+            <label class="avkrysning" for="vis-krefter"><input id="vis-krefter" type="checkbox" checked> Vis kreftene</label>
+            <div class="sim-knapper"><button id="slipp" class="knapp lys" type="button">Slipp fra loddrett</button><span id="ukjent-knapper" hidden><button id="ny-ukjent" class="knapp lys" type="button">Nytt ukjent felt</button> <button id="vis-ukjent" class="knapp lys" type="button">Vis feltet</button></span></div>
+          </div>
+          <figcaption class="sim-hint">Positiv strøm går inn i planet (⊗), negativ strøm går ut av planet (⊙). Snorene er 15 cm lange, og hele staven er i feltet. Pilene viser kreftene når huska henger i ro. «Slipp fra loddrett» starter huska i ro rett ned, som når strømmen slås på. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med I = 2,0 A inn i planet, B = 0,40 T opp, l = 10 cm og m = 40 g.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Bruk høyrehåndsregelen. Svinger huska mot høyre eller venstre? Hva skjer hvis du snur strømmen? Og hvis du snur både strømmen og feltet?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut den magnetiske kraften og tyngden. Vis at tan α = IlB / mg, og regn ut vinkelen. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med vinkelen hvis du dobler strømmen? Hva hvis du i stedet dobler både lengden og massen til staven? Test begge.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor stor må strømmen være for at snorene skal danne 30° med loddlinjen? Test svaret.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Velg «Ukjent (regn det ut)». Les av vinkelen, og regn ut magnetfeltet. Sjekk med «Vis feltet».</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Trykk på «Slipp fra loddrett». Huska svinger forbi likevektsvinkelen før den legger seg i ro. Omtrent hvor stor blir den største vinkelen, sammenlignet med vinkelen i likevekt? Hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Tenk deg at magnetfeltet pekte langs staven i stedet for loddrett. Hva ville skjedd med huska? Hva om feltet var vannrett, men vinkelrett på staven?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mot høyre. Med strøm inn i planet og B opp gir F = I l × B en kraft mot høyre. Snur du strømmen, svinger huska mot venstre. Snur du både strømmen og feltet, svinger den mot høyre igjen.</li>
+              <li>F = IlB = 2,0 · 0,10 · 0,40 = 0,080 N. G = mg = 0,040 · 9,81 = 0,392 N. Snorkraften, tyngden og den magnetiske kraften danner en rettvinklet trekant, så tan α = F/G = 0,204 og α = 11,5°.</li>
+              <li>Med dobbel strøm blir tan α dobbelt så stor, og α = 22,2°. Dobler du både lengden og massen, blir både F og G dobbelt så store, og vinkelen er den samme.</li>
+              <li>I = mg tan 30° / (lB) = 0,392 · 0,577 / (0,10 · 0,40) ≈ 5,7 A. Simuleringen gir 30,2° med 5,7 A.</li>
+              <li>B = mg tan α / (Il). Velg gjerne en stor strøm, så vinkelen blir stor og lett å lese av.</li>
+              <li>Nesten dobbelt så stor: 22,2° når likevektsvinkelen er 11,5°. Tyngden og den magnetiske kraften er konstante, så de virker som en «skrå tyngde» som peker langs likevektsretningen. Huska starter 11,5° fra denne retningen og svinger like langt ut på den andre siden, som en vanlig pendel. Litt demping gjør at den ikke helt når 2α.</li>
+              <li>Hvis B peker langs staven, er vinkelen mellom strømmen og feltet 0°, og F = IlB sin 0° = 0. Huska henger rett ned. Hvis feltet er vannrett og vinkelrett på staven, blir kraften loddrett, opp eller ned. Da strammes eller slakkes snorene, men huska svinger ikke ut.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter, gjerne sammen med en ekte strømhuske eller aktiviteten med aluminiumsfolie og magnet. Oppgave 2, 4 og 5 er samme type som vanlige oppgaver om strømhusker: finn strømmen, feltet eller vinkelen.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/stromhuske.js"></script>
+</body>
+</html>

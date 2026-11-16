@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrostatisk ping-pong</title>
+  <meta name="description" content="Simulering med oppgaver om homogent elektrisk felt: En ledende kule spretter mellom to ladde plater og fører ladning over. Hvordan avhenger strømmen av spenningen?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Elektriske felt og krefter</p>
+        <h1>Elektrostatisk ping-pong</h1>
+        <p class="ingress">En lett kule med ledende overflate henger i en tynn tråd mellom to plater med høy spenning. Når kula berører den positive plata, blir den positiv og skyves over til den negative. Der blir den negativ og skyves tilbake. Kula frakter ladning fram og tilbake, og det blir en liten strøm.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="pingpong" class="statisk forhold-pingpong" role="img" aria-label="En kule henger i en tråd og spretter mellom en positiv og en negativ plate."></canvas>
+          <dl class="sim-tall">
+            <div><dt>feltstyrke E</dt><dd id="r-e"></dd></div>
+            <div><dt>ladning på kula q</dt><dd id="r-q"></dd></div>
+            <div><dt>kraft på kula F</dt><dd id="r-f"></dd></div>
+            <div><dt>tid for én tur over</dt><dd id="r-t"></dd></div>
+            <div><dt>antall turer</dt><dd id="r-n"></dd></div>
+            <div><dt>ladning ført over</dt><dd id="r-qtot"></dd></div>
+            <div><dt>middelstrøm I</dt><dd id="r-i"></dd></div>
+          </dl>
+          <canvas id="pinggraf" class="statisk forhold-lav" role="img" aria-label="Graf over ladningen kula har ført over, mot tiden. Grafen er en trapp, og en stiplet linje viser middelstrømmen."></canvas>
+          <div class="sim-styring mange">
+            <label for="spenning">Spenning U <output id="spenning-ut" for="spenning"></output><input id="spenning" type="range" min="1" max="20" step="0.5" value="10"></label>
+            <label for="avstand">Avstand d <output id="avstand-ut" for="avstand"></output><input id="avstand" type="range" min="4" max="12" step="1" value="8"></label>
+            <label for="radius">Kulas radius r <output id="radius-ut" for="radius"></output><input id="radius" type="range" min="0.5" max="2" step="0.25" value="1"></label>
+            <label for="masse">Kulas masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.05" max="1" step="0.05" value="0.2"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.25">Sakte (0,25×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Den venstre plata er positiv. Ladningen kula får når den berører en plate, er q = (2π³/3) ε₀ r² E, et kjent resultat for en ledende kule mot en plan elektrode. Modellen ser bort fra tyngden og tråden, luftmotstanden og spretten i støtet: Kula starter i ro ved hver plate. Grafen viser ladningen kula har ført fra den ene plata til den andre. Den stiplede linja har stigningstall lik middelstrømmen.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med U = 10 kV, d = 8,0 cm, r = 1,0 cm og m = 0,20 g.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Kula er nøytral før den berører en plate. Hvorfor begynner den å sprette? Hvorfor spretter den tilbake igjen fra den negative plata?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bruk ladningen kula får (se tallene under simuleringen). Regn ut feltstyrken, kraften og akselerasjonen. Kula må flytte seg d − 2r = 6,0 cm. Hvor lang tid bruker den på én tur? Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Ladningen kula får, er proporsjonal med feltstyrken. Hva skjer med kraften, tiden for én tur og middelstrømmen hvis du dobler spenningen? Test med 20 kV.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Følger «ping-pong-kretsen» Ohms lov? Begrunn svaret ut fra hvordan strømmen avhenger av spenningen.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Gjør kula fire ganger så tung. Hva skjer med tiden for én tur og med strømmen? Hva skjer hvis du i stedet dobler radien til kula?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Kjør simuleringen i 10 s. Hvor mye ladning er ført over? Sammenlign med middelstrømmen ganget med tiden.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Regn ut arbeidet feltet gjør på kula på én tur, og den kinetiske energien kula har når den treffer den andre plata. Hvor blir det av energien i et ekte forsøk?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>I et ekte forsøk blir kula polarisert og trukket mot en plate. Når den berører plata, får den ladning med samme fortegn som plata, og blir frastøtt. Ved den negative plata blir den positive ladningen nøytralisert, og kula blir negativ i stedet. Da blir den frastøtt igjen. I simuleringen starter kula ved den positive plata med ladning.</li>
+              <li>E = U/d = 10 000 V / 0,080 m = 1,25 · 10⁵ V/m. Med q = 2,29 nC blir F = qE = 2,86 · 10⁻⁴ N og a = F/m = 1,43 m/s². s = ½at² gir t = √(2s/a) = √(2 · 0,060 / 1,43) ≈ 0,29 s.</li>
+              <li>Dobbel spenning gir dobbel q og dobbel E, så kraften og akselerasjonen blir fire ganger så store. Tiden for én tur blir halvparten, 0,145 s. Strømmen I = q/t blir fire ganger så stor: fra 7,9 nA til 31,6 nA.</li>
+              <li>Nei. I en ohmsk motstand er I proporsjonal med U. Her er I proporsjonal med U², fordi både ladningen per tur og antall turer per sekund er proporsjonale med U.</li>
+              <li>Fire ganger så stor masse gir en firedel av akselerasjonen og dobbelt så lang tid per tur, 0,58 s. Strømmen blir halvparten, 3,9 nA. Dobbel radius gir fire ganger så stor ladning (q ∝ r²) og fire ganger så stor kraft. Strømmen blir omtrent ti ganger så stor, 77 nA, blant annet fordi kula også har kortere vei å gå.</li>
+              <li>På 10 s rekker kula 34 hele turer og fører over 34 · 2,29 nC ≈ 78 nC. Middelstrømmen ganget med tiden gir 7,9 nA · 10 s = 79 nC. Trappegrafen følger den stiplede linja.</li>
+              <li>W = Fs = 2,86 · 10⁻⁴ N · 0,060 m ≈ 1,7 · 10⁻⁵ J. Farten ved plata er v = at = 1,43 · 0,29 ≈ 0,41 m/s, og ½mv² = ½ · 2,0 · 10⁻⁴ · 0,41² ≈ 1,7 · 10⁻⁵ J. I et ekte forsøk går energien over til lyd og varme i støtene og til luftmotstand. Det er spenningskilden som leverer energien.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter, gjerne etter en demonstrasjon med en kule av aluminiumsfolie eller en ping-pong-ball malt med grafitt mellom to plater koplet til en høyspenningskilde. Feltet i simuleringen er under 3 · 10⁶ V/m, der luft begynner å lede. Pass på sikkerheten ved bruk av høyspenning.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/pingpong.js"></script>
+</body>
+</html>

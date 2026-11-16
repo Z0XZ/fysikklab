@@ -26,6 +26,10 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js`, `js/vektorstot.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse, pucker i Tracker |
 | `programmering/`, `data/` | Python-øvinger med datafiler |
 | `js/myoner.js`, `js/samtidighet.js`, `js/elektron.js`, `js/gps.js` | Fysikk 2: myoner, toget og lynene, elektronet, GPS-klokkene |
+| `js/efelt.js`, `js/laddkule.js`, `js/avboyning.js` | Fysikk 2: elektrisk felt, ladd kule mellom plater, akselerasjon og avbøyning |
+| `js/mbane.js`, `js/fartsvelger.js`, `js/stromhuske.js`, `js/ledere.js` | Fysikk 2: ladd partikkel i magnetfelt, fartsvelger, strømhuske, magnetfelt rundt ledere |
+| `js/pingpong.js`, `js/syklotron.js` | Fysikk 2: elektrostatisk ping-pong, syklotron |
+| `js/mobilfelt.js` | Opplegg: magnetfelt rundt en leder målt med mobilen |
 | `CNAME` | Domenet for GitHub Pages |
 
 Tekst som må fylles inn er merket med klassen `fyll-inn`. Søk etter den før publisering.

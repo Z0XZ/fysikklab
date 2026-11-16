@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Syklotron</title>
+  <meta name="description" content="Simulering med oppgaver om syklotronen: Ladde partikler går i halvsirkler i et magnetfelt og får energi hver gang de passerer spalten mellom to D-formede elektroder.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Magnetiske felt og krefter</p>
+        <h1>Syklotron</h1>
+        <p class="ingress">En syklotron består av to hule, D-formede elektroder i et sterkt magnetfelt. Magnetfeltet holder partikkelen i en halvsirkel inne i hver elektrode. Mellom elektrodene er det en vekselspenning som gir partikkelen ekstra energi hver gang den passerer spalten. Partikkelen går ut i en spiral og får mer og mer energi.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="syklotron" class="statisk forhold-syklotron" role="img" aria-label="To halvsirkelformede elektroder med en spalt imellom. Partikkelen går i en spiral utover."></canvas>
+          <dl class="sim-tall">
+            <div><dt>syklotronfrekvens f = qB/(2πm)</dt><dd id="r-f0"></dd></div>
+            <div><dt>frekvens på spenningen</dt><dd id="r-fu"></dd></div>
+            <div><dt>største energi q²B²R²/(2m)</dt><dd id="r-kmaks"></dd></div>
+            <div><dt>passeringer av spalten</dt><dd id="r-n"></dd></div>
+            <div><dt>kinetisk energi nå</dt><dd id="r-k"></dd></div>
+            <div><dt>fart nå</dt><dd id="r-v"></dd></div>
+            <div><dt>radius nå</dt><dd id="r-r"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="partikkel">Partikkel<select id="partikkel"><option value="proton">Proton</option><option value="deuteron">Deuteron</option><option value="alfa">Alfapartikkel</option></select></label>
+            <label for="felt">Magnetfelt B <output id="felt-ut" for="felt"></output><input id="felt" type="range" min="0.2" max="2" step="0.1" value="1"></label>
+            <label for="radius">Radius R <output id="radius-ut" for="radius"></output><input id="radius" type="range" min="0.1" max="0.6" step="0.05" value="0.3"></label>
+            <label for="spenning">Spenning U <output id="spenning-ut" for="spenning"></output><input id="spenning" type="range" min="10" max="200" step="5" value="50"></label>
+            <label for="frekvens">Frekvens på spenningen <output id="frekvens-ut" for="frekvens"></output><input id="frekvens" type="range" min="95" max="105" step="0.5" value="100"></label>
+            <p id="melding" class="melding" role="status"></p>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Frekvensen på spenningen er oppgitt i prosent av syklotronfrekvensen. Fargen på elektrodene viser fortegnet på spenningen akkurat nå. Spalten er tegnet bredere enn den er, og regnes som uendelig smal. Til slutt føres partikkelen ut av syklotronen. Relativistiske effekter er neglisjert. 1 MeV = 1,602 · 10⁻¹³ J.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med et proton, B = 1,0 T, R = 30 cm, U = 50 kV og riktig frekvens (100 %).</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Vis at omløpstiden er T = 2πm/(qB), og regn ut frekvensen spenningen må ha. Hvorfor er det viktig at omløpstiden ikke avhenger av farten?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Partikkelen kommer ut når radien er R. Vis at den kinetiske energien da er K = q²B²R²/(2m). Regn ut energien i MeV og farten.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med energien protonet kommer ut med, hvis du dobler spenningen? Hva skjer med antall omløp? Test, og forklar.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor mange ganger passerer protonet spalten før det kommer ut med U = 50 kV? Hvor mange omløp er det?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett frekvensen på spenningen til 101 %. Hva skjer med protonet? Hvor mye energi får det på det meste? Prøv også 99 % og 100,5 %.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Bytt til en alfapartikkel og så et deuteron. Hvilken frekvens trenger de? Hvilken av dem kommer ut med mest energi? Regn først, og test.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Regn ut γ for protonet når det kommer ut med 4,3 MeV. Hvor mye lengre blir omløpstiden når vi tar hensyn til relativitetsteorien? Bruk svaret fra oppgave 5 til å forklare hvorfor syklotroner ikke kan gi protoner vilkårlig mye energi.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>qvB = mv²/r gir r = mv/(qB), og T = 2πr/v = 2πm/(qB). For protonet: f = qB/(2πm) = 1,60 · 10⁻¹⁹ · 1,0 / (2π · 1,67 · 10⁻²⁷) ≈ 15,2 MHz. Omløpstiden er den samme for alle farter, så partikkelen kommer til spalten med jevne mellomrom. Da kan en vekselspenning med fast frekvens gi den energi hver gang.</li>
+              <li>v = qBR/m, så K = ½mv² = q²B²R²/(2m) = (1,60 · 10⁻¹⁹ · 1,0 · 0,30)² / (2 · 1,67 · 10⁻²⁷) ≈ 6,9 · 10⁻¹³ J ≈ 4,3 MeV. Farten er v = qBR/m ≈ 2,9 · 10⁷ m/s, omtrent 10 % av lysfarten.</li>
+              <li>Energien blir den samme, 4,3 MeV, fordi den bare avhenger av q, B, R og m. Med dobbel spenning får protonet dobbelt så mye energi per passering, så det trenger halvparten så mange omløp.</li>
+              <li>Hver passering gir qU = 50 keV. 4,3 MeV / 50 keV ≈ 86 passeringer, altså 43 omløp. Simuleringen gir 86 passeringer og 4,30 MeV, litt under 4,31 MeV fordi neste halvsirkel ville blitt større enn R.</li>
+              <li>Med 101 % kommer protonet gradvis ut av takt med spenningen. Etter hvert passerer det spalten mens spenningen bremser det. Det får på det meste 1,6 MeV, og så blir det bremset ned igjen. Med 100,5 % når det 3,2 MeV. Frekvensen må være svært nøyaktig.</li>
+              <li>Alfapartikkelen har q/m halvparten av protonets, så frekvensen blir halvparten: 7,7 MHz. Energien q²/m blir (2e)²/(4m<sub>p</sub>) = e²/m<sub>p</sub>, omtrent den samme som for protonet: 4,3 MeV. Deuteronet har samme ladning og dobbel masse, så det trenger 7,6 MHz og får halvparten av energien, 2,2 MeV.</li>
+              <li>γ = 1 + K/(mc²) = 1 + 4,3 MeV / 938 MeV ≈ 1,0046. Omløpstiden er γ · 2πm/(qB), altså 0,46 % lengre mot slutten. Det er like mye som et frekvensavvik på omtrent en halv prosent. Oppgave 5 viser at det er nok til at partikkelen kommer ut av takt over mange omløp. Ved høyere energier må frekvensen eller magnetfeltet endres underveis, slik som i synkrosyklotroner og synkrotroner.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter, etter magnetisk kraft på ladde partikler og omløpstid i magnetfelt. Oppgave 7 knytter syklotronen til relativitetsteorien, se også <a href="elektron.html">Akselerer et elektron</a>. Syklotroner brukes i dag blant annet til å lage radioaktive isotoper til medisinsk bildediagnostikk.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/syklotron.js"></script>
+</body>
+</html>

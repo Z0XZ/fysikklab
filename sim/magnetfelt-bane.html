@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ladd partikkel i magnetfelt</title>
+  <meta name="description" content="Simulering med oppgaver om magnetisk kraft på ladde partikler: sirkelbane, radius og omløpstid, og et massespektrometer som skiller isotoper.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Magnetiske felt og krefter</p>
+        <h1>Ladd partikkel i magnetfelt</h1>
+        <p class="ingress">En ladd partikkel som beveger seg vinkelrett på et magnetfelt, får en kraft F = qvB som hele tiden står vinkelrett på farten. Da går partikkelen i en sirkel. I et massespektrometer bruker vi dette til å skille atomer som bare har litt ulik masse.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="mbane" class="statisk forhold-mbane" role="img" aria-label="En partikkel kommer inn gjennom en spalte i et magnetfelt og går i en halvsirkel. Piler viser fart og kraft."></canvas>
+          <div id="resultat"></div>
+          <div class="sim-styring mange">
+            <label for="modus">Oppsett<select id="modus"><option value="sirkel">Én partikkel</option><option value="spektrometer">Massespektrometer</option></select></label>
+            <label for="partikkel" id="rad-partikkel">Partikkel<select id="partikkel"><option value="proton">Proton</option><option value="elektron">Elektron</option><option value="alfa">Alfapartikkel</option></select></label>
+            <label for="stoff" id="rad-stoff" hidden>Grunnstoff (ioner med ladning +e)<select id="stoff"><option value="klor">Klor</option><option value="karbon">Karbon</option><option value="neon">Neon</option><option value="uran">Uran</option></select></label>
+            <label for="spenning">Akselerasjonsspenning U i V<input id="spenning" type="number" min="1" max="100000" step="any" inputmode="decimal" value="500"></label>
+            <label for="felt">Magnetfelt B i mT<input id="felt" type="number" min="0.01" max="5000" step="any" inputmode="decimal" value="50"></label>
+            <label for="retning">Retning på B<select id="retning"><option value="inn">Inn i planet (⊗)</option><option value="ut">Ut av planet (⊙)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Partikkelen starter i ro og blir akselerert gjennom spenningen U før den går inn gjennom spalten nedenfra. Akselerasjonen er ikke tegnet i målestokk. Den stiplede halvsirkelen viser hele banen. Målestokken justeres etter radien. Radius og tid vises når partikkelen er ute av feltet. Massene i spektrometeret er atommasser, og den lille massen til elektronet som mangler, er neglisjert.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med et proton, U = 500 V og B = 50 mT inn i planet.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Protonet går rett opp inn i feltet. Bøyer det mot høyre eller venstre? Bruk høyrehåndsregelen, og test. Hva skjer hvis du snur feltet eller bytter til et elektron?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten til protonet, den magnetiske kraften og radien i banen. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med radien hvis du gjør spenningen fire ganger så stor? Hva om du i stedet dobler magnetfeltet? Test begge.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Den magnetiske kraften endrer ikke farten til partikkelen, bare retningen. Hvorfor? Bruk begrepet arbeid.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Vis at omløpstiden er T = 2πm / (qB). Regn ut hvor lang tid protonet er i feltet. Hva skjer med tiden hvis du øker spenningen? Test.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Bytt til et elektron. Hvorfor blir sirkelen så mye mindre? Hvor svakt må feltet være for at elektronet skal få radius 7,5 cm? Regn først, og test så.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg massespektrometer og klor, U = 2000 V og B = 200 mT. Klor har to isotoper, ³⁵Cl og ³⁷Cl. Regn ut hvor langt fra spalten hver isotop treffer detektoren, og hvor langt det er mellom treffpunktene.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Velg uran med U = 2000 V og B = 500 mT. Hvor langt er det mellom treffpunktene for ²³⁵U og ²³⁸U? Hvorfor er det mye vanskeligere å skille uranisotoper enn klorisotoper? Finn en sammenheng mellom avstanden og massene.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mot venstre. Med høyrehåndsregelen for F = qv × B peker kraften mot venstre når v peker opp og B peker inn i planet. Snur du feltet eller bytter til et elektron, bøyer partikkelen mot høyre.</li>
+              <li>v = √(2eU/m) = √(2 · 1,60 · 10⁻¹⁹ · 500 / 1,67 · 10⁻²⁷) ≈ 3,09 · 10⁵ m/s. F = evB = 1,60 · 10⁻¹⁹ · 3,09 · 10⁵ · 0,050 ≈ 2,5 · 10⁻¹⁵ N. Den magnetiske kraften er sentripetalkraften: evB = mv²/r gir r = mv/(eB) ≈ 6,46 cm.</li>
+              <li>r = mv/(qB) og v ∝ √U. Fire ganger så stor spenning gir dobbel fart og dobbel radius, 12,9 cm. Dobbelt så sterkt felt gir halv radius, 3,23 cm.</li>
+              <li>Kraften står hele tiden vinkelrett på farten. Da gjør kraften ikke noe arbeid (W = Fs cos 90° = 0), og den kinetiske energien er konstant. Farten endrer bare retning.</li>
+              <li>T = 2πr/v = 2πm/(qB). Farten forkortes bort. T = 2π · 1,67 · 10⁻²⁷ / (1,60 · 10⁻¹⁹ · 0,050) ≈ 1,31 · 10⁻⁶ s, så protonet er i feltet i T/2 ≈ 0,66 µs. Tiden er den samme uansett spenning: Raskere partikler går i større sirkler. Dette er prinsippet bak syklotronen.</li>
+              <li>Elektronet har mye mindre masse. Selv om det får større fart, blir mv mye mindre, og radien blir 1,5 mm. B = mv/(er) gir B ≈ 1,0 mT for r = 7,5 cm.</li>
+              <li>r = √(2mU/e) / B. ³⁵Cl treffer 2r ≈ 38,1 cm fra spalten, og ³⁷Cl treffer 39,1 cm fra spalten. Avstanden mellom treffpunktene er omtrent 1,1 cm.</li>
+              <li>Treffpunktene er 39,49 cm og 39,74 cm fra spalten, bare 2,5 mm fra hverandre. Radien er proporsjonal med √m, så forholdet mellom radiene er √(238/235) ≈ 1,006. For klor er det √(37/35) ≈ 1,03. Under andre verdenskrig ble uran anriket i store massespektrometre som het calutroner.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Oppgave 1–6 passer etter magnetisk kraft på ladde partikler, oppgave 7–8 etter massespektrometeret. Fartsvelgeren, som ofte står foran massespektrometeret, har sin egen simulering: <a href="fartsvelger.html">Fartsvelger</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/mbane.js"></script>
+</body>
+</html>

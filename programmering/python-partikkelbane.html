@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ladd partikkel i magnetfelt i Python</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Simuler banen til et proton i et magnetfelt med Eulers metode, sammenlign med r = mv/qB, og lag en fartsvelger.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Magnetiske felt og krefter</p>
+        <h1>Ladd partikkel i magnetfelt i Python</h1>
+        <p class="ingress">Et proton med farten 3,09 · 10⁵ m/s kommer inn i et magnetfelt på 50 mT. Vi regner ut kraften F = qv × B i små tidssteg og ser hvordan banen blir. Stemmer den med formelen for radien? Og hva skjer når vi legger til et elektrisk felt?</p>
+
+        <div class="tekst opplegg">
+          <h2>Steg 1: Simuler banen</h2>
+          <p>Magnetfeltet peker ut av planet (z-retning). Da blir kraften F<sub>x</sub> = qv<sub>y</sub>B og F<sub>y</sub> = −qv<sub>x</sub>B. Programmet bruker Eulers metode: Først regner det ut den nye farten, og så den nye posisjonen.</p>
+        <pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+q = 1.60e-19      # ladning i C
+m = 1.67e-27      # masse i kg
+B = 0.050         # magnetfelt i T, ut av planet
+v0 = 3.09e5       # fart i m/s
+
+dt = 1e-9         # tidssteg i s
+t_slutt = 1.4e-6  # s
+
+x, y = 0.0, 0.0
+vx, vy = v0, 0.0
+t = 0.0
+
+xs, ys = [x], [y]
+while t &lt; t_slutt:
+    # Kraften F = qv × B når B peker ut av planet (z-retning)
+    Fx = q * vy * B
+    Fy = -q * vx * B
+    vx = vx + Fx / m * dt
+    vy = vy + Fy / m * dt
+    x = x + vx * dt
+    y = y + vy * dt
+    t = t + dt
+    xs.append(x)
+    ys.append(y)
+
+plt.plot(xs, ys)
+plt.axis("equal")
+plt.xlabel("x / m")
+plt.ylabel("y / m")
+plt.grid()
+plt.show()</code></pre>
+
+          <h2>Steg 2: Sammenlign med formelen</h2>
+          <p>Legg til dette nederst i programmet.</p>
+        <pre class="kode"><code>r_teori = m * v0 / (q * B)
+r_numerisk = (max(ys) - min(ys)) / 2
+v_slutt = np.sqrt(vx**2 + vy**2)
+
+print(f"r fra formelen:  {r_teori * 100:.3f} cm")
+print(f"r fra simuleringen: {r_numerisk * 100:.3f} cm")
+print(f"fart ved start: {v0:.4e} m/s")
+print(f"fart ved slutt: {v_slutt:.4e} m/s")</code></pre>
+
+          <h2>Steg 3: Fartsvelger</h2>
+          <p>Nå legger vi til et elektrisk felt i y-retning. Kraften i y-retning blir F<sub>y</sub> = qE − qv<sub>x</sub>B. Bytt ut disse linjene i programmet fra steg 1:</p>
+        <pre class="kode"><code>E = v0 * B        # elektrisk felt i V/m, i y-retning
+
+# ... og inne i løkka:
+    Fx = q * vy * B
+    Fy = q * E - q * vx * B</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Protonet starter i origo med farten mot høyre, og B peker ut av planet. Bøyer banen oppover eller nedover? Kjør steg 1 og sjekk.</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 2. Hvor godt stemmer radien med formelen r = mv/(qB)? Hva skjer med farten? Burde den endre seg?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Prøv tidssteget dt = 1e-8 og dt = 1e-10. Hvordan påvirker tidssteget radien og farten? Lag gjerne simuleringen lengre, for eksempel t_slutt = 1e-5, og se på banen.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>I Eulers metode legger vi til en liten fartsendring Δv = (F/m) · Δt som står vinkelrett på farten. Tegn v og Δv som vektorer, og forklar hvorfor farten blir litt større for hvert steg.</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Gjør endringene i steg 3. Hvordan ser banen ut nå? Forklar hvorfor ut fra kreftene.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett <code>E = 0.9 * v0 * B</code> og så <code>E = 1.1 * v0 * B</code>. Hvordan ser banene ut? Skriv ut hvor langt protonet kommer fra x-aksen.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Gjør programmet tredimensjonalt med numpy-vektorer: <code>v = np.array([v0, 0.0, 1.0e5])</code>, <code>Bvek = np.array([0.0, 0.0, B])</code> og <code>a = q * np.cross(v, Bvek) / m</code>. Protonet har nå en fartskomponent langs feltet. Plott banen i 3D. Hvor langt beveger protonet seg langs feltet på ett omløp? Hva har dette med nordlys å gjøre?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Nedover. Med v mot høyre og B ut av planet gir høyrehåndsregelen en kraft nedover på en positiv ladning. Protonet går i en sirkel med klokka.</li>
+              <li>Med dt = 1e-9 s blir radien 6,524 cm i simuleringen og 6,450 cm fra formelen. Farten øker fra 3,09 · 10⁵ m/s til 3,14 · 10⁵ m/s. Den magnetiske kraften gjør ikke arbeid, så farten burde vært konstant. Økningen er en feil i den numeriske metoden.</li>
+              <li>Med dt = 1e-8 s blir radien 7,23 cm og sluttfarten 3,63 · 10⁵ m/s. Med dt = 1e-10 s blir radien 6,458 cm og sluttfarten 3,095 · 10⁵ m/s. Mindre tidssteg gir mindre feil. Over lang tid blir banen en spiral utover, fordi radien vokser med farten.</li>
+              <li>Δv står vinkelrett på v. Den nye farten er hypotenusen i en rettvinklet trekant med katetene v og Δv, så |v + Δv| = √(v² + Δv²) > v. Feilen er liten for hvert steg, men den hoper seg opp. Bedre metoder, som Runge–Kutta, gir mye mindre feil.</li>
+              <li>Banen blir en rett linje. Med E = v<sub>0</sub>B er qE = qv<sub>0</sub>B, så den elektriske og den magnetiske kraften er like store og motsatt rettet. Siden v<sub>y</sub> forblir null, blir det ingen kraft i x-retning heller. Her er Eulers metode nøyaktig fordi kreftene er null hele tiden.</li>
+              <li>Banen blir bølgeformet. Med 0,9 · v<sub>0</sub>B bøyer protonet nedover, og med 1,1 · v<sub>0</sub>B oppover. I begge tilfellene kommer det 12,9 mm fra x-aksen. Forklaring på et høyere nivå: Protonet glir av gårde med farten E/B og går samtidig i sirkel med farten v<sub>0</sub> − E/B. Radien i sirkelen er m(0,1v<sub>0</sub>)/(qB) = 6,45 mm, og største avstand blir to radier.</li>
+              <li>Omløpstiden er T = 2πm/(qB) ≈ 1,31 · 10⁻⁶ s, uavhengig av farten. Langs feltet beveger protonet seg v<sub>z</sub>T = 1,0 · 10⁵ · 1,31 · 10⁻⁶ ≈ 13 cm per omløp. Banen er en spiral rundt feltlinjene. Ladde partikler fra sola følger jordas magnetfeltlinjer i spiraler ned mot polområdene, der de lager nordlys.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45–60 minutter. Elevene bør ha sett Eulers metode før, for eksempel med bevegelse med luftmotstand. Øvingen passer etter <a href="../sim/magnetfelt-bane.html">Ladd partikkel i magnetfelt</a> og <a href="../sim/fartsvelger.html">Fartsvelger</a>. Tallene i fasiten er fra en kjøring av koden med q = 1,60 · 10⁻¹⁹ C og m = 1,67 · 10⁻²⁷ kg.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

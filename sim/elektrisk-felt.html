@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrisk felt</title>
+  <meta name="description" content="Simulering med oppgaver om Coulombs lov og elektriske felt rundt punktladninger: feltlinjer, feltstyrke og superposisjon.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Elektriske felt og krefter</p>
+        <h1>Elektrisk felt</h1>
+        <p class="ingress">Rundt en ladning er det et elektrisk felt. Dra ladningene og målepunktet P rundt, og se hvordan feltet endrer seg. Når det er flere ladninger, legger vi sammen feltene fra hver ladning som vektorer.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="felt" class="dra forhold-efelt" role="img" aria-label="Punktladninger med feltlinjer og et målepunkt P. Ladningene og P kan dras med musa eller fingeren."></canvas>
+          <dl class="sim-tall">
+            <div><dt>P</dt><dd id="p-pos"></dd></div>
+            <div><dt>feltstyrke E i P</dt><dd id="p-e"></dd></div>
+            <div><dt>(E<sub>x</sub>, E<sub>y</sub>)</dt><dd id="p-ex"></dd></div>
+            <div><dt>retning (fra x-aksen)</dt><dd id="p-retning"></dd></div>
+            <div><dt>kraft mellom 1 og 2</dt><dd id="f-12" class="bryt"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col">Ladning</th><th scope="col">q (nC)</th><th scope="col">posisjon (cm)</th><th scope="col">avstand til P (cm)</th><th scope="col">E fra ladningen i P (N/C)</th></tr></thead>
+              <tbody id="ladning-rader"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="oppsett">Oppsett<select id="oppsett"><option value="en">Én ladning</option><option value="dipol">Pluss og minus</option><option value="like">To like ladninger</option><option value="ulike">+4 nC og +1 nC</option><option value="tre">Tre ladninger</option><option value="egen" hidden>Eget oppsett</option></select></label>
+            <label for="ladning">Ladning <output id="ladning-ut" for="ladning"></output><input id="ladning" type="range" min="-5" max="5" step="0.5" value="2"></label>
+            <label class="avkrysning" for="vis-linjer"><input id="vis-linjer" type="checkbox" checked> Feltlinjer</label>
+            <label class="avkrysning" for="vis-piler"><input id="vis-piler" type="checkbox"> Feltpiler i rutenett</label>
+            <label class="avkrysning" for="vis-bidrag"><input id="vis-bidrag" type="checkbox" checked> Feltet fra hver ladning i P</label>
+            <label class="avkrysning" for="vis-krefter"><input id="vis-krefter" type="checkbox"> Krefter på ladningene</label>
+            <div class="sim-knapper"><button id="legg-til" class="knapp lys" type="button">Legg til ladning</button><button id="fjern" class="knapp lys" type="button">Fjern valgt ladning</button></div>
+          </div>
+          <figcaption class="sim-hint">Klikk på en ladning for å velge den, og dra for å flytte. Posisjonene festes til nærmeste halve centimeter. Den tykke pila i P er det samlede feltet. De tynne pilene er feltet fra hver ladning, i samme målestokk. k = 8,99 · 10⁹ N m²/C².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Velg «Én ladning». Flytt P slik at den er 5,0 cm fra ladningen, og så 10,0 cm fra ladningen. Hvor mange ganger svakere tror du feltet blir? Test.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Ladningen er +2,0 nC. Regn ut feltstyrken 10,0 cm fra ladningen, og sjekk med simuleringen. Hvor stor kraft virker på et elektron i dette punktet, og i hvilken retning?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Velg «Pluss og minus» og slå på feltpilene. Hvor er feltet sterkest? Hvordan ser du det på feltlinjene? Hvorfor kan to feltlinjer aldri krysse hverandre?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Ladningene i «Pluss og minus» er +2,0 nC og −2,0 nC, med 12 cm mellom. Regn ut kraften mellom dem med Coulombs lov. Regn så ut feltstyrken midt mellom dem, og sjekk svarene. Slå på «Krefter på ladningene». Hva viser pilene?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Velg «+4 nC og +1 nC». Et sted mellom ladningene er feltet null. Ligger punktet nærmest den store eller den lille ladningen? Regn ut hvor det er, og finn det med P.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg «To like ladninger». Hva er feltet midt mellom ladningene? P ligger 5,5 cm over midtpunktet. Regn ut feltet i P ved å dekomponere feltet fra hver ladning. Sjekk svaret.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Velg «Tre ladninger». Ladningene ligger i hjørnene av en likesidet trekant med sider på 12 cm. Hva er retningen på feltet i P? Lag selv et oppsett med fire ladninger der feltet er null midt i, og forklar hvorfor.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Fire ganger svakere: E = kq/r², så dobbel avstand gir en firedel. Simuleringen gir 7190 N/C og 1800 N/C.</li>
+              <li>E = 8,99 · 10⁹ · 2,0 · 10⁻⁹ / 0,100² ≈ 1,80 · 10³ N/C, rettet bort fra ladningen. F = eE = 1,60 · 10⁻¹⁹ · 1,80 · 10³ ≈ 2,9 · 10⁻¹⁶ N. Kraften peker mot ladningen, fordi elektronet er negativt.</li>
+              <li>Feltet er sterkest nær ladningene og mellom dem, der feltlinjene ligger tettest. Feltet har bare én retning i hvert punkt. Hvis to linjer krysset, ville feltet hatt to retninger i samme punkt.</li>
+              <li>F = 8,99 · 10⁹ · (2,0 · 10⁻⁹)² / 0,12² ≈ 2,5 · 10⁻⁶ N, tiltrekkende. Midt mellom er hver ladning 6,0 cm unna, og begge feltene peker mot den negative ladningen: E = 2 · 8,99 · 10⁹ · 2,0 · 10⁻⁹ / 0,060² ≈ 1,0 · 10⁴ N/C. Pilene viser at kreftene er like store og motsatt rettet (Newtons 3. lov).</li>
+              <li>Nærmest den lille ladningen. k · 4q / r₁² = k · q / r₂² gir r₁ = 2r₂. Med 18 cm mellom ladningene blir r₂ = 6,0 cm fra +1 nC, altså x = 23 cm.</li>
+              <li>Midt mellom er feltet null. I P er hver ladning √(6,0² + 5,5²) ≈ 8,14 cm unna, og hver gir E = 8,99 · 10⁹ · 2,0 · 10⁻⁹ / 0,0814² ≈ 2,71 · 10³ N/C. x-komponentene opphever hverandre. y-komponentene blir 2 · 2,71 · 10³ · 5,5 / 8,14 ≈ 3,67 · 10³ N/C, rett opp.</li>
+              <li>Rett opp, mot den negative ladningen. Feltene fra de to positive ladningene har like store x-komponenter som opphever hverandre, og alle tre har y-komponent oppover. Fire like ladninger i hjørnene av et kvadrat gir null felt i midten, fordi feltene fra motsatte hjørner opphever hverandre parvis.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 1–4 passer etter Coulombs lov og elektrisk felt rundt en punktladning, oppgave 5–7 etter superposisjon. Simuleringen kan også brukes på tavla når du gjennomgår eksempler med flere ladninger.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/efelt.js"></script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magnetfelt rundt ledere</title>
+  <meta name="description" content="Simulering med oppgaver om magnetfeltet rundt rette, strømførende ledere: feltlinjer, B = μ₀I/(2πr), superposisjon og kraften mellom to ledere.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Magnetiske felt og krefter</p>
+        <h1>Magnetfelt rundt ledere</h1>
+        <p class="ingress">Rundt en lang, rett leder med strøm er det et magnetfelt med sirkulære feltlinjer. Her står lederne vinkelrett på skjermen, så strømmen går ut av (⊙) eller inn i (⊗) planet. Dra lederne og målepunktet P rundt, og se hvordan feltene legger seg sammen.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="ledere" class="dra forhold-efelt" role="img" aria-label="Ledere sett fra enden med feltlinjer og kompassnåler rundt. Lederne og målepunktet P kan dras."></canvas>
+          <dl class="sim-tall">
+            <div><dt>P</dt><dd id="p-pos"></dd></div>
+            <div><dt>magnetfelt B i P</dt><dd id="p-b"></dd></div>
+            <div><dt>retning (fra x-aksen)</dt><dd id="p-retning"></dd></div>
+            <div><dt>kraft per meter mellom 1 og 2</dt><dd id="f-12" class="bryt"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col">Leder</th><th scope="col">I (A)</th><th scope="col">posisjon (cm)</th><th scope="col">avstand til P (cm)</th><th scope="col">B fra lederen i P (µT)</th></tr></thead>
+              <tbody id="leder-rader"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <label for="oppsett">Oppsett<select id="oppsett"><option value="en">Én leder</option><option value="samme">To ledere, samme retning</option><option value="motsatt">To ledere, motsatt retning</option><option value="ulike">10 A og 5 A</option><option value="egen" hidden>Eget oppsett</option></select></label>
+            <label for="strom">Strøm <output id="strom-ut" for="strom"></output><input id="strom" type="range" min="-20" max="20" step="1" value="10"></label>
+            <label class="avkrysning" for="vis-linjer"><input id="vis-linjer" type="checkbox" checked> Feltlinjer</label>
+            <label class="avkrysning" for="vis-kompass"><input id="vis-kompass" type="checkbox" checked> Kompassnåler</label>
+            <label class="avkrysning" for="vis-bidrag"><input id="vis-bidrag" type="checkbox" checked> Feltet fra hver leder i P</label>
+            <label class="avkrysning" for="vis-krefter"><input id="vis-krefter" type="checkbox"> Krefter på lederne</label>
+            <div class="sim-knapper"><button id="legg-til" class="knapp lys" type="button">Legg til leder</button><button id="fjern" class="knapp lys" type="button">Fjern valgt leder</button></div>
+          </div>
+          <figcaption class="sim-hint">Positiv strøm går ut av planet (⊙), negativ inn i planet (⊗). Klikk på en leder for å velge den, og dra for å flytte. Den fargede enden av kompassnåla er nordenden og peker i feltretningen. Feltlinjene ligger tettere der feltet er sterkt. Jordas magnetfelt er ikke tatt med. μ₀ = 4π · 10⁻⁷ T m/A.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Velg «Én leder». Strømmen går ut av planet. Går feltlinjene med eller mot klokka? Bruk høyrehåndsregelen, og sjekk med kompassnålene. Hva skjer når du snur strømmen?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Strømmen er 10 A. Regn ut magnetfeltet 5,0 cm fra lederen, og sjekk med P. I Norge er jordas magnetfelt omtrent 50 µT. Ville et kompass merket lederen?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor sterkt er feltet 2,5 cm fra lederen? Sammenlign med det elektriske feltet rundt en punktladning. Avtar de to feltene på samme måte med avstanden?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg «To ledere, samme retning». Hva er feltet midt mellom lederne? Regn ut kraften per meter mellom lederne, og avgjør om de tiltrekker eller frastøter hverandre. Slå på «Krefter på lederne» og sjekk.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg «To ledere, motsatt retning». Regn ut feltet midt mellom lederne. Hvorfor blir det dobbelt så sterkt som fra én leder?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Velg «10 A og 5 A». Strømmene går i samme retning, og det er 12 cm mellom lederne. Hvor mellom lederne er feltet null? Regn først, og finn punktet med P.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Forklar med høyrehåndsreglene hvorfor to ledere med strøm i samme retning tiltrekker hverandre. Bruk feltet fra den ene lederen og kraften F = IlB på den andre.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mot klokka. Med tommelen i strømretningen (ut av skjermen) krummer fingrene seg mot klokka. Med strøm inn i planet går feltlinjene med klokka.</li>
+              <li>B = μ₀I / (2πr) = 4π · 10⁻⁷ · 10 / (2π · 0,050) = 4,0 · 10⁻⁵ T = 40 µT. Det er nesten like sterkt som jordas magnetfelt, så et kompass i nærheten ville tydelig blitt påvirket.</li>
+              <li>80 µT. Halve avstanden gir dobbelt så sterkt felt, fordi B ∝ 1/r. Det elektriske feltet rundt en punktladning avtar som 1/r², altså raskere.</li>
+              <li>Feltene fra de to lederne er like store og motsatt rettet midt mellom, så B = 0. Kraften per meter er F/l = μ₀I₁I₂ / (2πd) = 2 · 10⁻⁷ · 10 · 10 / 0,10 = 2,0 · 10⁻⁴ N/m, og lederne tiltrekker hverandre.</li>
+              <li>Nå peker feltene fra begge lederne i samme retning midt mellom, så de legges sammen: B = 2 · 2 · 10⁻⁷ · 10 / 0,050 = 80 µT. Lederne frastøter hverandre med 2,0 · 10⁻⁴ N/m.</li>
+              <li>μ₀ · 10 / (2πr₁) = μ₀ · 5 / (2πr₂) gir r₁ = 2r₂. Med r₁ + r₂ = 12 cm blir r₂ = 4,0 cm fra lederen med 5 A, altså x = 12 cm.</li>
+              <li>Leder 1 lager et felt som går i sirkler rundt den. Ved leder 2 står dette feltet vinkelrett på leder 2. Kraften F = I l × B på leder 2 peker da mot leder 1. Det samme gjelder motsatt vei, slik Newtons 3. lov krever. Denne kraften ble tidligere brukt til å definere ampere.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 1–3 passer etter magnetfeltet rundt en rett leder, oppgave 4–7 etter kraft på strømførende ledere. Simuleringen passer godt sammen med <a href="elektrisk-felt.html">Elektrisk felt</a> for å sammenligne feltene.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/ledere.js"></script>
+</body>
+</html>

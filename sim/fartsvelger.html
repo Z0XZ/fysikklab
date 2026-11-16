@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fartsvelger</title>
+  <meta name="description" content="Simulering med oppgaver om kryssede elektriske og magnetiske felt: Bare partikler med farten v = E/B går rett gjennom fartsvelgeren.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Magnetiske felt og krefter</p>
+        <h1>Fartsvelger</h1>
+        <p class="ingress">Mellom to plater virker det både et elektrisk og et magnetisk felt. Den elektriske kraften og den magnetiske kraften peker hver sin vei. Bare partikler med akkurat riktig fart går rett fram og kommer gjennom spalten på den andre siden.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="fartsvelger" class="statisk forhold-fartsvelger" role="img" aria-label="To plater med magnetfelt ut av planet. Partikler kommer inn fra venstre og bøyes opp, ned eller går rett gjennom spalten."></canvas>
+          <dl class="sim-tall">
+            <div><dt>fart v</dt><dd id="r-v"></dd></div>
+            <div><dt>feltstyrke E = U/d</dt><dd id="r-e"></dd></div>
+            <div><dt>fart som går rett fram, E/B</dt><dd id="r-vok"></dd></div>
+            <div><dt>elektrisk kraft F<sub>E</sub></dt><dd id="r-fe"></dd></div>
+            <div><dt>magnetisk kraft F<sub>B</sub></dt><dd id="r-fb"></dd></div>
+            <div><dt>avvik ved utgangen</dt><dd id="r-avvik"></dd></div>
+            <div><dt>resultat</dt><dd id="r-utfall" class="bryt"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="partikkel">Partikkel<select id="partikkel"><option value="proton">Proton</option><option value="elektron">Elektron</option><option value="alfa">Alfapartikkel</option></select></label>
+            <label for="ua">Akselerasjonsspenning i V<input id="ua" type="number" min="0.01" max="100000" step="any" inputmode="decimal" value="800"></label>
+            <label for="b">Magnetfelt B i mT<input id="b" type="number" min="0" max="1000" step="any" inputmode="decimal" value="50"></label>
+            <label for="up">Spenning mellom platene i V<input id="up" type="number" min="0" max="10000" step="any" inputmode="decimal" value="300"></label>
+            <label class="avkrysning" for="straale"><input id="straale" type="checkbox"> Send en stråle med ulike farter</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Platene er 10 cm lange med 2,0 cm mellom. Øvre plate er negativ, og B peker ut av planet. Spalten ved utgangen er 1,0 mm bred. Pilene viser kreftene når partikkelen kommer inn. I strålen er de oransje partiklene langsommere og de blågrønne raskere enn den valgte farten. Banen er regnet ut numerisk, og tyngden er neglisjert.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med et proton, akselerasjonsspenning 800 V, B = 50 mT og 300 V mellom platene. e = 1,60 · 10⁻¹⁹ C og m<sub>p</sub> = 1,67 · 10⁻²⁷ kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Tegn kreftene på protonet når det kommer inn mellom platene. Hvilken kraft er størst? Hvilken plate tror du protonet treffer? Test.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten til protonet. Hvor stor må spenningen mellom platene være for at protonet skal gå rett fram? Skriv inn svaret og test.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vis at partikler med farten v = E/B går rett fram, uansett masse og ladning. Bytt til et elektron, og juster akselerasjonsspenningen slik at det får samme fart som protonet. Går elektronet rett fram? Hvorfor, når begge kreftene har snudd?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Slå på «Send en stråle med ulike farter». Hvilke partikler bøyes opp, og hvilke bøyes ned? Forklar ut fra hvordan F<sub>E</sub> og F<sub>B</sub> avhenger av farten.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Bytt til en alfapartikkel med de samme innstillingene. Hvorfor kommer den ikke gjennom? Hvilken spenning må du ha mellom platene for at den skal komme gjennom?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et elektron akselereres gjennom 200 V og sendes inn i fartsvelgeren med B = 0,50 mT. Hvor stor må det elektriske feltet og spenningen mellom platene være? Test. Hvorfor blir avbøyningen så liten når spenningen er litt feil?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Etter fartsvelgeren i oppgave 2 går protonene inn i et nytt magnetfelt på 0,10 T, slik som i et massespektrometer. Hvor stor blir radien i banen? Hvorfor er det nyttig å ha en fartsvelger foran et massespektrometer?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>F<sub>E</sub> peker opp mot den negative plata, og F<sub>B</sub> = qvB peker ned (høyrehåndsregelen med v mot høyre og B ut av planet). E = 300 V / 0,020 m = 1,5 · 10⁴ V/m gir F<sub>E</sub> = 2,4 · 10⁻¹⁵ N. F<sub>B</sub> = 3,1 · 10⁻¹⁵ N er størst, så protonet treffer den nedre plata.</li>
+              <li>v = √(2eU/m) = √(2 · 1,60 · 10⁻¹⁹ · 800 / 1,67 · 10⁻²⁷) ≈ 3,91 · 10⁵ m/s. qE = qvB gir E = vB = 1,96 · 10⁴ V/m og U = Ed ≈ 391 V.</li>
+              <li>Partikkelen går rett fram når kreftene er like store: qE = qvB, altså v = E/B. q forkortes bort, og m er ikke med. For et elektron snur begge kreftene, så de balanserer fortsatt. Elektronet får 3,91 · 10⁵ m/s med en akselerasjonsspenning på omtrent 0,44 V.</li>
+              <li>F<sub>E</sub> = qE er den samme for alle, mens F<sub>B</sub> = qvB øker med farten. Langsomme partikler (oransje) bøyes opp mot den negative plata fordi F<sub>E</sub> er størst. Raske partikler (blågrønne) bøyes ned fordi F<sub>B</sub> er størst.</li>
+              <li>Alfapartikkelen har dobbel ladning og fire ganger så stor masse, så den får v = √(2 · 2e · U / 4m), som er 1/√2 av protonets fart: 2,78 · 10⁵ m/s. Den er for langsom og bøyes opp. Spenningen må være U = vBd ≈ 278 V.</li>
+              <li>v = √(2 · 1,60 · 10⁻¹⁹ · 200 / 9,11 · 10⁻³¹) ≈ 8,39 · 10⁶ m/s. E = vB ≈ 4,19 · 10³ V/m og U = Ed ≈ 84 V. Feltene er svake, så kraften som ikke er balansert, blir liten. Elektronet er også bare kort tid mellom platene. Med 80 V blir avviket bare 2,2 mm.</li>
+              <li>r = mv/(qB) = 1,67 · 10⁻²⁷ · 3,91 · 10⁵ / (1,60 · 10⁻¹⁹ · 0,10) ≈ 4,1 cm. Fartsvelgeren sørger for at alle ionene har samme fart. Da er r = mv/(qB) proporsjonal med m/q, og avstanden på detektoren gir massen direkte.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 2 og 6 er samme type som vanlige oppgaver om fartsvelgere: akselerasjon først, så balanse mellom kreftene. Med svake felt, som noen få millitesla, blir avbøyningen bare brøkdeler av en millimeter. Simuleringen viser avviket ved utgangen som tall, så elevene ser det likevel. Passer sammen med <a href="magnetfelt-bane.html">Ladd partikkel i magnetfelt</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/fartsvelger.js"></script>
+</body>
+</html>

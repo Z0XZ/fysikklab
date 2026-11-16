@@ -405,3 +405,33 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 @media (max-width: 760px) {
   .sim canvas.forhold-bakke { aspect-ratio: 16 / 6.5; }
 }
+/* Fysikk 2: elektriske og magnetiske felt */
+.sim canvas.forhold-efelt { aspect-ratio: 16 / 10; }
+.sim-tabell tr.valgt th, .sim-tabell tr.valgt td { background: var(--flate); }
+.sim canvas.forhold-kule { aspect-ratio: 16 / 8; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-kule { aspect-ratio: 16 / 13; }
+}
+.sim canvas.forhold-avboyning { aspect-ratio: 16 / 7; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-avboyning { aspect-ratio: 16 / 11; }
+}
+.sim canvas.forhold-mbane { aspect-ratio: 16 / 8.5; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-mbane { aspect-ratio: 16 / 10; }
+}
+.sim canvas.forhold-fartsvelger { aspect-ratio: 16 / 6; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-fartsvelger { aspect-ratio: 16 / 8; }
+}
+.sim canvas.forhold-pingpong { aspect-ratio: 16 / 6; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-pingpong { aspect-ratio: 16 / 9; }
+}
+.sim canvas.forhold-syklotron { aspect-ratio: 16 / 9; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-syklotron { aspect-ratio: 1 / 1; }
+}
+.sim-tabell.tekst-tabell th, .sim-tabell.tekst-tabell td { white-space: normal; font-family: inherit; vertical-align: top; padding: .5rem .75rem; }
+.sim-tabell.tekst-tabell tbody th { width: 30%; }
+.sim-tabell.tekst-tabell tbody tr + tr th, .sim-tabell.tekst-tabell tbody tr + tr td { border-top: 1px solid var(--rute); }

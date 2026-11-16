@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Magnetfelt rundt en leder med mobilen</title>
+  <meta name="description" content="Forsøk i Fysikk 2: Mål magnetfeltet rundt en rett leder med magnetometeret i mobilen og phyphox, vis at B er omvendt proporsjonal med avstanden, og bestem μ₀.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Magnetiske felt og krefter</p>
+        <h1>Magnetfelt rundt en leder med mobilen</h1>
+        <p class="ingress">De fleste mobiler har et magnetometer som kan måle magnetfelt i tre retninger. Med appen phyphox kan dere måle feltet rundt en rett leder med strøm, og undersøke om det stemmer at B = μ₀I/(2πr).</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Måle magnetfeltet rundt en rett, strømførende leder i ulike avstander.</li>
+            <li>Undersøke om B er omvendt proporsjonal med avstanden r.</li>
+            <li>Bestemme μ₀ fra målingene.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Mobil med appen phyphox (gratis) og verktøyet «Magnetometer».</li>
+            <li>Spenningskilde som kan gi 3–5 A likestrøm, helst med strømbegrensning.</li>
+            <li>Amperemeter, og en ledning som er minst 1 m lang (gjerne 1,5 mm² eller tykkere).</li>
+            <li>Linjal, tape og en liten magnet.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Finn sensoren: Åpne «Magnetometer» i phyphox og før en liten magnet over mobilen. Der utslaget er størst, sitter sensoren. Merk stedet med en tapebit på baksiden eller kanten.</li>
+            <li>Tape ledningen rett på bordet, og la de to tilførselsledningene gå langt bort fra målestedet. Legg mobilen flatt på bordet ved siden av ledningen, med sensormerket nærmest.</li>
+            <li>Når mobilen ligger i samme plan som ledningen, peker feltet fra ledningen rett opp eller ned ved sensoren. Les derfor av z-komponenten, B<sub>z</sub>.</li>
+            <li>Still inn strømmen, for eksempel 5,0 A, og les av B<sub>z</sub>. Snu så strømmen ved å bytte ledningene på spenningskilden, og les av B<sub>z</sub> igjen.</li>
+            <li>Feltet fra ledningen er halve differansen: B = |B<sub>z,1</sub> − B<sub>z,2</sub>| / 2. Da forsvinner jordas magnetfelt og andre felt som ikke endrer seg når strømmen snus.</li>
+            <li>Gjenta for avstander fra 1 cm til 6 cm mellom ledningen og sensoren. Hold mobilen i ro på samme sted på bordet, og flytt heller ledningen.</li>
+          </ol>
+
+          <h2>Sikkerhet</h2>
+          <p>Ledningen blir varm med flere ampere. Slå av strømmen mellom målingene, og ikke kortslutt et batteri. Bruk en spenningskilde med strømbegrensning.</p>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="strom">Strøm I i A<input id="strom" type="text" inputmode="decimal" value="5,0"></label>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Nr.</th><th scope="col">r (cm)</th><th scope="col">B<sub>z</sub> strøm én vei (µT)</th><th scope="col">B<sub>z</sub> strøm motsatt vei (µT)</th><th scope="col">B fra lederen (µT)</th><th scope="col"><span class="hopp">Slett</span></th></tr></thead>
+              <tbody id="maale-rader"></tbody>
+            </table>
+          </div>
+          <canvas id="mobilgraf" class="statisk forhold-lav" role="img" aria-label="Graf over B mot 1/r med en rett linje gjennom origo."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>stigningstall k = μ₀I/(2π)</dt><dd id="r-k"></dd></div>
+            <div><dt>μ₀ fra målingene</dt><dd id="r-mu"></dd></div>
+            <div><dt>avvik fra 4π · 10⁻⁷</dt><dd id="r-avvik"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="m-ny" class="knapp lys" type="button">Ny rad</button><button id="m-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button><button id="m-kopier" class="knapp lys" type="button">Kopier tabellen</button><button id="m-last-ned" class="knapp lys" type="button">Last ned som CSV</button><button id="m-tom" class="knapp lys" type="button">Tøm tabellen</button></div>
+          </div>
+          <figcaption class="sim-hint">Linja er tilpasset gjennom origo, B = k · (1/r). Da er μ₀ = 2πk/I. Eksemplet er oppdiktede tall laget med en modell: 5,0 A, sensoren 4 mm over ledningen, litt støy og jordas felt. De er ikke ekte målinger. Tabellen lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor sterkt er feltet 2,0 cm fra en leder med 5,0 A? Sammenlign med jordas magnetfelt, som er omtrent 50 µT i Norge. Hvorfor er det lurt å snu strømmen i stedet for bare å slå den av og på?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene og fyll inn tabellen. Ligger punktene på en rett linje gjennom origo når dere plotter B mot 1/r? Hva betyr det?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bruk stigningstallet til å bestemme μ₀. Hvor stort er avviket fra 4π · 10⁻⁷ T m/A?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sensoren ligger noen millimeter inne i mobilen, altså litt over ledningen. Hvordan påvirker det målingene nær ledningen? Prøv å fjerne de nærmeste målingene og se hva som skjer med μ₀.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke andre feilkilder er det i forsøket? Hvordan kunne dere gjort forsøket mer nøyaktig?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hold avstanden fast og varier strømmen fra 1 A til 5 A. Plott B mot I. Hva forventer dere å se, og hva blir stigningstallet?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>B = μ₀I/(2πr) = 2 · 10⁻⁷ · 5,0 / 0,020 = 50 µT, like sterkt som jordas felt. Når strømmen snus, snur feltet fra ledningen, mens jordas felt og andre bakgrunnsfelt er de samme. Halve differansen gir da bare feltet fra ledningen. Det gir dobbelt så stort utslag som av og på, og fjerner også en eventuell feil i nullpunktet til sensoren.</li>
+              <li>Punktene bør ligge nær en rett linje gjennom origo. Det betyr at B er omvendt proporsjonal med r. Med eksemplet ligger de nærmeste punktene litt under linja.</li>
+              <li>Eksemplet gir μ₀ ≈ 11,4 · 10⁻⁷ T m/A, omtrent 10 % for lite. Ekte målinger kan gi både større og mindre avvik.</li>
+              <li>Hvis sensoren ligger høyden h over ledningen, er avstanden √(r² + h²), og bare en del av feltet peker loddrett: B<sub>z</sub> = μ₀I/(2π) · r/(r² + h²). Virkningen er størst når r er liten. Uten målingene ved 1,0 og 1,5 cm gir eksemplet μ₀ ≈ 12,2 · 10⁻⁷ T m/A, nærmere riktig verdi. Dere kan også legge ledningen på en bok, slik at den ligger i samme høyde som sensoren.</li>
+              <li>Usikkerhet i avstanden (hvor sensoren sitter), tilførselsledninger som også lager felt, at ledningen ikke er helt rett, at strømmen endrer seg når ledningen blir varm, og jern i nærheten, for eksempel bordbein. Mer nøyaktig: lengre ledning, tilførselsledninger tvunnet sammen og ført langt unna, flere målinger i hver avstand, og avlesning av strømmen hver gang.</li>
+              <li>B = μ₀I/(2πr) er proporsjonal med I når r er fast. Grafen blir en rett linje gjennom origo med stigningstall μ₀/(2πr). Med r = 3,0 cm blir stigningstallet 6,7 µT per ampere.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45–60 minutter i par. Forsøket passer etter magnetfeltet rundt en rett leder, og kan kombineres med simuleringen <a href="../sim/magnetfelt-ledere.html">Magnetfelt rundt ledere</a>. Hvor magnetometeret sitter og hvor nøyaktig det er, varierer fra mobil til mobil. Test gjerne med et par mobiler før timen.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/mobilfelt.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ladd kule mellom plater</title>
+  <meta name="description" content="Simulering med oppgaver om homogent elektrisk felt: En ladd kule henger i en snor mellom to ladde plater. Finn feltstyrken, kraften og ladningen fra vinkelen.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Elektriske felt og krefter</p>
+        <h1>Ladd kule mellom plater</h1>
+        <p class="ingress">En lett, ladd kule henger i en snor midt mellom to parallelle metallplater. Når det er spenning mellom platene, blir det et homogent elektrisk felt mellom dem, og kula blir trukket til siden. Hvor stor blir vinkelen?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="kule" class="statisk forhold-kule" role="img" aria-label="En ladd kule i en snor mellom en positiv og en negativ plate, med kreftene som virker på kula."></canvas>
+          <dl class="sim-tall">
+            <div><dt>feltstyrke E = U/d</dt><dd id="r-e"></dd></div>
+            <div><dt>elektrisk kraft F<sub>e</sub></dt><dd id="r-fe"></dd></div>
+            <div><dt>tyngde G</dt><dd id="r-g"></dd></div>
+            <div><dt>vinkel θ</dt><dd id="r-vinkel"></dd></div>
+            <div><dt>ladning q</dt><dd id="r-q"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="spenning">Spenning U <output id="spenning-ut" for="spenning"></output><input id="spenning" type="range" min="0" max="10" step="0.5" value="5"></label>
+            <label for="avstand">Avstand d <output id="avstand-ut" for="avstand"></output><input id="avstand" type="range" min="8" max="20" step="1" value="10"></label>
+            <label for="ladning" id="rad-ladning">Ladning q <output id="ladning-ut" for="ladning"></output><input id="ladning" type="range" min="-20" max="20" step="1" value="10"></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.1" max="1" step="0.05" value="0.2"></label>
+            <label for="polaritet">Platene<select id="polaritet"><option value="venstre">Venstre plate positiv</option><option value="hoyre">Høyre plate positiv</option></select></label>
+            <label for="modus">Ladningen<select id="modus"><option value="kjent">Velg selv</option><option value="ukjent">Ukjent (regn den ut)</option></select></label>
+            <label class="avkrysning" for="vis-krefter"><input id="vis-krefter" type="checkbox" checked> Vis kreftene</label>
+            <p id="melding" class="melding" role="status"></p>
+            <div class="sim-knapper"><button id="dytt" class="knapp lys" type="button">Dytt kula</button><span id="ukjent-knapper" hidden><button id="ny-ukjent" class="knapp lys" type="button">Ny ukjent ladning</button> <button id="vis-ukjent" class="knapp lys" type="button">Vis ladningen</button></span></div>
+          </div>
+          <figcaption class="sim-hint">Snora er 8,0 cm lang. Kula svinger litt før den legger seg i ro. Pilene for kreftene har samme målestokk, og til høyre er de satt etter hverandre. Når kula henger i ro, er summen av kreftene null. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med U = 5,0 kV, d = 10 cm, q = +10 nC og m = 0,20 g.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med vinkelen hvis du snur spenningen, slik at høyre plate blir positiv? Hva skjer hvis du i stedet gjør kula negativ? Test begge.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut feltstyrken mellom platene, den elektriske kraften på kula og tyngden. Bruk kraftdiagrammet til å vise at tan θ = F<sub>e</sub> / G, og regn ut vinkelen. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med vinkelen hvis du dobler spenningen? Blir vinkelen dobbelt så stor? Test med 10 kV.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sett spenningen tilbake til 5,0 kV, og øk avstanden mellom platene fra 10 cm til 20 cm. Hvorfor blir vinkelen mindre? Hva må du gjøre med spenningen for at vinkelen skal bli som før?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Kula har massen 0,30 g og ladningen 12 nC, og avstanden er 10 cm. Hvor stor må spenningen være for at snora skal danne 20° med loddlinjen? Test svaret.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Velg «Ukjent (regn den ut)». Les av vinkelen, og regn ut ladningen til kula. Er den positiv eller negativ? Sjekk med «Vis ladningen». Prøv flere ukjente ladninger.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Feltet mellom platene er homogent. Hva betyr det for kraften på kula om den henger nær den ene plata i stedet for midt mellom? Hvorfor er dette ikke tilfellet for kula i simuleringen <a href="elektrisk-felt.html">Elektrisk felt</a>?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Kula blir trukket like langt mot den andre siden i begge tilfellene. En positiv ladning trekkes mot den negative plata. En negativ ladning trekkes mot den positive plata.</li>
+              <li>E = U/d = 5000 V / 0,10 m = 5,0 · 10⁴ V/m. F<sub>e</sub> = qE = 10 · 10⁻⁹ · 5,0 · 10⁴ = 5,0 · 10⁻⁴ N. G = mg = 0,20 · 10⁻³ · 9,81 = 1,96 · 10⁻³ N. Snorkraften S, tyngden G og den elektriske kraften F<sub>e</sub> danner en rettvinklet trekant, så tan θ = F<sub>e</sub> / G = 0,255 og θ = 14,3°.</li>
+              <li>Nei. Kraften dobles, så tan θ dobles: tan θ = 0,510 gir θ = 27,0°. Vinkelen blir mindre enn dobbelt så stor.</li>
+              <li>E = U/d blir halvparten så stor når d dobles, så kraften blir halvparten. Vinkelen blir 7,3°. Spenningen må dobles til 10 kV for at feltet skal bli som før.</li>
+              <li>F<sub>e</sub> = mg tan θ = 0,30 · 10⁻³ · 9,81 · tan 20° = 1,07 · 10⁻³ N. E = F<sub>e</sub> / q = 8,9 · 10⁴ V/m, og U = Ed = 8,9 kV. Med 9,0 kV i simuleringen blir vinkelen 20,1°.</li>
+              <li>q = mg tan θ / E. Fortegnet ser du på hvilken plate kula trekkes mot. Kula trekkes mot den negative plata når den er positiv.</li>
+              <li>I et homogent felt er feltstyrken den samme overalt mellom platene. Kraften blir den samme uansett hvor kula henger, så lenge den ikke er helt ute ved kanten. Rundt en punktladning er feltet sentralt og avtar med 1/r², så kraften avhenger av avstanden.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter. Oppgavene følger samme oppsett som eksempler og oppgaver om ladd kule mellom plater. Ladningene i simuleringen er noen nanocoulomb, som er realistisk for en lett kule av aluminiumsfolie eller hyllemarg. Mange regneoppgaver bruker mye større ladninger og tyngre kuler.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/laddkule.js"></script>
+</body>
+</html>

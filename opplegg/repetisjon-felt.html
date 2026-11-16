@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: elektriske og magnetiske felt</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: sammenligning av elektriske og magnetiske felt, formeloversikt og blandede oppgaver med løsningsforslag og lenker til simuleringer.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektriske og magnetiske felt</p>
+        <h1>Repetisjon: elektriske og magnetiske felt</h1>
+        <p class="ingress">Elektriske og magnetiske felt ligner på hverandre, men de virker på ladninger på ulike måter. Her er en oversikt over likheter og forskjeller, de viktigste formlene og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Elektrisk og magnetisk felt side om side</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col"></th><th scope="col">Elektrisk felt E</th><th scope="col">Magnetisk felt B</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Lages av</th><td>ladninger</td><td>ladninger i bevegelse (strøm) og magneter</td></tr>
+                <tr><th scope="row">Enhet</th><td>N/C = V/m</td><td>T (tesla)</td></tr>
+                <tr><th scope="row">Kraft på ladning</th><td>F = qE, også når ladningen står i ro</td><td>F = qvB sin θ, bare når ladningen beveger seg</td></tr>
+                <tr><th scope="row">Retning på kraften</th><td>langs feltet (positiv ladning) eller mot feltet (negativ)</td><td>vinkelrett på både v og B (høyrehåndsregelen)</td></tr>
+                <tr><th scope="row">Arbeid på ladningen</th><td>ja, endrer farten: W = qU</td><td>nei, endrer bare retningen</td></tr>
+                <tr><th scope="row">Bane når partikkelen kommer inn vinkelrett på et homogent felt</th><td>parabel, som et vannrett kast</td><td>sirkel med r = mv/(qB)</td></tr>
+                <tr><th scope="row">Felt rundt en punktladning eller rett leder</th><td>E = kq/r², avtar som 1/r²</td><td>B = μ₀I/(2πr), avtar som 1/r</td></tr>
+                <tr><th scope="row">Feltlinjer</th><td>starter på positive og slutter på negative ladninger</td><td>lukkede kurver uten start og slutt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Coulombs lov: F = k |q₁q₂| / r², med k = 8,99 · 10⁹ N m²/C².</li>
+            <li>Elektrisk felt: E = F/q. Rundt en punktladning: E = k|q|/r². Mellom to parallelle plater: E = U/d.</li>
+            <li>Akselerasjon gjennom spenningen U fra ro: qU = ½mv².</li>
+            <li>Magnetisk kraft på ladning: F = qvB sin θ. Sirkelbane: r = mv/(qB) og T = 2πm/(qB).</li>
+            <li>Fartsvelger: qE = qvB gir v = E/B.</li>
+            <li>Magnetisk kraft på leder: F = IlB sin θ.</li>
+            <li>Magnetfelt rundt rett leder: B = μ₀I/(2πr), med μ₀ = 4π · 10⁻⁷ T m/A. Kraft per meter mellom to parallelle ledere: F/l = μ₀I₁I₂/(2πd).</li>
+          </ul>
+          <p>Konstanter: e = 1,602 · 10⁻¹⁹ C, m<sub>e</sub> = 9,109 · 10⁻³¹ kg, m<sub>p</sub> = 1,673 · 10⁻²⁷ kg, u = 1,6605 · 10⁻²⁷ kg og g = 9,81 m/s².</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Oppgavene blander elektriske og magnetiske felt. Hver oppgave har en lenke til en simulering der du kan sjekke svaret.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Et magnetfelt kan øke farten til et proton.<br>b) Et elektrisk felt kan øke farten til et proton.<br>c) Et nøytron blir ikke avbøyd i et magnetfelt.<br>d) Magnetiske feltlinjer starter på nordpoler og slutter på sydpoler, også inne i magneten.<br>e) Et elektron som ligger i ro i et magnetfelt, får ingen kraft.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En ladning på +3,0 nC ligger i x = 0, og en ladning på −1,0 nC ligger i x = 10 cm. a) Regn ut kraften mellom ladningene. b) Regn ut feltstyrken midt mellom ladningene, med retning. c) Finn punktet på x-aksen der feltet er null. <a href="../sim/elektrisk-felt.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et elektron starter i ro ved den negative av to parallelle plater med 2,0 cm mellom og 500 V spenning. a) Finn feltstyrken og kraften på elektronet. b) Hvor stor fart har elektronet når det treffer den positive plata? c) Hvor lang tid bruker det?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kule med massen 0,50 g og ladningen +20 nC henger i en snor mellom to plater med 6,0 cm mellom. Snora danner 10° med loddlinjen. Finn den elektriske kraften, feltstyrken og spenningen mellom platene. <a href="../sim/ladd-kule.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et proton med farten 2,0 · 10⁶ m/s kommer vinkelrett inn i et magnetfelt på 0,20 T. Finn kraften på protonet, radien i banen og omløpstiden. <a href="../sim/magnetfelt-bane.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Neonioner med ladning +e går først gjennom en fartsvelger med E = 4,0 · 10⁴ V/m og B = 0,10 T, og så inn i et magnetfelt på 0,50 T i et massespektrometer. a) Hvilken fart har ionene som kommer gjennom fartsvelgeren? b) Hvor langt fra hverandre treffer ²⁰Ne (19,992 u) og ²²Ne (21,991 u) detektoren etter en halvsirkel? <a href="../sim/fartsvelger.html">Fartsvelger</a> og <a href="../sim/magnetfelt-bane.html">massespektrometer</a>.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En 15 cm lang metallstav med massen 12 g ligger vannrett i et vannrett magnetfelt på 0,25 T som står vinkelrett på staven. Hvor stor strøm må gå i staven for at den magnetiske kraften skal kunne bære tyngden? Tegn en figur som viser retningen på strømmen, feltet og kraften. <a href="../sim/stromhuske.html">Se også strømhuska.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>To lange, parallelle ledere står 8,0 cm fra hverandre. Den ene har 6,0 A, og den andre har 10 A i motsatt retning. Finn magnetfeltet midt mellom lederne, og kraften per meter mellom dem. Tiltrekker eller frastøter de hverandre? <a href="../sim/magnetfelt-ledere.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Et elektron akselereres fra ro gjennom 200 V og kommer så vinkelrett inn i et magnetfelt på 1,0 mT. a) Finn radien i banen. b) Vi legger til et elektrisk felt slik at elektronet går rett fram. Hvor sterkt må feltet være, og hvilken retning må det ha i forhold til kraften fra magnetfeltet? c) Hvorfor kan vi ikke bruke et magnetfelt til å akselerere elektronet?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Den magnetiske kraften står vinkelrett på farten og gjør ikke arbeid. b) Sann. Den elektriske kraften kan gjøre arbeid, W = qU. c) Sann. Nøytronet har ingen ladning, så F = qvB = 0. d) Usann. Feltlinjene er lukkede og går fra sydpol til nordpol inne i magneten. e) Sann. F = qvB = 0 når v = 0.</li>
+              <li>a) F = 8,99 · 10⁹ · 3,0 · 10⁻⁹ · 1,0 · 10⁻⁹ / 0,10² ≈ 2,7 · 10⁻⁶ N, tiltrekkende. b) Begge feltene peker i positiv x-retning midt mellom: E = 8,99 · 10⁹ · (3,0 + 1,0) · 10⁻⁹ / 0,050² ≈ 1,44 · 10⁴ N/C, i positiv x-retning. c) Feltet kan bare være null utenfor ladningene, nærmest den minste: k · 3,0/x² = k · 1,0/(x − 0,10)² gir x ≈ 0,237 m, altså 23,7 cm fra +3,0 nC og 13,7 cm til høyre for −1,0 nC.</li>
+              <li>a) E = 500 / 0,020 = 2,5 · 10⁴ V/m og F = eE = 4,0 · 10⁻¹⁵ N. b) eU = ½mv² gir v = √(2 · 1,602 · 10⁻¹⁹ · 500 / 9,109 · 10⁻³¹) ≈ 1,33 · 10⁷ m/s. c) a = F/m ≈ 4,4 · 10¹⁵ m/s², og s = ½at² gir t = √(2s/a) ≈ 3,0 · 10⁻⁹ s.</li>
+              <li>F = mg tan 10° = 0,50 · 10⁻³ · 9,81 · 0,176 ≈ 8,6 · 10⁻⁴ N. E = F/q ≈ 4,3 · 10⁴ V/m. U = Ed ≈ 2,6 kV.</li>
+              <li>F = evB = 1,602 · 10⁻¹⁹ · 2,0 · 10⁶ · 0,20 ≈ 6,4 · 10⁻¹⁴ N. r = mv/(eB) ≈ 0,104 m = 10,4 cm. T = 2πm/(eB) ≈ 3,3 · 10⁻⁷ s.</li>
+              <li>a) v = E/B = 4,0 · 10⁴ / 0,10 = 4,0 · 10⁵ m/s. b) r = mv/(eB): ²⁰Ne gir r = 19,992 · 1,6605 · 10⁻²⁷ · 4,0 · 10⁵ / (1,602 · 10⁻¹⁹ · 0,50) ≈ 16,6 cm, og ²²Ne gir 18,2 cm. Treffpunktene er 2r fra inngangen, så avstanden mellom dem er 2 · (18,2 − 16,6) cm ≈ 3,3 cm.</li>
+              <li>IlB = mg gir I = mg/(lB) = 0,012 · 9,81 / (0,15 · 0,25) ≈ 3,1 A. Strømmen, feltet og kraften står vinkelrett på hverandre. Med høyrehåndsregelen må strømretningen velges slik at kraften peker opp.</li>
+              <li>Hver leder gir et felt midt mellom: 2 · 10⁻⁷ · 6,0 / 0,040 = 30 µT og 2 · 10⁻⁷ · 10 / 0,040 = 50 µT. Med motsatte strømretninger peker feltene samme vei midt mellom, så B = 80 µT. F/l = 2 · 10⁻⁷ · 6,0 · 10 / 0,080 = 1,5 · 10⁻⁴ N/m. Lederne frastøter hverandre.</li>
+              <li>a) v = √(2eU/m) ≈ 8,39 · 10⁶ m/s, og r = mv/(eB) ≈ 4,8 cm. b) E = vB ≈ 8,4 · 10³ V/m. Den elektriske kraften må være like stor og motsatt rettet av den magnetiske. Siden elektronet er negativt, peker feltet E i samme retning som den magnetiske kraften. c) Den magnetiske kraften står alltid vinkelrett på farten, så den gjør ikke arbeid og kan ikke endre den kinetiske energien.</li>
+            </ol>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

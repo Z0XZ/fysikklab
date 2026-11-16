@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Akselerasjon og avbøyning</title>
+  <meta name="description" content="Simulering med oppgaver om ladde partikler i homogene elektriske felt: Akselerer et proton, elektron eller alfapartikkel og bøy det av mellom to plater.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Elektriske felt og krefter</p>
+        <h1>Akselerasjon og avbøyning</h1>
+        <p class="ingress">En ladd partikkel starter i ro og blir akselerert gjennom spenningen U<sub>a</sub>. Så kommer den inn midt mellom to plater med spenningen U<sub>d</sub>, der feltet står vinkelrett på farten. Banen mellom platene ligner et vannrett kast, men det er den elektriske kraften som bøyer den av.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="avboyning" class="statisk forhold-avboyning" role="img" aria-label="Akselerasjonsplater til venstre og to avbøyningsplater. Partikkelen følger en parabel mellom avbøyningsplatene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>fart inn mellom platene v<sub>0</sub></dt><dd id="r-v0"></dd></div>
+            <div><dt>feltstyrke E = U<sub>d</sub>/d</dt><dd id="r-e"></dd></div>
+            <div><dt>akselerasjon a</dt><dd id="r-a"></dd></div>
+            <div><dt>tid mellom platene</dt><dd id="r-t"></dd></div>
+            <div><dt>avbøyning</dt><dd id="r-ut" class="bryt"></dd></div>
+            <div><dt>vinkel ut av platene</dt><dd id="r-vinkel"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="partikkel">Partikkel<select id="partikkel"><option value="proton">Proton</option><option value="elektron">Elektron</option><option value="alfa">Alfapartikkel</option></select></label>
+            <label for="ua">Akselerasjonsspenning U<sub>a</sub> <output id="ua-ut" for="ua"></output><input id="ua" type="range" min="50" max="1000" step="50" value="400"></label>
+            <label for="ud">Spenning mellom platene U<sub>d</sub> <output id="ud-ut" for="ud"></output><input id="ud" type="range" min="0" max="50" step="1" value="10"></label>
+            <label for="d">Avstand mellom platene d <output id="d-ut" for="d"></output><input id="d" type="range" min="1" max="10" step="0.5" value="4"></label>
+            <label for="l">Lengden til platene l <output id="l-ut" for="l"></output><input id="l" type="range" min="5" max="50" step="1" value="20"></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="visk" class="knapp lys" type="button">Visk ut gamle baner</button></div>
+          </div>
+          <figcaption class="sim-hint">Øvre plate er positiv. Akselerasjonsplatene til venstre er ikke tegnet i målestokk. Mellom avbøyningsplatene er x- og y-retningen i samme målestokk, med mindre det står at y-retningen er forstørret. De siste banene blir liggende igjen, så du kan sammenligne partikler. Tyngden er neglisjert. Verdiene under vises når partikkelen har passert platene.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med et proton, U<sub>a</sub> = 400 V, U<sub>d</sub> = 10 V, d = 4,0 cm og l = 20 cm. e = 1,60 · 10⁻¹⁹ C, m<sub>p</sub> = 1,67 · 10⁻²⁷ kg og m<sub>e</sub> = 9,11 · 10⁻³¹ kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Bruk energibevaring, qU<sub>a</sub> = ½mv<sub>0</sub>², til å regne ut farten protonet har når det kommer inn mellom platene. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut feltstyrken, kraften og akselerasjonen mellom avbøyningsplatene. Hvor lang tid bruker protonet gjennom platene, og hvor langt er det bøyd av når det kommer ut?</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Kjør protonet, og bytt så til et elektron med de samme spenningene. Elektronet er nesten 2000 ganger lettere. Hvor mye mer tror du det blir bøyd av? Test, og prøv også en alfapartikkel.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vis med formler at avbøyningen ut av platene er y = U<sub>d</sub> l² / (4 d U<sub>a</sub>). Bruk dette til å forklare resultatet i oppgave 3.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett lengden til 50 cm. Hvor langt inn mellom platene kommer protonet før det treffer den negative plata? Regn først, og test så.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett lengden tilbake til 20 cm. Hvor stor må U<sub>d</sub> være for at partikkelen akkurat skal treffe enden av plata? Hvordan endres svaret hvis du halverer U<sub>a</sub>?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I simuleringen er tyngden neglisjert. Sammenlign tyngden og den elektriske kraften på protonet mellom platene. Var det rimelig å se bort fra tyngden?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>v<sub>0</sub> = √(2eU<sub>a</sub>/m) = √(2 · 1,60 · 10⁻¹⁹ · 400 / 1,67 · 10⁻²⁷) ≈ 2,77 · 10⁵ m/s.</li>
+              <li>E = 10 V / 0,040 m = 250 V/m. F = eE = 4,0 · 10⁻¹⁷ N, og a = F/m = 2,40 · 10¹⁰ m/s². t = l / v<sub>0</sub> = 0,20 / 2,77 · 10⁵ ≈ 7,2 · 10⁻⁷ s. y = ½at² ≈ 6,25 mm, mot den negative plata.</li>
+              <li>Elektronet bøyes av akkurat like mye, men mot den positive plata. Alfapartikkelen følger samme bane som protonet.</li>
+              <li>v<sub>0</sub>² = 2qU<sub>a</sub>/m, a = qU<sub>d</sub>/(md) og t = l/v<sub>0</sub>. Da blir y = ½at² = ½ · qU<sub>d</sub>/(md) · l² · m/(2qU<sub>a</sub>) = U<sub>d</sub> l² / (4 d U<sub>a</sub>). Både q og m forkortes bort. En lett partikkel får større akselerasjon mellom platene, men den får også større fart og er kortere tid der. Virkningene opphever hverandre nøyaktig. Fortegnet på q bestemmer bare retningen.</li>
+              <li>Partikkelen treffer når y = d/2. Med samme regning som over blir x = d √(2U<sub>a</sub>/U<sub>d</sub>) = 0,040 · √(2 · 400 / 10) ≈ 0,358 m = 35,8 cm. Det gjelder for alle partiklene.</li>
+              <li>y = d/2 ved x = l gir U<sub>d</sub> = 2U<sub>a</sub> d² / l² = 2 · 400 · 0,040² / 0,20² = 32 V. Med 32 V går partikkelen akkurat ut ved kanten av plata. Halveres U<sub>a</sub>, må U<sub>d</sub> også halveres, til 16 V.</li>
+              <li>G = mg = 1,67 · 10⁻²⁷ · 9,81 ≈ 1,6 · 10⁻²⁶ N. F = 4,0 · 10⁻¹⁷ N. Den elektriske kraften er omtrent 2 · 10⁹ ganger større, så det er helt rimelig å se bort fra tyngden.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Oppgavene tar for seg den samme typen problem som eksamensoppgaver om akselerasjon og avbøyning: energibevaring i akselerasjonsfeltet og kastbevegelse i avbøyningsfeltet. Sammenhengen med <a href="elektron.html">Akselerer et elektron</a> fra relativitetsteorien kan brukes som repetisjon: Ved noen hundre volt er den klassiske farten svært nær den relativistiske.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/avboyning.js"></script>
+</body>
+</html>
