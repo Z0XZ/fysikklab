@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Støt mellom vogner i Python</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 1: Les inn fartsmålinger fra et vognstøt, regn ut bevegelsesmengde og kinetisk energi, og vurder om bevegelsesmengden er bevart.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Støt mellom vogner i Python</h1>
+        <p class="ingress">En rød vogn på 0,50 kg kjører inn i en blå vogn på 0,25 kg som står i ro. Farten til begge vognene er logget 40 ganger i sekundet. Bruk Python til å finne ut om bevegelsesmengden og den kinetiske energien er bevart.</p>
+
+        <div class="tekst opplegg">
+          <h2>Data</h2>
+          <p><a class="knapp lys" href="../data/vognstot_smartcart.csv" download>Last ned vognstot_smartcart.csv</a></p>
+          <p>Fila har tre kolonner: tid i sekunder, farten til den røde vogna og farten til den blå vogna i m/s. Den har desimalpunktum og komma som skilletegn. Dataene er laget med en modell av et støt med magnetstøtfangere, litt friksjon og målestøy, slik at de ligner målinger fra Smart Cart. De er ikke ekte målinger. Bytt gjerne ut fila med deres egne målinger.</p>
+
+          <h2>Steg 1: Les inn og plott</h2>
+        <pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt("vognstot_smartcart.csv", delimiter=",", skiprows=1)
+t = data[:, 0]
+v_rod = data[:, 1]
+v_bla = data[:, 2]
+
+m_rod = 0.50   # kg
+m_bla = 0.25   # kg
+
+plt.plot(t, v_rod, "r.-", label="rød vogn")
+plt.plot(t, v_bla, "b.-", label="blå vogn")
+plt.xlabel("t / s")
+plt.ylabel("v / (m/s)")
+plt.legend()
+plt.grid()
+plt.show()</code></pre>
+
+          <h2>Steg 2: Bevegelsesmengde og kinetisk energi</h2>
+        <pre class="kode"><code>p_rod = m_rod * v_rod
+p_bla = m_bla * v_bla
+p_sum = p_rod + p_bla
+
+ek_sum = 0.5 * m_rod * v_rod**2 + 0.5 * m_bla * v_bla**2
+
+plt.plot(t, p_rod, "r", label="rød")
+plt.plot(t, p_bla, "b", label="blå")
+plt.plot(t, p_sum, "k--", label="sum")
+plt.xlabel("t / s")
+plt.ylabel("p / (kg m/s)")
+plt.legend()
+plt.grid()
+plt.show()</code></pre>
+
+          <h2>Steg 3: Gjennomsnitt før og etter støtet</h2>
+        <pre class="kode"><code># Velg tidsrom der farten er omtrent konstant. Se på grafen og juster grensene.
+for = (t &gt;= 0.5) &amp; (t &lt; 0.9)
+etter = (t &gt;= 1.2) &amp; (t &lt; 1.6)
+
+p_for = np.mean(p_sum[for])
+p_etter = np.mean(p_sum[etter])
+ek_for = np.mean(ek_sum[for])
+ek_etter = np.mean(ek_sum[etter])
+
+print(f"p før:   {p_for:.4f} kg m/s")
+print(f"p etter: {p_etter:.4f} kg m/s   ({p_etter / p_for * 100:.1f} %)")
+print(f"Ek før:   {ek_for:.4f} J")
+print(f"Ek etter: {ek_etter:.4f} J   ({ek_etter / ek_for * 100:.1f} %)")</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Feilsøk</span><div><p>Koden i steg 3 gir en feilmelding. Finn feilen og rett den.</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 1 og 2. Når skjer støtet, og hvor lenge varer det? Hvordan ser grafen for samlet bevegelsesmengde ut før, under og etter støtet?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Kjør steg 3. Hvor mange prosent av bevegelsesmengden og den kinetiske energien er igjen etter støtet?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bevegelsesmengden ser ut til å avta litt både før og etter støtet. Hvorfor? Hva skjer med resultatet hvis du velger tidsrom som ligger nærmere støtet, for eksempel 0,8–0,975 s og 1,125–1,3 s?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Er støtet elastisk? Er bevegelsesmengden bevart innenfor måleusikkerheten? Begrunn svaret.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I stedet for gjennomsnitt kan du tilpasse en rett linje til farten før og etter støtet med <code>np.polyfit</code>, og regne ut farten akkurat ved t = 1,05 s. Gjør det, og sammenlign med resultatet fra oppgave 3.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li><code>for</code> er et reservert ord i Python. Gi variablene et annet navn, for eksempel <code>foer</code> og <code>etter</code>.</li>
+              <li>Støtet skjer ved t ≈ 1,0 s og varer omtrent 0,1 s. Den samlede bevegelsesmengden er nesten konstant hele tiden, mens p<sub>rød</sub> faller og p<sub>blå</sub> stiger like mye under støtet.</li>
+              <li>Med 0,5–0,9 s og 1,2–1,6 s: p går fra 0,220 til 0,208 kg m/s (94,5 %), og E<sub>k</sub> går fra 0,0485 til 0,0413 J (85 %).</li>
+              <li>Friksjon bremser vognene hele tiden, så bevegelsesmengden avtar sakte også når vognene ikke støter. Med tidsrom nær støtet blir p-forholdet 98,8 % og E<sub>k</sub>-forholdet 91 %. Friksjonen påvirker mindre når tidsrommene ligger nær støtet.</li>
+              <li>Bevegelsesmengden er bevart innenfor usikkerheten (rundt 1 % avvik nær støtet). Omtrent 9 % av den kinetiske energien går tapt, så støtet er nesten elastisk, men ikke helt. Det passer med magnetstøtfangere.</li>
+              <li>Eksempel: <code>a, b = np.polyfit(t[foer], v_rod[foer], 1)</code> og så <code>v = a * 1.05 + b</code>. Med tidsrommene 0,5–0,9 s og 1,2–1,6 s gir det p-forhold 102 % og E<sub>k</sub>-forhold 94 %. Friksjonen blir regnet bort, men stigningstallene er usikre når man forlenger linjene et stykke, så resultatet blir ikke nødvendigvis bedre.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Feilen i steg 3 er lagt inn med vilje. Passer etter forsøket med vogner eller simuleringen <a href="../sim/vognstot.html">Støt mellom to vogner</a>. Elevene kan bruke sine egne målinger i stedet for eksempelfila.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

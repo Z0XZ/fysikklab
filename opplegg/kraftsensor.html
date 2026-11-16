@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Impuls med kraftsensor</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Mål kraften i et støt med en kraftsensor, regn ut impulsen som arealet under grafen og sammenlign med endringen i bevegelsesmengde.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Impuls med kraftsensor</h1>
+        <p class="ingress">En vogn kjører inn i en kraftsensor og spretter tilbake. Er arealet under grafen for kraft mot tid lik endringen i bevegelsesmengden til vogna?</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Måle kraften i et kort støt og finne impulsen som arealet under F(t)-grafen.</li>
+            <li>Undersøke om impulsen er lik endringen i bevegelsesmengde: F · Δt = Δp.</li>
+            <li>Se hvordan en mykere støtfanger endrer støttiden og den største kraften.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Dynamikkbane og vogn, for eksempel Smart Cart med innebygd kraftsensor, eller en vanlig vogn og en kraftsensor festet i enden av banen.</li>
+            <li>Fjærstøtfanger eller magnetstøtfanger. Gjerne også en myk støtfanger (skumgummi) til sammenligning.</li>
+            <li>Bevegelsessensor, eller fartsmåling fra Smart Cart.</li>
+            <li>Vekt og datamaskin med Capstone, SPARKvue eller et annet program som logger målingene.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Vei vogna. Juster banen slik at den står vannrett: Vogna skal bli stående i ro når du slipper den.</li>
+            <li>Still loggefrekvensen for kraftsensoren høyt, minst 500 Hz. Støtet varer bare noen titalls millisekunder.</li>
+            <li>Nullstill kraftsensoren mens ingenting berører den.</li>
+            <li>Gi vogna et forsiktig dytt mot sensoren, og logg både kraft og fart til vogna har sprettet tilbake.</li>
+            <li>Les av farten rett før og rett etter støtet. Husk fortegn.</li>
+            <li>Eksporter kraftmålingene som tekst (tid og kraft i to kolonner). Lim dem inn i verktøyet under, eller bruk programmets eget verktøy for areal under grafen.</li>
+            <li>Gjenta med en mykere støtfanger og omtrent samme fart.</li>
+          </ol>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Regn ut impulsen</h2>
+          <p class="del-inngang">Lim inn to kolonner: tid i sekunder og kraft i newton. Overskrifter og tomme linjer blir hoppet over. Både desimalkomma og desimalpunktum fungerer.</p>
+          <div class="sim-styring mange">
+            <label for="k-data" class="bred-felt">Målinger (tid og kraft)<textarea id="k-data" rows="7" spellcheck="false" placeholder="0,000&#9;0,02&#10;0,005&#9;0,01&#10;…"></textarea></label>
+            <label for="k-masse">Masse til vogna i kg<input id="k-masse" type="text" inputmode="decimal"></label>
+            <label for="k-vfor">Fart før støtet i m/s<input id="k-vfor" type="text" inputmode="decimal"></label>
+            <label for="k-vetter">Fart etter støtet i m/s<input id="k-vetter" type="text" inputmode="decimal"></label>
+            <label for="k-terskel">Støtet starter ved <output id="k-terskel-ut" for="k-terskel"></output><input id="k-terskel" type="range" min="1" max="20" step="1" value="5"></label>
+          </div>
+          <canvas id="k-graf" class="statisk forhold-lav" role="img" aria-label="Graf over kraft mot tid. Arealet under kurven i støtet er skravert."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>antall målinger</dt><dd id="k-antall"></dd></div>
+            <div><dt>støttid</dt><dd id="k-tid"></dd></div>
+            <div><dt>største kraft</dt><dd id="k-maks"></dd></div>
+            <div><dt>impuls (arealet)</dt><dd id="k-areal"></dd></div>
+            <div><dt>Δp = m(v<sub>etter</sub> − v<sub>før</sub>)</dt><dd id="k-dp"></dd></div>
+            <div><dt>avvik mellom tallverdiene</dt><dd id="k-avvik"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="k-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button><button id="k-tom" class="knapp lys" type="button">Tøm</button></div>
+          </div>
+          <figcaption class="sim-hint">Arealet regnes med trapesmetoden i tidsrommet der kraften er større enn den valgte andelen av toppverdien. Kraftsensoren og bevegelsessensoren har ofte motsatt positiv retning, så verktøyet sammenligner tallverdiene. Eksemplet er laget med en modell og er ikke ekte målinger. Dataene lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Før</span><div><p>Skisser hvordan du tror grafen for kraft mot tid ser ut for en fjærstøtfanger og for en myk støtfanger. Vogna har samme fart begge gangene.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut Δp for vogna. Pass på fortegnet: Vogna snur.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Finn arealet under kraftgrafen i støtet. Hvor stort er avviket fra Δp i prosent?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sammenlign støttiden og den største kraften for de to støtfangerne. Stemmer det med skissen din? Hvorfor er arealet omtrent det samme?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke feilkilder kan gi avvik mellom impulsen og Δp? Tenk på loggefrekvens, nullstilling, friksjon og hvor nøyaktig farten leses av.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Regn ut middelkraften i støtet som Δp/Δt. Hvorfor er den mindre enn den største kraften? Hvilken av dem er viktigst for om noe går i stykker?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Fjærstøtfangeren gir en smal og høy «pukkel». Den myke gir en lavere og bredere pukkel.</li>
+              <li>Med eksemplet: Δp = 0,50 kg · (−0,48 m/s − 0,60 m/s) = −0,54 kg m/s. Tallverdien er 0,54 kg m/s.</li>
+              <li>Eksemplet gir 0,539 Ns, altså under 1 % avvik. Ekte målinger gir ofte 2–10 % avvik.</li>
+              <li>Δp er omtrent den samme fordi farten før og etter er omtrent den samme. Da må arealet også være likt. Lengre støttid gir mindre kraft.</li>
+              <li>For lav loggefrekvens gir for få punkter i støtet, og arealet blir unøyaktig. En sensor som ikke er nullstilt, gir et ekstra areal. Friksjon og en bane som heller, endrer farten før og etter støtet. Farten bør leses av rett før og rett etter støtet, ikke langt unna.</li>
+              <li>Med eksemplet: F̄ = 0,54 Ns / 0,18 s ≈ 3,0 N, mens toppen er 4,6 N. Kraften varierer gjennom støtet, så gjennomsnittet blir lavere enn toppen. Om noe går i stykker, avhenger mest av den største kraften.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45–60 minutter. Passer etter simuleringen <a href="../sim/impuls.html">Myk landing</a>, som viser det samme med et egg.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/kraftsensor.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Myk landing</title>
+  <meta name="description" content="Simulering med oppgaver om impuls: Hvorfor knuser egget på betong, men ikke på en dyne?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Bevegelsesmengde og støt</p>
+        <h1>Myk landing</h1>
+        <p class="ingress">Et egg på 60 g slippes fra en høyde og lander på betong, en treplate, gress, skumgummi eller en dyne. Hvorfor knuser egget på betong, men ikke på en dyne?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="landing" class="statisk forhold-landing" role="img" aria-label="Et egg faller ned på et underlag. Til høyre vises en graf over kraften fra underlaget mot tiden."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>fart rett før landing</dt><dd id="v-inn"></dd></div>
+            <div><dt>bremsetid (til egget står stille)</dt><dd id="t-brems"></dd></div>
+            <div><dt>Δp i bremsingen</dt><dd id="dp"></dd></div>
+            <div><dt>middelkraft fra underlaget</dt><dd id="f-snitt"></dd></div>
+            <div><dt>største kraft fra underlaget</dt><dd id="f-maks"></dd></div>
+            <div><dt>resultat</dt><dd id="status"></dd></div>
+          </dl>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f2"></span><span>Kraft fra underlaget</span></li>
+            <li><span class="prikk fyll-areal"></span><span>Areal fram til egget står stille</span></li>
+            <li><span class="linje dempet"></span><span>Tidligere landinger</span></li>
+            <li><span class="linje stiplet f1"></span><span>Egget knuser</span></li>
+          </ul>
+          <div class="sim-styring mange">
+            <label for="underlag">Underlag<select id="underlag"><option value="betong">Betong</option><option value="tre">Treplate</option><option value="gress">Gressplen</option><option value="skum" selected>Skumgummi</option><option value="dyne">Dyne</option></select></label>
+            <label for="hoyde">Slipphøyde <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="0.1" max="2" step="0.05" value="1"></label>
+            <label for="grense">Egget tåler <output id="grense-ut" for="grense"></output><input id="grense" type="range" min="10" max="60" step="1" value="30"></label>
+            <label for="skala">Skala på grafen<select id="skala"><option value="felles">Felles for alle landinger</option><option value="siste">Tilpasset siste landing</option></select></label>
+            <label for="tempo">Fallet<select id="tempo"><option value="1">Sanntid</option><option value="0.3" selected>Sakte film</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp egget</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button><button id="glem" class="knapp lys" type="button">Fjern tidligere landinger</button></div>
+          </div>
+          <figcaption class="sim-hint">Selve landingen vises alltid i ekstra sakte film. Grafen tar vare på de fire siste landingene, slik at du kan sammenligne. Hvor mye kraft et egg tåler, varierer mye. 30 N er et omtrentlig valg.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Newtons 2. lov kan skrives som ΣF · Δt = Δp. Produktet F · Δt kalles impuls, og det er arealet under grafen for F mot t.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Egget slippes fra 1,0 m. Er endringen i bevegelsesmengde større når egget lander på betong enn når det lander på en dyne? Er kraften større?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Slipp egget fra 1,0 m på alle de fem underlagene. Sammenlign bremsetiden, Δp og den største kraften. Hva er likt, og hva er forskjellig?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Grafene har svært ulik form. Hva kan du si om arealet under dem fram til egget står stille? Bruk ΣF · Δt = Δp til å forklare hvorfor egget knuser på det harde underlaget.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten rett før egget lander fra 1,0 m, og bevegelsesmengden det har da. Egget lander på skumgummi og bremses på 17 ms. Regn ut middelkraften fra underlaget. Husk at tyngden også virker.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Hvor høyt kan du slippe egget på skumgummi før det knuser? Hva skjer med den største kraften når du dobler høyden? Hvorfor blir den ikke dobbelt så stor?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk det samme resonnementet på kollisjonsputer og knasesoner i biler, hjelmer, sklimatter og at du bøyer knærne når du hopper ned fra en høyde.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Eggslippkonkurranse: Lag en innpakning av papir, sugerør og teip som gjør at et egg tåler å slippes fra 3 m. Hvilken bremsetid må innpakningen gi hvis egget skal tåle 30 N?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mange tror at Δp er størst på betong fordi støtet er «hardere». Δp er like stor (egget går fra samme fart til null), men kraften er mye større på betong.</li>
+              <li>Farten inn og Δp er 0,266 kg m/s for alle underlagene. Bremsetiden går fra 0,3 ms på betong til rundt 40 ms på dyne, og den største kraften går fra omtrent 1200 N til 10 N.</li>
+              <li>Arealet fram til egget står stille er det samme, fordi det er lik Δp = mv. En kort bremsetid gir en smal og høy graf, altså stor kraft. På betong blir Δt veldig liten, så F blir mye større enn det skallet tåler.</li>
+              <li>v = √(2gh) = √(2 · 9,81 · 1,0) ≈ 4,43 m/s, og p = 0,060 kg · 4,43 m/s ≈ 0,266 kg m/s. (F − mg) · Δt = Δp gir F = 0,266 / 0,017 + 0,060 · 9,81 ≈ 16,2 N. Simuleringen viser 16,6 N fordi bremsetiden er 16,6 ms.</li>
+              <li>Med grensen 30 N knuser egget på skumgummi fra ca. 1,5 m. Farten øker med √h, og kraften øker omtrent som farten, altså med √2 ≈ 1,4 når høyden dobles. Bremsetiden endrer seg lite i denne modellen.</li>
+              <li>Alle forlenger bremsetiden og gjør kraften mindre for samme Δp. Bilbelter og knasesoner forlenger bremsestrekningen fra noen centimeter til en halv meter. Hjelmen sprer i tillegg kraften over et større område.</li>
+              <li>Fra 3 m er v ≈ 7,7 m/s og Δp ≈ 0,46 kg m/s. Med F = 30 N blir Δt ≥ 0,46 / (30 − 0,6) ≈ 16 ms. Med jevn oppbremsing svarer det til en bremsestrekning på ca. 6 cm.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, eller som innledning til en eggslippkonkurranse. Modellen behandler underlaget som en fjær med demping. Bremsetidene er valgt for å gi omtrent riktige størrelsesordener og er ikke målt.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/impuls.js"></script>
+</body>
+</html>

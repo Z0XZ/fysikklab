@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ballstabel</title>
+  <meta name="description" content="Simulering med oppgaver om støt: En tennisball oppå en basketball spretter mye høyere enn der den ble sluppet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Bevegelsesmengde og støt</p>
+        <h1>Ballstabel</h1>
+        <p class="ingress">Legg en tennisball oppå en basketball og slipp dem samtidig fra 1 m. Basketballen spretter fra gulvet og treffer tennisballen, som fortsatt er på vei ned. Hvor høyt spretter tennisballen?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="stabel" class="statisk forhold-stabel" role="img" aria-label="To baller oppå hverandre faller mot gulvet. Den øverste ballen spretter høyt opp."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>fart rett før gulvet</dt><dd id="v-gulv"></dd></div>
+            <div><dt>fart til øverste ball etter støtet</dt><dd id="u-oppe"></dd></div>
+            <div><dt>fart til nederste ball etter støtet</dt><dd id="u-nede"></dd></div>
+            <div><dt>høyde for øverste ball</dt><dd id="h-oppe"></dd></div>
+            <div><dt>i forhold til slipphøyden</dt><dd id="faktor"></dd></div>
+            <div><dt>E<sub>k</sub> til øverste ball etter</dt><dd id="ek"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="nede">Nederste ball<select id="nede"><option value="basket">Basketball (600 g)</option><option value="fotball">Fotball (430 g)</option><option value="tennis">Tennisball (57 g)</option></select></label>
+            <label for="oppe">Øverste ball<select id="oppe"><option value="tennis">Tennisball (57 g)</option><option value="sprett">Sprettball (20 g)</option><option value="bordtennis">Bordtennisball (2,7 g)</option></select></label>
+            <label for="hoyde">Slipphøyde <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.4" selected>Sakte film</option></select></label>
+            <label class="avkrysning" for="ideell"><input id="ideell" type="checkbox" checked> Ideelle støt (ingen energitap)</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp ballene</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Positiv fartsretning er oppover. Slipphøyden er målt fra bunnen av den nederste ballen. Ballene er tegnet større enn de er når skalaen blir liten. Uten ideelle støt brukes omtrentlige støttall for ballene.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Prøv gjerne med ekte baller først. Hold tennisballen rett over basketballen, og slipp begge samtidig utendørs eller i en gymsal.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Basketball og tennisball slippes fra 1 m. Hvor høyt spretter tennisballen? Lavere enn 1 m, omtrent 1 m, 2–3 m eller enda høyere?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen med ideelle støt. Hvor høyt kommer tennisballen? Hva skjer med basketballen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på støtet fra basketballens synspunkt. Rett før støtet går basketballen opp med farten v og tennisballen ned med farten v. Hvor fort nærmer tennisballen seg basketballen? Hvor fort går den fra basketballen etter et elastisk støt mot en mye tyngre ball? Hvor fort går den da sett fra gulvet?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bruk resonnementet fra oppgave 3 til å vise at en veldig lett ball på en veldig tung ball får farten 3v og spretter 9 ganger så høyt. Sjekk med bordtennisballen i simuleringen. Hvorfor blir det ikke helt 9?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Tennisballen får mer kinetisk energi enn den hadde før. Bryter det med energibevaring? Hvor kommer energien fra?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Fjern avkryssingen for ideelle støt. Hvor mye lavere blir sprettet? Prøv to tennisballer oppå hverandre. Hva skjer nå, og hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Tenk deg en stabel med tre baller der hver ball er mye lettere enn den under. Hvor fort går den øverste ballen, og hvor høyt kan den komme? Tips: Bruk samme resonnement to ganger.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>De fleste tipper lavere enn 1 m eller omtrent 1 m. Svaret overrasker nesten alle.</li>
+              <li>Tennisballen når 7,0 m med ideelle støt. Basketballen mister mye fart og kommer bare 0,43 m opp, mens den alene ville kommet 1 m opp.</li>
+              <li>Tennisballen nærmer seg basketballen med 2v. Etter et elastisk støt mot en mye tyngre ball går den fra den med 2v. Basketballen går fortsatt oppover med omtrent v, så tennisballen får 2v + v = 3v sett fra gulvet.</li>
+              <li>Med 3v blir høyden (3v)²/2g = 9 · v²/2g = 9h. Med bordtennisballen blir det 8,9 ganger. Basketballen er ikke uendelig tung, så den mister litt fart i støtet: u = (3M − m)v / (M + m).</li>
+              <li>Nei. Den samlede energien er bevart i ideelle støt. Basketballen gir fra seg mesteparten av sin kinetiske energi til tennisballen. Med basketball og tennisball fra 1 m har systemet 6,45 J før. Etterpå har tennisballen 3,94 J og basketballen 2,51 J.</li>
+              <li>Med realistiske støttall kommer tennisballen omtrent 4,2 m opp. Med to like tunge baller bytter de fart: Den nederste stopper, og den øverste kommer bare opp til starthøyden.</li>
+              <li>Med tre baller får den midterste 3v, og den øverste 2 · 3v + v = 7v. Høyden blir 49 ganger slipphøyden. I praksis blir det mye mindre fordi støtene ikke er elastiske og ballene ikke er uendelig mye lettere enn hverandre.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 15–25 minutter. Vis gjerne forsøket med ekte baller først, og hold ballene godt på linje. Resonnementet i oppgave 3 er det samme som brukes når romsonder får fart ved å passere en planet (slyngemanøver).</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/ballstabel.js"></script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rekyl</title>
+  <meta name="description" content="Simulering med oppgaver om rekyl og eksplosjoner: Skøyteløpere som dytter, en kastet medisinball og en kanon på hjul.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Bevegelsesmengde og støt</p>
+        <h1>Rekyl</h1>
+        <p class="ingress">To skøyteløpere står i ro på isen og dytter fra hverandre. Hvem får størst fart, og hvem glir lengst? Det samme skjer når du kaster en tung ball fra skøyter, og når en kanon skyter.</p>
+
+        <figure class="sim sim-bred">
+          <div class="sim-styring mange uten-topp">
+            <div class="snarveier">Situasjon: <button class="knapp lys liten" type="button" data-scene="skoyter">Skøyteløpere</button><button class="knapp lys liten" type="button" data-scene="kast">Kast fra skøyter</button><button class="knapp lys liten" type="button" data-scene="kanon">Kanon på hjul</button></div>
+            <p id="scene-tekst" class="sim-hint uten-marg"></p>
+          </div>
+          <canvas id="rekyl" class="statisk forhold-rekyl" role="img" aria-label="To gjenstander skyver fra hverandre på et underlag med meterstreker."></canvas>
+          <dl class="sim-tall">
+            <div><dt>impuls F · Δt</dt><dd id="impuls"></dd></div>
+            <div><dt>samlet bevegelsesmengde etter</dt><dd id="p-sum"></dd></div>
+            <div><dt>fart <span id="navn-1"></span></dt><dd id="v-1"></dd></div>
+            <div><dt>fart <span id="navn-2"></span></dt><dd id="v-2"></dd></div>
+            <div><dt>E<sub>k</sub> til venstre</dt><dd id="ek-1"></dd></div>
+            <div><dt>E<sub>k</sub> til høyre</dt><dd id="ek-2"></dd></div>
+            <div><dt>glidelengde til venstre</dt><dd id="s-1"></dd></div>
+            <div><dt>glidelengde til høyre</dt><dd id="s-2"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="masse-1">Masse til venstre <output id="masse-1-ut" for="masse-1"></output><input id="masse-1" type="range"></label>
+            <label for="masse-2">Masse til høyre <output id="masse-2-ut" for="masse-2"></output><input id="masse-2" type="range"></label>
+            <label for="kraft" id="rad-kraft">Dyttekraft <output id="kraft-ut" for="kraft"></output><input id="kraft" type="range" min="50" max="500" step="10" value="200"></label>
+            <label for="varighet" id="rad-tid">Hvor lenge de dytter <output id="varighet-ut" for="varighet"></output><input id="varighet" type="range" min="0.1" max="1" step="0.05" value="0.4"></label>
+            <label for="v2" id="rad-v2" hidden>Fart til det som kastes <output id="v2-ut" for="v2"></output><input id="v2" type="range"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1" selected>Sanntid</option><option value="3">Raskt (3×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Positiv retning er mot høyre. Friksjonstallet er 0,015 for skøyter på is og 0,08 for kanonen på hjul. Vi ser bort fra luftmotstand, og fra at ballen og kula faller mot bakken.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Før dyttet står alt i ro, så den samlede bevegelsesmengden er null. Hva betyr det for bevegelsesmengden etterpå?</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>En voksen på 80 kg og et barn på 30 kg dytter fra hverandre. Hvem dytter hardest på den andre? Hvem får størst fart?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen. Sammenlign fartene og bevegelsesmengdene. Hva er den samlede bevegelsesmengden etter dyttet?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>De dytter med 200 N i 0,40 s. Regn ut impulsen og farten til hver av dem. Hvor langt glir hver av dem når friksjonstallet er 0,015?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Barnet glir mer enn sju ganger så langt som den voksne, selv om farten bare er 2,7 ganger så stor. Forklar hvorfor.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Velg «Kast fra skøyter». Hvordan endrer farten din seg når du kaster en tyngre ball, eller kaster fortere? Hvorfor er det vanskelig å komme seg av en helt glatt is uten å ha noe å kaste?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Velg «Kanon på hjul». Kanonen og kula får like stor bevegelsesmengde. Hvorfor får kula likevel nesten all den kinetiske energien?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En rakett i verdensrommet har ingenting å skyve mot. Bruk det du har sett, til å forklare hvordan den likevel kan øke farten.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Kreftene er like store og motsatt rettet (Newtons 3. lov), selv om mange tror at den voksne dytter hardest. Barnet får størst fart.</li>
+              <li>Den voksne får −1,00 m/s og barnet 2,67 m/s. Begge får bevegelsesmengde 80 kg m/s, i hver sin retning, så summen er null.</li>
+              <li>I = F · Δt = 200 N · 0,40 s = 80 Ns. v = I/m gir 1,00 m/s og 2,67 m/s. Med friksjon μ blir glidelengden s = v² / (2μg): 3,4 m for den voksne og 24 m for barnet.</li>
+              <li>Glidelengden er proporsjonal med v², og v er omvendt proporsjonal med m. Da er s omvendt proporsjonal med m². Forholdet blir (80/30)² ≈ 7,1.</li>
+              <li>Farten din er m<sub>ball</sub> · v<sub>ball</sub> / m<sub>deg</sub>. Både tyngre ball og høyere fart gir større rekyl. Uten friksjon kan du ikke skyve deg i gang med beina. Du må kaste noe, for eksempel en sko, for å få bevegelsesmengde i motsatt retning.</li>
+              <li>E<sub>k</sub> = p² / 2m. Med lik p får den letteste gjenstanden mest energi: Kula får 45 kJ, mens kanonen bare får 0,45 kJ. Forholdet er det samme som forholdet mellom massene, 100 : 1.</li>
+              <li>Raketten kaster ut forbrenningsgasser bakover med stor fart. Gassene får bevegelsesmengde bakover, og raketten får like mye framover. Det er det samme som å kaste medisinballer fra skøyter, bare mange små masser hele tiden.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 15–25 minutter. Kan kombineres med forsøket med to vogner og en fjær mellom (eksplosjon), eller med to elever på kontorstoler med hjul.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/rekyl.js"></script>
+</body>
+</html>

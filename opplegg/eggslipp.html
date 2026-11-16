@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eggslippkonkurranse</title>
+  <meta name="description" content="Praktisk opplegg i Fysikk 1 om impuls: Lag en lett innpakning som gjør at et egg tåler et fall. Med regler, poeng og klassetabell.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Eggslippkonkurranse</h1>
+        <p class="ingress">Lag en innpakning som gjør at et rått egg tåler å slippes fra så høyt som mulig, med så lite materiale som mulig. Fysikken bak er impuls: ΣF · Δt = Δp.</p>
+
+        <div class="tekst opplegg">
+          <h2>Regler</h2>
+          <ol>
+            <li>Hver gruppe får ett rått egg, 10 sugerør, 2 A4-ark, 1 m teip og 1 m hyssing. Andre materialer er ikke lov. Saks er lov.</li>
+            <li>Innpakningen skal lages på 30 minutter. Egget må kunne tas ut etterpå, så det kan sjekkes.</li>
+            <li>Innpakningen veies uten egg før første slipp.</li>
+            <li>Egget slippes fra 1,0 m, 2,0 m og 3,0 m, eller fra trappeavsatser med målt høyde. Gruppen velger selv når de vil stoppe.</li>
+            <li>Det er bare den høyeste høyden egget tålte som teller. Knuser egget, gjelder høyden før.</li>
+          </ol>
+
+          <h2>Poeng</h2>
+          <p class="formel">poeng = 10 · høyde i cm / masse i gram</p>
+          <p>En innpakning på 40 g som tåler 3,0 m, får 10 · 300 / 40 = 75 poeng. Lette innpakninger lønner seg, men bare hvis egget overlever.</p>
+
+          <h2>Fysikken</h2>
+          <p>Egget har samme Δp = mv uansett hva det lander på. Innpakningen kan bare gjøre én ting: forlenge bremsetiden Δt, slik at kraften blir mindre. Skriv inn høyden under for å se hvor lang bremsetid og bremsestrekning som trengs.</p>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Hvor myk må innpakningen være?</h2>
+          <div class="sim-styring mange">
+            <label for="hoyde">Slipphøyde i m<input id="hoyde" type="number" min="0.1" step="any" inputmode="decimal" value="3"></label>
+            <label for="grense">Kraft egget tåler i N<input id="grense" type="number" min="1" step="any" inputmode="decimal" value="30"></label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>fart ved landing</dt><dd id="f-v"></dd></div>
+            <div><dt>Δp for et egg på 60 g</dt><dd id="f-dp"></dd></div>
+            <div><dt>bremsetid som trengs</dt><dd id="f-dt"></dd></div>
+            <div><dt>bremsestrekning som trengs</dt><dd id="f-s"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Regnet ut med jevn oppbremsing: (F − mg) · Δt = mv og s = v · Δt / 2. Hvor mye et egg tåler, varierer mye. 30 N er et omtrentlig valg.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Klassetabell</h2>
+          <div class="sim-styring mange">
+            <label for="navn">Gruppe<input id="navn" type="text" maxlength="40" autocomplete="off"></label>
+            <label for="masse">Masse på innpakningen i g<input id="masse" type="number" min="1" step="any" inputmode="decimal"></label>
+            <label for="hoyde-tabell">Høyeste høyde i m<input id="hoyde-tabell" type="number" min="0.1" step="any" inputmode="decimal"></label>
+            <label for="helt">Resultat<select id="helt"><option value="ja">Egget er helt</option><option value="nei">Egget knuste</option></select></label>
+            <div class="sim-knapper"><button id="legg-til" class="knapp" type="button">Legg til</button></div>
+            <p id="melding" class="melding" role="status"></p>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Plass</th><th scope="col">Gruppe</th><th scope="col">Masse</th><th scope="col">Høyde</th><th scope="col">Resultat</th><th scope="col">Fart ved landing</th><th scope="col">Poeng</th><th scope="col"><span class="hopp">Slett</span></th></tr></thead>
+              <tbody id="liste"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="kopier-liste" class="knapp lys" type="button">Kopier tabellen</button><button id="last-ned" class="knapp lys" type="button">Last ned som CSV</button><button id="tom-liste" class="knapp lys" type="button">Tøm tabellen</button></div>
+          </div>
+          <figcaption class="sim-hint">Tabellen lagres bare i denne nettleseren. Bruk gjerne lærerens maskin eller prosjektoren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Etterarbeid</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten egget hadde rett før landing fra den høyeste høyden dere klarte, og endringen i bevegelsesmengde.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Film landingen med sakte film. Hvor langt ble innpakningen presset sammen? Bruk det til å anslå bremsetiden og middelkraften på egget.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva gjorde de beste innpakningene som de dårligste ikke gjorde? Bruk ordene impuls, bremsetid og kraft.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor hjelper det å ha egget i midten med mye «knasesone» rundt, og ikke bare et tykt lag på den ene siden?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Luftmotstand kan også hjelpe. Hvor stor må fallskjermen være for at egget skal lande med 3 m/s? Bruk L = ½ρC<sub>d</sub>Av² med C<sub>d</sub> ≈ 1,3 og ρ = 1,2 kg/m³.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Fra 3,0 m: v = √(2 · 9,81 · 3,0) ≈ 7,7 m/s og Δp = 0,060 kg · 7,7 m/s ≈ 0,46 kg m/s.</li>
+              <li>Med 5 cm sammenpressing og jevn oppbremsing: Δt = 2s / v = 0,10 m / 7,7 m/s ≈ 13 ms og F ≈ 0,46 / 0,013 + 0,6 ≈ 36 N.</li>
+              <li>De beste innpakningene presses sammen over flere centimeter, slik at bremsetiden blir lang og kraften liten. Harde skall uten demping fungerer dårlig.</li>
+              <li>Egget kan lande på hvilken som helst side. Bremsestrekningen må finnes i alle retninger, og kraften bør fordeles over en stor del av skallet.</li>
+              <li>Med 3 m/s er luftmotstanden lik tyngden: ½ · 1,2 · 1,3 · A · 3² = (0,060 kg + innpakning) · 9,81. Med 100 g til sammen blir A ≈ 0,14 m², altså en kvadratisk fallskjerm med sider på ca. 37 cm.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> To økter: én til bygging og én til slipp og etterarbeid. Ha tørkepapir og plast klart. Bytt gjerne ut materialene med det dere har. Pass på at reglene er like for alle. Simuleringen <a href="../sim/impuls.html">Myk landing</a> er en god innledning.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/eggslipp.js"></script>
+</body>
+</html>

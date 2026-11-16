@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ballistisk pendel</title>
+  <meta name="description" content="Simulering med oppgaver om støt og energi: Mål farten til en kule med en kloss i to snorer.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Bevegelsesmengde og støt</p>
+        <h1>Ballistisk pendel</h1>
+        <p class="ingress">En kule fra et luftgevær er så rask at den er vanskelig å måle direkte. Skyt den inn i en trekloss som henger i to snorer på 2,0 m. Klossen svinger ut til en høyde h. Kan du finne farten til kula ut fra h?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="ballistisk" class="statisk forhold-ballistisk" role="img" aria-label="En kloss henger i to snorer. En kule skytes inn i klossen fra venstre, og klossen svinger ut. En målestav viser høyden."></canvas>
+          <dl class="sim-tall">
+            <div><dt>kulas fart</dt><dd id="v-kule"></dd></div>
+            <div><dt>fart rett etter støtet</dt><dd id="v-etter"></dd></div>
+            <div><dt>høyeste punkt h</dt><dd id="h-maks"></dd></div>
+            <div><dt>største utslag</dt><dd id="utslag"></dd></div>
+            <div><dt>E<sub>k</sub> til kula før</dt><dd id="ek-for"></dd></div>
+            <div><dt>E<sub>k</sub> rett etter støtet</dt><dd id="ek-etter"></dd></div>
+            <div><dt>andel av E<sub>k</sub> igjen</dt><dd id="andel"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="kule">Kulas masse <output id="kule-ut" for="kule"></output><input id="kule" type="range" min="0.5" max="2" step="0.1" value="1"></label>
+            <label for="kloss">Klossens masse <output id="kloss-ut" for="kloss"></output><input id="kloss" type="range" min="0.2" max="2" step="0.1" value="0.2"></label>
+            <label for="fart" id="rad-fart">Kulas fart <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="100" max="400" step="10" value="200"></label>
+            <label for="tempo">Svingningen<select id="tempo"><option value="1" selected>Sanntid</option><option value="0.3">Sakte film</option></select></label>
+            <label class="avkrysning" for="ukjent"><input id="ukjent" type="checkbox"> Ukjent fart (regn den ut selv)</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Skyt</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button><button id="ny-ukjent" class="knapp lys" type="button" hidden>Ny ukjent kule</button><button id="vis-fasit" class="knapp lys" type="button" hidden>Vis farten</button></div>
+            <p id="fasit-fart" class="melding" role="status"></p>
+          </div>
+          <figcaption class="sim-hint">Kula blir sittende fast i klossen. Flukten vises i sakte film, og svingningen etterpå i valgt tempo. Det er ingen luftmotstand.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Del forløpet i to: selve støtet, og svingningen etterpå. Tenk over hva som er bevart i hver del.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor stor andel av den kinetiske energien til kula tror du klossen og kula har rett etter støtet? 100 %, 50 %, 10 % eller 1 %?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Skyt en kule på 1,0 g med 200 m/s inn i klossen på 0,20 kg. Les av høyden og andelen kinetisk energi som er igjen. Hvor ble resten av energien av?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor kan vi ikke bruke energibevaring fra kula før støtet til klossen på toppen? Hvilken bevaringslov gjelder i støtet, og hvilken gjelder i svingningen etterpå?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Vis at farten til kula er v = (m + M)√(2gh) / m. Sjekk formelen med tallene fra oppgave 2.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Kryss av for «Ukjent fart» og skyt. Les av høyden på målestaven og regn ut farten til kula. Sjekk svaret med «Vis farten». Prøv med flere ukjente kuler.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva skjer med høyden når du gjør klossen tyngre? Hvorfor kan en for tung kloss gjøre målingen unøyaktig, og hvorfor kan en for lett kloss være et problem?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Vis at andelen kinetisk energi som er igjen etter støtet, er m / (m + M). Hvorfor avhenger den ikke av farten til kula?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>De fleste tipper altfor høyt. Svaret er 0,5 %.</li>
+              <li>Klossen svinger 5,05 cm opp. E<sub>k</sub> før er 20 J, og rett etter støtet er den 0,099 J, altså 0,50 %. Resten blir indre energi i klossen og kula (varme og deformasjon), og litt går til lyd.</li>
+              <li>Støtet er fullstendig uelastisk, så mekanisk energi er ikke bevart i støtet. De ytre kreftene virker loddrett og er i balanse mens støtet varer, så bevegelsesmengden vannrett er bevart: mv = (m + M)V. I svingningen etterpå gjør bare tyngden arbeid, og da er mekanisk energi bevart: ½(m + M)V² = (m + M)gh.</li>
+              <li>Fra svingningen: V = √(2gh). Fra støtet: v = (m + M)V / m. Tallene: V = √(2 · 9,81 · 0,0505) = 0,995 m/s og v = 0,201 · 0,995 / 0,001 = 200 m/s.</li>
+              <li>Høyden må leses av nøyaktig, fordi feilen i v følger feilen i √h. En avlesningsfeil på 2 mm på 5 cm gir omtrent 2 % feil i farten.</li>
+              <li>En tyngre kloss gir lavere høyde (h er omvendt proporsjonal med (m + M)²). Er h veldig liten, blir den relative avlesningsfeilen stor. En for lett kloss kan svinge så høyt at snorene blir slakke, og kula kan gå tvers gjennom klossen.</li>
+              <li>E<sub>k, etter</sub> / E<sub>k, før</sub> = ½(m + M)V² / (½mv²). Setter vi inn V = mv / (m + M), blir forholdet m / (m + M). Farten forkortes bort, så andelen avhenger bare av massene.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer godt før regneoppgaver om ballistisk pendel. Modusen med ukjent fart fungerer godt som konkurranse i par.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/ballistisk.js"></script>
+</body>
+</html>

@@ -355,3 +355,48 @@ a.fag-kort:hover h3 { color: var(--farge); }
 .formel { font-family: var(--serif); font-size: 1.05rem; margin-bottom: .6rem; }
 .formel .f1 { color: var(--f1); font-family: var(--sans); font-size: .875rem; font-weight: 600; }
 .formel .f2 { color: var(--f2); font-family: var(--sans); font-size: .875rem; font-weight: 600; }
+
+/* Bevegelsesmengde og støt */
+.sim canvas.forhold-spor { aspect-ratio: 16 / 3.8; }
+.sim canvas.forhold-landing { aspect-ratio: 16 / 8; }
+.sim canvas.forhold-ballistisk { aspect-ratio: 16 / 9; }
+.sim canvas.forhold-kuler { aspect-ratio: 16 / 9; }
+.graf-forklaring { margin: 0; padding: .25rem 1rem .6rem; }
+.prikk.fyll-areal { background: var(--f2); border-color: var(--f2); opacity: .35; }
+.sim-styring [hidden] { display: none; }
+.sim-tall dd.bryt { white-space: normal; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-spor { aspect-ratio: 16 / 8; }
+  .sim canvas.forhold-landing { aspect-ratio: 16 / 20; }
+  .sim canvas.forhold-ballistisk { aspect-ratio: 16 / 13; }
+  .sim canvas.forhold-kuler { aspect-ratio: 16 / 11; }
+}
+
+/* Undervisningsopplegg og programmering */
+.side .tekst.opplegg { max-width: 48rem; margin-top: 2rem; }
+.tekst.opplegg h2 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); margin: 2rem 0 .6rem; }
+.tekst.opplegg h2:first-child { margin-top: 0; }
+.tekst.opplegg ul, .tekst.opplegg ol { padding-left: 1.4rem; }
+.tekst.opplegg li + li { margin-top: .35rem; }
+.tekst.opplegg .formel { margin: .75rem 0; }
+code { font-family: var(--mono); font-size: .9em; background: var(--flate); padding: .05em .3em; border-radius: 3px; }
+pre.kode { margin: .75rem 0 1rem; padding: .9rem 1rem; overflow-x: auto; background: var(--flate); border: 1px solid var(--rute); border-radius: 6px; font-size: .875rem; line-height: 1.5; }
+pre.kode code { background: none; padding: 0; font-size: inherit; }
+.sim-styring textarea {
+  display: block; width: 100%; margin-top: .35rem; padding: .4rem .5rem; font-family: var(--mono); font-size: .875rem;
+  color: var(--blekk); background: var(--papir); border: 1px solid var(--rute-sterk); border-radius: 4px; resize: vertical;
+}
+.sim-styring .bred-felt { grid-column: 1 / -1; }
+.sim-styring.uten-topp { border-top: 0; padding-bottom: .5rem; }
+.sim-hint.uten-marg { padding: 0; margin: 0; grid-column: 1 / -1; }
+.sim canvas.forhold-stabel { aspect-ratio: 16 / 9; }
+.sim canvas.forhold-rekyl { aspect-ratio: 16 / 6; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-stabel { aspect-ratio: 16 / 16; }
+  .sim canvas.forhold-rekyl { aspect-ratio: 16 / 10; }
+}
+.tema-merknad { margin-top: 1rem; font-size: .9375rem; color: var(--dempet); }
+.tabell-ramme { position: relative; }
+.sim-kort-tekst { min-width: 0; }
+.sim-kort-tittel { overflow-wrap: break-word; hyphens: auto; }
+h1, h2 { overflow-wrap: break-word; hyphens: auto; }

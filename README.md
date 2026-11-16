@@ -20,6 +20,10 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/lysklokke.js` | Lysklokka (Fysikk 2) |
 | `js/felles.js` | Felles hjelpefunksjoner for de nyeste simuleringene (lerret, avspilling, akser, tallformat) |
 | `js/pendel.js`, `js/berg-og-dal.js`, `js/sprettball.js`, `js/trappelop.js` | Fysikk 1: pendel med pinne, berg-og-dal-bane, sprettball, trappeløp |
+| `js/vognstot.js`, `js/impuls.js`, `js/ballistisk.js`, `js/kuler.js` | Fysikk 1: støt mellom vogner, myk landing, ballistisk pendel, kuler i snorer |
+| `js/ballstabel.js`, `js/rekyl.js` | Fysikk 1: ballstabel, rekyl |
+| `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js`, `js/vektorstot.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse, pucker i Tracker |
+| `programmering/`, `data/` | Python-øvinger med datafiler |
 | `js/myoner.js`, `js/samtidighet.js`, `js/elektron.js`, `js/gps.js` | Fysikk 2: myoner, toget og lynene, elektronet, GPS-klokkene |
 | `CNAME` | Domenet for GitHub Pages |
 

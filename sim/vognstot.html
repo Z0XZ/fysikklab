@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Støt mellom to vogner</title>
+  <meta name="description" content="Simulering med oppgaver om bevaring av bevegelsesmengde: elastiske og uelastiske støt og eksplosjoner mellom to vogner.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Bevegelsesmengde og støt</p>
+        <h1>Støt mellom to vogner</h1>
+        <p class="ingress">To vogner ruller mot hverandre på en vannrett bane uten friksjon. De kan ha magneter som spretter dem fra hverandre, borrelås som får dem til å henge sammen, eller en fjær som skyter dem fra hverandre. Hva er bevart i støtet, og hva er ikke bevart?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="vogner" class="statisk forhold-spor" role="img" aria-label="To vogner på en bane. Piler viser farten til hver vogn."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="tid"></dd></div>
+            <div><dt>samlet bevegelsesmengde</dt><dd id="p-tot"></dd></div>
+            <div><dt>samlet kinetisk energi</dt><dd id="ek-tot"></dd></div>
+            <div><dt>kraft mellom vognene</dt><dd id="kraft"></dd></div>
+          </dl>
+          <canvas id="vogngraf" class="statisk forhold-lav" role="img" aria-label="Graf over valgt størrelse for vogn A, vogn B og summen, mot tiden."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f1"></span><span>Vogn A</span></li>
+            <li><span class="linje f2"></span><span>Vogn B</span></li>
+            <li><span class="linje stiplet"></span><span>Summen</span></li>
+          </ul>
+          <div class="tabell-ramme">
+            <table class="sim-tabell">
+              <thead><tr><th scope="col"></th><th scope="col">v<sub>A</sub> (m/s)</th><th scope="col">v<sub>B</sub> (m/s)</th><th scope="col">p<sub>A</sub> (kg m/s)</th><th scope="col">p<sub>B</sub> (kg m/s)</th><th scope="col">p samlet</th><th scope="col">E<sub>k</sub> samlet (J)</th></tr></thead>
+              <tbody id="stot-rader"></tbody>
+            </table>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>p<sub>etter</sub> / p<sub>før</sub></dt><dd id="p-forhold"></dd></div>
+            <div><dt>p<sub>etter</sub> − p<sub>før</sub></dt><dd id="p-diff"></dd></div>
+            <div><dt>E<sub>k, etter</sub> / E<sub>k, før</sub></dt><dd id="ek-forhold"></dd></div>
+            <div><dt>E<sub>k, etter</sub> − E<sub>k, før</sub></dt><dd id="ek-diff"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="type">Type støt<select id="type"><option value="elastisk">Elastisk (magneter)</option><option value="uelastisk">Uelastisk (myk støtfanger)</option><option value="fullstendig">Fullstendig uelastisk (borrelås)</option><option value="eksplosjon">Eksplosjon (fjær)</option></select></label>
+            <label for="masse-a">Masse A <output id="masse-a-ut" for="masse-a"></output><input id="masse-a" type="range" min="0.25" max="1.5" step="0.25" value="0.5"></label>
+            <label for="masse-b">Masse B <output id="masse-b-ut" for="masse-b"></output><input id="masse-b" type="range" min="0.25" max="1.5" step="0.25" value="0.25"></label>
+            <label for="fart-a" id="rad-fart-a">Fart A før <output id="fart-a-ut" for="fart-a"></output><input id="fart-a" type="range" min="-1" max="1" step="0.05" value="0.6"></label>
+            <label for="fart-b" id="rad-fart-b">Fart B før <output id="fart-b-ut" for="fart-b"></output><input id="fart-b" type="range" min="-1" max="1" step="0.05" value="0"></label>
+            <label for="energi" id="rad-energi" hidden>Energi i fjæra <output id="energi-ut" for="energi"></output><input id="energi" type="range" min="0.01" max="0.2" step="0.01" value="0.05"></label>
+            <label for="storrelse">Vis i grafen<select id="storrelse"><option value="p">Bevegelsesmengde p</option><option value="v">Fart v</option><option value="ek">Kinetisk energi Ek</option><option value="f">Kraft mellom vognene</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5" selected>Halv fart</option><option value="0.1">Sakte film (0,1×)</option></select></label>
+            <p id="melding" class="melding" role="status"></p>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Positiv retning er mot høyre. Verdiene etter støtet vises først når støtet er over. Kraften er positiv når den virker mot høyre på vogn B.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Egne målinger</h2>
+          <p class="del-inngang">Skriv inn massene og farten før og etter støtet fra forsøket med vogner, for eksempel målt med Smart Cart, bevegelsessensor eller Tracker. Husk fortegn: positiv retning mot høyre.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Nr.</th><th scope="col">m<sub>A</sub> (kg)</th><th scope="col">m<sub>B</sub> (kg)</th><th scope="col">v<sub>A</sub> før</th><th scope="col">v<sub>B</sub> før</th><th scope="col">v<sub>A</sub> etter</th><th scope="col">v<sub>B</sub> etter</th><th scope="col">p før → etter</th><th scope="col">E<sub>k</sub> før → etter</th><th scope="col"><span class="hopp">Slett</span></th></tr></thead>
+              <tbody id="egne-rader"></tbody>
+            </table>
+          </div>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="e-ny" class="knapp lys" type="button">Ny rad</button><button id="e-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button><button id="e-kopier" class="knapp lys" type="button">Kopier tabellen</button><button id="e-last-ned" class="knapp lys" type="button">Last ned som CSV</button><button id="e-tom" class="knapp lys" type="button">Tøm tabellen</button></div>
+          </div>
+          <figcaption class="sim-hint">Fart i m/s, bevegelsesmengde i kg m/s og energi i J. Prosenten viser verdien etter som andel av verdien før. Tabellen lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Oppgave 1–6 bruker simuleringen. Oppgave 7 bruker egne målinger fra forsøket med vogner.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Vogn A (0,50 kg) kjører med 0,60 m/s mot vogn B (0,25 kg), som står i ro. Støtet er elastisk. Fortsetter A framover, stopper den, eller spretter den tilbake?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Kjør simuleringen og se på grafen for bevegelsesmengde. Hva skjer med p<sub>A</sub>, p<sub>B</sub> og summen under støtet? Bytt så til kinetisk energi. Hvorfor har den samlede kinetiske energien en dupp midt i støtet, selv om støtet er elastisk?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bytt til borrelås med de samme startverdiene. Regn ut felles fart etter støtet og hvor mye kinetisk energi som går tapt. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på grafen for kraft mellom vognene. Hvordan henger kraften på A sammen med kraften på B? Bruk dette og Newtons 2. lov på formen ΣF = Δp/Δt til å forklare hvorfor den samlede bevegelsesmengden er bevart.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Velg eksplosjon med m<sub>A</sub> = 0,25 kg og m<sub>B</sub> = 0,75 kg. Hvilken vogn får størst fart? Hvilken får størst bevegelsesmengde? Hvilken får mest kinetisk energi?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Prøv deg fram: Hvilke masser og farter gjør at vogn A stopper helt etter et elastisk støt? Og hvordan får du begge vognene til å stå i ro etter et støt med borrelås?</p></div></li>
+          <li><span class="fase utfordring">Forsøk</span><div><p>Gjør forsøket med ekte vogner og fyll inn tabellen under «Egne målinger». Er bevegelsesmengden bevart innenfor måleusikkerheten? Hvilke av støtene er tilnærmet elastiske? Hvilke feilkilder kan forklare avvikene?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>A fortsetter framover, men saktere: 0,20 m/s. B får 0,80 m/s. En tung vogn som treffer en lett vogn, fortsetter alltid i samme retning i et elastisk støt.</li>
+              <li>p<sub>A</sub> synker og p<sub>B</sub> øker like mye, så summen er konstant 0,30 kg m/s hele tiden, også under støtet. Den kinetiske energien er bare lik før og etter. Midt i støtet er en del av energien lagret i støtfangerne (magnetfeltet eller fjæra) og kommer tilbake når vognene skilles.</li>
+              <li>0,50 · 0,60 = 0,75 · u gir u = 0,40 m/s. E<sub>k</sub> før = ½ · 0,50 · 0,60² = 0,090 J. E<sub>k</sub> etter = ½ · 0,75 · 0,40² = 0,060 J. Tapet er 0,030 J, altså en tredel.</li>
+              <li>Kraftkurvene er speilbilder: Kraften fra B på A er like stor og motsatt rettet som kraften fra A på B (Newtons 3. lov). De virker like lenge, så Δp<sub>A</sub> = −Δp<sub>B</sub>. Endringene opphever hverandre, og summen er uendret. Det krever at de ytre kreftene til sammen er null.</li>
+              <li>Bevegelsesmengden før er null, så etterpå må p<sub>A</sub> = −p<sub>B</sub>. De får like stor bevegelsesmengde i hver sin retning. Den lette vogna får tre ganger så stor fart og tre ganger så mye kinetisk energi (E<sub>k</sub> = p²/2m). Med 0,05 J får A 0,55 m/s og B 0,18 m/s.</li>
+              <li>A stopper når m<sub>A</sub> = m<sub>B</sub> og B står i ro før støtet, slik som i Newtons vugge. Med borrelås står begge i ro etterpå hvis den samlede bevegelsesmengden er null før støtet, for eksempel 0,50 kg med 0,50 m/s mot 0,25 kg med −1,0 m/s.</li>
+              <li>Typisk blir p<sub>etter</sub> / p<sub>før</sub> mellom 0,90 og 1,00. Feilkilder er friksjon og luftmotstand, at banen ikke står helt vannrett, og at farten leses av litt for tidlig eller sent. Magnetiske støt gir E<sub>k</sub>-forhold rundt 0,8–0,95. Eksemplet i tabellen er laget for å ligne typiske målinger og er ikke ekte data.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter for simuleringen, eller som for- og etterarbeid til forsøket med vogner. Tabellen med egne målinger svarer til forhåndsoppgave c og d i forsøk 5A: Forholdet og differansen sier om bevegelsesmengden er bevart og om støtet er elastisk.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/vognstot.js"></script>
+</body>
+</html>

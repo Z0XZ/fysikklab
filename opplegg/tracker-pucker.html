@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pucker som støter i Tracker</title>
+  <meta name="description" content="Videoanalyse i Fysikk 1: Analyser et støt mellom to pucker på et luftputebord i Tracker, og undersøk bevegelsesmengde som vektor.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Pucker som støter i Tracker</h1>
+        <p class="ingress">To like tunge pucker støter på et luftputebord nesten uten friksjon. Støtet er ikke rett på, så puckene går ut i hver sin retning. Er bevegelsesmengden bevart, også når vi tar med retningen?</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Bruke videoanalyse til å måle fart i to dimensjoner.</li>
+            <li>Undersøke at bevegelsesmengden er bevart i både x- og y-retning.</li>
+            <li>Avgjøre om støtet er elastisk.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Tracker (gratis fra physlets.org/tracker).</li>
+            <li>Eksempelfila <code>PucksCollide.trk</code> med videoen <code>PucksCollide.mov</code>, laget av Douglas Brown. Læreren deler filene. Videoen må ligge i en mappe som heter <code>videos</code> ved siden av mappa med trk-fila.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Åpne <code>PucksCollide.trk</code> i Tracker. Puckene er allerede sporet som «blue puck» og «red puck». Det finnes også et målebånd for kalibrering og et koordinatsystem.</li>
+            <li>Spill av videoen og finn bildet der puckene støter.</li>
+            <li>Velg «blue puck» i tabellen. Høyreklikk på tabellen og legg til kolonnene v<sub>x</sub> og v<sub>y</sub>.</li>
+            <li>Les av v<sub>x</sub> og v<sub>y</sub> for begge puckene i flere bilder før støtet og flere bilder etter. Bruk gjennomsnittet. Du kan også tilpasse rette linjer til x(t) og y(t) i Data Tool og bruke stigningstallene.</li>
+            <li>Skriv inn fartskomponentene i verktøyet under. Puckene er like tunge, så du kan bruke samme masse for begge.</li>
+            <li>Slå på visning av fartsvektorer og massesenteret i Tracker. Se hvordan farten til massesenteret oppfører seg før og etter støtet.</li>
+          </ol>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Bevegelsesmengde som vektor</h2>
+          <p class="del-inngang">Skriv inn massene og fartskomponentene. Diagrammet tegner bevegelsesmengden til A og B etter hverandre. Den stiplede pila er summen.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col"></th><th scope="col">Masse (kg)</th><th scope="col">v<sub>x</sub> før</th><th scope="col">v<sub>y</sub> før</th><th scope="col">v<sub>x</sub> etter</th><th scope="col">v<sub>y</sub> etter</th></tr></thead>
+              <tbody>
+                <tr><th scope="row" class="f1">Puck A</th><td><input id="v-mA" type="text" inputmode="decimal" aria-label="Masse A"></td><td><input id="v-aFx" type="text" inputmode="decimal" aria-label="A, vx før"></td><td><input id="v-aFy" type="text" inputmode="decimal" aria-label="A, vy før"></td><td><input id="v-aEx" type="text" inputmode="decimal" aria-label="A, vx etter"></td><td><input id="v-aEy" type="text" inputmode="decimal" aria-label="A, vy etter"></td></tr>
+                <tr><th scope="row" class="f2">Puck B</th><td><input id="v-mB" type="text" inputmode="decimal" aria-label="Masse B"></td><td><input id="v-bFx" type="text" inputmode="decimal" aria-label="B, vx før"></td><td><input id="v-bFy" type="text" inputmode="decimal" aria-label="B, vy før"></td><td><input id="v-bEx" type="text" inputmode="decimal" aria-label="B, vx etter"></td><td><input id="v-bEy" type="text" inputmode="decimal" aria-label="B, vy etter"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <canvas id="vektorer" class="statisk forhold-lav" role="img" aria-label="Vektordiagram for bevegelsesmengden før og etter støtet."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f1"></span><span>p<sub>A</sub></span></li>
+            <li><span class="linje f2"></span><span>p<sub>B</sub></span></li>
+            <li><span class="linje stiplet"></span><span>Summen</span></li>
+          </ul>
+          <dl class="sim-tall tre">
+            <div><dt>samlet p før (x, y)</dt><dd id="r-pfor"></dd></div>
+            <div><dt>samlet p etter (x, y)</dt><dd id="r-petter"></dd></div>
+            <div><dt>|p etter| / |p før|</dt><dd id="r-forhold"></dd></div>
+            <div><dt>E<sub>k</sub> før</dt><dd id="r-ekfor"></dd></div>
+            <div><dt>E<sub>k</sub> etter</dt><dd id="r-eketter"></dd></div>
+            <div><dt>E<sub>k</sub> etter / E<sub>k</sub> før</dt><dd id="r-ekforhold"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="v-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button><button id="v-tom" class="knapp lys" type="button">Tøm</button></div>
+          </div>
+          <figcaption class="sim-hint">Fart i m/s. Eksemplet er oppdiktede tall som ligner et slikt støt, ikke målinger fra videoen. Tallene lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Den ene pucken treffer den andre litt på siden. Hvis bevegelsesmengden er bevart, hva må gjelde for y-komponentene etter støtet når alt beveger seg langs x-aksen før?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Mål fartskomponentene før og etter støtet og fyll inn verktøyet. Er bevegelsesmengden bevart i x-retning? I y-retning?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på vektordiagrammet. Hva betyr det at den stiplede pila er like lang og har samme retning før og etter?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut den samlede kinetiske energien før og etter. Er støtet elastisk?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Når to like tunge kuler støter elastisk og den ene ligger i ro, går de ut med 90° mellom seg. Hvor stor er vinkelen mellom fartsvektorene i videoen? Hva forteller det om støtet?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Massesenteret beveger seg med konstant fart gjennom hele støtet. Forklar hvorfor ut fra at den samlede bevegelsesmengden er bevart.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Summen av y-komponentene må fortsatt være null. Den ene pucken må få like stor bevegelsesmengde opp som den andre får ned.</li>
+              <li>Med eksemplet: p<sub>x</sub> går fra 0,080 til 0,078 kg m/s og p<sub>y</sub> fra 0 til −0,001 kg m/s. Det er bevart innenfor måleusikkerheten. Ekte målinger kan gi noen prosent avvik.</li>
+              <li>Den samlede bevegelsesmengden har samme størrelse og retning før og etter. Det er dette det betyr at en vektor er bevart, ikke bare at tallverdien er den samme.</li>
+              <li>Eksemplet gir 92 % av E<sub>k</sub> igjen, altså et nesten elastisk støt. Sammenlign med resultatet fra videoen.</li>
+              <li>I eksemplet er vinkelen 88°. En vinkel litt under 90° betyr at litt energi er tapt.</li>
+              <li>Massesenterets fart er v<sub>cm</sub> = (p<sub>A</sub> + p<sub>B</sub>) / (m<sub>A</sub> + m<sub>B</sub>). Når summen av bevegelsesmengdene er konstant, er også v<sub>cm</sub> konstant, både i størrelse og retning.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter, gjerne i par. Støt i to dimensjoner går ut over det som kreves i Fysikk 1, og passer som fordypning eller i et prosjekt. Elevene kan også filme sine egne støt, for eksempel med curlingsteiner, ishockeypucker eller biljardkuler.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/vektorstot.js"></script>
+</body>
+</html>
