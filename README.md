@@ -33,6 +33,7 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/videoanalyse.js` | Videoanalyse: felles verktøy for Tracker-data, resultattabeller og simuleringen «Videoanalyse uten video» |
 | `programmering/`, `data/` | Python-øvinger med datafiler |
 | `js/myoner.js`, `js/samtidighet.js`, `js/elektron.js`, `js/gps.js` | Fysikk 2: myoner, toget og lynene, elektronet, GPS-klokkene |
+| `js/tunnel.js`, `js/romreise.js` | Fysikk 2: tog og tunnel, romreise (lengdekontraksjon) |
 | `js/efelt.js`, `js/laddkule.js`, `js/avboyning.js` | Fysikk 2: elektrisk felt, ladd kule mellom plater, akselerasjon og avbøyning |
 | `js/mbane.js`, `js/fartsvelger.js`, `js/stromhuske.js`, `js/ledere.js` | Fysikk 2: ladd partikkel i magnetfelt, fartsvelger, strømhuske, magnetfelt rundt ledere |
 | `js/pingpong.js`, `js/syklotron.js` | Fysikk 2: elektrostatisk ping-pong, syklotron |
