@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lengdekontraksjon – økt på 90 minutter</title>
+  <meta name="description" content="Undervisningsopplegg i Fysikk 2: En detaljert økt om lengdekontraksjon med utledning, simuleringer, begrepsspørsmål, oppgaver fra Kraft 2 og ERGO 2, exit ticket og overgang til relativistisk bevegelsesmengde.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Spesiell relativitetsteori</p>
+        <h1>Lengdekontraksjon – økt på 90 minutter</h1>
+        <p class="ingress">En ferdig planlagt økt om lengdekontraksjon for Fysikk 2. Elevene starter med en gåte om myoner, utleder formelen sammen, utforsker tog-og-tunnel-paradokset i en simulering og regner oppgaver på tre nivåer. Økta avsluttes med en exit ticket og et spørsmål som leder over til relativistisk bevegelsesmengde.</p>
+
+        <div class="tekst opplegg">
+          <h2>Kort oversikt</h2>
+          <ul>
+            <li><strong>Fag og tema:</strong> Fysikk 2, spesiell relativitetsteori, delkapittel 4.6 i Kraft 2 (side 124–125). Tilsvarende delkapittel i ERGO 2.</li>
+            <li><strong>Varighet:</strong> 90 minutter. En kortere variant på 60 minutter står nederst.</li>
+            <li><strong>Forkunnskaper:</strong> Einsteins postulater, tidsdilatasjon (t = γt₀, egentid) og samtidighet (4.3–4.5). Elevene bør ha sett eksempel 4-2 om myonene.</li>
+            <li><strong>Simuleringer:</strong> <a href="../sim/tog-og-tunnel.html">Tog og tunnel</a> og <a href="../sim/romreise.html">Romreise</a>, eventuelt også <a href="../sim/myoner.html">Myoner fra atmosfæren</a> og <a href="../sim/samtidighet.html">Toget og lynene</a>.</li>
+            <li><strong>Neste økt:</strong> relativistisk bevegelsesmengde og energi (4.7). Økta slutter med et spørsmål som leder dit.</li>
+          </ul>
+
+          <h2>Kompetansemål og læringsmål</h2>
+          <p>Kompetansemålet i Fysikk 2 er å kunne beskrive de sentrale prinsippene i den spesielle og generelle relativitetsteorien og gjøre rede for hvordan disse har endret vår forståelse av tid, rom og felt.</p>
+          <p>Etter økta skal elevene kunne:</p>
+          <ol>
+            <li>forklare med egne ord hvorfor en lengde som beveger seg i forhold til oss, måles kortere i bevegelsesretningen</li>
+            <li>regne med l = l₀/γ, og avgjøre hvilken lengde som er hvilelengden</li>
+            <li>forklare at kontraksjonen bare skjer i bevegelsesretningen</li>
+            <li>forklare at en lengdemåling krever at endene merkes samtidig, og bruke relativ samtidighet til å løse tog-og-tunnel-paradokset</li>
+            <li>beskrive den samme situasjonen fra to referansesystemer, med tidsdilatasjon i det ene og lengdekontraksjon i det andre</li>
+          </ol>
+
+          <h2>Forberedelser</h2>
+          <ul>
+            <li>Sjekk at simuleringene virker på elevenes maskiner og på projektoren. De trenger ingen innlogging.</li>
+            <li>Gjør gjerne klar små tavler (mini-whiteboards) eller et svarverktøy til begrepsspørsmålene. Fire fingre (A–D) fungerer også.</li>
+            <li>Skriv tre spørsmål på tavla før timen: «Hvorfor når myonene bakken?», «Hvem har rett: toget eller tunnelen?» og «Hva betyr det å måle en lengde?».</li>
+            <li>Del elevene i par. Simuleringsdelen fungerer best med to elever per maskin: én styrer og én leser oppgavene.</li>
+          </ul>
+
+          <h2>Tidsplan</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Tid</th><th scope="col">Del</th><th scope="col">Arbeidsform</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">0–10</th><td>1. Oppstart: myongåten</td><td>Tenk alene, del i par, plenum</td></tr>
+                <tr><th scope="row">10–25</th><td>2. Utledning av l = l₀/γ og begrepsspørsmål</td><td>Lærerstyrt med elevinnspill</td></tr>
+                <tr><th scope="row">25–45</th><td>3. Tog og tunnel: paradokset</td><td>Simulering i par, oppsummering i plenum</td></tr>
+                <tr><th scope="row">45–55</th><td>4. Hva betyr det å måle en lengde?</td><td>Simulering i par, diskusjon</td></tr>
+                <tr><th scope="row">55–65</th><td>5. Romreise: to systemer, samme svar</td><td>Simulering i par, plenum</td></tr>
+                <tr><th scope="row">65–85</th><td>6. Oppgaveregning på tre nivåer</td><td>Individuelt eller i par</td></tr>
+                <tr><th scope="row">85–90</th><td>7. Exit ticket og overgang til neste økt</td><td>Individuelt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>1. Oppstart: myongåten (0–10 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal oppdage at de trenger lengdekontraksjon for å forklare myonene fra myonets eget system.</p>
+          <p><strong>Lærer:</strong> Minn om eksempel 4-2 i Kraft 2. Myonene lages høyt oppe i atmosfæren og har farten 0,995c. Uten relativitetsteori kommer de bare omtrent 660 m på 2,2 µs. Likevel når de fleste fram gjennom 2 km atmosfære. Fra Jorda forklarer vi det med tidsdilatasjon: Myonets klokke går saktere.</p>
+          <p><strong>Spørsmål til elevene:</strong> «Tenk deg at du er myonet. I ditt system står du i ro, og klokka di går helt normalt. Du lever i 2,2 µs. Hvordan rekker du likevel ned?» Gi ett minutt alene, to minutter i par og ta noen svar i plenum.</p>
+          <p><strong>Forventede svar:</strong> Noen elever sier at klokka går saktere. Påpek at det ikke gjelder myonets egen klokke i dets eget system. Målet er at noen foreslår at strekningen må være kortere for myonet. Skriv det på tavla som en hypotese: «For myonet er atmosfæren tynnere.»</p>
+          <p><strong>Tips:</strong> Ikke gi svaret selv. La hypotesen stå, og si at dere skal undersøke om den stemmer. Simuleringen <a href="../sim/myoner.html">Myoner fra atmosfæren</a> kan vise byttet til myonets system på tavla hvis elevene står fast.</p>
+
+          <h2>2. Utledning og begrepsspørsmål (10–25 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal forstå hvor formelen kommer fra og kunne skille hvilelengde fra målt lengde.</p>
+          <p><strong>Tavleplan:</strong> Følg figur 4-15 og 4-16 i Kraft 2.</p>
+          <ol>
+            <li>Romulus er i ro i forhold til en stav. Han måler hvilelengden l₀.</li>
+            <li>Jorid står i ro på jorda, mens staven farer forbi med farten v. Hun måler tiden t₀ mellom de to hendelsene «høyre ende passerer meg» og «venstre ende passerer meg». Begge hendelsene skjer der hun står, så hun måler egentiden. Hun regner ut lengden l = v · t₀.</li>
+            <li>Romulus ser Jorid fare forbi. Han måler tiden t mellom de samme hendelsene med klokker i sitt system, og vet at l₀ = v · t.</li>
+            <li>Tidsdilatasjon gir t = γt₀. Da er l₀ = v · γt₀ = γ · l, altså <strong>l = l₀/γ</strong>.</li>
+          </ol>
+          <p><strong>Spør underveis:</strong> «Hvorfor er det Jorid som måler egentiden, og Romulus som måler hvilelengden?» Svaret er at egentiden måles der begge hendelsene skjer på samme sted. Hvilelengden måles i systemet der staven er i ro.</p>
+          <p><strong>Tre poenger å skrive opp:</strong></p>
+          <ul>
+            <li>Hvilelengden er den lengste lengden som kan måles. Alle andre systemer måler kortere.</li>
+            <li>Kontraksjonen skjer bare i bevegelsesretningen. Høyde og bredde på tvers er uendret. Kraft 2-oppgave 4.45 beviser dette.</li>
+            <li>Effekten er symmetrisk. Romulus måler Jorids linjal som kortest, og Jorid måler Romulus' linjal som kortest.</li>
+          </ul>
+          <p><strong>Tilbake til myonene:</strong> Med γ ≈ 10 blir 2,0 km atmosfære bare 200 m i myonets system. Det rekker myonet fint på 2,2 µs. Hypotesen fra oppstarten stemmer. Dette er Kraft 2-oppgave 4.43, som kan gis i lekse.</p>
+          <p><strong>Begrepsspørsmål:</strong> Vis ett og ett spørsmål, og la alle svare samtidig. Hvis mer enn en tredel svarer feil, ta en kort runde i par og spør igjen.</p>
+          <ol>
+            <li>Et romskip som er 100 m langt i ro, passerer jorda med 0,60c. Hvor langt måler vi det? A) 125 m, B) 100 m, C) 80 m, D) 60 m.</li>
+            <li>Et tog kjører gjennom en tunnel. Hvem måler hvilelengden til tunnelen? A) en passasjer på toget, B) en arbeider som står ved tunnelen, C) begge, D) ingen av dem.</li>
+            <li>Et kvadratisk vindu på 1,0 m × 1,0 m flyr vannrett forbi med 0,80c. Hva måler vi? A) 1,0 m × 1,0 m, B) 0,6 m bredt og 1,0 m høyt, C) 0,6 m × 0,6 m, D) 1,7 m bredt og 1,0 m høyt.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1 C (γ = 1,25). 2 B. 3 B. Feilsvar D på spørsmål 1 betyr ofte at eleven har brukt √(1 − v²/c²) feil. Feilsvar D på spørsmål 3 betyr at eleven har ganget med γ i stedet for å dele.</p>
+
+          <h2>3. Tog og tunnel: paradokset (25–45 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal oppleve et tilsynelatende paradoks og løse det med relativ samtidighet.</p>
+          <p><strong>Elevene gjør:</strong> Åpne <a href="../sim/tog-og-tunnel.html">Tog og tunnel</a>. Toget er 200 m og tunnelen er 150 m, begge målt i ro. Elevene jobber med arbeidsark-oppgave 1–4 under.</p>
+          <p><strong>Lærer går rundt og spør:</strong></p>
+          <ul>
+            <li>«I tunnelens system: Er toget inne i tunnelen når portene er lukket?»</li>
+            <li>«Bytt system. Hvor lang er tunnelen nå? Kan toget være helt inne?»</li>
+            <li>«Se på tabellen: Lukkes portene samtidig i togets system? Hvilken lukkes først?»</li>
+            <li>«Blir toget truffet av en port? I hvilket system?»</li>
+          </ul>
+          <p><strong>Oppsummering i plenum (5 min):</strong> La et par forklare på projektoren. Kjernen er at portene lukkes samtidig i tunnelens system, men ikke i togets system. Der lukkes og åpnes utgangsporten først, før fronten av toget kommer fram, og inngangsporten lukkes 0,67 µs senere, når bakenden er inne. Begge har rett, fordi samtidighet er relativt. Trekk linjen tilbake til Romulus og lynene i innledningen av kapitlet.</p>
+          <p><strong>Tips:</strong> Stigen og garasjen i Kraft 2-oppgave 4.44 og stanga og låven i ERGO-oppgave 4.25 er samme paradoks. ERGO 4.25 har nøyaktig samme forhold som simuleringen (20 m og 15 m), så elevene kan sjekke svaret der med 0,67c.</p>
+
+          <h2>4. Hva betyr det å måle en lengde? (45–55 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal forstå at en lengdemåling er to hendelser som må være samtidige, og at det er derfor systemene får ulike svar.</p>
+          <p><strong>Elevene gjør:</strong> Arbeidsark-oppgave 5–6 med målemodusen i simuleringen.</p>
+          <p><strong>Diskusjon i plenum:</strong> Les Kraft 2-oppgave 4.38 høyt: «Når du skal måle en lengde, må du lese av linjalen i begge ender. Hvordan kan du gjøre disse målingene samtidig når lengden er lang?» Svaret er synkroniserte klokker eller merker langs hele lengden. Spør så: «Hva skjer hvis den du måler, beveger seg, og noen i et annet system ser på?» Svaret er at merkene ikke ble satt samtidig i deres system, så de mener målingen er feil.</p>
+          <p><strong>Tips:</strong> Bruk en metafor elevene kjenner: Hvis du måler en bil i fart med målebånd ved å holde en ende ved fronten og løpe bakover, blir resultatet feil. Du må merke begge endene samtidig.</p>
+
+          <h2>5. Romreise: to systemer, samme svar (55–65 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal se at tidsdilatasjon og lengdekontraksjon er to beskrivelser av samme situasjon.</p>
+          <p><strong>Elevene gjør:</strong> Arbeidsark-oppgave 7–8 i <a href="../sim/romreise.html">Romreise</a>.</p>
+          <p><strong>Plenum:</strong> Fra Jorda bruker skipet 4,86 år på 4,37 lysår med 0,90c, men skipsklokka går saktere og viser 2,12 år. Fra skipet går klokka normalt, men avstanden er kontrahert til 1,90 lysår, og turen tar 2,12 år. Det er samme logikk som med myonene i oppstarten. Spør: «Har de reist fortere enn lyset når de kommer 4,37 lysår på 2,12 år?» Svaret er nei, fordi avstanden og tiden er målt i hvert sitt system.</p>
+          <p><strong>Tips:</strong> Kraft 2-oppgave 4.64 om tvillingene Truls og Trine bygger på det samme, men med bare 30 % av lysfarten og 4,36 lysår. Den passer som lekse eller utfordring, og deloppgave d og e viser at begge veiene gir samme avstand.</p>
+
+          <h2>6. Oppgaveregning på tre nivåer (65–85 min)</h2>
+          <p>La elevene velge nivå selv, men be alle gjøre minst én oppgave fra nivå 1. Oppgavene fra ERGO 2 er et tillegg for de som har tilgang til den boka.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Nivå</th><th scope="col">Kraft 2</th><th scope="col">ERGO 2</th><th scope="col">Hva øver de på</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1 Begreper</th><td>4.36, 4.37, 4.39, 4.42</td><td>–</td><td>Hvilelengde, retning, egentid mot hvilelengde, hva skjer når v går mot 0 og c</td></tr>
+                <tr><th scope="row">2 Regning</th><td>4.40, 4.41, 4.43</td><td>4.7</td><td>Bruke l = l₀/γ og koble lengde, fart og egentid</td></tr>
+                <tr><th scope="row">3 Paradokser og bevis</th><td>4.44, 4.45, 4.64</td><td>4.25, 4.26</td><td>Samtidighet, kontraksjon på tvers, tvillingparadokset, Bells romskipsparadoks</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Tips:</strong> Kraft 2-oppgave 4.45 (bevis ved motsigelse for at det ikke er kontraksjon på tvers) er fin å ta i plenum med de sterkeste elevene mens de andre regner. Muntlig oppgave 4.55 («Hva er lengdekontraksjon? Når er den stor, og når er den liten?») passer som repetisjon i starten av neste økt.</p>
+
+          <h2>7. Exit ticket og overgang til neste økt (85–90 min)</h2>
+          <p>Elevene svarer alene på en lapp eller digitalt:</p>
+          <ol>
+            <li>Et romskip som er 100 m langt og 20 m høyt i ro, passerer jorda med 0,80c. Hvor langt og hvor høyt måler vi det?</li>
+            <li>Astronautene sier at vi måler feil. Hvem har rett?</li>
+            <li>Skriv én setning om hvorfor toget kan passe inn i tunnelen i det ene systemet, men ikke i det andre.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1) 60 m langt og 20 m høyt. 2) Begge måler riktig i sitt eget system. Hvilelengden er 100 m. 3) Portene lukkes samtidig i tunnelens system, men ikke i togets system.</p>
+          <p><strong>Spørsmål de kan ta med til neste økt:</strong> «I romreisen kom vi aldri over lysfarten, uansett hvor fort vi prøvde. Men tenk på et proton som skyves med konstant kraft, for eksempel 1,0 · 10⁻¹² N. Med p = mv og F = Δp/Δt skulle det nådd lysfarten etter bare 0,5 µs. Hvorfor skjer ikke det?» Svaret kommer neste økt: Bevegelsesmengden er p = γmv, og den kan vokse uten grense mens farten aldri når c.</p>
+
+          <h2>Arbeidsark til simuleringene</h2>
+          <p>Oppgavene under kan kopieres til elevene, eller vises på tavla. Svarene står i løsningsforslaget nederst.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver til elevene</h2>
+          <p class="del-inngang">Oppgave 1–6 bruker <a href="../sim/tog-og-tunnel.html">Tog og tunnel</a>, og oppgave 7–8 bruker <a href="../sim/romreise.html">Romreise</a>.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Sett farten til 0,80c. Regn ut γ og lengden av toget i tunnelens system. Passer toget inn i tunnelen? Kjør simuleringen og sjekk.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Bytt til togets system. Hvor lang er tunnelen nå? Kan hele toget være inne samtidig? Hva tror du skjer med portene?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på tabellen over hendelser. I hvilken rekkefølge lukkes og åpnes portene i togets system? Hvorfor blir ikke toget truffet av noen port?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Finn den laveste farten der toget passer inn sett fra tunnelen. Regn først, og sjekk så. Prøv også 0,60c. Hva skjer da, og skjer det samme i begge systemene?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Velg «Tunnelfolket måler toget» med 0,80c. Hvor langt fra hverandre står merkene? Bytt til togets system. Hvorfor mener togfolket at målingen er feil?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Velg «Togfolket måler tunnelen». Hvor langt er det mellom merkene på toget? Hvem måler den andre som kortest?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Romreise: Velg Alfa Centauri og 0,90c. Regn ut reisetiden på jorda og på skipet. Hvor lang er avstanden i skipets system? Hvordan forklarer mannskapet at de kommer så fort fram?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Mannskapet har reist 4,37 lysår på 2,12 år. Betyr det at de har reist fortere enn lyset?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag til arbeidsarket og bokoppgavene</summary>
+            <h3>Arbeidsarket</h3>
+            <ol>
+              <li>γ = 1/√(1 − 0,80²) = 5/3. l = 200 m / (5/3) = 120 m. Toget passer inn.</li>
+              <li>Tunnelen er 150 m / (5/3) = 90 m. Toget på 200 m kan aldri være helt inne. Portene kan ikke være lukket samtidig med toget inne.</li>
+              <li>Utgangsporten lukkes 0,67 µs før inngangsporten og åpner igjen etter 0,08 µs, før fronten av toget kommer fram. Inngangsporten lukkes når bakenden er inne, og da er fronten langt forbi utgangen.</li>
+              <li>200/γ ≤ 150 gir γ ≥ 4/3, altså v ≥ 0,661c. Med 0,60c er toget 160 m, og utgangsporten treffer toget. Det skjer i begge systemene, bare til ulik tid. Om porten treffer toget, er en hendelse som alle må være enige om.</li>
+              <li>Merkene står 120 m fra hverandre. I togets system ble merket ved fronten satt 0,53 µs før merket ved bakenden, og bakken har flyttet seg i mellomtiden.</li>
+              <li>90 m. Begge måler den andre som kortest. Lengdekontraksjon er symmetrisk.</li>
+              <li>Jorda: 4,37 / 0,90 ≈ 4,86 år. γ ≈ 2,29, så skipet bruker 2,12 år. Avstanden i skipets system er 4,37 / 2,29 ≈ 1,90 lysår. For mannskapet går klokka normalt, men strekningen er kortere.</li>
+              <li>Nei. 4,37 lysår er målt i jordas system, og 2,12 år er målt på skipet. I skipets system er avstanden 1,90 lysår, som passerer med 0,90c.</li>
+            </ol>
+            <h3>Bokoppgaver (kortsvar)</h3>
+            <ul>
+              <li><strong>Kraft 2, 4.40:</strong> γ ≈ 6,22, så 13,4 km blir 2,15 km. Egentiden er 7,3 µs, og observatøren på jorda måler 45 µs.</li>
+              <li><strong>Kraft 2, 4.41:</strong> Farten er 473 m / 29,2 µs ≈ 1,62 · 10⁷ m/s ≈ 0,054c. Da er γ ≈ 1,0015, og hvilelengden blir omtrent 474 m. Kontraksjonen er under 1 m.</li>
+              <li><strong>Kraft 2, 4.42:</strong> Når v → 0, går l mot l₀. Når v → c, går l mot null.</li>
+              <li><strong>Kraft 2, 4.43:</strong> 2,0 km / 10,0 ≈ 200 m, mye kortere enn de 660 m myonet rekker på 2,2 µs.</li>
+              <li><strong>Kraft 2, 4.44:</strong> 5,5 m → 4,6 m gir γ = 5,5/4,6 ≈ 1,20 og v ≈ 0,55c. Garasjen er da 4,7 / 1,20 ≈ 3,9 m i stigens system. Paradokset løses som tog og tunnel: Dørene lukkes ikke samtidig i stigens system.</li>
+              <li><strong>Kraft 2, 4.64:</strong> γ ≈ 1,048. Truls: 14,5 år. Trine: 13,9 år. Avstanden i Trines system: 4,16 lysår, både med v · t₀ og med l₀/γ.</li>
+              <li><strong>ERGO 2, 4.7:</strong> Høyden er uendret, og bredden i fartsretningen blir omtrent en tredel (γ ≈ 3,2).</li>
+              <li><strong>ERGO 2, 4.25:</strong> v ≈ 0,66c (γ = 20/15). Låven er 11 m i stangas system.</li>
+            </ul>
+          </details>
+        </section>
+
+        <div class="tekst opplegg">
+          <h2>Vanlige misoppfatninger</h2>
+          <ul>
+            <li><strong>«Toget krymper egentlig.»</strong> Ingenting skjer med toget. Det er lengdemålingen som avhenger av systemet. For passasjerene er alt normalt.</li>
+            <li><strong>«Vi ville sett toget klemt sammen.»</strong> Lengdekontraksjon er noe vi måler, ikke noe vi ser. Et fotografi ville vist objektet dreid, fordi lyset fra ulike deler bruker ulik tid til kameraet (Terrell-rotasjon).</li>
+            <li><strong>«Den som står i ro, måler den riktige lengden.»</strong> Ingen står i ro i absolutt forstand. Hvilelengden er lengden i systemet der gjenstanden er i ro, og begge systemene måler riktig.</li>
+            <li><strong>«Alt blir mindre.»</strong> Bare lengden i bevegelsesretningen endres. Høyden og bredden på tvers er uendret.</li>
+            <li><strong>Blander tid og avstand fra ulike systemer</strong> og konkluderer med at noe går fortere enn lyset. Se oppgave 8.</li>
+          </ul>
+
+          <h2>Faglige merknader til læreren</h2>
+          <ul>
+            <li><strong>Halveringstid eller levetid:</strong> Kraft 2 kaller 2,2 µs for halveringstiden til myonet. Strengt tatt er 2,2 µs den gjennomsnittlige levetiden, og halveringstiden er omtrent 1,5 µs. Det endrer ikke poenget i økta, men en skarp elev kan spørre.</li>
+            <li><strong>Symmetrien og tvillingparadokset:</strong> Lengdekontraksjon og tidsdilatasjon er symmetriske mellom treghetssystemer. Tvillingparadokset løses av at den reisende tvillingen snur, og dermed bytter treghetssystem. Det er ikke med i Fysikk 2-pensum, men er greit å ha klart hvis noen spør etter Kraft 2-oppgave 4.64.</li>
+            <li><strong>Samtidighet er nøkkelen:</strong> Alle paradoksene i denne økta løses med relativ samtidighet. Hvis elevene ikke har fått helt tak på samtidighet, bruk 5 minutter på <a href="../sim/samtidighet.html">Toget og lynene</a> før del 3.</li>
+          </ul>
+
+          <h2>Differensiering</h2>
+          <ul>
+            <li><strong>Elever som trenger mer støtte:</strong> Gi dem en hjelpelapp med de tre stegene i utledningen og formelen. La dem starte med begrepsoppgavene på nivå 1 og arbeidsark-oppgave 1, 2 og 7.</li>
+            <li><strong>Elever som vil ha mer:</strong> Kraft 2-oppgave 4.45 (bevis ved motsigelse) og ERGO 2-oppgave 4.26 (Bells romskipsparadoks). Spør også: «Hvor fort må toget kjøre for at tunnelen skal se halvparten så lang ut fra toget?» (γ = 2, v ≈ 0,87c)</li>
+          </ul>
+
+          <h2>Kortere variant (60 minutter)</h2>
+          <p>Hopp over del 4 og ta målepoenget kort i plenum under del 3. Gjør del 5 som en demonstrasjon på tavla på 5 minutter, og gi oppgaveregningen i lekse. Behold oppstarten, utledningen og exit ticketen.</p>
+
+          <h2>Refleksjon etter økta</h2>
+          <p>Noen spørsmål du kan stille deg selv etterpå, og bruke til å planlegge neste økt:</p>
+          <ul>
+            <li>Hvor mange elever svarte riktig på begrepsspørsmålene første gang? Hvilke feilsvar var vanligst?</li>
+            <li>Klarte elevene å forklare paradokset med samtidighet, eller ble det mest «toget krymper»?</li>
+            <li>Hva viste exit ticketen? Må noe tas opp igjen i starten av neste økt?</li>
+            <li>Fungerte simuleringene som de skulle? Hvor brukte elevene mest tid?</li>
+          </ul>
+          <p>Bruk gjerne muntlig oppgave 4.55 i Kraft 2 som oppvarming i neste økt. Da får du raskt sjekket hva som satt.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
