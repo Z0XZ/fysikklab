@@ -29,7 +29,8 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/skrattkast.js`, `js/skraaplan.js`, `js/snorer.js` | Fysikk 2: skrått kast, skråplan, lodd i to snorer |
 | `js/sirkel.js`, `js/dosert.js`, `js/loddrett.js` | Fysikk 2: sirkelbevegelse, dosert sving, loddrett sirkel |
 | `js/bakkestot.js` | Fysikk 1: vogn ned bakke og støt |
-| `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js`, `js/vektorstot.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse, pucker i Tracker |
+| `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse |
+| `js/videoanalyse.js` | Videoanalyse: felles verktøy for Tracker-data, resultattabeller og simuleringen «Videoanalyse uten video» |
 | `programmering/`, `data/` | Python-øvinger med datafiler |
 | `js/myoner.js`, `js/samtidighet.js`, `js/elektron.js`, `js/gps.js` | Fysikk 2: myoner, toget og lynene, elektronet, GPS-klokkene |
 | `js/efelt.js`, `js/laddkule.js`, `js/avboyning.js` | Fysikk 2: elektrisk felt, ladd kule mellom plater, akselerasjon og avbøyning |

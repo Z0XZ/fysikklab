@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friksjonstall med friksjonskloss</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Finn friksjonstallet ved å dra en friksjonskloss med kraftsensor, og ved videoanalyse av en kloss som glir til den stopper.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelse og krefter</p>
+        <h1>Friksjonstall med friksjonskloss</h1>
+        <p class="ingress">Friksjonskraften er R = μN. Dere skal finne friksjonstallet μ på to måter: ved å dra en kloss med en kraftsensor, og ved å filme en kloss som glir til den stopper. Gir metodene samme svar?</p>
+
+        <div class="tekst opplegg">
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Friksjonskloss (gjerne med ulike sider), lodd som kan legges oppå, og en vekt.</li>
+            <li>Del A: kraftsensor (for eksempel med Capstone) eller fjærvekt (dynamometer).</li>
+            <li>Del B: mobil eller kamera på stativ, en målestokk langs underlaget, og Tracker.</li>
+          </ul>
+
+          <h2>Del A: Med kraftsensor</h2>
+          <ol>
+            <li>Vei klossen. Nullstill kraftsensoren mens den henger vannrett uten belastning.</li>
+            <li>Fest sensoren i klossen og dra vannrett, først sakte og jevnt økende. Les av den største kraften før klossen glipper. Den gir største hvilefriksjon.</li>
+            <li>Dra så klossen med jevn, lav fart. Les av kraften mens den glir. Den gir glidefriksjonen.</li>
+            <li>Legg på lodd og gjenta, slik at dere får fem ulike masser. Skriv inn i tabellen.</li>
+          </ol>
+          <p>Med en fjærvekt er det vanskelig å lese av toppen før klossen glipper. Gjenta da flere ganger og bruk gjennomsnittet. Med kraftsensor kan dere se toppen og det jevne nivået tydelig i grafen.</p>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Del A: Resultater med kraftsensor</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Nr.</th><th scope="col">Masse (kg)</th><th scope="col">N = mg (N)</th><th scope="col">Største kraft før glipp (N)</th><th scope="col">Kraft ved jevn fart (N)</th><th scope="col">μ<sub>s</sub></th><th scope="col">μ<sub>k</sub></th></tr></thead>
+              <tbody id="fr-rader"><tr><th scope="row">1</th><td><input id="fr-m1" type="text" inputmode="decimal" aria-label="Masse i forsøk 1"></td><td id="fr-n1"></td><td><input id="fr-s1" type="text" inputmode="decimal" aria-label="Største kraft før klossen glipper, forsøk 1"></td><td><input id="fr-k1" type="text" inputmode="decimal" aria-label="Kraft ved jevn fart, forsøk 1"></td><td id="fr-mus1"></td><td id="fr-muk1"></td></tr><tr><th scope="row">2</th><td><input id="fr-m2" type="text" inputmode="decimal" aria-label="Masse i forsøk 2"></td><td id="fr-n2"></td><td><input id="fr-s2" type="text" inputmode="decimal" aria-label="Største kraft før klossen glipper, forsøk 2"></td><td><input id="fr-k2" type="text" inputmode="decimal" aria-label="Kraft ved jevn fart, forsøk 2"></td><td id="fr-mus2"></td><td id="fr-muk2"></td></tr><tr><th scope="row">3</th><td><input id="fr-m3" type="text" inputmode="decimal" aria-label="Masse i forsøk 3"></td><td id="fr-n3"></td><td><input id="fr-s3" type="text" inputmode="decimal" aria-label="Største kraft før klossen glipper, forsøk 3"></td><td><input id="fr-k3" type="text" inputmode="decimal" aria-label="Kraft ved jevn fart, forsøk 3"></td><td id="fr-mus3"></td><td id="fr-muk3"></td></tr><tr><th scope="row">4</th><td><input id="fr-m4" type="text" inputmode="decimal" aria-label="Masse i forsøk 4"></td><td id="fr-n4"></td><td><input id="fr-s4" type="text" inputmode="decimal" aria-label="Største kraft før klossen glipper, forsøk 4"></td><td><input id="fr-k4" type="text" inputmode="decimal" aria-label="Kraft ved jevn fart, forsøk 4"></td><td id="fr-mus4"></td><td id="fr-muk4"></td></tr><tr><th scope="row">5</th><td><input id="fr-m5" type="text" inputmode="decimal" aria-label="Masse i forsøk 5"></td><td id="fr-n5"></td><td><input id="fr-s5" type="text" inputmode="decimal" aria-label="Største kraft før klossen glipper, forsøk 5"></td><td><input id="fr-k5" type="text" inputmode="decimal" aria-label="Kraft ved jevn fart, forsøk 5"></td><td id="fr-mus5"></td><td id="fr-muk5"></td></tr></tbody>
+            </table>
+          </div>
+          <canvas id="fr-graf" class="statisk forhold-lav" role="img" aria-label="Friksjonskraft mot normalkraft, med rette linjer gjennom origo."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f1"></span><span>Største hvilefriksjon</span></li>
+            <li><span class="linje f2"></span><span>Glidefriksjon</span></li>
+          </ul>
+          <dl class="sim-tall">
+            <div><dt>μ<sub>s</sub> fra stigningstallet</dt><dd id="fr-mus"></dd></div>
+            <div><dt>μ<sub>k</sub> fra stigningstallet</dt><dd id="fr-muk"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="fr-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button></div>
+          </div>
+          <figcaption class="sim-hint">Klossen dras vannrett, så normalkraften er N = mg. Linjene er tilpasset gjennom origo, og stigningstallet er friksjonstallet. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <div class="tekst opplegg">
+          <h2>Del B: Med videoanalyse</h2>
+          <ol>
+            <li>Legg målestokken langs underlaget, og sett kameraet vinkelrett på bevegelsen.</li>
+            <li>Gi klossen et kort, raskt dytt slik at den glir et stykke og stopper av seg selv. Film fra rett etter dyttet til klossen står stille.</li>
+            <li>I Tracker: Kalibrer, sett x-aksen langs underlaget, og spor klossen. Kopier t og x inn i verktøyet.</li>
+            <li>Velg tidsrommet fra klossen er sluppet til like før den stopper, og tilpass en andregradsfunksjon. Mens klossen glir, er friksjonen den eneste kraften langs underlaget, så |a| = μ<sub>k</sub>g.</li>
+          </ol>
+          <p>Dere kan også øve med simuleringen <a href="../sim/videoanalyse.html">Videoanalyse uten video</a>.</p>
+        </div>
+
+        <figure id="va" class="sim egne-data" data-mal="[[&quot;fr-a&quot;, &quot;Sett inn akselerasjonen&quot;, &quot;a&quot;]]">
+          <h2>Del B: Analyse av videoen</h2>
+          <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
+          <div class="sim-styring mange uten-topp">
+            <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
+            <label for="va-eksempel-valg">Eksempeldata<select id="va-eksempel-valg"><option value="glid">Kloss som glir til den stopper (60 bilder per sekund)</option></select></label>
+            <div class="sim-knapper"><button id="va-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button></div>
+          </div>
+          <canvas id="va-graf" class="statisk forhold-lav" role="img" aria-label="Målepunktene mot tiden med den tilpassede kurven."></canvas>
+          <div class="sim-styring mange">
+            <label for="va-kolonne" id="rad-kolonne" hidden>Kolonne<select id="va-kolonne"></select></label>
+            <label for="va-modell">Modell<select id="va-modell"><option value="1">Rett linje (konstant fart)</option><option value="2" selected>Andregradsfunksjon (konstant akselerasjon)</option></select></label>
+            <label for="va-fra">Fra t (s)<input id="va-fra" type="text" inputmode="decimal"></label>
+            <label for="va-til">Til t (s)<input id="va-til" type="text" inputmode="decimal"></label>
+            <label class="avkrysning" for="va-fart"><input id="va-fart" type="checkbox"> Vis fart i stedet for posisjon</label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>tilpasset funksjon</dt><dd id="va-funksjon" class="bryt"></dd></div>
+            <div><dt>fart</dt><dd id="va-v"></dd></div>
+            <div><dt>akselerasjon a = 2 · (tallet foran t²)</dt><dd id="va-a"></dd></div>
+            <div><dt>R²</dt><dd id="va-r2"></dd></div>
+            <div><dt>punkter i tidsrommet</dt><dd id="va-n"></dd></div>
+          </dl>
+          <div class="sim-styring mange"><p class="sim-hint uten-marg" id="va-knapper"></p></div>
+          <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje fra Tracker blir hoppet over. Eksempeldataene er laget med en modell og litt tilfeldig «klikkestøy» på 2 mm, og er ikke ekte målinger. Med «Vis fart» regnes farten ut fra nabopunktene, og den blir derfor mer ujevn enn posisjonen.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Del B: Friksjonstallet fra videoen</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="fr-a">Målt akselerasjon (m/s²)<input id="fr-a" type="text" inputmode="decimal"></label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>μ<sub>k</sub> = |a| / g</dt><dd id="fr-mu-video"></dd></div>
+          </dl>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvordan tror du friksjonskraften endrer seg når dere dobler massen? Når dere legger klossen på en side med mindre areal?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør del A, eller trykk på «Fyll inn eksempel». Ligger punktene på rette linjer gjennom origo? Hva er μ<sub>s</sub> og μ<sub>k</sub>?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor skal klossen dras med jevn fart når dere måler glidefriksjonen? Hva viser kraftsensoren hvis dere drar slik at klossen akselererer?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør del B, eller last inn eksempeldataene. Velg tidsrommet før klossen stopper. Hva blir μ<sub>k</sub>?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Sammenlign μ<sub>k</sub> fra de to metodene. Hvilken metode stoler dere mest på, og hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I del B: Hvorfor må tidsrommet slutte før klossen stopper? Hva skjer med tilpasningen hvis dere tar med punktene der klossen står stille?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Friksjonskraften dobles når massen dobles, fordi normalkraften dobles. Arealet har liten betydning i modellen R = μN, men ekte flater kan avvike litt.</li>
+              <li>Eksemplet gir μ<sub>s</sub> ≈ 0,52 og μ<sub>k</sub> ≈ 0,31, og punktene ligger nær linjer gjennom origo.</li>
+              <li>Med jevn fart er summen av kreftene null, så trekkraften er like stor som friksjonen. Hvis klossen akselererer, er trekkraften større enn friksjonen, og μ blir for stor.</li>
+              <li>Eksempeldataene gir a ≈ −2,93 m/s² fra 0 til 0,50 s, altså μ<sub>k</sub> ≈ 0,30. (Klossen stopper ved 0,54 s.)</li>
+              <li>Metodene bør gi omtrent samme glidefriksjon. Kraftsensoren gir mange målinger og kan gjentas med ulike masser. Videoanalysen krever ikke at noen drar jevnt, men er følsom for valg av tidsrom og for at klossen kan rotere eller hoppe.</li>
+              <li>Etter at klossen har stoppet, er akselerasjonen null. Tar dere med disse punktene, passer ikke modellen med konstant akselerasjon, og den tilpassede akselerasjonen blir for liten.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter. Del A passer til forsøkene med friksjon på kloss med kraftmåler og med hvilefriksjon og glidefriksjon. Se også simuleringen <a href="../sim/friksjon.html">Friksjon</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/videoanalyse.js"></script>
+</body>
+</html>

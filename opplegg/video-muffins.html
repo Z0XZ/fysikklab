@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videoanalyse av muffinsformer</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Film muffinsformer som faller, finn terminalfarten i Tracker, og bestem luftmotstandstallet k i L = kv² ved å legge i flere former.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelse og krefter</p>
+        <h1>Videoanalyse av muffinsformer</h1>
+        <p class="ingress">En muffinsform når fort terminalfarten, der luftmotstanden er like stor som tyngden. Når dere legger flere former i hverandre, blir massen større, men formen den samme. Da kan dere teste modellen L = kv² og bestemme luftmotstandstallet k.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Finne terminalfarten ved videoanalyse.</li>
+            <li>Undersøke om luftmotstanden er proporsjonal med v².</li>
+            <li>Bestemme luftmotstandstallet k.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Flere like muffinsformer av papir, og en vekt som måler med minst 0,1 g nøyaktighet.</li>
+            <li>Mobil eller kamera på stativ, en målestokk som henger loddrett, og Tracker.</li>
+            <li>Slipp fra omtrent 2 m høyde, for eksempel fra en stol eller trapp.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Vei én muffinsform. Vei gjerne ti former og del på ti for å få mer nøyaktig masse.</li>
+            <li>Film én form som slippes fra ro foran målestokken. Hold formen med åpningen opp, og slipp den uten å dytte.</li>
+            <li>Gjenta med 2, 3 og 4 former stablet i hverandre. Formen og størrelsen er den samme, men massen øker.</li>
+            <li>I Tracker: Kalibrer, sett aksene med y oppover, og spor formen. Kopier t og y inn i verktøyet under.</li>
+            <li>Finn tidsrommet der grafen er en rett linje, og tilpass en rett linje der. Stigningstallet er terminalfarten. Sett den inn i tabellen.</li>
+          </ol>
+          <p>Uten egen video: Tracker-eksemplet «CupsClips» viser muffinsformer med ulikt antall binders. Ifølge beskrivelsen i fila veier formen med to binders omtrent 1,4 g og formen med seks binders omtrent 3,1 g. Dere kan også øve med simuleringen <a href="../sim/videoanalyse.html">Videoanalyse uten video</a>.</p>
+
+          <h2>Teorien</h2>
+          <p>Ved terminalfarten er L = G, altså kv<sub>t</sub>² = mg. Da er k = mg / v<sub>t</sub>². Hvis modellen stemmer, er v<sub>t</sub>² proporsjonal med m, og grafen av v<sub>t</sub>² mot m blir en rett linje gjennom origo med stigningstall g/k.</p>
+        </div>
+
+        <figure id="va" class="sim egne-data" data-mal="[[&quot;muf-v1&quot;, &quot;Sett inn som v<sub>t</sub> for 1 form&quot;, &quot;v&quot;], [&quot;muf-v2&quot;, &quot;Sett inn som v<sub>t</sub> for 2 former&quot;, &quot;v&quot;], [&quot;muf-v3&quot;, &quot;Sett inn som v<sub>t</sub> for 3 former&quot;, &quot;v&quot;], [&quot;muf-v4&quot;, &quot;Sett inn som v<sub>t</sub> for 4 former&quot;, &quot;v&quot;]]">
+          <h2>Analyse av data fra Tracker</h2>
+          <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
+          <div class="sim-styring mange uten-topp">
+            <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
+            <label for="va-eksempel-valg">Eksempeldata<select id="va-eksempel-valg"><option value="muffins:1">1 muffinsform (60 bilder per sekund)</option><option value="muffins:2">2 muffinsformer</option><option value="muffins:3">3 muffinsformer</option><option value="muffins:4">4 muffinsformer</option></select></label>
+            <div class="sim-knapper"><button id="va-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button></div>
+          </div>
+          <canvas id="va-graf" class="statisk forhold-lav" role="img" aria-label="Målepunktene mot tiden med den tilpassede kurven."></canvas>
+          <div class="sim-styring mange">
+            <label for="va-kolonne" id="rad-kolonne" hidden>Kolonne<select id="va-kolonne"></select></label>
+            <label for="va-modell">Modell<select id="va-modell"><option value="1" selected>Rett linje (konstant fart)</option><option value="2">Andregradsfunksjon (konstant akselerasjon)</option></select></label>
+            <label for="va-fra">Fra t (s)<input id="va-fra" type="text" inputmode="decimal"></label>
+            <label for="va-til">Til t (s)<input id="va-til" type="text" inputmode="decimal"></label>
+            <label class="avkrysning" for="va-fart"><input id="va-fart" type="checkbox"> Vis fart i stedet for posisjon</label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>tilpasset funksjon</dt><dd id="va-funksjon" class="bryt"></dd></div>
+            <div><dt>fart</dt><dd id="va-v"></dd></div>
+            <div><dt>akselerasjon a = 2 · (tallet foran t²)</dt><dd id="va-a"></dd></div>
+            <div><dt>R²</dt><dd id="va-r2"></dd></div>
+            <div><dt>punkter i tidsrommet</dt><dd id="va-n"></dd></div>
+          </dl>
+          <div class="sim-styring mange"><p class="sim-hint uten-marg" id="va-knapper"></p></div>
+          <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje fra Tracker blir hoppet over. Eksempeldataene er laget med en modell og litt tilfeldig «klikkestøy» på 2 mm, og er ikke ekte målinger. Med «Vis fart» regnes farten ut fra nabopunktene, og den blir derfor mer ujevn enn posisjonen.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Luftmotstandstallet</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Antall former</th><th scope="col">Masse (g)</th><th scope="col">Terminalfart v<sub>t</sub> (m/s)</th><th scope="col">k = mg/v<sub>t</sub>² (kg/m)</th></tr></thead>
+              <tbody id="muf-rader"><tr><th scope="row">1</th><td><input id="muf-m1" type="text" inputmode="decimal" aria-label="Masse, 1 former, i gram"></td><td><input id="muf-v1" type="text" inputmode="decimal" aria-label="Terminalfart, 1 former"></td><td id="muf-k1"></td></tr><tr><th scope="row">2</th><td><input id="muf-m2" type="text" inputmode="decimal" aria-label="Masse, 2 former, i gram"></td><td><input id="muf-v2" type="text" inputmode="decimal" aria-label="Terminalfart, 2 former"></td><td id="muf-k2"></td></tr><tr><th scope="row">3</th><td><input id="muf-m3" type="text" inputmode="decimal" aria-label="Masse, 3 former, i gram"></td><td><input id="muf-v3" type="text" inputmode="decimal" aria-label="Terminalfart, 3 former"></td><td id="muf-k3"></td></tr><tr><th scope="row">4</th><td><input id="muf-m4" type="text" inputmode="decimal" aria-label="Masse, 4 former, i gram"></td><td><input id="muf-v4" type="text" inputmode="decimal" aria-label="Terminalfart, 4 former"></td><td id="muf-k4"></td></tr></tbody>
+            </table>
+          </div>
+          <canvas id="muf-graf" class="statisk forhold-lav" role="img" aria-label="v-terminal i andre mot massen, med en rett linje gjennom origo."></canvas>
+          <dl class="sim-tall">
+            <div><dt>k fra stigningstallet til v<sub>t</sub>² mot m</dt><dd id="muf-kfit"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="muf-eksempel" class="knapp lys" type="button">Fyll inn eksempel</button></div>
+          </div>
+          <figcaption class="sim-hint">Fortegnet på farten spiller ingen rolle her. Eksemplet bruker 0,40 g per form og terminalfarter fra eksempeldataene, og er ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Last inn eksempeldataene for én form. Hvor lang tid tar det før formen har nådd terminalfarten? Hvordan ser du det?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Finn terminalfarten for 1, 2, 3 og 4 former. Velg tidsrom fra omtrent 0,6 s og ut. Sett dem inn i tabellen, med massen 0,40 g per form.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Er k omtrent den samme for alle radene? Ligger punktene på en rett linje gjennom origo? Hva sier det om modellen L = kv²?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva ville grafen av v<sub>t</sub> mot m vist hvis luftmotstanden i stedet var proporsjonal med v?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Luftmotstandstallet kan skrives k = ½ρC<sub>d</sub>A. Mål diameteren til formen, og regn ut formfaktoren C<sub>d</sub>. Bruk ρ = 1,2 kg/m³.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hvorfor er det viktig at formene er stablet i hverandre, og ikke for eksempel tapet sammen side om side?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Etter omtrent 0,3–0,4 s er grafen en rett linje. Fartsgrafen flater ut på omtrent 1,1 m/s.</li>
+              <li>Eksempeldataene gir omtrent 1,10, 1,55, 1,91 og 2,20 m/s.</li>
+              <li>k blir omtrent 3,2 · 10⁻³ kg/m for alle radene, og punktene ligger på en rett linje gjennom origo. Det støtter modellen L = kv². Ekte målinger spriker mer, men gir ofte samme mønster.</li>
+              <li>Med L = bv blir v<sub>t</sub> = mg/b, altså proporsjonal med m. Da ville v<sub>t</sub> mot m (og ikke v<sub>t</sub>² mot m) gitt en rett linje.</li>
+              <li>Med diameter 7,0 cm er A = π · 0,035² ≈ 3,85 · 10⁻³ m². C<sub>d</sub> = 2k/(ρA) = 2 · 3,24 · 10⁻³ / (1,2 · 3,85 · 10⁻³) ≈ 1,4.</li>
+              <li>Når formene er stablet, har de samme form og areal mot lufta, så k er den samme. Side om side blir arealet større, og da endres k.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter. Passer etter luftmotstand og terminalfart. Forsøket kan også gjøres med bevegelsessensor, se forsøket med muffinsformer. Se også simuleringen <a href="../sim/luftmotstand.html">Fall med luftmotstand</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/videoanalyse.js"></script>
+</body>
+</html>

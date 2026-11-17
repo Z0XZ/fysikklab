@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videoanalyse av rulling</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Film en vogn på et skråplan eller en ball som ruller langs gulvet, analyser bevegelsen i Tracker, og sammenlign med Newtons 2. lov.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelse og krefter</p>
+        <h1>Videoanalyse av rulling</h1>
+        <p class="ingress">En vogn som triller ned et skråplan, akselererer jevnt. En ball som ruller bortover gulvet, bremser sakte. Med videoanalyse kan dere måle akselerasjonen og sammenligne med det Newtons 2. lov gir uten friksjon.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Måle akselerasjonen til en rullende gjenstand ved videoanalyse.</li>
+            <li>Sammenligne med a = g sin θ for et skråplan uten friksjon.</li>
+            <li>Anslå rullefriksjonen for en ball eller vogn på gulvet.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Del A: en vogn (eller lekebil) og en bane eller planke som kan stilles skrått. Gradskive eller linjal for å finne vinkelen.</li>
+            <li>Del B: en ball, vogn eller lekebil som kan rulle fritt langs gulvet eller en lang pult.</li>
+            <li>Mobil eller kamera på stativ, en målestokk langs banen, og Tracker.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Del A: Still planken skrått, og mål vinkelen θ (eller høyden h og lengden L, sin θ = h/L). Legg målestokken langs planken.</li>
+            <li>Slipp vogna fra ro og film den mens den triller ned. Kameraet skal stå vinkelrett på planken.</li>
+            <li>I Tracker: Kalibrer med målestokken, og drei koordinatsystemet slik at x-aksen ligger langs planken. Spor vogna, og kopier t og x inn i verktøyet.</li>
+            <li>Tilpass en andregradsfunksjon, og sett akselerasjonen inn i tabellen.</li>
+            <li>Del B: Gi ballen et lite dytt bortover gulvet, og film den mens den ruller. Spor den i Tracker, og tilpass både en rett linje og en andregradsfunksjon.</li>
+          </ol>
+          <p>Uten egen video: Tracker-eksemplet «bouncing_cart» viser en vogn på et skråplan. Dere kan også øve med simuleringen <a href="../sim/videoanalyse.html">Videoanalyse uten video</a>.</p>
+        </div>
+
+        <figure id="va" class="sim egne-data" data-mal="[[&quot;rull-a&quot;, &quot;Sett inn som a på skråplanet&quot;, &quot;a&quot;], [&quot;gulv-a&quot;, &quot;Sett inn som a langs gulvet&quot;, &quot;a&quot;]]">
+          <h2>Analyse av data fra Tracker</h2>
+          <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
+          <div class="sim-styring mange uten-topp">
+            <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
+            <label for="va-eksempel-valg">Eksempeldata<select id="va-eksempel-valg"><option value="skraaplan">Del A: vogn på skråplan med 5° helning</option><option value="gulv">Del B: ball som ruller langs gulvet</option></select></label>
+            <div class="sim-knapper"><button id="va-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button></div>
+          </div>
+          <canvas id="va-graf" class="statisk forhold-lav" role="img" aria-label="Målepunktene mot tiden med den tilpassede kurven."></canvas>
+          <div class="sim-styring mange">
+            <label for="va-kolonne" id="rad-kolonne" hidden>Kolonne<select id="va-kolonne"></select></label>
+            <label for="va-modell">Modell<select id="va-modell"><option value="1">Rett linje (konstant fart)</option><option value="2" selected>Andregradsfunksjon (konstant akselerasjon)</option></select></label>
+            <label for="va-fra">Fra t (s)<input id="va-fra" type="text" inputmode="decimal"></label>
+            <label for="va-til">Til t (s)<input id="va-til" type="text" inputmode="decimal"></label>
+            <label class="avkrysning" for="va-fart"><input id="va-fart" type="checkbox"> Vis fart i stedet for posisjon</label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>tilpasset funksjon</dt><dd id="va-funksjon" class="bryt"></dd></div>
+            <div><dt>fart</dt><dd id="va-v"></dd></div>
+            <div><dt>akselerasjon a = 2 · (tallet foran t²)</dt><dd id="va-a"></dd></div>
+            <div><dt>R²</dt><dd id="va-r2"></dd></div>
+            <div><dt>punkter i tidsrommet</dt><dd id="va-n"></dd></div>
+          </dl>
+          <div class="sim-styring mange"><p class="sim-hint uten-marg" id="va-knapper"></p></div>
+          <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje fra Tracker blir hoppet over. Eksempeldataene er laget med en modell og litt tilfeldig «klikkestøy» på 2 mm, og er ikke ekte målinger. Med «Vis fart» regnes farten ut fra nabopunktene, og den blir derfor mer ujevn enn posisjonen.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="rull-vinkel">Helning θ (grader)<input id="rull-vinkel" type="text" inputmode="decimal" value="5"></label>
+            <label for="rull-a">Målt a på skråplanet (m/s²)<input id="rull-a" type="text" inputmode="decimal"></label>
+            <label for="gulv-a">Målt a langs gulvet (m/s²)<input id="gulv-a" type="text" inputmode="decimal"></label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>uten friksjon: g sin θ</dt><dd id="rull-gs"></dd></div>
+            <div><dt>forskjell (bremsing fra friksjon)</dt><dd id="rull-frik"></dd></div>
+            <div><dt>rullefriksjonstall langs gulvet, |a|/g</dt><dd id="gulv-mu"></dd></div>
+          </dl>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Forklar</span><div><p>Kraften som drar vogna nedover langs planet, er tyngdens komponent langs planet: mg sin θ. Bruk Newtons 2. lov til å vise at a = g sin θ uten friksjon.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Last inn eksempeldataene for skråplanet, og tilpass en andregradsfunksjon. Hvor stor er akselerasjonen? Sammenlign med g sin θ.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er den målte akselerasjonen litt mindre enn g sin θ? Hvor stor friksjonskraft tilsvarer forskjellen for en vogn på 0,50 kg?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Last inn eksempeldataene for ballen på gulvet. Tilpass først en rett linje og så en andregradsfunksjon. Hvilken modell passer best? Hvor stor er bremsingen?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut rullefriksjonstallet for ballen. Hvor langt ville ballen rullet før den stoppet?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Prøv både en vogn og en ball på samme skråplan. Ballen får mindre akselerasjon enn vogna, selv med lite friksjon. Hvorfor? Tenk på hvor energien går når ballen begynner å rulle.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Langs planet virker bare mg sin θ når det ikke er friksjon (normalkraften står vinkelrett på planet). ΣF = ma gir mg sin θ = ma, altså a = g sin θ.</li>
+              <li>Eksempeldataene gir a ≈ 0,80 m/s². Uten friksjon er g sin 5° ≈ 0,855 m/s².</li>
+              <li>Rullefriksjon og luftmotstand bremser vogna. Forskjellen er omtrent 0,06 m/s², som for en vogn på 0,50 kg tilsvarer en bremsekraft på omtrent 0,03 N.</li>
+              <li>Med en rett linje blir R² = 0,998, og punktene ligger systematisk over linja i midten. En andregradsfunksjon passer mye bedre (R² = 0,99999) og gir a ≈ −0,15 m/s². Ballen starter med 1,20 m/s.</li>
+              <li>μ<sub>r</sub> = |a|/g ≈ 0,15 / 9,81 ≈ 0,015. Ballen ville rullet s = v₀²/(2|a|) = 1,2² / (2 · 0,15) ≈ 4,8 m.</li>
+              <li>En ball som ruller, roterer også. En del av energien går til rotasjon, så mindre blir igjen til fart framover. En kompakt kule får a = (5/7) g sin θ uten friksjon. Rotasjonsenergi er ikke pensum i Fysikk 1, men forsøket viser at modellen a = g sin θ bare gjelder for noe som glir uten friksjon eller har lette hjul.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter. Passer etter Newtons 2. lov. I Fysikk 1 kan komponenten mg sin θ oppgis. I Fysikk 2 kan elevene utlede den selv, se <a href="../sim/skraaplan.html">Skråplan med friksjon</a>. Se også <a href="../sim/bevegelsesgrafer.html">Bevegelsesgrafer</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/videoanalyse.js"></script>
+</body>
+</html>

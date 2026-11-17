@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Videoanalyse uten video</title>
+  <meta name="description" content="Simulering for å øve på videoanalyse: Klikk på objektet bilde for bilde, slik som i Tracker, og analyser bevegelsen med rett linje eller andregradsfunksjon.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Rettlinjet bevegelse</p>
+        <h1>Videoanalyse uten video</h1>
+        <p class="ingress">Her kan du øve på videoanalyse før du filmer selv. Gå gjennom «videoen» bilde for bilde og klikk på objektet, slik du gjør i Tracker. Send punktene til analysen, og finn fart og akselerasjon.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="vv" class="dra forhold-fall" role="img" aria-label="Et bilde fra en simulert video med en målestokk. Klikk på objektet for å merke posisjonen."></canvas>
+          <div class="sim-styring mange">
+            <label for="vv-scenario">Video<select id="vv-scenario"><option value="fall">Ball som slippes</option><option value="muffins:1">1 muffinsform</option><option value="muffins:2">2 muffinsformer</option><option value="muffins:3">3 muffinsformer</option><option value="muffins:4">4 muffinsformer</option><option value="skraaplan">Vogn på skråplan</option><option value="gulv">Ball som ruller langs gulvet</option><option value="glid">Kloss som glir til den stopper</option><option value="stot">Støt mellom to vogner</option></select></label>
+            <label for="vv-objekt" id="rad-vv-objekt" hidden>Merk<select id="vv-objekt"><option value="A">Vogn A</option><option value="B">Vogn B</option></select></label>
+            <label for="vv-hopp">Etter hvert klikk<select id="vv-hopp"><option value="1">gå til neste bilde</option><option value="2">hopp over ett bilde</option><option value="3">hopp over to bilder</option></select></label>
+            <label for="vv-bilde" class="bred-felt">Bilde<input id="vv-bilde" type="range" min="0" max="10" step="1" value="0"></label>
+            <div class="sim-knapper"><button id="vv-forrige" class="knapp lys" type="button">Forrige bilde</button><button id="vv-neste" class="knapp lys" type="button">Neste bilde</button><button id="vv-start" class="knapp lys" type="button">Til første bilde</button><button id="vv-slett" class="knapp lys" type="button">Slett merkene</button><button id="vv-send" class="knapp" type="button">Send til analysen</button></div>
+            <p class="sim-hint uten-marg">Merket: <strong id="vv-antall">0 punkter</strong></p>
+          </div>
+          <figcaption class="sim-hint">Målestokken og koordinatsystemet er satt opp for deg. På skråplanet måles posisjonen langs planet. Klikk på midten av objektet. På vogner og klosser er det en hvit prikk. Ved støtet merker du først vogn A gjennom hele videoen, og så vogn B. Bare bilder der alle objektene er merket, blir sendt til analysen.</figcaption>
+        </figure>
+
+        <figure id="va" class="sim egne-data" data-mal="[]">
+          <h2>Analyse</h2>
+          <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
+          <div class="sim-styring mange uten-topp">
+            <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
+            <label for="va-eksempel-valg">Eksempeldata<select id="va-eksempel-valg"><option value="fall">Ball som slippes</option><option value="muffins:1">1 muffinsform</option><option value="muffins:2">2 muffinsformer</option><option value="muffins:3">3 muffinsformer</option><option value="muffins:4">4 muffinsformer</option><option value="skraaplan">Vogn på skråplan</option><option value="gulv">Ball som ruller langs gulvet</option><option value="glid">Kloss som glir til den stopper</option><option value="stot">Støt mellom to vogner</option></select></label>
+            <div class="sim-knapper"><button id="va-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button></div>
+          </div>
+          <canvas id="va-graf" class="statisk forhold-lav" role="img" aria-label="Målepunktene mot tiden med den tilpassede kurven."></canvas>
+          <div class="sim-styring mange">
+            <label for="va-kolonne" id="rad-kolonne" hidden>Kolonne<select id="va-kolonne"></select></label>
+            <label for="va-modell">Modell<select id="va-modell"><option value="1">Rett linje (konstant fart)</option><option value="2" selected>Andregradsfunksjon (konstant akselerasjon)</option></select></label>
+            <label for="va-fra">Fra t (s)<input id="va-fra" type="text" inputmode="decimal"></label>
+            <label for="va-til">Til t (s)<input id="va-til" type="text" inputmode="decimal"></label>
+            <label class="avkrysning" for="va-fart"><input id="va-fart" type="checkbox"> Vis fart i stedet for posisjon</label>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>tilpasset funksjon</dt><dd id="va-funksjon" class="bryt"></dd></div>
+            <div><dt>fart</dt><dd id="va-v"></dd></div>
+            <div><dt>akselerasjon a = 2 · (tallet foran t²)</dt><dd id="va-a"></dd></div>
+            <div><dt>R²</dt><dd id="va-r2"></dd></div>
+            <div><dt>punkter i tidsrommet</dt><dd id="va-n"></dd></div>
+          </dl>
+          <div class="sim-styring mange"><p class="sim-hint uten-marg" id="va-knapper"></p></div>
+          <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje fra Tracker blir hoppet over. Eksempeldataene er laget med en modell og litt tilfeldig «klikkestøy» på 2 mm, og er ikke ekte målinger. Med «Vis fart» regnes farten ut fra nabopunktene, og den blir derfor mer ujevn enn posisjonen.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Øv</span><div><p>Velg «Ball som slippes». Merk ballen i hvert bilde, og send punktene til analysen. Tilpass en andregradsfunksjon. Hva blir g?</p></div></li>
+          <li><span class="fase test">Sammenlign</span><div><p>Last inn eksempeldataene for den samme videoen. Er dine punkter mer eller mindre nøyaktige enn eksempeldataene? Hvordan ser du det på R² og på fartsgrafen?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Merk bare hvert tredje bilde. Blir resultatet dårligere? Hvorfor kan det likevel være lurt når farten er lav?</p></div></li>
+          <li><span class="fase test">Øv</span><div><p>Velg «Støt mellom to vogner». Merk vogn A og vogn B, og finn fartene før og etter støtet. Er bevegelsesmengden bevart? Bruk tabellen i opplegget <a href="../opplegg/videoanalyse-stot.html">Videoanalyse av støt</a>.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor blir farten som regnes ut fra nabopunktene, mye mer ujevn enn posisjonen?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Med nøyaktige klikk blir g mellom omtrent 9,5 og 10,1 m/s². Modellen bak videoen bruker g = 9,81 m/s².</li>
+              <li>Eksempeldataene har en tilfeldig feil på omtrent 2 mm. Klikk med musa gir ofte litt større feil. Større feil gir lavere R² og en mer hakkete fartsgraf.</li>
+              <li>Færre punkter gir litt mer usikkerhet, men når objektet flytter seg lite mellom bildene, er avstanden mellom punktene like stor som klikkfeilen. Da blir fartene svært usikre. Med færre punkter blir avstanden større i forhold til feilen.</li>
+              <li>Modellen bak videoen har mA = 0,50 kg og mB = 0,25 kg. Rett før støtet har A farten 0,39 m/s, og rett etter har A 0,16 m/s og B 0,47 m/s. Med friksjon bør tidsrommene ligge nær støtet.</li>
+              <li>Farten er forskjellen mellom to posisjoner delt på en kort tid. En liten feil i posisjonen blir delt på et lite tall, så den blir stor i farten.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter før elevene filmer selv, eller som erstatning når det ikke er tid til å filme. Videoene er laget med de samme modellene som eksempeldataene i oppleggene om videoanalyse.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/videoanalyse.js"></script>
+</body>
+</html>
