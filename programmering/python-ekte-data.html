@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fysikk i Python med ekte data</title>
+  <meta name="description" content="Oversikt over Python-skript der elevene henter ekte data fra offentlige kilder, som phyphox, ISS, NOAA, LIGO og CERN, med lærerveiledning.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 1 og Fysikk 2</p>
+        <h1>Fysikk i Python med ekte data</h1>
+        <p class="ingress">I stedet for ferdige tall fra læreboka kan elevene hente ekte data rett inn i Python: målinger fra mobilen, posisjonen til romstasjonen, romvær, gravitasjonsbølger og partikkelkollisjoner. Skriptene og lærerveiledningene ligger i et eget repo på GitHub.</p>
+
+        <div class="tekst opplegg">
+          <p><a class="knapp lys" href="https://github.com/Z0XZ/Fysikk_APIer">Åpne repoet på GitHub</a></p>
+
+          <h2>Temaene</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Mappe</th><th scope="col">Tema</th><th scope="col">Fag</th><th scope="col">Datakilde</th><th scope="col">Nøkkel?</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/phyphox-mekanikk-svingninger">phyphox-mekanikk-svingninger</a></th><td>Mekanikk og svingninger med mobilsensorer: fritt fall og pendel</td><td>Fysikk 1</td><td>phyphox på mobilen</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/openmeteo-databehandling">openmeteo-databehandling</a></th><td>Regresjon og usikkerhet med værdata</td><td>Fysikk 1</td><td>Open-Meteo</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/frost-vaerdata-norge">frost-vaerdata-norge</a></th><td>Regresjon og usikkerhet med norske værstasjonsdata</td><td>Fysikk 1</td><td>Frost API (MET Norway)</td><td>Ja (gratis)</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/hr-diagram-gaia">hr-diagram-gaia</a></th><td>HR-diagram fra Gaia-satellitten</td><td>Fysikk 1 og 2</td><td>ESA Gaia</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/iss-bane-fysikk">iss-bane-fysikk</a></th><td>Gravitasjon og banefart for ISS i sanntid</td><td>Fysikk 2</td><td>wheretheiss.at, Open Notify</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/noaa-nordlys-romvaer">noaa-nordlys-romvaer</a></th><td>Elektromagnetisme, nordlys og romvær</td><td>Fysikk 2</td><td>NOAA Space Weather Prediction Center</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/ligo-gravitasjonsbolger">ligo-gravitasjonsbolger</a></th><td>Finn en gravitasjonsbølge</td><td>Fysikk 2</td><td>LIGO Open Science Center</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/cern-kvantefysikk">cern-kvantefysikk</a></th><td>Finn Z-bosonet med partikkeldata</td><td>Fysikk 2</td><td>CERN Open Data</td><td>Nei</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/kvante-tilfeldige-tall">kvante-tilfeldige-tall</a></th><td>Kvantefysikk og statistikk med ekte tilfeldige tall</td><td>Fysikk 2</td><td>ANU Quantum Random Numbers</td><td>Ja (gratis)</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/nasa-astronomi">nasa-astronomi</a></th><td>Astronomi og romfart, blant annet energien til asteroider</td><td>Fysikk 1 og 2</td><td>api.nasa.gov</td><td>Ja (gratis)</td></tr>
+                <tr><th scope="row"><a href="https://github.com/Z0XZ/Fysikk_APIer/tree/main/flere-api-eksempler">flere-api-eksempler</a></th><td>Jordskjelv og dagslengde gjennom året</td><td>Ekstra</td><td>USGS, sunrise-sunset.org</td><td>Nei</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Hvert tema har en mappe med kjørbare skript. Lærerveiledningene i repoet har trinnvise instruksjoner, kobling til læreplanen, regneoppgaver og forslag til utvidelser: <a href="https://github.com/Z0XZ/Fysikk_APIer/blob/main/Laererveiledning_API-eksempler_Fysikk.md">veiledning for API-eksemplene</a> og <a href="https://github.com/Z0XZ/Fysikk_APIer/blob/main/Laererveiledning_HR-diagram_Gaia.md">veiledning for HR-diagrammet</a>.</p>
+
+          <h2>Kom i gang</h2>
+        <pre class="kode"><code>git clone https://github.com/Z0XZ/Fysikk_APIer.git
+cd Fysikk_APIer
+pip install -r requirements.txt</code></pre>
+          <p>Noen tjenester krever en gratis API-nøkkel. Det står i lærerveiledningen hvordan dere får den.</p>
+
+          <h2>Tips til bruk i timen</h2>
+          <ul>
+            <li>Test skriptene fra skolens nett dagen før. Brannmuren kan blokkere enkelte tjenester.</li>
+            <li>Mange skript lagrer dataene som en CSV-fil. Hent dataene på forhånd og del fila med elevene, hvis nettet er ustabilt.</li>
+            <li>Ekte data har støy, hull og uventede verdier. Det er en god anledning til å snakke om usikkerhet og databehandling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

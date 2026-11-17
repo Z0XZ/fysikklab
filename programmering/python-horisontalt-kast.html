@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Horisontalt kast med Eulers metode</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Simuler et horisontalt kast med vektorer i numpy og Eulers metode, og sammenlign med bevegelseslikningene.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Bevegelse og krefter i to dimensjoner</p>
+        <h1>Horisontalt kast med Eulers metode</h1>
+        <p class="ingress">En ball triller ut over kanten av et bord som er 0,80 m høyt, med farten 1,3 m/s. Hvor langt fra bordet lander den? Her regner vi det ut med små tidssteg, og bruker numpy-vektorer for å regne med x og y samtidig.</p>
+
+        <div class="tekst opplegg">
+          <h2>Steg 1: Simuleringen</h2>
+          <p>Akselerasjon, fart og posisjon er vektorer med to komponenter, x og y. I hvert tidssteg oppdaterer vi først farten og så posisjonen: v = v + aΔt og s = s + vΔt. Løkka går så lenge ballen er over gulvet.</p>
+        <pre class="kode"><code>import numpy as np
+
+a = np.array([0, -9.81])   # akselerasjon i m/s², x og y
+v = np.array([1.3, 0])     # startfart i m/s
+s = np.array([0, 0.80])    # startposisjon i m (bordkanten)
+
+t = 0       # s
+dt = 0.01   # s
+y_gulv = 0  # m
+
+while s[1] &gt; y_gulv:
+    v = v + a*dt
+    s = s + v*dt
+    t = t + dt
+
+print(f"Ballen lander etter {t:.2f} s.")
+print(f"Ballen lander {s[0]:.2f} m fra bordkanten.")
+print(f"Fartsvektoren er da {v} m/s.")
+print(f"Farten er {np.linalg.norm(v):.2f} m/s.")</code></pre>
+
+          <h2>Steg 2: Sammenlign med bevegelseslikningene</h2>
+          <p>Legg til dette nederst:</p>
+        <pre class="kode"><code># Eksakt løsning med bevegelseslikningene
+t_eksakt = np.sqrt(2*0.80/9.81)
+print(f"Eksakt: lander etter {t_eksakt:.3f} s, {1.3*t_eksakt:.3f} m fra kanten, "
+      f"med farten {np.hypot(1.3, 9.81*t_eksakt):.2f} m/s")</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 1 og 2. Hvor godt stemmer simuleringen med de eksakte svarene?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor endrer ikke x-komponenten av farten seg? Hva betyr det at fartsvektoren er [1.3, −3.924]?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Prøv dt = 0,05, 0,02 og 0,005. Hvordan påvirker tidssteget svaret? Hvorfor stopper løkka alltid litt for sent?</p></div></li>
+          <li><span class="fase test">Endre</span><div><p>Gjør kastet skrått: Ballen kastes fra bordkanten med 4,0 m/s, 45° over horisontalen. Hvordan må startfarten skrives som en vektor? Hvor langt fra bordet lander ballen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Legg til luftmotstand: a = g − (k/m)|v| · v, der |v| er farten (np.linalg.norm). Bruk k/m = 0,05 m⁻¹. Hvordan endres landingspunktet? Hvorfor er det mye enklere å gjøre dette numerisk enn for hånd?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Simuleringen gir 0,40 s, 0,52 m og 4,13 m/s. Eksakt er svarene 0,404 s, 0,525 m og 4,17 m/s.</li>
+              <li>Det virker ingen kraft vannrett, så akselerasjonen i x-retning er null. Fartsvektoren betyr 1,3 m/s vannrett og 3,92 m/s nedover.</li>
+              <li>Med dt = 0,05 og 0,02 blir landingspunktet 0,52 m, og med 0,005 blir det 0,53 m. Løkka sjekker høyden først etter et helt steg, så ballen er litt under gulvet når løkka stopper. Feilen blir mindre med mindre tidssteg.</li>
+              <li>v = np.array([4.0*np.cos(np.radians(45)), 4.0*np.sin(np.radians(45))]). Med dt = 0,001 lander ballen etter 0,78 s, 2,22 m fra bordkanten.</li>
+              <li>Ballen lander nærmere bordet, fordi luftmotstanden bremser både vannrett og loddrett. Med luftmotstand avhenger akselerasjonen av farten, så bevegelseslikningene gjelder ikke lenger. Numerisk trenger vi bare å endre én linje.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Fungerer også i Fysikk 1 som en første øving i Eulers metode. Se også simuleringen <a href="../sim/skratt-kast.html">Skrått kast</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

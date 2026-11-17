@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Variable krefter i Python</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 1: Bremsing når friksjonstallet endrer seg, og et kast med luftmotstand. Når kraften ikke er konstant, gjelder ikke bevegelseslikningene.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 1 · Krefter</p>
+        <h1>Variable krefter i Python</h1>
+        <p class="ingress">Bevegelseslikningene gjelder bare når akselerasjonen er konstant. Hvis kraften endrer seg underveis, for eksempel fordi friksjonen eller luftmotstanden endrer seg, kan vi i stedet regne ut bevegelsen i mange små tidssteg.</p>
+
+        <div class="tekst opplegg">
+          <h2>Del 1: Bremsing med friksjon som endrer seg</h2>
+          <p>En bil på 2000 kg kjører i 10 m/s og bremser. Veien blir grovere jo lenger bilen kjører, så friksjonstallet øker med strekningen: μ(s) = 0,20 + 0,10 · s<sup>0,2</sup>. Programmet under skal finne bremselengden, men det har en feil.</p>
+        <pre class="kode"><code>s = 0       # m
+t = 0       # s
+dt = 0      # s
+v = 10      # m/s
+m = 2000    # kg
+g = 9.81    # m/s²
+
+def my(s):
+    return 0.2 + 0.1*s**0.2
+
+def R(s):
+    return my(s)*m*g
+
+while v &gt; 0:
+    a = -R(s)/m
+    v += a*dt
+    s += v*dt
+    t += dt
+
+print(f"Bremselengden er {s:.2f} m. Tiden det tar å bremse er {t:.2f} s.")</code></pre>
+
+          <h2>Del 2: Kast med luftmotstand</h2>
+          <p>En ball med massen 22 g kastes rett opp med 10 m/s fra taket på en bygning. Luftmotstanden er L = kv² med k = 0,01 N/(m/s)². Ballen er i lufta i 3,0 s før den lander. Vi bruker numpy-tabeller og en for-løkke, og lagrer alle verdiene slik at vi kan plotte dem.</p>
+        <pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+n = 1000
+T = 3.0       # s
+t = np.linspace(0, T, n)
+dt = t[1] - t[0]
+
+m = 0.022     # kg
+g = 9.81      # m/s²
+k = 0.01      # N/(m/s)², luftmotstandstallet
+
+s = np.zeros(n)
+v = np.zeros(n)
+a = np.zeros(n)
+v[0] = 10     # m/s, kastet rett opp
+
+for i in range(n-1):
+    G = -m*g
+    L = -k*v[i]*abs(v[i])   # alltid mot fartsretningen
+    a[i] = (G + L)/m
+    v[i+1] = v[i] + a[i]*dt
+    s[i+1] = s[i] + v[i]*dt
+a[-1] = a[-2]
+
+print(f"Høyeste punkt: {s.max():.2f} m over kastepunktet, ved t = {t[np.argmax(s)]:.2f} s")
+print(f"Farten etter 3,0 s: {v[-1]:.2f} m/s")
+print(f"Terminalfart: {np.sqrt(m*g/k):.2f} m/s")
+
+fig, akser = plt.subplots(3, 1, figsize=(7, 8), sharex=True)
+for akse, y, navn in zip(akser, [s, v, a], ["$s$ / m", "$v$ / (m/s)", "$a$ / (m/s$^2$)"]):
+    akse.plot(t, y)
+    akse.set_ylabel(navn)
+    akse.grid()
+akser[-1].set_xlabel("$t$ / s")
+plt.show()</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Feilsøk</span><div><p>Kjør programmet i del 1. Hva skjer? Finn feilen og rett den.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hva blir bremselengden og bremsetiden? Sammenlign med en bil som bremser med konstant μ = 0,20. Regn ut den for hånd med bevegelseslikningene, og sjekk med programmet.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor kan vi ikke bruke bevegelseslikningene i del 1? Hvorfor skriver vi a = −R(s)/m inne i løkka og ikke før den?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør del 2. Hvor høyt kommer ballen, og hvor fort faller den til slutt? Sammenlign med et kast uten luftmotstand (k = 0).</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er akselerasjonen større enn g på vei opp og mindre enn g på vei ned? Hva er akselerasjonen i toppunktet?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor bruker vi v · |v| og ikke v² i luftmotstanden?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hvor stor må k være for at ballen bare skal komme 1,0 m over kastepunktet? Prøv deg fram, eller lag en løkke som øker k i små steg.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Programmet henger, fordi dt = 0. Da endrer verken farten eller posisjonen seg, og v &gt; 0 er alltid sann. Sett for eksempel dt = 0,01.</li>
+              <li>Med dt = 0,01 blir bremselengden 14,8 m og bremsetiden 2,9 s. Med konstant μ = 0,20 er a = −1,96 m/s², og s = v₀²/(2|a|) = 25,5 m på 5,1 s. Den variable friksjonen er større, så bilen stopper tidligere.</li>
+              <li>Akselerasjonen avhenger av hvor bilen er, så den er ikke konstant. Den må regnes ut på nytt for hvert tidssteg.</li>
+              <li>Med luftmotstand når ballen 1,90 m over kastepunktet etter 0,54 s, og farten etter 3,0 s er 4,65 m/s nedover, som er terminalfarten √(mg/k). Uten luftmotstand når den 5,1 m, og farten etter 3,0 s er 19,4 m/s.</li>
+              <li>På vei opp virker både tyngden og luftmotstanden nedover, så |a| &gt; g. På vei ned virker luftmotstanden oppover, så |a| &lt; g. I toppunktet er farten null, så luftmotstanden er null, og a = −g.</li>
+              <li>v · |v| har samme fortegn som v. Da peker −kv|v| alltid mot fartsretningen, både på vei opp og ned. Med v² ville luftmotstanden alltid pekt samme vei.</li>
+              <li>Med løkke: Øk k til s.max() er under 1,0 m. Svaret blir omtrent k = 0,03 N/(m/s)².</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45–60 minutter. Del 1 passer etter friksjon, del 2 etter luftmotstand. Se også simuleringene <a href="../sim/luftmotstand.html">Fall med luftmotstand</a> og <a href="../sim/bremselengde.html">Reaksjons- og bremselengde</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -376,6 +376,7 @@ a.fag-kort:hover h3 { color: var(--farge); }
 .side .tekst.opplegg { max-width: 48rem; margin-top: 2rem; }
 .tekst.opplegg h2 { font-size: clamp(1.3rem, 2.4vw, 1.6rem); margin: 2rem 0 .6rem; }
 .tekst.opplegg h2:first-child { margin-top: 0; }
+.tekst.opplegg h3 { font-size: 1.15rem; margin: 1.5rem 0 .4rem; }
 .tekst.opplegg ul, .tekst.opplegg ol { padding-left: 1.4rem; }
 .tekst.opplegg li + li { margin-top: .35rem; }
 .tekst.opplegg .formel { margin: .75rem 0; }

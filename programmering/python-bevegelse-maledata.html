@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fart og akselerasjon fra måledata</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 1: Regn ut fart og akselerasjon fra posisjonsdata med sentraldifferanser, finn tyngdeakselerasjonen og sprettallet til en sprettball.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 1 · Rettlinjet bevegelse</p>
+        <h1>Fart og akselerasjon fra måledata</h1>
+        <p class="ingress">Fra en video eller en bevegelsessensor får vi posisjonen til en gjenstand ved ulike tidspunkter. Men hvordan finner vi farten og akselerasjonen? Her lar vi Python regne ut stigningstall mellom målepunktene, og bruker det på en sprettball.</p>
+
+        <div class="tekst opplegg">
+          <h2>Data</h2>
+          <p><a class="knapp lys" href="../data/sprettball.csv" download>Last ned sprettball.csv</a></p>
+          <p>Fila har to kolonner: tiden i sekunder og høyden til ballen i meter, 30 målinger per sekund. Ballen slippes fra 0,65 m og spretter flere ganger. Dataene er laget med en modell med sprettall 0,80 og 1 mm tilfeldig målestøy, slik at de ligner data fra videoanalyse. De er ikke ekte målinger. Bytt gjerne ut fila med egne data fra Tracker.</p>
+
+          <h2>Steg 1: Posisjon, fart og akselerasjon</h2>
+          <p>Farten i punkt i regnes ut som stigningstallet mellom naboene: v<sub>i</sub> = (s<sub>i+1</sub> − s<sub>i−1</sub>) / (t<sub>i+1</sub> − t<sub>i−1</sub>). Dette kalles en sentraldifferanse. Akselerasjonen finner vi på samme måte fra farten.</p>
+        <pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+data = np.loadtxt("sprettball.csv", delimiter=",", skiprows=1)
+t = data[:, 0]
+s = data[:, 1]
+n = len(t)
+
+# Farten: sentraldifferanse, altså stigningstallet mellom naboene
+v = np.zeros(n)
+for i in range(1, n-1):
+    v[i] = (s[i+1] - s[i-1]) / (t[i+1] - t[i-1])
+
+# Akselerasjonen: samme metode brukt på farten
+a = np.zeros(n)
+for i in range(1, n-1):
+    a[i] = (v[i+1] - v[i-1]) / (t[i+1] - t[i-1])
+
+plt.figure(figsize=(8, 7))
+plt.subplot(3, 1, 1)
+plt.plot(t, s, ".-")
+plt.ylabel("$s$ / m")
+plt.grid()
+plt.subplot(3, 1, 2)
+plt.plot(t[1:n-1], v[1:n-1], ".-")
+plt.ylabel("$v$ / (m/s)")
+plt.grid()
+plt.subplot(3, 1, 3)
+plt.plot(t[2:n-2], a[2:n-2], ".-")
+plt.xlabel("$t$ / s")
+plt.ylabel("$a$ / (m/s$^2$)")
+plt.grid()
+plt.tight_layout()
+plt.show()</code></pre>
+
+          <h2>Steg 2: Tyngdeakselerasjonen fra det første fallet</h2>
+          <p>Legg til dette nederst. Vi tilpasser en andregradsfunksjon til fallet og sammenligner med akselerasjonen fra steg 1.</p>
+        <pre class="kode"><code># Velg tidsrommet for det første fallet. Se på grafen og juster grensene.
+fall = (t &gt;= 0.13) &amp; (t &lt;= 0.43)
+koeff = np.polyfit(t[fall], s[fall], 2)
+print(f"Andregradsfunksjon: s = {koeff[0]:.3f} t² + {koeff[1]:.3f} t + {koeff[2]:.3f}")
+print(f"Akselerasjon: {2*koeff[0]:.2f} m/s²")
+
+# Gjennomsnittlig akselerasjon fra den numeriske deriveringen i samme tidsrom
+print(f"Middelverdi av a i tidsrommet: {np.mean(a[fall]):.2f} m/s²")</code></pre>
+
+          <h2>Steg 3: Hvor mye energi forsvinner i hvert sprett?</h2>
+        <pre class="kode"><code># Finn toppunktene etter hvert sprett
+topper = []
+for i in range(1, n-1):
+    if s[i] &gt; s[i-1] and s[i] &gt;= s[i+1] and s[i] &gt; 0.05 and t[i] &gt; 0.5:
+        topper.append(s[i])
+print("Toppunkter:", [round(float(h), 3) for h in topper])
+for i in range(1, len(topper)):
+    print(f"Forholdet mellom topp {i+1} og topp {i}: {topper[i]/topper[i-1]:.2f}")</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 1. Når slippes ballen, og når treffer den gulvet første gang? Beskriv formen på de tre grafene mellom sprettene og i selve sprettene.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er grafen for farten mer ujevn enn grafen for posisjonen, og grafen for akselerasjonen enda mer ujevn?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Kjør steg 2. Hvorfor blir middelverdien av akselerasjonen fra steg 1 dårligere enn andregradstilpasningen? Prøv tidsrommet 0,13–0,37 s i stedet.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Kjør steg 3. Hva er forholdet mellom to toppunkter som følger etter hverandre? Hva blir forholdet mellom farten rett etter og rett før et sprett?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvor mange prosent av den mekaniske energien forsvinner i hvert sprett? Hvor blir det av energien?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Bruk energibevaring til å regne ut farten rett før det første spretten, og høyden ballen skal nå etter spretten hvis sprettallet er 0,80. Sammenlign med det første toppunktet.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Ballen slippes ved 0,10 s og treffer gulvet ved omtrent 0,46 s. Posisjonen består av parabler. Farten er rette linjer som hopper fra negativ til positiv i hvert sprett. Akselerasjonen er omtrent −9,8 m/s² mellom sprettene, med store topper i sprettene, der gulvet gir en stor kraft i kort tid.</li>
+              <li>Målestøyen på 1 mm deles på et kort tidsrom (0,067 s) når vi regner ut farten, så støyen blir stor i farten. Når vi deriverer en gang til, blir den enda større.</li>
+              <li>Andregradstilpasningen gir −9,79 m/s², mens middelverdien blir −9,24 m/s². Punktene nær spretten ved 0,43–0,47 s får med seg en del av spretten. Med 0,13–0,37 s blir svarene −9,82 og −9,64 m/s². Tilpasning til mange punkter jevner ut støyen bedre enn derivering.</li>
+              <li>Toppunktene er 0,415, 0,265, 0,171, 0,110 og 0,069 m. Forholdet er omtrent 0,64. Høyden er proporsjonal med v², så forholdet mellom fartene er √0,64 = 0,80.</li>
+              <li>Den mekaniske energien i toppunktet er mgh, så 36 % forsvinner i hvert sprett. Energien blir til indre energi i ballen og gulvet, og litt lyd.</li>
+              <li>v = √(2 · 9,81 · 0,65) ≈ 3,57 m/s. Etter spretten er farten 0,80 · 3,57 ≈ 2,86 m/s, som gir h = v²/(2g) ≈ 0,416 m. Det stemmer med 0,415 m.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter rettlinjet bevegelse, som forberedelse til videoanalyse. Se også opplegget <a href="../opplegg/video-fall.html">Videoanalyse av fall</a> og simuleringen <a href="../sim/sprettball.html">Sprettball</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

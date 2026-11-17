@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sirkelbevegelse med sympy og simulering</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Løs likningssett for kjeglependel og dosert sving med sympy, og simuler en snøkuppel og en loop med friksjon.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Sirkelbevegelse</p>
+        <h1>Sirkelbevegelse med sympy og simulering</h1>
+        <p class="ingress">I del 1 bruker vi Python som CAS: Sympy løser likningssettene for en kjeglependel og en dosert sving. I del 2 simulerer vi bevegelser der kraftsummen endrer seg underveis, slik at vi ikke kan bruke formlene direkte: en skiløper på en snøkuppel og en vogn i en loop med friksjon.</p>
+
+        <div class="tekst opplegg">
+          <h2>Del 1: Sympy i stedet for CAS</h2>
+          <p>Sympy må installeres først: <code>pip install sympy</code>. De viktigste kommandoene er <code>sp.symbols</code> (lager symboler), <code>sp.Eq</code> (lager en likning), <code>sp.solve</code> (løser), <code>sp.simplify</code> (forenkler) og <code>.subs</code> (setter inn tall). I Jupyter kan svarene vises pent med <code>display(Math(sp.latex(...)))</code> fra <code>IPython.display</code>.</p>
+
+          <h3>Kjeglependelen</h3>
+          <p>Kreftene på kula gir S cos θ = mg og S sin θ = mv²/r, med r = L sin θ. Vi lar sympy løse for v² i stedet for v. Da blir likningssettet lineært, og vi slipper negative røtter.</p>
+        <pre class="kode"><code>import sympy as sp
+
+m, g, L, theta, S, v2 = sp.symbols("m g L theta S v^2", positive=True)
+r = L*sp.sin(theta)
+
+lik1 = sp.Eq(S*sp.cos(theta), m*g)       # loddrett
+lik2 = sp.Eq(S*sp.sin(theta), m*v2/r)    # horisontalt, mot sentrum
+
+losning = sp.solve([lik1, lik2], [S, v2], dict=True)[0]
+print("S =", losning[S])
+print("v² =", losning[v2])
+
+T = sp.sqrt(sp.simplify(4*sp.pi**2*r**2/losning[v2]))
+print("T =", T)
+
+verdier = {L: 0.800, theta: sp.rad(30), g: 9.81}
+print("v =", sp.sqrt(losning[v2]).subs(verdier).evalf(3), "m/s")
+print("T =", T.subs(verdier).evalf(3), "s")</code></pre>
+
+          <h3>Dosert sving med friksjon</h3>
+          <p>Ved største fart peker friksjonen μN nedover langs veibanen. Loddrett og vannrett gir N cos θ − μN sin θ = mg og N sin θ + μN cos θ = mv²/r. Ved minste fart peker friksjonen oppover, og det tilsvarer å bytte μ med −μ.</p>
+        <pre class="kode"><code>import sympy as sp
+
+m, g, r, theta, mu, N, v2 = sp.symbols("m g r theta mu N v^2", positive=True)
+
+lik1 = sp.Eq(N*sp.cos(theta) - mu*N*sp.sin(theta), m*g)
+lik2 = sp.Eq(N*sp.sin(theta) + mu*N*sp.cos(theta), m*v2/r)
+
+losning = sp.solve([lik1, lik2], [N, v2], dict=True)[0]
+v_maks_kvadrat = sp.factor(losning[v2])
+print("v_maks² =", v_maks_kvadrat)
+
+bok = r*g*(sp.tan(theta) + mu)/(1 - mu*sp.tan(theta))
+print("Differanse mot formelen i boka:", sp.simplify(v_maks_kvadrat - bok))
+
+v_maks = sp.sqrt(v_maks_kvadrat)
+v_min = v_maks.subs(mu, -mu)
+tall = {r: 120, theta: sp.rad(17.8), g: 9.81, mu: 0.10}
+print(f"v_min = {float(v_min.subs(tall))*3.6:.0f} km/h, v_maks = {float(v_maks.subs(tall))*3.6:.0f} km/h")</code></pre>
+
+          <h2>Del 2: Simuleringer</h2>
+          <p>Når kraftsummen avhenger av farten eller vinkelen, bruker vi Eulers metode med vinkelen som posisjon: Δθ = (v/r)Δt.</p>
+
+          <h3>Snøkuppelen</h3>
+          <p>Tiril glir fra toppen av en glatt snøkuppel med radius 12,0 m. På kuppelen er akselerasjonen langs banen g sin θ, og hun har kontakt så lenge N = mg cos θ − mv²/R &gt; 0. Når hun mister kontakten, fortsetter hun som et skrått kast.</p>
+        <pre class="kode"><code>import numpy as np
+
+g = 9.81
+R = 12.0
+mu = 0.0       # friksjonstallet, sett til 0.10 i oppgave 6
+v0 = 0.10      # startfart i m/s, sett til 2.0 i oppgave 6
+dt = 0.0001
+
+# På kuppelen: vinkelen theta fra toppen er posisjonen
+theta = 0.0
+v = v0
+while True:
+    N_per_m = g*np.cos(theta) - v**2/R
+    if N_per_m &lt; 0:
+        break
+    if v &lt;= 0:
+        print("Tiril stopper på kuppelen.")
+        break
+    a = g*np.sin(theta) - mu*N_per_m
+    theta = theta + v/R*dt
+    v = v + a*dt
+
+print(f"Mister kontakten ved {np.degrees(theta):.1f} grader (teori uten friksjon: {np.degrees(np.arccos(2/3)):.1f} grader)")
+print(f"Høyde: {R*np.cos(theta):.2f} m, fart: {v:.2f} m/s")
+
+# Skrått kast med origo i sentrum av kuppelen
+x, y = R*np.sin(theta), R*np.cos(theta)
+vx, vy = v*np.cos(theta), -v*np.sin(theta)
+while y &gt; 0:
+    vy = vy - g*dt
+    x = x + vx*dt
+    y = y + vy*dt
+
+print(f"Lander {x:.1f} m fra sentrum, {x - R:.1f} m utenfor kanten")</code></pre>
+
+          <h3>Loop med friksjon</h3>
+          <p>En vogn kjører inn i en loop med radius 10,0 m. Friksjonen er μN med μ = 0,080, så den er størst der normalkraften er størst. Funksjonen <code>simuler(v0, mu)</code> returnerer listene og om vogna klarte loopen.</p>
+        <pre class="kode"><code>import numpy as np
+
+g = 9.81      # m/s²
+r = 10.0      # m
+mu = 0.080
+dt = 0.0001   # s
+
+def simuler(v0, mu=mu):
+    phi = 0.0
+    v = v0
+    phi_liste, v_liste, N_liste = [phi], [v], [v**2/r + g]
+    while phi &lt; 2*np.pi:
+        N_per_m = v**2/r + g*np.cos(phi)
+        if N_per_m &lt; 0 or v &lt;= 0:          # mister kontakten eller stopper
+            return phi_liste, v_liste, N_liste, False
+        a = -g*np.sin(phi) - mu*N_per_m
+        phi = phi + v/r*dt
+        v = v + a*dt
+        phi_liste.append(phi)
+        v_liste.append(v)
+        N_liste.append(v**2/r + g*np.cos(phi))
+    return phi_liste, v_liste, N_liste, True
+
+phi, v, N, klarte = simuler(25)
+if klarte:
+    print(f"Vogna klarer loopen og har {v[-1]:.1f} m/s når den er tilbake i bunnen")
+else:
+    print(f"Vogna mister kontakten ved {np.degrees(phi[-1]):.0f} grader med farten {v[-1]:.1f} m/s")
+
+v0 = 20.0
+while not simuler(v0)[3]:
+    v0 = v0 + 0.1
+print(f"Minste fart i bunnen: {v0:.1f} m/s (uten friksjon: {np.sqrt(5*g*r):.1f} m/s)")</code></pre>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Kjør</span><div><p>Kjør kjeglependelen. Skriv svarene for S, v² og T på formen du ville skrevet for hånd. Hva er farten og omløpstiden for L = 0,80 m og θ = 30°?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør den doserte svingen. Hvordan viser programmet at uttrykket er det samme som formelen i boka? Hvilket fartsintervall har bilene i en sving med radius 120 m og dosering 17,8° når μ = 0,10?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør snøkuppelen. Ved hvilken vinkel mister Tiril kontakten? Stemmer det med teorien cos θ = 2/3? Hvor langt utenfor kanten lander hun?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor kan vi ikke bruke energibevaring til å finne farten i toppen av loopen når det er friksjon?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør loopen. Klarer vogna loopen med 25 m/s i bunnen? Hva er minste fart i bunnen, og hvordan er det sammenlignet med √(5gr)?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Snøkuppelen med friksjon: Sett μ = 0,10 og v0 = 2,0 m/s, og sammenlign med μ = 0 og samme startfart. Mister hun kontakten tidligere eller senere? Prøv også μ = 0,10 med v0 = 0,10 m/s. Hva skjer, og hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Finn minste fart i bunnen av loopen for flere verdier av μ fra 0 til 0,20, og plott resultatet.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>S = mg/cos θ, v² = gL sin²θ/cos θ og T = 2π√(L cos θ/g). For L = 0,80 m og θ = 30° blir v = 1,51 m/s og T = 1,67 s.</li>
+              <li>Differansen mellom sympys uttrykk og formelen fra boka forenkles til 0. Fartsintervallet er 57–81 km/h.</li>
+              <li>Hun mister kontakten ved 48,2°, som stemmer med cos θ = 2/3. Da er hun 8,00 m over bakken med 8,86 m/s, og hun lander 13,5 m fra sentrum, altså 1,5 m utenfor kanten.</li>
+              <li>Friksjonsarbeidet avhenger av normalkraften, og normalkraften avhenger av farten. Vi kjenner ikke friksjonsarbeidet før vi vet hvordan farten endrer seg hele veien.</li>
+              <li>Nei. Vogna mister kontakten ved omtrent 157° med farten 9,5 m/s. Minste fart i bunnen er omtrent 25,8 m/s, mot √(5gr) = 22,1 m/s uten friksjon.</li>
+              <li>Med v0 = 2,0 m/s mister hun kontakten ved 47,3° uten friksjon og ved 50,3° med μ = 0,10. Med friksjon mister hun kontakten senere, fordi hun har mindre fart. Med v0 = 0,10 m/s og μ = 0,10 stopper hun på toppen: Der er tyngdekomponenten langs banen mindre enn friksjonen. Derfor er det lagt inn en sjekk for v ≤ 0 i programmet.</li>
+              <li>Minste startfart øker med friksjonstallet. Bruk en løkke over μ-verdier, og øk v0 i små steg til <code>simuler(v0, mu)</code> returnerer True.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter, gjerne som repetisjon av sirkelbevegelse. Del 1 kan brukes alene som en introduksjon til sympy. Se også simuleringene <a href="../sim/loddrett-sirkel.html">Loddrett sirkel</a> og <a href="../sim/dosert-sving.html">Dosert sving</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
