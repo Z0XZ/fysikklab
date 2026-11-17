@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reaksjons- og bremselengde</title>
+  <meta name="description" content="Simulering med oppgaver om konstant fart og konstant akselerasjon: Hvor langt kjører en bil før den stopper, og hva betyr noen km/h ekstra når et barn løper ut i veien?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Rettlinjet bevegelse</p>
+        <h1>Reaksjons- og bremselengde</h1>
+        <p class="ingress">Et barn løper ut i veien foran en bil. Først kjører bilen videre med samme fart mens sjåføren reagerer. Så bremser den med konstant akselerasjon. Stopper bilen i tide? Og hva skjer hvis den kjørte bare litt fortere?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="vei" class="statisk forhold-spor" role="img" aria-label="En bil på en vei med et hinder foran. Fargede striper viser reaksjonslengden og bremselengden."></canvas>
+          <dl class="sim-tall">
+            <div><dt>fart i m/s</dt><dd id="r-v"></dd></div>
+            <div><dt>akselerasjon ved bremsing</dt><dd id="r-a"></dd></div>
+            <div><dt>reaksjonslengde</dt><dd id="r-sr"></dd></div>
+            <div><dt>bremselengde</dt><dd id="r-sb"></dd></div>
+            <div><dt>stopplengde</dt><dd id="r-stopp"></dd></div>
+            <div><dt>resultat</dt><dd id="r-utfall" class="bryt"></dd></div>
+          </dl>
+          <canvas id="bremsegraf" class="statisk forhold-lav" role="img" aria-label="Fart mot tid. Arealet under grafen er delt i reaksjonstid og bremsetid."></canvas>
+          <div class="sim-styring mange">
+            <label for="fart">Fart <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="30" max="120" step="5" value="50"></label>
+            <label for="reaksjon">Reaksjonstid <output id="reaksjon-ut" for="reaksjon"></output><input id="reaksjon" type="range" min="0.5" max="2.5" step="0.1" value="1"></label>
+            <label for="fore">Føre<select id="fore"><option value="torr">Tørr asfalt (μ = 0,8)</option><option value="vat">Våt asfalt (μ = 0,5)</option><option value="sno">Snø (μ = 0,25)</option><option value="is">Is (μ = 0,1)</option></select></label>
+            <label for="avstand">Avstand til hinderet <output id="avstand-ut" for="avstand"></output><input id="avstand" type="range" min="10" max="100" step="1" value="30"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Bremsingen er regnet som konstant akselerasjon a = μg, der μ er friksjonstallet mellom dekk og vei. Tallene for μ er omtrentlige. Arealet under fartsgrafen er strekningen: oransje i reaksjonstiden og blågrønn under bremsingen.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med 50 km/h, reaksjonstid 1,0 s, tørr asfalt og 30 m til hinderet.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Regn ut reaksjonslengden, bremselengden og stopplengden. Stopper bilen før hinderet? Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Bilen kjører i stedet 60 km/h. Stopper den før hinderet? Hvis ikke, hvor fort tror du den kjører når den treffer?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten bilen treffer hinderet med i 60 km/h. Hvordan kan 10 km/h ekstra gi en så stor forskjell?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva skjer med reaksjonslengden og bremselengden når farten dobles, fra 50 til 100 km/h? Forklar ut fra formlene.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Prøv våt asfalt, snø og is med 50 km/h. Hvor fort kan du kjøre på is hvis bilen skal stoppe før 30 m?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>En sjåfør som ser på mobilen, kan få reaksjonstid på 2 s eller mer. Hva skjer med stopplengden ved 50 km/h?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Lag en formel for den største farten bilen kan ha for å stoppe før hinderet, uttrykt med D, reaksjonstiden t<sub>r</sub> og a. Bruk den for tørr asfalt, 1,0 s og 30 m.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>v = 50 / 3,6 = 13,9 m/s. Reaksjonslengde: 13,9 · 1,0 = 13,9 m. a = 0,8 · 9,81 = 7,85 m/s², og bremselengde: v² / (2a) = 13,9² / (2 · 7,85) = 12,3 m. Stopplengde 26,2 m, så bilen stopper 3,8 m før hinderet.</li>
+              <li>Nei. Stopplengden blir 34,4 m.</li>
+              <li>v = 16,7 m/s. Reaksjonslengden er 16,7 m, så bilen har 13,3 m å bremse på. v² = v₀² − 2as = 16,7² − 2 · 7,85 · 13,3 gir v ≈ 8,3 m/s ≈ 30 km/h. Bilen kjører lenger i reaksjonstiden, og den har mindre strekning igjen å bremse på. I tillegg vokser bremselengden med v².</li>
+              <li>Reaksjonslengden dobles (s = vt), og bremselengden blir fire ganger så lang (s = v²/(2a)): 27,8 m og 49,2 m.</li>
+              <li>Våt asfalt: 33,6 m. Snø: 53 m. Is: 112 m. På is må farten ned til omtrent 20 km/h: Da blir stopplengden 5,6 + 15,7 ≈ 21 m. Med 25 km/h blir den 31,5 m.</li>
+              <li>Reaksjonslengden blir 27,8 m, og stopplengden 40,1 m. Bilen treffer hinderet med 45 km/h, nesten uten å ha bremset.</li>
+              <li>D = vt<sub>r</sub> + v²/(2a) er en andregradslikning i v: v = −at<sub>r</sub> + √((at<sub>r</sub>)² + 2aD). Med a = 7,85 m/s², t<sub>r</sub> = 1,0 s og D = 30 m blir v = −7,85 + √(61,6 + 471) ≈ 15,2 m/s ≈ 55 km/h.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer etter bevegelseslikningene, og gir en fin kobling til trafikksikkerhet. Elevene kan måle sin egen reaksjonstid i opplegget <a href="../opplegg/reaksjonstid.html">Reaksjonstid</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/bremse.js"></script>
+</body>
+</html>

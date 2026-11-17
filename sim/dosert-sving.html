@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dosert sving</title>
+  <meta name="description" content="Simulering med oppgaver om sirkelbevegelse og krefter: En bil kjører gjennom en dosert sving. Finn den ideelle farten, og den største og minste farten med friksjon.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Sirkelbevegelse</p>
+        <h1>Dosert sving</h1>
+        <p class="ingress">En dosert sving heller inn mot sentrum av svingen. Da peker normalkraften litt inn mot sentrum og hjelper bilen rundt. Ved én bestemt fart trengs det ingen friksjon i det hele tatt. Hva skjer hvis bilen kjører fortere eller saktere?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="sving" class="statisk forhold-fall" role="img" aria-label="Tverrsnitt av en dosert vei med en bil sett bakfra, og piler for tyngde, normalkraft, friksjon og summen av kreftene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>ideell fart (ingen friksjon)</dt><dd id="r-ideal"></dd></div>
+            <div><dt>minste fart</dt><dd id="r-min"></dd></div>
+            <div><dt>største fart</dt><dd id="r-maks"></dd></div>
+            <div><dt>sentripetalakselerasjon</dt><dd id="r-a"></dd></div>
+            <div><dt>normalkraft N</dt><dd id="r-n"></dd></div>
+            <div><dt>friksjon som trengs</dt><dd id="r-r" class="bryt"></dd></div>
+            <div><dt>største friksjon μN</dt><dd id="r-rmaks"></dd></div>
+          </dl>
+          <p id="r-utfall" class="melding" role="status" style="padding: 0 1rem"></p>
+          <div class="sim-styring mange">
+            <label for="radius">Radius r <output id="radius-ut" for="radius"></output><input id="radius" type="range" min="20" max="200" step="5" value="50"></label>
+            <label for="vinkel">Dosering θ <output id="vinkel-ut" for="vinkel"></output><input id="vinkel" type="range" min="0" max="40" step="1" value="15"></label>
+            <label for="fart">Fart v <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="0" max="150" step="1" value="50"></label>
+            <label for="fore">Føre<select id="fore"><option value="torr">Tørr asfalt (μ = 0,8)</option><option value="vat">Våt asfalt (μ = 0,5)</option><option value="sno">Snø (μ = 0,2)</option><option value="is">Is (μ = 0,1)</option><option value="ingen">Uten friksjon</option></select></label>
+          </div>
+          <figcaption class="sim-hint">Bilen har massen 1200 kg og er sett bakfra, med sentrum av svingen til venstre. Friksjonen er positiv nedover veien, inn mot sentrum. Den stiplede pila er summen av kreftene, som må peke vannrett inn mot sentrum. Friksjonstallene er omtrentlige. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med r = 50 m, θ = 15°, 50 km/h og tørr asfalt.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvilken vei peker summen av kreftene på bilen? Hvorfor er den ikke parallell med veien?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Uten friksjon: Vis at den ideelle farten er v = √(rg tan θ). Regn den ut, og sjekk ved å velge «Uten friksjon» og finne farten der bilen holder seg på veien.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Kjør i 50 km/h på tørr asfalt. Hvilken vei peker friksjonen? Hva skjer med friksjonen hvis du kjører i 30 km/h?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Velg is. Finn den minste og største farten bilen kan ha. Hva skjer under og over disse fartene?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett θ = 0 (flat vei) og tørr asfalt. Regn ut den største farten med μmg = mv²/r. Hvor mye øker den største farten når veien doseres 15°?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor har velodromer og bobbaner mye brattere dosering enn vanlige veier?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Utled uttrykket for den største farten: v² = rg (sin θ + μ cos θ) / (cos θ − μ sin θ). Hva skjer når cos θ = μ sin θ?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Vannrett inn mot sentrum av svingen, fordi bilen går i en vannrett sirkel. Sentrum ligger på samme høyde som bilen, ikke nede i veien.</li>
+              <li>Uten friksjon: N sin θ = mv²/r og N cos θ = mg. Deler vi likningene, får vi tan θ = v²/(rg). v = √(50 · 9,81 · tan 15°) ≈ 11,5 m/s ≈ 41 km/h.</li>
+              <li>I 50 km/h kjører bilen fortere enn den ideelle farten, så friksjonen må peke nedover veien, inn mot sentrum: 1,4 kN. I 30 km/h kjører den for sakte, og friksjonen må peke oppover veien for å hindre at bilen glir ned.</li>
+              <li>På is (μ = 0,1) er minste fart 32 km/h og største fart 49 km/h. Under 32 km/h glir bilen ned mot sentrum. Over 49 km/h glir den utover.</li>
+              <li>v = √(μgr) = √(0,8 · 9,81 · 50) ≈ 19,8 m/s ≈ 71 km/h. Med 15° dosering blir den største farten 93 km/h.</li>
+              <li>Syklister og bobber har høy fart i krappe svinger. Den ideelle farten √(rg tan θ) blir stor bare når tan θ er stor, så banen må være bratt for at de ikke skal være avhengige av friksjon.</li>
+              <li>Med R = μN nedover veien: Vannrett: N sin θ + μN cos θ = mv²/r. Loddrett: N cos θ − μN sin θ = mg. Del likningene: v²/(rg) = (sin θ + μ cos θ) / (cos θ − μ sin θ). Når cos θ = μ sin θ, går nevneren mot null, og det er ingen øvre grense for farten. Med μ = 0,8 skjer det ved θ ≈ 51°.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 2, 4 og 7 er samme type som vanlige oppgaver om doserte svinger med og uten friksjon. Se også <a href="sirkelbevegelse.html">Sirkelbevegelse</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/dosert.js"></script>
+</body>
+</html>

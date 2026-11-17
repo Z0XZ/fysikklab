@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fall med luftmotstand</title>
+  <meta name="description" content="Simulering med oppgaver om luftmotstand og terminalfart: Muffinsformer faller med luftmotstand L = kv². Hvordan avhenger terminalfarten av massen?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Krefter</p>
+        <h1>Fall med luftmotstand</h1>
+        <p class="ingress">En muffinsform er lett og har stor flate, så luftmotstanden blir fort like stor som tyngden. Da faller den med konstant fart, terminalfarten. Hva skjer når du stabler flere former i hverandre? Formen blir den samme, men massen øker.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="muffins" class="statisk forhold-heis" role="img" aria-label="Muffinsformer som faller under en bevegelsessensor, med piler for tyngde og luftmotstand."></canvas>
+          <dl class="sim-tall">
+            <div><dt>masse</dt><dd id="r-m"></dd></div>
+            <div><dt>tyngde G</dt><dd id="r-g"></dd></div>
+            <div><dt>luftmotstand L nå</dt><dd id="r-l"></dd></div>
+            <div><dt>terminalfart</dt><dd id="r-vt"></dd></div>
+            <div><dt>falltid fra 2,0 m</dt><dd id="r-t"></dd></div>
+          </dl>
+          <canvas id="luftgraf" class="statisk forhold-lav" role="img" aria-label="Fart mot tid for fallene. Den stiplede linja er terminalfarten."></canvas>
+          <div class="sim-styring mange">
+            <label for="antall">Antall muffinsformer <output id="antall-ut" for="antall"></output><input id="antall" type="range" min="1" max="5" step="1" value="1"></label>
+            <label class="avkrysning" for="uten"><input id="uten" type="checkbox"> Uten luftmotstand</label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.25">Sakte (0,25×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp</button><button id="visk" class="knapp lys" type="button">Visk ut gamle grafer</button></div>
+          </div>
+          <figcaption class="sim-hint">Modellen bruker L = kv² med k = 3,24 · 10⁻³ kg/m og 0,40 g per form. Verdiene er valgt slik at én form får omtrent 1,1 m/s i terminalfart, som ligner typiske målinger. Ekte former kan variere. Grafene fra tidligere fall blir liggende igjen. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Slipp én form. Hvordan ser fartsgrafen ut? Hva skjer med luftmotstanden mens farten øker?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Forklar med Newtons lover hvorfor formen etter hvert faller med konstant fart. Hva er summen av kreftene da?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett L = mg når formen har terminalfart, og vis at v<sub>t</sub> = √(mg/k). Regn ut terminalfarten for én form, og sjekk.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med terminalfarten hvis du stabler fire former? Blir den fire ganger så stor? Test.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Slipp 1, 2, 3, 4 og 5 former, og les av terminalfarten hver gang. Lag en graf av v<sub>t</sub>² mot antall former. Hva viser grafen?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Slå på «Uten luftmotstand». Hvor mye kortere tid tar fallet? Hvor fort ville formen truffet gulvet?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En fallskjermhopper har terminalfart omtrent 55 m/s før skjermen utløses, og omtrent 5 m/s etterpå. Hvor mange ganger større blir k når skjermen utløses?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Farten øker raskt i starten, og flater så ut. Luftmotstanden øker med farten, så akselerasjonen blir mindre og mindre.</li>
+              <li>Når L = G, er summen av kreftene null. Etter Newtons 1. lov fortsetter formen da med konstant fart.</li>
+              <li>kv<sub>t</sub>² = mg gir v<sub>t</sub> = √(mg/k) = √(0,00040 · 9,81 / 0,00324) ≈ 1,1 m/s.</li>
+              <li>Nei. Massen blir fire ganger så stor, men v<sub>t</sub> ∝ √m, så terminalfarten blir dobbelt så stor: 2,2 m/s.</li>
+              <li>1,10, 1,56, 1,91, 2,20 og 2,46 m/s. v<sub>t</sub>² = (g/k) · m, så v<sub>t</sub>² mot antall former blir en rett linje gjennom origo. Det viser at luftmotstanden er proporsjonal med v². Med ekte målinger blir linja sjelden perfekt.</li>
+              <li>Uten luftmotstand tar fallet 0,64 s i stedet for 1,90 s, og formen treffer gulvet med 6,3 m/s i stedet for 1,1 m/s.</li>
+              <li>v<sub>t</sub> = √(mg/k), så k = mg/v<sub>t</sub>². Forholdet blir (55/5)² = 121. k blir omtrent 120 ganger større.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter, før eller etter forsøket med muffinsformer og bevegelsessensor. Elevene kan sammenligne terminalfartene sine med simuleringen, og undersøke om v<sub>t</sub>² er proporsjonal med antall former.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/luftmotstand.js"></script>
+</body>
+</html>

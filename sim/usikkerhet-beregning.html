@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usikkerhet i beregnede størrelser</title>
+  <meta name="description" content="Simulering med oppgaver om usikkerhet i Fysikk 2: Hvordan blir usikkerheten i et resultat som regnes ut fra flere målinger? Enkel regel, kvadratsum og simulering med tilfeldige målinger.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Tenke og gjøre fysikk</p>
+        <h1>Usikkerhet i beregnede størrelser</h1>
+        <p class="ingress">Når vi regner ut g fra lengden og svingetiden til en pendel, har begge målingene usikkerhet. Hvor stor blir usikkerheten i g? Og hvilken måling bør vi gjøre bedre for å få et sikrere resultat?</p>
+
+        <figure class="sim sim-bred">
+          <div class="sim-styring mange uten-topp">
+            <label for="forsok">Forsøk<select id="forsok"><option value="pendel">g fra pendel</option><option value="fall">g fra fritt fall</option><option value="tetthet">Tetthet til en kloss</option><option value="fart">Fart fra strekning og tid</option></select></label>
+            <p class="sim-hint uten-marg">Formel: <strong id="formel"></strong></p>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Måling</th><th scope="col">Verdi</th><th scope="col">Usikkerhet ±</th><th scope="col">Enhet</th><th scope="col">Bidrag |n| · Δx/x</th></tr></thead>
+              <tbody id="maal-rader"></tbody>
+            </table>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>resultat</dt><dd id="r-verdi"></dd></div>
+            <div><dt>enkel regel: relative usikkerheter legges sammen</dt><dd id="r-enkel" class="bryt"></dd></div>
+            <div><dt>kvadratsum</dt><dd id="r-kvadrat" class="bryt"></dd></div>
+            <div><dt>simulering med 5000 tilfeldige målinger</dt><dd id="r-mc" class="bryt"></dd></div>
+          </dl>
+          <canvas id="fordeling" class="statisk forhold-lav" role="img" aria-label="Søyler for hvor mye hver måling bidrar til usikkerheten, og et histogram over resultater fra tilfeldige målinger."></canvas>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="simuler" class="knapp" type="button">Simuler 5000 målinger</button></div>
+          </div>
+          <figcaption class="sim-hint">For et resultat R = C · x₁ⁿ¹ · x₂ⁿ² · … er den relative usikkerheten etter den enkle regelen ΔR/R = Σ |n| · Δx/x. Kvadratsummen er √Σ (n · Δx/x)², og den passer når feilene er tilfeldige og uavhengige av hverandre. I simuleringen trekkes hver måling fra en normalfordeling med standardavvik lik usikkerheten.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>En pendel er L = (0,800 ± 0,005) m lang og har svingetid T = (1,79 ± 0,02) s. Regn ut g og den relative usikkerheten i g med den enkle regelen. Sjekk.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor teller usikkerheten i T dobbelt? Hvilken måling bidrar mest til usikkerheten i g?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Eleven måler i stedet tiden for 10 svingninger og får 17,90 s ± 0,02 s. Hva blir usikkerheten i T nå, og hva blir usikkerheten i g? Skriv det inn og sjekk.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Trykk på «Simuler 5000 målinger» for pendelen. Ligger spredningen nærmest den enkle regelen eller kvadratsummen? Hvorfor gir den enkle regelen et større tall?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg tetthet til en kloss. Hvilken måling bidrar mest? Hvorfor er det lurt å måle den minste lengden med et skyvelære i stedet for en linjal?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Når to tall legges sammen eller trekkes fra, legger vi sammen de absolutte usikkerhetene. Vis med et eksempel hvorfor det kan gi stor relativ usikkerhet å trekke to like store tall fra hverandre.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I forsøket med fritt fall er falltiden 0,553 s. Hvor nøyaktig må tiden måles for at g skal få under 1 % usikkerhet? Hvilket måleutstyr trenger dere?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>g = 4π² · 0,800 / 1,79² ≈ 9,86 m/s². ΔL/L = 0,63 % og ΔT/T = 1,12 %. Δg/g = 0,63 % + 2 · 1,12 % ≈ 2,9 %, altså g = (9,9 ± 0,3) m/s².</li>
+              <li>T står i andre potens i formelen. En liten relativ feil i T blir dobbelt så stor i T². Svingetiden bidrar med 2,2 %, mye mer enn lengden med 0,6 %.</li>
+              <li>T = (1,790 ± 0,002) s, og ΔT/T = 0,11 %. Nå blir Δg/g = 0,63 % + 0,22 % ≈ 0,85 %. Nå er det lengden som bidrar mest.</li>
+              <li>Spredningen blir omtrent 2,3 %, som kvadratsummen. Den enkle regelen antar at alle feilene går i verste retning samtidig. Når feilene er tilfeldige, vil de ofte delvis oppheve hverandre.</li>
+              <li>Høyden c = 12 mm bidrar med 4,2 %, fordi den er kortest og har like stor absolutt usikkerhet som de andre. Et skyvelære måler med 0,05 mm usikkerhet, og da blir bidraget bare 0,4 %.</li>
+              <li>Eksempel: (10,5 ± 0,1) cm − (10,0 ± 0,1) cm = (0,5 ± 0,2) cm. Hvert tall har 1 % usikkerhet, men forskjellen har 40 %.</li>
+              <li>Δg/g = Δs/s + 2Δt/t. Med Δs/s = 0,67 % må 2Δt/t være under 0,33 %, så Δt må være under 0,0009 s, altså under 1 ms. Det krever lysporter eller en elektronisk tidtaker, ikke stoppeklokke.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Mange lærebøker bruker den enkle regelen med summen av relative usikkerheter. Kvadratsummen og simuleringen kan brukes for å vise hvorfor den enkle regelen gir et forsiktig, litt for stort anslag. Se også <a href="maaleusikkerhet.html">Måleusikkerhet</a> fra Fysikk 1.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/usikkerhet2.js"></script>
+</body>
+</html>

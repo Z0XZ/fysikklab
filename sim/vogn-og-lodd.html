@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vogn trukket av lodd</title>
+  <meta name="description" content="Simulering med oppgaver om Newtons 2. lov for flere legemer: En vogn på et bord trekkes av et lodd over en trinse. Finn akselerasjonen og snorkraften.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Krefter</p>
+        <h1>Vogn trukket av lodd</h1>
+        <p class="ingress">En vogn står på et bord og er festet i en snor som går over en trinse til et lodd. Når vi slipper, trekker loddet vogna med seg. Hvor stor blir akselerasjonen? Og er snorkraften like stor som tyngden til loddet?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="vognlodd" class="statisk forhold-fall" role="img" aria-label="En vogn på et bord festet med snor over en trinse til et hengende lodd, med piler for kreftene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>akselerasjon a</dt><dd id="r-a"></dd></div>
+            <div><dt>snorkraft S</dt><dd id="r-s"></dd></div>
+            <div><dt>tyngden til loddet mg</dt><dd id="r-g"></dd></div>
+            <div><dt>fart v</dt><dd id="r-v"></dd></div>
+            <div><dt>tid for 80 cm</dt><dd id="r-t"></dd></div>
+          </dl>
+          <canvas id="vlgraf" class="statisk forhold-lav" role="img" aria-label="Fart mot tid."></canvas>
+          <div class="sim-styring mange">
+            <label for="vogn">Massen til vogna M <output id="vogn-ut" for="vogn"></output><input id="vogn" type="range" min="0.2" max="1.5" step="0.05" value="0.5"></label>
+            <label for="lodd">Massen til loddet m <output id="lodd-ut" for="lodd"></output><input id="lodd" type="range" min="0.01" max="0.3" step="0.01" value="0.1"></label>
+            <label for="friksjon">Friksjon på vogna <output id="friksjon-ut" for="friksjon"></output><input id="friksjon" type="range" min="0" max="0.3" step="0.01" value="0"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp</button></div>
+          </div>
+          <figcaption class="sim-hint">Snora og trinsa er masseløse, og snora strekker seg ikke. Friksjonskraften på vogna er μMg. Vogna kjører 80 cm før loddet treffer gulvet. Pilene for kreftene har samme målestokk. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med M = 500 g, m = 100 g og ingen friksjon.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Er snorkraften større, mindre eller like stor som tyngden til loddet? Begrunn svaret før du ser på tallene.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Tegn kreftene på vogna og på loddet hver for seg. Skriv opp Newtons 2. lov for hvert legeme, og vis at a = mg / (M + m) uten friksjon.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut akselerasjonen og snorkraften. Hvor lang tid bruker vogna på 80 cm? Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Gjør loddet tyngre og tyngre. Hva nærmer akselerasjonen seg? Hvorfor kan den aldri bli større enn g?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett friksjonen til μ = 0,10. Regn ut akselerasjonen og snorkraften. Hvor tungt må loddet være for at vogna i det hele tatt skal begynne å bevege seg?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er det galt å si at «kraften som virker på vogna er tyngden til loddet»?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I et forsøk måler dere akselerasjonen for mange ulike lodd, med samme totale masse M + m. Dere flytter lodd fra vogna til snora. Hva slags graf får dere av a mot m? Hva er stigningstallet?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mindre. Loddet akselererer nedover, så kraften oppover på det (snorkraften) må være mindre enn tyngden.</li>
+              <li>Vogna: S = Ma (normalkraft og tyngde opphever hverandre). Loddet: mg − S = ma. Legger vi sammen likningene, får vi mg = (M + m)a, altså a = mg / (M + m).</li>
+              <li>a = 0,10 · 9,81 / 0,60 ≈ 1,64 m/s². S = Ma = 0,50 · 1,64 ≈ 0,82 N, mindre enn mg = 0,98 N. s = ½at² gir t = √(2 · 0,80 / 1,64) ≈ 0,99 s.</li>
+              <li>Akselerasjonen nærmer seg g. Når m er mye større enn M, blir a = mg / (M + m) ≈ g. Den kan ikke bli større enn g, fordi det bare er tyngden til loddet som driver hele systemet.</li>
+              <li>a = (mg − μMg) / (M + m) = (0,981 − 0,491) / 0,60 ≈ 0,82 m/s². S = m(g − a) ≈ 0,90 N. Vogna begynner å bevege seg når mg > μMg, altså m > μM = 50 g.</li>
+              <li>Tyngden til loddet virker på loddet, ikke på vogna. Det som virker på vogna, er snorkraften, og den er mindre enn mg når systemet akselererer.</li>
+              <li>a = (g / (M + m)) · m. Når M + m er konstant, blir a mot m en rett linje gjennom origo med stigningstall g / (M + m). Dette er et klassisk forsøk for å vise Newtons 2. lov.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer etter Newtons 2. lov, og som forberedelse til forsøk med vogn, trinse og bevegelsessensor eller Smart Cart.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/vognlodd.js"></script>
+</body>
+</html>

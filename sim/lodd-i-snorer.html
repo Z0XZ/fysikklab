@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lodd i to snorer</title>
+  <meta name="description" content="Simulering med oppgaver om likevekt og dekomponering av krefter: Et lodd henger i to snorer. Hvor store blir snorkreftene, og hvorfor kan en snor aldri strammes helt vannrett?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Bevegelse og krefter i to dimensjoner</p>
+        <h1>Lodd i to snorer</h1>
+        <p class="ingress">Et lodd henger i en knute som holdes oppe av to snorer festet i taket. Når loddet henger i ro, er summen av kreftene på knuten null, både vannrett og loddrett. Hvor store blir snorkreftene, og hvordan avhenger de av vinklene?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="snorer" class="statisk forhold-fall" role="img" aria-label="Et lodd i to snorer fra taket, med pilene for snorkreftene og tyngden, og kreftene satt etter hverandre i en trekant."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tyngde G</dt><dd id="r-g"></dd></div>
+            <div><dt>snorkraft S₁</dt><dd id="r-s1"></dd></div>
+            <div><dt>snorkraft S₂</dt><dd id="r-s2"></dd></div>
+            <div><dt>vannrette komponenter</dt><dd id="r-x" class="bryt"></dd></div>
+            <div><dt>sum av loddrette komponenter</dt><dd id="r-y"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="alfa">Vinkel α (venstre snor) <output id="alfa-ut" for="alfa"></output><input id="alfa" type="range" min="3" max="87" step="1" value="30"></label>
+            <label for="beta">Vinkel β (høyre snor) <output id="beta-ut" for="beta"></output><input id="beta" type="range" min="3" max="87" step="1" value="30"></label>
+            <label for="masse">Masse <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.5" max="10" step="0.5" value="2"></label>
+          </div>
+          <figcaption class="sim-hint">Vinklene er målt fra vannrett. Pilene ved knuten har samme målestokk. Til høyre er kreftene satt etter hverandre. Siden summen er null, danner de en lukket trekant. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med α = β = 30° og 2,0 kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Loddet veier 19,6 N, og det er to snorer. Er hver snorkraft halvparten av tyngden, mindre eller større?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett opp likevekt vannrett og loddrett. Vis at S = G / (2 sin α) når vinklene er like, og regn ut snorkraften for 30°. Sjekk.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Gjør begge vinklene mindre og mindre. Hva skjer med snorkreftene? Regn ut snorkraften for 5°.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er det umulig å stramme en klessnor helt rett når det henger klær på den?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett α = 60° og β = 30°. Hvilken snor har størst kraft? Regn ut begge snorkreftene, og sjekk at de vannrette komponentene er like store.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på trekanten til høyre. Hvorfor må kreftene danne en lukket trekant når knuten er i ro? Hva er vinkelen mellom S₁ og S₂ i trekanten?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En snor tåler 200 N. Hvor liten kan vinkelen være når det henger 5,0 kg i midten av snora, med like vinkler på begge sider?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Større: Med 30° blir hver snorkraft like stor som hele tyngden, 19,6 N.</li>
+              <li>Vannrett: S₁ cos α = S₂ cos α, så S₁ = S₂ = S. Loddrett: 2S sin α = G, altså S = G / (2 sin α) = 19,6 / (2 · 0,5) = 19,6 N.</li>
+              <li>Snorkreftene øker kraftig. Med 5° blir S = 19,6 / (2 sin 5°) ≈ 113 N, nesten seks ganger tyngden.</li>
+              <li>Hvis snora var helt vannrett, kunne ikke snorkreftene ha noen loddrett komponent til å holde tyngden oppe. S = G / (2 sin α) går mot uendelig når α går mot null.</li>
+              <li>Den bratteste snora (α = 60°) har størst kraft. S₁ = G cos β / sin(α + β) = 19,6 · cos 30° ≈ 17,0 N og S₂ = G cos α / sin(α + β) = 19,6 · cos 60° ≈ 9,8 N. Vannrett: 17,0 · cos 60° = 8,5 N og 9,8 · cos 30° = 8,5 N.</li>
+              <li>Når summen av kreftene er null, ender den siste pila der den første startet. Vinkelen mellom S₁ og S₂ i trekanten er 180° − (α + β).</li>
+              <li>200 = 49,05 / (2 sin α) gir sin α = 0,123 og α ≈ 7,0°.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer som innledning til dekomponering av krefter, og kan kombineres med et forsøk med to kraftmålere og et lodd.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/snorer.js"></script>
+</body>
+</html>

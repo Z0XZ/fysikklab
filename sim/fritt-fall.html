@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fritt fall</title>
+  <meta name="description" content="Simulering med oppgaver om fritt fall og loddrett kast: stroboskopbilde, tabell over posisjoner, og en test av Galileos hypoteser om hvordan farten endrer seg.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Rettlinjet bevegelse</p>
+        <h1>Fritt fall</h1>
+        <p class="ingress">Galileo lurte på om farten til en fallende gjenstand øker med strekningen den har falt, eller med tiden den har falt. Slipp eller kast en ball, ta et stroboskopbilde, og finn ut hvem som har rett.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="strobe" class="statisk forhold-fall" role="img" aria-label="Stroboskopbilde av en ball som faller, med en målestokk i meter."></canvas>
+          <dl class="sim-tall">
+            <div><dt>høyde y</dt><dd id="r-y"></dd></div>
+            <div><dt>fart v (positiv opp)</dt><dd id="r-v"></dd></div>
+            <div><dt>største høyde</dt><dd id="r-hmaks"></dd></div>
+            <div><dt>tid i lufta</dt><dd id="r-tland"></dd></div>
+            <div><dt>fart ved bakken</dt><dd id="r-vland"></dd></div>
+          </dl>
+          <canvas id="fallgraf" class="statisk forhold-lav" role="img" aria-label="Graf for den valgte størrelsen."></canvas>
+          <div class="sim-styring mange">
+            <label for="klode">Sted<select id="klode"><option value="jorda">Jorda</option><option value="manen">Månen</option><option value="mars">Mars</option></select></label>
+            <label for="hoyde">Starthøyde h₀ <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="5" max="45" step="1" value="20"></label>
+            <label for="fart">Startfart v₀ <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="-10" max="20" step="1" value="0"></label>
+            <label for="intervall">Tid mellom bildene<select id="intervall"><option value="0.1">0,10 s</option><option value="0.2" selected>0,20 s</option><option value="0.5">0,50 s</option></select></label>
+            <label for="graf">Graf<select id="graf"><option value="yt">Høyde mot tid</option><option value="vt">Fart mot tid (med fortegn)</option><option value="fartt">Hypotese 2: fart mot tid</option><option value="fartS">Hypotese 1: fart mot strekning</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.25">Sakte (0,25×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">t (s)</th><th scope="col">y (m)</th></tr></thead>
+              <tbody id="strobe-rader"></tbody>
+            </table>
+          </div>
+          <figcaption class="sim-hint">Positiv startfart betyr kastet rett opp. Bildene i stroboskopbildet er flyttet litt til siden for hvert bilde, slik at de ikke ligger oppå hverandre. Tabellen viser høyden i hvert bilde. Luftmotstand er ikke tatt med.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Galileo hadde to hypoteser: 1) farten er proporsjonal med strekningen, v = ks, og 2) farten er proporsjonal med tiden, v = kt. Hvilken tror du stemmer? Slipp ballen fra 20 m og se på de to grafene for hypotesene.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Slipp ballen fra 20 m med 0,10 s mellom bildene. Bruk tabellen til å regne ut gjennomsnittsfarten mellom bildene. Hvor mye øker farten per sekund? Hva er da g?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor lang tid bruker ballen på å falle 20 m? Hvor stor fart har den når den treffer bakken? Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Ballen kastes rett opp med 10 m/s fra 20 m høyde. Hvor høyt kommer den? Hvor lang tid tar det før den treffer bakken, og med hvilken fart?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva er farten og akselerasjonen i det høyeste punktet? Hvorfor er fartsgrafen en rett linje også når ballen snur?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Slipp ballen fra 20 m på Månen. Hvor mye lengre tid tar fallet enn på Jorda? Regn først.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I oppgave 4: Hvor stor fart har ballen når den passerer starthøyden på vei ned? Forklar hvorfor, og test.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Hypotese 2 stemmer: Fart mot tid er en rett linje gjennom origo. Fart mot strekning er krum. Galileo argumenterte også logisk mot hypotese 1, og testet hypotese 2 med kuler som trillet ned skråplan.</li>
+              <li>De første høydene er 20,000, 19,951, 19,804 og 19,559 m. Gjennomsnittsfarten er 0,49, 1,47 og 2,45 m/s i de tre intervallene. Farten øker med 0,98 m/s per 0,10 s, altså 9,8 m/s per sekund: g ≈ 9,8 m/s².</li>
+              <li>s = ½gt² gir t = √(2 · 20 / 9,81) ≈ 2,02 s. v = gt ≈ 19,8 m/s.</li>
+              <li>Ballen stiger h = v₀² / (2g) = 10² / (2 · 9,81) ≈ 5,1 m, til 25,1 m. Fra 25,1 m: t = √(2 · 25,1 / 9,81) ≈ 2,26 s, og tiden opp er v₀/g ≈ 1,02 s. Til sammen 3,28 s. Farten ved bakken er √(2 · 9,81 · 25,1) ≈ 22,2 m/s.</li>
+              <li>Farten er null, men akselerasjonen er fortsatt g nedover. Farten endrer seg med −9,81 m/s hvert sekund hele tiden, så fartsgrafen har samme stigningstall både opp og ned.</li>
+              <li>t = √(2 · 20 / 1,62) ≈ 4,97 s, omtrent 2,5 ganger så lang tid. Forholdet er √(9,81 / 1,62) ≈ 2,46.</li>
+              <li>10 m/s nedover. Bevegelsen er symmetrisk: Det tar like lang tid opp som ned til starthøyden, og farten avtar og øker like mye per sekund.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer sammen med elevarket om Galileos hypoteser og forsøk med fritt fall. Elevene kan også skrive av tabellen og lage grafer i Excel eller Python. Se også <a href="bevegelsesgrafer.html">Bevegelsesgrafer</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/frittfall.js"></script>
+</body>
+</html>

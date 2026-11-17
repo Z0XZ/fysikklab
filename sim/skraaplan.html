@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skråplan med friksjon</title>
+  <meta name="description" content="Simulering med oppgaver om krefter i to dimensjoner: Dekomponer tyngden på et skråplan, finn når klossen begynner å gli, og regn ut akselerasjonen opp og ned.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Bevegelse og krefter i to dimensjoner</p>
+        <h1>Skråplan med friksjon</h1>
+        <p class="ingress">En kloss ligger på et skråplan. Tyngden kan deles i en komponent langs planet, som vil dra klossen nedover, og en komponent normalt på planet, som bestemmer normalkraften og dermed friksjonen. Når begynner klossen å gli, og hvor fort akselererer den?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="skraaplan" class="statisk forhold-fall" role="img" aria-label="En kloss på et skråplan med piler for tyngde, komponenter, normalkraft og friksjon."></canvas>
+          <dl class="sim-tall">
+            <div><dt>G langs planet, G sin θ</dt><dd id="r-gpar"></dd></div>
+            <div><dt>normalkraft N = G cos θ</dt><dd id="r-n"></dd></div>
+            <div><dt>tan θ</dt><dd id="r-tan"></dd></div>
+            <div><dt>akselerasjon</dt><dd id="r-a"></dd></div>
+            <div><dt>fart (positiv opp)</dt><dd id="r-v"></dd></div>
+            <div><dt>klossen</dt><dd id="r-status" class="bryt"></dd></div>
+          </dl>
+          <canvas id="planegraf" class="statisk forhold-lav" role="img" aria-label="Fart langs planet mot tid."></canvas>
+          <div class="sim-styring mange">
+            <label for="vinkel">Helning θ <output id="vinkel-ut" for="vinkel"></output><input id="vinkel" type="range" min="0" max="60" step="1" value="30"></label>
+            <label for="flate">Underlag<select id="flate"><option value="tre">Tre mot tre (μs = 0,50, μk = 0,30)</option><option value="gummi">Gummi mot betong (0,90 / 0,70)</option><option value="staal">Stål mot stål (0,70 / 0,55)</option><option value="is">Is mot is (0,10 / 0,03)</option><option value="ingen">Uten friksjon</option></select></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.5" max="5" step="0.5" value="2"></label>
+            <label for="startfart">Startfart oppover <output id="startfart-ut" for="startfart"></output><input id="startfart" type="range" min="0" max="5" step="0.5" value="0"></label>
+            <label class="avkrysning" for="dekomponer"><input id="dekomponer" type="checkbox" checked> Vis komponentene av G</label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Planet er 3,0 m langt. Pilene for kreftene har samme målestokk, og de stiplede pilene er komponentene av tyngden. Friksjonstallene er omtrentlige tabellverdier. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med tre mot tre og 2,0 kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Ved hvilken helning tror du klossen begynner å gli? Øk vinkelen gradvis og finn ut.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vis at klossen begynner å gli når tan θ = μs. Hvorfor har ikke massen noe å si?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sett θ = 30°. Regn ut G sin θ, normalkraften og glidefriksjonen. Vis at a = g(sin θ − μk cos θ), og regn ut akselerasjonen. Sjekk.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Gi klossen en startfart på 3,0 m/s oppover ved 30°. Hvorfor bremser den raskere på vei opp enn den akselererer på vei ned? Regn ut hvor langt opp den kommer.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor stor fart har klossen når den er tilbake der den startet? Sammenlign med startfarten, og forklar hvor energien har blitt av.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett θ = 20° og startfart 3,0 m/s. Hva skjer når klossen har stoppet? Hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Uten friksjon: Hvor stor helning gir en akselerasjon på g/2? Hvorfor kan akselerasjonen aldri bli større enn g?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Klossen begynner å gli mellom 26° og 27°.</li>
+              <li>Klossen glir når G sin θ &gt; μs G cos θ, altså når tan θ &gt; μs. Med μs = 0,50 blir grensa θ = 26,6°. Både tyngden og normalkraften er proporsjonale med m, så massen forkortes bort.</li>
+              <li>G sin θ = 2,0 · 9,81 · 0,5 = 9,81 N. N = G cos θ = 17,0 N. Glidefriksjonen er 0,30 · 17,0 = 5,10 N. ΣF = G sin θ − μk G cos θ = ma gir a = g(sin θ − μk cos θ) = 9,81 · (0,500 − 0,260) ≈ 2,36 m/s².</li>
+              <li>På vei opp virker både G sin θ og friksjonen nedover langs planet: a = g(sin θ + μk cos θ) ≈ 7,45 m/s². På vei ned virker friksjonen mot G sin θ. Strekningen opp: s = v₀² / (2a) = 3,0² / (2 · 7,45) ≈ 0,60 m.</li>
+              <li>v = √(2 · 2,36 · 0,60) ≈ 1,7 m/s, mye mindre enn 3,0 m/s. Friksjonsarbeidet både opp og ned har gjort en del av den kinetiske energien om til varme.</li>
+              <li>Klossen stopper og blir liggende, fordi tan 20° = 0,36 er mindre enn μs = 0,50. Hvilefriksjonen er stor nok til å holde den.</li>
+              <li>g sin θ = g/2 gir θ = 30°. Akselerasjonen langs planet er g sin θ, og sin θ er aldri større enn 1. Ved 90° faller klossen fritt.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer etter dekomponering av krefter og Newtons 2. lov i to dimensjoner. Elevene kan måle μs med en kloss på en planke som de vipper opp, og sammenligne med tan θ.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/skraaplan.js"></script>
+</body>
+</html>

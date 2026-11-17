@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Enheter og standardform</title>
+  <meta name="description" content="Øving i Fysikk 1 med tilfeldige oppgaver om SI-enheter, prefikser, km/h og m/s, standardform, gjeldende siffer, areal, volum og tetthet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Introduksjon til fysikk</p>
+        <h1>Enheter og standardform</h1>
+        <p class="ingress">I fysikk regner vi med SI-enheter: meter, kilogram og sekund. Her får du tilfeldige oppgaver der du gjør om enheter, skriver tall på standardform og teller gjeldende siffer. Du får svaret og en forklaring med en gang.</p>
+
+        <figure class="sim egne-data">
+          <p id="oppgave" class="oppgave-tekst" aria-live="polite"></p>
+          <div class="sim-styring mange uten-topp">
+            <label for="svar" class="bred-felt">Svar<input id="svar" type="text" inputmode="text" autocomplete="off" spellcheck="false"></label>
+            <div class="sim-knapper"><button id="sjekk" class="knapp" type="button">Sjekk</button><button id="neste" class="knapp lys" type="button">Neste oppgave</button></div>
+            <p id="tilbakemelding" class="melding" role="status"></p>
+            <label for="type">Type oppgaver<select id="type"><option value="alle">Alle typer</option><option value="prefiks">Prefikser</option><option value="fart">km/h og m/s</option><option value="standardform">Standardform</option><option value="siffer">Gjeldende siffer</option><option value="areal">Areal, volum og tetthet</option></select></label>
+            <p class="sim-hint uten-marg"><strong id="poeng"></strong></p>
+          </div>
+          <figcaption class="sim-hint">Skriv svaret i den enheten oppgaven spør etter, uten enhet. Tall på standardform kan skrives som 3,5 · 10^-4, 3,5*10^-4 eller 3.5e-4. Svaret godtas hvis det er mindre enn 0,6 % fra riktig verdi. Trykk Enter for å sjekke og Enter igjen for neste oppgave.</figcaption>
+        </figure>
+
+        <div class="tekst opplegg">
+          <h2>Prefikser</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Prefiks</th><th scope="col">Symbol</th><th scope="col">Faktor</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">giga</th><td>G</td><td>10⁹</td></tr>
+                <tr><th scope="row">mega</th><td>M</td><td>10⁶</td></tr>
+                <tr><th scope="row">kilo</th><td>k</td><td>10³</td></tr>
+                <tr><th scope="row">centi</th><td>c</td><td>10⁻²</td></tr>
+                <tr><th scope="row">milli</th><td>m</td><td>10⁻³</td></tr>
+                <tr><th scope="row">mikro</th><td>µ</td><td>10⁻⁶</td></tr>
+                <tr><th scope="row">nano</th><td>n</td><td>10⁻⁹</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h2>Huskeregler</h2>
+          <ul>
+            <li>Grunnenheten for masse er kilogram, ikke gram. 1 g = 10⁻³ kg.</li>
+            <li>Fra km/h til m/s deler du på 3,6. Fra m/s til km/h ganger du med 3,6.</li>
+            <li>Når enheten er opphøyd, må prefikset også opphøyes: 1 cm² = (10⁻² m)² = 10⁻⁴ m².</li>
+            <li>Et tall på standardform skrives a · 10ⁿ, der 1 ≤ a &lt; 10.</li>
+            <li>Gjeldende siffer: Nuller foran det første sifferet som ikke er null, teller ikke. Nuller til slutt etter komma teller.</li>
+            <li>Når du ganger eller deler, skal svaret ha like mange gjeldende siffer som tallet med færrest gjeldende siffer.</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Øv</span><div><p>Gjør ti oppgaver av hver type. Hvilken type er vanskeligst for deg?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor deler vi på 3,6 når vi gjør om fra km/h til m/s? Vis utregningen med 1 km = 1000 m og 1 h = 3600 s.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>En elev mener at 1 m² = 100 cm². Hva er feil? Tegn en kvadratmeter delt opp i kvadratcentimeter.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En bil kjører 2,50 km på 3 minutter og 12 sekunder. Regn ut gjennomsnittsfarten i m/s og i km/h, med riktig antall gjeldende siffer.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Et hår er omtrent 70 µm tykt, og et atom har en diameter på omtrent 0,1 nm. Hvor mange atomer kan ligge etter hverandre over tykkelsen på håret? Svar på standardform.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Svarene varierer. Mange synes areal, volum og tetthet er vanskeligst, fordi prefikset må opphøyes.</li>
+              <li>1 km/h = 1000 m / 3600 s = 1/3,6 m/s. Derfor deler vi på 3,6.</li>
+              <li>1 m = 100 cm, så 1 m² = 100 cm · 100 cm = 10 000 cm². Kvadratmeteren har 100 rader med 100 kvadratcentimeter.</li>
+              <li>t = 3 · 60 s + 12 s = 192 s. v = 2500 m / 192 s ≈ 13,0 m/s, som er 13,0 · 3,6 ≈ 46,9 km/h. Strekningen har tre gjeldende siffer, så vi svarer med tre.</li>
+              <li>70 · 10⁻⁶ m / (0,1 · 10⁻⁹ m) = 7 · 10⁵. Omtrent 700 000 atomer.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 15–30 minutter, som oppvarming eller lekse i starten av året. Oppgavene lages tilfeldig, så elevene kan øve så lenge de vil. Se også <a href="maaleusikkerhet.html">Måleusikkerhet</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/enheter.js"></script>
+</body>
+</html>

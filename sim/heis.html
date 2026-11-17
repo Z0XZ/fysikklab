@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Baderomsvekt i heisen</title>
+  <meta name="description" content="Simulering med oppgaver om Newtons 2. lov: Hva viser en baderomsvekt i en heis som akselererer, kjører med konstant fart og bremser?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Krefter</p>
+        <h1>Baderomsvekt i heisen</h1>
+        <p class="ingress">Du står på en baderomsvekt i en heis. Vekta måler hvor hardt du trykker på den, altså normalkraften. Hva viser den når heisen starter, kjører jevnt og stopper? Og hva hvis kabelen ryker?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="heis" class="statisk forhold-heis" role="img" aria-label="En heis i en sjakt med en person på en vekt. Piler viser tyngden og normalkraften."></canvas>
+          <dl class="sim-tall">
+            <div><dt>akselerasjon a (positiv opp)</dt><dd id="r-a"></dd></div>
+            <div><dt>fart v (positiv opp)</dt><dd id="r-v"></dd></div>
+            <div><dt>normalkraft N</dt><dd id="r-n"></dd></div>
+            <div><dt>vekta viser N/g</dt><dd id="r-vekt"></dd></div>
+          </dl>
+          <canvas id="heisgraf" class="statisk forhold-lav" role="img" aria-label="Graf over hva vekta viser mot tiden. En stiplet linje viser massen."></canvas>
+          <div class="sim-styring mange">
+            <label for="masse">Masse <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="30" max="100" step="1" value="60"></label>
+            <label for="retning">Tur<select id="retning"><option value="opp">Opp</option><option value="ned">Ned</option><option value="fall">Kabelen ryker (fritt fall)</option></select></label>
+            <label for="aks" id="rad-aks">Akselerasjon <output id="aks-ut" for="aks"></output><input id="aks" type="range" min="0.5" max="3" step="0.1" value="1.5"></label>
+            <label for="toppfart" id="rad-toppfart">Toppfart <output id="toppfart-ut" for="toppfart"></output><input id="toppfart" type="range" min="0.5" max="4" step="0.1" value="2"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Heisen kjører 12 m. Den akselererer og bremser med like stor akselerasjon, og har konstant fart imellom. En baderomsvekt måler normalkraften, men viser den som en masse i kg, altså N/g. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med en person på 60 kg, tur opp, akselerasjon 1,5 m/s² og toppfart 2,0 m/s.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Viser vekta mer eller mindre enn 60 kg når heisen starter oppover? Når den kjører med konstant fart? Når den bremser?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Tegn kreftene på personen. Bruk Newtons 2. lov til å vise at N = m(g + a) når positiv retning er oppover.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut normalkraften og hva vekta viser i hver av de tre delene av turen opp. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva viser vekta når heisen starter nedover og når den bremser på vei ned? Test.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>I forsøket med baderomsvekt i heisen veier en elev 58 kg i ro. Når heisen starter, viser vekta 65 kg. Hvor stor er akselerasjonen, og hvilken vei går heisen? Still inn simuleringen slik at du får det samme.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Velg «Kabelen ryker». Hva viser vekta? Hvorfor sier vi at astronauter i en romstasjon er vektløse, selv om tyngdekraften fra Jorda virker på dem?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Kan du ut fra grafen for vekta finne ut om heisen gikk opp eller ned? Kan du finne ut hvor fort den kjørte?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mer når heisen starter oppover, 60 kg når farten er konstant, og mindre når den bremser.</li>
+              <li>På personen virker tyngden G = mg nedover og normalkraften N fra vekta oppover. ΣF = ma gir N − mg = ma, altså N = m(g + a).</li>
+              <li>Start: N = 60 · (9,81 + 1,5) ≈ 679 N, og vekta viser 679 / 9,81 ≈ 69,2 kg. Konstant fart: a = 0, N = 589 N og 60,0 kg. Bremsing: a = −1,5 m/s², N = 60 · 8,31 ≈ 499 N og 50,8 kg.</li>
+              <li>På vei ned er akselerasjonen negativ når heisen starter (vekta viser 50,8 kg) og positiv når den bremser (69,2 kg). Det er akselerasjonen som avgjør, ikke fartsretningen.</li>
+              <li>m(g + a) / g = 65 kg gir a = g(65/58 − 1) ≈ 1,2 m/s² oppover. Heisen starter oppover, eller den bremser på vei ned. Med 58 kg og 1,2 m/s² viser simuleringen omtrent 65 kg.</li>
+              <li>Vekta viser 0. Både personen og vekta faller med akselerasjonen g, så personen trykker ikke på vekta: N = m(g + a) = m(g − g) = 0. Romstasjonen og astronautene faller hele tiden fritt rundt Jorda, så de føler seg vektløse.</li>
+              <li>Ja, hvis heisen starter i ro. Turen opp gir først mer, så 60 kg, så mindre. Turen ned gir først mindre, så 60 kg, så mer. Akselerasjonen finner du fra vekta: a = g(visning/m − 1). Toppfarten er arealet under akselerasjonsgrafen i den første delen: v = a · t. Med 1,5 m/s² i 1,33 s blir det 2,0 m/s.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, før eller etter forsøket med baderomsvekt i heisen. Elevene kan sammenligne målingene sine med simuleringen. Mange mobiler kan også måle akselerasjonen i heisen med phyphox.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/heis.js"></script>
+</body>
+</html>

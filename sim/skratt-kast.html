@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skrått kast</title>
+  <meta name="description" content="Simulering med oppgaver om bevegelse i to dimensjoner: Skrått kast med fartskomponenter, rekkevidde og maksimal høyde, med og uten luftmotstand.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Bevegelse og krefter i to dimensjoner</p>
+        <h1>Skrått kast</h1>
+        <p class="ingress">En ball som kastes skrått, beveger seg i to retninger samtidig. Vannrett er farten konstant, og loddrett virker tyngdeakselerasjonen. Hvilken vinkel gir lengst kast? Og hva gjør luftmotstanden med banen?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="kast" class="statisk forhold-fall" role="img" aria-label="Banen til en kastet ball med piler for fartskomponentene."></canvas>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="r-t"></dd></div>
+            <div><dt>vₓ</dt><dd id="r-vx"></dd></div>
+            <div><dt>vᵧ</dt><dd id="r-vy"></dd></div>
+            <div><dt>rekkevidde</dt><dd id="r-r"></dd></div>
+            <div><dt>største høyde</dt><dd id="r-h"></dd></div>
+            <div><dt>tid i lufta</dt><dd id="r-tt"></dd></div>
+            <div><dt>fart ved landing</dt><dd id="r-vs"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="fart">Utgangsfart v₀ <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="5" max="30" step="1" value="15"></label>
+            <label for="vinkel">Vinkel α <output id="vinkel-ut" for="vinkel"></output><input id="vinkel" type="range" min="0" max="90" step="1" value="45"></label>
+            <label for="hoyde">Starthøyde h₀ <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="0" max="20" step="1" value="0"></label>
+            <label class="avkrysning" for="luft"><input id="luft" type="checkbox"> Luftmotstand (fotball)</label>
+            <label class="avkrysning" for="komponenter"><input id="komponenter" type="checkbox" checked> Vis fartskomponenter</label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.5">Halv fart</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Kast</button><button id="visk" class="knapp lys" type="button">Visk ut gamle baner</button></div>
+          </div>
+          <figcaption class="sim-hint">Aksene har samme målestokk. Prikkene på banen viser posisjonen hvert 0,2 s. De siste banene blir liggende, merket med vinkelen. Luftmotstanden er L = kv² med k/m = 0,013 m⁻¹, omtrent som for en fotball. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med v₀ = 15 m/s, α = 45° og h₀ = 0, uten luftmotstand.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvordan endrer vₓ og vᵧ seg under kastet? Kast og se på pilene og tallene.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Dekomponer utgangsfarten. Regn ut tiden ballen er i lufta, rekkevidden og den største høyden. Sjekk.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Kast med 30° og så med 60°. Hvilket kast går lengst? Hvilket går høyest og varer lengst? Forklar.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Finn vinkelen som gir lengst kast når h₀ = 0. Vis at rekkevidden er R = v₀² sin(2α) / g.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett h₀ = 10 m. Er 45° fortsatt den beste vinkelen? Prøv 35°, 40° og 45°. Hvor stor er farten når ballen lander, og avhenger den av vinkelen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Slå på luftmotstand og kast med 25 m/s og 45°. Sammenlign med kastet uten luftmotstand. Hvorfor er banen ikke lenger symmetrisk?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En ball kastes vannrett fra 10 m høyde. Hvor fort må den kastes for å lande 15 m ut? Test med α = 0°.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>vₓ er konstant hele tiden. vᵧ avtar med 9,81 m/s hvert sekund, er null på toppen og blir negativ på vei ned.</li>
+              <li>vₓ = 15 cos 45° ≈ 10,6 m/s og vᵧ = 15 sin 45° ≈ 10,6 m/s. Tid til toppen: vᵧ/g = 1,08 s, så tid i lufta er 2,16 s. Rekkevidde: 10,6 · 2,16 ≈ 22,9 m. Største høyde: vᵧ²/(2g) ≈ 5,7 m.</li>
+              <li>Begge gir 19,9 m. 60° går høyere (8,6 m mot 2,9 m) og varer lengre (2,65 s mot 1,53 s). Vinkler som gir 90° til sammen, gir samme rekkevidde, fordi sin(2α) er den samme.</li>
+              <li>45°. t = 2v₀ sin α / g og R = v₀ cos α · t = 2v₀² sin α cos α / g = v₀² sin(2α) / g. Den er størst når 2α = 90°.</li>
+              <li>Nei. Fra 10 m gir 35° omtrent 31,4 m, 40° gir 31,2 m og 45° gir 30,5 m. Den beste vinkelen er omtrent 36°. Farten ved landing er 20,5 m/s uansett vinkel, fordi energibevaring gir v = √(v₀² + 2gh₀).</li>
+              <li>Med luftmotstand blir rekkevidden 40,1 m mot 63,7 m uten. Luftmotstanden bremser hele veien, så ballen har mindre fart på vei ned enn på vei opp. Banen blir brattere på slutten. Den beste vinkelen blir også litt mindre enn 45°.</li>
+              <li>Falltiden er t = √(2 · 10 / 9,81) ≈ 1,43 s. v₀ = 15 m / 1,43 s ≈ 10,5 m/s. Med 10 eller 11 m/s i simuleringen lander ballen like før og like etter 15 m.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer etter dekomponering av bevegelse i x- og y-retning. Elevene kan sammenligne med videoanalyse av egne kast i Tracker.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/skrattkast.js"></script>
+</body>
+</html>

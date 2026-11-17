@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linearisering og modeller</title>
+  <meta name="description" content="Simulering med oppgaver om modeller og hypoteser i fysikk: Finn sammenhengen i måledata ved å gjøre grafen lineær, og bruk stigningstallet til å bestemme en fysisk konstant.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Tenke og gjøre fysikk</p>
+        <h1>Linearisering og modeller</h1>
+        <p class="ingress">En fysisk modell sier hvordan to størrelser henger sammen, for eksempel T = 2π√(L/g). Om modellen stemmer, kan vi teste ved å velge akser slik at modellen gir en rett linje. Ligger målepunktene på linja, styrker det modellen, og stigningstallet gir oss konstanten.</p>
+
+        <figure class="sim sim-bred">
+          <div class="sim-styring mange uten-topp">
+            <label for="sett">Datasett<select id="sett"><option value="pendel">Pendel: T mot L</option><option value="fall">Fritt fall: s mot t</option><option value="leder">Magnetfelt: B mot r</option><option value="muffins">Muffinsformer: vₜ mot n</option><option value="egne">Egne data</option></select></label>
+            <label for="tx">Førsteakse<select id="tx"><option value="x">x</option><option value="x2">x²</option><option value="rot">√x</option><option value="1/x">1/x</option><option value="1/x2">1/x²</option></select></label>
+            <label for="ty">Andreakse<select id="ty"><option value="y">y</option><option value="y2">y²</option><option value="rot">√y</option><option value="1/y">1/y</option></select></label>
+            <label for="egne" id="rad-egne" class="bred-felt" hidden>Lim inn to kolonner (x og y)<textarea id="egne" rows="5" placeholder="0,2&#9;0,90&#10;0,4&#9;1,27"></textarea></label>
+          </div>
+          <canvas id="linplot" class="statisk forhold-lav" role="img" aria-label="Målepunkter med en tilpasset rett linje."></canvas>
+          <dl class="sim-tall">
+            <div><dt>stigningstall</dt><dd id="r-a"></dd></div>
+            <div><dt>konstantledd</dt><dd id="r-b"></dd></div>
+            <div><dt>R²</dt><dd id="r-r2"></dd></div>
+            <div><dt>konstant fra stigningstallet</dt><dd id="r-k" class="bryt"></dd></div>
+          </dl>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead id="data-hode"></thead>
+              <tbody id="data-rader"></tbody>
+            </table>
+          </div>
+          <figcaption class="sim-hint">Linja er tilpasset med minste kvadraters metode. R² er 1 når alle punktene ligger nøyaktig på linja. Dataene er laget med kjente modeller og litt tilfeldig støy, og er ikke ekte målinger. Tallene er de samme hver gang.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Se på pendeldataene med T mot L. Er grafen en rett linje? Hvilke akser må du velge for at modellen T = 2π√(L/g) skal gi en rett linje gjennom origo? Test.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Vis at T² = (4π²/g) · L. Bruk stigningstallet til å bestemme g.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Fritt fall: Hvilke akser gir en rett linje? Bestem g. Hvorfor er ikke R² alene nok til å avgjøre hvilken modell som er riktig?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Magnetfelt rundt en leder med strømmen 5,0 A: Finn transformasjonen som gir en rett linje gjennom origo, og bestem μ₀. Sammenlign med 4π · 10⁻⁷ T m/A.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Muffinsformer: Prøv både vₜ mot n og vₜ² mot n. Hvilken modell for luftmotstanden støtter dataene, L ∝ v eller L ∝ v²? Begrunn svaret.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva betyr det at en modell blir «styrket» og ikke «bevist» av målingene? Hva skal til for å forkaste en modell?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Lim inn egne data fra et forsøk, for eksempel pendel eller muffinsformer. Finn transformasjonen som gir best rett linje, og bestem konstanten.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>T mot L er krum. Med T² på andreaksen og L på førsteaksen blir det en rett linje gjennom origo.</li>
+              <li>Kvadrering gir T² = 4π²L/g. Stigningstallet er 3,97 s²/m, så g = 4π² / 3,97 ≈ 9,94 m/s².</li>
+              <li>s mot t² gir en rett linje med stigningstall g/2 ≈ 4,95 m/s², så g ≈ 9,89 m/s². R² kan være høy for flere transformasjoner, særlig med få punkter og lite spredning. Modellen bør også gi en linje gjennom origo, og den bør ha en fysisk begrunnelse.</li>
+              <li>B mot 1/r gir en rett linje. Stigningstallet er 0,972 µT · m, så μ₀ = 2π · 0,972 · 10⁻⁶ / 5,0 ≈ 1,22 · 10⁻⁶ T m/A, omtrent 3 % under 4π · 10⁻⁷ ≈ 1,26 · 10⁻⁶ T m/A.</li>
+              <li>vₜ² mot n gir en rett linje gjennom origo (R² = 0,999), mens vₜ mot n er krum (R² = 0,983). Med L = kv² gir likevekt kvₜ² = nm₁g, altså vₜ² ∝ n. Med L ∝ v ville vₜ ∝ n.</li>
+              <li>Målinger kan aldri bevise at en modell er riktig i alle situasjoner, bare vise at den stemmer innenfor måleusikkerheten der vi har målt. Én god måling som avviker mer enn usikkerheten, kan være nok til å forkaste modellen. Slik ble for eksempel klassisk mekanikk erstattet av relativitetsteorien ved høye farter.</li>
+              <li>Svarene avhenger av dataene. Elevene bør vurdere både R², om linja går gjennom origo, og om transformasjonen har en fysisk begrunnelse.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer i kapitlet om å tenke og gjøre fysikk, og som forberedelse til rapporter der elevene skal linearisere egne data. Elevene kan også gjøre det samme i Python eller GeoGebra.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/linearisering.js"></script>
+</body>
+</html>

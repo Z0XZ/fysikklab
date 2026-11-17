@@ -22,6 +22,12 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/pendel.js`, `js/berg-og-dal.js`, `js/sprettball.js`, `js/trappelop.js` | Fysikk 1: pendel med pinne, berg-og-dal-bane, sprettball, trappeløp |
 | `js/vognstot.js`, `js/impuls.js`, `js/ballistisk.js`, `js/kuler.js` | Fysikk 1: støt mellom vogner, myk landing, ballistisk pendel, kuler i snorer |
 | `js/ballstabel.js`, `js/rekyl.js` | Fysikk 1: ballstabel, rekyl |
+| `js/usikkerhet.js`, `js/enheter.js`, `js/reaksjon.js` | Fysikk 1: måleusikkerhet, enhetstrener, reaksjonstid (opplegg) |
+| `js/bevgraf.js`, `js/frittfall.js`, `js/bremse.js` | Fysikk 1: bevegelsesgrafer, fritt fall, reaksjons- og bremselengde |
+| `js/heis.js`, `js/friksjon.js`, `js/luftmotstand.js`, `js/vognlodd.js` | Fysikk 1: heis, friksjon, luftmotstand, vogn og lodd |
+| `js/usikkerhet2.js`, `js/linearisering.js` | Fysikk 2: usikkerhet i beregnede størrelser, linearisering |
+| `js/skrattkast.js`, `js/skraaplan.js`, `js/snorer.js` | Fysikk 2: skrått kast, skråplan, lodd i to snorer |
+| `js/sirkel.js`, `js/dosert.js`, `js/loddrett.js` | Fysikk 2: sirkelbevegelse, dosert sving, loddrett sirkel |
 | `js/bakkestot.js` | Fysikk 1: vogn ned bakke og støt |
 | `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js`, `js/vektorstot.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse, pucker i Tracker |
 | `programmering/`, `data/` | Python-øvinger med datafiler |

@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Friksjon</title>
+  <meta name="description" content="Simulering med oppgaver om hvilefriksjon og glidefriksjon: Dra en kloss med en kraftmåler og se hvordan friksjonskraften endrer seg.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Krefter</p>
+        <h1>Friksjon</h1>
+        <p class="ingress">Når du drar i en kloss som ligger på et bord, står den først i ro. Friksjonen holder igjen like hardt som du drar, opp til en grense. Så glipper klossen, og da trengs det mindre kraft for å holde den i gang. Hvordan henger dette sammen med normalkraften?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="kloss" class="statisk forhold-heis" role="img" aria-label="En kloss på et underlag med piler for trekkraft, friksjon, tyngde og normalkraft."></canvas>
+          <dl class="sim-tall">
+            <div><dt>normalkraft N</dt><dd id="r-n"></dd></div>
+            <div><dt>største hvilefriksjon μs·N</dt><dd id="r-rmaks"></dd></div>
+            <div><dt>glidefriksjon μk·N</dt><dd id="r-rglid"></dd></div>
+            <div><dt>friksjon R nå</dt><dd id="r-r"></dd></div>
+            <div><dt>akselerasjon a</dt><dd id="r-a"></dd></div>
+            <div><dt>fart v</dt><dd id="r-v"></dd></div>
+          </dl>
+          <canvas id="friksjonsgraf" class="statisk forhold-lav" role="img" aria-label="Graf over trekkraften og friksjonskraften mot tiden."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f1"></span><span>Trekkraft F</span></li>
+            <li><span class="linje f2"></span><span>Friksjon R</span></li>
+          </ul>
+          <div class="sim-styring mange">
+            <label for="flate">Underlag<select id="flate"><option value="tre">Tre mot tre</option><option value="gummi">Gummi mot betong</option><option value="staal">Stål mot stål</option><option value="is">Is mot is</option></select></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.5" max="5" step="0.5" value="1"></label>
+            <label for="modus">Slik drar du<select id="modus"><option value="okende">Økende kraft, så jevn fart</option><option value="konstant">Konstant kraft</option></select></label>
+            <label for="kraft" id="rad-kraft" hidden>Trekkraft F <output id="kraft-ut" for="kraft"></output><input id="kraft" type="range" min="0" max="40" step="0.5" value="4"></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint"><span id="r-flate"></span>. Friksjonstallene er omtrentlige tabellverdier. Med «Økende kraft» øker trekkraften med 2 N per sekund til klossen glipper. Etterpå drar du klossen med jevn, lav fart, slik som i forsøket med kraftmåler. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med tre mot tre, 1,0 kg og økende kraft.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvordan tror du grafen for friksjonskraften ser ut mens du drar sakte og stadig hardere? Kjør simuleringen og sammenlign.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Mens klossen står i ro, er friksjonskraften like stor som trekkraften. Hvorfor? Bruk Newtons 1. lov.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut normalkraften, største hvilefriksjon og glidefriksjonen for klossen. Ved hvilken trekkraft glipper den? Sjekk.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Doble massen. Hva skjer med kraften som skal til for at klossen skal glippe? Hva skjer med forholdet mellom største hvilefriksjon og glidefriksjon?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg konstant kraft. Klossen på 1,0 kg dras med 4,0 N og så med 6,0 N. Hva skjer i hvert tilfelle? Regn ut akselerasjonen når klossen glir.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>I forsøket med hvilefriksjon og glidefriksjon målte dere forholdet mellom dem for ulike flater. Hva er forholdet for flatene i simuleringen? Er det det samme for alle?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En bil bremser med låste hjul på tørr asfalt, og en annen bremser med ABS, der hjulene ruller helt på grensen til å skli. Hvilken stopper raskest? Bruk forskjellen på hvilefriksjon og glidefriksjon.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Friksjonen følger trekkraften opp til en topp, faller så litt når klossen glipper, og holder seg konstant mens klossen glir.</li>
+              <li>Klossen står i ro, så summen av kreftene er null. Da må friksjonen være like stor og motsatt rettet trekkraften.</li>
+              <li>N = mg = 1,0 · 9,81 = 9,81 N. Største hvilefriksjon: 0,50 · 9,81 ≈ 4,9 N. Glidefriksjon: 0,30 · 9,81 ≈ 2,9 N. Klossen glipper når trekkraften passerer 4,9 N, etter 2,45 s.</li>
+              <li>Kraften dobles, til 9,8 N, fordi normalkraften dobles. Forholdet mellom største hvilefriksjon og glidefriksjon er det samme: 0,50 / 0,30 ≈ 1,7.</li>
+              <li>Med 4,0 N står klossen i ro, fordi 4,0 N er mindre enn 4,9 N. Friksjonen er da 4,0 N. Med 6,0 N glipper den, og a = (6,0 − 2,94) / 1,0 ≈ 3,1 m/s².</li>
+              <li>Tre mot tre: 1,7. Gummi mot betong: 1,3. Stål mot stål: 1,3. Is mot is: 3,3. Forholdet varierer, men største hvilefriksjon er alltid større enn glidefriksjonen.</li>
+              <li>Bilen med ABS. Når hjulene ruller uten å skli, er det hvilefriksjon mellom dekk og vei, og den kan være større enn glidefriksjonen. Låste hjul glir, og da er friksjonen glidefriksjon. ABS gjør også at bilen kan styres mens den bremser.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter, gjerne sammen med forsøket med kraftmåler og ulike flater. Grafen i simuleringen ligner det elevene ser med en digital kraftmåler.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/friksjon.js"></script>
+</body>
+</html>

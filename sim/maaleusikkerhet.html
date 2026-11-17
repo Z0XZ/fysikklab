@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Måleusikkerhet</title>
+  <meta name="description" content="Simulering med oppgaver om måleusikkerhet: Mål svingetiden til en pendel med stoppeklokke, og se hvordan middelverdi, spredning og usikkerhet endrer seg med flere og bedre målinger.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Introduksjon til fysikk</p>
+        <h1>Måleusikkerhet</h1>
+        <p class="ingress">Du skal måle svingetiden til en pendel med stoppeklokke. Hver gang du trykker, kommer du litt for tidlig eller litt for sent. Hvor nøyaktig kan du bestemme svingetiden, og hvordan kan du gjøre målingen bedre?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="maalinger" class="statisk forhold-lav" role="img" aria-label="En pendel som svinger, og et prikkdiagram over målte svingetider med middelverdi."></canvas>
+          <dl class="sim-tall">
+            <div><dt>antall målinger</dt><dd id="r-n"></dd></div>
+            <div><dt>middelverdi</dt><dd id="r-snitt"></dd></div>
+            <div><dt>største avvik fra middelverdien</dt><dd id="r-avvik"></dd></div>
+            <div><dt>standardavvik s</dt><dd id="r-s"></dd></div>
+            <div><dt>usikkerhet i middelverdien s/√n</dt><dd id="r-sm"></dd></div>
+            <div><dt>relativ usikkerhet</dt><dd id="r-rel"></dd></div>
+            <div><dt>sann svingetid</dt><dd id="r-sann"></dd></div>
+          </dl>
+          <p class="sim-hint uten-marg" style="padding: 0 1rem .5rem">Siste målinger (s): <span id="siste"></span></p>
+          <div class="sim-styring mange">
+            <label for="perioder">Perioder per måling<select id="perioder"><option value="1">1 periode</option><option value="5">5 perioder</option><option value="10">10 perioder</option><option value="20">20 perioder</option></select></label>
+            <label for="reaksjon">Hvor presist du trykker<select id="reaksjon"><option value="0.05">Svært presist (± 0,05 s)</option><option value="0.1" selected>Vanlig (± 0,1 s)</option><option value="0.2">Upresist (± 0,2 s)</option></select></label>
+            <label class="avkrysning" for="systematisk"><input id="systematisk" type="checkbox"> Systematisk feil: klokka stoppes 0,15 s for sent</label>
+            <label class="avkrysning" for="vis-sann"><input id="vis-sann" type="checkbox"> Vis sann verdi</label>
+            <div class="sim-knapper"><button id="maal-en" class="knapp" type="button">Mål én gang</button><button id="maal-ti" class="knapp lys" type="button">Mål ti ganger</button><button id="nullstill" class="knapp lys" type="button">Slett målingene</button></div>
+          </div>
+          <figcaption class="sim-hint">Hver måling er tiden for det valgte antallet perioder, delt på antallet. Feilen ved start og stopp er tilfeldig og normalfordelt, med standardavviket du velger. Det skyggelagte feltet viser middelverdien ± ett standardavvik. Målingene slettes når du endrer innstillingene.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Mål</span><div><p>Mål svingetiden én periode om gangen, ti ganger. Hva er middelverdien? Hvor stort er det største avviket fra middelverdien? Skriv resultatet på formen T = (middelverdi ± usikkerhet) s med fornuftig antall desimaler.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva tror du skjer med spredningen hvis du i stedet måler tiden for 10 perioder og deler på 10? Test.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor blir spredningen omtrent ti ganger mindre når du måler ti perioder om gangen? Feilen i hvert trykk er jo like stor.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Mål mange ganger, for eksempel 10, 40 og 100 målinger med én periode. Hva skjer med standardavviket? Hva skjer med usikkerheten i middelverdien?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Slå på den systematiske feilen og mål mange ganger. Slå så på «Vis sann verdi». Hjelper det å måle mange ganger? Hva kan du gjøre for å redusere virkningen av feilen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Forklar forskjellen på tilfeldige og systematiske feil. Gi et eksempel på hver fra et forsøk du har gjort selv.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Svingetiden er T = 2π√(L/g). Bruk middelverdien din til å regne ut g. Hvor stor blir den relative usikkerheten i g når den relative usikkerheten i T er 1 %?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Den sanne svingetiden er 1,794 s. Med én periode og «vanlig» presisjon er spredningen omtrent 0,14 s, så største avvik blir ofte 0,2–0,3 s. Et svar kan være T = (1,8 ± 0,2) s. Usikkerheten bestemmer hvor mange desimaler det er meningsfullt å ta med.</li>
+              <li>Spredningen blir omtrent ti ganger mindre, rundt 0,014 s.</li>
+              <li>Feilen ved start og stopp er den samme, men den fordeles på ti perioder. Når vi deler den målte tiden på 10, deler vi også feilen på 10.</li>
+              <li>Standardavviket endrer seg lite. Det beskriver hvor mye én måling varierer, og det blir ikke mindre av flere målinger. Usikkerheten i middelverdien, s/√n, blir mindre: Fire ganger så mange målinger gir halvparten så stor usikkerhet.</li>
+              <li>Nei. Alle målingene blir like mye for store, så middelverdien blir feil uansett hvor mange målinger du tar. Med 1 periode blir T omtrent 0,15 s for stor. Med 10 perioder blir feilen fordelt, og T blir bare 0,015 s for stor. Systematiske feil må finnes og rettes, for eksempel ved å la samme person starte og stoppe klokka, eller ved å bruke en lysport.</li>
+              <li>Tilfeldige feil varierer fra måling til måling, og blir mindre viktige når vi tar middelverdien av mange målinger. Systematiske feil går alltid samme vei, for eksempel en vekt som viser for mye eller en linjal som ikke starter på null.</li>
+              <li>g = 4π²L/T² = 4π² · 0,80 / 1,794² ≈ 9,81 m/s². T er opphøyd i andre, så den relative usikkerheten i g blir omtrent dobbelt så stor: 2 %. Usikkerheten i L er her ikke tatt med.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter, gjerne sammen med en ekte pendel der elevene måler selv først. Tallene er tilfeldige, så hver elev får sine egne resultater. Fasiten gir typiske verdier. Standardavvik og s/√n kan tas med etter behov. Største avvik fra middelverdien er nok i mange klasser.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/usikkerhet.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loddrett sirkel</title>
+  <meta name="description" content="Simulering med oppgaver om sirkelbevegelse i loddrett plan: en ball i snor eller en vogn i en loop. Hvor stor fart trengs for å komme rundt, og hvor stor er kraften på toppen og i bunnen?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Sirkelbevegelse</p>
+        <h1>Loddrett sirkel</h1>
+        <p class="ingress">En ball svinges rundt i en loddrett sirkel, eller en vogn kjører gjennom en loop i en berg-og-dal-bane. Farten er størst i bunnen og minst på toppen. Er farten for liten, blir snora slakk eller vogna slipper banen. Hvor stor fart trengs i bunnen for å komme helt rundt?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="loop" class="statisk forhold-fall" role="img" aria-label="En ball i en loddrett sirkel med piler for tyngden og snorkraften."></canvas>
+          <dl class="sim-tall">
+            <div><dt>fart nå</dt><dd id="r-v"></dd></div>
+            <div><dt><span id="navn-s">S</span> nå</dt><dd id="r-s"></dd></div>
+            <div><dt><span id="navn-sbunn">S</span> i bunnen</dt><dd id="r-sbunn"></dd></div>
+            <div><dt>på toppen</dt><dd id="r-topp" class="bryt"></dd></div>
+            <div><dt>minste fart i bunnen, √(5gr)</dt><dd id="r-vmin"></dd></div>
+          </dl>
+          <canvas id="loopgraf" class="statisk forhold-lav" role="img" aria-label="Snorkraften mot tiden."></canvas>
+          <div class="sim-styring mange">
+            <label for="modus">Situasjon<select id="modus"><option value="snor">Ball i snor</option><option value="loop">Vogn i loop</option></select></label>
+            <label for="radius">Radius r <output id="radius-ut" for="radius"></output><input id="radius" type="range" min="0.5" max="3" step="0.1" value="1"></label>
+            <label for="fart">Fart i bunnen <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="1" max="15" step="0.1" value="7.5"></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.1" max="2" step="0.1" value="0.5"></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.25">Sakte (0,25×)</option></select></label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <figcaption class="sim-hint">Luftmotstand og friksjon er ikke med, så den mekaniske energien er bevart. Når snorkraften eller normalkraften blir null, slipper ballen sirkelen og følger en kastebane til snora strammes igjen eller vogna treffer banen. Da stopper simuleringen. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med ball i snor, r = 1,0 m, 7,5 m/s i bunnen og 0,50 kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Hvor er snorkraften størst, og hvor er den minst? Se på grafen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut snorkraften i bunnen. Bruk energibevaring til å finne farten på toppen, og regn ut snorkraften der. Sjekk.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vis at ballen akkurat kommer rundt hvis farten på toppen er v = √(gr). Bruk energibevaring til å vise at farten i bunnen da må være √(5gr).</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett farten i bunnen til 6,0 m/s. Hvor blir snora slakk? Hva gjør ballen etterpå?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett farten til 4,0 m/s. Hvorfor blir ikke snora slakk nå? Hvor høyt kommer ballen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bytt til vogn i loop. Hva er forskjellen og likheten mellom snorkraften og normalkraften i de to situasjonene? Hvorfor kjenner du deg tung i bunnen av en loop og lett på toppen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>En berg-og-dal-bane har en loop med radius 8,0 m. Hvor stor fart må vogna minst ha i bunnen? Hvor mange g kjenner passasjerene i bunnen da?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Størst i bunnen, der snora både må holde ballen oppe og gi sentripetalkraft. Minst på toppen, der tyngden hjelper til med å gi sentripetalkraften.</li>
+              <li>Bunnen: S − mg = mv²/r gir S = 0,50 · 7,5² / 1,0 + 0,50 · 9,81 ≈ 33,0 N. Toppen: v² = 7,5² − 2 · 9,81 · 2,0 gir v ≈ 4,12 m/s. S + mg = mv²/r gir S = 0,50 · 17,0 − 4,9 ≈ 3,6 N.</li>
+              <li>Snora er akkurat slakk når S = 0 på toppen: mg = mv²/r, så v = √(gr). Energibevaring: ½mv<sub>b</sub>² = ½m · gr + mg · 2r gir v<sub>b</sub>² = 5gr, altså v<sub>b</sub> = √(5gr) ≈ 7,0 m/s.</li>
+              <li>Snora blir slakk omtrent 124° fra bunnen, der S = mv²/r + mg cos θ = 0. Ballen følger en kastebane innover i sirkelen til snora strammes igjen.</li>
+              <li>Ballen kommer ikke høyere enn sentrum av sirkelen (90°), og der er cos θ ≥ 0, så S kan ikke bli null. Den svinger fram og tilbake som en pendel og kommer opp til h = v²/(2g) ≈ 0,82 m over bunnen.</li>
+              <li>Fysikken er den samme: Kraften fra snora eller banen peker inn mot sentrum, og må sammen med tyngden gi sentripetalkraften. En snor kan bare dra, og en bane kan bare skyve. Kraften du kjenner, er normalkraften fra setet: N = m(g + v²/r) i bunnen og N = m(v²/r − g) på toppen.</li>
+              <li>v = √(5 · 9,81 · 8,0) ≈ 19,8 m/s. I bunnen: N = m(g + v²/r) = m(g + 5g) = 6mg. Passasjerene kjenner 6 g. Ekte loops er derfor ikke sirkelformet, men har mindre radius på toppen enn i bunnen.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Kombinerer sirkelbevegelse og energibevaring, slik mange eksamensoppgaver gjør. Se også <a href="berg-og-dal.html">Berg-og-dal-bane</a> fra Fysikk 1.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/loddrett.js"></script>
+</body>
+</html>

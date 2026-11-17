@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reaksjonstid</title>
+  <meta name="description" content="Forsøk i Fysikk 1 om måling og måleusikkerhet: Mål reaksjonstiden din med en test i nettleseren og med en fallende linjal, og sammenlign metodene.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Introduksjon til fysikk</p>
+        <h1>Reaksjonstid</h1>
+        <p class="ingress">Hvor raskt reagerer du? Mål reaksjonstiden din på to måter: med en test her på skjermen og med en linjal som faller. Hvor stor er usikkerheten, og gir metodene samme svar?</p>
+
+        <figure class="sim egne-data">
+          <h2>Test i nettleseren</h2>
+          <p class="del-inngang">Klikk i feltet for å starte. Når feltet blir blågrønt, klikker du så raskt du kan. Gjør minst ti forsøk.</p>
+          <div id="test-felt" class="reaksjon-felt" role="button" tabindex="0" aria-live="polite"><span id="test-tekst"></span></div>
+          <p class="sim-hint uten-marg" style="padding: 0 1rem .5rem">Siste forsøk: <span id="klikk-liste"></span></p>
+          <dl class="sim-tall">
+            <div><dt>antall forsøk</dt><dd id="k-n"></dd></div>
+            <div><dt>middelverdi</dt><dd id="k-m"></dd></div>
+            <div><dt>største avvik</dt><dd id="k-avvik"></dd></div>
+            <div><dt>standardavvik</dt><dd id="k-s"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="klikk-slett" class="knapp lys" type="button">Slett forsøkene</button></div>
+          </div>
+        </figure>
+
+        <div class="tekst opplegg">
+          <h2>Linjalmetoden</h2>
+          <p>Du trenger en linjal på 30 cm og en partner. Partneren holder linjalen loddrett, med nullpunktet mellom tommelen og pekefingeren din, uten at du rører den. Uten forvarsel slipper partneren linjalen, og du klyper den så fort du kan. Les av hvor langt linjalen falt, i centimeter.</p>
+          <p>Linjalen faller fritt fra ro, så strekningen er s = ½gt². Da er reaksjonstiden t = √(2s/g).</p>
+        </div>
+
+        <figure class="sim egne-data">
+          <h2>Målinger med linjal</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Forsøk</th><th scope="col">Falt (cm)</th><th scope="col">Reaksjonstid (ms)</th></tr></thead>
+              <tbody id="linjal-rader"></tbody>
+            </table>
+          </div>
+          <dl class="sim-tall">
+            <div><dt>antall forsøk</dt><dd id="l-n"></dd></div>
+            <div><dt>middelverdi</dt><dd id="l-m"></dd></div>
+            <div><dt>største avvik</dt><dd id="l-avvik"></dd></div>
+            <div><dt>standardavvik</dt><dd id="l-s"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <div class="sim-knapper"><button id="linjal-ny" class="knapp lys" type="button">Ny rad</button><button id="kopier" class="knapp lys" type="button">Kopier alle resultater</button><button id="linjal-slett" class="knapp lys" type="button">Tøm tabellen</button></div>
+          </div>
+          <figcaption class="sim-hint">Resultatene lagres bare i denne nettleseren. g = 9,81 m/s².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Mål</span><div><p>Gjør minst ti forsøk med hver metode. Skriv reaksjonstiden din på formen t = (middelverdi ± usikkerhet) ms, med det største avviket fra middelverdien som usikkerhet.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Linjalen faller 15 cm før du klyper den. Hva er reaksjonstiden? Hvor langt faller linjalen hvis reaksjonstiden er 0,25 s?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Gir de to metodene samme resultat? Nettlesertesten har en systematisk feil: Det tar litt tid fra datamaskinen ber skjermen skifte farge til fargen faktisk vises, og fra du trykker til datamaskinen registrerer det. Blir målt tid for stor eller for liten?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke tilfeldige og systematiske feil er det i linjalmetoden? Hvorfor er det viktig at partneren ikke gir forvarsel?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Du kjører bil i 80 km/h. Hvor langt kjører du i løpet av reaksjonstiden din, før du begynner å bremse? Gjør om til SI-enheter først.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Linjalen er 30 cm lang. Hva er den lengste reaksjonstiden linjalmetoden kan måle? Hvordan ville du laget en «reaksjonslinjal» med tider i stedet for centimeter? Er avstanden mellom 50 ms-strekene den samme hele veien?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Typiske reaksjonstider på slike tester er rundt 0,2–0,3 s. Svaret kan for eksempel bli t = (240 ± 40) ms. Ved å samle resultatene til klassen kan dere se på fordelingen.</li>
+              <li>t = √(2 · 0,15 / 9,81) ≈ 0,17 s. s = ½ · 9,81 · 0,25² ≈ 0,31 m, altså 31 cm, lenger enn linjalen.</li>
+              <li>Nettlesertesten gir ofte litt lengre tid, fordi skjermen bruker tid på å vise den nye fargen og datamaskinen bruker tid på å registrere klikket. Til sammen kan det være noen titalls millisekunder, og det varierer mellom maskiner. Feilen gjør den målte tiden for stor. Forskjellen mellom metodene sier også noe om at de måler litt ulike ting: å se en farge og klikke, og å se en linjal falle og klype.</li>
+              <li>Tilfeldige feil: avlesningen av linjalen, at fingrene ikke står helt likt hver gang, og variasjon i hvor oppmerksom du er. Systematiske feil: at linjalen ikke starter mellom fingrene på null, eller at du får et lite dytt når linjalen slippes. Forvarsel gjør at du kan reagere på lyden eller bevegelsen i stedet for linjalen, og da blir tiden for kort.</li>
+              <li>80 km/h = 80 / 3,6 m/s ≈ 22,2 m/s. Med reaksjonstid 0,25 s kjører du 22,2 · 0,25 ≈ 5,6 m før du bremser.</li>
+              <li>t = √(2 · 0,30 / 9,81) ≈ 0,25 s. Strekene for 50, 100, 150, 200 og 250 ms står ved s = ½gt²: 1,2 cm, 4,9 cm, 11,0 cm, 19,6 cm og 30,7 cm. Avstanden mellom strekene øker, fordi linjalen faller fortere og fortere.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer i starten av året for å øve på middelverdi, usikkerhet, SI-enheter og gjeldende siffer. Linjalmetoden bruker formelen for fritt fall, som kan tas på tro her og forklares i kapitlet om bevegelse. Se også simuleringen <a href="../sim/maaleusikkerhet.html">Måleusikkerhet</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/reaksjon.js"></script>
+</body>
+</html>

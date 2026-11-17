@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bevegelsesgrafer</title>
+  <meta name="description" content="Simulering med oppgaver om rettlinjet bevegelse: Bygg en bevegelse med konstant akselerasjon og se sammenhengen mellom posisjon, fart og akselerasjon. Med en «følg grafen»-utfordring.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-1.html">Fysikk 1</a> / Rettlinjet bevegelse</p>
+        <h1>Bevegelsesgrafer</h1>
+        <p class="ingress">En bevegelse kan beskrives med tre grafer: posisjon, fart og akselerasjon mot tid. Bygg en bevegelse av opptil fire deler med konstant akselerasjon, og se hvordan grafene henger sammen.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="bane" class="statisk forhold-spor" role="img" aria-label="Et objekt som beveger seg langs en bane, med stroboskopmerker hvert halve sekund."></canvas>
+          <dl class="sim-tall">
+            <div><dt>posisjon x</dt><dd id="r-x"></dd></div>
+            <div><dt>fart v</dt><dd id="r-v"></dd></div>
+            <div><dt>akselerasjon a</dt><dd id="r-a"></dd></div>
+            <div><dt>tilbakelagt strekning</dt><dd id="r-s"></dd></div>
+            <div><dt>forflytning x − x₀</dt><dd id="r-dx"></dd></div>
+          </dl>
+          <canvas id="grafer" class="statisk forhold-grafer" role="img" aria-label="Grafer for posisjon, fart og akselerasjon mot tid."></canvas>
+          <div class="sim-styring mange">
+            <label for="oppsett">Oppsett<select id="oppsett"><option value="konstant">Konstant fart</option><option value="akselerasjon">Fra ro med konstant akselerasjon</option><option value="bil">Bil som akselererer og bremser</option><option value="snu">Bremser, snur og kjører tilbake</option><option value="egen" hidden>Egen bevegelse</option></select></label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="2" selected>2 × fart</option><option value="0.5">Halv fart</option></select></label>
+            <label class="avkrysning" for="strobe"><input id="strobe" type="checkbox" checked> Merker hvert halve sekund</label>
+            <label class="avkrysning" for="areal"><input id="areal" type="checkbox"> Areal under fartsgrafen</label>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Start</button></div>
+          </div>
+          <div id="deler">
+          <div class="sim-styring mange uten-topp">
+            <label for="x0">Startposisjon x₀ i m<input id="x0" type="text" inputmode="decimal"></label>
+            <label for="v0">Startfart v₀ i m/s<input id="v0" type="text" inputmode="decimal"></label>
+          </div>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle">
+              <thead><tr><th scope="col">Del</th><th scope="col">Varighet (s)</th><th scope="col">Akselerasjon (m/s²)</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1</th><td><input id="dt0" type="text" inputmode="decimal" aria-label="Varighet del 1"></td><td><input id="a0" type="text" inputmode="decimal" aria-label="Akselerasjon del 1"></td></tr>
+                <tr><th scope="row">2</th><td><input id="dt1" type="text" inputmode="decimal" aria-label="Varighet del 2"></td><td><input id="a1" type="text" inputmode="decimal" aria-label="Akselerasjon del 2"></td></tr>
+                <tr><th scope="row">3</th><td><input id="dt2" type="text" inputmode="decimal" aria-label="Varighet del 3"></td><td><input id="a2" type="text" inputmode="decimal" aria-label="Akselerasjon del 3"></td></tr>
+                <tr><th scope="row">4</th><td><input id="dt3" type="text" inputmode="decimal" aria-label="Varighet del 4"></td><td><input id="a3" type="text" inputmode="decimal" aria-label="Akselerasjon del 4"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          </div>
+          <figcaption class="sim-hint">Endre tallene i tabellen for å lage din egen bevegelse. Tomme rader blir ikke med. Positiv retning er mot høyre. Pila over objektet viser farten.</figcaption>
+        </figure>
+
+        <figure class="sim egne-data">
+          <h2>Følg grafen</h2>
+          <p class="del-inngang">Den stiplede grafen viser hvordan posisjonen skal endre seg. Trykk på «Start» og styr farten med glidebryteren, slik at din graf følger den stiplede. Du har 12 sekunder.</p>
+          <canvas id="folg" class="statisk forhold-lav" role="img" aria-label="En stiplet posisjonsgraf som skal følges, og grafen du lager selv."></canvas>
+          <div class="sim-styring mange">
+            <label for="f-fart" class="bred-felt">Fart <output id="f-fart-ut" for="f-fart"></output><input id="f-fart" type="range" min="-2" max="2" step="0.1" value="0"></label>
+            <div class="sim-knapper"><button id="f-start" class="knapp" type="button">Start</button><button id="f-ny" class="knapp lys" type="button">Ny graf</button></div>
+            <p class="sim-hint uten-marg">Avvik: <strong id="f-poeng">–</strong></p>
+          </div>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Velg «Konstant fart». Hvordan ser de tre grafene ut? Hvordan ser du farten på posisjonsgrafen? Hvordan ligger merkene for hvert halve sekund?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Velg «Fra ro med konstant akselerasjon». Hvordan endrer avstanden mellom merkene seg? Hvorfor er posisjonsgrafen krum?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg «Bil som akselererer og bremser». Bruk tallene i tabellen til å regne ut toppfarten og hvor langt bilen kjører i hver del. Slå på «Areal under fartsgrafen» og sjekk.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Velg «Bremser, snur og kjører tilbake». Når står bilen stille? Hva er farten og akselerasjonen akkurat da? Forklar forskjellen på tilbakelagt strekning og forflytning når bevegelsen er ferdig.</p></div></li>
+          <li><span class="fase test">Lag</span><div><p>Lag en bevegelse der bilen starter i ro, kjører 30 m fram og stopper. Prøv å bruke akkurat tre deler med like lang varighet.</p></div></li>
+          <li><span class="fase test">Spill</span><div><p>Spill «Følg grafen». Hva må du gjøre med farten når den stiplede grafen er bratt? Når den heller nedover?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Kan en bil ha fart null og samtidig akselerasjon som ikke er null? Kan den ha negativ fart og positiv akselerasjon? Lag eksempler i simuleringen.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>x-t er en rett linje, v-t er vannrett, og a er null. Farten er stigningstallet til posisjonsgrafen. Merkene ligger med like stor avstand.</li>
+              <li>Avstanden mellom merkene øker, fordi farten øker. Posisjonsgrafen blir krum (en parabel) fordi stigningstallet, altså farten, øker hele tiden.</li>
+              <li>Toppfart: v = at = 2,5 · 4 = 10 m/s. Del 1: s = ½ · 2,5 · 4² = 20 m. Del 2: s = 10 · 4 = 40 m. Del 3: bremsetid 2,5 s og s = 10 · 2,5 − ½ · 4 · 2,5² = 12,5 m. Til sammen 72,5 m, som er arealet under fartsgrafen.</li>
+              <li>Bilen står stille ved t = 3,0 s, 4,5 m fra start. Da er farten null, men akselerasjonen er fortsatt −1 m/s², så farten fortsetter å endre seg. Etter 6,0 s er bilen tilbake der den startet: Forflytningen er 0, men den har kjørt 9,0 m.</li>
+              <li>Med tre deler på T sekunder og akselerasjon a, 0 og −a blir strekningen ½aT² + aT · T + ½aT² = 2aT². Ett eksempel: T = 5 s og a = 0,6 m/s² gir 2 · 0,6 · 25 = 30 m. Toppfarten blir 3 m/s, og strekningene blir 7,5 m, 15 m og 7,5 m.</li>
+              <li>Bratt graf betyr stor fart. Når grafen heller nedover, må farten være negativ. Stigningstallet til den stiplede grafen er farten du skal ha.</li>
+              <li>Ja, i toppunktet til en ball som er kastet rett opp, eller når bilen i oppgave 4 snur. Negativ fart og positiv akselerasjon betyr at noe beveger seg mot venstre og bremser, for eksempel v₀ = −3 m/s og a = 1 m/s².</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. «Følg grafen» ligner forsøket der elevene går foran en bevegelsessensor og prøver å følge en graf, og kan brukes som oppvarming. Se også <a href="fritt-fall.html">Fritt fall</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/bevgraf.js"></script>
+</body>
+</html>

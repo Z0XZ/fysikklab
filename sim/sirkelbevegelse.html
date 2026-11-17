@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sirkelbevegelse</title>
+  <meta name="description" content="Simulering med oppgaver om jevn sirkelbevegelse: fart og sentripetalakselerasjon, hvorfor akselerasjonen peker inn mot sentrum, og hva som skjer når snora kuttes.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Sirkelbevegelse</p>
+        <h1>Sirkelbevegelse</h1>
+        <p class="ingress">En ball svinges rundt i en snor med konstant fart. Farten er like stor hele tiden, men retningen endrer seg, og da har ballen akselerasjon. Hvilken vei peker akselerasjonen, og hvor stor er den?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="sirkel" class="statisk forhold-fall" role="img" aria-label="En ball i sirkelbane sett ovenfra, med piler for fart og akselerasjon, og en konstruksjon av fartsendringen."></canvas>
+          <dl class="sim-tall">
+            <div><dt>omløpstid T</dt><dd id="r-t"></dd></div>
+            <div><dt>frekvens f</dt><dd id="r-f"></dd></div>
+            <div><dt>vinkelfart ω</dt><dd id="r-w"></dd></div>
+            <div><dt>sentripetalakselerasjon a = v²/r</dt><dd id="r-a"></dd></div>
+            <div><dt>kraft mot sentrum F = mv²/r</dt><dd id="r-fs"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="radius">Radius r <output id="radius-ut" for="radius"></output><input id="radius" type="range" min="0.5" max="5" step="0.5" value="2"></label>
+            <label for="fart">Fart v <output id="fart-ut" for="fart"></output><input id="fart" type="range" min="0.5" max="10" step="0.5" value="3"></label>
+            <label for="masse">Masse m <output id="masse-ut" for="masse"></output><input id="masse" type="range" min="0.1" max="5" step="0.1" value="1"></label>
+            <label class="avkrysning" for="vis-v"><input id="vis-v" type="checkbox" checked> Vis fart</label>
+            <label class="avkrysning" for="vis-a"><input id="vis-a" type="checkbox" checked> Vis akselerasjon</label>
+            <label class="avkrysning" for="dv"><input id="dv" type="checkbox"> Vis fartsendringen Δv</label>
+            <label for="tempo">Avspilling<select id="tempo"><option value="1">Sanntid</option><option value="0.25">Sakte (0,25×)</option></select></label>
+            <div class="sim-knapper"><button id="kutt" class="knapp" type="button">Kutt snora</button></div>
+          </div>
+          <figcaption class="sim-hint">Sirkelen er tegnet like stor uansett radius. Fartspila er proporsjonal med farten, og akselerasjonspila med akselerasjonen, opp til en største lengde. Fartsendringen vises på brede skjermer: v₁ er farten nå, og v₂ er farten litt senere, i det svake punktet på banen.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="del-inngang">Start med r = 2,0 m, v = 3,0 m/s og m = 1,0 kg.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Tipp</span><div><p>Farten er konstant. Har ballen likevel akselerasjon? Hvilken vei peker den? Slå på «Vis fartsendringen Δv» og se hvilken vei Δv peker.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut omløpstiden, vinkelfarten og sentripetalakselerasjonen. Hvor stor kraft må snora dra med? Sjekk.</p></div></li>
+          <li><span class="fase tipp">Tipp</span><div><p>Hva skjer med akselerasjonen hvis du dobler farten? Hva hvis du i stedet dobler radien og holder farten fast? Og hvis du dobler radien og holder omløpstiden fast?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Trykk på «Kutt snora». Hvilken vei går ballen? Forklar med Newtons 1. lov. Hvorfor flyr den ikke rett utover fra sentrum?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En bil kjører gjennom en rundkjøring med radius 15 m i 36 km/h. Hva er sentripetalakselerasjonen? Hvor stort må friksjonstallet minst være for at bilen ikke skal skli?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Det finnes ingen egen «sentripetalkraft». Hvilken kraft gir sentripetalakselerasjonen for ballen i snora, for bilen i rundkjøringen og for Månen rundt Jorda?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Månen går rundt Jorda med radius 3,84 · 10⁸ m og omløpstid 27,3 døgn. Regn ut sentripetalakselerasjonen til Månen. Sammenlign med g/3600. Månen er omtrent 60 jordradier unna. Hva sier det om tyngdekraften?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Ja. Retningen til farten endrer seg, og da er det en fartsendring Δv. Den peker inn mot sentrum, så akselerasjonen peker inn mot sentrum.</li>
+              <li>T = 2πr / v = 2π · 2,0 / 3,0 ≈ 4,19 s. ω = v/r = 1,5 rad/s. a = v²/r = 9,0 / 2,0 = 4,5 m/s². F = ma = 4,5 N.</li>
+              <li>Dobbel fart gir fire ganger så stor akselerasjon. Dobbel radius med samme fart gir halvparten så stor akselerasjon. Med samme omløpstid blir farten også dobbelt så stor, og akselerasjonen dobles (a = 4π²r/T²).</li>
+              <li>Ballen fortsetter rett fram langs tangenten der den var da snora ble kuttet. Uten kraft endrer ikke farten seg, verken størrelse eller retning. Det er ingen kraft som skyver den utover.</li>
+              <li>v = 10 m/s og a = 10² / 15 ≈ 6,7 m/s². Friksjonen må gi denne akselerasjonen: μmg ≥ ma, så μ ≥ a/g ≈ 0,68.</li>
+              <li>Snorkraften for ballen, friksjonen mellom dekk og vei for bilen, og gravitasjonskraften fra Jorda for Månen. Sentripetalkraft er et navn på summen av kreftene mot sentrum.</li>
+              <li>v = 2πr/T ≈ 1,02 · 10³ m/s og a = v²/r ≈ 2,72 · 10⁻³ m/s². g/3600 = 2,73 · 10⁻³ m/s². Akselerasjonen er 60² ganger mindre enn ved jordoverflaten. Det tyder på at tyngdekraften avtar som 1/r². Dette var Newtons argument for gravitasjonsloven.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30 minutter. Passer som innledning til sirkelbevegelse. Se også <a href="dosert-sving.html">Dosert sving</a> og <a href="loddrett-sirkel.html">Loddrett sirkel</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/sirkel.js"></script>
+</body>
+</html>
