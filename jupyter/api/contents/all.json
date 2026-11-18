@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "content": null,
+      "created": "2026-11-18T14:47:20.266334Z",
+      "format": null,
+      "hash": null,
+      "hash_algorithm": null,
+      "last_modified": "2026-11-18T14:47:20.266334Z",
+      "mimetype": null,
+      "name": "sirkelbevegelse.ipynb",
+      "path": "sirkelbevegelse.ipynb",
+      "size": 8454,
+      "type": "notebook",
+      "writable": true
+    }
+  ],
+  "created": "2026-11-18T14:47:21.010998Z",
+  "format": "json",
+  "hash": null,
+  "hash_algorithm": null,
+  "last_modified": "2026-11-18T14:47:21.011085Z",
+  "mimetype": null,
+  "name": "",
+  "path": "",
+  "size": null,
+  "type": "directory",
+  "writable": true
+}

@@ -1,0 +1,27 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-bil-luftmotstand.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Bevegelse og krefter i to dimensjoner}{Bil med luftmotstand – numerisk integrasjon}{https://lektorbo.no/programmering/python-bil-luftmotstand.html}{Koden på nett}
+
+En bil på 1500~kg starter fra ro, og motoren gir en konstant kraft på 1200~N. Luftmotstanden er $L = kv^{2}$ med $k = 2{,}29\,\mathrm{kg/m}$. Jo fortere bilen kjører, desto større blir luftmotstanden, og til slutt når bilen en toppfart.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Kjør}Kjør begge stegene. Hva er toppfarten? Har bilen nådd den etter 60~s?
+\svar
+\oppgave \fase{test}{Regn}Regn ut toppfarten for hånd fra $F = kv^{2}$. Sjekk at det stemmer med programmet.
+\svar
+\oppgave \fase{test}{Plott}Plott farten og akselerasjonen mot tiden. Hvordan ser du på grafene at kraftsummen avtar?
+\svar
+\oppgave \fase{test}{Undersøk}Hva skjer med toppfarten hvis bilen får en takboks som dobler $k$? Regn først, og sjekk med programmet.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvor stor effekt gir motoren ved toppfarten? Hvor blir det av energien når farten er konstant?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Legg til rullemotstand $R = μmg$ med $μ = 0{,}015$. Hvordan endres toppfarten? Finn den både med programmet og ved regning.
+\svar
+\end{oppgaveliste}
+
+\end{document}

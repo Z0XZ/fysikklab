@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/kraftsensor.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Impuls med kraftsensor}{https://lektorbo.no/opplegg/kraftsensor.html}{Opplegget på nett}
+
+En vogn kjører inn i en kraftsensor og spretter tilbake. Er arealet under grafen for kraft mot tid lik endringen i bevegelsesmengden til vogna?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Måle kraften i et kort støt og finne impulsen som arealet under F(t)-grafen.
+\item Undersøke om impulsen er lik endringen i bevegelsesmengde: $F \cdot Δt = Δp$.
+\item Se hvordan en mykere støtfanger endrer støttiden og den største kraften.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Dynamikkbane og vogn, for eksempel Smart Cart med innebygd kraftsensor, eller en vanlig vogn og en kraftsensor festet i enden av banen.
+\item Fjærstøtfanger eller magnetstøtfanger. Gjerne også en myk støtfanger (skumgummi) til sammenligning.
+\item Bevegelsessensor, eller fartsmåling fra Smart Cart.
+\item Vekt og datamaskin med Capstone, SPARKvue eller et annet program som logger målingene.
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Vei vogna. Juster banen slik at den står vannrett: Vogna skal bli stående i ro når du slipper den.
+\item Still loggefrekvensen for kraftsensoren høyt, minst 500~Hz. Støtet varer bare noen titalls millisekunder.
+\item Nullstill kraftsensoren mens ingenting berører den.
+\item Gi vogna et forsiktig dytt mot sensoren, og logg både kraft og fart til vogna har sprettet tilbake.
+\item Les av farten rett før og rett etter støtet. Husk fortegn.
+\item Eksporter kraftmålingene som tekst (tid og kraft i to kolonner). Lim dem inn i verktøyet på nettsiden, eller bruk programmets eget verktøy for areal under grafen.
+\item Gjenta med en mykere støtfanger og omtrent samme fart.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Før}Skisser hvordan du tror grafen for kraft mot tid ser ut for en fjærstøtfanger og for en myk støtfanger. Vogna har samme fart begge gangene.
+\svar
+\oppgave \fase{test}{Regn}Regn ut $Δp$ for vogna. Pass på fortegnet: Vogna snur.
+\svar
+\oppgave \fase{test}{Mål}Finn arealet under kraftgrafen i støtet. Hvor stort er avviket fra $Δp$ i prosent?
+\svar
+\oppgave \fase{forklar}{Forklar}Sammenlign støttiden og den største kraften for de to støtfangerne. Stemmer det med skissen din? Hvorfor er arealet omtrent det samme?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke feilkilder kan gi avvik mellom impulsen og $Δp$? Tenk på loggefrekvens, nullstilling, friksjon og hvor nøyaktig farten leses av.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Regn ut middelkraften i støtet som $Δp/Δt$. Hvorfor er den mindre enn den største kraften? Hvilken av dem er viktigst for om noe går i stykker?
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,8 @@
+{
+  "LiteBuildConfig": {
+    "apps": ["lab", "notebooks"],
+    "contents": ["innhold"],
+    "output_dir": "../jupyter",
+    "no_sourcemaps": true
+  }
+}

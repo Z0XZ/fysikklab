@@ -39,6 +39,32 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/mbane.js`, `js/fartsvelger.js`, `js/stromhuske.js`, `js/ledere.js` | Fysikk 2: ladd partikkel i magnetfelt, fartsvelger, strømhuske, magnetfelt rundt ledere |
 | `js/pingpong.js`, `js/syklotron.js` | Fysikk 2: elektrostatisk ping-pong, syklotron |
 | `js/mobilfelt.js` | Opplegg: magnetfelt rundt en leder målt med mobilen |
+| `js/pykjorer.js`, `js/pyarbeider.js`, `js/vendor/codemirror/` | Kjørbare Python-bokser på programmeringssidene (Pyodide i en Web Worker, CodeMirror 5 som editor, MIT-lisens) |
+| `jupyter/`, `jupyterlite/` | JupyterLite: Jupyter i nettleseren. `jupyter/` er den ferdige appen, `jupyterlite/` har notatbøkene og byggeoppskriften |
+| `elevark/` | Elevark som PDF (uten fasit), laget med LaTeX fra oppgavene på sidene |
 | `CNAME` | Domenet for GitHub Pages |
+
+## Python i nettleseren
+
+Kodeblokker blir kjørbare når de pakkes inn slik, og siden laster `js/pykjorer.js` (se `programmering/python-horisontalt-kast.html`):
+
+```html
+<div class="tekst opplegg py-side" data-filnavn="navn.py" data-filer="../data/sprettball.csv">
+  <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>...</code></pre></div>
+</div>
+```
+
+Boksene deler variabler som cellene i Jupyter. Python (Pyodide) lastes fra jsDelivr første gang en elev trykker Kjør. JupyterLite bruker samme Pyodide-versjon, slik at nedlastingen deles. Se `jupyterlite/README.md` for hvordan notatbøker legges til.
+
+## Elevark
+
+Oppgavene på hver side finnes også som PDF i `elevark/<mappe>/<side>.pdf`, uten løsningsforslag. Når oppgavene på en side endres, lag arkene på nytt fra mappa `lektorbo.no`:
+
+```
+python3 elevark/lag_elevark.py              # alle sidene (ca. 2 minutter)
+python3 elevark/lag_elevark.py sim/heis     # bare én side
+```
+
+Skriptet krever lualatex (TeX Live). Det leser oppgavene fra HTML-en, gjør formler om til LaTeX og legger inn knappen «Last ned elevark (PDF)» på siden. Oppsettet (skrift, farger, svarplass) står i `elevark/tex/elevark.sty`. Formler som ikke blir riktige automatisk, rettes i `RETTELSER` nederst i skriptet. `.tex`-filene i `elevark/tex/` blir overskrevet hver gang.
 
 Tekst som må fylles inn er merket med klassen `fyll-inn`. Søk etter den før publisering.

@@ -1,0 +1,58 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/video-muffins.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelse og krefter}{Videoanalyse av muffinsformer}{https://lektorbo.no/opplegg/video-muffins.html}{Opplegget på nett}
+
+En muffinsform når fort terminalfarten, der luftmotstanden er like stor som tyngden. Når dere legger flere former i hverandre, blir massen større, men formen den samme. Da kan dere teste modellen $L = kv^{2}$ og bestemme luftmotstandstallet $k$.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Finne terminalfarten ved videoanalyse.
+\item Undersøke om luftmotstanden er proporsjonal med $v^{2}$.
+\item Bestemme luftmotstandstallet $k$.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Flere like muffinsformer av papir, og en vekt som måler med minst 0,1~g nøyaktighet.
+\item Mobil eller kamera på stativ, en målestokk som henger loddrett, og Tracker.
+\item Slipp fra omtrent 2~m høyde, for eksempel fra en stol eller trapp.
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Vei én muffinsform. Vei gjerne ti former og del på ti for å få mer nøyaktig masse.
+\item Film én form som slippes fra ro foran målestokken. Hold formen med åpningen opp, og slipp den uten å dytte.
+\item Gjenta med 2, 3 og 4 former stablet i hverandre. Formen og størrelsen er den samme, men massen øker.
+\item I Tracker: Kalibrer, sett aksene med $y$ oppover, og spor formen. Kopier $t$ og $y$ inn i verktøyet på nettsiden.
+\item Finn tidsrommet der grafen er en rett linje, og tilpass en rett linje der. Stigningstallet er terminalfarten. Sett den inn i tabellen.
+\end{enumerate}
+
+Uten egen video: Tracker-eksemplet «CupsClips» viser muffinsformer med ulikt antall binders. Ifølge beskrivelsen i fila veier formen med to binders omtrent 1,4~g og formen med seks binders omtrent 3,1~g. Dere kan også øve med simuleringen Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}.
+
+\section*{Teorien}
+
+Ved terminalfarten er $L = G$, altså $kv_{\mathrm{t}}^{2} = mg$. Da er $k = mg / v_{\mathrm{t}}^{2}$. Hvis modellen stemmer, er $v_{\mathrm{t}}^{2}$ proporsjonal med $m$, og grafen av $v_{\mathrm{t}}^{2}$ mot $m$ blir en rett linje gjennom origo med stigningstall $g/k$.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Last inn eksempeldataene for én form. Hvor lang tid tar det før formen har nådd terminalfarten? Hvordan ser du det?
+\svar
+\oppgave \fase{test}{Mål}Finn terminalfarten for 1, 2, 3 og 4 former. Velg tidsrom fra omtrent 0,6~s og ut. Sett dem inn i tabellen, med massen 0,40~g per form.
+\svar
+\oppgave \fase{forklar}{Forklar}Er $k$ omtrent den samme for alle radene? Ligger punktene på en rett linje gjennom origo? Hva sier det om modellen $L = kv^{2}$?
+\svar
+\oppgave \fase{forklar}{Forklar}Hva ville grafen av $v_{\mathrm{t}}$ mot $m$ vist hvis luftmotstanden i stedet var proporsjonal med $v$?
+\svar
+\oppgave \fase{test}{Regn}Luftmotstandstallet kan skrives $k = \tfrac{1}{2}ρC_{\mathrm{d}}A$. Mål diameteren til formen, og regn ut formfaktoren $C_{\mathrm{d}}$. Bruk $ρ = 1{,}2\,\mathrm{kg/m^{3}}$.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hvorfor er det viktig at formene er stablet i hverandre, og ikke for eksempel tapet sammen side om side?
+\svar
+\end{oppgaveliste}
+
+\end{document}

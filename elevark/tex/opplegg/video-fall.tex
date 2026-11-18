@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/video-fall.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelse og krefter}{Videoanalyse av fall}{https://lektorbo.no/opplegg/video-fall.html}{Opplegget på nett}
+
+Slipp en ball og film fallet. I Tracker får dere posisjonen i hvert bilde. Er bevegelsen jevnt akselerert, og hvor stor er tyngdeakselerasjonen?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bruke videoanalyse til å måle posisjon og tid.
+\item Vise at fallet har konstant akselerasjon, og bestemme $g$.
+\item Vurdere feilkilder i videoanalyse.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En liten, tung ball, for eksempel en golfball, sprettball eller stålkule.
+\item Mobil eller kamera på stativ, helst med høy bildefrekvens (60 bilder per sekund eller sakte film).
+\item En meterstokk eller målestokk som henger loddrett ved siden av fallet.
+\item Tracker (gratis fra physlets.org/tracker).
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Heng målestokken loddrett. Sett kameraet på stativ et par meter unna, med linsa omtrent midt på fallhøyden og vinkelrett på veggen.
+\item Slipp ballen fra ro rett foran målestokken, i samme avstand fra kameraet. Film hele fallet.
+\item I Tracker: Sett kalibreringsstaven på målestokken, og plasser aksene med $y$ oppover. Lag en punktmasse og klikk på midten av ballen i hvert bilde, eller bruk autotracker.
+\item Kopier kolonnene $t$ og $y$ og lim dem inn i verktøyet på nettsiden.
+\item Tilpass en andregradsfunksjon. Akselerasjonen er to ganger tallet foran $t^{2}$.
+\end{enumerate}
+
+Uten egen video: Tracker har et eksempel med en ball som kastes, «BallToss», som læreren kan dele. Dere kan også øve med simuleringen Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvordan tror du grafene for posisjon og fart ser ut? Last inn eksempeldataene og sjekk. Bruk «Vis fart».
+\svar
+\oppgave \fase{test}{Mål}Tilpass en andregradsfunksjon til hele fallet. Hva blir $g$? Hvorfor er tallet foran $t^{2}$ halvparten av akselerasjonen?
+\svar
+\oppgave \fase{test}{Undersøk}Prøv å tilpasse en rett linje i stedet. Hvordan ser du på grafen og $R^{2}$ at modellen er dårlig?
+\svar
+\oppgave \fase{forklar}{Vurder}Eksempeldataene har litt tilfeldig «klikkestøy». Hvor mye endrer $g$ seg hvis du bare bruker første halvdel av fallet? Hvorfor blir resultatet sikrere med hele fallet?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke feilkilder er det i deres egne målinger? Tenk på perspektiv, uskarpe bilder, kalibrering og luftmotstand.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Gjør forsøket med en ballong eller en lett plastball. Hvordan ser fartsgrafen ut nå? Sammenlign med Fall med luftmotstand\footnote{\url{lektorbo.no/sim/luftmotstand.html}}.
+\svar
+\end{oppgaveliste}
+
+\end{document}

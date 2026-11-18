@@ -1,0 +1,54 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/video-rulling.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelse og krefter}{Videoanalyse av rulling}{https://lektorbo.no/opplegg/video-rulling.html}{Opplegget på nett}
+
+En vogn som triller ned et skråplan, akselererer jevnt. En ball som ruller bortover gulvet, bremser sakte. Med videoanalyse kan dere måle akselerasjonen og sammenligne med det Newtons 2. lov gir uten friksjon.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Måle akselerasjonen til en rullende gjenstand ved videoanalyse.
+\item Sammenligne med $a = g \sin  θ$ for et skråplan uten friksjon.
+\item Anslå rullefriksjonen for en ball eller vogn på gulvet.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Del A: en vogn (eller lekebil) og en bane eller planke som kan stilles skrått. Gradskive eller linjal for å finne vinkelen.
+\item Del B: en ball, vogn eller lekebil som kan rulle fritt langs gulvet eller en lang pult.
+\item Mobil eller kamera på stativ, en målestokk langs banen, og Tracker.
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Del A: Still planken skrått, og mål vinkelen $θ$ (eller høyden $h$ og lengden $L$, $\sin  θ = h/L$). Legg målestokken langs planken.
+\item Slipp vogna fra ro og film den mens den triller ned. Kameraet skal stå vinkelrett på planken.
+\item I Tracker: Kalibrer med målestokken, og drei koordinatsystemet slik at x-aksen ligger langs planken. Spor vogna, og kopier $t$ og $x$ inn i verktøyet.
+\item Tilpass en andregradsfunksjon, og sett akselerasjonen inn i tabellen.
+\item Del B: Gi ballen et lite dytt bortover gulvet, og film den mens den ruller. Spor den i Tracker, og tilpass både en rett linje og en andregradsfunksjon.
+\end{enumerate}
+
+Uten egen video: Tracker-eksemplet «bouncing\_cart» viser en vogn på et skråplan. Dere kan også øve med simuleringen Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Forklar}Kraften som drar vogna nedover langs planet, er tyngdens komponent langs planet: $mg \sin  θ$. Bruk Newtons 2. lov til å vise at $a = g \sin  θ$ uten friksjon.
+\svar
+\oppgave \fase{test}{Mål}Last inn eksempeldataene for skråplanet, og tilpass en andregradsfunksjon. Hvor stor er akselerasjonen? Sammenlign med $g \sin  θ$.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er den målte akselerasjonen litt mindre enn $g \sin  θ$? Hvor stor friksjonskraft tilsvarer forskjellen for en vogn på 0,50~kg?
+\svar
+\oppgave \fase{test}{Undersøk}Last inn eksempeldataene for ballen på gulvet. Tilpass først en rett linje og så en andregradsfunksjon. Hvilken modell passer best? Hvor stor er bremsingen?
+\svar
+\oppgave \fase{test}{Regn}Regn ut rullefriksjonstallet for ballen. Hvor langt ville ballen rullet før den stoppet?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Prøv både en vogn og en ball på samme skråplan. Ballen får mindre akselerasjon enn vogna, selv med lite friksjon. Hvorfor? Tenk på hvor energien går når ballen begynner å rulle.
+\svar
+\end{oppgaveliste}
+
+\end{document}

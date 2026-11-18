@@ -1,0 +1,56 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/friksjonsforsok.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelse og krefter}{Friksjonstall med friksjonskloss}{https://lektorbo.no/opplegg/friksjonsforsok.html}{Opplegget på nett}
+
+Friksjonskraften er $R = μN$. Dere skal finne friksjonstallet $μ$ på to måter: ved å dra en kloss med en kraftsensor, og ved å filme en kloss som glir til den stopper. Gir metodene samme svar?
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Friksjonskloss (gjerne med ulike sider), lodd som kan legges oppå, og en vekt.
+\item Del A: kraftsensor (for eksempel med Capstone) eller fjærvekt (dynamometer).
+\item Del B: mobil eller kamera på stativ, en målestokk langs underlaget, og Tracker.
+\end{itemize}
+
+\section*{Del A: Med kraftsensor}
+
+\begin{enumerate}
+\item Vei klossen. Nullstill kraftsensoren mens den henger vannrett uten belastning.
+\item Fest sensoren i klossen og dra vannrett, først sakte og jevnt økende. Les av den største kraften før klossen glipper. Den gir største hvilefriksjon.
+\item Dra så klossen med jevn, lav fart. Les av kraften mens den glir. Den gir glidefriksjonen.
+\item Legg på lodd og gjenta, slik at dere får fem ulike masser. Skriv inn i tabellen.
+\end{enumerate}
+
+Med en fjærvekt er det vanskelig å lese av toppen før klossen glipper. Gjenta da flere ganger og bruk gjennomsnittet. Med kraftsensor kan dere se toppen og det jevne nivået tydelig i grafen.
+
+\section*{Del B: Med videoanalyse}
+
+\begin{enumerate}
+\item Legg målestokken langs underlaget, og sett kameraet vinkelrett på bevegelsen.
+\item Gi klossen et kort, raskt dytt slik at den glir et stykke og stopper av seg selv. Film fra rett etter dyttet til klossen står stille.
+\item I Tracker: Kalibrer, sett x-aksen langs underlaget, og spor klossen. Kopier $t$ og $x$ inn i verktøyet.
+\item Velg tidsrommet fra klossen er sluppet til like før den stopper, og tilpass en andregradsfunksjon. Mens klossen glir, er friksjonen den eneste kraften langs underlaget, så $|a| = μ_{\mathrm{k}}g$.
+\end{enumerate}
+
+Dere kan også øve med simuleringen Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvordan tror du friksjonskraften endrer seg når dere dobler massen? Når dere legger klossen på en side med mindre areal?
+\svar
+\oppgave \fase{test}{Mål}Gjør del A, eller trykk på «Fyll inn eksempel». Ligger punktene på rette linjer gjennom origo? Hva er $μ_{\mathrm{s}}$ og $μ_{\mathrm{k}}$?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor skal klossen dras med jevn fart når dere måler glidefriksjonen? Hva viser kraftsensoren hvis dere drar slik at klossen akselererer?
+\svar
+\oppgave \fase{test}{Mål}Gjør del B, eller last inn eksempeldataene. Velg tidsrommet før klossen stopper. Hva blir $μ_{\mathrm{k}}$?
+\svar
+\oppgave \fase{forklar}{Vurder}Sammenlign $μ_{\mathrm{k}}$ fra de to metodene. Hvilken metode stoler dere mest på, og hvorfor?
+\svar
+\oppgave \fase{utfordring}{Utfordring}I del B: Hvorfor må tidsrommet slutte før klossen stopper? Hva skjer med tilpasningen hvis dere tar med punktene der klossen står stille?
+\svar
+\end{oppgaveliste}
+
+\end{document}

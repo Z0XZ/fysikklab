@@ -1,0 +1,57 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/videoanalyse-stot.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Videoanalyse av støt}{https://lektorbo.no/opplegg/videoanalyse-stot.html}{Opplegget på nett}
+
+To vogner støter på en rett bane. Med en video og Tracker kan dere finne farten til begge vognene før og etter støtet, og undersøke om den samlede bevegelsesmengden er den samme. Alt skjer langs én linje, så vi trenger bare x-koordinaten.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bruke videoanalyse til å måle fart før og etter et støt.
+\item Undersøke om bevegelsesmengden er bevart, og om støtet er elastisk.
+\item Vurdere hvordan friksjon og valg av tidsrom påvirker resultatet.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item To vogner på en bane, med magneter eller borrelås i støtfangerne. Vogner med masser som er lette å endre, for eksempel med lodd.
+\item Vekt, mobil eller kamera på stativ, og en målestokk (for eksempel en meterstokk) som ligger langs banen.
+\item Tracker (gratis fra physlets.org/tracker).
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Vei vognene. Sett en tydelig prikk eller tape på hver vogn, slik at det er lett å klikke på samme punkt i hvert bilde.
+\item Sett kameraet på stativ, vinkelrett på banen og så langt unna at hele bevegelsen er med. Målestokken skal ligge langs banen, i samme avstand fra kameraet som vognene. Bruk høy bildefrekvens hvis mobilen har det.
+\item Dytt vogn A mot vogn B, som står i ro. Film fra litt før dyttet til begge vognene har kjørt et stykke etter støtet.
+\item I Tracker: Sett kalibreringsstaven på målestokken, plasser aksene med x-aksen langs banen, og lag en punktmasse for hver vogn (A og B). Klikk på prikken i hvert bilde, eller bruk autotracker.
+\item Kopier tabellen med $t$, $x$ for A og $x$ for B (marker kolonnene og kopier), og lim den inn i verktøyet på nettsiden. Lager dere to tabeller i Tracker, kan dere lime inn én om gangen.
+\item Tilpass en rett linje til $x(t)$ for hver vogn før og etter støtet, og sett fartene inn i tabellen nederst.
+\end{enumerate}
+
+Har dere ikke vogner eller tid til å filme, kan dere øve med simuleringen Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}, der dere klikker dere gjennom et støt bilde for bilde.
+
+\section*{Oppgaver}
+
+Oppgave 1–5 kan gjøres med eksempeldataene.
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Last inn eksempeldataene og se på grafene for xA og xB. Når skjer støtet? Hvordan ser du det på grafene?
+\svar
+\oppgave \fase{test}{Mål}Tilpass rette linjer til xA før støtet (0–1,3~s), og til xA og xB etter støtet (1,6–3,0~s). Sett fartene inn i tabellen. Er bevegelsesmengden bevart?
+\svar
+\oppgave \fase{test}{Undersøk}Gjør det samme med tidsrom nærmere støtet: 0,9–1,4~s før og 1,5–2,0~s etter. Hva skjer med resultatet? Slå på «Vis fart» og forklar hvorfor.
+\svar
+\oppgave \fase{forklar}{Vurder}Er støtet elastisk? Hvor mye av den kinetiske energien er igjen?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er det lurt å filme vinkelrett på banen, og å ha målestokken i samme avstand fra kameraet som vognene?
+\svar
+\oppgave \fase{test}{Mål}Gjør forsøket selv med ulike masser: lik masse, A tyngst og B tyngst. Gjør også et støt med borrelås. Sammenlign med simuleringen Støt mellom to vogner\footnote{\url{lektorbo.no/sim/vognstot.html}}.
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-sirkelbevegelse.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Sirkelbevegelse}{Sirkelbevegelse med sympy og simulering}{https://lektorbo.no/programmering/python-sirkelbevegelse.html}{Koden på nett}
+
+I del 1 bruker vi Python som CAS: Sympy løser likningssettene for en kjeglependel og en dosert sving. I del 2 simulerer vi bevegelser der kraftsummen endrer seg underveis, slik at vi ikke kan bruke formlene direkte: en skiløper på en snøkuppel og en vogn i en loop med friksjon.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Kjør}Kjør kjeglependelen. Skriv svarene for $S$, $v^{2}$ og $T$ på formen du ville skrevet for hånd. Hva er farten og omløpstiden for $L = 0{,}80\,\mathrm{m}$ og $θ = 30^{\circ}$?
+\svar
+\oppgave \fase{test}{Kjør}Kjør den doserte svingen. Hvordan viser programmet at uttrykket er det samme som formelen i boka? Hvilket fartsintervall har bilene i en sving med radius 120~m og dosering 17,8° når $μ = 0{,}10$?
+\svar
+\oppgave \fase{test}{Kjør}Kjør snøkuppelen. Ved hvilken vinkel mister Tiril kontakten? Stemmer det med teorien $\cos  θ = 2/3$? Hvor langt utenfor kanten lander hun?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor kan vi ikke bruke energibevaring til å finne farten i toppen av loopen når det er friksjon?
+\svar
+\oppgave \fase{test}{Kjør}Kjør loopen. Klarer vogna loopen med 25~m/s i bunnen? Hva er minste fart i bunnen, og hvordan er det sammenlignet med $\sqrt{5gr}$?
+\svar
+\oppgave \fase{test}{Undersøk}Snøkuppelen med friksjon: Sett $μ = 0{,}10$ og $v_{0} = 2{,}0\,\mathrm{m/s}$, og sammenlign med $μ = 0$ og samme startfart. Mister hun kontakten tidligere eller senere? Prøv også $μ = 0{,}10$ med $v_{0} = 0{,}10\,\mathrm{m/s}$. Hva skjer, og hvorfor?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Finn minste fart i bunnen av loopen for flere verdier av $μ$ fra 0 til 0,20, og plott resultatet.
+\svar
+\end{oppgaveliste}
+
+\end{document}

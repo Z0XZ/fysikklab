@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-partikkelbane.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Ladd partikkel i magnetfelt i Python}{https://lektorbo.no/programmering/python-partikkelbane.html}{Koden på nett}
+
+Et proton med farten $3{,}09 \cdot 10^{5}\,\mathrm{m/s}$ kommer inn i et magnetfelt på 50~mT. Vi regner ut kraften $F = qv \times B$ i små tidssteg og ser hvordan banen blir. Stemmer den med formelen for radien? Og hva skjer når vi legger til et elektrisk felt?
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Protonet starter i origo med farten mot høyre, og $B$ peker ut av planet. Bøyer banen oppover eller nedover? Kjør steg 1 og sjekk.
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 2. Hvor godt stemmer radien med formelen $r = mv/(qB)$? Hva skjer med farten? Burde den endre seg?
+\svar
+\oppgave \fase{test}{Undersøk}Prøv tidssteget dt = 1e-8 og dt = 1e-10. Hvordan påvirker tidssteget radien og farten? Lag gjerne simuleringen lengre, for eksempel t\_slutt = 1e-5, og se på banen.
+\svar
+\oppgave \fase{forklar}{Forklar}I Eulers metode legger vi til en liten fartsendring $Δv = (F/m) \cdot Δt$ som står vinkelrett på farten. Tegn $v$ og $Δv$ som vektorer, og forklar hvorfor farten blir litt større for hvert steg.
+\svar
+\oppgave \fase{test}{Kjør}Gjør endringene i steg 3. Hvordan ser banen ut nå? Forklar hvorfor ut fra kreftene.
+\svar
+\oppgave \fase{test}{Undersøk}Sett \texttt{E = 0.9 * v0 * B} og så \texttt{E = 1.1 * v0 * B}. Hvordan ser banene ut? Skriv ut hvor langt protonet kommer fra x-aksen.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Gjør programmet tredimensjonalt med numpy-vektorer: \texttt{v = np.array([v0, 0.0, 1.0e5])}, \texttt{Bvek = np.array([0.0, 0.0, B])} og \texttt{a = q * np.cross(v, Bvek) / m}. Protonet har nå en fartskomponent langs feltet. Plott banen i 3D. Hvor langt beveger protonet seg langs feltet på ett omløp? Hva har dette med nordlys å gjøre?
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,30 @@
+% Laget automatisk av elevark/lag_elevark.py fra sim/syklotron.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Syklotron}{https://lektorbo.no/sim/syklotron.html}{Simuleringen}
+
+En syklotron består av to hule, D-formede elektroder i et sterkt magnetfelt. Magnetfeltet holder partikkelen i en halvsirkel inne i hver elektrode. Mellom elektrodene er det en vekselspenning som gir partikkelen ekstra energi hver gang den passerer spalten. Partikkelen går ut i en spiral og får mer og mer energi.
+
+\section*{Oppgaver}
+
+Start med et proton, $B = 1{,}0\,\mathrm{T}$, $R = 30\,\mathrm{cm}$, $U = 50\,\mathrm{kV}$ og riktig frekvens (100~\%).
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Regn}Vis at omløpstiden er $T = 2πm/(qB)$, og regn ut frekvensen spenningen må ha. Hvorfor er det viktig at omløpstiden ikke avhenger av farten?
+\svar
+\oppgave \fase{test}{Regn}Partikkelen kommer ut når radien er $R$. Vis at den kinetiske energien da er $K = q^{2}B^{2}R^{2}/(2m)$. Regn ut energien i MeV og farten.
+\svar
+\oppgave \fase{gjett}{Gjett}Hva skjer med energien protonet kommer ut med, hvis du dobler spenningen? Hva skjer med antall omløp? Test, og forklar.
+\svar
+\oppgave \fase{test}{Regn}Hvor mange ganger passerer protonet spalten før det kommer ut med $U = 50\,\mathrm{kV}$? Hvor mange omløp er det?
+\svar
+\oppgave \fase{test}{Undersøk}Sett frekvensen på spenningen til 101~\%. Hva skjer med protonet? Hvor mye energi får det på det meste? Prøv også 99~\% og 100,5~\%.
+\svar
+\oppgave \fase{gjett}{Gjett}Bytt til en alfapartikkel og så et deuteron. Hvilken frekvens trenger de? Hvilken av dem kommer ut med mest energi? Regn først, og test.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Regn ut $γ$ for protonet når det kommer ut med 4,3~MeV. Hvor mye lengre blir omløpstiden når vi tar hensyn til relativitetsteorien? Bruk svaret fra oppgave 5 til å forklare hvorfor syklotroner ikke kan gi protoner vilkårlig mye energi.
+\svar
+\end{oppgaveliste}
+
+\end{document}

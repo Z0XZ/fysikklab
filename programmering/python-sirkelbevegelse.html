@@ -33,6 +33,11 @@
         <p class="ingress">I del 1 bruker vi Python som CAS: Sympy løser likningssettene for en kjeglependel og en dosert sving. I del 2 simulerer vi bevegelser der kraftsummen endrer seg underveis, slik at vi ikke kan bruke formlene direkte: en skiløper på en snøkuppel og en vogn i en loop med friksjon.</p>
 
         <div class="tekst opplegg">
+          <div class="py-panel">
+            <p class="py-panel-tekst">All koden på denne siden finnes også som en Jupyter-notatbok som kjører rett i nettleseren, uten installasjon. Første gang lastes Python ned (omtrent 30 MB fra jsDelivr), og det kan ta et halvt minutt. Endringene lagres bare i denne nettleseren. Vil du ta vare på arbeidet, velger du <em>File → Download</em>.</p>
+            <p><a class="knapp" href="../jupyter/notebooks/index.html?path=sirkelbevegelse.ipynb">Åpne notatboken i nettleseren</a></p>
+          </div>
+
           <h2>Del 1: Sympy i stedet for CAS</h2>
           <p>Sympy må installeres først: <code>pip install sympy</code>. De viktigste kommandoene er <code>sp.symbols</code> (lager symboler), <code>sp.Eq</code> (lager en likning), <code>sp.solve</code> (løser), <code>sp.simplify</code> (forenkler) og <code>.subs</code> (setter inn tall). I Jupyter kan svarene vises pent med <code>display(Math(sp.latex(...)))</code> fra <code>IPython.display</code>.</p>
 
@@ -157,6 +162,7 @@ print(f"Minste fart i bunnen: {v0:.1f} m/s (uten friksjon: {np.sqrt(5*g*r):.1f} 
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
           <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-sirkelbevegelse.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase test">Kjør</span><div><p>Kjør kjeglependelen. Skriv svarene for S, v² og T på formen du ville skrevet for hånd. Hva er farten og omløpstiden for L = 0,80 m og θ = 30°?</p></div></li>
           <li><span class="fase test">Kjør</span><div><p>Kjør den doserte svingen. Hvordan viser programmet at uttrykket er det samme som formelen i boka? Hvilket fartsintervall har bilene i en sving med radius 120 m og dosering 17,8° når μ = 0,10?</p></div></li>

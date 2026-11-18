@@ -454,3 +454,34 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 @media (max-width: 760px) {
   .sim canvas.forhold-heis { aspect-ratio: 16 / 15; }
 }
+.elevark-lenke { margin: .9rem 0 1.4rem; }
+
+/* Kjørbare Python-bokser (js/pykjorer.js) */
+.py-panel { margin: 1rem 0 1.5rem; padding: .9rem 1rem; background: var(--flate); border: 1px solid var(--rute); border-left: 3px solid var(--f2); border-radius: 6px; }
+.py-panel-tekst { margin: 0 0 .7rem; font-size: .9375rem; }
+.py-panel kbd { font-family: var(--mono); font-size: .8125rem; padding: 0 .3rem; border: 1px solid var(--rute-sterk); border-radius: 3px; }
+.py-panel-knapper, .py-knapper { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.py-panel .knapp, .py-knapper .knapp { padding: .35rem .9rem; font-size: .875rem; }
+.py-status { font-size: .8125rem; color: var(--dempet); }
+.py-boks { margin: .75rem 0 1.25rem; }
+.py-topp { display: flex; align-items: baseline; gap: .6rem; margin-bottom: .3rem; font-size: .8125rem; font-weight: 600; color: var(--dempet); }
+.py-endret { font-weight: 400; font-style: italic; }
+.py-redigering { border: 1px solid var(--rute); border-radius: 6px; overflow: hidden; margin-bottom: .5rem; }
+.py-redigering:focus-within { border-color: var(--f2); }
+.py-redigering .CodeMirror { height: auto; font-family: var(--mono); font-size: .875rem; line-height: 1.5; background: var(--flate); color: var(--blekk); }
+.py-redigering .CodeMirror-gutters { background: var(--papir); border-right: 1px solid var(--rute); }
+.py-redigering .CodeMirror-linenumber { color: var(--dempet); }
+.py-redigering .CodeMirror-cursor { border-left-color: var(--blekk); }
+.py-redigering .CodeMirror-selected, .py-redigering .CodeMirror-focused .CodeMirror-selected { background: var(--rute); }
+.py-redigering .CodeMirror-matchingbracket { color: var(--f1) !important; text-decoration: underline; }
+.py-redigering .cm-keyword, .py-redigering .cm-builtin { color: var(--f1); }
+.py-redigering .cm-string, .py-redigering .cm-number { color: var(--f2); }
+.py-redigering .cm-comment { color: var(--dempet); font-style: italic; }
+.py-redigering .cm-def, .py-redigering .cm-variable, .py-redigering .cm-variable-2, .py-redigering .cm-property { color: var(--blekk); }
+.py-tekstfelt { display: block; width: 100%; box-sizing: border-box; border: 0; padding: .7rem .9rem; font-family: var(--mono); font-size: .875rem; line-height: 1.5; background: var(--flate); color: var(--blekk); resize: vertical; tab-size: 4; }
+.py-ut { margin-top: .6rem; padding: .7rem .9rem; border: 1px dashed var(--rute-sterk); border-radius: 6px; }
+.py-tekst { margin: 0; white-space: pre-wrap; word-break: break-word; font-family: var(--mono); font-size: .8125rem; line-height: 1.5; background: none; border: 0; padding: 0; }
+.py-feil { color: var(--f1); }
+.py-bilde { display: block; max-width: 100%; height: auto; margin: .5rem 0; background: #fff; border-radius: 4px; }
+.py-knapper [hidden], .py-panel [hidden] { display: none; }
+.py-panel > p:last-child { margin-bottom: 0; }

@@ -1,0 +1,27 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-vognstot.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Støt mellom vogner i Python}{https://lektorbo.no/programmering/python-vognstot.html}{Koden på nett}
+
+En rød vogn på 0,50~kg kjører inn i en blå vogn på 0,25~kg som står i ro. Farten til begge vognene er logget 40 ganger i sekundet. Bruk Python til å finne ut om bevegelsesmengden og den kinetiske energien er bevart.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Feilsøk}Koden i steg 3 gir en feilmelding. Finn feilen og rett den.
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 1 og 2. Når skjer støtet, og hvor lenge varer det? Hvordan ser grafen for samlet bevegelsesmengde ut før, under og etter støtet?
+\svar
+\oppgave \fase{test}{Regn}Kjør steg 3. Hvor mange prosent av bevegelsesmengden og den kinetiske energien er igjen etter støtet?
+\svar
+\oppgave \fase{forklar}{Forklar}Bevegelsesmengden ser ut til å avta litt både før og etter støtet. Hvorfor? Hva skjer med resultatet hvis du velger tidsrom som ligger nærmere støtet, for eksempel 0,8–0,975~s og 1,125–1,3~s?
+\svar
+\oppgave \fase{forklar}{Vurder}Er støtet elastisk? Er bevegelsesmengden bevart innenfor måleusikkerheten? Begrunn svaret.
+\svar
+\oppgave \fase{utfordring}{Utfordring}I stedet for gjennomsnitt kan du tilpasse en rett linje til farten før og etter støtet med \texttt{np.polyfit}, og regne ut farten akkurat ved $t = 1{,}05\,\mathrm{s}$. Gjør det, og sammenlign med resultatet fra oppgave 3.
+\svar
+\end{oppgaveliste}
+
+\end{document}

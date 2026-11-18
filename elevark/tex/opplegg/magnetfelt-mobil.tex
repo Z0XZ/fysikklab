@@ -1,0 +1,58 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/magnetfelt-mobil.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Magnetfelt rundt en leder med mobilen}{https://lektorbo.no/opplegg/magnetfelt-mobil.html}{Opplegget på nett}
+
+De fleste mobiler har et magnetometer som kan måle magnetfelt i tre retninger. Med appen phyphox kan dere måle feltet rundt en rett leder med strøm, og undersøke om det stemmer at $B = μ_{0}I/(2πr)$.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Måle magnetfeltet rundt en rett, strømførende leder i ulike avstander.
+\item Undersøke om $B$ er omvendt proporsjonal med avstanden $r$.
+\item Bestemme $μ_{0}$ fra målingene.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Mobil med appen phyphox (gratis) og verktøyet «Magnetometer».
+\item Spenningskilde som kan gi 3–5~A likestrøm, helst med strømbegrensning.
+\item Amperemeter, og en ledning som er minst 1~m lang (gjerne 1,5~mm² eller tykkere).
+\item Linjal, tape og en liten magnet.
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Finn sensoren: Åpne «Magnetometer» i phyphox og før en liten magnet over mobilen. Der utslaget er størst, sitter sensoren. Merk stedet med en tapebit på baksiden eller kanten.
+\item Tape ledningen rett på bordet, og la de to tilførselsledningene gå langt bort fra målestedet. Legg mobilen flatt på bordet ved siden av ledningen, med sensormerket nærmest.
+\item Når mobilen ligger i samme plan som ledningen, peker feltet fra ledningen rett opp eller ned ved sensoren. Les derfor av z-komponenten, $B_{z}$.
+\item Still inn strømmen, for eksempel 5,0~A, og les av $B_{z}$. Snu så strømmen ved å bytte ledningene på spenningskilden, og les av $B_{z}$ igjen.
+\item Feltet fra ledningen er halve differansen: $B = |B_{z,1} - B_{z,2}| / 2$. Da forsvinner jordas magnetfelt og andre felt som ikke endrer seg når strømmen snus.
+\item Gjenta for avstander fra 1~cm til 6~cm mellom ledningen og sensoren. Hold mobilen i ro på samme sted på bordet, og flytt heller ledningen.
+\end{enumerate}
+
+\section*{Sikkerhet}
+
+Ledningen blir varm med flere ampere. Slå av strømmen mellom målingene, og ikke kortslutt et batteri. Bruk en spenningskilde med strømbegrensning.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvor sterkt er feltet 2,0~cm fra en leder med 5,0~A? Sammenlign med jordas magnetfelt, som er omtrent 50~µT i Norge. Hvorfor er det lurt å snu strømmen i stedet for bare å slå den av og på?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene og fyll inn tabellen. Ligger punktene på en rett linje gjennom origo når dere plotter $B$ mot $1/r$? Hva betyr det?
+\svar
+\oppgave \fase{test}{Regn}Bruk stigningstallet til å bestemme $μ_{0}$. Hvor stort er avviket fra $4π \cdot 10^{-7}\,\mathrm{T\,m/A}$?
+\svar
+\oppgave \fase{forklar}{Forklar}Sensoren ligger noen millimeter inne i mobilen, altså litt over ledningen. Hvordan påvirker det målingene nær ledningen? Prøv å fjerne de nærmeste målingene og se hva som skjer med $μ_{0}$.
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke andre feilkilder er det i forsøket? Hvordan kunne dere gjort forsøket mer nøyaktig?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hold avstanden fast og varier strømmen fra 1~A til 5~A. Plott $B$ mot $I$. Hva forventer dere å se, og hva blir stigningstallet?
+\svar
+\end{oppgaveliste}
+
+\end{document}

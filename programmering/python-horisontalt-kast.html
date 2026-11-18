@@ -6,6 +6,7 @@
   <title>Horisontalt kast med Eulers metode</title>
   <meta name="description" content="Programmeringsøving i Fysikk 2: Simuler et horisontalt kast med vektorer i numpy og Eulers metode, og sammenlign med bevegelseslikningene.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,10 +33,10 @@
         <h1>Horisontalt kast med Eulers metode</h1>
         <p class="ingress">En ball triller ut over kanten av et bord som er 0,80 m høyt, med farten 1,3 m/s. Hvor langt fra bordet lander den? Her regner vi det ut med små tidssteg, og bruker numpy-vektorer for å regne med x og y samtidig.</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-filnavn="horisontalt_kast.py">
           <h2>Steg 1: Simuleringen</h2>
           <p>Akselerasjon, fart og posisjon er vektorer med to komponenter, x og y. I hvert tidssteg oppdaterer vi først farten og så posisjonen: v = v + aΔt og s = s + vΔt. Løkka går så lenge ballen er over gulvet.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
 
 a = np.array([0, -9.81])   # akselerasjon i m/s², x og y
 v = np.array([1.3, 0])     # startfart i m/s
@@ -53,18 +54,49 @@ while s[1] &gt; y_gulv:
 print(f"Ballen lander etter {t:.2f} s.")
 print(f"Ballen lander {s[0]:.2f} m fra bordkanten.")
 print(f"Fartsvektoren er da {v} m/s.")
-print(f"Farten er {np.linalg.norm(v):.2f} m/s.")</code></pre>
+print(f"Farten er {np.linalg.norm(v):.2f} m/s.")</code></pre></div>
 
           <h2>Steg 2: Sammenlign med bevegelseslikningene</h2>
-          <p>Legg til dette nederst:</p>
-        <pre class="kode"><code># Eksakt løsning med bevegelseslikningene
+          <p>Kjør boksen under. Den bruker variablene fra steg 1, som cellene i en Jupyter-notatbok. Skriver du i en vanlig .py-fil, legger du koden nederst.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code># Eksakt løsning med bevegelseslikningene
 t_eksakt = np.sqrt(2*0.80/9.81)
 print(f"Eksakt: lander etter {t_eksakt:.3f} s, {1.3*t_eksakt:.3f} m fra kanten, "
-      f"med farten {np.hypot(1.3, 9.81*t_eksakt):.2f} m/s")</code></pre>
+      f"med farten {np.hypot(1.3, 9.81*t_eksakt):.2f} m/s")</code></pre></div>
+
+          <h2>Steg 3: Tegn banen</h2>
+          <p>Her kjører vi simuleringen på nytt, men lagrer posisjonen i hvert tidssteg i to lister. Da kan vi tegne banen med matplotlib og sammenligne med den eksakte parabelen.</p>
+        <div class="py-boks" data-navn="Steg 3"><pre class="kode"><code>import matplotlib.pyplot as plt
+
+# Kjør simuleringen på nytt, og lagre posisjonen i hvert steg
+v = np.array([1.3, 0])
+s = np.array([0, 0.80])
+t = 0
+x_liste = [s[0]]
+y_liste = [s[1]]
+
+while s[1] &gt; y_gulv:
+    v = v + a*dt
+    s = s + v*dt
+    t = t + dt
+    x_liste.append(s[0])
+    y_liste.append(s[1])
+
+# Eksakt bane: y = 0,80 − ½g(x/v₀)²
+x = np.linspace(0, 1.3*t_eksakt, 100)
+y = 0.80 - 0.5*9.81*(x/1.3)**2
+
+plt.plot(x_liste, y_liste, "o", markersize=3, label="Eulers metode")
+plt.plot(x, y, label="Eksakt")
+plt.xlabel("x / m")
+plt.ylabel("y / m")
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
           <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-horisontalt-kast.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase test">Kjør</span><div><p>Kjør steg 1 og 2. Hvor godt stemmer simuleringen med de eksakte svarene?</p></div></li>
           <li><span class="fase forklar">Forklar</span><div><p>Hvorfor endrer ikke x-komponenten av farten seg? Hva betyr det at fartsvektoren er [1.3, −3.924]?</p></div></li>
@@ -94,6 +126,9 @@ print(f"Eksakt: lander etter {t_eksakt:.3f} s, {1.3*t_eksakt:.3f} m fra kanten, 
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
-
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 </body>
 </html>

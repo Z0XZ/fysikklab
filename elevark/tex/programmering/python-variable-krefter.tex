@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-variable-krefter.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 · Krefter}{Variable krefter i Python}{https://lektorbo.no/programmering/python-variable-krefter.html}{Koden på nett}
+
+Bevegelseslikningene gjelder bare når akselerasjonen er konstant. Hvis kraften endrer seg underveis, for eksempel fordi friksjonen eller luftmotstanden endrer seg, kan vi i stedet regne ut bevegelsen i mange små tidssteg.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Feilsøk}Kjør programmet i del 1. Hva skjer? Finn feilen og rett den.
+\svar
+\oppgave \fase{test}{Regn}Hva blir bremselengden og bremsetiden? Sammenlign med en bil som bremser med konstant $μ = 0{,}20$. Regn ut den for hånd med bevegelseslikningene, og sjekk med programmet.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor kan vi ikke bruke bevegelseslikningene i del 1? Hvorfor skriver vi $a = -R(s)/m$ inne i løkka og ikke før den?
+\svar
+\oppgave \fase{test}{Kjør}Kjør del 2. Hvor høyt kommer ballen, og hvor fort faller den til slutt? Sammenlign med et kast uten luftmotstand $(k = 0)$.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er akselerasjonen større enn $g$ på vei opp og mindre enn $g$ på vei ned? Hva er akselerasjonen i toppunktet?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor bruker vi $v \cdot |v|$ og ikke $v^{2}$ i luftmotstanden?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hvor stor må $k$ være for at ballen bare skal komme 1,0~m over kastepunktet? Prøv deg fram, eller lag en løkke som øker $k$ i små steg.
+\svar
+\end{oppgaveliste}
+
+\end{document}

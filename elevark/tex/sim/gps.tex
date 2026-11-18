@@ -1,0 +1,28 @@
+% Laget automatisk av elevark/lag_elevark.py fra sim/gps.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Spesiell relativitetsteori}{GPS-klokkene}{https://lektorbo.no/sim/gps.html}{Simuleringen}
+
+GPS-satellittene har svært nøyaktige atomklokker. Mottakeren din finner posisjonen ved å måle hvor lang tid signalene bruker fra satellittene. En tidsfeil på 1~µs gir en avstandsfeil på 300~m. Går klokkene i satellittene like fort som klokkene på bakken?
+
+\section*{Oppgaver}
+
+Når $v$ er mye mindre enn $c$, går en klokke i bevegelse saktere med andelen $v^{2}/(2c^{2})$. Den generelle relativitetsteorien sier at en klokke høyere opp i tyngdefeltet går raskere med andelen $(GM/c^{2})(1/R - 1/r)$. Bruk $GM = 3{,}99 \cdot 10^{14}\,\mathrm{m^{3}/s^{2}}$ og $R = 6371\,\mathrm{km}$.
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Se bare på farten. Går klokka i en GPS-satellitt raskere eller saktere enn klokka på bakken? Hvor mye tror dere det blir per døgn?
+\svar
+\oppgave \fase{test}{Regn}GPS-satellittene går i 20 200~km høyde. Regn ut farten deres, og hvor mange mikrosekunder klokka går for sakte per døgn. Sjekk med simuleringen.
+\svar
+\oppgave \fase{test}{Regn}Hvor stor posisjonsfeil gir dette etter ett døgn?
+\svar
+\oppgave \fase{forklar}{Forklar}Slå på tyngden. Hvilken effekt er størst for GPS? Hvor stor blir posisjonsfeilen etter ett døgn uten korreksjon, og etter en uke?
+\svar
+\oppgave \fase{gjett}{Gjett}Trykk på ISS. Hvilken effekt vinner for en klokke på romstasjonen?
+\svar
+\oppgave \fase{utfordring}{Utfordring}I hvilken høyde opphever de to effektene hverandre? Bruk $v^{2} = GM/r$ og vis at svaret er $r$ = 1,5R.
+\svar
+\end{oppgaveliste}
+
+\end{document}

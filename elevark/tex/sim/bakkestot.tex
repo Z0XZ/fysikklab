@@ -1,0 +1,32 @@
+% Laget automatisk av elevark/lag_elevark.py fra sim/bakkestot.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Vogn ned bakke og støt}{https://lektorbo.no/sim/bakkestot.html}{Simuleringen}
+
+Vogn A slippes fra en høyde $h$ og triller ned en bakke. Nede på den flate delen treffer den vogn B. Her trenger du både energibevaring og bevaring av bevegelsesmengde, men ikke på samme tid.
+
+\section*{Oppgaver}
+
+Bruk $g = 9{,}81\,\mathrm{m/s^{2}}$. Start uten friksjon.
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Vogn A og vogn B har begge massen 0,50~kg. A slippes fra 0,30~m, og B står i ro. Støtet er elastisk. Hva skjer med vognene etter støtet?
+\svar
+\oppgave \fase{test}{Regn}Regn ut farten til A rett før støtet. Sjekk med tabellen. Endrer svaret seg hvis du gjør A tyngre? Hvorfor?
+\svar
+\oppgave \fase{test}{Regn}Velg borrelås, $m_{\mathrm{A}} = 0{,}50\,\mathrm{kg}$ og $m_{\mathrm{B}} = 1{,}00\,\mathrm{kg}$, og slipp A fra 0,30~m. Regn ut felles fart etter støtet. Hvor stor del av den potensielle energien A hadde på toppen, er igjen som kinetisk energi etter støtet?
+\svar
+\oppgave \fase{test}{Regn}Velg elastisk støt, $m_{\mathrm{A}} = 0{,}25\,\mathrm{kg}$ og $m_{\mathrm{B}} = 0{,}75\,\mathrm{kg}$, og slipp A fra 0,30~m. A spretter tilbake. Regn ut hvor høyt opp i bakken A kommer. Sjekk med simuleringen.
+\svar
+\oppgave \fase{forklar}{Forklar}Se på grafen for bevegelsesmengde. Den samlede bevegelsesmengden øker mens A triller ned bakken, men er konstant under støtet. Hvorfor? Bytt så til energi. Når er den mekaniske energien bevart?
+\svar
+\oppgave \fase{test}{Undersøk}Velg borrelås, $m_{\mathrm{A}} = 0{,}50\,\mathrm{kg}$, $m_{\mathrm{B}} = 1{,}00\,\mathrm{kg}$ og $h = 0{,}20\,\mathrm{m}$. Hvilken startfart må B ha for at begge vognene skal stå stille etter støtet? Regn først, og test så.
+\svar
+\oppgave \fase{test}{Regn}Bruk innstillingene fra oppgave 3, men sett friksjonen til $μ = 0{,}05$. Fra der A starter til støtet, flytter A seg 1,50~m vannrett. Friksjonsarbeidet i bakken er $μ \cdot m \cdot g \cdot \cos  α \cdot L$. Vis at dette er det samme som $μ \cdot m \cdot g \cdot Δx$, der $Δx$ er den vannrette strekningen. Regn så ut farten til A rett før støtet, og hvor langt vognene glir sammen etter støtet.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Se på oppgave 4 igjen. A triller opp bakken, snur og kommer ned igjen. Vil A ta igjen B? Forklar uten å kjøre simuleringen, og sjekk etterpå.
+\svar
+\end{oppgaveliste}
+
+\end{document}
