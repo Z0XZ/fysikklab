@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forsøk: e/m for elektronet – lektorbo.no</title>
+  <meta name="description" content="Forsøk i Fysikk 2: Bestem forholdet e/m for elektronet med et fintrådrør og Helmholtz-spoler. Verktøy som regner ut B og e/m og tilpasser en rett linje til målingene.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Magnetiske felt og krefter</p>
+        <h1>Forsøk: e/m for elektronet</h1>
+        <p class="ingress">Et klassisk forsøk: Elektroner går i en lysende sirkel inne i en glasskule. Fra spenningen, strømmen i spolene og diameteren på sirkelen kan dere bestemme forholdet mellom ladningen og massen til elektronet. Har ikke skolen et fintrådrør, kan dere gjøre forsøket i <a href="../sim/e-over-m.html">simuleringen</a>.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Bestemme e/m for elektronet.</li>
+            <li>Bruke at elektronene får energien eU, og at den magnetiske kraften er sentripetalkraften.</li>
+            <li>Vurdere usikkerheten og feilkildene i målingene.</li>
+          </ul>
+
+          <h2>Teori</h2>
+          <p>Elektronene starter nesten i ro og akselereres gjennom spenningen U: eU = ½mv². I magnetfeltet går de i en sirkel fordi den magnetiske kraften er sentripetalkraften: evB = mv²/r. Når vi fjerner v fra de to likningene, får vi</p>
+          <p class="formel">e/m = 2U / (B²r²)</p>
+          <p>Mellom to Helmholtz-spoler med N vindinger og radius R er feltet nesten homogent: B = (4/5)<sup>3/2</sup> · μ₀NI/R.</p>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Fintrådrør (glasskule med elektronkanon og litt gass) på stativ med Helmholtz-spoler.</li>
+            <li>Spenningskilde for glødetråden (ofte 6,3 V) og for akselerasjonsspenningen (opptil 300 V).</li>
+            <li>Strømforsyning for spolene (opptil 2–3 A) og amperemeter.</li>
+            <li>Et mørkt rom, eller en mørk duk over apparatet.</li>
+          </ul>
+          <p>Sjekk N og R for deres apparat. De står vanligvis på spolene eller i bruksanvisningen. Verktøyet under bruker 130 vindinger og 15,0 cm hvis dere ikke endrer tallene.</p>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Læreren kobler opp apparatet etter bruksanvisningen. Skru på glødespenningen og vent et minutt.</li>
+            <li>Still akselerasjonsspenningen på for eksempel 250 V. Øk strømmen i spolene til strålen går i en hel sirkel. Går strålen i en spiral, kan røret dreies litt slik at strålen står vinkelrett på feltet.</li>
+            <li>Les av diameteren der strålen treffer målestaven, eller mål den med linjal utenfor kula. Se rett inn mot strålen for å unngå parallaksefeil.</li>
+            <li>Varier strømmen med fast spenning, og varier spenningen med fast strøm. Skriv målingene inn i tabellen.</li>
+          </ol>
+
+          <h2>Sikkerhet</h2>
+          <p>Akselerasjonsspenningen er farlig høy. Bare læreren kobler opp og om. Elevene stiller bare på knappene. Glasskula er tynn og dyr, så den må ikke få slag. Skru ned spenningene før dere slår av.</p>
+        </div>
+
+        <figure id="emforsok" class="sim egne-data">
+          <h2>Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="em-n">Vindinger N i hver spole<input id="em-n" type="text" inputmode="decimal" value="130"></label>
+            <label for="em-r">Radius R til spolene i cm<input id="em-r" type="text" inputmode="decimal" value="15,0"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall tre">
+            <div><dt>e/m fra stigningstallet</dt><dd id="em-fit"></dd></div>
+            <div><dt>gjennomsnitt av e/m i tabellen</dt><dd id="em-snitt"></dd></div>
+            <div><dt>avvik fra 1,759 · 10¹¹ C/kg</dt><dd id="em-avvik"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Grafen viser r² mot U/B². Fra formelen er r² = (2m/e) · U/B², så punktene bør ligge på en rett linje gjennom origo med stigningstall 2m/e. Da er e/m = 2 / stigningstallet. Eksemplet er oppdiktede tall fra en modell der diameteren er lest av 1 mm for stor, med litt tilfeldig støy. Det er ikke ekte målinger. Tabellen lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/e-over-m.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hvordan endres diameteren hvis dere dobler strømmen i spolene? Hva om dere dobler spenningen?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut magnetfeltet mellom spolene når I = 1,40 A. Hvor mange ganger sterkere er det enn jordas magnetfelt, som er omtrent 50 µT?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene og fyll inn tabellen. Regn ut e/m for én av målingene for hånd, og sjekk med verktøyet.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Sammenlign gjennomsnittet med e/m fra stigningstallet. Hvor stort er avviket fra den kjente verdien?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Diameteren står i andre potens i formelen. Hvor mange prosent feil i e/m gir 1 mm feil i en diameter på 10 cm? Hvilke andre feilkilder er det?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>I eksemplet er alle verdiene for e/m litt for små. Hva tyder det på? Hvorfor hjelper det ikke å gjøre flere målinger?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Strålen lyser fordi elektronene støter mot gassatomer. Hva betyr støtene for farten til elektronene, og for radien? Hvorfor er det likevel bare litt gass i røret?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>r = √(2mU/e) / B. Dobbel strøm gir dobbelt så sterkt felt og halv diameter. Dobbel spenning gir √2 ≈ 1,41 ganger så stor diameter.</li>
+              <li>B = (4/5)<sup>3/2</sup> · 4π · 10⁻⁷ · 130 · 1,40 / 0,150 ≈ 1,09 mT, omtrent 22 ganger så sterkt som jordas felt. Jordas felt kan likevel gi noen prosent feil. Det hjelper å snu apparatet slik at feltet fra spolene peker nord–sør.</li>
+              <li>Eksempel: U = 250 V, I = 1,40 A og d = 10,0 cm gir B = 1,091 mT, r = 5,00 cm og e/m = 2 · 250 / ((1,091 · 10⁻³)² · 0,0500²) ≈ 1,68 · 10¹¹ C/kg.</li>
+              <li>Eksemplet gir 1,71 · 10¹¹ C/kg fra stigningstallet og 1,70 · 10¹¹ C/kg som gjennomsnitt. Avviket er omtrent −3 %.</li>
+              <li>r² står i nevneren. 1 % feil i diameteren gir omtrent 2 % feil i e/m, så 1 mm av 10 cm gir 2 %. Andre feilkilder: parallaksefeil når diameteren leses av, at strålen er bred og uskarp, at feltet ikke er helt homogent i hele kula, jordas magnetfelt, usikkerhet i N og R og avlesning av strømmen, og at elektronene ikke starter helt fra ro.</li>
+              <li>Når alle verdiene avviker til samme side, er det en systematisk feil. I eksemplet er diameteren lest av 1 mm for stor hver gang, for eksempel fordi elevene leste av ytterkanten av strålen. Flere målinger gjør bare den tilfeldige usikkerheten mindre. Den systematiske feilen blir like stor.</li>
+              <li>Elektronene mister litt energi i hvert støt, så farten og radien blir litt mindre enn modellen sier. Med mye gass ville strålen blitt bremset og spredt. Med litt gass er det få nok støt til at de fleste elektronene beholder farten, men nok til at vi ser strålen.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Læreren kan vise forsøket i et mørkt rom, og elevene kan gjøre målingene i grupper ved apparatet etter tur. Mens de venter, kan de bruke <a href="../sim/e-over-m.html">simuleringen</a>. Tallene i eksemplet passer med simuleringen, så verktøyet kan også brukes med målinger fra den.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/eovermforsok.js"></script>
+</body>
+</html>

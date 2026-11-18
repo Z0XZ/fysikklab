@@ -1,0 +1,57 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/repetisjon-bevegelse.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Rettlinjet bevegelse}{Repetisjon: rettlinjet bevegelse}{https://lektorbo.no/opplegg/repetisjon-bevegelse.html}{Opplegget på nett}
+
+Rettlinjet bevegelse handler om å beskrive hvordan posisjonen og farten endrer seg med tiden. Her er en oversikt over grafene og formlene, og blandede oppgaver med løsningsforslag.
+
+\section*{Grafene og hva de forteller}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{YYY}
+\toprule
+\textbf{Graf} & \textbf{Stigningstallet er} & \textbf{Arealet under grafen er} \\
+\midrule
+posisjon $s(t)$ & farten $v$ & ikke noe nyttig \\
+fart $v(t)$ & akselerasjonen $a$ & forflytningen $Δs$ \\
+akselerasjon $a(t)$ & (brukes sjelden) & fartsendringen $Δv$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Fart og akselerasjon har retning. Velg en positiv retning, og hold deg til den. Akselerasjonen kan peke motsatt vei av farten. Da minker farten. Når farten er null, kan akselerasjonen godt være forskjellig fra null, for eksempel på toppen av et loddrett kast.
+
+\section*{Formler}
+
+\begin{itemize}
+\item Gjennomsnittsfart: v̄ = $Δs/Δt$. Gjennomsnittsakselerasjon: ā = $Δv/Δt$.
+\item Konstant akselerasjon: $v = v_{0}$ + at, $s = v_{0}t + \tfrac{1}{2}at^{2}$, $v^{2} - v_{0}^{2} = 2as$ og $s = (v_{0} + v)/2 \cdot t$.
+\item Fritt fall og loddrett kast: $a$ = −g = −9,81~m/s² med positiv retning oppover, når vi ser bort fra luftmotstand.
+\item Omregning: 1~m/s = 3,6~km/h.
+\end{itemize}
+
+\section*{Oppgaver}
+
+Bruk $g = 9{,}81\,\mathrm{m/s^{2}}$ og se bort fra luftmotstand hvis ikke noe annet står.
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Begrep}Er påstandene sanne eller usanne? Begrunn svaret.
+
+a) Når farten er null, er akselerasjonen null.\newline b) Arealet under en v,t-graf er forflytningen.\newline c) Stigningstallet i en s,t-graf er akselerasjonen.\newline d) En ball som kastes rett opp, har like stor fart når den kommer ned til samme høyde.\newline e) Negativ akselerasjon betyr alltid at farten minker.
+\svar
+\oppgave \fase{test}{Regn}En bil akselererer jevnt fra 0 til 100~km/h på 8,0~s. Finn akselerasjonen og strekningen bilen kjører. Se grafene i simuleringen.\footnote{\url{lektorbo.no/sim/bevegelsesgrafer.html}}
+\svar
+\oppgave \fase{test}{Regn}En sjåfør kjører i 80~km/h og ser en hindring. Reaksjonstiden er 1,0~s, og bremsene gir akselerasjonen 7,0~m/s². Finn reaksjonslengden, bremselengden og stopplengden. Sjekk med simuleringen.\footnote{\url{lektorbo.no/sim/bremselengde.html}}
+\svar
+\oppgave \fase{test}{Regn}Du slipper en stein fra en bru, og den treffer vannet etter 2,4~s. Hvor høyt er brua, og hvor fort treffer steinen vannet? Hvor lang tid tar det før du hører plasket, når lyden går med 340~m/s?
+\svar
+\oppgave \fase{test}{Regn}En ball kastes rett opp med 12~m/s fra 1,5~m over bakken. Hvor høyt over bakken kommer den? Hvor lang tid går det før den treffer bakken, og med hvilken fart? Se også Fritt fall.\footnote{\url{lektorbo.no/sim/fritt-fall.html}}
+\svar
+\oppgave \fase{test}{Grafer}Et tog starter fra ro og akselererer jevnt til 20~m/s på 40~s. Så kjører det med konstant fart i 60~s, og bremser jevnt til stopp på 25~s. Skisser v,t-grafen. Finn strekningen og gjennomsnittsfarten.
+\svar
+\oppgave \fase{utfordring}{Sammensatt}Bil $A$ kjører med konstant fart 25~m/s forbi bil $B$, som står i ro. I samme øyeblikk starter $B$ med akselerasjonen 2,0~m/s². Når og hvor tar $B$ igjen $A$? Hvilken fart har $B$ da? Forklar hvorfor $B$ da har akkurat dobbelt så stor fart som $A$.
+\svar
+\end{oppgaveliste}
+
+\end{document}

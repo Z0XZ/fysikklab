@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: krefter og bevegelse – lektorbo.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 1 med åtte flervalgsspørsmål om Newtons lover og typiske misoppfatninger om kraft og bevegelse. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Krefter</p>
+        <h1>Begrepstest: krefter og bevegelse</h1>
+        <p class="ingress">Åtte spørsmål om Newtons lover. Mange av dem handler om typiske misoppfatninger, for eksempel at det må virke en kraft i fartsretningen. Svar, og les forklaringen.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="3">
+            <p>En ball er kastet rett opp og er på vei oppover. Hvilke krefter virker på ballen? Se bort fra luftmotstand.</p>
+            <ol class="bt-valg">
+              <li>Ingen krefter på toppen, ellers tyngden.</li>
+              <li data-hvorfor="Kraften fra hånda virker bare mens ballen er i hånda.">Tyngden nedover og en kraft fra kastet oppover.</li>
+              <li>Bare tyngden, nedover.</li>
+              <li data-hvorfor="Ballen trenger ikke en kraft for å fortsette oppover. Den har fart.">En kraft oppover som blir mindre og mindre.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Når ballen har forlatt hånda, er tyngden den eneste kraften. Ballen fortsetter oppover fordi den har fart, ikke fordi noe dytter den. Tyngden bremser den, også på toppen, der farten er null, men akselerasjonen fortsatt er g nedover.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En bil kjører med konstant fart rett fram på en vannrett vei. Hva kan du si om kreftene på bilen?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Da ville bilen akselerert.">Kraften framover er større enn kreftene bakover.</li>
+              <li>Summen av kreftene peker framover, i fartsretningen.</li>
+              <li>Summen av kreftene er null.</li>
+              <li data-hvorfor="Tyngden, normalkraften, friksjonen fra veien og luftmotstanden virker hele tiden.">Det virker ingen krefter på bilen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Konstant fart i en rett linje betyr at akselerasjonen er null. Etter Newtons første lov er da summen av kreftene null. Kraften fra veien på drivhjulene er like stor som luftmotstanden og rullemotstanden til sammen.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En lastebil og en liten bil kolliderer. Hvilken bil får størst kraft på seg i kollisjonen?</p>
+            <ol class="bt-valg">
+              <li>Like store krefter.</li>
+              <li>Det avhenger av hvem som kjørte fortest.</li>
+              <li>Lastebilen.</li>
+              <li data-hvorfor="Den lille bilen får størst akselerasjon, men ikke størst kraft.">Den lille bilen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Newtons tredje lov: Kraften lastebilen gir den lille bilen, er like stor som kraften den lille bilen gir lastebilen, men motsatt rettet. Den lille bilen får mye større akselerasjon fordi den har mindre masse, a = F/m. Derfor er det farligere å sitte i den.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>Du står på en badevekt i en heis. Heisen kjører nedover og bremser opp før den stopper. Hva viser vekta?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det gjelder bare når farten er konstant.">Det vanlige.</li>
+              <li>Mer enn vanlig.</li>
+              <li data-hvorfor="Det gjelder når heisen setter i gang nedover.">Mindre enn vanlig.</li>
+              <li data-hvorfor="Det gjelder bare i fritt fall.">Null.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Heisen går nedover og bremser, så akselerasjonen peker oppover. Da må normalkraften fra vekta være større enn tyngden: N − mg = ma, så N = m(g + a). Vekta viser mer enn vanlig. Det kjennes likt som når heisen setter i gang oppover.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En kloss ligger i ro på et skråplan. Hvilken retning har friksjonskraften?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Hvilefriksjon virker også når ting ligger i ro.">Det er ingen friksjon når klossen ligger i ro.</li>
+              <li data-hvorfor="Det er normalkraften.">Vinkelrett på planet.</li>
+              <li>Oppover langs planet.</li>
+              <li>Nedover langs planet.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Uten friksjon ville klossen glidd nedover. Hvilefriksjonen hindrer det og peker oppover langs planet. Den er akkurat like stor som tyngdekomponenten langs planet, mg sin θ, og ikke nødvendigvis μN.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Du skyver en tung kasse bortover gulvet med konstant fart. Så skyver du dobbelt så hardt. Hva skjer?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Massen bestemmer hvor stor akselerasjonen blir, men ikke om det blir akselerasjon.">Det går ikke an å si uten å vite massen.</li>
+              <li data-hvorfor="En større kraftsum gir akselerasjon, ikke en ny konstant fart.">Kassen får dobbelt så stor fart, og den holder seg konstant.</li>
+              <li data-hvorfor="Glidefriksjonen er μN, og den endrer seg ikke med hvor hardt du skyver.">Kassen beholder farten fordi friksjonen også dobles.</li>
+              <li>Kassen akselererer, og farten øker så lenge du skyver så hardt.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Med konstant fart var skyvekraften like stor som friksjonen. Når du skyver dobbelt så hardt, blir summen av kreftene lik friksjonskraften, og den peker framover. Da akselererer kassen hele tiden: Farten øker så lenge du skyver.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>To kuler med samme størrelse, en av stål og en av plast, slippes samtidig fra 2 m. Luftmotstanden er liten. Hvilken treffer bakken først?</p>
+            <ol class="bt-valg">
+              <li>Det kommer an på hvor store kulene er.</li>
+              <li>Plastkula, fordi den er lettest.</li>
+              <li data-hvorfor="Tyngden er større, men den skal også akselerere en større masse.">Stålkula, fordi den er tyngst.</li>
+              <li>De treffer omtrent samtidig.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Akselerasjonen er a = G/m = mg/m = g, uavhengig av massen. Stålkula har større tyngde, men også større masse, så begge faller med g. Med luftmotstand vil stålkula komme litt først, fordi luftmotstanden betyr minst for den tunge kula.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>En hest trekker en vogn som akselererer framover. Etter Newtons tredje lov drar vogna like hardt bakover i hesten. Hvorfor kommer de seg likevel framover?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Newtons tredje lov gjelder alltid, også når ting akselererer.">Kreftene opphever hverandre bare når vogna står i ro.</li>
+              <li>Newtons tredje lov gjelder ikke for levende vesener.</li>
+              <li data-hvorfor="Kreftene mellom hesten og vogna er alltid like store.">Hesten drar egentlig litt hardere enn vogna.</li>
+              <li>Kreftene virker på forskjellige gjenstander, og bakken skyver hesten framover.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Kraft og motkraft virker på to forskjellige gjenstander, så de kan ikke oppheve hverandre. For å se om hesten akselererer, ser vi bare på kreftene på hesten: Vogna drar bakover, men bakken skyver hesten framover (friksjon på hovene). Er den kraften størst, akselererer hesten framover.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også <a href="../sim/heis.html">Baderomsvekt i heisen</a>, <a href="../sim/friksjon.html">Friksjon</a> og <a href="../sim/vogn-og-lodd.html">Vogn trukket av lodd</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

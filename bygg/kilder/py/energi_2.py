@@ -1,0 +1,12 @@
+tider = np.array(tider)
+Ek, Ep, Q = np.array(Ek), np.array(Ep), np.array(Q)
+
+plt.plot(tider, Ek, label="kinetisk energi")
+plt.plot(tider, Ep, label="potensiell energi")
+plt.plot(tider, Q, label="varme (friksjonsarbeid)")
+plt.plot(tider, Ek + Ep + Q, "k--", label="sum")
+plt.xlabel("t / s")
+plt.ylabel("energi / J")
+plt.legend()
+plt.grid(True)
+plt.show()

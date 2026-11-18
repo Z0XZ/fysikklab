@@ -485,3 +485,41 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 .py-bilde { display: block; max-width: 100%; height: auto; margin: .5rem 0; background: #fff; border-radius: 4px; }
 .py-knapper [hidden], .py-panel [hidden] { display: none; }
 .py-panel > p:last-child { margin-bottom: 0; }
+/* Nye simuleringer: e/m og Millikan */
+.sim canvas.forhold-em { aspect-ratio: 16 / 11; }
+.sim canvas.forhold-millikan { aspect-ratio: 16 / 8; }
+@media (max-width: 760px) {
+  .sim canvas.forhold-em { aspect-ratio: 1 / 1; }
+  .sim canvas.forhold-millikan { aspect-ratio: 16 / 22; }
+}
+/* Begrepstester */
+.bt-liste { padding-left: 1.4rem; margin: 1rem 0; }
+.bt-liste > .bt { margin-bottom: 1.75rem; }
+.bt-liste > .bt > p:first-child { font-weight: 600; }
+.bt-valg { padding-left: 1.4rem; }
+.bt-valg.aktiv { list-style: none; padding-left: 0; display: grid; gap: .45rem; margin: .6rem 0; }
+.bt-knapp { display: flex; gap: .7rem; align-items: flex-start; width: 100%; text-align: left; font: inherit; color: var(--blekk); background: var(--flate); border: 1.5px solid var(--rute); border-radius: 8px; padding: .55rem .8rem; cursor: pointer; }
+.bt-knapp:hover:not(:disabled) { border-color: var(--rute-sterk); }
+.bt-knapp:focus-visible { outline: 2px solid var(--f2); outline-offset: 2px; }
+.bt-knapp:disabled { cursor: default; }
+.bt-bokstav { font-family: var(--mono); font-weight: 600; color: var(--dempet); min-width: 1.1rem; }
+.bt-knapp.riktig { border-color: var(--f2); box-shadow: inset 0 0 0 1px var(--f2); }
+.bt-knapp.riktig .bt-bokstav { color: var(--f2); }
+.bt-knapp.feil { border-color: var(--f1); opacity: .75; }
+.bt-knapp.feil .bt-bokstav { color: var(--f1); }
+.bt-tilbakemelding { margin: .3rem 0 .5rem; font-weight: 600; }
+.bt-tilbakemelding.riktig { color: var(--f2); }
+.bt-tilbakemelding.feil { color: var(--f1); }
+.bt-forklaring[hidden] { display: none; }
+.bt-forklaring summary { cursor: pointer; color: var(--dempet); }
+.bt-bunn { display: flex; flex-wrap: wrap; gap: .75rem 1.25rem; align-items: center; margin: 1rem 0 2rem; padding: .9rem 1rem; border: 1px solid var(--rute); border-radius: 8px; background: var(--flate); }
+.bt-status { margin: 0; font-weight: 600; }
+.bt-tilbakemelding[hidden] { display: none; }
+/* Ressurser etter kompetansemål */
+.km-liste { padding-left: 1.6rem; }
+.km-liste > li { margin-bottom: 1.4rem; }
+.km-mal { font-family: var(--serif); font-size: 1.05rem; margin-bottom: .35rem; }
+.km-liste ul { margin: 0; padding-left: 1.1rem; }
+.km-liste ul li { margin: .15rem 0; }
+.km-type { font-size: .75rem; color: var(--dempet); border: 1px solid var(--rute); border-radius: 999px; padding: 0 .45rem; margin-left: .3rem; white-space: nowrap; }
+.km-tom { color: var(--dempet); font-style: italic; margin: 0; }

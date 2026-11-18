@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: kast og sirkelbevegelse – lektorbo.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om skrått kast, sentripetalakselerasjon og krefter i sirkelbevegelse. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Sirkelbevegelse</p>
+        <h1>Begrepstest: kast og sirkelbevegelse</h1>
+        <p class="ingress">Åtte spørsmål om bevegelse i to dimensjoner og sirkelbevegelse. Husk: Akselerasjonen er en vektor, og den kan peke en annen vei enn farten.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="2">
+            <p>En ball kastes skrått oppover. Hva er akselerasjonen på toppen av banen? Se bort fra luftmotstand.</p>
+            <ol class="bt-valg">
+              <li>Mindre enn g, fordi ballen beveger seg bortover.</li>
+              <li>g, rett nedover.</li>
+              <li data-hvorfor="Det er bare den loddrette farten som er null på toppen.">Null, fordi ballen snur.</li>
+              <li>g, i fartsretningen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Tyngden er den eneste kraften hele veien, så akselerasjonen er g rett nedover overalt i banen, også på toppen. På toppen er vy = 0, men vx er ikke null.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>Én kule slippes og én skytes ut vannrett fra samme høyde i samme øyeblikk. Hvilken treffer bakken først?</p>
+            <ol class="bt-valg">
+              <li>De treffer samtidig.</li>
+              <li>Den som skytes ut.</li>
+              <li data-hvorfor="Den vannrette farten påvirker ikke den loddrette bevegelsen.">Den som slippes.</li>
+              <li>Det avhenger av farten.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Den loddrette bevegelsen er den samme for begge: start med vy = 0 og akselerasjon g nedover. Bevegelsene i x og y er uavhengige av hverandre, så kulene treffer samtidig (uten luftmotstand).</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En bil kjører gjennom en sving med konstant fart. Hva kan du si om akselerasjonen?</p>
+            <ol class="bt-valg">
+              <li>Den peker inn mot sentrum av svingen.</li>
+              <li data-hvorfor="Det er det du føler, men ikke det som skjer.">Den peker ut av svingen.</li>
+              <li>Den peker i fartsretningen.</li>
+              <li data-hvorfor="Retningen på farten endrer seg, og det er en akselerasjon.">Den er null, fordi farten er konstant.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Farten endrer retning hele tiden, og da er det en akselerasjon. Med konstant banefart peker den rett inn mot sentrum: a = v²/r. Kraften som gir akselerasjonen, er friksjonen mellom dekkene og veien.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En stein svinges i en vannrett sirkel i en snor. Snora ryker. Hvordan beveger steinen seg rett etterpå, sett ovenfra?</p>
+            <ol class="bt-valg">
+              <li>Rett fram langs tangenten.</li>
+              <li>Rett inn mot sentrum.</li>
+              <li data-hvorfor="Det er ingen kraft utover som kan gi den den retningen.">Rett utover, bort fra sentrum.</li>
+              <li data-hvorfor="Uten snora er det ingen kraft inn mot sentrum.">I en krum bane som fortsetter rundt.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Når snora ryker, er det ingen kraft inn mot sentrum lenger. Sett ovenfra fortsetter steinen da rett fram i den retningen den hadde, langs tangenten til sirkelen (Newtons første lov). Den begynner selvfølgelig også å falle.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>Du kjører over en bakketopp i en berg-og-dal-bane. Hvordan er normalkraften fra setet på toppen?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det gjelder i bunnen av en dal.">Større enn tyngden.</li>
+              <li>Mindre enn tyngden.</li>
+              <li>Null, uansett fart.</li>
+              <li data-hvorfor="Det gjelder bare på vannrett, rett bane.">Like stor som tyngden.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> På toppen er sentrum av sirkelen under deg, så akselerasjonen peker nedover: mg − N = mv²/r. Da er N = mg − mv²/r, mindre enn tyngden, og du føler deg lettere. Når v² = gr, blir N = 0.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>En satellitt går i sirkelbane rundt jorda. Hvorfor faller den ikke ned?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Tyngdekraften i lav bane er nesten like sterk som på bakken.">Det er ingen tyngdekraft så langt ute.</li>
+              <li>Den faller hele tiden, men har så stor fart bortover at den aldri treffer.</li>
+              <li>Motorene holder den oppe.</li>
+              <li data-hvorfor="Det finnes ingen ekstra kraft utover. Tyngden er sentripetalkraften.">Sentrifugalkraften opphever tyngdekraften.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Tyngdekraften er den eneste kraften, og den er sentripetalkraften. Satellitten akselererer mot jorda hele tiden, altså faller den. Men den har så stor fart bortover at jorda krummer seg bort under den like fort som den faller.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En karusell snurrer med konstant vinkelfart. Barn A sitter 2 m fra sentrum, og barn B sitter 4 m fra sentrum. Hva er riktig?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="a = ω²r øker med r.">B har dobbelt så stor banefart, men samme akselerasjon.</li>
+              <li data-hvorfor="B går en dobbelt så lang runde på samme tid.">De har samme banefart.</li>
+              <li>B har dobbelt så stor banefart og dobbelt så stor sentripetalakselerasjon.</li>
+              <li data-hvorfor="a = ω²r er proporsjonal med r når ω er fast.">B har fire ganger så stor akselerasjon.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Begge har samme vinkelfart ω. Banefarten er v = ωr og akselerasjonen a = ω²r, så begge er dobbelt så store for B. (Skrevet som a = v²/r ser det ut som at a øker med v² og minker med r, men begge endrer seg.)</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En bøtte med vann svinges i en loddrett sirkel. Hvorfor renner ikke vannet ut på toppen?</p>
+            <ol class="bt-valg">
+              <li>Vannet trenger en større akselerasjon enn g mot sentrum, og bunnen av bøtta gir resten.</li>
+              <li>Tyngdekraften er null på toppen.</li>
+              <li>Lufttrykket holder vannet i bøtta.</li>
+              <li data-hvorfor="Det er ingen kraft utover.">Sentrifugalkraften presser vannet mot bunnen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> På toppen må vannet ha sentripetalakselerasjonen v²/r nedover. Er v²/r større enn g, er ikke tyngden alene nok, og bunnen av bøtta må skyve vannet nedover med en normalkraft. Vannet blir presset mot bunnen og renner ikke ut. Er farten for liten, faller vannet fortere enn bøtta.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også <a href="../sim/skratt-kast.html">Skrått kast</a>, <a href="../sim/sirkelbevegelse.html">Sirkelbevegelse</a> og <a href="../sim/loddrett-sirkel.html">Loddrett sirkel</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

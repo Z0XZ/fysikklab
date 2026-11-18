@@ -50,6 +50,15 @@ function scenario(navn, valg = {}) {
     return { navn: "Kloss som glir til den stopper", fps: 60, T, bredde: 1.2, hoyde: 0.4, kolonner: ["t (s)", "x (m)"], linjal: "vannrett", mu,
       objekter: [{ id: "A", form: "kloss", r: 0.05, pos: (t) => ({ x: 0.15 + s(t), y: 0.03 }) }], mål: (p) => [p.A.x - 0.15] };
   }
+  if (navn === "kast") {
+    // Ball kastet skrått oppover: v0 = 3,6 m/s, 52° over vannrett, fra (0,25 m, 0,85 m). Uten luftmotstand.
+    const v0 = 3.6, th = 52 * Math.PI / 180, x0 = 0.25, y0 = 0.85, vx = v0 * Math.cos(th), vy = v0 * Math.sin(th), r = 0.035;
+    const T = (vy + Math.sqrt(vy * vy + 2 * G * (y0 - r))) / G;
+    return { navn: "Ball som kastes skrått", fps: 30, T, bredde: 2.3, hoyde: 1.5, kolonner: ["t (s)", "x (m)", "y (m)"], linjal: "begge", x0,
+      fakta: { v0, th, vx, vy, T },
+      objekter: [{ id: "A", form: "ball", r, pos: (t) => ({ x: x0 + vx * Math.min(t, T), y: y0 + vy * Math.min(t, T) - 0.5 * G * Math.min(t, T) ** 2 }) }],
+      mål: (p) => [p.A.x - x0, p.A.y] };
+  }
   if (navn === "stot") {
     // Vogn A (0,50 kg) treffer vogn B (0,25 kg) som står i ro. Støttall 0,80 og litt rullefriksjon.
     const mA = 0.5, mB = 0.25, e = 0.8, af = 0.02, L = 0.17, vA0 = 0.42, xA0 = 0.25, xB0 = 1.0;
@@ -236,8 +245,8 @@ function tilpass(pkt, grad) {
     if (sc.vinkel) { const [x0, y0] = tilSkjerm(0.15, 0.05 + 1.9 * Math.sin(sc.vinkel)), [x1, y1] = tilSkjerm(0.15 + 1.9 * Math.cos(sc.vinkel), 0.05); c.beginPath(); c.moveTo(x0, y0); c.lineTo(x1, y1); c.stroke(); }
     else { c.beginPath(); c.moveTo(gx, gy); c.lineTo(gx + sc.bredde * s, gy); c.stroke(); }
     c.fillStyle = f.dempet; c.font = "10px " + Sim.MONO; c.strokeStyle = f["rute-sterk"]; c.lineWidth = 1;
-    if (sc.linjal === "loddrett") { const [lx] = tilSkjerm(0.08, 0); for (let y = 0; y <= sc.hoyde + 1e-9; y += 0.1) { const [, ly] = tilSkjerm(0, y); const hel = Math.abs(y * 2 - Math.round(y * 2)) < 1e-6; c.beginPath(); c.moveTo(lx, ly); c.lineTo(lx + (hel ? 12 : 6), ly); c.stroke(); if (hel) { c.textAlign = "right"; c.textBaseline = "middle"; c.fillText(komma(y, 1), lx - 3, ly); } } }
-    else { for (let x = 0; x <= sc.bredde + 1e-9; x += 0.1) { const [lx, ly] = tilSkjerm(x, 0); const hel = Math.abs(x * 2 - Math.round(x * 2)) < 1e-6; c.beginPath(); c.moveTo(lx, ly + 2); c.lineTo(lx, ly + (hel ? 10 : 6)); c.stroke(); if (hel) { c.textAlign = "center"; c.textBaseline = "top"; c.fillText(komma(x, 1), lx, ly + 10); } } }
+    if (sc.linjal === "loddrett" || sc.linjal === "begge") { const [lx] = tilSkjerm(0.08, 0); for (let y = 0; y <= sc.hoyde + 1e-9; y += 0.1) { const [, ly] = tilSkjerm(0, y); const hel = Math.abs(y * 2 - Math.round(y * 2)) < 1e-6; c.beginPath(); c.moveTo(lx, ly); c.lineTo(lx + (hel ? 12 : 6), ly); c.stroke(); if (hel) { c.textAlign = "right"; c.textBaseline = "middle"; c.fillText(komma(y, 1), lx - 3, ly); } } }
+    if (sc.linjal !== "loddrett") { for (let x = 0; x <= sc.bredde + 1e-9; x += 0.1) { const [lx, ly] = tilSkjerm(x, 0); const hel = Math.abs(x * 2 - Math.round(x * 2)) < 1e-6; c.beginPath(); c.moveTo(lx, ly + 2); c.lineTo(lx, ly + (hel ? 10 : 6)); c.stroke(); if (hel) { c.textAlign = "center"; c.textBaseline = "top"; c.fillText(komma(x, 1), lx, ly + 10); } } }
     // Objektene
     for (const o of sc.objekter) {
       const p = o.pos(t), [X, Y] = tilSkjerm(p.x, p.y), r = Math.max(5, o.r * s);
@@ -271,7 +280,8 @@ function tilpass(pkt, grad) {
         const m = merker[o.id] && merker[o.id][b];
         if (!m) { ok = false; break; }
         // Målestørrelsen: y oppover, x langs gulvet, eller s langs skråplanet
-        if (sc.linjal === "loddrett") rad.push(m[1]);
+        if (sc.linjal === "begge") rad.push(m[0] - sc.x0, m[1]);
+        else if (sc.linjal === "loddrett") rad.push(m[1]);
         else if (sc.linjal === "langs") rad.push((m[0] - 0.15) * Math.cos(sc.vinkel) - (m[1] - 0.05 - 1.9 * Math.sin(sc.vinkel)) * Math.sin(sc.vinkel));
         else rad.push(sc.objekter.length > 1 ? m[0] : m[0] - (sc.navn.startsWith("Ball") ? 0.2 : 0.15));
       }
@@ -316,6 +326,17 @@ function tilpass(pkt, grad) {
   if ($("fall-a")) {
     const f = () => { const a = tall("fall-a"); vis("fall-g", a === null ? "–" : komma(Math.abs(a), 2) + " m/s²"); vis("fall-avvik", a === null ? "–" : komma((Math.abs(a) / G - 1) * 100, 1) + " %"); };
     $("fall-a").addEventListener("input", f); f();
+  }
+  // Skrått kast: fart og vinkel ut fra vx (rett linje i x) og vy0 og ay (andregradsfunksjon i y)
+  if ($("kast-vx")) {
+    const f = () => {
+      const vx = tall("kast-vx"), vy = tall("kast-vy"), ay = tall("kast-ay");
+      const ok = vx !== null && vy !== null;
+      vis("kast-v0", ok ? komma(Math.hypot(vx, vy), 2) + " m/s" : "–");
+      vis("kast-vinkel", ok ? komma(Math.atan2(vy, vx) * 180 / Math.PI, 1) + "°" : "–");
+      vis("kast-g", ay === null ? "–" : komma(Math.abs(ay), 2) + " m/s² (avvik " + komma((Math.abs(ay) / G - 1) * 100, 1) + " %)");
+    };
+    for (const id of ["kast-vx", "kast-vy", "kast-ay"]) $(id).addEventListener("input", f); f();
   }
   // Rulling: sammenlign med g sin θ, og rullefriksjon langs gulvet
   if ($("rull-a")) {

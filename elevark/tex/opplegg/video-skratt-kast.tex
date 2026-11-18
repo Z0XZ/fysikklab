@@ -1,0 +1,57 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/video-skratt-kast.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Bevegelse og krefter i to dimensjoner}{Videoanalyse av skrått kast}{https://lektorbo.no/opplegg/video-skratt-kast.html}{Opplegget på nett}
+
+Et skrått kast er to bevegelser på én gang: jevn fart bortover og fritt fall opp og ned. Film et kast, og la Tracker gi dere $x$ og $y$ for hvert bilde. Stemmer det at $v_{x}$ er konstant og at $a_{y}$ = −g?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Analysere et skrått kast som to uavhengige bevegelser i x- og y-retning.
+\item Vise at farten i x-retning er konstant, og at akselerasjonen i y-retning er $g$ nedover.
+\item Bestemme startfarten og kastvinkelen, og forutsi hvor ballen lander.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En liten, tung ball, for eksempel en tennisball eller sprettball.
+\item Mobil eller kamera på stativ, helst med 60 bilder per sekund.
+\item En meterstokk som målestokk, og helst en vegg med ensfarget bakgrunn.
+\item Tracker (gratis fra physlets.org/tracker).
+\end{itemize}
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Sett kameraet på stativ 3–4~m fra veggen, slik at hele banen kommer med. Kameraet skal stå vinkelrett på veggen, med linsa omtrent midt i banen.
+\item Legg meterstokken langs veggen i samme avstand fra kameraet som kastet. Den er målestokken i Tracker.
+\item Kast ballen skrått oppover langs veggen, ikke mot eller fra kameraet. Et lett kast på 1,5–2~m er nok. Film flere kast og velg det beste.
+\item I Tracker: Sett kalibreringsstaven på meterstokken og plasser origo der ballen slippes, med $y$ oppover. Klikk på midten av ballen i hvert bilde fra den slipper hånden til like før den lander.
+\item Kopier kolonnene $t$, $x$ og $y$, og lim dem inn i verktøyet på nettsiden. Analyser $x$ og $y$ hver for seg.
+\end{enumerate}
+
+Uten egen video kan dere bruke eksempeldataene, eller klikke dere gjennom en virtuell video av et kast i Videoanalyse uten video\footnote{\url{lektorbo.no/sim/videoanalyse.html}}. Velg «Ball som kastes skrått».
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Skisser hvordan $x(t)$ og $y(t)$ ser ut for et skrått kast. Hvordan ser $v_{x}(t)$ og $v_{y}(t)$ ut?
+\svar
+\oppgave \fase{test}{Mål}Film et kast og analyser det i Tracker, eller bruk eksempeldataene. Er $x(t)$ en rett linje? Hva er $v_{x}$?
+\svar
+\oppgave \fase{test}{Mål}Tilpass en andregradsfunksjon til $y(t)$. Hva blir $a_{y}$, og hvor godt stemmer det med $g = 9{,}81\,\mathrm{m/s^{2}}$? Kryss av for «Vis fart» og se på $v_{y}(t)$.
+\svar
+\oppgave \fase{test}{Regn}Bruk $v_{x}$ og $v_{0}y$ til å finne startfarten og kastvinkelen. Når er ballen på toppen, og hvor høyt over utgangspunktet kommer den? Sjekk med dataene.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er $v_{x}$ konstant gjennom hele kastet? Hvordan ville $x(t)$ sett ut for en lett ball, for eksempel en ballong, med mye luftmotstand?
+\svar
+\oppgave \fase{forklar}{Vurder}Ballen er nærmere kameraet enn meterstokken hvis dere ikke kaster langs veggen. Blir målt fart og akselerasjon da for store eller for små? Hvilke andre feilkilder er det?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Bruk startfarten, kastvinkelen og høyden der ballen slipper, til å regne ut hvor langt bortover ballen kommer før den treffer gulvet. Sammenlign med videoen. I eksemplet slipper ballen 0,85~m over gulvet.
+\svar
+\end{oppgaveliste}
+
+\end{document}

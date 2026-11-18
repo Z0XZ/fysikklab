@@ -1,0 +1,52 @@
+tittel: Regresjon og linearisering i Python
+beskrivelse: Programmeringsøving i Fysikk 1 og 2: Finn g fra pendelmålinger med lineær regresjon og usikkerhet, finn en ukjent potens med logaritmer, og sjekk Keplers tredje lov med ekte planetdata.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 1 og 2 · Tenke og gjøre fysikk
+script: -
+meny: programmering.html
+---
+<h1>Regresjon og linearisering i Python</h1>
+<p class="ingress">En rett linje er lett å tilpasse og lett å tolke. Med riktige akser kan mange sammenhenger i fysikken gjøres om til en rett linje. Her bruker vi <code>np.polyfit</code> til å finne g fra en pendel, til å finne en ukjent potens, og til å sjekke Keplers tredje lov med ekte data for planetene.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Tyngdeakselerasjonen fra en pendel</h2>
+  <p>Svingetiden til en pendel er T = 2π√(L/g). Kvadrerer vi, får vi T² = (4π²/g) · L. Grafen av T² mot L er altså en rett linje gjennom origo med stigningstall 4π²/g. Pendeldataene under er simulert med g = 9,81 m/s² og litt tilfeldig målestøy. Bytt dem gjerne ut med deres egne målinger.</p>
+  <p>Med <code>cov=True</code> gir <code>np.polyfit</code> også usikkerheten i stigningstallet. Den relative usikkerheten i g blir den samme som i stigningstallet.</p>
+@@regresjon_1.py@@
+
+  <h2>Steg 2: Når vi ikke kjenner formelen</h2>
+  <p>Anta at vi bare vet at T = C · L<sup>n</sup>, men ikke hva n er. Tar vi logaritmen, får vi ln T = ln C + n · ln L. Grafen av ln T mot ln L er da en rett linje med stigningstall n. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok.</p>
+@@regresjon_2.py@@
+
+  <h2>Steg 3: Keplers tredje lov med ekte data</h2>
+  <p>Keplers tredje lov sier at T² er proporsjonal med a³, der a er den store halvaksen i banen. Tallene under er kjente verdier for planetene, med a i astronomiske enheter (AU) og T i år. Dette er et nytt, selvstendig program.</p>
+@@regresjon_3.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvorfor plotter vi T² mot L og ikke T mot L? Hva skulle konstantleddet ideelt sett vært?</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 1. Er 9,81 m/s² innenfor usikkerheten? Regn også ut g fra hvert enkelt målepunkt med g = 4π²L/T². Hva er fordelen med å bruke en linje?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Bruk bare de tre første målingene. Hva skjer med g og usikkerheten? Hvorfor?</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 2. Hvilken potens n finner du? Hvilken verdi av C forventer du fra formelen T = 2π√(L/g)?</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 3. Hvilken potens finner du? Hva sier T²/a³ for de ulike planetene?</p></div></li>
+  <li><span class="fase forklar">Regn</span><div><p>Gjør om a og T til SI-enheter (1 AU = 1,496 · 10¹¹ m, 1 år = 3,156 · 10⁷ s) og bruk GM = 4π²a³/T² til å finne massen til sola. G = 6,674 · 10⁻¹¹ N m²/kg².</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Mål svingetiden til en pendel for fem eller seks lengder, sett inn deres egne målinger i steg 1, og finn g med usikkerhet. Hvilke feilkilder kan gi et konstantledd som ikke er null?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>T mot L er ikke en rett linje, fordi T er proporsjonal med √L. T² mot L er en rett linje. Konstantleddet skulle vært null, fordi T = 0 når L = 0.</li>
+      <li>Linja gir T² = 4,035 · L + 0,003 og g = (9,79 ± 0,11) m/s², så 9,81 er godt innenfor usikkerheten. Punktene gir g fra 9,65 til 9,98 m/s², med middelverdi 9,76 m/s². Linja bruker alle punktene samtidig, og et konstantledd fanger opp systematiske feil som en feil i målingen av L.</li>
+      <li>Med de tre første punktene blir g = (9,77 ± 0,11) m/s². At usikkerheten ikke ble større her, er tilfeldig. Med færre punkter og et kortere område for L betyr hvert punkt mer, og både stigningstallet og anslaget for usikkerheten blir mindre pålitelige.</li>
+      <li>n = 0,497, som er nær 0,5. Formelen gir C = 2π/√g = 2,006 s/m<sup>0,5</sup>, og programmet gir 2,008.</li>
+      <li>Potensen blir 1,500, altså T ∝ a<sup>1,5</sup> og T² ∝ a³. T²/a³ er 1,000 år²/AU³ for alle planetene, innenfor 0,2 %.</li>
+      <li>GM = 1,33 · 10²⁰ m³/s² og M = GM/G = 1,99 · 10³⁰ kg.</li>
+      <li>Typiske feilkilder er at lengden måles til feil sted (L skal måles til massemidtpunktet), store utslag og tidtaking. En konstant feil i L gir et konstantledd, men endrer ikke stigningstallet.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45–60 minutter. Steg 1–2 passer i Fysikk 1 sammen med måleusikkerhet, og hele øvingen passer i Fysikk 2 sammen med simuleringen <a href="../sim/linearisering.html">Linearisering</a>. Steg 3 kan også brukes når dere har om gravitasjon.</p>
+  </details>
+</section>

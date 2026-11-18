@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: bevegelsesmengde og støt – lektorbo.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 1 med åtte flervalgsspørsmål om bevegelsesmengde, impuls, støt og bevaringslover. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Begrepstest: bevegelsesmengde og støt</h1>
+        <p class="ingress">Åtte spørsmål om bevegelsesmengde og støt. Husk at bevegelsesmengde er en vektor, og at fortegnet betyr noe.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="3">
+            <p>En ball på 0,5 kg treffer en vegg med 4 m/s og spretter tilbake med 4 m/s. Hvor stor er endringen i bevegelsesmengde?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Retningen har endret seg, og bevegelsesmengde er en vektor.">0, fordi farten er like stor før og etter.</li>
+              <li>2 kg m/s.</li>
+              <li>4 kg m/s.</li>
+              <li>8 kg m/s.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Med positiv retning mot veggen er p før = 0,5 · 4 = 2 kg m/s og p etter = −2 kg m/s. Endringen er Δp = −2 − 2 = −4 kg m/s. Størrelsen er 4 kg m/s, dobbelt så mye som om ballen hadde stoppet.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Hvorfor har biler knusesone foran?</p>
+            <ol class="bt-valg">
+              <li>For å bevare den kinetiske energien.</li>
+              <li data-hvorfor="Bilen stopper uansett, så Δp er den samme.">For å gjøre endringen i bevegelsesmengde mindre.</li>
+              <li>For å gjøre bilen lettere.</li>
+              <li>For at kollisjonen skal vare lenger, slik at kraften blir mindre.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Impulsen FΔt er lik endringen i bevegelsesmengde, og den er bestemt av massen og farten. Når knusesonen gjør at kollisjonen varer lenger, blir gjennomsnittskraften mindre. Samme idé brukes i kollisjonsputer og hjelmer.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En vogn på 2 kg med farten 3 m/s kolliderer med en vogn på 1 kg som står i ro. Vognene henger sammen etterpå. Hva blir farten?</p>
+            <ol class="bt-valg">
+              <li>1 m/s.</li>
+              <li data-hvorfor="Det ville vært svaret hvis vognene hadde lik masse.">1,5 m/s.</li>
+              <li>2 m/s.</li>
+              <li>3 m/s.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Bevegelsesmengden er bevart: 2 · 3 = (2 + 1) · v, så v = 2 m/s. Den kinetiske energien er ikke bevart: Den går fra 9 J til 6 J. Støtet er fullstendig uelastisk.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>I hvilke støt er bevegelsesmengden bevart?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det er den kinetiske energien som bare er bevart i elastiske støt.">Bare i elastiske støt.</li>
+              <li>Bare når gjenstandene henger sammen etterpå.</li>
+              <li>I alle støt der ytre krefter er små i forhold til kreftene i støtet.</li>
+              <li>Bare når den ene gjenstanden står i ro før støtet.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Kreftene mellom gjenstandene i støtet er indre krefter, og etter Newtons tredje lov opphever impulsene deres hverandre. Bevegelsesmengden til systemet er derfor bevart så lenge ytre krefter, som friksjon, er små i den korte tiden støtet varer. Det gjelder både elastiske og uelastiske støt.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>Et gevær med masse 4 kg skyter en kule på 10 g med 400 m/s. Hvilken fart får geværet bakover?</p>
+            <ol class="bt-valg">
+              <li>1 m/s.</li>
+              <li>4 m/s.</li>
+              <li data-hvorfor="Geværet har mye større masse enn kula.">400 m/s.</li>
+              <li data-hvorfor="Bevegelsesmengden må være null til sammen etter skuddet.">0, fordi geværet er mye tyngre enn kula.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Før skuddet er bevegelsesmengden null. Etterpå er 0,010 · 400 + 4 · v = 0, så v = −1 m/s. Geværet og kula får like stor bevegelsesmengde i motsatt retning. Kula får mye mer kinetisk energi enn geværet.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>To like vogner kolliderer elastisk. Vogn A har 2 m/s, og vogn B står i ro. Hva skjer?</p>
+            <ol class="bt-valg">
+              <li>A stopper, og B får 2 m/s.</li>
+              <li data-hvorfor="Da blir ikke den kinetiske energien bevart.">Begge får 1 m/s.</li>
+              <li data-hvorfor="Da blir ikke bevegelsesmengden bevart.">A spretter tilbake med 2 m/s, og B står i ro.</li>
+              <li>A får 1 m/s, og B får 2 m/s.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Med like masser bytter vognene fart i et elastisk støt. Både bevegelsesmengden (2m = m · 0 + m · 2) og den kinetiske energien er bevart. Det er det du ser med kulestøtpendelen (Newtons vugge).</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Hvordan kan en astronaut som svever i ro i rommet, komme seg tilbake til romstasjonen?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Tyngdepunktet til astronauten flytter seg ikke.">Ved å bøye seg mot stasjonen.</li>
+              <li data-hvorfor="Det er ingen luft å skyve mot.">Ved å svømme med armene.</li>
+              <li data-hvorfor="Et kast virker på samme måte som en rakett.">Det går ikke uten en rakettmotor.</li>
+              <li>Ved å kaste et verktøy bort fra stasjonen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Bevegelsesmengden til astronauten og verktøyet er null før kastet og må være null etterpå. Kaster astronauten verktøyet bort fra stasjonen, får hun en fart mot stasjonen. Det er det samme prinsippet som i en rakett.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Et egg slippes fra samme høyde på et hardt gulv og på en pute. Hva er riktig?</p>
+            <ol class="bt-valg">
+              <li>Puten gir mindre impuls fordi den er myk.</li>
+              <li data-hvorfor="Egget stopper i begge tilfellene, så impulsen er den samme.">Egget får større impuls fra gulvet.</li>
+              <li>Impulsen er den samme, men kraften fra puten er mindre fordi stoppet varer lenger.</li>
+              <li>Gulvet gir mindre kraft fordi det ikke gir etter.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Egget har samme bevegelsesmengde rett før det treffer, og den samme impulsen skal til for å stoppe det. Puten gjør at stoppet tar lengre tid, så den gjennomsnittlige kraften blir mindre: F = Δp/Δt. Det er dette eggslippkonkurransen handler om.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også <a href="../sim/vognstot.html">Støt mellom to vogner</a>, <a href="../sim/impuls.html">Myk landing</a> og <a href="../sim/rekyl.html">Rekyl</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

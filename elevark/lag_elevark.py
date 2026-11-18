@@ -394,6 +394,8 @@ $F$ (N) & & & & & \\[4pt] \bottomrule
         "($1\\,\\mathrm{AU} = 1{,}496 \\cdot 10^{11}\\,\\mathrm{m}$, $1\\text{ år} = 3{,}156 \\cdot 10^{7}\\,\\mathrm{s}$)")],
     "sim/samtidighet": [("$P$", "P"), ("$T$", "T")],
     "sim/sprettball": [("$e$ = √andel", "$e = \\sqrt{\\text{andel}}$")],
+    "sim/millikan": [("±1 $V$", "±1 V")],
+    "sim/e-over-m": [("$e/m$ = 2U / $(B^{2}r^{2})$", "$e/m = 2U/(B^{2}r^{2})$")],
 }
 
 def main():

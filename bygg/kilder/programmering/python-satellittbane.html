@@ -1,0 +1,48 @@
+tittel: Satellittbane med Eulers metode
+beskrivelse: Programmeringsøving i Fysikk 2: Simuler banen til en satellitt rundt jorda med vektorer i numpy, finn omløpstiden, og se hva som skjer når startfarten øker.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 2 · Sirkelbevegelse
+script: -
+meny: programmering.html
+---
+<h1>Satellittbane med Eulers metode</h1>
+<p class="ingress">Den internasjonale romstasjonen går rundt jorda omtrent 420 km over bakken. Hvor fort må den gå, og hvor lang tid bruker den på ett omløp? Her simulerer vi banen med gravitasjonsloven og Eulers metode, og ser hva som skjer når farten blir for stor for en sirkelbane.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Sirkelbane</h2>
+  <p>Gravitasjonskraften på satellitten er F = GMm/r², rettet mot jordas sentrum. Som vektor blir akselerasjonen a = −GM/r³ · s, der s er posisjonsvektoren fra jordas sentrum. I en sirkelbane er gravitasjonen sentripetalkraften, så GM/r² = v²/r, og farten er v = √(GM/r).</p>
+  <p>I løkka oppdaterer vi farten før posisjonen, som i <a href="python-horisontalt-kast.html">Horisontalt kast</a>. Programmet finner omløpstiden ved å se når satellitten krysser x-aksen nedenfra.</p>
+@@satellitt_1.py@@
+
+  <h2>Steg 2: Større startfart</h2>
+  <p>Hva skjer hvis satellitten får litt større fart enn sirkelfarten? Funksjonen <code>bane</code> simulerer i fire timer og regner ut den mekaniske energien per kilogram, E = ½v² − GM/r, i hvert steg. Den skal være konstant. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok.</p>
+@@satellitt_2.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 1. Hva er farten og omløpstiden til ISS? Sjekk omløpstiden med T = 2πr/v.</p></div></li>
+  <li><span class="fase tipp">Gjett</span><div><p>Hvordan tror du banen ser ut hvis startfarten er 10 % større enn sirkelfarten? Kjør steg 2 og sjekk. Hvor langt fra jorda kommer satellitten?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor går satellitten saktere når den er langt fra jorda? Bruk energibevaring.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>En geostasjonær satellitt bruker 23 timer og 56 minutter på ett omløp. Prøv deg fram med høyden h i steg 1 til du får riktig omløpstid. Husk å øke t_slutt. Regn deretter ut høyden med T² = 4π²r³/GM.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Unnslipningsfarten er √2 ≈ 1,41 ganger sirkelfarten. Endre steg 2 til <code>for faktor in [1.3, 1.5]:</code> og <code>bane(faktor * v_sirkel, timer=24)</code>. Hvilken av satellittene kommer tilbake?</p></div></li>
+  <li><span class="fase forklar">Feilsøk</span><div><p>Bytt rekkefølgen i løkka i steg 2, slik at posisjonen oppdateres før farten (vanlig Euler). Hvordan endrer energien seg nå? Hva skjer med sirkelbanen?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Sammenlign med ekte data: Skriptene i <a href="python-ekte-data.html">Fysikk i Python med ekte data</a> henter posisjonen til ISS. Hvor godt stemmer farten og omløpstiden?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>v = 7661 m/s og T = 92,8 min, både fra simuleringen og fra T = 2πr/v.</li>
+      <li>Banen blir en ellipse med jordas sentrum i det ene brennpunktet. Med 1,1 · v_sirkel kommer satellitten 4030 km over bakken. Med 1,2 · v_sirkel kommer den 11 090 km over bakken.</li>
+      <li>Den mekaniske energien ½mv² − GMm/r er konstant. Når r øker, øker den potensielle energien (den blir mindre negativ), så den kinetiske energien og farten må minke.</li>
+      <li>r = (GMT²/4π²)<sup>1/3</sup> = 42 164 km, altså h = 35 790 km over bakken. Farten er 3075 m/s. Med h = 35786e3 og t_slutt = 26 * 60 * 60 gir simuleringen 1435,7 min = 23 h 56 min.</li>
+      <li>Med 1,3 · v_sirkel kommer satellitten 30 650 km over bakken og er på vei tilbake. Banen er en ellipse med omløpstid på omtrent 9 timer. Med 1,5 · v_sirkel er farten over unnslipningsfarten √2 · 7661 m/s = 10,8 km/s, og satellitten er 386 000 km unna etter 24 timer, omtrent like langt som til månen, på vei ut. Ved unnslipningsfarten er den mekaniske energien null.</li>
+      <li>Med vanlig Euler endrer energien seg 3,4 % for sirkelbanen i løpet av fire timer, mot under 0,001 % med farten oppdatert først. Banen blir en spiral utover, og satellitten kommer 662 km over bakken i stedet for 424 km. Å oppdatere farten før posisjonen kalles Euler–Cromers metode, og den bevarer energien mye bedre i baner.</li>
+      <li>ISS har omtrent 7,66 km/s og en omløpstid på rundt 93 minutter. Høyden varierer litt, og lufta i den høyden bremser stasjonen litt.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Passer sammen med sirkelbevegelse og gravitasjon i Fysikk 2. Elevene bør ha sett Eulers metode med vektorer, for eksempel i <a href="python-horisontalt-kast.html">Horisontalt kast med Eulers metode</a>.</p>
+  </details>
+</section>

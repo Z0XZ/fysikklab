@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: spesiell relativitetsteori – lektorbo.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: postulatene, tidsforlengelse, lengdekontraksjon, samtidighet, relativistisk bevegelsesmengde og energi, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Spesiell relativitetsteori</p>
+        <h1>Repetisjon: spesiell relativitetsteori</h1>
+        <p class="ingress">Den spesielle relativitetsteorien bygger på to enkle postulater, men følgene er overraskende. Her er en oversikt over begrepene og formlene, og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hvem måler hva?</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Størrelse</th><th scope="col">Egenverdien måles</th><th scope="col">Sett fra et system der gjenstanden beveger seg</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Tid</th><td>av en klokke som er med på begge hendelsene (egentid t₀)</td><td>lengre: t = γt₀ (tidsforlengelse)</td></tr>
+                <tr><th scope="row">Lengde</th><td>i systemet der gjenstanden er i ro (egenlengde L₀)</td><td>kortere i fartsretningen: L = L₀/γ (lengdekontraksjon)</td></tr>
+                <tr><th scope="row">Samtidighet</th><td>to hendelser kan være samtidige i ett system</td><td>men ikke i et annet som beveger seg langs linja mellom dem</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Postulatene:</strong> 1) Fysikkens lover er de samme i alle treghetssystemer. 2) Lysfarten i vakuum er den samme for alle observatører, uansett hvordan lyskilden beveger seg.</p>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Lorentzfaktoren: γ = 1/√(1 − v²/c²). γ ≥ 1, og γ går mot uendelig når v går mot c.</li>
+            <li>Tidsforlengelse: t = γt₀. Lengdekontraksjon: L = L₀/γ.</li>
+            <li>Bevegelsesmengde: p = γmv. Hvileenergi: E₀ = mc². Total energi: E = γmc². Kinetisk energi: E<sub>k</sub> = (γ − 1)mc².</li>
+            <li>Energi og bevegelsesmengde: E² = (pc)² + (mc²)².</li>
+          </ul>
+          <p>Konstanter: c = 3,00 · 10⁸ m/s, m<sub>e</sub>c² = 0,511 MeV, m<sub>p</sub> = 1,673 · 10⁻²⁷ kg, 1 lysår er avstanden lyset går på ett år.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-relativitet.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Oppgavene bruker fart som en brøkdel av c. Regn med minst tre gjeldende siffer i γ.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) En astronaut i et raskt romskip merker at klokka hennes går sakte.<br>b) Lys fra en lykt på et romskip som flyr med 0,5c, har farten 1,5c sett fra jorda.<br>c) To hendelser som er samtidige for én observatør, er samtidige for alle.<br>d) Et romskip trekkes sammen i fartsretningen, men ikke på tvers av den.<br>e) Med en sterk nok motor kan et romskip nå lysfarten.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut γ for v = 0,60c, 0,80c og 0,99c. Hvor stor må farten være for at γ skal bli 2? <a href="../sim/lysklokke.html">Sjekk med Lysklokka.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Myoner lages 15 km over bakken og har farten 0,995c. Gjennomsnittlig levetid i ro er 2,2 µs. Hvor lang tid bruker de ned, målt fra jorda og målt av myonene? Hvor mange levetider tar turen i hvert system? Hvor tykk er atmosfæren sett fra myonene? <a href="../sim/myoner.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et romskip reiser til en stjerne 4,37 lysår unna med farten 0,90c. Hvor lang tid tar reisen målt fra jorda og målt om bord? Hvor lang er avstanden målt fra romskipet? <a href="../sim/romreise.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et tog har egenlengden 200 m og kjører gjennom en tunnel med egenlengde 180 m med farten 0,60c. Hvor langt er toget sett fra tunnelen? Er toget helt inne i tunnelen et øyeblikk? Hvor lang er tunnelen sett fra toget? <a href="../sim/tog-og-tunnel.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et elektron akselereres fra ro gjennom en spenning på 1,0 MV. Finn den kinetiske energien, den totale energien, γ og farten. Hvilken fart ville du fått uten relativitetsteori? <a href="../sim/elektron.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Finn bevegelsesmengden til et proton med farten 0,80c. Hvor mange ganger større er den enn den klassiske verdien mv? <a href="../sim/relativistisk-bevegelsesmengde.html">Se Konstant kraft og lysfarten.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Sola stråler ut 3,83 · 10²⁶ W. Hvor mye minker massen til sola per sekund? Sola har massen 1,99 · 10³⁰ kg. Hvor stor del av massen mister den på 10 milliarder år?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. I sitt eget system går alt som vanlig (første postulat). b) Usann. Lyset har farten c for alle (andre postulat). c) Usann. Samtidighet er relativ. d) Sann. e) Usann. Energien E = γmc² går mot uendelig når v går mot c.</li>
+              <li>γ = 1,25, 1,67 og 7,09. γ = 2 gir 1 − v²/c² = 1/4, altså v = √0,75 c ≈ 0,866c.</li>
+              <li>γ ≈ 10,0. Fra jorda: t = 15 000/(0,995 · 3,00 · 10⁸) ≈ 50 µs, som er 22,8 levetider i ro. Myonenes egentid er t/γ ≈ 5,0 µs, bare 2,3 levetider. Sett fra myonene er atmosfæren 15 km/γ ≈ 1,5 km tykk.</li>
+              <li>Fra jorda: t = 4,37 år/0,90 ≈ 4,86 år. γ = 2,29, så om bord går det 4,86/2,29 ≈ 2,12 år. Avstanden målt fra romskipet er 4,37/2,29 ≈ 1,91 lysår, og 1,91/0,90 = 2,12 år stemmer.</li>
+              <li>γ = 1,25. Toget er 200/1,25 = 160 m sett fra tunnelen, kortere enn tunnelen, så det er helt inne et øyeblikk sett fra tunnelen. Sett fra toget er tunnelen 180/1,25 = 144 m, og toget er aldri helt inne. Begge har rett i sitt system, fordi «fronten er ute samtidig som bakenden er inne» er to hendelser som er samtidige bare i ett av systemene.</li>
+              <li>E<sub>k</sub> = eU = 1,0 MeV. E = E<sub>k</sub> + mc² = 1,511 MeV, og γ = 1,511/0,511 ≈ 2,96. v = c√(1 − 1/γ²) ≈ 0,94c. Klassisk: ½mv² = eU gir v = c√(2 · 1,0/0,511) ≈ 1,98c, som er umulig.</li>
+              <li>γ = 1,667. p = γmv = 1,667 · 1,673 · 10⁻²⁷ · 0,80 · 3,00 · 10⁸ ≈ 6,7 · 10⁻¹⁹ kg m/s. Det er γ ≈ 1,67 ganger den klassiske verdien.</li>
+              <li>Δm/Δt = P/c² = 3,83 · 10²⁶/(3,00 · 10⁸)² ≈ 4,3 · 10⁹ kg/s, over fire millioner tonn per sekund. På 10 milliarder år (3,16 · 10¹⁷ s) blir det 1,3 · 10²⁷ kg, som er 0,07 % av massen.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-relativitet.html">Spesiell relativitetsteori</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

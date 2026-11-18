@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: kast og sirkelbevegelse – lektorbo.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: bevegelse i to dimensjoner, horisontalt og skrått kast, krefter i to dimensjoner og sirkelbevegelse, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Sirkelbevegelse</p>
+        <h1>Repetisjon: kast og sirkelbevegelse</h1>
+        <p class="ingress">I Fysikk 2 blir bevegelsen todimensjonal. Nøkkelen er å dele vektorene i komponenter og behandle x- og y-retningen hver for seg. I sirkelbevegelse peker akselerasjonen inn mot sentrum. Her er en oversikt og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Kast og sirkelbevegelse side om side</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col"></th><th scope="col">Kast (uten luftmotstand)</th><th scope="col">Jevn sirkelbevegelse</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Akselerasjon</th><td>g, rett ned, konstant</td><td>v²/r, inn mot sentrum, retningen endres hele tiden</td></tr>
+                <tr><th scope="row">Kraftsum</th><td>tyngden mg</td><td>sentripetalkraften mv²/r, summen av de virkelige kreftene inn mot sentrum</td></tr>
+                <tr><th scope="row">Fart</th><td>vₓ konstant, v<sub>y</sub> endres</td><td>konstant størrelse, retningen endres</td></tr>
+                <tr><th scope="row">Banen</th><td>parabel</td><td>sirkel</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Sentripetalkraften er ikke en ny kraft. Det er navnet på kraftsummen inn mot sentrum. Den kan være snorkraft, friksjon, normalkraft, tyngde eller en sum av flere krefter.</p>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Kast: x = v₀ₓt og y = y₀ + v₀ᵧt − ½gt², med v₀ₓ = v₀ cos α og v₀ᵧ = v₀ sin α. vₓ = v₀ₓ og vᵧ = v₀ᵧ − gt.</li>
+            <li>Sirkelbevegelse: v = 2πr/T = ωr og a = v²/r = ω²r = 4π²r/T².</li>
+            <li>Dosert sving uten friksjon: tan θ = v²/(gr). Flat sving: μmg ≥ mv²/r.</li>
+            <li>Loddrett sirkel: på toppen mg + N = mv²/r, i bunnen N − mg = mv²/r. Minste fart på toppen: v = √(gr).</li>
+            <li>Sirkelbane rundt en planet: GMm/r² = mv²/r gir v = √(GM/r).</li>
+          </ul>
+          <p>Konstanter: g = 9,81 m/s², G = 6,67 · 10⁻¹¹ N m²/kg², GM for jorda = 3,986 · 10¹⁴ m³/s² og jordradius 6371 km.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-mekanikk-2.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Se bort fra luftmotstand hvis ikke noe annet står.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) På toppen av et skrått kast er akselerasjonen null.<br>b) En bil som kjører gjennom en sving med konstant fart, har akselerasjon.<br>c) Sentrifugalkraften presser deg utover i en karusell.<br>d) En kule som slippes, og en som skytes ut vannrett fra samme høyde, treffer bakken samtidig.<br>e) En satellitt i bane er vektløs fordi det ikke er tyngdekraft der.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En ball triller utfor en bordkant 0,90 m over gulvet med farten 2,5 m/s. Hvor lang tid bruker den, hvor langt fra bordet lander den, og med hvilken fart og vinkel treffer den gulvet? <a href="../programmering/python-horisontalt-kast.html">Se også Horisontalt kast med Eulers metode.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En ball sparkes fra bakken med 20 m/s, 35° over vannrett. Finn tiden i lufta, rekkevidden og den største høyden. Hvilken annen vinkel gir samme rekkevidde? <a href="../sim/skratt-kast.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et lodd på 5,0 kg henger midt på en snor som er festet i to punkter i samme høyde. Hver halvdel av snora danner 30° med vannrett. Finn snorkraften. Hva skjer med snorkraften når snora strammes slik at vinkelen blir mindre? <a href="../sim/lodd-i-snorer.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En bil kjører i en flat sving med radius 50 m. Friksjonstallet er 0,70. Hva er den største farten bilen kan ha uten å skli? Hva blir den på glatt føre med μ = 0,15? <a href="../sim/sirkelbevegelse.html">Se Sirkelbevegelse.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En berg-og-dal-bane har en loddrett loop med radius 8,0 m. Hva er den minste farten vogna kan ha på toppen? I bunnen av en dal med samme radius har en passasjer på 60 kg farten 20 m/s. Finn normalkraften. Hvor mange g kjenner passasjeren? <a href="../sim/loddrett-sirkel.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En sving på en motorvei har radius 200 m og skal tas i 30 m/s uten hjelp fra friksjon. Hvor mye må svingen doseres? <a href="../sim/dosert-sving.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Den internasjonale romstasjonen går i en tilnærmet sirkelbane 420 km over bakken. Finn farten og omløpstiden. Hvor stor er tyngdeakselerasjonen der, sammenlignet med på bakken? Hvorfor svever astronautene likevel? <a href="../programmering/python-satellittbane.html">Se også Satellittbane med Eulers metode.</a></p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Akselerasjonen er g nedover hele tiden. b) Sann. Retningen på farten endres, og akselerasjonen peker inn mot sentrum. c) Usann. Kraften fra setet eller veggen peker innover. Følelsen av å bli presset ut kommer av at kroppen vil fortsette rett fram. d) Sann. Den loddrette bevegelsen er den samme. e) Usann. Tyngdekraften er nesten like stor som på bakken. Satellitten og alt i den faller fritt sammen.</li>
+              <li>t = √(2h/g) = √(2 · 0,90/9,81) ≈ 0,43 s. x = 2,5 · 0,43 ≈ 1,07 m. vᵧ = gt ≈ 4,2 m/s, så v = √(2,5² + 4,2²) ≈ 4,9 m/s, 59° under vannrett.</li>
+              <li>v₀ₓ = 16,4 m/s og v₀ᵧ = 11,5 m/s. t = 2v₀ᵧ/g ≈ 2,34 s. Rekkevidden er v₀ₓt ≈ 38 m. Største høyde: v₀ᵧ²/(2g) ≈ 6,7 m. 55° gir samme rekkevidde, fordi sin(2 · 35°) = sin(2 · 55°).</li>
+              <li>Loddrett: 2S sin 30° = mg, så S = 5,0 · 9,81/(2 · 0,50) ≈ 49 N, like stor som tyngden. Mindre vinkel gir mindre sin, og snorkraften blir større. En helt rett snor er umulig.</li>
+              <li>μmg = mv²/r gir v = √(μgr) = √(0,70 · 9,81 · 50) ≈ 18,5 m/s ≈ 67 km/h. Med μ = 0,15: √(0,15 · 9,81 · 50) ≈ 8,6 m/s ≈ 31 km/h.</li>
+              <li>På toppen må N ≥ 0, så v ≥ √(gr) = √(9,81 · 8,0) ≈ 8,9 m/s. I bunnen: N = m(g + v²/r) = 60 · (9,81 + 400/8,0) ≈ 3,6 kN. Det er 6,1 ganger tyngden, så passasjeren kjenner 6,1 g.</li>
+              <li>tan θ = v²/(gr) = 900/(9,81 · 200) ≈ 0,459, så θ ≈ 25°.</li>
+              <li>r = 6791 km. v = √(GM/r) ≈ 7,66 km/s, og T = 2πr/v ≈ 92,8 min. g(r) = GM/r² ≈ 8,6 m/s², 88 % av verdien på bakken. Astronautene og romstasjonen faller fritt med samme akselerasjon, så det er ingen normalkraft mellom dem.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-kast-sirkel.html">Kast og sirkelbevegelse</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

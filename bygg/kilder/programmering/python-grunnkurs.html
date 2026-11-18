@@ -1,0 +1,55 @@
+tittel: Python for fysikk: et grunnkurs
+beskrivelse: Kom i gang med Python i fysikk: variabler, utskrift, funksjoner, numpy, grafer, løkker og if-setninger, med eksempler fra bevegelse og energi. Koden kjører rett i nettleseren.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 1 · Introduksjon til fysikk
+script: -
+meny: programmering.html
+---
+<h1>Python for fysikk: et grunnkurs</h1>
+<p class="ingress">Her lærer du det du trenger av Python for å løse fysikkoppgaver: regne med variabler, skrive ut svar med enheter, lage funksjoner, regne med mange tall på en gang, tegne grafer og simulere en bevegelse steg for steg. Alt kan kjøres og endres rett på siden.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Regning, variabler og utskrift</h2>
+  <p>En variabel er et navn på et tall. Vi bruker SI-enheter og skriver enheten i en kommentar. Med en f-streng, <code>f"..."</code>, kan vi sette tall inn i en tekst. <code>{v:.1f}</code> betyr at v skrives med én desimal. Python bruker desimalpunktum, ikke komma.</p>
+@@grunnkurs_1.py@@
+
+  <h2>Steg 2: Funksjoner</h2>
+  <p>En funksjon er en formel med et navn. Vi skriver den én gang og bruker den så mange ganger vi vil. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok. Her brukes farten v fra steg 1.</p>
+@@grunnkurs_2.py@@
+
+  <h2>Steg 3: Mange tall på en gang med numpy, og en graf</h2>
+  <p>Med numpy kan vi regne ut en formel for mange tidspunkter samtidig. <code>np.linspace(0, 2.0, 21)</code> lager 21 tall jevnt fordelt fra 0 til 2,0. Med matplotlib tegner vi grafen.</p>
+@@grunnkurs_3.py@@
+
+  <h2>Steg 4: Løkker og if-setninger</h2>
+  <p>En while-løkke gjentar noe så lenge en betingelse er sann. Her slipper vi en stein fra 20 m og regner ut bevegelsen i små tidssteg: Først øker farten, så øker strekningen. Dette kalles Eulers metode, og den brukes i mange av de andre øvingene. En if-setning lar programmet velge hva det skal gjøre. Legg merke til innrykket: Linjene som hører til løkka eller if-setningen, må ha fire mellomrom foran.</p>
+@@grunnkurs_4.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva tror du <code>print(7/2)</code>, <code>print(7//2)</code>, <code>print(7%2)</code> og <code>print(2**10)</code> skriver ut? Lag en ny linje i steg 1 og test.</p></div></li>
+  <li><span class="fase test">Endre</span><div><p>Usain Bolt løp 100 m på 9,58 s. Endre steg 1 og finn gjennomsnittsfarten hans i m/s og km/h.</p></div></li>
+  <li><span class="fase test">Lag</span><div><p>Lag en funksjon <code>bremselengde(v, mu)</code> i steg 2 som regner ut bremselengden v²/(2μg). Hvor lang er bremselengden fra 80 km/h når μ = 0,80? Husk å gjøre om til m/s.</p></div></li>
+  <li><span class="fase test">Endre</span><div><p>Endre steg 3 slik at grafen går til 3,0 s. Tegn også farten mot tiden i en egen graf.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Steg 4 gir 2,02 s. Regn ut fallet for hånd med s = ½gt². Hvorfor blir svaret fra løkka ikke helt nøyaktig? Prøv dt = 0,001.</p></div></li>
+  <li><span class="fase forklar">Feilsøk</span><div><p>Hva skjer hvis du fjerner innrykket foran <code>t = t + dt</code> i steg 4? Prøv, og forklar. Trykk Stopp hvis programmet ikke blir ferdig.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Bruk en for-løkke, <code>for h in [5, 10, 20, 50]:</code>, til å skrive ut falltiden fra hver av høydene. Bruk gjerne løkka fra steg 4 inne i for-løkka, eller formelen t = √(2h/g).</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>3.5, 3, 1 og 1024. <code>//</code> er heltallsdivisjon, <code>%</code> gir resten, og <code>**</code> er potens.</li>
+      <li>10,44 m/s, som er 37,6 km/h.</li>
+      <li><code>def bremselengde(v, mu): return v**2 / (2*mu*9.81)</code>. Med v = 80/3,6 = 22,2 m/s blir bremselengden 31,5 m.</li>
+      <li>Bytt til <code>np.linspace(0, 3.0, 31)</code>. Steinen har da falt 44,1 m og har farten 29,4 m/s. Farten tegnes med <code>plt.plot(t, v)</code> etter en ny <code>plt.figure()</code>.</li>
+      <li>√(2 · 20/9,81) = 2,019 s. Løkka stopper først når s ≥ h, altså etter det steget der steinen passerer bakken, og Eulers metode gir litt for stor strekning i hvert steg. Med dt = 0,001 blir svaret fortsatt 2,02 s med to desimaler.</li>
+      <li>Da hører <code>t = t + dt</code> ikke lenger til løkka. Løkka går like lenge, men tiden økes bare én gang etter løkka, så svaret blir 0,01 s. Hvis du i stedet fjerner innrykket på <code>s = s + v*dt</code>, blir løkka aldri ferdig, fordi s aldri endres inne i løkka.</li>
+      <li>Falltidene er 1,01 s, 1,43 s, 2,02 s og 3,19 s.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45–60 minutter i starten av Fysikk 1, før de andre programmeringsøvingene. Elevene kan jobbe i par med hver sin oppgave. Fortsett gjerne med <a href="python-variable-krefter.html">Variable krefter i Python</a> og <a href="python-bevegelse-maledata.html">Fart og akselerasjon fra måledata</a>.</p>
+  </details>
+</section>

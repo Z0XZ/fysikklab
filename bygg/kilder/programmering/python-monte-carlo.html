@@ -1,0 +1,51 @@
+tittel: Usikkerhet med Monte Carlo-simulering – lektorbo.no
+beskrivelse: Programmeringsøving i Fysikk 2: Finn usikkerheten i beregnede størrelser ved å simulere 100 000 tenkte målinger, og sammenlign med regnereglene for usikkerhet.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 2 · Tenke og gjøre fysikk
+script: -
+meny: programmering.html
+---
+<h1>Usikkerhet med Monte Carlo-simulering</h1>
+<p class="ingress">Regnereglene for usikkerhet er lette å bruke, men hvor kommer de fra, og når slutter de å virke? I en Monte Carlo-simulering lar vi datamaskinen gjøre det samme forsøket 100 000 ganger med tilfeldige målefeil, og ser hvor mye resultatet sprer seg.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: g fra en pendel</h2>
+  <p>En pendel har lengden L = (0,800 ± 0,005) m og svingetiden T = (1,79 ± 0,02) s, og g = 4π²L/T². Vi trekker 100 000 tilfeldige lengder og svingetider fra en normalfordeling der standardavviket er usikkerheten, og regner ut g for hver. Standardavviket til alle g-verdiene er usikkerheten i g. Tallene endrer seg litt hver gang du kjører, fordi de er tilfeldige.</p>
+@@montecarlo_1.py@@
+
+  <h2>Steg 2: Differansen mellom to nesten like tall</h2>
+  <p>Vi finner massen av vannet i et beger ved å veie begeret med og uten vann. Begge veiingene har usikkerhet 0,5 g. Koden bruker <code>rng</code> og <code>n</code> fra steg 1.</p>
+@@montecarlo_2.py@@
+
+  <h2>Steg 3: Når regnereglene ikke holder</h2>
+  <p>Rekkevidden til et skrått kast på flatt underlag er R = v² sin(2θ)/g. Ved 45° er sin(2θ) størst, så en liten feil i vinkelen gjør nesten ingen forskjell, og regnereglene sier at vinkelen ikke bidrar til usikkerheten. Men stemmer det?</p>
+@@montecarlo_3.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvilken av de to målingene i steg 1 bidrar mest til usikkerheten i g? Gir Monte Carlo-simuleringen omtrent samme svar som den enkle regelen eller som kvadratsummen?</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 1 et par ganger. Hvor mye endrer svaret seg? Hva skjer med histogrammet hvis du setter n = 100?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Eleven måler tiden for ti svingninger, og usikkerheten i T blir 0,002 s. Endre dT og kjør igjen. Hvilken måling bør nå forbedres?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Kjør steg 2. Hver veiing har usikkerhet 0,3 %, men massen av vannet har over 20 %. Hvorfor? Hvorfor gir regelen for differanse et større tall enn simuleringen?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Kjør steg 3. Hvorfor er gjennomsnittet av rekkevidden mindre enn 10,19 m, og hvorfor går færre enn halvparten av kastene lenger? Sett usikkerheten i farten til 0 for å se bare virkningen av vinkelen.</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Simuleringen trekker målefeilene fra en normalfordeling, uavhengig av hverandre. Når er ikke det en god modell? Tenk på systematiske feil.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Lag en Monte Carlo-simulering for e/m = 2U/(B²r²) i <a href="../opplegg/e-over-m.html">forsøket med fintrådrøret</a>, med U = (250 ± 2) V, I = (1,40 ± 0,02) A og d = (10,0 ± 0,1) cm, der B = 0,779 mT/A · I. Hvor stor blir usikkerheten i e/m, og hvilken måling bidrar mest?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Svingetiden bidrar mest, fordi T står i andre potens: 2 · 0,02/1,79 = 2,2 %, mot 0,6 % fra lengden. Simuleringen gir g = (9,86 ± 0,23) m/s², som kvadratsummen. Den enkle regelen gir ± 0,28 m/s². Den er et forsiktig anslag, fordi feilene sjelden trekker i samme retning samtidig.</li>
+      <li>Med 100 000 trekninger endrer standardavviket seg bare i tredje siffer. Med n = 100 blir histogrammet ujevnt, og usikkerheten kan variere med 10–15 % fra gang til gang.</li>
+      <li>Med dT = 0,002 s gir simuleringen g = (9,86 ± 0,07) m/s². Nå bidrar svingetiden med 0,2 % og lengden med 0,6 %, så det er lengden som bør måles bedre.</li>
+      <li>m = (3,4 ± 0,7) g, omtrent 21 %. Den absolutte usikkerheten er like stor som i veiingene, men massen av vannet er et lite tall. Den relative usikkerheten blir derfor stor. Regelen for differanse legger sammen de absolutte usikkerhetene og gir ± 1,0 g. Simuleringen gir √(0,5² + 0,5²) ≈ 0,7 g, fordi feilene ofte delvis oppveier hverandre. Lærdom: Vei mer vann.</li>
+      <li>Ved 45° gir enhver feil i vinkelen, både for stor og for liten, kortere kast. Vinkelen kan bare trekke rekkevidden ned. Gjennomsnittet blir omtrent 10,14 m, og fordelingen blir skjev. Med bare vinkelfeil er standardavviket omtrent 0,08 m, ikke 0. Regnereglene bygger på at funksjonen er tilnærmet lineær rundt måleverdien, og det er den ikke på toppen av sin(2θ).</li>
+      <li>En systematisk feil, for eksempel en stoppeklokke som går for sakte eller en målestokk som er feil, gir samme feil hver gang. Den sprer ikke resultatene, så den blir ikke med i simuleringen. Simuleringen forutsetter også at feilene er uavhengige og omtrent normalfordelte, og at vi kjenner standardavviket.</li>
+      <li>Simuleringen gir e/m ≈ (1,68 ± 0,06) · 10¹¹ C/kg, altså 3,6 %. Diameteren bidrar mest, 2 · 1 % = 2 %, fordi r står i andre potens. Strømmen bidrar 2 · 1,4 % ≈ 2,9 %, og spenningen 0,8 %. Kvadratsummen gir også 3,6 %.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter regnereglene for usikkerhet i Fysikk 2, og dekker kompetansemålene om usikkerhet og om programmering. Se også simuleringen <a href="../sim/usikkerhet-beregning.html">Usikkerhet i beregnede størrelser</a>, som gjør det samme som steg 1 uten kode.</p>
+  </details>
+</section>

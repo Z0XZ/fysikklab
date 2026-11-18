@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-biot-savart.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Magnetfeltet fra en spole med Biot–Savarts lov}{https://lektorbo.no/programmering/python-biot-savart.html}{Koden på nett}
+
+Formelen $B = μ_{0}NI/l$ for feltet inne i en spole gjelder bare for en lang spole, langt fra endene. Hva er feltet ved enden, eller i en kort spole? Med Biot–Savarts lov kan vi regne ut feltet fra en liten bit av ledningen om gangen, og la Python legge sammen alle bitene.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva skjer med feltet i sentrum av sløyfa hvis du halverer radien? Endre $R$ i steg 1 og sjekk.
+\svar
+\oppgave \fase{test}{Undersøk}Sløyfa er delt i $n = 200$ rette biter. Prøv \texttt{ring(R, 0, 8)} og \texttt{ring(R, 0, 4)}. Hvorfor blir feltet for stort når $n$ er liten?
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 2. Hvor langt fra sløyfa er feltet halvparten så sterkt som i sentrum? Les av grafen, og sjekk med formelen.
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 3. Hvor godt stemmer feltet midt i spolen med $μ_{0}NI/l$? Hvor sterkt er feltet ved enden av spolen sammenlignet med midten?
+\svar
+\oppgave \fase{forklar}{Forklar}Forklar hvorfor feltet ved enden av en lang spole er omtrent halvparten av feltet i midten. Tenk deg to like spoler satt etter hverandre.
+\svar
+\oppgave \fase{test}{Undersøk}Gjør spolen tykkere: Sett $R = 0{,}10\,\mathrm{m}$. Hvordan endrer feltet i midten seg? Hva må gjelde for at formelen for en lang spole skal være god?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Helmholtz-spoler er to sløyfer med radius $R$ og avstanden $R$ mellom seg. Regn ut feltet langs aksen for to sløyfer med $R = 0{,}10\,\mathrm{m}$ i $z = -0{,}05\,\mathrm{m}$ og $z = 0{,}05\,\mathrm{m}$. Hvor flatt er feltet mellom sløyfene? Sammenlign med $(4/5)^{3/2} \cdot μ_{0}I/R$, som brukes i $e/m$ for elektronet\footnote{\url{lektorbo.no/sim/e-over-m.html}}.
+\svar
+\end{oppgaveliste}
+
+\end{document}

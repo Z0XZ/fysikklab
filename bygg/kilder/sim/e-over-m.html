@@ -1,0 +1,54 @@
+tittel: e/m for elektronet – lektorbo.no
+beskrivelse: Simulering med oppgaver i Fysikk 2: Elektroner akselereres gjennom en spenning og går i sirkel i magnetfeltet fra to Helmholtz-spoler. Mål diameteren og bestem e/m.
+fagside: fysikk-2.html
+fag: Fysikk 2
+tema: Magnetiske felt og krefter
+script: eoverm.js
+meny: simuleringer.html
+---
+<h1>e/m for elektronet</h1>
+<p class="ingress">I et fintrådrør blir elektroner akselerert gjennom spenningen U og sendt inn i magnetfeltet fra to Helmholtz-spoler. Litt gass i røret lyser der elektronene går, så vi ser banen som en sirkel. Fra diameteren kan vi regne ut forholdet mellom ladningen og massen til elektronet.</p>
+
+<figure class="sim sim-bred">
+  <canvas id="eoverm" class="statisk forhold-em" role="img" aria-label="Glasskule med en elektronstråle som går i sirkel fra elektronkanonen nederst. En målestav viser diameteren i centimeter."></canvas>
+  <dl class="sim-tall">
+    <div><dt>magnetfelt B mellom spolene</dt><dd id="em-b"></dd></div>
+    <div><dt>diameteren d til banen</dt><dd id="em-d"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <label for="em-u">Akselerasjonsspenning U <output id="em-u-ut" for="em-u"></output><input id="em-u" type="range" min="100" max="300" step="10" value="200"></label>
+    <label for="em-i">Strøm i spolene I <output id="em-i-ut" for="em-i"></output><input id="em-i" type="range" min="0" max="2.5" step="0.05" value="1.5"></label>
+    <label class="avkrysning" for="em-vis"><input id="em-vis" type="checkbox"> Vis diameteren som tall</label>
+  </div>
+  <figcaption class="sim-hint">Les av diameteren der strålen krysser målestaven, som i et ekte fintrådrør. Merkene står for hver centimeter fra 1 til 12 cm. Feltet mellom Helmholtz-spolene er B = (4/5)<sup>3/2</sup> · μ₀NI/R, og det regnes som homogent i hele røret. Spolene har N = 130 vindinger og radius R = 15,0 cm. Jordas magnetfelt er ikke tatt med.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <p class="del-inngang">Bruk e = 1,602 · 10⁻¹⁹ C og m<sub>e</sub> = 9,109 · 10⁻³¹ kg når du regner med kjente verdier.</p>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med sirkelen hvis du øker spenningen U? Hva skjer hvis du øker strømmen I i spolene? Test begge.</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Hvor stor fart får elektronene med U = 200 V? Hvor mange prosent av lysfarten er det?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Regn ut magnetfeltet og diameteren på banen når U = 200 V og I = 1,50 A. Sjekk med målestaven, og kryss av for å se diameteren som tall.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Vis at e/m = 2U / (B²r²). Hvilke to formler må du kombinere?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Skjul tallet for diameteren. Velg U = 250 V og I = 1,40 A, og les av diameteren på målestaven. Regn ut e/m. Hvor stort er avviket fra den kjente verdien?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Hold U = 250 V fast, og mål diameteren for I = 1,0, 1,2, …, 2,0 A. Plott 1/r mot I. Hvorfor blir det en rett linje, og hvordan kan du finne e/m fra stigningstallet?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Den magnetiske kraften gjør at elektronene går i sirkel, men farten endrer seg ikke. Hvorfor? Hva ville skjedd med banen hvis elektronene kom inn litt på skrå i forhold til feltet?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Et proton har like stor ladning som et elektron, men 1836 ganger så stor masse. Hvor stor ville radien blitt for et proton med samme U og B? Kunne du brukt dette røret til å måle e/m for protoner?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Større spenning gir større fart og større sirkel. Sterkere strøm gir sterkere magnetfelt, større kraft og mindre sirkel.</li>
+      <li>eU = ½mv² gir v = √(2eU/m) = √(2 · 1,602 · 10⁻¹⁹ · 200 / 9,109 · 10⁻³¹) ≈ 8,39 · 10⁶ m/s. Det er 2,8 % av lysfarten, så vi trenger ikke relativitetsteori.</li>
+      <li>B = (4/5)<sup>3/2</sup> · 4π · 10⁻⁷ · 130 · 1,50 / 0,150 ≈ 1,17 mT. r = mv/(eB) = 9,109 · 10⁻³¹ · 8,39 · 10⁶ / (1,602 · 10⁻¹⁹ · 1,17 · 10⁻³) ≈ 4,08 cm, så d ≈ 8,2 cm.</li>
+      <li>Fra akselerasjonen: eU = ½mv², så v² = 2eU/m. Den magnetiske kraften er sentripetalkraften: evB = mv²/r, så v = eBr/m. Setter vi inn, får vi (eBr/m)² = 2eU/m, som gir e/m = 2U/(B²r²).</li>
+      <li>B ≈ 1,091 mT, og diameteren er omtrent 9,8 cm. Det gir e/m = 2 · 250 / ((1,091 · 10⁻³)² · 0,049²) ≈ 1,75 · 10¹¹ C/kg. Den kjente verdien er 1,759 · 10¹¹ C/kg. Avlesningen er det mest usikre: 1 mm feil i diameteren gir omtrent 2 % feil i e/m, fordi r står i andre potens.</li>
+      <li>r = √(2mU/e) / B og B = kI, der k = 0,779 mT/A. Da er 1/r = k · √(e/(2mU)) · I, proporsjonal med I. Simuleringen gir 1/r fra 14,6 m⁻¹ (1,0 A) til 29,2 m⁻¹ (2,0 A), og stigningstallet er 14,6 m⁻¹/A. e/m = 2U · (stigningstall/k)². Det gir 1,76 · 10¹¹ C/kg.</li>
+      <li>Kraften står hele tiden vinkelrett på farten, så den gjør ikke noe arbeid, og den kinetiske energien er konstant. Kommer elektronene inn på skrå, er bare fartskomponenten vinkelrett på feltet med i sirkelbevegelsen. Komponenten langs feltet er uendret, så banen blir en skrue (en spiral).</li>
+      <li>r = √(2mU/e) / B, så r er proporsjonal med √m. Protonet får √1836 ≈ 43 ganger så stor radius. Med U = 200 V og I = 1,50 A blir r ≈ 1,75 m. Banen ville vært mye større enn røret, så vi måtte hatt mye sterkere felt.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 30–45 minutter. Simuleringen passer etter magnetisk kraft på ladde partikler, og kan brukes før eller i stedet for forsøket med et ekte fintrådrør: <a href="../opplegg/e-over-m.html">Forsøk: e/m for elektronet</a>. J.J. Thomson målte e/m med et annet oppsett i 1897, og målingen var en del av oppdagelsen av elektronet.</p>
+  </details>
+</section>

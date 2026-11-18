@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Heisen med mobilen – lektorbo.no</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Mål akselerasjonen i en heis med mobilen og phyphox, regn ut farten og høyden, og finn ut hva en badevekt ville vist underveis.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Krefter</p>
+        <h1>Heisen med mobilen</h1>
+        <p class="ingress">Når heisen setter i gang, kjenner du at du blir tyngre eller lettere. Med akselerometeret i mobilen kan dere måle akselerasjonen gjennom hele turen. Fra den kan dere regne ut farten, hvor høyt heisen gikk, og hva en badevekt ville vist.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Måle akselerasjonen i en heis og dele turen inn i faser med tilnærmet konstant akselerasjon.</li>
+            <li>Regne ut fart og høyde fra akselerasjonen, og sammenligne høyden med trykkmåleren i mobilen.</li>
+            <li>Bruke Newtons andre lov til å finne normalkraften på en person i heisen.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Mobil med appen phyphox (gratis) og eksperimentet for heis («Elevator» på engelsk)(Det er mulig at du ikke har sensorer i telefonen til dette. Da vil dette eksperimentet ikke være mulig og det vil stå inne i phyphox). Det viser akselerasjonen og høyden. Høyden regnes ut fra lufttrykket, så den virker bare på mobiler med trykkmåler (barometer). Uten trykkmåler bruker dere «Akselerasjon (uten g)».</li>
+            <li>En heis som går minst 3–4 etasjer, og gjerne en badevekt.</li>
+          </ul>
+
+          <h2>Framgangsmåte</h2>
+          <ol>
+            <li>Legg mobilen flatt på gulvet i heisen med skjermen opp. Da måler z-aksen akselerasjonen opp og ned.</li>
+            <li>Start målingen, vent et par sekunder, og trykk på knappen for etasjen dere skal til. Hold mobilen i ro til heisen har stoppet helt, og vent et par sekunder til før dere stopper målingen.</li>
+            <li>Gjør gjerne en tur ned også, og en tur der én i gruppa står på badevekta og filmer skjermen på vekta.</li>
+            <li>Se på grafen over akselerasjonen. Del turen inn i faser: akselerasjon, jevn fart og oppbremsing. Les av gjennomsnittsakselerasjonen og varigheten til hver fase, og skriv dem inn i tabellen. Akselerasjon oppover er positiv.</li>
+            <li>Les av høydeforskjellen fra phyphox, eller tell etasjer og mål høyden på én etasje.</li>
+          </ol>
+        </div>
+
+        <figure id="heismobil" class="sim egne-data">
+          <h2>Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="h-masse">Massen til personen i kg<input id="h-masse" type="text" inputmode="decimal" value="60"></label>
+            <label for="h-baro">Høyde fra phyphox (trykkmåleren) i m<input id="h-baro" type="text" inputmode="decimal" value=""></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall tre">
+            <div><dt>største fart</dt><dd id="h-vmaks"></dd></div>
+            <div><dt>høyde regnet ut fra akselerasjonen</dt><dd id="h-h"></dd></div>
+            <div><dt>avvik fra trykkmåleren</dt><dd id="h-avvik"></dd></div>
+            <div><dt>fart når heisen stopper</dt><dd id="h-vslutt"></dd></div>
+            <div><dt>badevekta viser mest</dt><dd id="h-vekt-maks"></dd></div>
+            <div><dt>badevekta viser minst</dt><dd id="h-vekt-min"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Hver rad er en fase med konstant akselerasjon. Verktøyet regner ut farten på slutten av fasen (v = v₀ + at), strekningen i fasen (s = v₀t + ½at²) og hva en badevekt ville vist: m(g + a)/g. Grafen viser farten mot tiden. Eksemplet er oppdiktede tall for en tur oppover på omtrent fem etasjer, ikke ekte målinger. Tabellen lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/heis-mobil.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Heisen går oppover. I hvilke deler av turen viser en badevekt mer enn vanlig, og når viser den mindre? Hva tror du vekta viser midt i turen, når farten er størst?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene og fyll inn tabellen. Ser fartsgrafen rimelig ut? Hva bør farten være når heisen har stoppet?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor høyt gikk heisen ifølge akselerasjonsmålingene? Sammenlign med høyden fra trykkmåleren eller med antall etasjer.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Tegn kreftene på en person på 60 kg i hver fase. Regn ut normalkraften fra gulvet, og hva badevekta viser.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Gjør målingen på vei ned også. Når viser badevekta mer enn vanlig nå? Forklar hvorfor oppstart oppover og oppbremsing nedover kjennes likt.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Farten når heisen stopper blir sjelden nøyaktig null i utregningen. Hvorfor ikke? Hvilke andre feilkilder er det?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Tenk deg at kabelen ryker og heisen faller fritt. Hva viser badevekta da? Hva viser «Akselerasjon (uten g)» og «Akselerasjon med g» i phyphox? Prøv å forklare hvorfor de to viser forskjellige tall.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Badevekta viser mer enn vanlig når heisen akselererer oppover, altså når den setter i gang. Den viser mindre når heisen bremser opp før den stopper, fordi akselerasjonen da peker nedover. Midt i turen er farten konstant, a = 0, og vekta viser det vanlige. Det er akselerasjonen, ikke farten, som bestemmer hva vekta viser.</li>
+              <li>Grafen bør gå rett opp, være vannrett mens heisen har jevn fart, og gå rett ned til omtrent null. I eksemplet er største fart 1,62 m/s og farten på slutten 0,003 m/s, nesten null.</li>
+              <li>Eksemplet: 1,46 m mens heisen akselererer, 12,96 m med jevn fart og 1,53 m mens den bremser, til sammen 15,9 m. Det er omtrent fem etasjer på 3,2 m.</li>
+              <li>Kreftene er tyngden G = mg nedover og normalkraften N oppover. Newtons andre lov med positiv retning oppover: N − mg = ma, så N = m(g + a). Eksemplet: N = 60 · (9,81 + 0,90) ≈ 643 N, og vekta viser 65,5 kg. Med jevn fart er N = 589 N og vekta viser 60,0 kg. Under oppbremsingen er N = 60 · (9,81 − 0,86) ≈ 537 N, og vekta viser 54,7 kg.</li>
+              <li>På vei ned viser vekta mest når heisen bremser opp nederst. Da peker akselerasjonen oppover, akkurat som når heisen setter i gang oppover. Normalkraften avhenger bare av retningen og størrelsen på akselerasjonen, ikke av hvilken vei heisen går.</li>
+              <li>Akselerasjonen er ikke helt konstant i hver fase. Den øker og avtar gradvis, og vi bruker et gjennomsnitt som vi leser av på øyet. Små feil i a summeres opp over tiden. Et lite nullpunktsavvik i sensoren på 0,02 m/s² gir for eksempel 0,24 m/s feil i farten etter 12 s. Andre feilkilder: Mobilen ligger ikke helt flatt, heisen rister, og tiden for hver fase er vanskelig å lese av nøyaktig.</li>
+              <li>I fritt fall er N = m(g + a) = m(g − g) = 0, så vekta viser 0. «Akselerasjon (uten g)» viser den ekte akselerasjonen, −9,81 m/s². Akselerometeret måler egentlig hvor mye en liten masse inni sensoren blir dyttet på, altså en slags normalkraft per masse. I fritt fall blir den ikke dyttet på, og «med g» viser 0. Når mobilen ligger i ro på bordet, viser «med g» 9,81 m/s² oppover. phyphox trekker fra g for å vise «uten g».</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45–60 minutter, med en tur til heisen i grupper. Forsøket passer etter Newtons andre lov, og kan kombineres med simuleringen <a href="../sim/heis.html">Baderomsvekt i heisen</a>. Spør gjerne vaktmesteren før dere bruker heisen mye. Uten heis kan elevene i stedet hoppe eller gå i trapper med mobilen, men da er akselerasjonen mye mer ujevn.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/heismobil.js"></script>
+</body>
+</html>

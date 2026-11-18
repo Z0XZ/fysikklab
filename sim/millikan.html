@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Millikans oljedråpeforsøk – lektorbo.no</title>
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Få ladde oljedråper til å sveve i et elektrisk felt, regn ut ladningen deres og finn ut at ladning kommer i hele multipler av elementærladningen.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../fysikk-2.html">Fysikk 2</a> / Elektriske felt og krefter</p>
+        <h1>Millikans oljedråpeforsøk</h1>
+        <p class="ingress">I 1909 sprayet Robert Millikan og Harvey Fletcher bittesmå oljedråper inn mellom to ladde plater. Noen dråper ble ladd av friksjonen i sprayen. Ved å justere spenningen kunne de få en dråpe til å sveve. Da er den elektriske kraften like stor som tyngden, og ladningen kan regnes ut. Alle ladningene de fant, var hele multipler av en minste ladning.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="millikan" class="statisk forhold-millikan" role="img" aria-label="To vannrette plater med en oljedråpe mellom, og synsfeltet i et mikroskop med linjer der dråpen vises som en lysende prikk."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>dråpe</dt><dd id="mi-nr"></dd></div>
+            <div><dt>radius r (målt i mikroskopet)</dt><dd id="mi-r"></dd></div>
+            <div><dt>posisjon i synsfeltet</dt><dd id="mi-y"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="mi-u">Spenning U <output id="mi-u-ut" for="mi-u"></output><input id="mi-u" type="range" min="0" max="400" step="1" value="0"></label>
+            <div class="sim-knapper"><button id="mi-minus" class="knapp lys" type="button" aria-label="Senk spenningen med 1 V">−1 V</button><button id="mi-pluss" class="knapp lys" type="button" aria-label="Øk spenningen med 1 V">+1 V</button></div>
+            <label for="mi-tid">Tidslupe<select id="mi-tid"><option value="1">ekte tid</option><option value="10">10 ganger raskere</option><option value="30" selected>30 ganger raskere</option></select></label>
+            <div class="sim-knapper"><button id="mi-start" class="knapp" type="button">Start</button><button id="mi-tilbake" class="knapp lys" type="button">Flytt dråpen til midten</button><button id="mi-neste" class="knapp lys" type="button">Neste dråpe</button><button id="mi-tilfeldig" class="knapp lys" type="button">Tilfeldig dråpe</button></div>
+          </div>
+          <figcaption class="sim-hint">Platene har avstanden d = 5,0 mm, og den øverste er positiv. Dråpene er negativt ladd og har tettheten ρ = 875 kg/m³. Dråpen beveger seg med terminalfart hele tiden. Den svever når spenningen er riktig. Ekte dråper hopper også litt hit og dit på grunn av støt med luftmolekyler (brownsk bevegelse). Det er ikke tatt med her. Pilene for kreftene er ikke i målestokk.</figcaption>
+        </figure>
+
+        <figure id="mi-tabell" class="sim egne-data">
+          <h2>Dråpene dine</h2>
+          <div class="sim-styring mange uten-topp">
+            <label class="avkrysning" for="mi-linjer"><input id="mi-linjer" type="checkbox"> Vis linjer for hele multipler av 1,602 · 10⁻¹⁹ C</label>
+          </div>
+          <div data-tabell></div>
+          <figcaption class="sim-hint">Massen regnes ut som m = ρ · 4/3 · πr³, og ladningen som q = mgd/U, med g = 9,81 m/s². Tabellen lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/sim/millikan.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Start simuleringen med dråpe 1 og U = 0 V.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Dråpen faller når spenningen er null. Hva skjer når du skrur opp spenningen? Hvorfor må den øverste plata være positiv for at dette skal virke?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Tegn kreftene på en dråpe som svever. Vis at ladningen er q = mgd/U.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Finn spenningen som får dråpe 1 til å sveve. Bruk knappene ±1 V til slutt. Regn ut massen og ladningen til dråpen, og skriv tallene inn i tabellen.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør det samme for alle de åtte dråpene. Hva legger du merke til med ladningene?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Finn den største ladningen som alle ladningene er et helt antall ganger. Hvor mange elementærladninger har hver dråpe? Kryss av for linjene for å sjekke.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Millikan målte ikke radien direkte. Hvorfor er det vanskelig å måle radien til en dråpe på under 1 µm med et mikroskop? Hvor mye feil gir 5 % feil i radien i ladningen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Når U = 0, faller dråpen med terminalfart. Luftmotstanden er da 6πηrv, der η = 1,81 · 10⁻⁵ Pa s. Velg ekte tid, mål hvor lang tid dråpe 1 bruker på å falle 0,1 mm, og bruk det til å regne ut radien. Stemmer det med radien i simuleringen?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Med større spenning blir den elektriske kraften oppover større. Først faller dråpen saktere, så svever den, og til slutt stiger den. Dråpene er negativt ladd. Kraften på en negativ ladning peker mot feltet, og feltet peker fra den positive plata mot den negative. Med positiv plate øverst peker feltet nedover og kraften oppover.</li>
+              <li>To krefter: tyngden mg nedover og den elektriske kraften qE oppover. Svever dråpen, er summen null: qE = mg. Mellom platene er E = U/d, så q = mgd/U.</li>
+              <li>Dråpe 1: r = 0,62 µm gir m = 875 · 4/3 · π · (0,62 · 10⁻⁶)³ ≈ 8,74 · 10⁻¹⁶ kg. Den svever ved U ≈ 134 V, og q = 8,74 · 10⁻¹⁶ · 9,81 · 0,0050 / 134 ≈ 3,20 · 10⁻¹⁹ C.</li>
+              <li>Spenningene er omtrent 134, 187, 134, 124, 115, 161, 53 og 118 V. Ladningene blir omtrent 3,20, 1,60, 4,80, 1,60, 8,00, 3,21, 4,77 og 6,43 · 10⁻¹⁹ C. Ladningene har ikke tilfeldige verdier. De samler seg om noen få verdier med like store mellomrom.</li>
+              <li>Alle ladningene er hele multipler av omtrent 1,60 · 10⁻¹⁹ C. Dråpene har 2, 1, 3, 1, 5, 2, 3 og 4 elementærladninger. Små avvik kommer av at spenningen bare kan stilles i hele volt.</li>
+              <li>Dråpen er mindre enn bølgelengden til lyset (0,4–0,7 µm), så i mikroskopet ser den ut som en uskarp lysprikk. Størrelsen kan ikke leses av. Massen er proporsjonal med r³. 5 % feil i radien gir omtrent 15 % feil i massen og i ladningen. Derfor fant Millikan radien fra fallfarten i stedet.</li>
+              <li>Dråpe 1 faller med v ≈ 0,0405 mm/s, så 0,1 mm tar omtrent 2,5 s. Ved terminalfart er 6πηrv = mg = ρ · 4/3 · πr³ · g. Det gir r = √(9ηv / (2ρg)) = √(9 · 1,81 · 10⁻⁵ · 4,05 · 10⁻⁵ / (2 · 875 · 9,81)) ≈ 0,62 µm. Det stemmer.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter elektrisk felt mellom parallelle plater. Elevene kan dele dråpene mellom seg og samle resultatene. Med «Tilfeldig dråpe» får de nye dråper uten fasit. Millikan fikk nobelprisen i 1923. Senere har det vært diskutert at han ikke tok med alle målingene sine i artikkelen fra 1913, og det kan brukes til en samtale om forskningsetikk.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/millikan.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/millikantabell.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-rakett.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Rakett med bevegelsesmengde}{https://lektorbo.no/programmering/python-rakett.html}{Koden på nett}
+
+En rakett har ingenting å skyve mot i rommet. Den kommer seg fram fordi den skyter gass bakover, og da må raketten få like mye bevegelsesmengde framover. Massen til raketten minker hele tiden, så akselerasjonen er ikke konstant. Det er et godt problem for Python.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Gassen har farten 2500~m/s i forhold til raketten. Kan raketten få større fart enn 2500~m/s? Kjør steg 1 og sjekk.
+\svar
+\oppgave \fase{forklar}{Forklar}Vis at likningen i kommentaren i steg 1 gir $dv = u \cdot dm / (M - dm)$. Hvorfor øker farten raskere mot slutten, selv om det skytes ut like mye gass hver gang?
+\svar
+\oppgave \fase{test}{Undersøk}Endre dm til 100~kg og til 0,1~kg. Hva skjer med sluttfarten? Hvorfor kommer simuleringen nærmere rakettlikningen når dm er liten?
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 2. Hvor stor er skyvekraften, og hvor høyt kommer raketten? Hvor stor er impulsen fra motoren, $F \cdot t$?
+\svar
+\oppgave \fase{test}{Undersøk}Sett $k = 0$ for å fjerne luftmotstanden. Hvor mye høyere kommer raketten? Hvorfor er luftmotstanden viktig selv for en så liten rakett?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor fortsetter raketten oppover lenge etter at motoren har sluttet å brenne? Når er akselerasjonen størst, og hvorfor?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Del raketten i steg 1 i to trinn: Først brennes 400~kg drivstoff. Så slippes en tom tank på 100~kg, og de siste 400~kg brennes. Hva blir sluttfarten? Hvorfor bruker ekte romraketter flere trinn?
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: arbeid og energi – lektorbo.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 1: arbeid, kinetisk og potensiell energi, bevaring av mekanisk energi, friksjonsarbeid, effekt og virkningsgrad, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Mekanisk energi</p>
+        <h1>Repetisjon: arbeid og energi</h1>
+        <p class="ingress">Energi kan gå over fra en form til en annen, men forsvinner aldri. Med energibevaring kan vi ofte finne farten uten å vite noe om banen. Her er en oversikt og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Når er den mekaniske energien bevart?</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Situasjon</th><th scope="col">Energiregnskap</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Bare tyngden gjør arbeid (normalkraft og snorkraft vinkelrett på farten gjør ikke arbeid)</th><td>E<sub>k</sub> + E<sub>p</sub> er konstant</td></tr>
+                <tr><th scope="row">Friksjon eller luftmotstand</th><td>E<sub>k0</sub> + E<sub>p0</sub> = E<sub>k</sub> + E<sub>p</sub> + varme. Varmen er lik friksjonsarbeidet, Rs.</td></tr>
+                <tr><th scope="row">En ytre kraft gjør arbeid (motor, person)</th><td>Arbeidet fra kraften kommer i tillegg: W = ΔE<sub>k</sub> + ΔE<sub>p</sub> + varme</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Arbeid: W = Fs cos α, der α er vinkelen mellom kraften og forflytningen.</li>
+            <li>Kinetisk energi: E<sub>k</sub> = ½mv². Potensiell energi: E<sub>p</sub> = mgh.</li>
+            <li>Arbeid–energi: Det totale arbeidet på en gjenstand er lik endringen i kinetisk energi, W<sub>tot</sub> = ΔE<sub>k</sub>.</li>
+            <li>Effekt: P = W/t = Fv. Virkningsgrad: η = nyttig energi / tilført energi.</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-energi.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Bruk g = 9,81 m/s².</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Normalkraften gjør ikke arbeid på en vogn i en berg-og-dal-bane.<br>b) Dobbel fart gir dobbel kinetisk energi.<br>c) Uten friksjon får en kloss samme fart nederst i en bratt og en slak bakke med samme høyde.<br>d) Når du bærer en sekk bortover med konstant fart, gjør du positivt arbeid på sekken.<br>e) Energi som blir til varme, er tapt for alltid.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En ball kastes rett ned med 5,0 m/s fra 10 m høyde. Hvor fort treffer den bakken? Ville svaret vært annerledes hvis ballen ble kastet vannrett med 5,0 m/s?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En vogn i en berg-og-dal-bane har farten 2,0 m/s på toppen av en bakke 25 m over bakken. Hvor fort går den 8,0 m over bakken? I hvilken høyde har den farten 10 m/s? Se bort fra friksjon. <a href="../sim/berg-og-dal.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et akebrett med barn har massen 40 kg og starter i ro på toppen av en 12 m høy bakke. Nederst har det farten 11 m/s. Hvor mye energi ble til varme? Bakken er 60 m lang. Hvor stor var den gjennomsnittlige friksjonskraften?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En heis på 600 kg løftes 20 m på 25 s med konstant fart. Finn arbeidet og effekten. Motoren har virkningsgrad 75 %. Hvor stor effekt må motoren få tilført?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En sprettball slippes fra 1,80 m og spretter opp til 1,35 m. Hvor stor del av energien er igjen etter sprettet? Hvor høyt kommer ballen etter tre sprett hvis den mister like stor del hver gang? <a href="../sim/sprettball.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>En elev på 65 kg løper opp en trapp med høyden 3,0 m på 4,0 s. Finn effekten mot tyngden. En elev hevder at hun har like stor effekt som en støvsuger på 500 W. Har hun rett? Hvorfor bruker kroppen likevel mye mer energi enn mgh? <a href="../sim/trappelop.html">Se Trappeløp.</a></p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Sann. Normalkraften står vinkelrett på farten. b) Usann. Den blir fire ganger så stor. c) Sann. v = √(2gh). d) Usann. Kraften fra deg peker opp, og bevegelsen er vannrett, så W = 0. e) Usann. Energien finnes fortsatt, men som varme har den lav kvalitet og er vanskelig å gjøre om til mekanisk energi igjen.</li>
+              <li>½v² = ½v₀² + gh gir v = √(5,0² + 2 · 9,81 · 10) ≈ 14,9 m/s. Svaret er det samme når ballen kastes vannrett, fordi energien ikke avhenger av retningen. Bare retningen på farten blir en annen.</li>
+              <li>v = √(2,0² + 2 · 9,81 · 17) ≈ 18,4 m/s. For 10 m/s: h = 25 + (2,0² − 10²)/(2 · 9,81) ≈ 20,1 m.</li>
+              <li>E<sub>p</sub> = 40 · 9,81 · 12 ≈ 4710 J og E<sub>k</sub> = ½ · 40 · 11² = 2420 J. Varmen er 2290 J, og R = 2290/60 ≈ 38 N.</li>
+              <li>W = mgh = 600 · 9,81 · 20 ≈ 118 kJ. P = W/t ≈ 4,7 kW. Tilført effekt: 4,7/0,75 ≈ 6,3 kW.</li>
+              <li>1,35/1,80 = 0,75, så 75 % av den mekaniske energien er igjen. Etter tre sprett: 1,80 · 0,75³ ≈ 0,76 m.</li>
+              <li>P = mgh/t = 65 · 9,81 · 3,0/4,0 ≈ 480 W, så hun har nesten rett. Kroppen har en virkningsgrad på bare rundt 20–25 %. Musklene lager mye varme, og bena må også akselereres og bremses i hvert steg.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-energi.html">Arbeid og energi</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

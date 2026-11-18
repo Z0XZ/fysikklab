@@ -1,0 +1,63 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/repetisjon-mekanikk-2.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Sirkelbevegelse}{Repetisjon: kast og sirkelbevegelse}{https://lektorbo.no/opplegg/repetisjon-mekanikk-2.html}{Opplegget på nett}
+
+I Fysikk 2 blir bevegelsen todimensjonal. Nøkkelen er å dele vektorene i komponenter og behandle x- og y-retningen hver for seg. I sirkelbevegelse peker akselerasjonen inn mot sentrum. Her er en oversikt og blandede oppgaver med løsningsforslag.
+
+\section*{Kast og sirkelbevegelse side om side}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{YYY}
+\toprule
+\textbf{} & \textbf{Kast (uten luftmotstand)} & \textbf{Jevn sirkelbevegelse} \\
+\midrule
+Akselerasjon & $g$, rett ned, konstant & $v^{2}/r$, inn mot sentrum, retningen endres hele tiden \\
+Kraftsum & tyngden mg & sentripetalkraften $mv^{2}/r$, summen av de virkelige kreftene inn mot sentrum \\
+Fart & $v_{x}$ konstant, $v_{y}$ endres & konstant størrelse, retningen endres \\
+Banen & parabel & sirkel \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Sentripetalkraften er ikke en ny kraft. Det er navnet på kraftsummen inn mot sentrum. Den kan være snorkraft, friksjon, normalkraft, tyngde eller en sum av flere krefter.
+
+\section*{Formler}
+
+\begin{itemize}
+\item Kast: $x = v_{0x}t$ og $y = y_{0} + v_{0y}t - \tfrac{1}{2}gt^{2}$, med $v_{0x} = v_{0} \cos  α$ og $v_{0y} = v_{0} \sin  α$. $v_{x} = v_{0x}$ og $v_{y} = v_{0y} - gt$.
+\item Sirkelbevegelse: $v = 2πr/T = ωr$ og $a = v^{2}/r = ω^{2}r = 4π^{2}r/T^{2}$.
+\item Dosert sving uten friksjon: $\tan  θ = v^{2}/(gr)$. Flat sving: $μmg \geq mv^{2}/r$.
+\item Loddrett sirkel: på toppen $mg + N = mv^{2}/r$, i bunnen $N - mg = mv^{2}/r$. Minste fart på toppen: $v = \sqrt{gr}$.
+\item Sirkelbane rundt en planet: $GMm/r^{2} = mv^{2}/r$ gir $v = \sqrt{GM/r}$.
+\end{itemize}
+
+Konstanter: $g = 9{,}81\,\mathrm{m/s^{2}}$, $G = 6{,}67 \cdot 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$, GM for jorda = $3{,}986 \cdot 10^{14}\,\mathrm{m^{3}/s^{2}}$ og jordradius 6371~km.
+
+\section*{Oppgaver}
+
+Se bort fra luftmotstand hvis ikke noe annet står.
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Begrep}Er påstandene sanne eller usanne? Begrunn svaret.
+
+a) På toppen av et skrått kast er akselerasjonen null.\newline b) En bil som kjører gjennom en sving med konstant fart, har akselerasjon.\newline c) Sentrifugalkraften presser deg utover i en karusell.\newline d) En kule som slippes, og en som skytes ut vannrett fra samme høyde, treffer bakken samtidig.\newline e) En satellitt i bane er vektløs fordi det ikke er tyngdekraft der.
+\svar
+\oppgave \fase{test}{Regn}En ball triller utfor en bordkant 0,90~m over gulvet med farten 2,5~m/s. Hvor lang tid bruker den, hvor langt fra bordet lander den, og med hvilken fart og vinkel treffer den gulvet? Se også Horisontalt kast med Eulers metode.\footnote{\url{lektorbo.no/programmering/python-horisontalt-kast.html}}
+\svar
+\oppgave \fase{test}{Regn}En ball sparkes fra bakken med 20~m/s, 35° over vannrett. Finn tiden i lufta, rekkevidden og den største høyden. Hvilken annen vinkel gir samme rekkevidde? Sjekk med simuleringen.\footnote{\url{lektorbo.no/sim/skratt-kast.html}}
+\svar
+\oppgave \fase{test}{Regn}Et lodd på 5,0~kg henger midt på en snor som er festet i to punkter i samme høyde. Hver halvdel av snora danner 30° med vannrett. Finn snorkraften. Hva skjer med snorkraften når snora strammes slik at vinkelen blir mindre? Sjekk med simuleringen.\footnote{\url{lektorbo.no/sim/lodd-i-snorer.html}}
+\svar
+\oppgave \fase{test}{Regn}En bil kjører i en flat sving med radius 50~m. Friksjonstallet er 0,70. Hva er den største farten bilen kan ha uten å skli? Hva blir den på glatt føre med $μ = 0{,}15$? Se Sirkelbevegelse.\footnote{\url{lektorbo.no/sim/sirkelbevegelse.html}}
+\svar
+\oppgave \fase{test}{Regn}En berg-og-dal-bane har en loddrett loop med radius 8,0~m. Hva er den minste farten vogna kan ha på toppen? I bunnen av en dal med samme radius har en passasjer på 60~kg farten 20~m/s. Finn normalkraften. Hvor mange $g$ kjenner passasjeren? Sjekk med simuleringen.\footnote{\url{lektorbo.no/sim/loddrett-sirkel.html}}
+\svar
+\oppgave \fase{test}{Regn}En sving på en motorvei har radius 200~m og skal tas i 30~m/s uten hjelp fra friksjon. Hvor mye må svingen doseres? Sjekk med simuleringen.\footnote{\url{lektorbo.no/sim/dosert-sving.html}}
+\svar
+\oppgave \fase{utfordring}{Sammensatt}Den internasjonale romstasjonen går i en tilnærmet sirkelbane 420~km over bakken. Finn farten og omløpstiden. Hvor stor er tyngdeakselerasjonen der, sammenlignet med på bakken? Hvorfor svever astronautene likevel? Se også Satellittbane med Eulers metode.\footnote{\url{lektorbo.no/programmering/python-satellittbane.html}}
+\svar
+\end{oppgaveliste}
+
+\end{document}

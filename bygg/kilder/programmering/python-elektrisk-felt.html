@@ -1,0 +1,49 @@
+tittel: Elektrisk felt fra punktladninger
+beskrivelse: Programmeringsøving i Fysikk 2: Regn ut det elektriske feltet fra flere punktladninger med superposisjon, finn punktet der feltet er null, og tegn feltlinjer.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 2 · Elektriske felt og krefter
+script: -
+meny: programmering.html
+---
+<h1>Elektrisk felt fra punktladninger</h1>
+<p class="ingress">Feltet fra én punktladning er lett å regne ut. Med flere ladninger må vi legge sammen feltvektorene, og det blir fort mye regning. Det klarer Python fint. Til slutt regner vi ut feltet i tusenvis av punkter og tegner feltlinjer.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Feltet i ett punkt</h2>
+  <p>Feltet fra en punktladning q har styrken E = k|q|/r² og peker bort fra en positiv ladning og mot en negativ. Funksjonen <code>felt</code> gir komponentene Ex og Ey. Feltet fra flere ladninger er summen av feltene fra hver ladning. Det kalles superposisjon.</p>
+@@felt_1.py@@
+
+  <h2>Steg 2: Hvor er feltet null?</h2>
+  <p>Vi regner ut feltet i 500 punkter på x-aksen mellom ladningene på en gang, og finner punktet der Ex er nærmest null. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok.</p>
+@@felt_2.py@@
+
+  <h2>Steg 3: Feltlinjer</h2>
+  <p>Vi lager et rutenett med 200 × 200 punkter og regner ut feltet i alle punktene. <code>plt.streamplot</code> tegner linjer som følger feltretningen. Fargen viser feltstyrken på en logaritmisk skala.</p>
+@@felt_3.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase test">Regn</span><div><p>Regn ut feltet i punktet (0,10 m, 0,10 m) i steg 1 for hånd: Finn feltet fra hver ladning, del det opp i komponenter og legg sammen. Sjekk med programmet.</p></div></li>
+  <li><span class="fase tipp">Gjett</span><div><p>Ladningene i steg 1 er +4,0 nC og +1,0 nC. Er punktet der feltet er null nærmest den store eller den lille ladningen? Kjør steg 2, og vis med regning at svaret stemmer.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Endre den andre ladningen til −1,0 nC. Finnes det et punkt mellom ladningene der feltet er null? Endre x-verdiene i steg 2 slik at du leter fra 0,32 m til 1,0 m. Hvor er feltet null nå?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Se på feltlinjene for dipolen i steg 3. Hvor er feltet sterkest? Hvorfor kan to feltlinjer aldri krysse hverandre?</p></div></li>
+  <li><span class="fase test">Endre</span><div><p>Gjør begge ladningene i steg 3 positive. Hvordan ser feltlinjene ut nå? Hvor er feltet null?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Et elektron ligger i ro i punktet (0,10 m, 0,10 m) med ladningene fra steg 1. Hvor stor kraft virker på det, og i hvilken retning? Legg gjerne til en tredje ladning og se hvordan feltlinjene endrer seg.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Fra +4,0 nC i origo: r = 0,141 m og E = 1798 N/C, rettet 45° opp mot høyre, altså (1271, 1271) N/C. Fra +1,0 nC i (0,30 m, 0): r = 0,224 m og E = 180 N/C, rettet opp mot venstre, altså (−161, 80) N/C. Summen er (1111, 1352) N/C, E = 1749 N/C, 51° over x-aksen.</li>
+      <li>Nærmest den lille ladningen. Feltene er like store når 4/x² = 1/(0,30 − x)², altså 2(0,30 − x) = x og x = 0,20 m. Programmet gir 0,200 m.</li>
+      <li>Mellom ladningene peker begge feltene samme vei, så feltet kan ikke være null der. Nullpunktet ligger utenfor, på siden til den lille ladningen: 4/x² = 1/(x − 0,30)² gir x = 0,60 m.</li>
+      <li>Feltet er sterkest nær ladningene og mellom dem. I hvert punkt har feltet bare én retning, så det kan bare gå én feltlinje gjennom punktet.</li>
+      <li>Feltlinjene går ut fra begge ladningene og bøyer bort fra hverandre. Feltet er null midt mellom ladningene.</li>
+      <li>F = eE = 1,602 · 10⁻¹⁹ C · 1749 N/C = 2,80 · 10⁻¹⁶ N, rettet motsatt av feltet, altså ned mot venstre (231° fra x-aksen).</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter elektrisk felt fra punktladninger, sammen med simuleringen <a href="../sim/elektrisk-felt.html">Elektrisk felt</a>. Steg 3 egner seg godt til å diskutere feltlinjer på tavla.</p>
+  </details>
+</section>

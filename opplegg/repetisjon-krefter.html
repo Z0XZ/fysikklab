@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: krefter – lektorbo.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 1: Newtons tre lover, de vanligste kreftene, kraftsum på skråplan og blandede oppgaver med løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Krefter</p>
+        <h1>Repetisjon: krefter</h1>
+        <p class="ingress">Med Newtons lover kan vi regne ut bevegelsen når vi kjenner kreftene, og omvendt. Her er en oversikt over lovene og kreftene, og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Newtons lover</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <tbody>
+                <tr><th scope="row">Første lov</th><td>Når summen av kreftene er null, er gjenstanden i ro eller har konstant fart i en rett linje.</td></tr>
+                <tr><th scope="row">Andre lov</th><td>ΣF = ma. Kraftsummen og akselerasjonen har samme retning.</td></tr>
+                <tr><th scope="row">Tredje lov</th><td>Når A virker på B med en kraft, virker B på A med en like stor kraft i motsatt retning. Kraft og motkraft virker på forskjellige gjenstander og opphever ikke hverandre.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h2>Slik løser du en kraftoppgave</h2>
+          <ol>
+            <li>Velg én gjenstand, og tegn bare kreftene som virker på den.</li>
+            <li>Velg en positiv retning, gjerne i akselerasjonsretningen. På et skråplan: langs og vinkelrett på planet.</li>
+            <li>Skriv Newtons andre lov for hver retning, og løs likningene.</li>
+          </ol>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Tyngde: G = mg. Friksjon ved glidning: R = μN. Hvilefriksjonen er høyst μ<sub>s</sub>N.</li>
+            <li>Luftmotstand: L = kv (lav fart) eller L = kv² (høy fart). Terminalfart når L = mg.</li>
+            <li>Skråplan med vinkel θ: tyngdekomponenten langs planet er mg sin θ, og vinkelrett på planet mg cos θ. Uten andre krefter vinkelrett på planet er N = mg cos θ.</li>
+            <li>Heis: N = m(g + a), med a positiv oppover.</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-krefter.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Bruk g = 9,81 m/s².</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Normalkraften er alltid like stor som tyngden.<br>b) Kraft og motkraft opphever hverandre.<br>c) En bil som kjører med konstant fart i en rett linje, har kraftsum null.<br>d) Friksjonskraften peker alltid motsatt av fartsretningen.<br>e) En tung og en lett stein faller like fort uten luftmotstand.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En person på 70 kg står på en badevekt i en heis som akselererer oppover med 1,2 m/s². Finn normalkraften og hva vekta viser. <a href="../sim/heis.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kasse på 6,0 kg trekkes bortover et gulv med en vannrett kraft på 40 N. Friksjonstallet er 0,30. Finn akselerasjonen. <a href="../sim/friksjon.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kloss på 2,0 kg glir ned et skråplan med helningsvinkel 30°. Friksjonstallet er 0,20. Finn normalkraften, friksjonskraften og akselerasjonen. <a href="../sim/skraaplan.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En vogn på 0,80 kg står på et bord uten friksjon. Den er koblet med en snor over en trinse til et lodd på 0,20 kg som henger fritt. Finn akselerasjonen og snorkraften. <a href="../sim/vogn-og-lodd.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En fallskjermhopper på 80 kg har terminalfarten 55 m/s før skjermen åpnes og 5,0 m/s etterpå. Luftmotstanden er L = kv². Finn k før og etter at skjermen åpnes. Hvor stor er akselerasjonen når farten er 30 m/s, før skjermen åpnes? <a href="../sim/luftmotstand.html">Se Fall med luftmotstand.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>En bil på 1200 kg i 90 km/h bråbremser og stopper på 40 m. Finn bremsekraften. Hvor stort må friksjonstallet mellom dekk og vei minst være? Hva skjer med bremselengden på glatt føre med μ = 0,20?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. For eksempel er N = mg cos θ på et skråplan og N = m(g + a) i en heis. b) Usann. De virker på forskjellige gjenstander. c) Sann (Newtons første lov). d) Usann. Hvilefriksjonen på en kloss som ligger i ro på et skråplan, peker oppover planet, og friksjonen på drivhjulene til en bil peker framover. e) Sann. a = mg/m = g.</li>
+              <li>N − mg = ma gir N = 70 · (9,81 + 1,2) ≈ 771 N. Vekta viser N/g ≈ 78,6 kg.</li>
+              <li>R = 0,30 · 6,0 · 9,81 ≈ 17,7 N. a = (40 − 17,7)/6,0 ≈ 3,7 m/s².</li>
+              <li>N = mg cos 30° ≈ 17,0 N. R = μN ≈ 3,4 N. a = (mg sin 30° − R)/m = 9,81 · (0,500 − 0,20 · 0,866) ≈ 3,2 m/s².</li>
+              <li>Vi ser på vogna og loddet som ett system: a = m<sub>lodd</sub>g/(m<sub>vogn</sub> + m<sub>lodd</sub>) = 0,20 · 9,81/1,00 ≈ 1,96 m/s². Snorkraften akselererer vogna: S = 0,80 · 1,96 ≈ 1,57 N, mindre enn tyngden av loddet (1,96 N).</li>
+              <li>Ved terminalfart er kv² = mg. Før: k = 80 · 9,81/55² ≈ 0,26 kg/m. Etter: k = 80 · 9,81/5,0² ≈ 31 kg/m, over hundre ganger så stort. Ved 30 m/s: a = g − kv²/m = 9,81 − 0,259 · 900/80 ≈ 6,9 m/s².</li>
+              <li>v = 25 m/s. a = v²/(2s) = 625/80 ≈ 7,8 m/s², og F = ma ≈ 9,4 kN. Friksjonen må gi denne kraften: μmg ≥ ma, så μ ≥ a/g ≈ 0,80. Med μ = 0,20 er a = 0,20 · 9,81 ≈ 1,96 m/s², og bremselengden blir v²/(2a) ≈ 160 m, fire ganger så lang.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-krefter.html">Krefter og bevegelse</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

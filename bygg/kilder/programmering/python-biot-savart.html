@@ -1,0 +1,51 @@
+tittel: Magnetfeltet fra en spole med Biot–Savarts lov – lektorbo.no
+beskrivelse: Programmeringsøving i Fysikk 2: Del en strømsløyfe og en spole i tusenvis av små biter, legg sammen magnetfeltet fra hver bit, og sammenlign med formlene for sløyfe og lang spole.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 2 · Magnetiske felt og krefter
+script: -
+meny: programmering.html
+---
+<h1>Magnetfeltet fra en spole med Biot–Savarts lov</h1>
+<p class="ingress">Formelen B = μ₀NI/l for feltet inne i en spole gjelder bare for en lang spole, langt fra endene. Hva er feltet ved enden, eller i en kort spole? Med Biot–Savarts lov kan vi regne ut feltet fra en liten bit av ledningen om gangen, og la Python legge sammen alle bitene.</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Én strømsløyfe</h2>
+  <p>Biot–Savarts lov sier at en liten bit dl av en ledning med strømmen I gir feltet dB = μ₀I/(4π) · dl × r / r³, der r er vektoren fra biten til punktet der vi vil vite feltet. Vi deler en sirkelformet sløyfe i 200 biter og summerer. Kryssproduktet gjør <code>np.cross</code>. I sentrum av en sløyfe er B = μ₀I/(2R).</p>
+@@biotsavart_1.py@@
+
+  <h2>Steg 2: Feltet langs aksen</h2>
+  <p>Vi regner ut feltet i 121 punkter på aksen gjennom sløyfa, og sammenligner med formelen B = μ₀IR² / (2(R² + z²)<sup>3/2</sup>), som gjelder på aksen. Koden bruker funksjonene fra steg 1.</p>
+@@biotsavart_2.py@@
+
+  <h2>Steg 3: En spole</h2>
+  <p>En spole er mange sløyfer etter hverandre. Spolen har 200 vindinger på 40 cm og radius 2 cm. Det blir 20 000 biter, og feltet regnes ut i 161 punkter. Det tar litt tid.</p>
+@@biotsavart_3.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med feltet i sentrum av sløyfa hvis du halverer radien? Endre R i steg 1 og sjekk.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Sløyfa er delt i n = 200 rette biter. Prøv <code>ring(R, 0, 8)</code> og <code>ring(R, 0, 4)</code>. Hvorfor blir feltet for stort når n er liten?</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 2. Hvor langt fra sløyfa er feltet halvparten så sterkt som i sentrum? Les av grafen, og sjekk med formelen.</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 3. Hvor godt stemmer feltet midt i spolen med μ₀NI/l? Hvor sterkt er feltet ved enden av spolen sammenlignet med midten?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Forklar hvorfor feltet ved enden av en lang spole er omtrent halvparten av feltet i midten. Tenk deg to like spoler satt etter hverandre.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Gjør spolen tykkere: Sett R = 0,10 m. Hvordan endrer feltet i midten seg? Hva må gjelde for at formelen for en lang spole skal være god?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Helmholtz-spoler er to sløyfer med radius R og avstanden R mellom seg. Regn ut feltet langs aksen for to sløyfer med R = 0,10 m i z = −0,05 m og z = 0,05 m. Hvor flatt er feltet mellom sløyfene? Sammenlign med (4/5)<sup>3/2</sup> · μ₀I/R, som brukes i <a href="../sim/e-over-m.html">e/m for elektronet</a>.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>B = μ₀I/(2R), så halv radius gir dobbelt så sterkt felt: 62,8 µT i stedet for 31,4 µT.</li>
+      <li>Med 200 biter blir svaret 31,42 µT, mot 31,416 µT fra formelen. Med 8 biter blir det 35,9 µT, og med 4 biter 56,6 µT. Med få biter blir sløyfa en mangekant, og de rette bitene ligger nærmere sentrum enn sirkelen. Da blir feltet sterkere.</li>
+      <li>Kurvene ligger oppå hverandre. Feltet er halvparten når (R²/(R² + z²))<sup>3/2</sup> = ½, altså z = R√(2<sup>2/3</sup> − 1) ≈ 0,77R ≈ 7,7 cm.</li>
+      <li>Midt i spolen gir simuleringen 3,11 mT, mot 3,14 mT fra μ₀NI/l, omtrent 1 % mindre. Ved enden er feltet 1,64 mT, litt mer enn halvparten. Utenfor spolen faller feltet raskt mot null.</li>
+      <li>Setter vi to like spoler etter hverandre, får vi en dobbelt så lang spole, og i skjøten er feltet μ₀NI/l, som midt i en lang spole. Hver av de to spolene bidrar like mye der, så hver bidrar med halvparten. Feltet ved enden av én spole er altså halvparten av feltet inne i den.</li>
+      <li>Med R = 0,10 m blir feltet i midten 2,80 mT, 11 % mindre enn formelen. Formelen gjelder for en spole som er mye lengre enn radien. For en endelig spole er feltet i midten μ₀NI/l · (l/2)/√((l/2)² + R²). Det gir 2,81 mT for R = 0,10 m og 3,13 mT for R = 0,02 m.</li>
+      <li>Legg sammen bitene fra to sløyfer med <code>np.vstack</code>, som i funksjonen <code>spole</code>. Med I = 5,0 A gir simuleringen 44,96 µT i midten. Formelen gir 44,96 µT. 2 cm fra midten er feltet bare 0,2 % svakere, og 5 cm fra midten (ved sløyfene) 5 % svakere. Derfor brukes Helmholtz-spoler når man trenger et homogent felt.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Biot–Savarts lov er ikke pensum i Fysikk 2, men programmet viser hvor formlene for sløyfe og spole kommer fra, og passer som fordypning. Elevene bør kjenne vektorer og kryssproduktet, eller få en kort innføring. Feltet rundt en leder kan måles med mobilen i <a href="../opplegg/magnetfelt-mobil.html">Magnetfelt rundt en leder med mobilen</a>, og feltet i en spole kan måles på samme måte.</p>
+  </details>
+</section>

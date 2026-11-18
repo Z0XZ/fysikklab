@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-energi-friksjon.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 · Mekanisk energi}{Energi med friksjon og luftmotstand}{https://lektorbo.no/programmering/python-energi-friksjon.html}{Koden på nett}
+
+Uten friksjon blir all potensiell energi til kinetisk energi. Med friksjon og luftmotstand blir noe av energien til varme. Her simulerer vi bevegelsen med Eulers metode og fører regnskap over energien underveis. Går regnskapet opp?
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvor stor del av den potensielle energien til klossen tror du blir til varme med friksjonstall 0,20? Kjør steg 1 og sjekk.
+\svar
+\oppgave \fase{test}{Kjør}Gir simuleringen og energibevaringen samme fart nederst? Endre friksjonstallet til 0 og til 0,30. Hvordan endrer farten seg?
+\svar
+\oppgave \fase{forklar}{Forklar}Kjør steg 2. Hvorfor er summen av de tre energiene konstant? Hvorfor er grafen for varmen en krum kurve og ikke en rett linje mot tiden?
+\svar
+\oppgave \fase{forklar}{Feilsøk}Sett friksjonstallet til 0,50 og kjør steg 1. Hva skjer? Trykk Stopp. Regn ut hvor stort friksjonstallet må være for at klossen skal bli liggende, og forklar hvorfor løkka aldri blir ferdig.
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 3. Hvor stor del av energien går til luftmotstand? Hvorfor nærmer farten seg en terminalfart?
+\svar
+\oppgave \fase{test}{Undersøk}En skiløper i hockeystilling har omtrent halvparten så stort luftmotstandstall som en som står oppreist. Hva skjer med farten nederst hvis $k$ dobles til 0,50~kg/m? Hva skjer med friksjonsarbeidet, og hvorfor?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Etter bakken kommer en flat slette. Utvid programmet slik at skiløperen fortsetter på sletta, med samme friksjonstall og luftmotstand, til farten er null. Hvor langt glir skiløperen?
+\svar
+\end{oppgaveliste}
+
+\end{document}

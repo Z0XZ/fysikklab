@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Usikkerhet med Monte Carlo-simulering – lektorbo.no</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Finn usikkerheten i beregnede størrelser ved å simulere 100 000 tenkte målinger, og sammenlign med regnereglene for usikkerhet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Tenke og gjøre fysikk</p>
+        <h1>Usikkerhet med Monte Carlo-simulering</h1>
+        <p class="ingress">Regnereglene for usikkerhet er lette å bruke, men hvor kommer de fra, og når slutter de å virke? I en Monte Carlo-simulering lar vi datamaskinen gjøre det samme forsøket 100 000 ganger med tilfeldige målefeil, og ser hvor mye resultatet sprer seg.</p>
+
+        <div class="tekst opplegg py-side" data-notatbok="../jupyter/notebooks/index.html?path=monte-carlo.ipynb" data-filnavn="monte_carlo.py">
+          <h2>Steg 1: g fra en pendel</h2>
+          <p>En pendel har lengden L = (0,800 ± 0,005) m og svingetiden T = (1,79 ± 0,02) s, og g = 4π²L/T². Vi trekker 100 000 tilfeldige lengder og svingetider fra en normalfordeling der standardavviket er usikkerheten, og regner ut g for hver. Standardavviket til alle g-verdiene er usikkerheten i g. Tallene endrer seg litt hver gang du kjører, fordi de er tilfeldige.</p>
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng()      # tilfeldige tall
+n = 100_000                        # antall «forsøk» vi simulerer
+
+# Målinger med usikkerhet (standardavvik)
+L, dL = 0.800, 0.005    # m
+T, dT = 1.79, 0.02      # s
+
+L_trukket = rng.normal(L, dL, n)   # 100 000 tilfeldige lengder rundt 0,800 m
+T_trukket = rng.normal(T, dT, n)
+g = 4 * np.pi**2 * L_trukket / T_trukket**2
+
+print(f"g = {g.mean():.2f} ± {g.std():.2f} m/s²  (Monte Carlo)")
+
+# Sammenlign med reglene for usikkerhet
+g0 = 4 * np.pi**2 * L / T**2
+enkel = dL / L + 2 * dT / T
+kvadrat = np.sqrt((dL / L)**2 + (2 * dT / T)**2)
+print(f"g = {g0:.2f} m/s²")
+print(f"Enkel regel:  ± {enkel * g0:.2f} m/s²  ({enkel * 100:.1f} %)")
+print(f"Kvadratsum:   ± {kvadrat * g0:.2f} m/s²  ({kvadrat * 100:.1f} %)")
+
+plt.hist(g, bins=80)
+plt.xlabel("g / (m/s²)")
+plt.ylabel("antall")
+plt.show()</code></pre></div>
+
+          <h2>Steg 2: Differansen mellom to nesten like tall</h2>
+          <p>Vi finner massen av vannet i et beger ved å veie begeret med og uten vann. Begge veiingene har usikkerhet 0,5 g. Koden bruker <code>rng</code> og <code>n</code> fra steg 1.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code># Massen av vannet i et beger: full minus tom
+m_full = rng.normal(152.3, 0.5, n)   # g
+m_tom = rng.normal(148.9, 0.5, n)    # g
+m_vann = m_full - m_tom
+
+print(f"m = {m_vann.mean():.1f} ± {m_vann.std():.1f} g")
+print(f"Relativ usikkerhet: {m_vann.std() / m_vann.mean() * 100:.0f} %")
+print(f"Regelen for differanse: ± {0.5 + 0.5:.1f} g")</code></pre></div>
+
+          <h2>Steg 3: Når regnereglene ikke holder</h2>
+          <p>Rekkevidden til et skrått kast på flatt underlag er R = v² sin(2θ)/g. Ved 45° er sin(2θ) størst, så en liten feil i vinkelen gjør nesten ingen forskjell, og regnereglene sier at vinkelen ikke bidrar til usikkerheten. Men stemmer det?</p>
+        <div class="py-boks" data-navn="Steg 3" data-ny=""><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+rng = np.random.default_rng()
+n = 100_000
+g = 9.81
+
+# Rekkevidden til et skrått kast på flatt underlag: R = v² sin(2θ) / g
+v = rng.normal(10.0, 0.2, n)                 # m/s
+vinkel = np.radians(rng.normal(45, 3, n))    # 45 ± 3 grader
+R = v**2 * np.sin(2 * vinkel) / g
+
+R0 = 10.0**2 * np.sin(np.radians(90)) / g
+print(f"Med v = 10,0 m/s og 45°: R = {R0:.2f} m")
+print(f"Monte Carlo: gjennomsnitt {R.mean():.2f} m, standardavvik {R.std():.2f} m")
+print(f"Andel kast som går lenger enn R0: {np.mean(R &gt; R0) * 100:.0f} %")
+
+plt.hist(R, bins=80)
+plt.axvline(R0, color="k", linestyle="--")
+plt.xlabel("R / m")
+plt.ylabel("antall")
+plt.show()</code></pre></div>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-monte-carlo.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hvilken av de to målingene i steg 1 bidrar mest til usikkerheten i g? Gir Monte Carlo-simuleringen omtrent samme svar som den enkle regelen eller som kvadratsummen?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 1 et par ganger. Hvor mye endrer svaret seg? Hva skjer med histogrammet hvis du setter n = 100?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Eleven måler tiden for ti svingninger, og usikkerheten i T blir 0,002 s. Endre dT og kjør igjen. Hvilken måling bør nå forbedres?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Kjør steg 2. Hver veiing har usikkerhet 0,3 %, men massen av vannet har over 20 %. Hvorfor? Hvorfor gir regelen for differanse et større tall enn simuleringen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Kjør steg 3. Hvorfor er gjennomsnittet av rekkevidden mindre enn 10,19 m, og hvorfor går færre enn halvparten av kastene lenger? Sett usikkerheten i farten til 0 for å se bare virkningen av vinkelen.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Simuleringen trekker målefeilene fra en normalfordeling, uavhengig av hverandre. Når er ikke det en god modell? Tenk på systematiske feil.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Lag en Monte Carlo-simulering for e/m = 2U/(B²r²) i <a href="../opplegg/e-over-m.html">forsøket med fintrådrøret</a>, med U = (250 ± 2) V, I = (1,40 ± 0,02) A og d = (10,0 ± 0,1) cm, der B = 0,779 mT/A · I. Hvor stor blir usikkerheten i e/m, og hvilken måling bidrar mest?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Svingetiden bidrar mest, fordi T står i andre potens: 2 · 0,02/1,79 = 2,2 %, mot 0,6 % fra lengden. Simuleringen gir g = (9,86 ± 0,23) m/s², som kvadratsummen. Den enkle regelen gir ± 0,28 m/s². Den er et forsiktig anslag, fordi feilene sjelden trekker i samme retning samtidig.</li>
+              <li>Med 100 000 trekninger endrer standardavviket seg bare i tredje siffer. Med n = 100 blir histogrammet ujevnt, og usikkerheten kan variere med 10–15 % fra gang til gang.</li>
+              <li>Med dT = 0,002 s gir simuleringen g = (9,86 ± 0,07) m/s². Nå bidrar svingetiden med 0,2 % og lengden med 0,6 %, så det er lengden som bør måles bedre.</li>
+              <li>m = (3,4 ± 0,7) g, omtrent 21 %. Den absolutte usikkerheten er like stor som i veiingene, men massen av vannet er et lite tall. Den relative usikkerheten blir derfor stor. Regelen for differanse legger sammen de absolutte usikkerhetene og gir ± 1,0 g. Simuleringen gir √(0,5² + 0,5²) ≈ 0,7 g, fordi feilene ofte delvis oppveier hverandre. Lærdom: Vei mer vann.</li>
+              <li>Ved 45° gir enhver feil i vinkelen, både for stor og for liten, kortere kast. Vinkelen kan bare trekke rekkevidden ned. Gjennomsnittet blir omtrent 10,14 m, og fordelingen blir skjev. Med bare vinkelfeil er standardavviket omtrent 0,08 m, ikke 0. Regnereglene bygger på at funksjonen er tilnærmet lineær rundt måleverdien, og det er den ikke på toppen av sin(2θ).</li>
+              <li>En systematisk feil, for eksempel en stoppeklokke som går for sakte eller en målestokk som er feil, gir samme feil hver gang. Den sprer ikke resultatene, så den blir ikke med i simuleringen. Simuleringen forutsetter også at feilene er uavhengige og omtrent normalfordelte, og at vi kjenner standardavviket.</li>
+              <li>Simuleringen gir e/m ≈ (1,68 ± 0,06) · 10¹¹ C/kg, altså 3,6 %. Diameteren bidrar mest, 2 · 1 % = 2 %, fordi r står i andre potens. Strømmen bidrar 2 · 1,4 % ≈ 2,9 %, og spenningen 0,8 %. Kvadratsummen gir også 3,6 %.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter regnereglene for usikkerhet i Fysikk 2, og dekker kompetansemålene om usikkerhet og om programmering. Se også simuleringen <a href="../sim/usikkerhet-beregning.html">Usikkerhet i beregnede størrelser</a>, som gjør det samme som steg 1 uten kode.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: elektriske og magnetiske felt – lektorbo.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om elektriske og magnetiske felt og krefter på ladde partikler og ledere. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektriske og magnetiske felt</p>
+        <h1>Begrepstest: elektriske og magnetiske felt</h1>
+        <p class="ingress">Åtte spørsmål om felt. Mange av dem handler om forskjellen mellom elektriske og magnetiske krefter.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="1">
+            <p>Et elektron ligger i ro i et homogent magnetfelt. Hvilken kraft virker på det fra feltet?</p>
+            <ol class="bt-valg">
+              <li>Ingen kraft.</li>
+              <li>En kraft som får det til å gå i sirkel.</li>
+              <li data-hvorfor="Med v = 0 er den magnetiske kraften null.">F = evB i retning av feltet.</li>
+              <li>En kraft mot sørpolen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Den magnetiske kraften er F = qvB sin θ. Når elektronet ligger i ro, er v = 0, og kraften er null. Et elektrisk felt ville derimot gitt en kraft også på et elektron i ro.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Et proton går i sirkel i et homogent magnetfelt. Hva gjør den magnetiske kraften med den kinetiske energien til protonet?</p>
+            <ol class="bt-valg">
+              <li>Det avhenger av retningen på feltet.</li>
+              <li>Minker den.</li>
+              <li>Øker den.</li>
+              <li>Ingenting, kraften står vinkelrett på farten.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Den magnetiske kraften står hele tiden vinkelrett på farten, så arbeidet er W = Fs cos 90° = 0. Den kinetiske energien og banefarten er konstante. Bare retningen endres.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Feltet mellom to parallelle plater er E = U/d. Hva skjer med kraften på en ladd kule midt mellom platene hvis kula flyttes nærmere den ene plata?</p>
+            <ol class="bt-valg">
+              <li>Den blir mindre.</li>
+              <li>Den skifter retning.</li>
+              <li data-hvorfor="Feltet mellom store parallelle plater er homogent.">Den blir større.</li>
+              <li>Den er den samme.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Mellom to store, parallelle plater er feltet homogent: like sterkt og med samme retning overalt, unntatt nær kantene. Kraften F = qE er derfor den samme uansett hvor kula er mellom platene.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Avstanden mellom to punktladninger dobles. Hva skjer med kraften mellom dem?</p>
+            <ol class="bt-valg">
+              <li>Den dobles.</li>
+              <li>Den er uendret.</li>
+              <li>Den blir en firedel.</li>
+              <li data-hvorfor="Coulombs lov har r² i nevneren.">Den halveres.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Coulombs lov: F = k|q₁q₂|/r². Dobbel avstand gir 2² = 4 ganger så stor nevner, så kraften blir en firedel.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>To lange, parallelle ledere har strøm i samme retning. Hva skjer?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Lederne er nøytrale, så det er ingen elektrisk kraft. Men strømmene lager magnetfelt.">Det virker ingen kraft, fordi lederne er nøytrale.</li>
+              <li>De tiltrekker hverandre.</li>
+              <li>De vrir seg slik at de står vinkelrett på hverandre.</li>
+              <li data-hvorfor="Det skjer når strømmene går i motsatt retning.">De frastøter hverandre.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Strømmen i den ene lederen lager et magnetfelt der den andre lederen er. Med høyrehåndsregelen finner vi at kraften på den andre lederen peker mot den første når strømmene går i samme retning. Lederne tiltrekker hverandre med F/l = μ₀I₁I₂/(2πd).</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>Et elektron og et proton kommer inn i det samme magnetfeltet med samme fart, vinkelrett på feltet. Hva er riktig?</p>
+            <ol class="bt-valg">
+              <li>Elektronet går i en mye mindre sirkel, i motsatt retning av protonet.</li>
+              <li>De går i like store sirkler i samme retning.</li>
+              <li>Elektronet går rett fram fordi det er så lett.</li>
+              <li data-hvorfor="Kreftene er like store, men massene er forskjellige.">De går i like store sirkler i motsatt retning.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Kraften evB er like stor, men har motsatt retning fordi ladningene har motsatt fortegn. Radien er r = mv/(eB), og elektronet har 1836 ganger mindre masse. Det går derfor i en mye mindre sirkel, og bøyer av til motsatt side.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Hvordan er feltlinjene til et magnetfelt?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Inne i magneten går linjene videre fra sør til nord.">De starter på nordpolen og slutter på sørpolen.</li>
+              <li>De peker alltid rett ut fra magneten.</li>
+              <li>De er lukkede kurver uten start og slutt.</li>
+              <li data-hvorfor="Det gjelder elektriske feltlinjer.">De starter på positive ladninger.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Magnetiske feltlinjer har ingen start eller slutt. Utenfor en magnet går de fra nordpolen til sørpolen, og inne i magneten fortsetter de fra sør til nord. Det finnes ingen magnetiske «ladninger» (monopoler) som linjene kan starte på.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Et elektron skytes inn vinkelrett på det elektriske feltet mellom to plater. Hvordan blir banen?</p>
+            <ol class="bt-valg">
+              <li>En rett linje mot den positive plata.</li>
+              <li data-hvorfor="Det gjelder i et magnetfelt.">En sirkel.</li>
+              <li>En parabel, som et vannrett kast.</li>
+              <li>En rett linje, uten avbøyning.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Kraften eE er konstant og vinkelrett på startfarten. Elektronet får konstant akselerasjon mot den positive plata, mens farten langs platene er konstant. Det er akkurat som et vannrett kast, og banen blir en parabel.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også <a href="../sim/elektrisk-felt.html">Elektrisk felt</a>, <a href="../sim/magnetfelt-bane.html">Ladd partikkel i magnetfelt</a>, <a href="../sim/e-over-m.html">e/m for elektronet</a> og <a href="../opplegg/repetisjon-felt.html">Repetisjon: elektriske og magnetiske felt</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

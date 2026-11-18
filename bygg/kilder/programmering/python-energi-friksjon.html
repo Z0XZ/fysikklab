@@ -1,0 +1,51 @@
+tittel: Energi med friksjon og luftmotstand – lektorbo.no
+beskrivelse: Programmeringsøving i Fysikk 1: Simuler en kloss på et skråplan og en skiløper i en lang bakke, og følg energien fra potensiell energi til kinetisk energi, friksjon og luftmotstand.
+fagside: programmering.html
+fag: Programmering
+tema: Fysikk 1 · Mekanisk energi
+script: -
+meny: programmering.html
+---
+<h1>Energi med friksjon og luftmotstand</h1>
+<p class="ingress">Uten friksjon blir all potensiell energi til kinetisk energi. Med friksjon og luftmotstand blir noe av energien til varme. Her simulerer vi bevegelsen med Eulers metode og fører regnskap over energien underveis. Går regnskapet opp?</p>
+
+<div class="tekst opplegg">
+  <h2>Steg 1: Kloss på et skråplan</h2>
+  <p>En kloss på 2,0 kg glir 4,0 m ned et skråplan med helningsvinkel 25° og friksjonstall 0,20. Friksjonskraften er R = μN, og normalkraften er N = mg cos θ. Akselerasjonen er konstant, så vi kan sammenligne simuleringen med energibevaring: ½mv² = mgh − RL.</p>
+@@energi_1.py@@
+
+  <h2>Steg 2: Energien underveis</h2>
+  <p>Vi plotter den kinetiske energien, den potensielle energien og varmen fra friksjonen mot tiden. Den stiplede linja er summen av de tre. Koden bruker listene fra steg 1.</p>
+@@energi_2.py@@
+
+  <h2>Steg 3: Skiløper med luftmotstand</h2>
+  <p>En skiløper på 70 kg kjører 300 m rett ned en bakke med helning 15°. Luftmotstanden er L = kv², så den øker med farten, og akselerasjonen er ikke konstant. Da kan vi ikke bruke formlene for konstant akselerasjon, men simuleringen virker like godt. Vi summerer arbeidet fra friksjonen og luftmotstanden: I hvert tidssteg er arbeidet kraften ganger strekningen vΔt.</p>
+@@energi_3.py@@
+</div>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvor stor del av den potensielle energien til klossen tror du blir til varme med friksjonstall 0,20? Kjør steg 1 og sjekk.</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Gir simuleringen og energibevaringen samme fart nederst? Endre friksjonstallet til 0 og til 0,30. Hvordan endrer farten seg?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Kjør steg 2. Hvorfor er summen av de tre energiene konstant? Hvorfor er grafen for varmen en krum kurve og ikke en rett linje mot tiden?</p></div></li>
+  <li><span class="fase forklar">Feilsøk</span><div><p>Sett friksjonstallet til 0,50 og kjør steg 1. Hva skjer? Trykk Stopp. Regn ut hvor stort friksjonstallet må være for at klossen skal bli liggende, og forklar hvorfor løkka aldri blir ferdig.</p></div></li>
+  <li><span class="fase test">Kjør</span><div><p>Kjør steg 3. Hvor stor del av energien går til luftmotstand? Hvorfor nærmer farten seg en terminalfart?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>En skiløper i hockeystilling har omtrent halvparten så stort luftmotstandstall som en som står oppreist. Hva skjer med farten nederst hvis k dobles til 0,50 kg/m? Hva skjer med friksjonsarbeidet, og hvorfor?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Etter bakken kommer en flat slette. Utvid programmet slik at skiløperen fortsetter på sletta, med samme friksjonstall og luftmotstand, til farten er null. Hvor langt glir skiløperen?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Klossen starter 1,69 m opp og har 33,2 J potensiell energi. Friksjonen gjør arbeidet 0,20 · 2,0 · 9,81 · cos 25° · 4,0 ≈ 14,2 J. Det er 43 % av energien. Farten nederst blir 4,35 m/s.</li>
+      <li>Ja, begge gir 4,35 m/s. Med μ = 0 blir farten 5,76 m/s, og med μ = 0,30 blir den 3,44 m/s.</li>
+      <li>Energi forsvinner ikke. Den potensielle energien blir til kinetisk energi og varme, så summen er konstant. Varmen er R · s, og s øker med kvadratet av tiden fordi akselerasjonen er konstant. Derfor blir grafen en parabel mot tiden, men en rett linje mot strekningen.</li>
+      <li>Løkka går for alltid, for klossen kommer aldri ned. Med μ = 0,50 er friksjonskraften større enn tyngdekomponenten langs planet, og akselerasjonen i programmet blir negativ. I virkeligheten blir klossen liggende i ro. Klossen glir bare hvis mg sin θ &gt; μmg cos θ, altså μ &lt; tan 25° ≈ 0,47. (Programmet regner med negativ akselerasjon fra ro, som ikke er fysisk riktig. Friksjonen kan bare bremse, ikke dra klossen oppover.)</li>
+      <li>Skiløperen har 22,6 m/s (81 km/h) etter 300 m og 20,2 s. Av 53,3 kJ tapt potensiell energi blir 17,9 kJ til kinetisk energi, 10,0 kJ til friksjon og 25,5 kJ til luftmotstand. Nesten halvparten går altså til luftmotstanden. Luftmotstanden øker med farten, og ved terminalfarten v = √((mg sin θ − R)/k) ≈ 24,0 m/s er summen av kreftene null.</li>
+      <li>Med k = 0,50 kg/m blir farten nederst 16,9 m/s, og luftmotstanden tar 33,4 kJ. Friksjonsarbeidet blir det samme, 10,0 kJ, fordi friksjonskraften er μmg cos θ uansett fart, og strekningen er den samme.</li>
+      <li>Kopier løkka og bytt til a = −(μmg + kv²)/m, med løkka <code>while v &gt; 0:</code>. Med startfarten 22,6 m/s glir skiløperen omtrent 217 m på 26 s. Luftmotstanden bremser mest i starten, friksjonen mest på slutten.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter arbeid, mekanisk energi og friksjon. Steg 3 dekker kompetansemålet om å modellere bevegelse der akselerasjonen ikke er konstant. Se også simuleringen <a href="../sim/berg-og-dal.html">Berg-og-dal-bane</a> og øvingen <a href="python-variable-krefter.html">Variable krefter i Python</a>.</p>
+  </details>
+</section>

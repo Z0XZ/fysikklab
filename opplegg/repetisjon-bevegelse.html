@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: rettlinjet bevegelse – lektorbo.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 1: oversikt over fart, akselerasjon og grafer, bevegelseslikningene og blandede oppgaver med løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Rettlinjet bevegelse</p>
+        <h1>Repetisjon: rettlinjet bevegelse</h1>
+        <p class="ingress">Rettlinjet bevegelse handler om å beskrive hvordan posisjonen og farten endrer seg med tiden. Her er en oversikt over grafene og formlene, og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Grafene og hva de forteller</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Graf</th><th scope="col">Stigningstallet er</th><th scope="col">Arealet under grafen er</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">posisjon s(t)</th><td>farten v</td><td>ikke noe nyttig</td></tr>
+                <tr><th scope="row">fart v(t)</th><td>akselerasjonen a</td><td>forflytningen Δs</td></tr>
+                <tr><th scope="row">akselerasjon a(t)</th><td>(brukes sjelden)</td><td>fartsendringen Δv</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Fart og akselerasjon har retning. Velg en positiv retning, og hold deg til den. Akselerasjonen kan peke motsatt vei av farten. Da minker farten. Når farten er null, kan akselerasjonen godt være forskjellig fra null, for eksempel på toppen av et loddrett kast.</p>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Gjennomsnittsfart: v̄ = Δs/Δt. Gjennomsnittsakselerasjon: ā = Δv/Δt.</li>
+            <li>Konstant akselerasjon: v = v₀ + at, s = v₀t + ½at², v² − v₀² = 2as og s = (v₀ + v)/2 · t.</li>
+            <li>Fritt fall og loddrett kast: a = −g = −9,81 m/s² med positiv retning oppover, når vi ser bort fra luftmotstand.</li>
+            <li>Omregning: 1 m/s = 3,6 km/h.</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-bevegelse.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Bruk g = 9,81 m/s² og se bort fra luftmotstand hvis ikke noe annet står.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Når farten er null, er akselerasjonen null.<br>b) Arealet under en v,t-graf er forflytningen.<br>c) Stigningstallet i en s,t-graf er akselerasjonen.<br>d) En ball som kastes rett opp, har like stor fart når den kommer ned til samme høyde.<br>e) Negativ akselerasjon betyr alltid at farten minker.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En bil akselererer jevnt fra 0 til 100 km/h på 8,0 s. Finn akselerasjonen og strekningen bilen kjører. <a href="../sim/bevegelsesgrafer.html">Se grafene i simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En sjåfør kjører i 80 km/h og ser en hindring. Reaksjonstiden er 1,0 s, og bremsene gir akselerasjonen 7,0 m/s². Finn reaksjonslengden, bremselengden og stopplengden. <a href="../sim/bremselengde.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Du slipper en stein fra en bru, og den treffer vannet etter 2,4 s. Hvor høyt er brua, og hvor fort treffer steinen vannet? Hvor lang tid tar det før du hører plasket, når lyden går med 340 m/s?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En ball kastes rett opp med 12 m/s fra 1,5 m over bakken. Hvor høyt over bakken kommer den? Hvor lang tid går det før den treffer bakken, og med hvilken fart? <a href="../sim/fritt-fall.html">Se også Fritt fall.</a></p></div></li>
+          <li><span class="fase test">Grafer</span><div><p>Et tog starter fra ro og akselererer jevnt til 20 m/s på 40 s. Så kjører det med konstant fart i 60 s, og bremser jevnt til stopp på 25 s. Skisser v,t-grafen. Finn strekningen og gjennomsnittsfarten.</p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Bil A kjører med konstant fart 25 m/s forbi bil B, som står i ro. I samme øyeblikk starter B med akselerasjonen 2,0 m/s². Når og hvor tar B igjen A? Hvilken fart har B da? Forklar hvorfor B da har akkurat dobbelt så stor fart som A.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. På toppen av et loddrett kast er farten null, men akselerasjonen er g nedover. b) Sann. c) Usann. Stigningstallet er farten. d) Sann, uten luftmotstand. e) Usann. Det avhenger av fortegnet på farten. Hvis både farten og akselerasjonen er negative, øker farten.</li>
+              <li>v = 100/3,6 = 27,8 m/s. a = Δv/Δt = 27,8/8,0 ≈ 3,5 m/s². s = (v₀ + v)/2 · t = 27,8/2 · 8,0 ≈ 111 m.</li>
+              <li>v = 22,2 m/s. Reaksjonslengden er 22,2 · 1,0 = 22 m. Bremselengden er v²/(2a) = 22,2²/14 ≈ 35 m. Stopplengden er 57 m.</li>
+              <li>h = ½gt² = ½ · 9,81 · 2,4² ≈ 28 m. v = gt ≈ 23,5 m/s. Lyden bruker 28,3/340 ≈ 0,083 s, så du hører plasket etter 2,48 s.</li>
+              <li>Toppen: v² − v₀² = 2as gir 12²/(2 · 9,81) ≈ 7,3 m over startpunktet, altså 8,8 m over bakken. Med positiv retning opp: −1,5 = 12t − 4,905t² gir t ≈ 2,57 s. Farten er v = √(12² + 2 · 9,81 · 1,5) ≈ 13,2 m/s nedover.</li>
+              <li>Grafen går rett opp til 20 m/s, er vannrett i 60 s og går rett ned til 0. Strekningen er arealet: ½ · 20 · 40 + 20 · 60 + ½ · 20 · 25 = 400 + 1200 + 250 = 1850 m. Gjennomsnittsfarten er 1850/125 = 14,8 m/s.</li>
+              <li>A: s = 25t. B: s = ½ · 2,0 · t² = t². Like: t² = 25t gir t = 25 s, og s = 625 m. B har da v = 2,0 · 25 = 50 m/s. De har kjørt like langt på like lang tid, så de har samme gjennomsnittsfart, 25 m/s. For B, som starter fra ro med konstant akselerasjon, er gjennomsnittsfarten halvparten av sluttfarten.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-krefter.html">Krefter og bevegelse</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

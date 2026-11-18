@@ -39,6 +39,12 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/mbane.js`, `js/fartsvelger.js`, `js/stromhuske.js`, `js/ledere.js` | Fysikk 2: ladd partikkel i magnetfelt, fartsvelger, strømhuske, magnetfelt rundt ledere |
 | `js/pingpong.js`, `js/syklotron.js` | Fysikk 2: elektrostatisk ping-pong, syklotron |
 | `js/mobilfelt.js` | Opplegg: magnetfelt rundt en leder målt med mobilen |
+| `js/eoverm.js`, `js/millikan.js`, `js/millikantabell.js` | Fysikk 2: e/m for elektronet, Millikans oljedråpeforsøk |
+| `js/maaletabell.js` | Felles måletabell for forsøk: innfylling, utregnede kolonner, graf, linjetilpasning, eksempeldata og CSV |
+| `js/sentripetal.js`, `js/heismobil.js`, `js/eovermforsok.js` | Opplegg: sentripetalakselerasjon med mobilen, heisen med mobilen, forsøk med e/m |
+| `js/begrepstest.js` | Begrepstester (`opplegg/begrep-*.html`): flervalg med tilbakemelding med en gang, ingenting lagres |
+| `opplegg/repetisjon-*.html`, `opplegg/kompetansemaal.html` | Repetisjonssider, og lærersiden som sorterer alle ressursene etter kompetansemålene i FYS01-02 |
+| `bygg/` | Kildefiler og byggeskript for de nyeste opplegg-, simulerings- og programmeringssidene, begrepstestene, repetisjonssidene og kompetansemålsiden. Se `bygg/README.md`. |
 | `js/pykjorer.js`, `js/pyarbeider.js`, `js/vendor/codemirror/` | Kjørbare Python-bokser på programmeringssidene (Pyodide i en Web Worker, CodeMirror 5 som editor, MIT-lisens) |
 | `jupyter/`, `jupyterlite/` | JupyterLite: Jupyter i nettleseren. `jupyter/` er den ferdige appen, `jupyterlite/` har notatbøkene og byggeoppskriften |
 | `elevark/` | Elevark som PDF (uten fasit), laget med LaTeX fra oppgavene på sidene |

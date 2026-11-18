@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rakett med bevegelsesmengde – lektorbo.no</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 1: Simuler en rakett som skyter ut gass, med bevaring av bevegelsesmengde steg for steg, og en modellrakett med skyvekraft, tyngde og luftmotstand.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Rakett med bevegelsesmengde</h1>
+        <p class="ingress">En rakett har ingenting å skyve mot i rommet. Den kommer seg fram fordi den skyter gass bakover, og da må raketten få like mye bevegelsesmengde framover. Massen til raketten minker hele tiden, så akselerasjonen er ikke konstant. Det er et godt problem for Python.</p>
+
+        <div class="tekst opplegg py-side" data-notatbok="../jupyter/notebooks/index.html?path=rakett.ipynb" data-filnavn="rakett.py">
+          <h2>Steg 1: Rakett i rommet</h2>
+          <p>Raketten har startmassen 1000 kg, og 800 kg av det er drivstoff. Gassen blir skutt ut med farten u = 2500 m/s bakover i forhold til raketten. Vi skyter ut 1 kg om gangen og bruker at bevegelsesmengden er bevart i hvert lille «støt». Til slutt sammenligner vi med rakettlikningen Δv = u · ln(M₀/M), som man kan utlede med integrasjon.</p>
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+M = 1000.0      # startmasse i kg (rakett + drivstoff)
+drivstoff = 800.0
+u = 2500.0      # farten til gassen bakover, i forhold til raketten, i m/s
+dm = 1.0        # masse som skytes ut i hvert steg, i kg
+
+v = 0.0         # farten til raketten i m/s (i rommet, uten tyngdekraft)
+masser, farter = [M], [v]
+
+while drivstoff &gt; 0:
+    # Bevegelsesmengden før = etter:
+    # M·v = (M − dm)·(v + dv) + dm·(v − u)   gir   dv = u·dm / (M − dm)
+    dv = u * dm / (M - dm)
+    v = v + dv
+    M = M - dm
+    drivstoff = drivstoff - dm
+    masser.append(M)
+    farter.append(v)
+
+print(f"Sluttfart: {v:.0f} m/s med {M:.0f} kg igjen")
+print(f"Rakettlikningen u·ln(M0/M): {u * np.log(1000 / M):.0f} m/s")
+
+plt.plot(masser, farter)
+plt.gca().invert_xaxis()          # massen minker mot høyre
+plt.xlabel("massen til raketten / kg")
+plt.ylabel("v / (m/s)")
+plt.grid(True)
+plt.show()</code></pre></div>
+
+          <h2>Steg 2: Modellrakett som skytes rett opp</h2>
+          <p>En modellrakett har 12 g drivstoff som brenner i 1,6 s. Skyvekraften er bevegelsesmengden gassen får per sekund: F = u · Δm/Δt. Nå virker også tyngden og luftmotstanden L = kv². Programmet kjører til raketten er på toppen. Tallene er et tenkt, men realistisk eksempel.</p>
+        <div class="py-boks" data-navn="Steg 2" data-ny=""><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+g = 9.81
+m_tom = 0.108          # kg, rakett uten drivstoff
+drivstoff = 0.012      # kg
+brennetid = 1.6        # s
+u = 800.0              # utstrømningsfart i m/s
+k = 2.2e-4             # luftmotstandstall i kg/m: L = k·v²
+
+dmdt = drivstoff / brennetid      # kg/s
+F_skyv = u * dmdt                 # skyvekraften: endringen i bevegelsesmengde per tid
+print(f"Skyvekraft: {F_skyv:.1f} N")
+
+t, h, v = 0.0, 0.0, 0.0
+m = m_tom + drivstoff
+dt = 0.001
+tider, hoyder, farter = [], [], []
+
+while v &gt;= 0:                     # til raketten er på toppen
+    F = -m * g - k * v * abs(v)   # tyngde og luftmotstand
+    if t &lt; brennetid:
+        F = F + F_skyv
+        m = m - dmdt * dt
+    a = F / m
+    v = v + a * dt
+    h = h + v * dt
+    t = t + dt
+    tider.append(t)
+    hoyder.append(h)
+    farter.append(v)
+
+print(f"Største fart: {max(farter):.1f} m/s")
+print(f"Toppunkt: {h:.0f} m etter {t:.1f} s")
+
+plt.subplot(2, 1, 1)
+plt.plot(tider, hoyder)
+plt.ylabel("h / m")
+plt.grid(True)
+plt.subplot(2, 1, 2)
+plt.plot(tider, farter)
+plt.xlabel("t / s")
+plt.ylabel("v / (m/s)")
+plt.grid(True)
+plt.show()</code></pre></div>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-rakett.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Gassen har farten 2500 m/s i forhold til raketten. Kan raketten få større fart enn 2500 m/s? Kjør steg 1 og sjekk.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vis at likningen i kommentaren i steg 1 gir dv = u · dm / (M − dm). Hvorfor øker farten raskere mot slutten, selv om det skytes ut like mye gass hver gang?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Endre dm til 100 kg og til 0,1 kg. Hva skjer med sluttfarten? Hvorfor kommer simuleringen nærmere rakettlikningen når dm er liten?</p></div></li>
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 2. Hvor stor er skyvekraften, og hvor høyt kommer raketten? Hvor stor er impulsen fra motoren, F · t?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Sett k = 0 for å fjerne luftmotstanden. Hvor mye høyere kommer raketten? Hvorfor er luftmotstanden viktig selv for en så liten rakett?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor fortsetter raketten oppover lenge etter at motoren har sluttet å brenne? Når er akselerasjonen størst, og hvorfor?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Del raketten i steg 1 i to trinn: Først brennes 400 kg drivstoff. Så slippes en tom tank på 100 kg, og de siste 400 kg brennes. Hva blir sluttfarten? Hvorfor bruker ekte romraketter flere trinn?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Ja. Sluttfarten blir omtrent 4030 m/s, mer enn u. Gassen får farten v − u i forhold til bakken, og så lenge raketten kan skyte ut masse, får den mer fart. Det er bare den relative farten som er begrenset.</li>
+              <li>Ganger vi ut: Mv = Mv + M dv − dm v − dm dv + dm v − dm u. Mv, dm v og −dm v strykes, og vi står igjen med 0 = (M − dm) dv − dm u, altså dv = u dm/(M − dm). Hver kilo gass gir samme bevegelsesmengde, men raketten blir lettere, så samme impuls gir større fartsendring.</li>
+              <li>Med dm = 100 kg blir sluttfarten 4572 m/s, med dm = 1 kg 4029 m/s, og med dm = 0,1 kg omtrent 4024 m/s, som rakettlikningen. Store dm betyr at vi skyter ut store klumper på en gang. Rakettlikningen gjelder for en jevn strøm av gass, og den får vi når dm går mot null.</li>
+              <li>F = 800 · 0,012 / 1,6 = 6,0 N. Raketten når 64 m/s og kommer 204 m opp etter 6,9 s. Impulsen er 6,0 N · 1,6 s = 9,6 N s, det samme som bevegelsesmengden gassen får: 0,012 kg · 800 m/s.</li>
+              <li>Uten luftmotstand kommer raketten 294 m opp, 90 m høyere. Ved 64 m/s er luftmotstanden 2,2 · 10⁻⁴ · 64² ≈ 0,90 N, nesten like stor som tyngden på 1,1 N.</li>
+              <li>Når motoren stopper, har raketten fart oppover og fortsetter som et loddrett kast, bremset av tyngden og luftmotstanden. Akselerasjonen er størst like før motoren stopper: Da er massen minst, og farten er fortsatt for liten til at luftmotstanden har blitt stor.</li>
+              <li>Første trinn: 2500 · ln(1000/600) ≈ 1277 m/s. Etter at tanken er sluppet, er massen 500 kg, og andre trinn gir 2500 · ln(500/100) ≈ 4024 m/s. Til sammen omtrent 5300 m/s, mot 4024 m/s med ett trinn. Raketten slipper å akselerere den tomme tanken. Ekte raketter trenger omtrent 9–10 km/s for å komme i bane, og det er nesten umulig med ett trinn.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter bevegelsesmengde og impuls. Steg 1 viser at bevaring av bevegelsesmengde gjelder i hvert lille steg, og steg 2 er et eksempel på bevegelse der akselerasjonen ikke er konstant. Se også simuleringen <a href="../sim/rekyl.html">Rekyl</a>. Elever som har lyst, kan sammenligne med en vannrakett.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
+
+</body>
+</html>

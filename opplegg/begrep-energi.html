@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: arbeid og energi – lektorbo.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 1 med åtte flervalgsspørsmål om arbeid, kinetisk og potensiell energi, bevaring av energi og effekt. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Mekanisk energi</p>
+        <h1>Begrepstest: arbeid og energi</h1>
+        <p class="ingress">Åtte spørsmål om arbeid og energi. Tenk først, svar etterpå, og les forklaringen selv om du svarte riktig.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="4">
+            <p>To like klosser glir uten friksjon ned to bakker med samme høyde. Den ene bakken er bratt, den andre slak. Hvilken kloss har størst fart nederst?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Den kommer kanskje først, men ikke med større fart.">Klossen i den bratte bakken.</li>
+              <li data-hvorfor="Massen forkortes bort: mgh = ½mv².">Det avhenger av massen til klossene.</li>
+              <li>Klossen i den slake bakken.</li>
+              <li>Like stor fart.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Uten friksjon er mekanisk energi bevart: mgh = ½mv², så v = √(2gh). Farten nederst avhenger bare av høyden, ikke av hvor bratt bakken er eller av massen.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Du bærer en tung sekk bortover et vannrett gulv med konstant fart. Hvor mye arbeid gjør kraften fra deg på sekken?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Arbeid krever en kraft langs bevegelsen.">Mye, fordi sekken er tung.</li>
+              <li>Like mye som tyngden av sekken ganger strekningen.</li>
+              <li>Null.</li>
+              <li>Det kommer an på farten.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Kraften fra deg peker rett opp, og bevegelsen er vannrett. Arbeidet er W = Fs cos 90° = 0. Sekken får verken mer kinetisk eller potensiell energi. Du blir likevel sliten, fordi musklene bruker energi for å holde kraften.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>En bil dobler farten fra 50 km/h til 100 km/h. Hva skjer med den kinetiske energien?</p>
+            <ol class="bt-valg">
+              <li>Den er uendret, fordi massen er den samme.</li>
+              <li data-hvorfor="Ek er proporsjonal med v², ikke med v.">Den dobles.</li>
+              <li>Den øker med 50 %.</li>
+              <li>Den blir fire ganger så stor.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Ek = ½mv². Dobbel fart gir fire ganger så stor kinetisk energi. Derfor blir bremselengden omtrent fire ganger så lang med samme bremsekraft.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En ball faller fra 2,0 m og spretter opp til 1,4 m. Hvor ble det av energien som mangler?</p>
+            <ol class="bt-valg">
+              <li>Den ble til varme og lyd, mest i støtet med gulvet.</li>
+              <li>Den ble til potensiell energi i gulvet.</li>
+              <li data-hvorfor="Energi kan ikke forsvinne, bare gå over til andre former.">Den forsvant i støtet.</li>
+              <li>Tyngdekraften tok den.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Energien er bevart, men 30 % av den mekaniske energien gikk over til indre energi (varme) i ballen og gulvet, og litt til lyd og luftmotstand. Det er ikke lett å få den tilbake som mekanisk energi, så energikvaliteten har blitt lavere.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>En pendel svinger fram og tilbake uten luftmotstand. Hvor er farten størst?</p>
+            <ol class="bt-valg">
+              <li>Farten er den samme hele tiden.</li>
+              <li>I det laveste punktet.</li>
+              <li data-hvorfor="Der snur pendelen, og farten er null.">I de ytterste punktene.</li>
+              <li>Halvveis mellom ytterpunktet og bunnen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Den mekaniske energien er konstant. I det laveste punktet er den potensielle energien minst, så den kinetiske energien og farten er størst.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>To elever går opp den samme trappa. Elev A bruker 10 s, og elev B bruker 20 s. De har samme masse. Hva er riktig?</p>
+            <ol class="bt-valg">
+              <li>B gjør mest arbeid fordi B bruker lengst tid.</li>
+              <li data-hvorfor="Effekt er arbeid per tid.">De har samme effekt.</li>
+              <li data-hvorfor="Arbeidet mgh er det samme.">A gjør dobbelt så mye arbeid.</li>
+              <li>De gjør like mye arbeid, men A har dobbelt så stor effekt.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Arbeidet mot tyngden er mgh for begge. Effekten er P = W/t, så A, som bruker halve tiden, har dobbelt så stor effekt.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Du løfter en bok 1 m opp med konstant fart. Hva er det totale arbeidet på boka?</p>
+            <ol class="bt-valg">
+              <li>−mgh.</li>
+              <li data-hvorfor="Det er arbeidet du gjør. Tyngden gjør like mye negativt arbeid.">mgh, fordi du løfter mot tyngden.</li>
+              <li>Null.</li>
+              <li>2mgh.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Du gjør arbeidet +mgh, og tyngden gjør −mgh. Det totale arbeidet er null, og det stemmer med at den kinetiske energien ikke endres (arbeid–energi-setningen). Den potensielle energien øker med mgh.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En kloss glir ned et skråplan med friksjon og konstant fart. Hva skjer med den mekaniske energien?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Farten er konstant.">Den øker, fordi klossen akselereres av tyngden.</li>
+              <li data-hvorfor="Høyden og dermed den potensielle energien minker.">Den er konstant, fordi farten er konstant.</li>
+              <li>Den minker, og like mye blir til varme.</li>
+              <li>Den kinetiske energien blir til potensiell energi.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Den kinetiske energien er konstant, men den potensielle energien minker. All potensiell energi som klossen mister, blir til varme på grunn av friksjonen. Friksjonsarbeidet er like stort som mgh.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også <a href="../sim/to-baner.html">To baner med samme fallhøyde</a>, <a href="../sim/berg-og-dal.html">Berg-og-dal-bane</a> og <a href="../sim/trappelop.html">Trappeløp</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

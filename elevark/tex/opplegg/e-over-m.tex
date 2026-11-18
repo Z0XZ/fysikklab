@@ -1,0 +1,68 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/e-over-m.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Forsøk: $e/m$ for elektronet}{https://lektorbo.no/opplegg/e-over-m.html}{Opplegget på nett}
+
+Et klassisk forsøk: Elektroner går i en lysende sirkel inne i en glasskule. Fra spenningen, strømmen i spolene og diameteren på sirkelen kan dere bestemme forholdet mellom ladningen og massen til elektronet. Har ikke skolen et fintrådrør, kan dere gjøre forsøket i simuleringen\footnote{\url{lektorbo.no/sim/e-over-m.html}}.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bestemme $e/m$ for elektronet.
+\item Bruke at elektronene får energien eU, og at den magnetiske kraften er sentripetalkraften.
+\item Vurdere usikkerheten og feilkildene i målingene.
+\end{itemize}
+
+\section*{Teori}
+
+Elektronene starter nesten i ro og akselereres gjennom spenningen $U$: $eU = \tfrac{1}{2}mv^{2}$. I magnetfeltet går de i en sirkel fordi den magnetiske kraften er sentripetalkraften: $evB = mv^{2}/r$. Når vi fjerner $v$ fra de to likningene, får vi
+
+$e/m$ = 2U / $(B^{2}r^{2})$
+
+Mellom to Helmholtz-spoler med $N$ vindinger og radius $R$ er feltet nesten homogent: $B = (4/5)^{3/2} \cdot μ_{0}NI/R$.
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Fintrådrør (glasskule med elektronkanon og litt gass) på stativ med Helmholtz-spoler.
+\item Spenningskilde for glødetråden (ofte 6,3~V) og for akselerasjonsspenningen (opptil 300~V).
+\item Strømforsyning for spolene (opptil 2–3~A) og amperemeter.
+\item Et mørkt rom, eller en mørk duk over apparatet.
+\end{itemize}
+
+Sjekk $N$ og $R$ for deres apparat. De står vanligvis på spolene eller i bruksanvisningen. Verktøyet under bruker 130 vindinger og 15,0~cm hvis dere ikke endrer tallene.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Læreren kobler opp apparatet etter bruksanvisningen. Skru på glødespenningen og vent et minutt.
+\item Still akselerasjonsspenningen på for eksempel 250~V. Øk strømmen i spolene til strålen går i en hel sirkel. Går strålen i en spiral, kan røret dreies litt slik at strålen står vinkelrett på feltet.
+\item Les av diameteren der strålen treffer målestaven, eller mål den med linjal utenfor kula. Se rett inn mot strålen for å unngå parallaksefeil.
+\item Varier strømmen med fast spenning, og varier spenningen med fast strøm. Skriv målingene inn i tabellen.
+\end{enumerate}
+
+\section*{Sikkerhet}
+
+Akselerasjonsspenningen er farlig høy. Bare læreren kobler opp og om. Elevene stiller bare på knappene. Glasskula er tynn og dyr, så den må ikke få slag. Skru ned spenningene før dere slår av.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvordan endres diameteren hvis dere dobler strømmen i spolene? Hva om dere dobler spenningen?
+\svar
+\oppgave \fase{test}{Regn}Regn ut magnetfeltet mellom spolene når $I = 1{,}40\,\mathrm{A}$. Hvor mange ganger sterkere er det enn jordas magnetfelt, som er omtrent 50~µT?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene og fyll inn tabellen. Regn ut $e/m$ for én av målingene for hånd, og sjekk med verktøyet.
+\svar
+\oppgave \fase{test}{Regn}Sammenlign gjennomsnittet med $e/m$ fra stigningstallet. Hvor stort er avviket fra den kjente verdien?
+\svar
+\oppgave \fase{forklar}{Vurder}Diameteren står i andre potens i formelen. Hvor mange prosent feil i $e/m$ gir 1~mm feil i en diameter på 10~cm? Hvilke andre feilkilder er det?
+\svar
+\oppgave \fase{forklar}{Forklar}I eksemplet er alle verdiene for $e/m$ litt for små. Hva tyder det på? Hvorfor hjelper det ikke å gjøre flere målinger?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Strålen lyser fordi elektronene støter mot gassatomer. Hva betyr støtene for farten til elektronene, og for radien? Hvorfor er det likevel bare litt gass i røret?
+\svar
+\end{oppgaveliste}
+
+\end{document}

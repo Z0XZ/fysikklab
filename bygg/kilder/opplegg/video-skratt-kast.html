@@ -1,0 +1,105 @@
+tittel: Videoanalyse av skrått kast – lektorbo.no
+beskrivelse: Forsøk i Fysikk 2: Film en ball som kastes skrått, analyser bevegelsen i x- og y-retning hver for seg i Tracker, og finn startfarten, kastvinkelen og g.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Bevegelse og krefter i to dimensjoner
+script: videoanalyse.js
+meny: undervisningsopplegg.html
+---
+<h1>Videoanalyse av skrått kast</h1>
+<p class="ingress">Et skrått kast er to bevegelser på én gang: jevn fart bortover og fritt fall opp og ned. Film et kast, og la Tracker gi dere x og y for hvert bilde. Stemmer det at vₓ er konstant og at a<sub>y</sub> = −g?</p>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Analysere et skrått kast som to uavhengige bevegelser i x- og y-retning.</li>
+    <li>Vise at farten i x-retning er konstant, og at akselerasjonen i y-retning er g nedover.</li>
+    <li>Bestemme startfarten og kastvinkelen, og forutsi hvor ballen lander.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En liten, tung ball, for eksempel en tennisball eller sprettball.</li>
+    <li>Mobil eller kamera på stativ, helst med 60 bilder per sekund.</li>
+    <li>En meterstokk som målestokk, og helst en vegg med ensfarget bakgrunn.</li>
+    <li>Tracker (gratis fra physlets.org/tracker).</li>
+  </ul>
+
+  <h2>Framgangsmåte</h2>
+  <ol>
+    <li>Sett kameraet på stativ 3–4 m fra veggen, slik at hele banen kommer med. Kameraet skal stå vinkelrett på veggen, med linsa omtrent midt i banen.</li>
+    <li>Legg meterstokken langs veggen i samme avstand fra kameraet som kastet. Den er målestokken i Tracker.</li>
+    <li>Kast ballen skrått oppover langs veggen, ikke mot eller fra kameraet. Et lett kast på 1,5–2 m er nok. Film flere kast og velg det beste.</li>
+    <li>I Tracker: Sett kalibreringsstaven på meterstokken og plasser origo der ballen slippes, med y oppover. Klikk på midten av ballen i hvert bilde fra den slipper hånden til like før den lander.</li>
+    <li>Kopier kolonnene t, x og y, og lim dem inn i verktøyet under. Analyser x og y hver for seg.</li>
+  </ol>
+  <p>Uten egen video kan dere bruke eksempeldataene, eller klikke dere gjennom en virtuell video av et kast i <a href="../sim/videoanalyse.html">Videoanalyse uten video</a>. Velg «Ball som kastes skrått».</p>
+</div>
+
+<figure id="va" class="sim egne-data" data-mal="[[&quot;kast-vx&quot;, &quot;Sett inn som vₓ&quot;, &quot;v&quot;], [&quot;kast-vy&quot;, &quot;Sett inn som v₀y&quot;, &quot;v&quot;], [&quot;kast-ay&quot;, &quot;Sett inn som aᵧ&quot;, &quot;a&quot;]]">
+  <h2>Analyse av data fra Tracker</h2>
+  <p class="del-inngang">Lim inn t, x og y fra Tracker. Velg kolonnen x og modellen rett linje for å finne vₓ. Velg så kolonnen y og andregradsfunksjon for å finne v₀y og aᵧ.</p>
+  <div class="sim-styring mange uten-topp">
+    <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;x&#9;y&#10;0,000&#9;0,000&#9;0,850&#10;0,033&#9;0,074&#9;0,939"></textarea></label>
+    <label for="va-eksempel-valg">Eksempeldata<select id="va-eksempel-valg"><option value="kast">Ball som kastes skrått (30 bilder per sekund)</option></select></label>
+    <div class="sim-knapper"><button id="va-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button></div>
+  </div>
+  <canvas id="va-graf" class="statisk forhold-lav" role="img" aria-label="Målepunktene mot tiden med den tilpassede kurven."></canvas>
+  <div class="sim-styring mange">
+    <label for="va-kolonne" id="rad-kolonne" hidden>Kolonne<select id="va-kolonne"></select></label>
+    <label for="va-modell">Modell<select id="va-modell"><option value="1">Rett linje (konstant fart)</option><option value="2" selected>Andregradsfunksjon (konstant akselerasjon)</option></select></label>
+    <label for="va-fra">Fra t (s)<input id="va-fra" type="text" inputmode="decimal"></label>
+    <label for="va-til">Til t (s)<input id="va-til" type="text" inputmode="decimal"></label>
+    <label class="avkrysning" for="va-fart"><input id="va-fart" type="checkbox"> Vis fart i stedet for posisjon</label>
+  </div>
+  <dl class="sim-tall">
+    <div><dt>tilpasset funksjon</dt><dd id="va-funksjon" class="bryt"></dd></div>
+    <div><dt>fart</dt><dd id="va-v"></dd></div>
+    <div><dt>akselerasjon a = 2 · (tallet foran t²)</dt><dd id="va-a"></dd></div>
+    <div><dt>R²</dt><dd id="va-r2"></dd></div>
+    <div><dt>punkter i tidsrommet</dt><dd id="va-n"></dd></div>
+  </dl>
+  <div class="sim-styring mange"><p class="sim-hint uten-marg" id="va-knapper"></p></div>
+  <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje fra Tracker blir hoppet over. «Sett inn som v₀y» bruker farten ved t = 0, så origo i tid må være der ballen slipper. Eksempeldataene er laget med en modell uten luftmotstand og litt tilfeldig «klikkestøy» på 2 mm. De er ikke ekte målinger.</figcaption>
+</figure>
+
+<figure class="sim egne-data">
+  <h2>Startfart og kastvinkel</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="kast-vx">vₓ (m/s)<input id="kast-vx" type="text" inputmode="decimal"></label>
+    <label for="kast-vy">v₀y (m/s)<input id="kast-vy" type="text" inputmode="decimal"></label>
+    <label for="kast-ay">aᵧ (m/s²)<input id="kast-ay" type="text" inputmode="decimal"></label>
+  </div>
+  <dl class="sim-tall tre">
+    <div><dt>startfart v₀ = √(vₓ² + v₀y²)</dt><dd id="kast-v0"></dd></div>
+    <div><dt>kastvinkel over vannrett</dt><dd id="kast-vinkel"></dd></div>
+    <div><dt>g fra aᵧ</dt><dd id="kast-g"></dd></div>
+  </dl>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Skisser hvordan x(t) og y(t) ser ut for et skrått kast. Hvordan ser vₓ(t) og v<sub>y</sub>(t) ut?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Film et kast og analyser det i Tracker, eller bruk eksempeldataene. Er x(t) en rett linje? Hva er vₓ?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Tilpass en andregradsfunksjon til y(t). Hva blir aᵧ, og hvor godt stemmer det med g = 9,81 m/s²? Kryss av for «Vis fart» og se på v<sub>y</sub>(t).</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Bruk vₓ og v₀y til å finne startfarten og kastvinkelen. Når er ballen på toppen, og hvor høyt over utgangspunktet kommer den? Sjekk med dataene.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er vₓ konstant gjennom hele kastet? Hvordan ville x(t) sett ut for en lett ball, for eksempel en ballong, med mye luftmotstand?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Ballen er nærmere kameraet enn meterstokken hvis dere ikke kaster langs veggen. Blir målt fart og akselerasjon da for store eller for små? Hvilke andre feilkilder er det?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Bruk startfarten, kastvinkelen og høyden der ballen slipper, til å regne ut hvor langt bortover ballen kommer før den treffer gulvet. Sammenlign med videoen. I eksemplet slipper ballen 0,85 m over gulvet.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>x(t) er en rett linje som stiger, og vₓ(t) er vannrett. y(t) er en parabel som vender ned, og v<sub>y</sub>(t) er en rett linje som synker med stigningstall −g. Den krysser null på toppen av banen.</li>
+      <li>Ja. Eksemplet gir vₓ ≈ 2,22 m/s med R² = 0,99998.</li>
+      <li>Eksemplet gir aᵧ ≈ −9,81 m/s², som stemmer godt. Ekte målinger med en tennisball gir ofte 9,5–10 m/s². v<sub>y</sub>(t) blir en rett linje med stigningstall −g, men punktene spriker mer enn posisjonene fordi farten regnes ut fra små forskjeller.</li>
+      <li>v₀y ≈ 2,84 m/s gir v₀ = √(2,22² + 2,84²) ≈ 3,60 m/s og vinkelen tan⁻¹(2,84/2,22) ≈ 52°. Toppen er der v<sub>y</sub> = 0: t = v₀y/g ≈ 0,29 s. Høyden over utgangspunktet er v₀y²/(2g) ≈ 0,41 m, altså 1,26 m over gulvet i eksemplet.</li>
+      <li>Når vi ser bort fra luftmotstand, er tyngden den eneste kraften, og den virker loddrett. Det er ingen kraft i x-retning, så akselerasjonen er null og vₓ er konstant. Med mye luftmotstand bremses ballen også bortover, så x(t) krummer og flater ut.</li>
+      <li>Det som er nærmere kameraet, ser større ut. Da beveger ballen seg flere piksler per meter enn meterstokken viser, og alle lengder, farter og akselerasjoner blir for store. Andre feilkilder: Kameraet står ikke vinkelrett på planet, linsa forvrenger i kantene, ballen er uskarp i hvert bilde, og klikkene treffer ikke midten av ballen. Høyere bildefrekvens og kortere lukkertid hjelper.</li>
+      <li>Ballen lander når y = 0 (eller ballens radius over gulvet): 0 = 0,85 + 2,84t − 4,905t². Det gir t ≈ 0,79 s og x = vₓt ≈ 2,22 · 0,79 ≈ 1,75 m. Den siste målingen i eksemplet er x = 1,71 m ved t = 0,77 s, like før ballen treffer gulvet.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 60–90 minutter med filming, eller 45 minutter med eksempeldataene. Passer når skrått kast er gjennomgått. Se også simuleringen <a href="../sim/skratt-kast.html">Skrått kast</a> og programmeringsøvingen <a href="../programmering/python-horisontalt-kast.html">Horisontalt kast med Eulers metode</a>.</p>
+  </details>
+</section>
