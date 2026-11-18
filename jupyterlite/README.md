@@ -6,6 +6,14 @@ Notatbøkene ligger i `innhold/`. Alt som legges der, blir tilgjengelig i Jupyte
 
     ../jupyter/notebooks/index.html?path=sirkelbevegelse.ipynb
 
+## Lage en notatbok fra en programmeringsside
+
+Sider med kjørbare Python-bokser kan gjøres om til notatbøker automatisk. Tekstene blir markdown, kodeboksene blir kodeceller, og datafilene kopieres med:
+
+    python3 jupyterlite/lag_notatbok.py programmering/python-vognstot.html
+
+Legg så til `data-notatbok="../jupyter/notebooks/index.html?path=vognstot.ipynb"` på `py-side`-elementet på siden, så får panelet en knapp til notatboken. `sirkelbevegelse.ipynb` er laget for hånd og skal ikke lages på nytt med skriptet.
+
 ## Bygge på nytt
 
 Etter at du har endret eller lagt til notatbøker:

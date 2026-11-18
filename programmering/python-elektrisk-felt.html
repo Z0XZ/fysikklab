@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrisk felt fra punktladninger</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Regn ut det elektriske feltet fra flere punktladninger med superposisjon, finn punktet der feltet er null, og tegn feltlinjer.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Elektriske felt og krefter</p>
+        <h1>Elektrisk felt fra punktladninger</h1>
+        <p class="ingress">Feltet fra én punktladning er lett å regne ut. Med flere ladninger må vi legge sammen feltvektorene, og det blir fort mye regning. Det klarer Python fint. Til slutt regner vi ut feltet i tusenvis av punkter og tegner feltlinjer.</p>
+
+        <div class="tekst opplegg py-side" data-filnavn="elektrisk_felt.py">
+          <h2>Steg 1: Feltet i ett punkt</h2>
+          <p>Feltet fra en punktladning q har styrken E = k|q|/r² og peker bort fra en positiv ladning og mot en negativ. Funksjonen <code>felt</code> gir komponentene Ex og Ey. Feltet fra flere ladninger er summen av feltene fra hver ladning. Det kalles superposisjon.</p>
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+k = 8.99e9   # N m²/C²
+
+def felt(q, xq, yq, x, y):
+    """Elektrisk felt (Ex, Ey) i punktet (x, y) fra ladningen q i punktet (xq, yq)."""
+    dx, dy = x - xq, y - yq
+    r = np.sqrt(dx**2 + dy**2)
+    E = k * q / r**2            # med fortegn: positiv peker bort fra ladningen
+    return E * dx / r, E * dy / r
+
+# To ladninger på x-aksen
+ladninger = [(4.0e-9, 0.0, 0.0),    # (q i C, x i m, y i m)
+             (1.0e-9, 0.30, 0.0)]
+
+def samlet_felt(x, y):
+    Ex, Ey = 0.0, 0.0
+    for q, xq, yq in ladninger:   # superposisjon: legg sammen feltene
+        ex, ey = felt(q, xq, yq, x, y)
+        Ex, Ey = Ex + ex, Ey + ey
+    return Ex, Ey
+
+Ex, Ey = samlet_felt(0.10, 0.10)
+print(f"I punktet (0,10 m, 0,10 m): Ex = {Ex:.0f} N/C, Ey = {Ey:.0f} N/C, E = {np.hypot(Ex, Ey):.0f} N/C")
+print(f"Retning: {np.degrees(np.arctan2(Ey, Ex)):.0f} grader over x-aksen")</code></pre></div>
+
+          <h2>Steg 2: Hvor er feltet null?</h2>
+          <p>Vi regner ut feltet i 500 punkter på x-aksen mellom ladningene på en gang, og finner punktet der Ex er nærmest null. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code># Feltet langs x-aksen mellom ladningene
+x = np.linspace(0.02, 0.28, 500)
+Ex, Ey = samlet_felt(x, 0 * x)
+
+i = np.argmin(np.abs(Ex))
+print(f"Feltet er null omtrent ved x = {x[i]:.3f} m")
+
+plt.plot(x, Ex)
+plt.axhline(0, color="gray", linewidth=0.8)
+plt.xlabel("x / m")
+plt.ylabel("$E_x$ / (N/C)")
+plt.ylim(-5000, 5000)
+plt.grid(True)
+plt.show()</code></pre></div>
+
+          <h2>Steg 3: Feltlinjer</h2>
+          <p>Vi lager et rutenett med 200 × 200 punkter og regner ut feltet i alle punktene. <code>plt.streamplot</code> tegner linjer som følger feltretningen. Fargen viser feltstyrken på en logaritmisk skala.</p>
+        <div class="py-boks" data-navn="Steg 3"><pre class="kode"><code># Feltlinjer: regn ut feltet i et rutenett av punkter og tegn med streamplot
+ladninger = [(1.0e-9, -0.10, 0.0),
+             (-1.0e-9, 0.10, 0.0)]    # en dipol: like store ladninger med motsatt fortegn
+
+X, Y = np.meshgrid(np.linspace(-0.3, 0.3, 200), np.linspace(-0.3, 0.3, 200))
+Ex, Ey = samlet_felt(X, Y)
+E = np.hypot(Ex, Ey)
+
+plt.streamplot(X, Y, Ex, Ey, density=1.4, color=np.log10(E), cmap="viridis")
+for q, xq, yq in ladninger:
+    plt.plot(xq, yq, "o", markersize=12, color="tab:red" if q &gt; 0 else "tab:blue")
+plt.gca().set_aspect("equal")
+plt.xlabel("x / m")
+plt.ylabel("y / m")
+plt.title("Feltlinjer for en dipol")
+plt.show()</code></pre></div>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-elektrisk-felt.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Regn</span><div><p>Regn ut feltet i punktet (0,10 m, 0,10 m) i steg 1 for hånd: Finn feltet fra hver ladning, del det opp i komponenter og legg sammen. Sjekk med programmet.</p></div></li>
+          <li><span class="fase tipp">Gjett</span><div><p>Ladningene i steg 1 er +4,0 nC og +1,0 nC. Er punktet der feltet er null nærmest den store eller den lille ladningen? Kjør steg 2, og vis med regning at svaret stemmer.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Endre den andre ladningen til −1,0 nC. Finnes det et punkt mellom ladningene der feltet er null? Endre x-verdiene i steg 2 slik at du leter fra 0,32 m til 1,0 m. Hvor er feltet null nå?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på feltlinjene for dipolen i steg 3. Hvor er feltet sterkest? Hvorfor kan to feltlinjer aldri krysse hverandre?</p></div></li>
+          <li><span class="fase test">Endre</span><div><p>Gjør begge ladningene i steg 3 positive. Hvordan ser feltlinjene ut nå? Hvor er feltet null?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Et elektron ligger i ro i punktet (0,10 m, 0,10 m) med ladningene fra steg 1. Hvor stor kraft virker på det, og i hvilken retning? Legg gjerne til en tredje ladning og se hvordan feltlinjene endrer seg.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Fra +4,0 nC i origo: r = 0,141 m og E = 1798 N/C, rettet 45° opp mot høyre, altså (1271, 1271) N/C. Fra +1,0 nC i (0,30 m, 0): r = 0,224 m og E = 180 N/C, rettet opp mot venstre, altså (−161, 80) N/C. Summen er (1111, 1352) N/C, E = 1749 N/C, 51° over x-aksen.</li>
+              <li>Nærmest den lille ladningen. Feltene er like store når 4/x² = 1/(0,30 − x)², altså 2(0,30 − x) = x og x = 0,20 m. Programmet gir 0,200 m.</li>
+              <li>Mellom ladningene peker begge feltene samme vei, så feltet kan ikke være null der. Nullpunktet ligger utenfor, på siden til den lille ladningen: 4/x² = 1/(x − 0,30)² gir x = 0,60 m.</li>
+              <li>Feltet er sterkest nær ladningene og mellom dem. I hvert punkt har feltet bare én retning, så det kan bare gå én feltlinje gjennom punktet.</li>
+              <li>Feltlinjene går ut fra begge ladningene og bøyer bort fra hverandre. Feltet er null midt mellom ladningene.</li>
+              <li>F = eE = 1,602 · 10⁻¹⁹ C · 1749 N/C = 2,80 · 10⁻¹⁶ N, rettet motsatt av feltet, altså ned mot venstre (231° fra x-aksen).</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer etter elektrisk felt fra punktladninger, sammen med simuleringen <a href="../sim/elektrisk-felt.html">Elektrisk felt</a>. Steg 3 egner seg godt til å diskutere feltlinjer på tavla.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
+
+</body>
+</html>

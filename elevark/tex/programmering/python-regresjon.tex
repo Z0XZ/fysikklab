@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-regresjon.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 og 2 · Tenke og gjøre fysikk}{Regresjon og linearisering i Python}{https://lektorbo.no/programmering/python-regresjon.html}{Koden på nett}
+
+En rett linje er lett å tilpasse og lett å tolke. Med riktige akser kan mange sammenhenger i fysikken gjøres om til en rett linje. Her bruker vi \texttt{np.polyfit} til å finne $g$ fra en pendel, til å finne en ukjent potens, og til å sjekke Keplers tredje lov med ekte data for planetene.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvorfor plotter vi $T^{2}$ mot $L$ og ikke $T$ mot $L$? Hva skulle konstantleddet ideelt sett vært?
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 1. Er 9,81~m/s² innenfor usikkerheten? Regn også ut $g$ fra hvert enkelt målepunkt med $g = 4π^{2}L/T^{2}$. Hva er fordelen med å bruke en linje?
+\svar
+\oppgave \fase{test}{Undersøk}Bruk bare de tre første målingene. Hva skjer med $g$ og usikkerheten? Hvorfor?
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 2. Hvilken potens $n$ finner du? Hvilken verdi av $C$ forventer du fra formelen $T = 2π\sqrt{L/g}$?
+\svar
+\oppgave \fase{test}{Kjør}Kjør steg 3. Hvilken potens finner du? Hva sier $T^{2}/a^{3}$ for de ulike planetene?
+\svar
+\oppgave \fase{forklar}{Regn}Gjør om $a$ og $T$ til SI-enheter ($1\,\mathrm{AU} = 1{,}496 \cdot 10^{11}\,\mathrm{m}$, $1\text{ år} = 3{,}156 \cdot 10^{7}\,\mathrm{s}$) og bruk $GM = 4π^{2}a^{3}/T^{2}$ til å finne massen til sola. $G = 6{,}674 \cdot 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Mål svingetiden til en pendel for fem eller seks lengder, sett inn deres egne målinger i steg 1, og finn $g$ med usikkerhet. Hvilke feilkilder kan gi et konstantledd som ikke er null?
+\svar
+\end{oppgaveliste}
+
+\end{document}

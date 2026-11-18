@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-satellittbane.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Sirkelbevegelse}{Satellittbane med Eulers metode}{https://lektorbo.no/programmering/python-satellittbane.html}{Koden på nett}
+
+Den internasjonale romstasjonen går rundt jorda omtrent 420~km over bakken. Hvor fort må den gå, og hvor lang tid bruker den på ett omløp? Her simulerer vi banen med gravitasjonsloven og Eulers metode, og ser hva som skjer når farten blir for stor for en sirkelbane.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Kjør}Kjør steg 1. Hva er farten og omløpstiden til ISS? Sjekk omløpstiden med $T = 2πr/v$.
+\svar
+\oppgave \fase{gjett}{Gjett}Hvordan tror du banen ser ut hvis startfarten er 10~\% større enn sirkelfarten? Kjør steg 2 og sjekk. Hvor langt fra jorda kommer satellitten?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor går satellitten saktere når den er langt fra jorda? Bruk energibevaring.
+\svar
+\oppgave \fase{test}{Undersøk}En geostasjonær satellitt bruker 23 timer og 56 minutter på ett omløp. Prøv deg fram med høyden $h$ i steg 1 til du får riktig omløpstid. Husk å øke t\_slutt. Regn deretter ut høyden med $T^{2} = 4π^{2}r^{3}/GM$.
+\svar
+\oppgave \fase{test}{Undersøk}Unnslipningsfarten er $\sqrt{2} \approx 1{,}41$ ganger sirkelfarten. Endre steg 2 til \texttt{for faktor in [1.3, 1.5]:} og \texttt{bane(faktor * v\_sirkel, timer=24)}. Hvilken av satellittene kommer tilbake?
+\svar
+\oppgave \fase{forklar}{Feilsøk}Bytt rekkefølgen i løkka i steg 2, slik at posisjonen oppdateres før farten (vanlig Euler). Hvordan endrer energien seg nå? Hva skjer med sirkelbanen?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Sammenlign med ekte data: Skriptene i Fysikk i Python med ekte data\footnote{\url{lektorbo.no/programmering/python-ekte-data.html}} henter posisjonen til ISS. Hvor godt stemmer farten og omløpstiden?
+\svar
+\end{oppgaveliste}
+
+\end{document}

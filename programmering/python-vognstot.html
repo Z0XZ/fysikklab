@@ -6,6 +6,7 @@
   <title>Støt mellom vogner i Python</title>
   <meta name="description" content="Programmeringsøving i Fysikk 1: Les inn fartsmålinger fra et vognstøt, regn ut bevegelsesmengde og kinetisk energi, og vurder om bevegelsesmengden er bevart.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,13 +33,13 @@
         <h1>Støt mellom vogner i Python</h1>
         <p class="ingress">En rød vogn på 0,50 kg kjører inn i en blå vogn på 0,25 kg som står i ro. Farten til begge vognene er logget 40 ganger i sekundet. Bruk Python til å finne ut om bevegelsesmengden og den kinetiske energien er bevart.</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-notatbok="../jupyter/notebooks/index.html?path=vognstot.ipynb" data-filnavn="vognstot.py" data-filer="../data/vognstot_smartcart.csv">
           <h2>Data</h2>
           <p><a class="knapp lys" href="../data/vognstot_smartcart.csv" download>Last ned vognstot_smartcart.csv</a></p>
           <p>Fila har tre kolonner: tid i sekunder, farten til den røde vogna og farten til den blå vogna i m/s. Den har desimalpunktum og komma som skilletegn. Dataene er laget med en modell av et støt med magnetstøtfangere, litt friksjon og målestøy, slik at de ligner målinger fra Smart Cart. De er ikke ekte målinger. Bytt gjerne ut fila med deres egne målinger.</p>
 
           <h2>Steg 1: Les inn og plott</h2>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
 import matplotlib.pyplot as plt
 
 data = np.loadtxt("vognstot_smartcart.csv", delimiter=",", skiprows=1)
@@ -55,10 +56,10 @@ plt.xlabel("t / s")
 plt.ylabel("v / (m/s)")
 plt.legend()
 plt.grid()
-plt.show()</code></pre>
+plt.show()</code></pre></div>
 
           <h2>Steg 2: Bevegelsesmengde og kinetisk energi</h2>
-        <pre class="kode"><code>p_rod = m_rod * v_rod
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code>p_rod = m_rod * v_rod
 p_bla = m_bla * v_bla
 p_sum = p_rod + p_bla
 
@@ -71,22 +72,22 @@ plt.xlabel("t / s")
 plt.ylabel("p / (kg m/s)")
 plt.legend()
 plt.grid()
-plt.show()</code></pre>
+plt.show()</code></pre></div>
 
           <h2>Steg 3: Gjennomsnitt før og etter støtet</h2>
-        <pre class="kode"><code># Velg tidsrom der farten er omtrent konstant. Se på grafen og juster grensene.
-for = (t &gt;= 0.5) &amp; (t &lt; 0.9)
+        <div class="py-boks" data-navn="Steg 3"><pre class="kode"><code># Velg tidsrom der farten er omtrent konstant. Se på grafen og juster grensene.
+foer = (t &gt;= 0.5) &amp; (t &lt; 0.9)
 etter = (t &gt;= 1.2) &amp; (t &lt; 1.6)
 
-p_for = np.mean(p_sum[for])
+p_for = np.mean(p_sum[foer])
 p_etter = np.mean(p_sum[etter])
-ek_for = np.mean(ek_sum[for])
+ek_for = np.mean(ek_sum[foer])
 ek_etter = np.mean(ek_sum[etter])
 
 print(f"p før:   {p_for:.4f} kg m/s")
 print(f"p etter: {p_etter:.4f} kg m/s   ({p_etter / p_for * 100:.1f} %)")
 print(f"Ek før:   {ek_for:.4f} J")
-print(f"Ek etter: {ek_etter:.4f} J   ({ek_etter / ek_for * 100:.1f} %)")</code></pre>
+print(f"Ek etter: {ek_etter:.4f} J   ({ek_etter / ek_for * 100:.1f} %)")</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -123,6 +124,10 @@ print(f"Ek etter: {ek_etter:.4f} J   ({ek_etter / ek_for * 100:.1f} %)")</code><
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Satellittbane med Eulers metode</title>
+  <meta name="description" content="Programmeringsøving i Fysikk 2: Simuler banen til en satellitt rundt jorda med vektorer i numpy, finn omløpstiden, og se hva som skjer når startfarten øker.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html" aria-current="page">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../programmering.html">Programmering</a> / Fysikk 2 · Sirkelbevegelse</p>
+        <h1>Satellittbane med Eulers metode</h1>
+        <p class="ingress">Den internasjonale romstasjonen går rundt jorda omtrent 420 km over bakken. Hvor fort må den gå, og hvor lang tid bruker den på ett omløp? Her simulerer vi banen med gravitasjonsloven og Eulers metode, og ser hva som skjer når farten blir for stor for en sirkelbane.</p>
+
+        <div class="tekst opplegg py-side" data-filnavn="satellittbane.py">
+          <h2>Steg 1: Sirkelbane</h2>
+          <p>Gravitasjonskraften på satellitten er F = GMm/r², rettet mot jordas sentrum. Som vektor blir akselerasjonen a = −GM/r³ · s, der s er posisjonsvektoren fra jordas sentrum. I en sirkelbane er gravitasjonen sentripetalkraften, så GM/r² = v²/r, og farten er v = √(GM/r).</p>
+          <p>I løkka oppdaterer vi farten før posisjonen, som i <a href="python-horisontalt-kast.html">Horisontalt kast</a>. Programmet finner omløpstiden ved å se når satellitten krysser x-aksen nedenfra.</p>
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
+import matplotlib.pyplot as plt
+
+GM = 3.986e14     # m³/s², G ganger jordas masse
+R_jord = 6.371e6  # m
+h = 420e3         # m, omtrent høyden til ISS
+
+r0 = R_jord + h
+v_sirkel = np.sqrt(GM / r0)   # farten som gir en sirkelbane
+
+s = np.array([r0, 0.0])         # startposisjon i m
+v = np.array([0.0, v_sirkel])   # startfart i m/s, vinkelrett på radien
+dt = 1.0                        # s
+t = 0.0
+t_slutt = 3 * 60 * 60           # simuler i 3 timer
+
+xs, ys = [s[0]], [s[1]]
+omlop = None
+while t &lt; t_slutt:
+    r = np.linalg.norm(s)
+    a = -GM / r**3 * s          # gravitasjonen peker mot jordas sentrum
+    v = v + a * dt
+    s_ny = s + v * dt
+    if omlop is None and s[1] &lt; 0 &lt;= s_ny[1]:   # krysser x-aksen nedenfra: ett omløp
+        omlop = t + dt
+    s = s_ny
+    t = t + dt
+    xs.append(s[0])
+    ys.append(s[1])
+
+print(f"Fart i sirkelbanen: {v_sirkel:.0f} m/s")
+print(f"Omløpstid fra simuleringen: {omlop / 60:.1f} min")
+print(f"Omløpstid fra T = 2πr/v: {2 * np.pi * r0 / v_sirkel / 60:.1f} min")
+
+jorda = plt.Circle((0, 0), R_jord, color="tab:blue", alpha=0.3)
+plt.gca().add_patch(jorda)
+plt.plot(xs, ys)
+plt.axis("equal")
+plt.xlabel("x / m")
+plt.ylabel("y / m")
+plt.show()</code></pre></div>
+
+          <h2>Steg 2: Større startfart</h2>
+          <p>Hva skjer hvis satellitten får litt større fart enn sirkelfarten? Funksjonen <code>bane</code> simulerer i fire timer og regner ut den mekaniske energien per kilogram, E = ½v² − GM/r, i hvert steg. Den skal være konstant. Den bruker variablene fra stegene over, som cellene i en Jupyter-notatbok.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code># Mekanisk energi per kg langs banen: E = ½v² − GM/r. Den skal være konstant.
+def bane(fart, timer=4, dt=1.0):
+    s = np.array([r0, 0.0])
+    v = np.array([0.0, fart])
+    xs, ys, E = [], [], []
+    for _ in range(int(timer * 3600 / dt)):
+        r = np.linalg.norm(s)
+        v = v - GM / r**3 * s * dt
+        s = s + v * dt
+        xs.append(s[0])
+        ys.append(s[1])
+        E.append(0.5 * np.dot(v, v) - GM / np.linalg.norm(s))
+    return np.array(xs), np.array(ys), np.array(E)
+
+for faktor in [1.0, 1.1, 1.2]:
+    xs, ys, E = bane(faktor * v_sirkel)
+    avstand = np.hypot(xs, ys)
+    print(f"Startfart {faktor:.1f} · v_sirkel: lengst unna {(avstand.max() - R_jord) / 1000:.0f} km over bakken, "
+          f"energien endrer seg {abs(E.max() - E.min()) / abs(E[0]) * 100:.3f} %")
+    plt.plot(xs, ys, label=f"{faktor:.1f} · v_sirkel")
+
+plt.gca().add_patch(plt.Circle((0, 0), R_jord, color="tab:blue", alpha=0.3))
+plt.axis("equal")
+plt.legend()
+plt.show()</code></pre></div>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/programmering/python-satellittbane.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase test">Kjør</span><div><p>Kjør steg 1. Hva er farten og omløpstiden til ISS? Sjekk omløpstiden med T = 2πr/v.</p></div></li>
+          <li><span class="fase tipp">Gjett</span><div><p>Hvordan tror du banen ser ut hvis startfarten er 10 % større enn sirkelfarten? Kjør steg 2 og sjekk. Hvor langt fra jorda kommer satellitten?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor går satellitten saktere når den er langt fra jorda? Bruk energibevaring.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>En geostasjonær satellitt bruker 23 timer og 56 minutter på ett omløp. Prøv deg fram med høyden h i steg 1 til du får riktig omløpstid. Husk å øke t_slutt. Regn deretter ut høyden med T² = 4π²r³/GM.</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Unnslipningsfarten er √2 ≈ 1,41 ganger sirkelfarten. Endre steg 2 til <code>for faktor in [1.3, 1.5]:</code> og <code>bane(faktor * v_sirkel, timer=24)</code>. Hvilken av satellittene kommer tilbake?</p></div></li>
+          <li><span class="fase forklar">Feilsøk</span><div><p>Bytt rekkefølgen i løkka i steg 2, slik at posisjonen oppdateres før farten (vanlig Euler). Hvordan endrer energien seg nå? Hva skjer med sirkelbanen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Sammenlign med ekte data: Skriptene i <a href="python-ekte-data.html">Fysikk i Python med ekte data</a> henter posisjonen til ISS. Hvor godt stemmer farten og omløpstiden?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>v = 7661 m/s og T = 92,8 min, både fra simuleringen og fra T = 2πr/v.</li>
+              <li>Banen blir en ellipse med jordas sentrum i det ene brennpunktet. Med 1,1 · v_sirkel kommer satellitten 4030 km over bakken. Med 1,2 · v_sirkel kommer den 11 090 km over bakken.</li>
+              <li>Den mekaniske energien ½mv² − GMm/r er konstant. Når r øker, øker den potensielle energien (den blir mindre negativ), så den kinetiske energien og farten må minke.</li>
+              <li>r = (GMT²/4π²)<sup>1/3</sup> = 42 164 km, altså h = 35 790 km over bakken. Farten er 3075 m/s. Med h = 35786e3 og t_slutt = 26 * 60 * 60 gir simuleringen 1435,7 min = 23 h 56 min.</li>
+              <li>Med 1,3 · v_sirkel kommer satellitten 30 650 km over bakken og er på vei tilbake. Banen er en ellipse med omløpstid på omtrent 9 timer. Med 1,5 · v_sirkel er farten over unnslipningsfarten √2 · 7661 m/s = 10,8 km/s, og satellitten er 386 000 km unna etter 24 timer, omtrent like langt som til månen, på vei ut. Ved unnslipningsfarten er den mekaniske energien null.</li>
+              <li>Med vanlig Euler endrer energien seg 3,4 % for sirkelbanen i løpet av fire timer, mot under 0,001 % med farten oppdatert først. Banen blir en spiral utover, og satellitten kommer 662 km over bakken i stedet for 424 km. Å oppdatere farten før posisjonen kalles Euler–Cromers metode, og den bevarer energien mye bedre i baner.</li>
+              <li>ISS har omtrent 7,66 km/s og en omløpstid på rundt 93 minutter. Høyden varierer litt, og lufta i den høyden bremser stasjonen litt.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Passer sammen med sirkelbevegelse og gravitasjon i Fysikk 2. Elevene bør ha sett Eulers metode med vektorer, for eksempel i <a href="python-horisontalt-kast.html">Horisontalt kast med Eulers metode</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 lektorbo.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
+
+</body>
+</html>

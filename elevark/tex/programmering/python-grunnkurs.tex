@@ -1,0 +1,29 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-grunnkurs.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 1 · Introduksjon til fysikk}{Python for fysikk: et grunnkurs}{https://lektorbo.no/programmering/python-grunnkurs.html}{Koden på nett}
+
+Her lærer du det du trenger av Python for å løse fysikkoppgaver: regne med variabler, skrive ut svar med enheter, lage funksjoner, regne med mange tall på en gang, tegne grafer og simulere en bevegelse steg for steg. Alt kan kjøres og endres rett på siden.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva tror du \texttt{print(7/2)}, \texttt{print(7//2)}, \texttt{print(7\%2)} og \texttt{print(2**10)} skriver ut? Lag en ny linje i steg 1 og test.
+\svar
+\oppgave \fase{test}{Endre}Usain Bolt løp 100~m på 9,58~s. Endre steg 1 og finn gjennomsnittsfarten hans i m/s og km/h.
+\svar
+\oppgave \fase{test}{Lag}Lag en funksjon \texttt{bremselengde(v, mu)} i steg 2 som regner ut bremselengden $v^{2}/(2μg)$. Hvor lang er bremselengden fra 80~km/h når $μ = 0{,}80$? Husk å gjøre om til m/s.
+\svar
+\oppgave \fase{test}{Endre}Endre steg 3 slik at grafen går til 3,0~s. Tegn også farten mot tiden i en egen graf.
+\svar
+\oppgave \fase{forklar}{Forklar}Steg 4 gir 2,02~s. Regn ut fallet for hånd med $s = \tfrac{1}{2}gt^{2}$. Hvorfor blir svaret fra løkka ikke helt nøyaktig? Prøv $dt = 0{,}001$.
+\svar
+\oppgave \fase{forklar}{Feilsøk}Hva skjer hvis du fjerner innrykket foran \texttt{t = t + dt} i steg 4? Prøv, og forklar. Trykk Stopp hvis programmet ikke blir ferdig.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Bruk en for-løkke, \texttt{for h in [5, 10, 20, 50]:}, til å skrive ut falltiden fra hver av høydene. Bruk gjerne løkka fra steg 4 inne i for-løkka, eller formelen $t = \sqrt{2h/g}$.
+\svar
+\end{oppgaveliste}
+
+\end{document}

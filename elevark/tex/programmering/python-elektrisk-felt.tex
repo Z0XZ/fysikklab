@@ -1,0 +1,27 @@
+% Laget automatisk av elevark/lag_elevark.py fra programmering/python-elektrisk-felt.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\setlength{\svarhoyde}{1.4cm}
+\begin{document}
+\elevarkhode{Fysikk 2 · Elektriske felt og krefter}{Elektrisk felt fra punktladninger}{https://lektorbo.no/programmering/python-elektrisk-felt.html}{Koden på nett}
+
+Feltet fra én punktladning er lett å regne ut. Med flere ladninger må vi legge sammen feltvektorene, og det blir fort mye regning. Det klarer Python fint. Til slutt regner vi ut feltet i tusenvis av punkter og tegner feltlinjer.
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{test}{Regn}Regn ut feltet i punktet (0,10~m, 0,10~m) i steg 1 for hånd: Finn feltet fra hver ladning, del det opp i komponenter og legg sammen. Sjekk med programmet.
+\svar
+\oppgave \fase{gjett}{Gjett}Ladningene i steg 1 er +4,0~nC og +1,0~nC. Er punktet der feltet er null nærmest den store eller den lille ladningen? Kjør steg 2, og vis med regning at svaret stemmer.
+\svar
+\oppgave \fase{test}{Undersøk}Endre den andre ladningen til −1,0~nC. Finnes det et punkt mellom ladningene der feltet er null? Endre x-verdiene i steg 2 slik at du leter fra 0,32~m til 1,0~m. Hvor er feltet null nå?
+\svar
+\oppgave \fase{forklar}{Forklar}Se på feltlinjene for dipolen i steg 3. Hvor er feltet sterkest? Hvorfor kan to feltlinjer aldri krysse hverandre?
+\svar
+\oppgave \fase{test}{Endre}Gjør begge ladningene i steg 3 positive. Hvordan ser feltlinjene ut nå? Hvor er feltet null?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Et elektron ligger i ro i punktet (0,10~m, 0,10~m) med ladningene fra steg 1. Hvor stor kraft virker på det, og i hvilken retning? Legg gjerne til en tredje ladning og se hvordan feltlinjene endrer seg.
+\svar
+\end{oppgaveliste}
+
+\end{document}

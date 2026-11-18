@@ -72,7 +72,7 @@ ENHETER = {"m", "s", "kg", "g", "N", "J", "W", "kW", "MW", "MN", "kN", "V", "kV"
            "kg/s", "J/s", "år", "lysår", "m²", "m³", "rad", "rad/s", "N/kg", "mg", "kWh", "T·m", "Nm", "N·s", "Ns", "m⁻¹", "s⁻¹", "kJ", "MJ", "kg/m³", "m³/s²", "nC", "µA", "mV", "cm²", "dm²", "mm²", "km²", "cm³", "dm³"}
 SIDE = [""]          # mappa til siden som lages nå, for relative lenker
 ETIKETTER = set()   # bokstaver som er navn på ting (vogn A, del B) på siden som lages nå
-TO_ORD_ENHETER = {"N m²/C²", "N·m²/C²", "T m/A", "T·m/A", "kg m/s", "kg · m/s", "N/(m/s)²", "kg m²/s"}
+TO_ORD_ENHETER = {"N m²/kg²", "N m²/C²", "N·m²/C²", "T m/A", "T·m/A", "kg m/s", "kg · m/s", "N/(m/s)²", "kg m²/s"}
 STOPP = set("""og er på en et i å at av de du da der den det for fra har hva hvor ikke kan med men ned nå når om opp
 seg som så til ut vi ved var bli mot ble oss sin sitt hun han dem ser gir får går tar dag år ett tre fem to fire
 seks sju ni ti tid se ta gi få gå bør vil skal må lag lik ny nye nyt fått ha hos inn mye mer mest én før hvis via
@@ -390,6 +390,8 @@ $F$ (N) & & & & & \\[4pt] \bottomrule
     "opplegg/reaksjonstid": [("$t$ = (middelverdi ± usikkerhet) ms", "$t = (\\text{middelverdi} \\pm \\text{usikkerhet})\\,\\mathrm{ms}$")],
     "sim/maaleusikkerhet": [("$T$ = (middelverdi ± usikkerhet) $s$", "$T = (\\text{middelverdi} \\pm \\text{usikkerhet})\\,\\mathrm{s}$")],
     "sim/avboyning": [("$y = U_{\\mathrm{d}} l^{2} / (4$ $d U_{\\mathrm{a}}$)", "$y = U_{\\mathrm{d}} l^{2} / (4 d U_{\\mathrm{a}})$")],
+    "programmering/python-regresjon": [("(1 $AU = 1{,}496 \\cdot 10^{11}\\,\\mathrm{m}$, 1~år = $3{,}156 \\cdot 10^{7}\\,\\mathrm{s}$)",
+        "($1\\,\\mathrm{AU} = 1{,}496 \\cdot 10^{11}\\,\\mathrm{m}$, $1\\text{ år} = 3{,}156 \\cdot 10^{7}\\,\\mathrm{s}$)")],
     "sim/samtidighet": [("$P$", "P"), ("$T$", "T")],
     "sim/sprettball": [("$e$ = √andel", "$e = \\sqrt{\\text{andel}}$")],
 }

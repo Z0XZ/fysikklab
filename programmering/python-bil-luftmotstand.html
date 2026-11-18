@@ -6,6 +6,7 @@
   <title>Bil med luftmotstand – numerisk integrasjon</title>
   <meta name="description" content="Programmeringsøving i Fysikk 2: En bil akselererer mot luftmotstand. Finn toppfarten numerisk og sammenlign med den eksakte løsningen.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,9 +33,9 @@
         <h1>Bil med luftmotstand – numerisk integrasjon</h1>
         <p class="ingress">En bil på 1500 kg starter fra ro, og motoren gir en konstant kraft på 1200 N. Luftmotstanden er L = kv² med k = 2,29 kg/m. Jo fortere bilen kjører, desto større blir luftmotstanden, og til slutt når bilen en toppfart.</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-filnavn="bil_luftmotstand.py">
           <h2>Steg 1: Simuleringen</h2>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
 import matplotlib.pyplot as plt
 
 m = 1500     # kg
@@ -56,18 +57,18 @@ for i in range(n-1):
     s[i+1] = s[i] + v[i]*dt
 
 print(f"Fart etter 60 s: {v[-1]:.2f} m/s = {v[-1]*3.6:.1f} km/h")
-print(f"Strekning etter 60 s: {s[-1]:.0f} m")</code></pre>
+print(f"Strekning etter 60 s: {s[-1]:.0f} m")</code></pre></div>
 
           <h2>Steg 2: Toppfart og eksakt løsning</h2>
           <p>Ved toppfart er kraftsummen null: F = kv<sub>t</sub>². For denne bevegelsen finnes det også en eksakt løsning, v(t) = v<sub>t</sub> · tanh(kv<sub>t</sub>t/m), som vi kan sammenligne med.</p>
-        <pre class="kode"><code>v_t = np.sqrt(F/k)
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code>v_t = np.sqrt(F/k)
 print(f"Toppfart: {v_t:.2f} m/s = {v_t*3.6:.1f} km/h")
 i90 = np.argmax(v &gt;= 0.9*v_t)
 print(f"Bilen har 90 % av toppfarten etter {t[i90]:.1f} s")
 
 # Eksakt løsning: v(t) = v_t tanh(k v_t t / m)
 v_eksakt = v_t*np.tanh(k*v_t*t/m)
-print(f"Største avvik fra eksakt løsning: {np.max(np.abs(v - v_eksakt)):.4f} m/s")</code></pre>
+print(f"Største avvik fra eksakt løsning: {np.max(np.abs(v - v_eksakt)):.4f} m/s")</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -104,6 +105,10 @@ print(f"Største avvik fra eksakt løsning: {np.max(np.abs(v - v_eksakt)):.4f} m
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>

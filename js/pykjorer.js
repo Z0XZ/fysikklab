@@ -1,9 +1,11 @@
 // Kjørbare Python-bokser på programmeringssidene.
 // Bruk i HTML:
-//   <div class="py-side" data-filnavn="horisontalt_kast.py" data-filer="../data/sprettball.csv"> ... </div>
+//   <div class="py-side" data-filnavn="horisontalt_kast.py" data-filer="../data/sprettball.csv"
+//        data-notatbok="../jupyter/notebooks/index.html?path=navn.ipynb"> ... </div>   (filer og notatbok er valgfrie)
 //   <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>...</code></pre></div>
 // Uten JavaScript vises koden som vanlig. Med JavaScript blir den redigerbar og kjørbar.
 // Alle boksene deler variabler, som cellene i Jupyter. Kjører du steg 2 før steg 1, kjøres steg 1 først.
+// En boks med data-ny="" er et selvstendig program: Stegene over den kjøres ikke automatisk.
 // Elevens endringer lagres i nettleseren (localStorage) og kan tilbakestilles.
 
 (function () {
@@ -33,6 +35,12 @@
   lastNed.type = omstart.type = "button";
   const panelStatus = lag("span", "py-status", "Python er ikke startet.");
   panelStatus.setAttribute("aria-live", "polite");
+  if (side.dataset.notatbok) {
+    // Lenke til samme kode som Jupyter-notatbok i JupyterLite (/jupyter/)
+    const nb = lag("a", "knapp lys", "Åpne som notatbok (JupyterLite)");
+    nb.href = side.dataset.notatbok;
+    panelKnapper.append(nb);
+  }
   panelKnapper.append(lastNed, omstart, panelStatus);
   panel.append(panelTekst, panelKnapper);
   side.insertBefore(panel, side.firstChild);
@@ -174,8 +182,11 @@
       },
       kjør() {
         kø = kø.then(async () => {
+          // Kjør stegene over som ikke er kjørt, tilbake til nærmeste boks med data-ny (et nytt, selvstendig program)
           const nr = bokser.indexOf(b);
-          for (const tidligere of bokser.slice(0, nr)) if (!tidligere.kjørt && !(await tidligere.kjørEn())) return;
+          let fra = nr;
+          while (fra > 0 && !("ny" in bokser[fra].el.dataset)) fra--;
+          for (const tidligere of bokser.slice(fra, nr)) if (!tidligere.kjørt && !(await tidligere.kjørEn())) return;
           await b.kjørEn();
         });
         return kø;

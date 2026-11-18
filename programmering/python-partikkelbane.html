@@ -6,6 +6,7 @@
   <title>Ladd partikkel i magnetfelt i Python</title>
   <meta name="description" content="Programmeringsøving i Fysikk 2: Simuler banen til et proton i et magnetfelt med Eulers metode, sammenlign med r = mv/qB, og lag en fartsvelger.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,10 +33,10 @@
         <h1>Ladd partikkel i magnetfelt i Python</h1>
         <p class="ingress">Et proton med farten 3,09 · 10⁵ m/s kommer inn i et magnetfelt på 50 mT. Vi regner ut kraften F = qv × B i små tidssteg og ser hvordan banen blir. Stemmer den med formelen for radien? Og hva skjer når vi legger til et elektrisk felt?</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-filnavn="partikkelbane.py">
           <h2>Steg 1: Simuler banen</h2>
           <p>Magnetfeltet peker ut av planet (z-retning). Da blir kraften F<sub>x</sub> = qv<sub>y</sub>B og F<sub>y</sub> = −qv<sub>x</sub>B. Programmet bruker Eulers metode: Først regner det ut den nye farten, og så den nye posisjonen.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
 import matplotlib.pyplot as plt
 
 q = 1.60e-19      # ladning i C
@@ -68,26 +69,46 @@ plt.axis("equal")
 plt.xlabel("x / m")
 plt.ylabel("y / m")
 plt.grid()
-plt.show()</code></pre>
+plt.show()</code></pre></div>
 
           <h2>Steg 2: Sammenlign med formelen</h2>
-          <p>Legg til dette nederst i programmet.</p>
-        <pre class="kode"><code>r_teori = m * v0 / (q * B)
+          <p>Kjør boksen under. Den bruker variablene fra steget over, som cellene i en Jupyter-notatbok. Skriver du i en vanlig .py-fil, legger du koden nederst.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code>r_teori = m * v0 / (q * B)
 r_numerisk = (max(ys) - min(ys)) / 2
 v_slutt = np.sqrt(vx**2 + vy**2)
 
 print(f"r fra formelen:  {r_teori * 100:.3f} cm")
 print(f"r fra simuleringen: {r_numerisk * 100:.3f} cm")
 print(f"fart ved start: {v0:.4e} m/s")
-print(f"fart ved slutt: {v_slutt:.4e} m/s")</code></pre>
+print(f"fart ved slutt: {v_slutt:.4e} m/s")</code></pre></div>
 
           <h2>Steg 3: Fartsvelger</h2>
-          <p>Nå legger vi til et elektrisk felt i y-retning. Kraften i y-retning blir F<sub>y</sub> = qE − qv<sub>x</sub>B. Bytt ut disse linjene i programmet fra steg 1:</p>
-        <pre class="kode"><code>E = v0 * B        # elektrisk felt i V/m, i y-retning
+          <p>Nå legger vi til et elektrisk felt i y-retning. Kraften i y-retning blir F<sub>y</sub> = qE − qv<sub>x</sub>B. Programmet under er det samme som i steg 1, med det elektriske feltet lagt til. Det bruker q, m, B, v0, dt og t_slutt fra steg 1.</p>
+        <div class="py-boks" data-navn="Steg 3"><pre class="kode"><code>E = v0 * B        # elektrisk felt i V/m, i y-retning
 
-# ... og inne i løkka:
+x, y = 0.0, 0.0
+vx, vy = v0, 0.0
+t = 0.0
+
+xs, ys = [x], [y]
+while t &lt; t_slutt:
     Fx = q * vy * B
-    Fy = q * E - q * vx * B</code></pre>
+    Fy = q * E - q * vx * B   # elektrisk kraft opp, magnetisk kraft ned
+    vx = vx + Fx / m * dt
+    vy = vy + Fy / m * dt
+    x = x + vx * dt
+    y = y + vy * dt
+    t = t + dt
+    xs.append(x)
+    ys.append(y)
+
+print(f"Største avstand fra x-aksen: {max(abs(yi) for yi in ys) * 1000:.1f} mm")
+
+plt.plot(xs, ys)
+plt.xlabel("x / m")
+plt.ylabel("y / m")
+plt.grid()
+plt.show()</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -126,6 +147,10 @@ print(f"fart ved slutt: {v_slutt:.4e} m/s")</code></pre>
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>

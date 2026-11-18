@@ -6,6 +6,7 @@
   <title>Variable krefter i Python</title>
   <meta name="description" content="Programmeringsøving i Fysikk 1: Bremsing når friksjonstallet endrer seg, og et kast med luftmotstand. Når kraften ikke er konstant, gjelder ikke bevegelseslikningene.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,10 +33,10 @@
         <h1>Variable krefter i Python</h1>
         <p class="ingress">Bevegelseslikningene gjelder bare når akselerasjonen er konstant. Hvis kraften endrer seg underveis, for eksempel fordi friksjonen eller luftmotstanden endrer seg, kan vi i stedet regne ut bevegelsen i mange små tidssteg.</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-filnavn="variable_krefter.py">
           <h2>Del 1: Bremsing med friksjon som endrer seg</h2>
-          <p>En bil på 2000 kg kjører i 10 m/s og bremser. Veien blir grovere jo lenger bilen kjører, så friksjonstallet øker med strekningen: μ(s) = 0,20 + 0,10 · s<sup>0,2</sup>. Programmet under skal finne bremselengden, men det har en feil.</p>
-        <pre class="kode"><code>s = 0       # m
+          <p>En bil på 2000 kg kjører i 10 m/s og bremser. Veien blir grovere jo lenger bilen kjører, så friksjonstallet øker med strekningen: μ(s) = 0,20 + 0,10 · s<sup>0,2</sup>. Programmet under skal finne bremselengden, men det har en feil. Blir programmet aldri ferdig, trykker du <strong>Stopp</strong>.</p>
+        <div class="py-boks" data-navn="Del 1"><pre class="kode"><code>s = 0       # m
 t = 0       # s
 dt = 0      # s
 v = 10      # m/s
@@ -54,11 +55,11 @@ while v &gt; 0:
     s += v*dt
     t += dt
 
-print(f"Bremselengden er {s:.2f} m. Tiden det tar å bremse er {t:.2f} s.")</code></pre>
+print(f"Bremselengden er {s:.2f} m. Tiden det tar å bremse er {t:.2f} s.")</code></pre></div>
 
           <h2>Del 2: Kast med luftmotstand</h2>
           <p>En ball med massen 22 g kastes rett opp med 10 m/s fra taket på en bygning. Luftmotstanden er L = kv² med k = 0,01 N/(m/s)². Ballen er i lufta i 3,0 s før den lander. Vi bruker numpy-tabeller og en for-løkke, og lagrer alle verdiene slik at vi kan plotte dem.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Del 2" data-ny=""><pre class="kode"><code>import numpy as np
 import matplotlib.pyplot as plt
 
 n = 1000
@@ -93,7 +94,7 @@ for akse, y, navn in zip(akser, [s, v, a], ["$s$ / m", "$v$ / (m/s)", "$a$ / (m/
     akse.set_ylabel(navn)
     akse.grid()
 akser[-1].set_xlabel("$t$ / s")
-plt.show()</code></pre>
+plt.show()</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -132,6 +133,10 @@ plt.show()</code></pre>
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>

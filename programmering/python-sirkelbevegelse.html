@@ -6,6 +6,7 @@
   <title>Sirkelbevegelse med sympy og simulering</title>
   <meta name="description" content="Programmeringsøving i Fysikk 2: Løs likningssett for kjeglependel og dosert sving med sympy, og simuler en snøkuppel og en loop med friksjon.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,18 +33,13 @@
         <h1>Sirkelbevegelse med sympy og simulering</h1>
         <p class="ingress">I del 1 bruker vi Python som CAS: Sympy løser likningssettene for en kjeglependel og en dosert sving. I del 2 simulerer vi bevegelser der kraftsummen endrer seg underveis, slik at vi ikke kan bruke formlene direkte: en skiløper på en snøkuppel og en vogn i en loop med friksjon.</p>
 
-        <div class="tekst opplegg">
-          <div class="py-panel">
-            <p class="py-panel-tekst">All koden på denne siden finnes også som en Jupyter-notatbok som kjører rett i nettleseren, uten installasjon. Første gang lastes Python ned (omtrent 30 MB fra jsDelivr), og det kan ta et halvt minutt. Endringene lagres bare i denne nettleseren. Vil du ta vare på arbeidet, velger du <em>File → Download</em>.</p>
-            <p><a class="knapp" href="../jupyter/notebooks/index.html?path=sirkelbevegelse.ipynb">Åpne notatboken i nettleseren</a></p>
-          </div>
-
+        <div class="tekst opplegg py-side" data-notatbok="../jupyter/notebooks/index.html?path=sirkelbevegelse.ipynb" data-filnavn="sirkelbevegelse.py">
           <h2>Del 1: Sympy i stedet for CAS</h2>
           <p>Sympy må installeres først: <code>pip install sympy</code>. De viktigste kommandoene er <code>sp.symbols</code> (lager symboler), <code>sp.Eq</code> (lager en likning), <code>sp.solve</code> (løser), <code>sp.simplify</code> (forenkler) og <code>.subs</code> (setter inn tall). I Jupyter kan svarene vises pent med <code>display(Math(sp.latex(...)))</code> fra <code>IPython.display</code>.</p>
 
           <h3>Kjeglependelen</h3>
           <p>Kreftene på kula gir S cos θ = mg og S sin θ = mv²/r, med r = L sin θ. Vi lar sympy løse for v² i stedet for v. Da blir likningssettet lineært, og vi slipper negative røtter.</p>
-        <pre class="kode"><code>import sympy as sp
+        <div class="py-boks" data-navn="Kjeglependelen" data-ny=""><pre class="kode"><code>import sympy as sp
 
 m, g, L, theta, S, v2 = sp.symbols("m g L theta S v^2", positive=True)
 r = L*sp.sin(theta)
@@ -60,11 +56,11 @@ print("T =", T)
 
 verdier = {L: 0.800, theta: sp.rad(30), g: 9.81}
 print("v =", sp.sqrt(losning[v2]).subs(verdier).evalf(3), "m/s")
-print("T =", T.subs(verdier).evalf(3), "s")</code></pre>
+print("T =", T.subs(verdier).evalf(3), "s")</code></pre></div>
 
           <h3>Dosert sving med friksjon</h3>
           <p>Ved største fart peker friksjonen μN nedover langs veibanen. Loddrett og vannrett gir N cos θ − μN sin θ = mg og N sin θ + μN cos θ = mv²/r. Ved minste fart peker friksjonen oppover, og det tilsvarer å bytte μ med −μ.</p>
-        <pre class="kode"><code>import sympy as sp
+        <div class="py-boks" data-navn="Dosert sving med friksjon" data-ny=""><pre class="kode"><code>import sympy as sp
 
 m, g, r, theta, mu, N, v2 = sp.symbols("m g r theta mu N v^2", positive=True)
 
@@ -81,14 +77,14 @@ print("Differanse mot formelen i boka:", sp.simplify(v_maks_kvadrat - bok))
 v_maks = sp.sqrt(v_maks_kvadrat)
 v_min = v_maks.subs(mu, -mu)
 tall = {r: 120, theta: sp.rad(17.8), g: 9.81, mu: 0.10}
-print(f"v_min = {float(v_min.subs(tall))*3.6:.0f} km/h, v_maks = {float(v_maks.subs(tall))*3.6:.0f} km/h")</code></pre>
+print(f"v_min = {float(v_min.subs(tall))*3.6:.0f} km/h, v_maks = {float(v_maks.subs(tall))*3.6:.0f} km/h")</code></pre></div>
 
           <h2>Del 2: Simuleringer</h2>
           <p>Når kraftsummen avhenger av farten eller vinkelen, bruker vi Eulers metode med vinkelen som posisjon: Δθ = (v/r)Δt.</p>
 
           <h3>Snøkuppelen</h3>
           <p>Tiril glir fra toppen av en glatt snøkuppel med radius 12,0 m. På kuppelen er akselerasjonen langs banen g sin θ, og hun har kontakt så lenge N = mg cos θ − mv²/R &gt; 0. Når hun mister kontakten, fortsetter hun som et skrått kast.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Snøkuppelen" data-ny=""><pre class="kode"><code>import numpy as np
 
 g = 9.81
 R = 12.0
@@ -121,11 +117,11 @@ while y &gt; 0:
     x = x + vx*dt
     y = y + vy*dt
 
-print(f"Lander {x:.1f} m fra sentrum, {x - R:.1f} m utenfor kanten")</code></pre>
+print(f"Lander {x:.1f} m fra sentrum, {x - R:.1f} m utenfor kanten")</code></pre></div>
 
           <h3>Loop med friksjon</h3>
           <p>En vogn kjører inn i en loop med radius 10,0 m. Friksjonen er μN med μ = 0,080, så den er størst der normalkraften er størst. Funksjonen <code>simuler(v0, mu)</code> returnerer listene og om vogna klarte loopen.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Loop med friksjon" data-ny=""><pre class="kode"><code>import numpy as np
 
 g = 9.81      # m/s²
 r = 10.0      # m
@@ -157,7 +153,7 @@ else:
 v0 = 20.0
 while not simuler(v0)[3]:
     v0 = v0 + 0.1
-print(f"Minste fart i bunnen: {v0:.1f} m/s (uten friksjon: {np.sqrt(5*g*r):.1f} m/s)")</code></pre>
+print(f"Minste fart i bunnen: {v0:.1f} m/s (uten friksjon: {np.sqrt(5*g*r):.1f} m/s)")</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -196,6 +192,10 @@ print(f"Minste fart i bunnen: {v0:.1f} m/s (uten friksjon: {np.sqrt(5*g*r):.1f} 
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>

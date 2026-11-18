@@ -6,6 +6,7 @@
   <title>Fart og akselerasjon fra måledata</title>
   <meta name="description" content="Programmeringsøving i Fysikk 1: Regn ut fart og akselerasjon fra posisjonsdata med sentraldifferanser, finn tyngdeakselerasjonen og sprettallet til en sprettball.">
   <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -32,14 +33,14 @@
         <h1>Fart og akselerasjon fra måledata</h1>
         <p class="ingress">Fra en video eller en bevegelsessensor får vi posisjonen til en gjenstand ved ulike tidspunkter. Men hvordan finner vi farten og akselerasjonen? Her lar vi Python regne ut stigningstall mellom målepunktene, og bruker det på en sprettball.</p>
 
-        <div class="tekst opplegg">
+        <div class="tekst opplegg py-side" data-notatbok="../jupyter/notebooks/index.html?path=bevegelse-maledata.ipynb" data-filnavn="maledata_sprettball.py" data-filer="../data/sprettball.csv">
           <h2>Data</h2>
           <p><a class="knapp lys" href="../data/sprettball.csv" download>Last ned sprettball.csv</a></p>
           <p>Fila har to kolonner: tiden i sekunder og høyden til ballen i meter, 30 målinger per sekund. Ballen slippes fra 0,65 m og spretter flere ganger. Dataene er laget med en modell med sprettall 0,80 og 1 mm tilfeldig målestøy, slik at de ligner data fra videoanalyse. De er ikke ekte målinger. Bytt gjerne ut fila med egne data fra Tracker.</p>
 
           <h2>Steg 1: Posisjon, fart og akselerasjon</h2>
           <p>Farten i punkt i regnes ut som stigningstallet mellom naboene: v<sub>i</sub> = (s<sub>i+1</sub> − s<sub>i−1</sub>) / (t<sub>i+1</sub> − t<sub>i−1</sub>). Dette kalles en sentraldifferanse. Akselerasjonen finner vi på samme måte fra farten.</p>
-        <pre class="kode"><code>import numpy as np
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>import numpy as np
 import matplotlib.pyplot as plt
 
 data = np.loadtxt("sprettball.csv", delimiter=",", skiprows=1)
@@ -72,28 +73,28 @@ plt.xlabel("$t$ / s")
 plt.ylabel("$a$ / (m/s$^2$)")
 plt.grid()
 plt.tight_layout()
-plt.show()</code></pre>
+plt.show()</code></pre></div>
 
           <h2>Steg 2: Tyngdeakselerasjonen fra det første fallet</h2>
-          <p>Legg til dette nederst. Vi tilpasser en andregradsfunksjon til fallet og sammenligner med akselerasjonen fra steg 1.</p>
-        <pre class="kode"><code># Velg tidsrommet for det første fallet. Se på grafen og juster grensene.
+          <p>Den bruker variablene fra steg 1, som cellene i en Jupyter-notatbok. Skriver du i en vanlig .py-fil, legger du koden nederst. Vi tilpasser en andregradsfunksjon til fallet og sammenligner med akselerasjonen fra steg 1.</p>
+        <div class="py-boks" data-navn="Steg 2"><pre class="kode"><code># Velg tidsrommet for det første fallet. Se på grafen og juster grensene.
 fall = (t &gt;= 0.13) &amp; (t &lt;= 0.43)
 koeff = np.polyfit(t[fall], s[fall], 2)
 print(f"Andregradsfunksjon: s = {koeff[0]:.3f} t² + {koeff[1]:.3f} t + {koeff[2]:.3f}")
 print(f"Akselerasjon: {2*koeff[0]:.2f} m/s²")
 
 # Gjennomsnittlig akselerasjon fra den numeriske deriveringen i samme tidsrom
-print(f"Middelverdi av a i tidsrommet: {np.mean(a[fall]):.2f} m/s²")</code></pre>
+print(f"Middelverdi av a i tidsrommet: {np.mean(a[fall]):.2f} m/s²")</code></pre></div>
 
           <h2>Steg 3: Hvor mye energi forsvinner i hvert sprett?</h2>
-        <pre class="kode"><code># Finn toppunktene etter hvert sprett
+        <div class="py-boks" data-navn="Steg 3"><pre class="kode"><code># Finn toppunktene etter hvert sprett
 topper = []
 for i in range(1, n-1):
     if s[i] &gt; s[i-1] and s[i] &gt;= s[i+1] and s[i] &gt; 0.05 and t[i] &gt; 0.5:
         topper.append(s[i])
 print("Toppunkter:", [round(float(h), 3) for h in topper])
 for i in range(1, len(topper)):
-    print(f"Forholdet mellom topp {i+1} og topp {i}: {topper[i]/topper[i-1]:.2f}")</code></pre>
+    print(f"Forholdet mellom topp {i+1} og topp {i}: {topper[i]/topper[i-1]:.2f}")</code></pre></div>
         </div>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -130,6 +131,10 @@ for i in range(1, len(topper)):
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
 
 </body>
 </html>
