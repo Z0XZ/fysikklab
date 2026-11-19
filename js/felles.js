@@ -1,4 +1,4 @@
-// Felles hjelpefunksjoner for simuleringene på lektorbo.no.
+// Felles hjelpefunksjoner for simuleringene på fysikklab.no.
 // Lastes før selve simuleringen: <script src="../js/felles.js"></script>
 
 const Sim = (() => {

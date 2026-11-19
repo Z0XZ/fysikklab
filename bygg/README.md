@@ -1,6 +1,6 @@
 # Bygging av sider
 
-Noen av sidene på lektorbo.no lages fra kildefiler i denne mappa. Rediger kildene her, ikke de ferdige sidene. Ellers blir endringene borte neste gang sidene bygges.
+Noen av sidene på fysikklab.no lages fra kildefiler i denne mappa. Rediger kildene her, ikke de ferdige sidene. Ellers blir endringene borte neste gang sidene bygges.
 
 ```
 python3 bygg/bygg.py --sjekk     # vis hvilke sider som ville blitt endret, uten å skrive noe
@@ -21,14 +21,14 @@ Kjør `--sjekk` først. Hvis den viser endringer du ikke har gjort i kildene, er
 | `repetisjon.py` | Repetisjonssidene `opplegg/repetisjon-*.html` |
 | `kompetansemaal.py` | Lærersiden `opplegg/kompetansemaal.html`. Bygges sist, fordi den henter titlene fra de andre sidene. Legg nye sider inn i listene `F1` og `F2`. |
 
-De andre sidene på lektorbo.no er ikke med her og redigeres direkte.
+De andre sidene på fysikklab.no er ikke med her og redigeres direkte.
 
 ## Kildeformatet
 
 En kildefil har et lite hode, en linje med `---` og så innholdet (se `lag_side.py`):
 
 ```
-tittel: Heisen med mobilen – lektorbo.no
+tittel: Heisen med mobilen – fysikklab.no
 beskrivelse: Én setning til søkemotorer.
 fagside: undervisningsopplegg.html
 fag: Undervisningsopplegg

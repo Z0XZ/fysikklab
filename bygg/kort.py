@@ -24,7 +24,7 @@ K = {
    KODE + '<path class="fyll-f2" d="M40 54h6v-6h-6zM48 54h6v-16h-6zM56 54h6v-28h-6zM64 54h6v-32h-6zM72 54h6v-20h-6zM80 54h6v-10h-6zM88 54h6v-4h-6z"/>'),
  "programmering/python-biot-savart.html": ("Magnetfeltet fra en spole med Biot–Savarts lov", "Del en strømsløyfe og en spole i tusenvis av biter, og sammenlign med formlene for sløyfe og lang spole.",
    KODE + '<path class="strek-f2" d="M44 22v28M54 22v28M64 22v28M74 22v28M84 22v28M94 22v28" style="stroke-width:2"/><path class="strek-blekk" d="M38 36H102" style="stroke-width:1.5;stroke-dasharray:4 3"/>'),
- "opplegg/kompetansemaal.html": ("Ressurser etter kompetansemål", "Alt på lektorbo.no sortert etter kompetansemålene i Fysikk 1 og 2, og hvilke mål som mangler ressurser.",
+ "opplegg/kompetansemaal.html": ("Ressurser etter kompetansemål", "Alt på fysikklab.no sortert etter kompetansemålene i Fysikk 1 og 2, og hvilke mål som mangler ressurser.",
    '<rect class="strek-dempet" x="14" y="8" width="92" height="56" rx="4" style="fill:none"/><path class="strek-f2" d="M24 22L28 26L36 18M24 38L28 42L36 34" style="stroke-width:2"/><path class="strek-blekk" d="M44 22H94M44 38H86M44 54H90" style="stroke-width:2"/><circle class="strek-dempet" cx="30" cy="54" r="4" style="fill:none"/>'),
 }
 REPTEKST = {"bevegelse": ("rettlinjet bevegelse", "Grafer, bevegelseslikningene og blandede oppgaver med løsningsforslag."),

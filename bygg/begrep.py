@@ -363,7 +363,7 @@ def side(navn, d):
     </ol>
     <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: {"ABCD"[r - 1]}.</strong> {fork}</p></details>
   </li>""")
-    return f"""tittel: {d['tittel']} – lektorbo.no
+    return f"""tittel: {d['tittel']} – fysikklab.no
 beskrivelse: {d['beskr']}
 fagside: undervisningsopplegg.html
 fag: Undervisningsopplegg
@@ -381,7 +381,7 @@ meny: undervisningsopplegg.html
 <div class="tekst opplegg">
   <h2>Til læreren</h2>
   <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
-  <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for lektorbo.no. Se også {d['lenker']}.</p>
+  <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for fysikklab.no. Se også {d['lenker']}.</p>
 </div>
 """
 

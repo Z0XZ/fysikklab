@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Lager elevark som PDF fra oppgavene på nettsidene, uten løsningsforslag.
 
-Bruk (fra mappa lektorbo.no):
+Bruk (fra rotmappa, den med index.html):
     python3 elevark/lag_elevark.py            # lager .tex og PDF for alle sidene
     python3 elevark/lag_elevark.py sim/heis   # bare én side
     python3 elevark/lag_elevark.py --bare-tex # bare .tex, uten kompilering
@@ -16,7 +16,7 @@ from html.parser import HTMLParser
 
 ROT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARK = os.path.join(ROT, "elevark")
-NETT = "https://lektorbo.no/"
+NETT = "https://fysikklab.no/"
 MAPPER = ["sim", "opplegg", "programmering"]
 HOPP_OVER = {"programmering/python-ekte-data"}
 # Opplegg der bare oppgavene til elevene skal med (resten er lærertekst)

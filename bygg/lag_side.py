@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Lager en side for lektorbo.no fra en kildefil med et lite hode, skilt fra innholdet med en linje med ---:
+# Lager en side for fysikklab.no fra en kildefil med et lite hode, skilt fra innholdet med en linje med ---:
 #   tittel, beskrivelse, fagside (lenken i brødsmulene), fag, tema, script (kommaseparert, - for ingen) og meny (aktiv side i menyen).
 # Brukes av bygg.py, men kan også kjøres alene: python3 bygg/lag_side.py <kildemappe> <utmappe>
 import sys, os, html, re
@@ -39,7 +39,7 @@ def lag(tekst):
   <a class="hopp" href="#innhold">Hopp til innholdet</a>
   <header class="topp">
     <div class="ramme">
-      <a class="logo" href="../index.html">lektorbo<span>.no</span></a>
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
       <nav aria-label="Hovedmeny"><ul class="meny">
 {menylinjer}
       </ul></nav>
@@ -59,7 +59,7 @@ def lag(tekst):
   </main>
   <footer class="bunn">
     <div class="ramme">
-      <span>© 2026 lektorbo.no</span>
+      <span>© 2026 fysikklab.no</span>
       <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
     </div>
   </footer>

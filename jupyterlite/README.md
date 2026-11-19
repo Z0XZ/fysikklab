@@ -1,4 +1,4 @@
-# JupyterLite for lektorbo.no
+# JupyterLite for fysikklab.no
 
 Jupyter som kjører helt i nettleseren (Python via Pyodide). Den ferdige appen ligger i `../jupyter/` og publiseres sammen med resten av nettsiden.
 

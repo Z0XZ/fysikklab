@@ -15,7 +15,7 @@ def side(navn, tittel, tema, beskr, ingress, oversikt, formler, konstanter, inng
     fa = "\n".join(f"      <li>{t}</li>" for t in fasit)
     assert len(oppg) == len(fasit), navn
     kons = f"\n  <p>{konstanter}</p>" if konstanter else ""
-    s = f"""tittel: {tittel} – lektorbo.no
+    s = f"""tittel: {tittel} – fysikklab.no
 beskrivelse: {beskr}
 fagside: undervisningsopplegg.html
 fag: Undervisningsopplegg
@@ -53,7 +53,7 @@ meny: undervisningsopplegg.html
 """
     SIDER[navn] = s
 
-BRUK = "Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for lektorbo.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href=\"{bt}\">{btnavn}</a> passer som oppvarming."
+BRUK = "Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for fysikklab.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href=\"{bt}\">{btnavn}</a> passer som oppvarming."
 
 # ---------- Fysikk 1: Rettlinjet bevegelse ----------
 side("repetisjon-bevegelse", "Repetisjon: rettlinjet bevegelse", "Fysikk 1 · Rettlinjet bevegelse",

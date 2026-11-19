@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Bygger sidene på lektorbo.no som lages fra kildefiler i bygg/.
+"""Bygger sidene på fysikklab.no som lages fra kildefiler i bygg/.
 
-Bruk (fra mappa lektorbo.no):
+Bruk (fra rotmappa, den med index.html):
     python3 bygg/bygg.py                 bygg alle sidene
     python3 bygg/bygg.py --sjekk         bygg i en midlertidig mappe og vis hvilke sider som ville blitt endret
     python3 bygg/bygg.py opplegg/heis-mobil programmering/python-rakett    bygg bare disse

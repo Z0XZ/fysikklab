@@ -1,4 +1,4 @@
-# lektorbo.no
+# fysikklab.no
 
 Fysikksimuleringer og undervisningsopplegg for Fysikk 1 og Fysikk 2.
 
@@ -64,7 +64,7 @@ Boksene deler variabler som cellene i Jupyter. Python (Pyodide) lastes fra jsDel
 
 ## Elevark
 
-Oppgavene på hver side finnes også som PDF i `elevark/<mappe>/<side>.pdf`, uten løsningsforslag. Når oppgavene på en side endres, lag arkene på nytt fra mappa `lektorbo.no`:
+Oppgavene på hver side finnes også som PDF i `elevark/<mappe>/<side>.pdf`, uten løsningsforslag. Når oppgavene på en side endres, lag arkene på nytt fra rotmappa (den med `index.html`):
 
 ```
 python3 elevark/lag_elevark.py              # alle sidene (ca. 2 minutter)

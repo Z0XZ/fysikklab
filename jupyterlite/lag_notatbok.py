@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Lager en Jupyter-notatbok fra en programmeringsside med kjørbare Python-bokser.
 
-Bruk (fra mappa lektorbo.no):
+Bruk (fra rotmappa, den med index.html):
     python3 jupyterlite/lag_notatbok.py programmering/python-vognstot.html
 
 Notatboken får overskriftene og tekstene fra siden som markdown, og koden fra py-boksene som kodeceller.
@@ -11,7 +11,7 @@ import html, json, os, re, shutil, sys
 
 ROT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INNHOLD = os.path.join(ROT, "jupyterlite", "innhold")
-NETT = "https://lektorbo.no/"
+NETT = "https://fysikklab.no/"
 
 def markdown(h, mappe):
     h = re.sub(r"<code>(.*?)</code>", lambda m: "`" + html.unescape(m.group(1)) + "`", h, flags=re.S)

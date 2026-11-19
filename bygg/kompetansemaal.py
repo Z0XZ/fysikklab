@@ -72,7 +72,7 @@ def blokk(fag, mal, url, ROT):
                 ut.append(f'      <li><a href="../{sti}">{html.escape(tittel(sti, ROT))}</a> <span class="km-type">{typ(sti)}</span></li>')
             ut.append("    </ul>")
         else:
-            ut.append('    <p class="km-tom">Ingen ressurser på lektorbo.no ennå.</p>')
+            ut.append('    <p class="km-tom">Ingen ressurser på fysikklab.no ennå.</p>')
             mangler.append(i)
         ut.append("  </li>")
     ut.append("</ol>")
@@ -83,8 +83,8 @@ def bygg(ROT, UT):
     b1, m1 = blokk("Fysikk 1", F1, "https://www.udir.no/lk20/fys01-02/kompetansemaal-og-vurdering/kv466", ROT)
     b2, m2 = blokk("Fysikk 2", F2, "https://www.udir.no/lk20/fys01-02/kompetansemaal-og-vurdering/kv467", ROT)
     liste = lambda m: ", ".join(map(str, m[:-1])) + " og " + str(m[-1])
-    side = f"""tittel: Ressurser etter kompetansemål – lektorbo.no
-beskrivelse: Lærerside: Simuleringer, opplegg, programmeringsøvinger, begrepstester og repetisjon på lektorbo.no sortert etter kompetansemålene i Fysikk 1 og Fysikk 2 (FYS01-02).
+    side = f"""tittel: Ressurser etter kompetansemål – fysikklab.no
+beskrivelse: Lærerside: Simuleringer, opplegg, programmeringsøvinger, begrepstester og repetisjon på fysikklab.no sortert etter kompetansemålene i Fysikk 1 og Fysikk 2 (FYS01-02).
 fagside: undervisningsopplegg.html
 fag: Undervisningsopplegg
 tema: Til læreren
@@ -92,7 +92,7 @@ script: -
 meny: undervisningsopplegg.html
 ---
 <h1>Ressurser etter kompetansemål</h1>
-<p class="ingress">Her er alt på lektorbo.no sortert etter kompetansemålene i læreplanen i fysikk. Siden viser også hvilke mål som ikke har ressurser ennå. En ressurs kan passe til flere mål.</p>
+<p class="ingress">Her er alt på fysikklab.no sortert etter kompetansemålene i læreplanen i fysikk. Siden viser også hvilke mål som ikke har ressurser ennå. En ressurs kan passe til flere mål.</p>
 
 <div class="tekst opplegg km">
 <p>Ordlyden i målene er hentet fra Læreplan i fysikk (FYS01-02), fastsatt av Utdanningsdirektoratet og gjeldende fra 1.8.2021. Se <a href="https://www.udir.no/lk20/fys01-02">læreplanen hos Udir</a> for den offisielle versjonen. Koblingen mellom målene og ressursene er lærerens egen vurdering. Den er ikke laget av Udir.</p>
