@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Programmer robotbilen – fysikklab.no</title>
+  <meta name="description" content="Programmer en robotbil i Python rett i nettleseren: kjør mønstre, styr motorene, parker i garasjen, kjør slalåm og finn veien ut av en labyrint med en avstandssensor.">
+  <meta name="robots" content="noindex">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../js/vendor/codemirror/codemirror.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../utdanningsvalg/index.html">Utdanningsvalg</a> / Robotbilen</p>
+        <h1>Programmer robotbilen</h1>
+        <p class="ingress">En robot gjør nøyaktig det du sier, verken mer eller mindre. Her skal dere programmere en robotbil i Python. Først lærer dere å styre den. Så skal den parkere i en garasje, kjøre slalåm så fort som mulig og til slutt finne veien ut av en labyrint helt på egen hånd.</p>
+
+        <div class="tekst opplegg py-side" data-filnavn="robotbil.py" data-filer="robot.py">
+          <h2>Robotbilen</h2>
+          <p>Robotbilen har to hjul. Hvert hjul drives av sin egen lille elektromotor, samme type motor som dere har bygget i dag. Foran sitter en avstandssensor som måler hvor langt det er til veggen rett fram, slik ultralydsensoren på en robotstøvsuger gjør. Alle lengder er i meter, vinkler i grader og tider i sekunder.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Kommando</th><th scope="col">Hva den gjør</th></tr></thead>
+              <tbody>
+                <tr><th scope="row"><code>robot = Robot()</code></th><td>Lager en robot på en tom bane. Andre baner: <code>Robot("garasje")</code>, <code>Robot("slalom")</code> og <code>Robot("labyrint")</code>.</td></tr>
+                <tr><th scope="row"><code>robot.kjør(1)</code></th><td>Kjører 1 meter rett fram. Et negativt tall kjører bakover.</td></tr>
+                <tr><th scope="row"><code>robot.sving(90)</code></th><td>Snur 90° mot venstre på stedet. Et negativt tall snur mot høyre.</td></tr>
+                <tr><th scope="row"><code>robot.motorer(0.2, 0.3, 2)</code></th><td>Gir venstre hjul farten 0,2 m/s og høyre hjul 0,3 m/s i 2 sekunder. Største fart er 0,5 m/s.</td></tr>
+                <tr><th scope="row"><code>robot.avstand()</code></th><td>Gir avstanden fra fronten av roboten til veggen rett fram, i meter.</td></tr>
+                <tr><th scope="row"><code>robot.i_mål()</code></th><td>Gir <code>True</code> (sant) når roboten er i mål, ellers <code>False</code>.</td></tr>
+                <tr><th scope="row"><code>robot.farge = "red"</code></th><td>Bytter fargen på streken roboten tegner. Prøv også <code>"green"</code>, <code>"orange"</code> og <code>"purple"</code>.</td></tr>
+                <tr><th scope="row"><code>robot.tid</code></th><td>Hvor mange sekunder roboten har kjørt.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Trykk <strong>Kjør</strong> under koden for å starte. Første gang tar det litt tid, for da lastes Python ned til nettleseren. Krasjer roboten i en vegg, viser figuren et rødt kryss der det skjedde. Da retter dere koden og kjører på nytt. Trykk <strong>Tilbakestill</strong> hvis dere vil starte på nytt med den opprinnelige koden.</p>
+
+          <h2>Steg 1: Første tur</h2>
+          <p>Hver linje er en kommando til roboten. Teksten etter <code>#</code> er kommentarer til oss mennesker. Python hopper over dem.</p>
+        <div class="py-boks" data-navn="Steg 1"><pre class="kode"><code>from robot import Robot
+
+robot = Robot()       # lag en robot på en tom bane
+robot.kjør(1)         # kjør 1 meter rett fram
+robot.sving(90)       # snu 90 grader mot venstre
+robot.kjør(0.5)       # kjør 0,5 meter (Python bruker punktum i desimaltall)</code></pre></div>
+          <ol>
+            <li>Kjør koden. Hvor på figuren startet roboten, og hvor endte den opp?</li>
+            <li>Endre koden slik at roboten svinger mot høyre i stedet for venstre.</li>
+            <li>Legg til flere linjer slik at roboten tegner bokstaven L, og deretter en trapp med tre trinn.</li>
+          </ol>
+
+          <h2>Steg 2: Gjenta med en løkke</h2>
+          <p>Skal roboten kjøre et kvadrat, må den kjøre og svinge fire ganger. I stedet for å skrive det samme fire ganger bruker vi en <em>løkke</em>. Linjene med innrykk (fire mellomrom) er det som gjentas. Programmerere bruker løkker hele tiden.</p>
+        <div class="py-boks" data-navn="Steg 2" data-ny=""><pre class="kode"><code>from robot import Robot
+
+robot = Robot()
+for i in range(4):    # gjenta det som står under, 4 ganger
+    robot.kjør(1)     # linjene med innrykk er det som gjentas
+    robot.sving(90)
+
+print("Roboten brukte", round(robot.tid, 1), "sekunder")</code></pre></div>
+          <ol>
+            <li>Lag en likesidet trekant. Hvor mange grader må roboten svinge i hvert hjørne? (Tips: Til sammen må roboten snu 360°.)</li>
+            <li>Lag en sekskant og en åttekant. Ser dere en regel for hvor mye roboten må svinge?</li>
+            <li>Lag en femtakket stjerne. Den har fem like lange streker, og roboten svinger 144° i hver spiss.</li>
+            <li>Hvor lang tid bruker roboten på kvadratet? Hvor mye av tiden går med til å svinge?</li>
+          </ol>
+          <details class="fasit">
+            <summary>Hint til trekanten</summary>
+            <p>I hvert hjørne må roboten snu 360° / 3 = 120°. Bytt 4 med 3 i <code>range</code> og 90 med 120 i <code>sving</code>.</p>
+          </details>
+
+          <h2>Steg 3: Styr motorene selv</h2>
+          <p>En ekte robot vet ikke hva «sving 90 grader» betyr. Den kan bare styre farten på hver motor. Farten til en elektromotor styres med spenningen, og snur dere strømmen, går motoren andre veien. Kommandoen <code>motorer(venstre, høyre, sekunder)</code> gir hvert hjul sin egen fart. Et negativt tall betyr at hjulet går bakover.</p>
+        <div class="py-boks" data-navn="Steg 3" data-ny=""><pre class="kode"><code>from robot import Robot
+
+robot = Robot()
+robot.motorer(0.2, 0.2, 3)     # like fart på begge hjulene i 3 sekunder
+robot.farge = "red"
+robot.motorer(0.2, 0.3, 5)     # høyre hjul går fortere enn venstre
+robot.farge = "green"
+robot.motorer(-0.1, 0.1, 2)    # hjulene går hver sin vei</code></pre></div>
+          <ol>
+            <li>Kjør koden. Hva skjer når hjulene har lik fart, når høyre hjul er raskest, og når hjulene går hver sin vei?</li>
+            <li>Hvordan får dere roboten til å kjøre i en bue mot høyre?</li>
+            <li>Får dere roboten til å kjøre en hel sirkel og ende der den startet? Prøv dere fram med tiden.</li>
+            <li>Tegn et åttetall: én sirkel mot venstre og én mot høyre, gjerne i to farger.</li>
+            <li>Hvorfor svinger roboten når det ene hjulet går fortere enn det andre? Tenk på hvor langt hvert hjul må kjøre i en sving. En bil har det samme problemet. Derfor har den et tannhjulsystem (en differensial) som lar hjulene gå med ulik fart.</li>
+            <li>Fri oppgave: Tegn et kunstverk, for eksempel et hus, en blomst eller navnet ditt.</li>
+          </ol>
+          <details class="fasit">
+            <summary>Hint til sirkelen</summary>
+            <p>Med <code>motorer(0.2, 0.3, …)</code> bruker roboten litt over 10 sekunder på en hel runde. Prøv tider rundt 10 og se når streken går akkurat rundt.</p>
+          </details>
+
+          <h2>Steg 4: Parker i garasjen</h2>
+          <p>Nå er det vegger på banen. Garasjen ligger øverst til venstre. Få roboten inn i den grønne ruta uten å krasje. Rutenettet på figuren har ruter på 0,5 m. Bruk det til å måle hvor langt roboten må kjøre.</p>
+        <div class="py-boks" data-navn="Steg 4" data-ny=""><pre class="kode"><code>from robot import Robot
+
+robot = Robot("garasje")
+robot.kjør(1)
+# Skriv resten av koden her</code></pre></div>
+          <ol>
+            <li>Parker roboten i garasjen. Det står «I mål!» når den er inne.</li>
+            <li>Klarer dere det med færrest mulig kommandoer?</li>
+          </ol>
+
+          <h2>Steg 5: Slalåm-konkurranse</h2>
+          <p>Roboten skal gjennom fire porter: over den første veggen, under den andre, over den tredje og under den fjerde, og så inn i mål. Vinneren er laget med kortest tid. Skriv tiden deres på tavla!</p>
+        <div class="py-boks" data-navn="Steg 5" data-ny=""><pre class="kode"><code>from robot import Robot
+
+robot = Robot("slalom")
+robot.sving(90)
+robot.kjør(0.6)
+# Kom gjennom portene og inn i mål så fort som mulig</code></pre></div>
+          <ol>
+            <li>Kom dere gjennom slalåmen og i mål. Bruk gjerne <code>kjør</code> og <code>sving</code> først.</li>
+            <li><code>kjør</code> og <code>sving</code> er trege. Med <code>motorer</code> kan dere kjøre med 0,5 m/s og svinge mye raskere. Hvor raskt klarer dere løypa?</li>
+            <li>Ekstra: Kan roboten kjøre på skrå eller i buer i stedet for i rette vinkler? Blir det raskere?</li>
+          </ol>
+          <details class="fasit">
+            <summary>Hint til en rask sving</summary>
+            <p>Hjulene går hver sin vei med full fart: <code>robot.motorer(-0.5, 0.5, 0.25)</code> snur roboten omtrent 90° mot venstre. Prøv dere fram med tiden.</p>
+          </details>
+
+          <h2>Steg 6: Labyrinten (ekstra utfordring)</h2>
+          <p>En robotstøvsuger vet ikke på forhånd hvordan rommet ser ut. Den bruker sensorer og bestemmer selv hva den skal gjøre. Her skal roboten finne veien gjennom labyrinten uten at dere forteller den hvor veggene er. Den eneste hjelpen den får, er avstandssensoren. Koden under kjører fram til roboten nesten er borti en vegg. Ordet <code>while</code> betyr «så lenge»: Linjene med innrykk gjentas så lenge avstanden er større enn 0,2 m.</p>
+        <div class="py-boks" data-navn="Steg 6" data-ny=""><pre class="kode"><code>from robot import Robot
+
+robot = Robot("labyrint")
+print("Avstand til veggen:", robot.avstand(), "m")
+
+while robot.avstand() &gt; 0.2:    # så lenge det er plass foran roboten
+    robot.kjør(0.05)            # kjør et lite stykke fram
+
+print("Stopper. Avstand til veggen:", robot.avstand(), "m")</code></pre></div>
+          <ol>
+            <li>Kjør koden. Hvor stopper roboten?</li>
+            <li>Når roboten står foran en vegg, kan den snu seg mot høyre og bruke sensoren for å se om det er åpent der. Er det stengt, må den snu seg andre veien. Skriv dette med <code>if</code> og <code>else</code>.</li>
+            <li>Sett alt inn i en løkke, <code>while not robot.i_mål():</code>, slik at roboten fortsetter til den er i mål. Virker programmet deres også hvis labyrinten var en annen?</li>
+          </ol>
+          <details class="fasit">
+            <summary>Hint til labyrinten</summary>
+            <p>Inne i løkka gjør roboten ett av to: Er det plass foran (<code>robot.avstand() > 0.2</code>), kjører den et lite stykke. Ellers svinger den −90° og sjekker avstanden på nytt. Er avstanden fortsatt liten, svinger den 180° for å se den andre veien.</p>
+          </details>
+        </div>
+
+        <p><a class="knapp lys" href="index.html">Tilbake til oversikten</a> <a class="knapp lys" href="fysikk.html">Videre til fysikkstasjonene</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/vendor/codemirror/codemirror.min.js"></script>
+  <script src="../js/vendor/codemirror/python.min.js"></script>
+  <script src="../js/vendor/codemirror/matchbrackets.min.js"></script>
+  <script src="../js/pykjorer.js"></script>
+
+</body>
+</html>

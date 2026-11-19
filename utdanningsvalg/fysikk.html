@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fysikkstasjoner – fysikklab.no</title>
+  <meta name="description" content="Seks korte stasjoner med simuleringer: kraft på strøm i magnetfelt, loddrett sirkel, reaksjonstid, skrått kast, sprettball og en reise nesten like fort som lyset.">
+  <meta name="robots" content="noindex">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../utdanningsvalg/index.html">Utdanningsvalg</a> / Fysikkstasjoner</p>
+        <h1>Fysikkstasjoner</h1>
+        <p class="ingress">Roboter må følge fysikkens lover. Motorene bruker magnetisme, sensorene måler tid og avstand, og en robot som skal kaste eller hoppe, må regne på banen. Her er seks stasjoner med simuleringer. Velg selv rekkefølgen, men start gjerne med strømhuska, for den viser hvordan elektromotoren dere bygde, virker. Simuleringene åpnes i en ny fane.</p>
+
+        <div class="tekst opplegg">
+          <h2>1. Strømhuska: Hvorfor går en elektromotor rundt?</h2>
+          <p>En metallstav henger i et magnetfelt. Når det går strøm gjennom staven, får den en kraft til siden og svinger ut. Akkurat dette skjer inne i elektromotoren dere har bygget: Strøm i en ledning som ligger i et magnetfelt, gir en kraft, og kraften får spolen til å snurre.</p>
+          <p><a class="knapp" href="../sim/stromhuske.html" target="_blank" rel="noopener">Åpne strømhuska</a></p>
+          <ol>
+            <li>Hva skjer med utslaget når dere øker strømmen? Og når dere skrur strømmen helt ned til null?</li>
+            <li>Gjør strømmen negativ, så den går motsatt vei. Hva skjer?</li>
+            <li>Snu magnetfeltet med valget «Retning på B». Hva skjer? Og hva skjer hvis dere snur både strømmen og magnetfeltet?</li>
+            <li>Hvordan kan dere få en elektromotor til å gå andre veien? Det er nettopp dette roboten gjør når et hjul får negativ fart.</li>
+          </ol>
+
+          <h2>2. Vannglasset som ikke søler</h2>
+          <p>Et glass med vann står på en plate som henger i snorer. Svinger vi platen rundt i en loddrett sirkel, blir vannet i glasset, selv på toppen der glasset er opp ned. Simuleringen viser det samme med en ball i en snor.</p>
+          <p><a class="knapp" href="../sim/loddrett-sirkel.html" target="_blank" rel="noopener">Åpne loddrett sirkel</a></p>
+          <ol>
+            <li>Velg «Ball i snor» og radius 1 m. Start med farten 7,5 m/s i bunnen. Kommer ballen helt rundt?</li>
+            <li>Gjør farten i bunnen litt mindre om gangen. Hva skjer med snora på toppen når farten blir for liten? Hvor stor fart trengs for å komme helt rundt?</li>
+            <li>Hva ville vannet gjort hvis platen plutselig forsvant akkurat på toppen? Ville det falt rett ned, eller fortsatt i en annen retning? Bruk svaret til å forklare hvorfor vannet blir i glasset.</li>
+            <li>Hvorfor er det lurt å svinge fort og jevnt når vi gjør forsøket?</li>
+          </ol>
+
+          <h2>3. Hvor rask er du?</h2>
+          <p>En robot med en sensor kan reagere på noen få tusendels sekunder. Hvor rask er du?</p>
+          <p><a class="knapp" href="../opplegg/reaksjonstid.html" target="_blank" rel="noopener">Åpne reaksjonstesten</a></p>
+          <ol>
+            <li>Ta testen i nettleseren minst fem ganger. Hva er gjennomsnittet ditt? Hvem på gruppa er raskest?</li>
+            <li>En bil kjører i 50 km/t. Det er omtrent 14 meter per sekund. Hvor langt kjører bilen før sjåføren rekker å trå på bremsen, med reaksjonstiden din? Gang farten med reaksjonstiden.</li>
+            <li>Blir du raskere hvis du prøver mange ganger? Blir du tregere hvis noen snakker til deg mens du prøver?</li>
+          </ol>
+
+          <h2>4. Skrått kast: Treff blinken</h2>
+          <p>En robot som skal kaste en ball i en kurv, må velge riktig fart og vinkel. Men hvilken vinkel gir det lengste kastet?</p>
+          <p><a class="knapp" href="../sim/skratt-kast.html" target="_blank" rel="noopener">Åpne skrått kast</a></p>
+          <ol>
+            <li>Gjett først: Hvilken vinkel gir lengst kast? Prøv så 30°, 45° og 60° med samme fart. Hadde dere rett?</li>
+            <li>Sammenlign rekkevidden med 30° og 60°. Hva legger dere merke til? Finner dere andre vinkler som passer sammen sånn?</li>
+            <li>Skru på luftmotstand. Hva skjer med banen? Er det fortsatt samme vinkel som gir lengst kast?</li>
+          </ol>
+
+          <h2>5. Sprettballen</h2>
+          <p>Når en ball spretter, forsvinner noe av energien hver gang. Hvor blir den av?</p>
+          <p><a class="knapp" href="../sim/sprettball.html" target="_blank" rel="noopener">Åpne sprettballen</a></p>
+          <ol>
+            <li>Slipp alle ballene fra samme høyde. Hvilken ball spretter høyest, og hvilken lavest?</li>
+            <li>Kan en ball sprette høyere enn den ble sluppet fra, hvis ingen kaster den? Hvorfor ikke?</li>
+            <li>Hvor blir det av energien som forsvinner i hvert sprett? (Tips: Hva kan dere høre, og hva skjer med temperaturen i ballen?)</li>
+            <li>Velg «Ukjent ball». Hvilken av de andre ballene ligner den mest på?</li>
+          </ol>
+
+          <h2>6. Bonus: Reis nesten like fort som lyset</h2>
+          <p>Ingenting kan gå fortere enn lyset. Men nær lysfarten skjer det rare ting med tiden. Dette er Einsteins relativitetsteori, og dere lærer mer om den i Fysikk 2 på videregående.</p>
+          <p><a class="knapp" href="../sim/romreise.html" target="_blank" rel="noopener">Åpne romreisen</a></p>
+          <ol>
+            <li>Sett alderen deres ved avreise og reis til Vega med farten 0,99c, altså 99 % av lysfarten. Hvor gamle er dere når dere kommer fram?</li>
+            <li>Hvor mange år har gått på Jorda mens dere var på reise? Hvor gamle er vennene deres hjemme da?</li>
+            <li>Kryss av for «Svært høy fart» og reis til sentrum av Melkeveien. Hvor lang tid tar reisen for dere om bord?</li>
+          </ol>
+        </div>
+
+        <p><a class="knapp lys" href="index.html">Tilbake til oversikten</a> <a class="knapp lys" href="robot.html">Til robotbilen</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

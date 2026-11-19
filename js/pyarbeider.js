@@ -36,12 +36,20 @@ def figurer():
 
 function nyttRom() { if (rom) rom.destroy(); rom = py.globals.get("dict")(); }
 
-// Rydder feilmeldingen: Fjerner linjene fra Pyodide selv, og skriver «Linje 3» i stedet for «File "<exec>", line 3».
+// Rydder feilmeldingen: Fjerner linjene fra Pyodide selv og fra andre filer enn elevens kode, og skriver «Linje 3» i stedet for «File "<exec>", line 3».
 function ryddFeil(tekst) {
   const linjer = tekst.trim().split("\n");
   const start = linjer.findIndex((l) => l.includes('File "<exec>"'));
   const del = start >= 0 ? linjer.slice(start) : linjer.slice(-1);
-  return del.map((l) => l.replace(/File "<exec>", line (\d+), in <module>/, "Linje $1").replace(/File "<exec>", line (\d+)/, "Linje $1")).join("\n");
+  // Hopp over linjene fra andre filer (for eksempel robot.py eller pakker), så eleven bare ser sin egen kode og selve feilen
+  const ut = [];
+  let hopp = false;
+  for (const l of del) {
+    if (/^\s*File "/.test(l)) hopp = !l.includes('File "<exec>"');
+    else if (!/^\s/.test(l)) hopp = false;
+    if (!hopp) ut.push(l);
+  }
+  return ut.map((l) => l.replace(/File "<exec>", line (\d+), in <module>/, "Linje $1").replace(/File "<exec>", line (\d+)/, "Linje $1")).join("\n");
 }
 
 onmessage = async (e) => {
@@ -49,7 +57,11 @@ onmessage = async (e) => {
   try {
     await klar;
     if (m.type === "nullstill") { nyttRom(); postMessage({ id: m.id, type: "ferdig", ok: true }); return; }
-    for (const f of m.filer || []) py.FS.writeFile(f.navn, new Uint8Array(f.data));
+    for (const f of m.filer || []) {
+      py.FS.writeFile(f.navn, new Uint8Array(f.data));
+      // Hjelpemoduler (for eksempel robot.py) kan importere pakker som matplotlib. Last dem også.
+      if (f.navn.endsWith(".py")) await py.loadPackagesFromImports(new TextDecoder().decode(f.data), { messageCallback: () => {}, errorCallback: () => {} });
+    }
     await py.loadPackagesFromImports(m.kode, { messageCallback: () => {}, errorCallback: () => {} });
     const t0 = performance.now();
     await py.runPythonAsync(m.kode, { globals: rom });

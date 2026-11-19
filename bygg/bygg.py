@@ -12,6 +12,7 @@ Hva som bygges:
     begrep.py                                    begrepstestene (opplegg/begrep-*.html)
     repetisjon.py                                repetisjonssidene (opplegg/repetisjon-*.html)
     kompetansemaal.py                            lærersiden opplegg/kompetansemaal.html (bygges sist, leser titlene fra de andre sidene)
+    kilder/utdanningsvalg/*.html                 opplegget for 10. klasse på fysikklab.no/utdanningsvalg (ikke lenket fra resten av sida)
 
 Etterpå: Kodeblokkene på programmeringssidene gjøres om til kjørbare Python-bokser (PY_SIDER under),
 og knappen «Last ned elevark (PDF)» settes inn hvis PDF-en finnes i elevark/.
@@ -34,6 +35,7 @@ PY_SIDER = {
     "python-rakett": dict(filnavn="rakett.py", ny=[1], notatbok="rakett.ipynb"),
     "python-monte-carlo": dict(filnavn="monte_carlo.py", ny=[2], notatbok="monte-carlo.ipynb"),
     "python-biot-savart": dict(filnavn="biot_savart.py", notatbok="biot-savart.ipynb"),
+    "robot": dict(filnavn="robotbil.py", filer="robot.py", ny=[1, 2, 3, 4, 5]),   # utdanningsvalg/robot.html
 }
 
 def kodeside(kilde):
@@ -85,7 +87,7 @@ def modul(navn):
 def kilder(tmp):
     """Alle kildefilene som (mappe, navn, sti til kilde)."""
     ut = []
-    for mappe in ["opplegg", "sim", "programmering"]:
+    for mappe in ["opplegg", "sim", "programmering", "utdanningsvalg"]:
         for f in sorted(os.listdir(os.path.join(HER, "kilder", mappe))):
             if f.endswith(".html"):
                 ut.append((mappe, f[:-5], os.path.join(HER, "kilder", mappe, f)))
@@ -109,9 +111,9 @@ def main():
             modul("kompetansemaal").bygg(ROT, d)
             kilde = os.path.join(d, "kompetansemaal.html")
         tekst = open(kilde, encoding="utf-8").read()
-        if mappe == "programmering": tekst = kodeside(tekst)
+        if mappe in ("programmering", "utdanningsvalg"): tekst = kodeside(tekst)
         s = lag_side(tekst)
-        if mappe == "programmering" and navn in PY_SIDER: s = aktiver(s, navn)
+        if mappe in ("programmering", "utdanningsvalg") and navn in PY_SIDER: s = aktiver(s, navn)
         s = elevark_lenke(s, mappe, navn)
         mål = os.path.join(ROT, mappe, navn + ".html")
         gammel = open(mål, encoding="utf-8").read() if os.path.exists(mål) else ""

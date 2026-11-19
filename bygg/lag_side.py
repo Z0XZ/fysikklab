@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # Lager en side for fysikklab.no fra en kildefil med et lite hode, skilt fra innholdet med en linje med ---:
 #   tittel, beskrivelse, fagside (lenken i brødsmulene), fag, tema, script (kommaseparert, - for ingen) og meny (aktiv side i menyen).
+#   Valgfritt: robots (for eksempel noindex, så søkemotorer ikke tar med siden).
 # Brukes av bygg.py, men kan også kjøres alene: python3 bygg/lag_side.py <kildemappe> <utmappe>
 import sys, os, html, re
 
@@ -24,6 +25,7 @@ def lag(tekst):
         if "<pre" in linje and "</pre>" not in linje: i_pre = True
         elif "</pre>" in linje: i_pre = False
     script = f.get("script", "-")
+    robots = f'  <meta name="robots" content="{f["robots"]}">\n' if f.get("robots") else ""
     skript = "" if script == "-" else "\n".join(f'  <script src="../js/{n.strip()}"></script>' for n in ["felles.js"] + script.split(","))
     return f"""<!doctype html>
 <html lang="nb">
@@ -32,7 +34,7 @@ def lag(tekst):
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{f['tittel']}</title>
   <meta name="description" content="{html.escape(f['beskrivelse'], quote=True)}">
-  <script src="../js/tema.js"></script>
+{robots}  <script src="../js/tema.js"></script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>

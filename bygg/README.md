@@ -19,6 +19,7 @@ Kjør `--sjekk` først. Hvis den viser endringer du ikke har gjort i kildene, er
 | `kilder/programmering/*.html` og `kilder/py/*.py` | Programmeringssidene grunnkurs, regresjon, satellittbane, elektrisk felt, energi med friksjon, rakett, Monte Carlo og Biot–Savart. `@@fil.py@@` i kilden byttes med koden i `kilder/py/`. |
 | `begrep.py` | Begrepstestene `opplegg/begrep-*.html`. Spørsmålene står i skriptet. Alternativene stokkes, men i samme rekkefølge hver gang. |
 | `repetisjon.py` | Repetisjonssidene `opplegg/repetisjon-*.html` |
+| `kilder/utdanningsvalg/*.html` | Opplegget for 10. klasse på fysikklab.no/utdanningsvalg. Sidene er ikke lenket fra resten av nettstedet og har `robots: noindex`. Robotbilen ligger i `utdanningsvalg/robot.py` og redigeres direkte der. |
 | `kompetansemaal.py` | Lærersiden `opplegg/kompetansemaal.html`. Bygges sist, fordi den henter titlene fra de andre sidene. Legg nye sider inn i listene `F1` og `F2`. |
 
 De andre sidene på fysikklab.no er ikke med her og redigeres direkte.
