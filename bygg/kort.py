@@ -68,12 +68,15 @@ def fil(navn, f):
     s = open(navn, encoding="utf-8").read(); s = f(s); open(navn, "w", encoding="utf-8").write(s)
 
 def uo(s):
-    s = blokk_sett(s, "Fysikk 1 · Bevegelse og krefter", ["opplegg/heis-mobil.html", "opplegg/repetisjon-bevegelse.html", "opplegg/repetisjon-krefter.html", "opplegg/begrep-krefter.html"])
+    s = blokk_sett(s, "Fysikk 1 · Rettlinjet bevegelse", ["opplegg/repetisjon-bevegelse.html"])
+    s = blokk_sett(s, "Fysikk 1 · Krefter", ["opplegg/heis-mobil.html", "opplegg/repetisjon-krefter.html", "opplegg/begrep-krefter.html"])
     s = ny_blokk(s, "Fysikk 1 · Bevegelsesmengde og støt", "Fysikk 1 · Mekanisk energi", ["opplegg/repetisjon-energi.html", "opplegg/begrep-energi.html"])
     s = blokk_sett(s, "Fysikk 1 · Bevegelsesmengde og støt", ["opplegg/repetisjon-bevegelsesmengde.html", "opplegg/begrep-bevegelsesmengde.html"])
-    s = ny_blokk(s, "Fysikk 2 · Spesiell relativitetsteori", "Fysikk 2 · Bevegelse i to dimensjoner og sirkelbevegelse", ["opplegg/video-skratt-kast.html", "opplegg/sentripetal-mobil.html", "opplegg/repetisjon-mekanikk-2.html", "opplegg/begrep-kast-sirkel.html"])
+    s = blokk_sett(s, "Fysikk 2 · Bevegelse og krefter i to dimensjoner", ["opplegg/video-skratt-kast.html"])
+    s = blokk_sett(s, "Fysikk 2 · Sirkelbevegelse", ["opplegg/sentripetal-mobil.html", "opplegg/repetisjon-mekanikk-2.html", "opplegg/begrep-kast-sirkel.html"])
     s = blokk_sett(s, "Fysikk 2 · Spesiell relativitetsteori", ["opplegg/repetisjon-relativitet.html", "opplegg/begrep-relativitet.html"])
-    s = blokk_sett(s, "Fysikk 2 · Elektriske og magnetiske felt", ["opplegg/e-over-m.html", "opplegg/begrep-felt.html"])
+    s = blokk_sett(s, "Fysikk 2 · Magnetiske felt og krefter", ["opplegg/e-over-m.html"])
+    s = blokk_sett(s, "Fysikk 2 · Elektriske felt og krefter", ["opplegg/begrep-felt.html"])
     if "<h2>Til læreren</h2>" not in s:
         i = s.rindex("      </div>\n    </section>\n  </main>")
         s = s[:i] + '\n        <div class="tema-blokk">\n          <h2>Til læreren</h2>\n          <ul class="sim-kort-liste">\n' + kort("opplegg/kompetansemaal.html") + "\n          </ul>\n        </div>\n" + s[i:]
@@ -81,26 +84,18 @@ def uo(s):
     return s
 fil("undervisningsopplegg.html", uo)
 
-def f1(s):
-    s = blokk_sett(s, "Rettlinjet bevegelse", ["opplegg/repetisjon-bevegelse.html"])
-    s = blokk_sett(s, "Krefter", ["opplegg/heis-mobil.html", "opplegg/repetisjon-krefter.html", "opplegg/begrep-krefter.html"])
-    s = blokk_sett(s, "Mekanisk energi", ["programmering/python-energi-friksjon.html", "opplegg/repetisjon-energi.html", "opplegg/begrep-energi.html"])
-    s = blokk_sett(s, "Bevegelsesmengde og støt", ["programmering/python-rakett.html", "opplegg/repetisjon-bevegelsesmengde.html", "opplegg/begrep-bevegelsesmengde.html"])
+def sim(s):
+    # Simuleringssiden har bare simuleringer som kort. Forsøk, repetisjon og programmering står som lenker
+    # i «Mer til temaet» under hvert tema, og legges inn for hånd.
+    s = blokk_sett(s, "Fysikk 2 · Elektriske felt og krefter", ["sim/millikan.html"])
+    s = blokk_sett(s, "Fysikk 2 · Magnetiske felt og krefter", ["sim/e-over-m.html"])
     return s
-fil("fysikk-1.html", f1)
-def f2(s):
-    s = blokk_sett(s, "Tenke og gjøre fysikk", ["programmering/python-monte-carlo.html"])
-    s = blokk_sett(s, "Bevegelse og krefter i to dimensjoner", ["opplegg/video-skratt-kast.html"])
-    s = blokk_sett(s, "Sirkelbevegelse", ["opplegg/sentripetal-mobil.html", "opplegg/repetisjon-mekanikk-2.html", "opplegg/begrep-kast-sirkel.html"])
-    s = blokk_sett(s, "Spesiell relativitetsteori", ["opplegg/repetisjon-relativitet.html", "opplegg/begrep-relativitet.html"])
-    s = blokk_sett(s, "Elektriske felt og krefter", ["sim/millikan.html"])
-    s = blokk_sett(s, "Magnetiske felt og krefter", ["sim/e-over-m.html", "opplegg/e-over-m.html", "opplegg/begrep-felt.html", "programmering/python-biot-savart.html"])
-    return s
-fil("fysikk-2.html", f2)
+fil("simuleringer.html", sim)
 def pr(s):
-    s = blokk_sett(s, "Fysikk 1", ["programmering/python-energi-friksjon.html", "programmering/python-rakett.html"])
-    s = blokk_sett(s, "Fysikk 2", ["programmering/python-monte-carlo.html", "programmering/python-biot-savart.html"])
+    s = blokk_sett(s, "Fysikk 1 · Mekanisk energi", ["programmering/python-energi-friksjon.html"])
+    s = blokk_sett(s, "Fysikk 1 · Bevegelsesmengde og støt", ["programmering/python-rakett.html"])
+    s = blokk_sett(s, "Fysikk 2 · Tenke og gjøre fysikk", ["programmering/python-monte-carlo.html"])
+    s = blokk_sett(s, "Fysikk 2 · Magnetiske felt og krefter", ["programmering/python-biot-savart.html"])
     return s
 fil("programmering.html", pr)
-for f in ["fysikk-1.html", "fysikk-2.html"]:
-    print(f, len(re.findall(r'href="sim/', open(f, encoding="utf-8").read())))
+print("simuleringer.html", len(set(re.findall(r'class="sim-kort" href="(sim/[^"]+)"', open("simuleringer.html", encoding="utf-8").read()))), "simuleringer")

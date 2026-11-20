@@ -7,8 +7,8 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | Fil | Innhold |
 |---|---|
 | `index.html` | Forsiden |
-| `simuleringer.html` | Inngang til Fysikk 1 og Fysikk 2 |
-| `fysikk-1.html`, `fysikk-2.html` | Fagsidene med simuleringene sortert etter tema |
+| `simuleringer.html` | Alle simuleringene sortert etter fag og tema, med filter |
+| `fysikk-1.html`, `fysikk-2.html` | Gamle adresser. De sender videre til `simuleringer.html?fag=f1` og `?fag=f2` |
 | `sim/` | Én side per simulering, med oppgaver og løsningsforslag |
 | `undervisningsopplegg.html` | Undervisningsopplegg |
 | `programmering.html` | Python i fysikk |

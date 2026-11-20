@@ -16,9 +16,9 @@ p = lambda *n: ["programmering/python-" + x + ".html" for x in n]
 
 F1 = [
  ("planlegge og gjennomføre forsøk, analysere data og trekke konklusjoner",
-  o("reaksjonstid", "video-fall", "video-rulling", "video-muffins", "friksjonsforsok", "kraftsensorer", "kraftsensor", "heis-mobil", "videoanalyse-stot", "eggslipp") + s("maaleusikkerhet", "videoanalyse")),
+  o("reaksjonstid", "video-fall", "video-rulling", "video-muffins", "friksjonsforsok", "kraftsensorer", "kraftsensor", "heis-mobil", "videoanalyse-stot", "eggslipp") + s("maaleusikkerhet", "videoanalyse", "usikkerhet-beregning", "linearisering") + p("regresjon", "monte-carlo")),
  ("vurdere, bruke og lage modeller til å beskrive og forutsi fysiske fenomener",
-  s("luftmotstand", "fritt-fall") + o("video-muffins") + p("bevegelse-maledata", "variable-krefter")),
+  s("luftmotstand", "fritt-fall", "linearisering") + o("video-muffins") + p("bevegelse-maledata", "variable-krefter")),
  ("vurdere ulike påstander og argumenter om energi og klima i samfunnsaktuelle problemsstillinger", []),
  ("utforske, analysere og beskrive rettlinjet bevegelse",
   s("bevegelsesgrafer", "fritt-fall", "bremselengde", "videoanalyse") + o("video-fall", "video-rulling", "repetisjon-bevegelse") + p("bevegelse-maledata")),
@@ -39,10 +39,10 @@ F1 = [
 ]
 F2 = [
  ("planlegge, gjennomføre og videreutvikle forsøk, og analysere data og beregne usikkerhet for å vurdere gyldigheten av funn",
-  s("usikkerhet-beregning", "linearisering") + o("sentripetal-mobil", "video-skratt-kast", "magnetfelt-mobil", "e-over-m") + p("regresjon", "monte-carlo")),
+  s("usikkerhet-beregning", "linearisering", "maaleusikkerhet", "videoanalyse") + o("sentripetal-mobil", "video-skratt-kast", "magnetfelt-mobil", "e-over-m", "reaksjonstid") + p("regresjon", "monte-carlo")),
  ("presentere sentrale elementer i ny viten i fysikk som er et resultat av internasjonalt forskningssamarbeid, og vurdere hvordan slikt samarbeid bidrar i kunnskapsutviklingen", []),
  ("bruke numeriske metoder og programmering til å utforske og modellere fysiske fenomener",
-  p("horisontalt-kast", "bil-luftmotstand", "sirkelbevegelse", "satellittbane", "regresjon", "monte-carlo", "elektrisk-felt", "partikkelbane", "biot-savart", "ekte-data")),
+  p("grunnkurs", "horisontalt-kast", "bil-luftmotstand", "sirkelbevegelse", "satellittbane", "regresjon", "monte-carlo", "elektrisk-felt", "partikkelbane", "biot-savart", "ekte-data") + s("luftmotstand")),
  ("utforske, beskrive og modellere bevegelse i to dimensjoner",
   s("skratt-kast", "skraaplan", "lodd-i-snorer") + o("video-skratt-kast", "repetisjon-mekanikk-2", "begrep-kast-sirkel") + p("horisontalt-kast", "bil-luftmotstand")),
  ("gjøre rede for hvordan krefter kan forårsake krumlinjet bevegelse, og bruke dette i beregninger",
@@ -96,9 +96,13 @@ meny: undervisningsopplegg.html
 
 <div class="tekst opplegg km">
 <p>Ordlyden i målene er hentet fra Læreplan i fysikk (FYS01-02), fastsatt av Utdanningsdirektoratet og gjeldende fra 1.8.2021. Se <a href="https://www.udir.no/lk20/fys01-02">læreplanen hos Udir</a> for den offisielle versjonen. Koblingen mellom målene og ressursene er lærerens egen vurdering. Den er ikke laget av Udir.</p>
-<p><a href="#fysikk-1">Fysikk 1</a> · <a href="#fysikk-2">Fysikk 2</a></p>
+<p><a href="#fysikk-1">Fysikk 1</a> · <a href="#fysikk-2">Fysikk 2</a>. Velger du et fag i menyen øverst, vises bare målene i det faget.</p>
+<div data-fagdel="f1">
 {b1}
+</div>
+<div data-fagdel="f2">
 {b2}
+</div>
 <h2>Mål uten ressurser</h2>
 <p>Fysikk 1: mål {liste(m1)}. Fysikk 2: mål {liste(m2)}. Dette er temaer som ikke har vært gjennomgått med ressurser på siden ennå: elektrisitet, termofysikk, stråling og klima, atommodeller og stjerner i Fysikk 1, og forskningssamarbeid, induksjon og kvantefysikk i Fysikk 2.</p>
 </div>
