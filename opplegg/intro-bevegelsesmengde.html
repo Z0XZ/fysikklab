@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bevegelsesmengde og impuls – introduksjonsøkt på 90 minutter</title>
+  <meta name="description" content="Undervisningsopplegg i Fysikk 1: En ferdig planlagt første økt om bevegelsesmengde og impuls med egg i laken, utledning av ΣF · Δt = Δp, simuleringen Myk landing med egg og sprettball, begrepsspørsmål, oppgaver fra Kraft og ERGO og exit ticket.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Bevegelsesmengde og impuls – introduksjonsøkt på 90 minutter</h1>
+        <p class="ingress">En ferdig planlagt første økt om bevegelsesmengde i Fysikk 1. Elevene starter med et egg som kastes inn i et laken, møter p = mv og Newtons 2. lov skrevet som ΣF · Δt = Δp, og bruker simuleringen Myk landing til å se at arealet under F(t)-grafen er Δp. Deretter oppdager de at en ball som spretter tilbake, får nesten dobbelt så stor Δp som en som blir liggende. Økta avsluttes med oppgaver på tre nivåer og en exit ticket.</p>
+
+        <div class="tekst opplegg">
+          <h2>Kort oversikt</h2>
+          <ul>
+            <li><strong>Fag og tema:</strong> Fysikk 1, bevegelsesmengde og impuls. Kraft kapittel 5, delkapittel 5.1 og 5.2 (fra side 132). ERGO Fysikk 1 kapittel 4, de første delkapitlene om bevegelsesmengde og impuls.</li>
+            <li><strong>Varighet:</strong> 90 minutter. En kortere variant på 60 minutter står nederst.</li>
+            <li><strong>Forkunnskaper:</strong> Newtons 2. lov, fartsformelen v = v₀ + at og bevaring av mekanisk energi, så elevene kan regne ut farten etter et fall med v = √(2gh).</li>
+            <li><strong>Simuleringer:</strong> <a href="../sim/impuls.html">Myk landing</a> med egg og sprettball. <a href="../sim/ballstabel.html">Ballstabel</a> kan brukes som avslutning.</li>
+            <li><strong>Neste økt:</strong> bevaring av bevegelsesmengde i støt, for eksempel med <a href="../sim/vognstot.html">Støt mellom to vogner</a> eller forsøket <a href="kraftsensor.html">Impuls med kraftsensor</a>. Økta slutter med et spørsmål som leder dit.</li>
+          </ul>
+
+          <h2>Kompetansemål og læringsmål</h2>
+          <p>Kompetansemålet i Fysikk 1 er å forstå og gjøre rede for konsekvenser av at bevegelsesmengde og energi er bevart, og bruke dette i beregninger. Denne økta legger grunnlaget: Før elevene kan bruke bevaringsloven, må de kunne regne med bevegelsesmengde som en vektor og koble endringen til krefter.</p>
+          <p>Etter økta skal elevene kunne:</p>
+          <ol>
+            <li>regne ut bevegelsesmengde med p = mv, og bruke fortegn for retningen</li>
+            <li>forklare at Newtons 2. lov kan skrives som ΣF · Δt = Δp, og at impulsen er arealet under F(t)-grafen</li>
+            <li>forklare hvorfor en lengre bremsetid gir mindre kraft for samme Δp, og bruke det på kollisjonsputer, hjelmer og myke landinger</li>
+            <li>regne ut Δp når et legeme snur, og forklare hvorfor Δp da blir større enn når legemet bare stopper</li>
+          </ol>
+
+          <h2>Forberedelser</h2>
+          <ul>
+            <li>Til oppstarten: et laken eller et stort håndkle, to elever som holder det, og noen rå egg. Ha en plastpose eller et brett under i tilfelle. Et hardkokt egg fungerer også, men er mindre spennende.</li>
+            <li>Ha klar en sprettball og en klump plastilin eller modelleire. Hvis dere har stativ og snor, kan de henges opp som pendler til demonstrasjonen i del 5.</li>
+            <li>Sjekk at <a href="../sim/impuls.html">Myk landing</a> virker på elevenes maskiner og på projektoren. Den trenger ingen innlogging.</li>
+            <li>Gjør gjerne klar små tavler (mini-whiteboards) eller et svarverktøy til begrepsspørsmålene. Fire fingre (A–D) fungerer også.</li>
+            <li>Del elevene i par. Simuleringsdelen fungerer best med to elever per maskin: én styrer og én leser oppgavene.</li>
+          </ul>
+
+          <h2>Tidsplan</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Tid</th><th scope="col">Del</th><th scope="col">Arbeidsform</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">0–10</th><td>1. Oppstart: egget i lakenet</td><td>Demonstrasjon, tenk alene, del i par</td></tr>
+                <tr><th scope="row">10–25</th><td>2. Bevegelsesmengde p = mv og begrepsspørsmål</td><td>Lærerstyrt med elevinnspill</td></tr>
+                <tr><th scope="row">25–35</th><td>3. Newtons 2. lov med bevegelsesmengde: impuls</td><td>Lærerstyrt utledning på tavla</td></tr>
+                <tr><th scope="row">35–50</th><td>4. Myk landing: samme Δp, ulik kraft</td><td>Simulering i par, oppsummering i plenum</td></tr>
+                <tr><th scope="row">50–65</th><td>5. Sprette eller bli liggende?</td><td>Demonstrasjon, simulering i par, plenum</td></tr>
+                <tr><th scope="row">65–85</th><td>6. Oppgaveregning på tre nivåer</td><td>Individuelt eller i par</td></tr>
+                <tr><th scope="row">85–90</th><td>7. Exit ticket og overgang til neste økt</td><td>Individuelt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>1. Oppstart: egget i lakenet (0–10 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal få et konkret spørsmål som resten av økta svarer på.</p>
+          <p><strong>Lærer:</strong> To elever holder et laken loddrett mellom seg, med nederste kant bøyd opp som en lomme. Spør klassen: «Hvis jeg kaster et rått egg så hardt jeg kan inn i lakenet, knuser det?» La alle stemme før du kaster. Egget overlever. Spør så: «Hva ville skjedd om jeg kastet like hardt mot veggen?»</p>
+          <p><strong>Spørsmål til elevene:</strong> «Egget hadde samme fart i begge tilfellene, og det stopper helt i begge. Hva er forskjellen?» Gi ett minutt alene og to minutter i par, og ta noen svar i plenum.</p>
+          <p><strong>Forventede svar:</strong> «Lakenet er mykt», «det tar lengre tid å stoppe», «kraften blir mindre». Skriv svarene på tavla. Målet er at noen nevner tiden. Si at dere nå skal finne en størrelse som er lik i begge tilfellene, og en lov som sier hvordan tid og kraft henger sammen.</p>
+          <p><strong>Tips:</strong> Hvis dere ikke vil kaste egg i klasserommet, kan dere slippe et egg i en pose ned på en pute og ned på gulvet, eller vise simuleringen <a href="../sim/impuls.html">Myk landing</a> med betong og dyne på tavla.</p>
+
+          <h2>2. Bevegelsesmengde og begrepsspørsmål (10–25 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal kunne regne ut p = mv og forstå at bevegelsesmengde er en vektor med retning.</p>
+          <p><strong>Tavleplan:</strong></p>
+          <ol>
+            <li>Definisjon: <strong>p = mv</strong>, med enheten kg m/s. Den har samme retning som farten.</li>
+            <li>Et kort historisk poeng: Newton kalte den «quantity of motion», og det var den han brukte i sin andre lov (Kraft side 132).</li>
+            <li>Velg positiv retning, og bruk fortegn. Et egg på 60 g som faller med 4,4 m/s, har p = −0,26 kg m/s hvis oppover er positiv.</li>
+            <li>Δp = p₂ − p₁ = m(v₂ − v₁). Spør: «Hva er Δp for egget når det stopper?» Svar: Δp = 0 − (−0,26) = +0,26 kg m/s, altså oppover. Endringen peker mot den kraften som stoppet egget.</li>
+          </ol>
+          <p><strong>Begrepsspørsmål:</strong> Vis ett og ett spørsmål, og la alle svare samtidig. Hvis mer enn en tredel svarer feil, ta en kort runde i par og spør igjen.</p>
+          <ol>
+            <li>En lastebil og en sykkel har like stor bevegelsesmengde. Hvem har størst fart? A) lastebilen, B) sykkelen, C) de har like stor fart, D) det kan vi ikke vite.</li>
+            <li>To biler med samme masse kjører like fort, men i hver sin retning. Har de samme bevegelsesmengde? A) ja, B) nei, den ene har negativ bevegelsesmengde, C) ja, fordi farten er lik, D) nei, den ene har null.</li>
+            <li>Hvilken enhet er den samme som kg m/s? A) N/s, B) N · s, C) J, D) N · m.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1 B. 2 B, siden bevegelsesmengde har retning. Dette er det samme som Kraft-oppgave 5.04. 3 B, fordi 1 N · s = 1 kg m/s² · s = 1 kg m/s. Feilsvar D på spørsmål 3 betyr ofte at eleven blander impuls og arbeid.</p>
+
+          <h2>3. Newtons 2. lov med bevegelsesmengde (25–35 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal forstå hvor ΣF · Δt = Δp kommer fra, og hva impuls er.</p>
+          <p><strong>Tavleplan:</strong> Følg utledningen i Kraft 5.2 eller i ERGO.</p>
+          <ol>
+            <li>Start med ΣF = ma og a = Δv/Δt.</li>
+            <li>ΣF = m · Δv/Δt = (mv₂ − mv₁)/Δt = Δp/Δt.</li>
+            <li>Gang med Δt: <strong>ΣF · Δt = Δp</strong>. Venstresiden kalles <strong>impulsen</strong> I.</li>
+            <li>Når kraften varierer, er impulsen arealet under F(t)-grafen. Tegn en smal og høy kurve og en lav og bred kurve med samme areal.</li>
+          </ol>
+          <p><strong>Tilbake til egget:</strong> Egget har samme Δp enten det treffer lakenet eller veggen. Lakenet gir lang Δt og dermed liten kraft. Veggen gir kort Δt og stor kraft. Pek på de to kurvene på tavla.</p>
+          <p><strong>Spør underveis:</strong> «Newtons 2. lov på denne formen sier noe ΣF = ma ikke sier direkte. Hva?» Svaret er at det er produktet av kraft og tid som bestemmer endringen. En liten kraft lenge gir samme Δp som en stor kraft kort.</p>
+          <p><strong>Tips:</strong> Eksempel 5-3 i Kraft om basketballkastet viser at tyngden må tas med i kraftsummen. Det trengs i oppgave 4 på arbeidsarket.</p>
+
+          <h2>4. Myk landing: samme Δp, ulik kraft (35–50 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal se at arealet under F(t)-grafen er det samme for alle underlagene, mens toppen av kraften er svært ulik.</p>
+          <p><strong>Elevene gjør:</strong> Åpne <a href="../sim/impuls.html">Myk landing</a> og gjør arbeidsark-oppgave 1–4 under.</p>
+          <p><strong>Lærer går rundt og spør:</strong></p>
+          <ul>
+            <li>«Hva er likt på alle underlagene? Hva er forskjellig?»</li>
+            <li>«Se på arealet under grafen. Hvordan kan en smal topp og en lav bue ha samme areal?»</li>
+            <li>«Hvorfor må tyngden med når dere regner ut kraften fra underlaget?»</li>
+          </ul>
+          <p><strong>Oppsummering i plenum (3 min):</strong> La et par vise grafen for betong og dyne på projektoren med felles skala. Δp er 0,266 kg m/s for begge. Betongen stopper egget på 0,3 ms og gir over 1000 N, mens dyna bruker rundt 40 ms og gir omtrent 10 N. Koble til kollisjonsputer, hjelmer og at vi bøyer knærne når vi lander.</p>
+
+          <h2>5. Sprette eller bli liggende? (50–65 min)</h2>
+          <p><strong>Mål:</strong> Elevene skal forstå at Δp blir større når et legeme snur, og øve på fortegn.</p>
+          <p><strong>Demonstrasjon (hvis dere har utstyret):</strong> Heng opp en sprettball og en klump plastilin med omtrent samme masse som to pendler, og la dem svinge fra samme høyde mot en oppreist treplate eller dominobrikke. Spør først: «Hvilken velter klossen lettest?» Mange tror at plastilinen gjør det, fordi den «treffer hardere». Sprettballen velter klossen, mens plastilinen ofte ikke gjør det. Prøv dere fram med høyden på forhånd.</p>
+          <p><strong>Elevene gjør:</strong> Arbeidsark-oppgave 5–7 i Myk landing, med sprettball på betong.</p>
+          <p><strong>Plenum:</strong> Tegn pilene fra simuleringen på tavla: p før nedover, p etter oppover og Δp oppover og nesten dobbelt så lang som p før. Regn sammen: Δp = 0,060 · 3,68 − 0,060 · (−4,43) = 0,487 kg m/s. Underlaget må først stoppe ballen og så skyve den opp igjen. Derfor fikk sprettballen også mer impuls fra klossen i demonstrasjonen, og klossen fikk like mye tilbake. Det siste er Newtons 3. lov, og det leder til neste økt.</p>
+          <p><strong>Tips:</strong> Kraft-oppgave 5.11 om tennisballen og rekkerten og ERGO-oppgave 4.3 om ballen som spretter, øver på akkurat dette fortegnet. Ta gjerne én av dem i plenum.</p>
+
+          <h2>6. Oppgaveregning på tre nivåer (65–85 min)</h2>
+          <p>La elevene velge nivå selv, men be alle gjøre minst én oppgave fra nivå 1. Oppgavene fra ERGO er et tillegg for de som har tilgang til den boka.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Nivå</th><th scope="col">Kraft</th><th scope="col">ERGO</th><th scope="col">Hva øver de på</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1 Begreper</th><td>5.01, 5.02, 5.04, 5.07</td><td>4.1, 4.2, 4.6, 4.24</td><td>Definisjon og enhet, p = mv, retning, Newtons 2. lov med bevegelsesmengde, lang bremsetid gir liten kraft</td></tr>
+                <tr><th scope="row">2 Regning</th><td>5.03, 5.08, 5.09, 5.12</td><td>4.5, 4.21, 4.22, 4.25, 4.28</td><td>Bruke ΣF · Δt = Δp til å finne kraft, tid, fart eller masse</td></tr>
+                <tr><th scope="row">3 Fortegn og grafer</th><td>5.05, 5.06, 5.10, 5.11</td><td>4.3, 4.23, 4.27</td><td>Legemer som snur, areal under F(t), tyngden i kraftsummen</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Tips:</strong> Kraft-oppgave 5.06 har en v(t)-graf der farten skifter fortegn, og spør om stigningstallet til p(t)-grafen. Den er fin å ta i plenum, fordi den knytter Δp/Δt til kraften. ERGO-oppgave 4.27 kombinerer energibevaring, Δp med fortegn og normalkraft, og passer for elever som vil ha mer.</p>
+
+          <h2>7. Exit ticket og overgang til neste økt (85–90 min)</h2>
+          <p>Elevene svarer alene på en lapp eller digitalt:</p>
+          <ol>
+            <li>En fotball med massen 0,45 kg treffer en vegg med farten 12 m/s og spretter rett tilbake med 8,0 m/s. Hvor stor er endringen i bevegelsesmengde?</li>
+            <li>Ballen er i kontakt med veggen i 15 ms. Hvor stor er middelkraften fra veggen?</li>
+            <li>Skriv én setning om hvorfor du bøyer knærne når du hopper ned fra en mur.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1) Med positiv retning ut fra veggen: Δp = 0,45 · 8,0 − 0,45 · (−12) = 9,0 kg m/s, ut fra veggen. 2) F = 9,0 / 0,015 = 600 N. 3) Δp er gitt av farten du lander med. Lengre bremsetid gir mindre kraft på beina. Mange svarer 1,8 kg m/s på spørsmål 1 fordi de trekker fra farten uten fortegn. Ta det opp i starten av neste økt.</p>
+          <p><strong>Spørsmål de kan ta med til neste økt:</strong> «Ballen fikk 9,0 kg m/s fra veggen. Ifølge Newtons 3. lov dyttet ballen like hardt på veggen i like lang tid. Hvor ble det av bevegelsesmengden veggen fikk?» Svaret kommer neste økt: Veggen henger fast i jorda, og den samlede bevegelsesmengden er bevart.</p>
+
+          <h2>Arbeidsark til simuleringen</h2>
+          <p>Oppgavene under kan kopieres til elevene, eller vises på tavla. Svarene står i løsningsforslaget nederst.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver til elevene</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/intro-bevegelsesmengde.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Alle oppgavene bruker <a href="../sim/impuls.html">Myk landing</a>. Velg positiv retning oppover. Newtons 2. lov kan skrives som ΣF · Δt = Δp, og impulsen ΣF · Δt er arealet under grafen for F mot t.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Egget slippes fra 1,0 m. Blir endringen i bevegelsesmengde større på betong enn på en dyne? Blir kraften større?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Slipp egget fra 1,0 m på alle de fem underlagene. Skriv opp bremsetiden, Δp og den største kraften i en tabell. Hva er likt, og hva er forskjellig?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Velg «Felles for alle landinger» som skala, og se på grafene for betong og dyne. Hva kan du si om arealet under grafene fram til egget står stille? Bruk ΣF · Δt = Δp til å forklare hvorfor egget knuser på betong.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut farten og bevegelsesmengden rett før egget lander fra 1,0 m. Egget lander på skumgummi og stopper på 17 ms. Regn ut middelkraften fra underlaget. Husk at tyngden også virker.</p></div></li>
+          <li><span class="fase tipp">Gjett</span><div><p>Velg sprettball og betong. Ballen har samme masse (60 g) og samme fart før landingen som egget. Blir Δp større, mindre eller like stor som for egget? Begrunn svaret før du slipper.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Slipp ballen fra 1,0 m. Les av farten den spretter opp med, og regn ut p før, p etter og Δp. Sjekk svaret med pilene og tallene i simuleringen.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor blir Δp nesten dobbelt så stor for ballen som for egget? Slipp ballen på alle underlagene. Mellom hvilke to verdier ligger Δp alltid?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag til arbeidsarket og bokoppgavene</summary>
+            <h3>Arbeidsarket</h3>
+            <ol>
+              <li>Mange tror at Δp er størst på betong fordi støtet er «hardere». Δp er like stor, fordi egget går fra samme fart til null. Kraften er mye større på betong.</li>
+              <li>Δp er 0,266 kg m/s for alle underlagene. Bremsetiden går fra 0,3 ms på betong til rundt 40 ms på dyne, og den største kraften går fra omtrent 1200 N til 10 N.</li>
+              <li>Arealet er det samme, fordi det er lik Δp. Betongen gir en smal og høy graf. Med så kort Δt blir kraften mye større enn det skallet tåler.</li>
+              <li>v = √(2 · 9,81 · 1,0) ≈ 4,43 m/s og p = 0,060 · 4,43 ≈ 0,266 kg m/s nedover. (F − mg) · Δt = Δp gir F = 0,266 / 0,017 + 0,060 · 9,81 ≈ 16 N. Simuleringen viser 16,6 N fordi bremsetiden er 16,6 ms.</li>
+              <li>Δp blir større. Underlaget må først stoppe ballen og så skyve den opp igjen.</li>
+              <li>Ballen spretter opp med 3,68 m/s. p før = 0,060 · (−4,43) = −0,266 kg m/s. p etter = 0,060 · 3,68 = 0,221 kg m/s. Δp = 0,221 − (−0,266) = 0,487 kg m/s oppover.</li>
+              <li>Fartsendringen er 4,43 + 3,68 = 8,11 m/s i stedet for 4,43 m/s, fordi retningen snur. Δp ligger mellom mv = 0,266 kg m/s (ballen blir liggende) og 2mv = 0,531 kg m/s (ballen spretter opp med samme fart). Den er størst på betong (0,487) og minst på dyne (0,275).</li>
+            </ol>
+            <h3>Bokoppgaver (kortsvar)</h3>
+            <ul>
+              <li><strong>Kraft 5.02:</strong> a) 348 kg m/s. b) 6,33 m/s.</li>
+              <li><strong>Kraft 5.03:</strong> a) 45 kg. b) Ja. Med 80 km/h har løven 2,9 · 10³ kg m/s, altså mer enn geparden.</li>
+              <li><strong>Kraft 5.05:</strong> a) 6,2 kg m/s oppover. b) 0,50 s. c) Farten er 11,5 m/s, så p = 7,2 kg m/s nedover. d) Δp = 13,4 kg m/s nedover. Kontroll: mg · t med t = 2,17 s gir det samme.</li>
+              <li><strong>Kraft 5.06:</strong> a) 0,28 kg m/s før og −0,14 kg m/s etter. b) −0,42 kg m/s. d) Stigningstallet er −4,2 N, som er middelkraften på vogna i kollisjonen.</li>
+              <li><strong>Kraft 5.08:</strong> a) 20 kg m/s. b) 40 m/s. c) Farten øker jevnt fra 13,3 m/s til 40 m/s, så strekningen er 107 m.</li>
+              <li><strong>Kraft 5.09:</strong> a) 12 N. b) 23 N, dobbelt så stor. c) 35 N, tre ganger så stor.</li>
+              <li><strong>Kraft 5.10:</strong> a) v = v₀ + ΣF · t/m. b) 22,2 m/s = 80 km/h. c) 9,5 kN. d) 15 kN. e) 17 kN.</li>
+              <li><strong>Kraft 5.11:</strong> a) Δp = 0,058 · (30 − (−20)) = 2,9 kg m/s, så F = 145 N. Kraften varierer under støtet, derfor «gjennomsnittlig». b) Omtrent 250 ganger tyngden, så tyngden kan vi se bort fra.</li>
+              <li><strong>Kraft 5.12:</strong> a) 8,0 kN. b) Kollisjonsputa forlenger bremsetiden og sprer kraften over et større område.</li>
+              <li><strong>ERGO 4.1:</strong> 3,7 · 10² kg m/s. <strong>4.2:</strong> 60 m/s = 218 km/h. <strong>4.3:</strong> a) 0,13 kg m/s nedover. b) 8,4 m/s oppover.</li>
+              <li><strong>ERGO 4.5:</strong> 80 kg. <strong>4.21:</strong> a) og b) 2,6 · 10³ kg m/s. c) 2,4 s. <strong>4.22:</strong> a) 15 kg m/s. b) 75 N.</li>
+              <li><strong>ERGO 4.23:</strong> a) 0,080 Ns. b) 16 N. <strong>4.25:</strong> 3,0 N. <strong>4.27:</strong> a) 5,94 m/s. b) 0,54 Ns oppover. c) 65 N. <strong>4.28:</strong> 0,033 s.</li>
+            </ul>
+          </details>
+        </section>
+
+        <div class="tekst opplegg">
+          <h2>Vanlige misoppfatninger</h2>
+          <ul>
+            <li><strong>«Et hardt støt gir større Δp.»</strong> Δp er bestemt av farten før og etter, ikke av hvor hardt underlaget er. Det harde underlaget gir større kraft, ikke større Δp.</li>
+            <li><strong>«En ball som spretter tilbake med samme fart, har ikke endret bevegelsesmengden.»</strong> Størrelsen er lik, men retningen er snudd. Δp = 2mv.</li>
+            <li><strong>Glemmer fortegn</strong> og regner Δp = m(v − v₀) med bare tallverdier. Be elevene alltid skrive hvilken retning som er positiv.</li>
+            <li><strong>Blander impuls og arbeid.</strong> Impuls er kraft ganger tid og endrer bevegelsesmengden. Arbeid er kraft ganger strekning og endrer energien.</li>
+            <li><strong>Glemmer tyngden</strong> når de regner ut kraften fra underlaget. ΣF · Δt = Δp gjelder kraftsummen.</li>
+          </ul>
+
+          <h2>Faglige merknader til læreren</h2>
+          <ul>
+            <li><strong>Modellen i simuleringen:</strong> Underlaget er en fjær med demping. Sprettballen er selv også en fjær, så den har kontakttid på rundt 6 ms selv på betong. Derfor gir ballen mindre største kraft enn egget på betong, selv om Δp er større. En skarp elev kan spørre om dette. Med samme kontakttid ville ballen fått omtrent dobbelt så stor middelkraft.</li>
+            <li><strong>Egget spretter litt:</strong> I modellen letter egget med 10–20 % av farten. Simuleringen viser Δp i bremsingen, altså fram til egget står stille, og pilene viser egget i ro etterpå.</li>
+            <li><strong>Pendeldemonstrasjonen:</strong> Den virker best når klossen nesten velter. Sprettballen gir klossen nesten dobbelt så stor impuls. Prøv på forhånd og juster høyden.</li>
+          </ul>
+
+          <h2>Differensiering</h2>
+          <ul>
+            <li><strong>Elever som trenger mer støtte:</strong> Gi dem en hjelpelapp med p = mv, ΣF · Δt = Δp og en tegning med positiv retning. La dem starte med nivå 1 og arbeidsark-oppgave 1–3 og 5.</li>
+            <li><strong>Elever som vil ha mer:</strong> Kraft-oppgave 5.06 og ERGO-oppgave 4.27. Spør også: «En sprettball spretter opp igjen til 70 % av slipphøyden. Hvor stor del av 2mv blir Δp?» (√0,70 ≈ 0,84, så Δp ≈ 1,84 mv.)</li>
+          </ul>
+
+          <h2>Kortere variant (60 minutter)</h2>
+          <p>Kutt demonstrasjonen i del 5, og la elevene gjøre arbeidsark-oppgave 5–6 på egen hånd. Gi oppgaveregningen i lekse. Behold oppstarten med egget, utledningen og exit ticketen.</p>
+
+          <h2>Refleksjon etter økta</h2>
+          <p>Noen spørsmål du kan stille deg selv etterpå, og bruke til å planlegge neste økt:</p>
+          <ul>
+            <li>Hvor mange elever svarte riktig på begrepsspørsmålene første gang? Hvilke feilsvar var vanligst?</li>
+            <li>Brukte elevene fortegn riktig i oppgave 6 og på exit ticketen?</li>
+            <li>Klarte elevene å forklare egget i lakenet med Δt og kraft, eller bare med «det er mykt»?</li>
+            <li>Fungerte simuleringen som den skulle? Hvor brukte elevene mest tid?</li>
+          </ul>
+          <p>Start gjerne neste økt med exit ticketen fra fotballen. Da får dere fortegnet repetert og en naturlig overgang til bevaring av bevegelsesmengde.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

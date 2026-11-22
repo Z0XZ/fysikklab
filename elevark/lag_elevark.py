@@ -23,11 +23,13 @@ HOPP_OVER = {"programmering/python-ekte-data"}
 KUN_OPPGAVER = {
     "opplegg/lengdekontraksjon": "Lengdekontraksjon – arbeidsark",
     "opplegg/relativistisk-bevegelsesmengde": "Relativistisk bevegelsesmengde og energi – arbeidsark",
+    "opplegg/intro-bevegelsesmengde": "Bevegelsesmengde og impuls – arbeidsark",
 }
 # QR-koden på arbeidsarkene peker til simuleringen, ikke til lærersiden
 QR = {
     "opplegg/lengdekontraksjon": ("sim/tog-og-tunnel", "Tog og tunnel"),
     "opplegg/relativistisk-bevegelsesmengde": ("sim/relativistisk-bevegelsesmengde", "Simuleringen"),
+    "opplegg/intro-bevegelsesmengde": ("sim/impuls", "Myk landing"),
 }
 SVARHOYDE = {"programmering": "1.4cm"}
 

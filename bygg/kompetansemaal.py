@@ -27,7 +27,7 @@ F1 = [
  ("bruke numeriske metoder og programmering til å modellere og utforske bevegelse i situasjoner der akselerasjonen ikke er konstant",
   p("grunnkurs", "variable-krefter", "energi-friksjon", "rakett", "bevegelse-maledata") + s("luftmotstand")),
  ("forstå og gjøre rede for konsekvenser av at bevegelsesmengde og energi er bevart, og bruke dette i beregninger",
-  s("vognstot", "bakkestot", "impuls", "ballistisk-pendel", "kuler-i-snorer", "ballstabel", "rekyl") + o("kraftsensor", "eggslipp", "videoanalyse-stot", "repetisjon-bevegelsesmengde", "begrep-bevegelsesmengde") + p("vognstot", "rakett")),
+  s("vognstot", "bakkestot", "impuls", "ballistisk-pendel", "kuler-i-snorer", "ballstabel", "rekyl") + o("intro-bevegelsesmengde", "kraftsensor", "eggslipp", "videoanalyse-stot", "repetisjon-bevegelsesmengde", "begrep-bevegelsesmengde") + p("vognstot", "rakett")),
  ("utforske hvordan energi kan gå fra en form til en annen, og vurdere energikvalitet og virkningsgrad i slike overganger",
   s("sprettball", "trappelop", "berg-og-dal") + o("repetisjon-energi") + p("energi-friksjon")),
  ("gjøre rede for sammenhengene mellom ladning, spenning og elektrisk energi og utforske effektomsetning i elektriske kretser", []),

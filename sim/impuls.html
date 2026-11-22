@@ -30,33 +30,35 @@
       <div class="ramme">
         <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=bevegelsesmengde-og-stot">Fysikk 1 · Bevegelsesmengde og støt</a></p>
         <h1>Myk landing</h1>
-        <p class="ingress">Et egg på 60 g slippes fra en høyde og lander på betong, en treplate, gress, skumgummi eller en dyne. Hvorfor knuser egget på betong, men ikke på en dyne?</p>
+        <p class="ingress">Et egg på 60 g slippes fra en høyde og lander på betong, en treplate, gress, skumgummi eller en dyne. Hvorfor knuser egget på betong, men ikke på en dyne? Bytt så til en sprettball med samme masse: Hvorfor får ballen større endring i bevegelsesmengde enn egget når den spretter opp igjen?</p>
 
         <figure class="sim sim-bred">
-          <canvas id="landing" class="statisk forhold-landing" role="img" aria-label="Et egg faller ned på et underlag. Til høyre vises en graf over kraften fra underlaget mot tiden."></canvas>
+          <canvas id="landing" class="statisk forhold-landing" role="img" aria-label="Et egg eller en sprettball faller ned på et underlag. Etter landingen vises piler for bevegelsesmengden før og etter og for Δp. Til høyre vises en graf over kraften fra underlaget mot tiden."></canvas>
           <dl class="sim-tall tre">
             <div><dt>fart rett før landing</dt><dd id="v-inn"></dd></div>
-            <div><dt>bremsetid (til egget står stille)</dt><dd id="t-brems"></dd></div>
-            <div><dt>Δp i bremsingen</dt><dd id="dp"></dd></div>
+            <div><dt id="t-tekst">bremsetid (til egget står stille)</dt><dd id="t-brems"></dd></div>
+            <div><dt id="dp-tekst">Δp i bremsingen</dt><dd id="dp"></dd></div>
             <div><dt>middelkraft fra underlaget</dt><dd id="f-snitt"></dd></div>
             <div><dt>største kraft fra underlaget</dt><dd id="f-maks"></dd></div>
             <div><dt>resultat</dt><dd id="status"></dd></div>
           </dl>
           <ul class="forklaring graf-forklaring">
             <li><span class="linje f2"></span><span>Kraft fra underlaget</span></li>
-            <li><span class="prikk fyll-areal"></span><span>Areal fram til egget står stille</span></li>
+            <li><span class="prikk fyll-areal"></span><span id="areal-tekst">Areal fram til egget står stille</span></li>
+            <li id="areal-sprett" hidden><span class="prikk fyll-areal" style="opacity:.5"></span><span>Areal mens ballen skyves opp igjen</span></li>
             <li><span class="linje dempet"></span><span>Tidligere landinger</span></li>
             <li><span class="linje stiplet f1"></span><span>Egget knuser</span></li>
           </ul>
           <div class="sim-styring mange">
+            <label for="gjenstand">Hva slippes<select id="gjenstand"><option value="egg" selected>Egg (blir liggende)</option><option value="ball">Sprettball, 60 g (spretter opp)</option></select></label>
             <label for="underlag">Underlag<select id="underlag"><option value="betong">Betong</option><option value="tre">Treplate</option><option value="gress">Gressplen</option><option value="skum" selected>Skumgummi</option><option value="dyne">Dyne</option></select></label>
             <label for="hoyde">Slipphøyde <output id="hoyde-ut" for="hoyde"></output><input id="hoyde" type="range" min="0.1" max="2" step="0.05" value="1"></label>
             <label for="grense">Egget tåler <output id="grense-ut" for="grense"></output><input id="grense" type="range" min="10" max="60" step="1" value="30"></label>
             <label for="skala">Skala på grafen<select id="skala"><option value="felles">Felles for alle landinger</option><option value="siste">Tilpasset siste landing</option></select></label>
             <label for="tempo">Fallet<select id="tempo"><option value="1">Sanntid</option><option value="0.3" selected>Sakte film</option></select></label>
-            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp egget</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button><button id="glem" class="knapp lys" type="button">Fjern tidligere landinger</button></div>
+            <div class="sim-knapper"><button id="start" class="knapp" type="button">Slipp</button><button id="nullstill" class="knapp lys" type="button">Nullstill</button><button id="glem" class="knapp lys" type="button">Fjern tidligere landinger</button></div>
           </div>
-          <figcaption class="sim-hint">Selve landingen vises alltid i ekstra sakte film. Grafen tar vare på de fire siste landingene, slik at du kan sammenligne. Hvor mye kraft et egg tåler, varierer mye. 30 N er et omtrentlig valg.</figcaption>
+          <figcaption class="sim-hint">Selve landingen vises alltid i ekstra sakte film. Etter landingen viser pilene p før, p etter og Δp, med positiv retning oppover. Grafen tar vare på de fire siste landingene, slik at du kan sammenligne. Hvor mye kraft et egg tåler, varierer mye. 30 N er et omtrentlig valg.</figcaption>
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -70,6 +72,10 @@
           <li><span class="fase test">Regn</span><div><p>Regn ut farten rett før egget lander fra 1,0 m, og bevegelsesmengden det har da. Egget lander på skumgummi og bremses på 17 ms. Regn ut middelkraften fra underlaget. Husk at tyngden også virker.</p></div></li>
           <li><span class="fase test">Undersøk</span><div><p>Hvor høyt kan du slippe egget på skumgummi før det knuser? Hva skjer med den største kraften når du dobler høyden? Hvorfor blir den ikke dobbelt så stor?</p></div></li>
           <li><span class="fase forklar">Forklar</span><div><p>Bruk det samme resonnementet på kollisjonsputer og knasesoner i biler, hjelmer, sklimatter og at du bøyer knærne når du hopper ned fra en høyde.</p></div></li>
+          <li><span class="fase tipp">Gjett</span><div><p>Velg sprettball og betong, og slipp fra 1,0 m. Ballen har samme masse og samme fart før landingen som egget. Blir Δp større, mindre eller like stor som for egget, som blir liggende? Begrunn svaret før du slipper.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Les av farten ballen spretter opp med. Velg positiv retning oppover, og regn ut p før, p etter og Δp = p etter − p før. Sjekk med pilene og tallene i simuleringen. Hvorfor er Δp nesten dobbelt så stor som for egget?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sammenlign arealet under grafen for egget og for ballen på betong. Hva viser den lyseste delen av arealet for ballen? Ballen har likevel mindre største kraft enn egget. Hvordan kan det ha seg?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Slipp ballen fra 1,0 m på alle underlagene. På hvilket underlag blir Δp størst, og på hvilket blir den minst? Hvilke verdier kan Δp ligge mellom?</p></div></li>
           <li><span class="fase utfordring">Utfordring</span><div><p>Eggslippkonkurranse: Lag en innpakning av papir, sugerør og teip som gjør at et egg tåler å slippes fra 3 m. Hvilken bremsetid må innpakningen gi hvis egget skal tåle 30 N?</p></div></li>
           </ol>
 
@@ -82,9 +88,13 @@
               <li>v = √(2gh) = √(2 · 9,81 · 1,0) ≈ 4,43 m/s, og p = 0,060 kg · 4,43 m/s ≈ 0,266 kg m/s. (F − mg) · Δt = Δp gir F = 0,266 / 0,017 + 0,060 · 9,81 ≈ 16,2 N. Simuleringen viser 16,6 N fordi bremsetiden er 16,6 ms.</li>
               <li>Med grensen 30 N knuser egget på skumgummi fra ca. 1,5 m. Farten øker med √h, og kraften øker omtrent som farten, altså med √2 ≈ 1,4 når høyden dobles. Bremsetiden endrer seg lite i denne modellen.</li>
               <li>Alle forlenger bremsetiden og gjør kraften mindre for samme Δp. Bilbelter og knasesoner forlenger bremsestrekningen fra noen centimeter til en halv meter. Hjelmen sprer i tillegg kraften over et større område.</li>
+              <li>Mange svarer «mindre», fordi ballen ikke stopper. Δp blir større: Underlaget må først stoppe ballen og så skyve den opp igjen.</li>
+              <li>Ballen spretter opp med 3,68 m/s. p før = 0,060 kg · (−4,43 m/s) = −0,266 kg m/s, p etter = 0,060 kg · 3,68 m/s = 0,221 kg m/s, og Δp = 0,221 − (−0,266) = 0,487 kg m/s oppover. Egget får 0,266 kg m/s. Ballen får nesten dobbelt så mye fordi fartsendringen er 4,43 + 3,68 = 8,11 m/s, ikke bare 4,43 m/s. Δp blir aldri 0 selv om farten er nesten like stor før og etter, fordi retningen er snudd.</li>
+              <li>Den mørke delen (fram til ballen står stille) er like stor som for egget, 0,266 kg m/s pluss et lite bidrag fra tyngden. Den lyse delen er impulsen som skyver ballen opp igjen. Ballen er myk selv og er i kontakt med betongen i ca. 6 ms, mens egget stoppes på 0,3 ms. Lengre tid gir mindre kraft selv om Δp er større. Med samme kontakttid ville ballen fått omtrent dobbelt så stor middelkraft som egget.</li>
+              <li>Størst på betong (0,487 kg m/s), minst på dyne (0,275 kg m/s). Δp ligger mellom mv (ballen blir liggende) og 2mv (ballen spretter opp med samme fart), altså mellom 0,266 og 0,531 kg m/s.</li>
               <li>Fra 3 m er v ≈ 7,7 m/s og Δp ≈ 0,46 kg m/s. Med F = 30 N blir Δt ≥ 0,46 / (30 − 0,6) ≈ 16 ms. Med jevn oppbremsing svarer det til en bremsestrekning på ca. 6 cm.</li>
             </ol>
-            <p><strong>Bruk i timen:</strong> 20–30 minutter, eller som innledning til en eggslippkonkurranse. Modellen behandler underlaget som en fjær med demping. Bremsetidene er valgt for å gi omtrent riktige størrelsesordener og er ikke målt.</p>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, eller som innledning til en eggslippkonkurranse. Oppgave 7–10 om sprettballen er laget til introduksjonsøkta <a href="../opplegg/intro-bevegelsesmengde.html">Bevegelsesmengde og impuls</a>. Modellen behandler underlaget som en fjær med demping. Bremsetidene er valgt for å gi omtrent riktige størrelsesordener og er ikke målt.</p>
           </details>
         </section>
       </div>
