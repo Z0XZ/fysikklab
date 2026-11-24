@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mål g med mobilen – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Mål falltiden til en kule fra ulike høyder med den akustiske stoppeklokka i phyphox, plott h mot t² og bestem tyngdeakselerasjonen.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Rettlinjet bevegelse</p>
+        <h1>Mål g med mobilen</h1>
+        <p class="ingress">En stålkule dyttes ut over kanten av et bord og faller i gulvet. Mobilen lytter: Klikket når kula dyttes, starter klokka, og smellet i gulvet stopper den. Med falltiden fra flere høyder kan dere bestemme tyngdeakselerasjonen g.</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+            <div><dt>Utstyr</dt><dd>Mobil med phyphox, stålkule, metallinjal, bord og hyller i ulike høyder, målebånd</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/fritt-fall.html">Fritt fall</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Bestemme g fra falltiden for flere høyder.</li>
+            <li>Linearisere h = ½gt² ved å plotte h mot t², og bruke stigningstallet.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Mobil med appen phyphox (gratis) og eksperimentet «Akustisk stoppeklokke» («Acoustic Stopwatch»). Det starter på én lyd og stopper på den neste.</li>
+            <li>En liten stålkule og en metallinjal. Et hardt gulv, et bord og gjerne en stol, en hylle eller en trappeavsats for andre høyder. Målebånd.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>Kula faller fra ro, så h = ½gt². Horisontal startfart endrer ikke falltiden. Grafen av h mot t² er en rett linje med stigningstall g/2, og hver måling gir også g = 2h/t².</p>
+
+          <h2 data-tid="25 min">Framgangsmåte</h2>
+          <ol>
+            <li>Legg kula helt ute på kanten av bordet. Mål høyden h fra underkanten av kula til gulvet.</li>
+            <li>Legg mobilen på bordet like ved kula. Start den akustiske stoppeklokka, og juster terskelen slik at vanlig prat ikke starter den.</li>
+            <li>Slå lett på kula sidelengs med linjalen, slik at den ruller ut over kanten med lav fart. Klikket starter klokka, og smellet i gulvet stopper den.</li>
+            <li>Gjør tre målinger fra hver høyde og bruk gjennomsnittet. Gjenta for minst fem høyder mellom 0,4 m og 1,5 m.</li>
+          </ol>
+        </div>
+
+        <figure id="gm" class="sim egne-data">
+          <h2 data-tid="5 min">Resultater</h2>
+          <div data-tabell></div>
+          <dl class="sim-tall tre">
+            <div><dt>g fra stigningstallet (2 · stigningstall)</dt><dd id="gm-g"></dd></div>
+            <div><dt>konstantledd</dt><dd id="gm-b"></dd></div>
+            <div><dt>gjennomsnitt av g = 2h/t²</dt><dd id="gm-snitt"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Linjen er tilpasset med konstantledd. Et konstantledd langt fra null tyder på en systematisk feil, for eksempel at høyden er målt fra feil sted. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/g-med-mobil.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hvor lang tid tror dere det tar for kula å falle 1 m? Hvor mye lengre tid tar det fra 2 m?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken verdi får dere for g?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor plotter vi h mot t² og ikke mot t? Hvorfor er stigningstallet g/2?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Lyden går med omtrent 343 m/s. Mobilen ligger på bordet, så smellet fra gulvet bruker litt tid før det når mobilen. Hvor stor blir den forsinkelsen fra 1,0 m, og hvor mye endrer den g?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Sammenlign g fra stigningstallet med gjennomsnittet av enkeltmålingene. Hvilken metode stoler dere mest på? Hvordan kan dere plassere mobilen for å gjøre feilen fra lydforsinkelsen mindre?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Gjenta med en pingpongball fra den største høyden. Får dere samme g? Hva forteller det?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>t = √(2h/g) ≈ 0,45 s fra 1 m. Fra 2 m blir tiden √2 ganger så lang, 0,64 s, ikke dobbelt så lang.</li>
+              <li>Eksemplet gir 9,67 m/s² fra stigningstallet, og gjennomsnittet av enkeltmålingene er 9,62 m/s².</li>
+              <li>h = ½gt² er ikke lineær i t, men den er lineær i t²: h = (g/2) · t². Med t² på x-aksen blir grafen en rett linje gjennom origo, og stigningstallet er g/2.</li>
+              <li>Forsinkelsen er 1,0/343 s ≈ 2,9 ms. Den målte tiden blir for lang med 2,9 ms av 452 ms, altså 0,6 %. Siden g = 2h/t², blir g omtrent 2 · 0,6 % = 1,3 % for liten.</li>
+              <li>Gjennomsnittet av enkeltmålingene blir påvirket av forsinkelsen i alle målingene. Ved å tilpasse en linje med konstantledd tar vi delvis hensyn til faste feil, så stigningstallet er ofte bedre. Legg mobilen omtrent midt mellom bordet og gulvet, så blir forsinkelsen omtrent lik for start- og stopplyden og går opp.</li>
+              <li>En pingpongball er lett i forhold til størrelsen, så luftmotstanden betyr mer. Den bruker lengre tid, og g blir for liten. Modellen h = ½gt² gjelder bare når luftmotstanden er liten.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter i par. Spre gruppene i rommet, så de ikke starter klokkene til hverandre. Kula bør treffe hardt gulv eller en metallplate, så det blir et tydelig smell. Se også simuleringen <a href="../sim/fritt-fall.html">Fritt fall</a> og <a href="../sim/linearisering.html">Linearisering og modeller</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/gmobil.js"></script>
+</body>
+</html>

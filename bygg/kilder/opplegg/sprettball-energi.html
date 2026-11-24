@@ -1,0 +1,85 @@
+tittel: Energitap i en sprettball – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: Mål tiden mellom sprettene til en ball med mobilen, regn ut høydene, og finn hvor stor del av energien som går tapt i hvert sprett.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Mekanisk energi
+script: maaletabell.js,sprettforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Energitap i en sprettball</h1>
+<p class="ingress">En ball som spretter, kommer litt lavere for hvert sprett. Høyden er vanskelig å måle, men lyden av sprettene er lett å ta tiden på. Fra tiden mellom to sprett kan dere regne ut hvor høyt ballen var, og hvor mye energi den mister hver gang den treffer gulvet.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+    <div><dt>Utstyr</dt><dd>Mobil med phyphox, sprettball og gjerne andre baller, hardt underlag, meterstokk</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/sprettball.html">Sprettball</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Bruke bevegelseslikningene til å finne høyden fra tiden ballen er i lufta.</li>
+    <li>Finne hvor stor del av den mekaniske energien som er igjen etter hvert sprett.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Mobil med appen phyphox (gratis). Eksperimentet «(In)elastic collision» (under mekanikk) lytter etter sprettene og viser tiden mellom dem. Uten phyphox kan dere ta opp lyden og lese av tidene i et lydprogram som Audacity.</li>
+    <li>En sprettball, og gjerne en pingpongball, en tennisball og en golfball til sammenligning. Et hardt bord eller gulv, og en meterstokk.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Mellom to sprett går ballen rett opp og ned igjen. Det tar like lang tid opp som ned, så ballen faller fritt fra toppen i tiden Δt/2. Da er høyden h = ½g(Δt/2)² = gΔt²/8. Den potensielle energien på toppen er mgh, så andelen av høyden som er igjen etter et sprett, er også andelen av energien som er igjen.</p>
+
+  <h2 data-tid="20 min">Framgangsmåte</h2>
+  <ol>
+    <li>Legg mobilen på bordet eller gulvet rett ved der ballen skal treffe. Start eksperimentet i phyphox.</li>
+    <li>Hold ballen med underkanten 100 cm over underlaget, og slipp den uten å gi den fart.</li>
+    <li>La den sprette minst sju ganger. Les av tidene mellom sprettene. Plukker phyphox opp falske sprett eller mister noen, kan dere justere terskelen.</li>
+    <li>Skriv tidene inn i tabellen i rekkefølge: først tiden mellom første og andre sprett, så mellom andre og tredje, og så videre.</li>
+    <li>Gjenta med andre baller eller et annet underlag.</li>
+  </ol>
+</div>
+
+<figure id="sp" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="sp-h0">Slipphøyde h<sub>0</sub> (cm)<input id="sp-h0" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>andel igjen etter første sprett</dt><dd id="sp-forste"></dd></div>
+    <div><dt>gjennomsnittlig andel igjen per sprett</dt><dd id="sp-snitt"></dd></div>
+    <div><dt>energi tapt per sprett</dt><dd id="sp-tap"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Høyden regnes ut med h = gΔt²/8. Gjennomsnittet bruker sprettene etter det første, siden slipphøyden måles med meterstokk og de andre høydene fra tiden. Punkt 0 i grafen er slipphøyden. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Ballen slippes fra 1 m. Hvor høyt tror dere den kommer etter første sprett? Mister den like mange centimeter, eller like stor del av høyden, for hvert sprett?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor stor del av energien er igjen etter hvert sprett? Er andelen omtrent den samme hver gang?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Vis at h = gΔt²/8. Hvorfor trenger dere ikke å kjenne massen til ballen?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Bruk andelen fra eksemplet. Etter hvor mange sprett er ballen lavere enn 1 cm? Tiden mellom sprettene blir kortere og kortere. Hvorfor kan ballen likevel slutte å sprette etter en endelig tid?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Sammenlign ulike baller og underlag. Hvilken ball mister minst energi? Hvor blir det av energien som går tapt?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Støttallet e er forholdet mellom farten rett etter og rett før et sprett. Vis at e = √(h<sub>etter</sub>/h<sub>før</sub>), og finn e for ballen i eksemplet.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>En god sprettball kommer gjerne opp til 75–85 cm. Målingene viser at det er omtrent samme <em>andel</em> som forsvinner hver gang, ikke samme antall centimeter.</li>
+      <li>Eksemplet: Høydene blir 79,3, 63,6, 49,4, 39,1, 31,5 og 24,8 cm. Etter første sprett er 79 % igjen, og i snitt er 79 % igjen per sprett. Omtrent 21 % av energien går tapt i hvert sprett.</li>
+      <li>Fra toppen faller ballen fritt fra ro i tiden Δt/2, så h = ½g(Δt/2)² = gΔt²/8. Høyden avhenger bare av tiden, og andelen energi er forholdet mellom høyder, så massen forsvinner.</li>
+      <li>h<sub>n</sub> = 79,3 cm · 0,793<sup>n − 1</sup> blir mindre enn 1 cm når n − 1 &gt; 18,8, altså ved sprett nummer 20. Tidene mellom sprettene avtar med samme faktor √0,793 ≈ 0,89 hver gang, så de danner en geometrisk rekke med endelig sum: 0,804 s / (1 − 0,89) ≈ 7,3 s. I tillegg kommer det første fallet på 0,45 s. Ballen slutter å sprette etter omtrent 8 s, selv om modellen gir uendelig mange sprett.</li>
+      <li>Sprettballer av gummi mister minst, ofte under 20 %. Pingpong- og tennisballer mister mer. Mykt underlag gir større tap. Energien blir til varme i ballen og underlaget, lyd og svingninger. Luftmotstanden er liten på så korte fall.</li>
+      <li>Farten rett før et sprett er v = √(2gh<sub>før</sub>) og rett etter √(2gh<sub>etter</sub>). Forholdet blir e = √(h<sub>etter</sub>/h<sub>før</sub>). I eksemplet er e = √0,793 ≈ 0,89.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter i par. Det er lurt at hele klassen ikke slipper baller samtidig i samme rom, fordi phyphox kan plukke opp sprett fra nabogruppa. Spre gruppene, eller la dem slippe etter tur. Se også simuleringen <a href="../sim/sprettball.html">Sprettball</a>.</p>
+  </details>
+</section>

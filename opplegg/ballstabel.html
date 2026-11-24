@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ballstabelen – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 1: Slipp en tennisball oppå en basketball og mål hvor høyt den spretter. Sammenlign med en modell for elastiske støt, og før regnskap over energien.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Ballstabelen</h1>
+        <p class="ingress">Hold en tennisball oppå en basketball og slipp begge samtidig. Tennisballen skyter til værs, mye høyere enn den ble sluppet fra, mens basketballen nesten blir liggende igjen. Hvor mange ganger høyere spretter tennisballen, og bryter det med energibevaringen?</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 3, gjerne i gymsalen eller ute</dd></div>
+            <div><dt>Utstyr</dt><dd>Basketball, tennisball, målebånd på veggen, mobil med sakte film, vekt</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/ballstabel.html">Ballstabel</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Måle hvor mye høyere den øverste ballen spretter, og sammenligne med en enkel modell.</li>
+            <li>Føre regnskap over den mekaniske energien før og etter.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>En basketball (eller fotball) og en tennisball (eller sprettball), og en vekt.</li>
+            <li>Målebånd teipet loddrett på en vegg, og en mobil som kan filme i sakte film.</li>
+          </ul>
+
+          <h2>Sikkerhet</h2>
+          <p>Tennisballen kan sprette flere meter opp og ut til siden. Gjør forsøket der det er høyt under taket, unna lamper og vinduer, og ikke len dere over ballene.</p>
+
+          <h2 data-tid="25 min">Framgangsmåte</h2>
+          <ol>
+            <li>Vei ballene.</li>
+            <li><strong>Hver ball alene:</strong> Slipp hver ball fra 70 cm og mål hvor høyt den spretter. Mål fra underkanten av ballen.</li>
+            <li><strong>Ballstabelen:</strong> Legg basketballen på gulvet og merk av høyden til toppen av den. Den høyden er nullpunktet for tennisballen.</li>
+            <li>Hold tennisballen oppå basketballen og løft begge slik at underkanten av basketballen er i høyden h<sub>0</sub>. Slipp samtidig, så rett som mulig.</li>
+            <li>Film mot målebåndet. Les av hvor høyt tennisballen kom over nullpunktet (h<sub>t</sub>) og hvor høyt basketballen spratt (h<sub>b</sub>).</li>
+            <li>Gjenta for fem ulike slipphøyder. Ta flere slipp per høyde og bruk det beste, for stabelen bommer lett.</li>
+          </ol>
+        </div>
+
+        <figure id="bs" class="sim egne-data">
+          <h2 data-tid="5 min">Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="bs-m">Massen til tennisballen m (g)<input id="bs-m" type="text" inputmode="decimal"></label>
+            <label for="bs-M">Massen til basketballen M (g)<input id="bs-M" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall tre">
+            <div><dt>tennisballen spretter (stigningstall)</dt><dd id="bs-stig"></dd></div>
+            <div><dt>modell med elastiske støt</dt><dd id="bs-ideell"></dd></div>
+            <div><dt>mekanisk energi igjen</dt><dd id="bs-andel"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Energien før er (m + M)gh₀, siden begge ballene faller h₀ ned til der de møtes. Energien etter er mghₜ + Mghᵦ. Modellen bak «elastiske støt» står i løsningsforslaget. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/ballstabel.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Stabelen slippes fra 50 cm. Hvor høyt tror dere tennisballen spretter? Hvor høyt spretter basketballen?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Slipp ballene hver for seg fra 70 cm. Hvor stor del av energien er igjen etter ett sprett for hver av dem?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene med stabelen, eller trykk på «Fyll inn eksempel». Hvor mange ganger høyere enn h<sub>0</sub> spretter tennisballen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Tenk deg at basketballen er mye tyngre enn tennisballen og at alle støt er elastiske. Basketballen har snudd og går oppover med farten v når den møter tennisballen, som går nedover med farten v. Bruk at tennisballen spretter fra basketballen med samme relative fart som den kom inn med, og vis at tennisballen får farten 3v. Hvor høyt kommer den da?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Tennisballen kommer høyere enn der den startet. Bryter det med bevaring av energi? Hvor mye av energien er igjen i målingene deres, og hvor har resten tatt veien?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Med tre baller, hver mye lettere enn den under, og bare elastiske støt: Hvor fort går den øverste ballen, og hvor mange ganger høyere enn h<sub>0</sub> kan den komme?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>De fleste gjetter for lavt. I eksemplet kommer tennisballen omtrent 2 m over nullpunktet fra 50 cm, mens basketballen bare spretter rundt 12 cm.</li>
+              <li>Andelen energi som er igjen er h/h<sub>0</sub>. En tennisball spretter typisk litt over halvparten av høyden, og en godt pumpet basketball gjerne noe mer, men det varierer mye med ball og gulv.</li>
+              <li>Eksemplet gir stigningstall 4,25: Tennisballen kommer drøyt fire ganger så høyt som slipphøyden.</li>
+              <li>Basketballen er så tung at den nesten ikke påvirkes av støtet. Sett fra basketballen kommer tennisballen inn med farten 2v og spretter ut med 2v. Basketballen beveger seg selv med v oppover, så tennisballen får 2v + v = 3v. Høyden går som v², så den kommer 9h<sub>0</sub> over nullpunktet. Med de oppgitte massene (58 g og 600 g) gir en nøyaktigere utregning farten (3M − m)/(M + m) · v og høyden 7,0h<sub>0</sub>, som verktøyet viser.</li>
+              <li>Nei. Tennisballen får energi fra basketballen, som til gjengjeld nesten stopper. Det som teller, er den samlede energien. I eksemplet er omtrent 61 % igjen. Resten er blitt til varme og lyd i deformasjonen av ballene og gulvet. Støtene er altså langt fra elastiske, og derfor kommer tennisballen bare rundt fire ganger så høyt, ikke sju.</li>
+              <li>Den midterste ballen får 3v. Den øverste kommer inn mot den med relativ fart 3v + v = 4v og får 4v + 3v = 7v. Høyden blir 49h<sub>0</sub> i den ideelle modellen. I virkeligheten blir det mye mindre, og det er vanskelig å få tre baller til å treffe rett.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Fungerer også som en rask demonstrasjon i starten av kapitlet om støt, der elevene gjetter først. Ballene bør slippes rett ned. Det hjelper å holde dem med fingrene på hver side av stabelen og bare åpne hånden. Se også simuleringen <a href="../sim/ballstabel.html">Ballstabel</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/ballstabelforsok.js"></script>
+</body>
+</html>

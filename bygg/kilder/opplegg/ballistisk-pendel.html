@@ -1,0 +1,92 @@
+tittel: Ballistisk pendel – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: Mål farten til en kule på to måter, fra kastlengden og fra utslaget til en ballistisk pendel, og finn ut hvor mye energi som går tapt i støtet.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Bevegelsesmengde og støt
+script: maaletabell.js,ballistiskforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Ballistisk pendel</h1>
+<p class="ingress">En kule skytes inn i en pendel og blir sittende fast. Hvor fort gikk kula? Dere skal finne farten på to uavhengige måter: fra hvor langt kula flyr når den skytes horisontalt ut over gulvet, og fra hvor høyt pendelen svinger. Gir metodene samme svar?</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 3–4, eller demonstrasjon der elevene regner</dd></div>
+    <div><dt>Utstyr</dt><dd>Ballistisk pendel med kulekanon, målebånd, karbonpapir, vekt</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/ballistisk-pendel.html">Ballistisk pendel</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Bestemme farten til en kule med horisontalt kast og med bevaring av bevegelsesmengde og energi.</li>
+    <li>Vurdere om metodene stemmer innenfor usikkerheten.</li>
+    <li>Finne ut hvor stor del av den kinetiske energien som går tapt i et fullstendig uelastisk støt.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Ballistisk pendel med fjærkanon og kule, og en vinkelviser som blir stående i det største utslaget.</li>
+    <li>Målebånd, karbonpapir (eller et ark med kopipapir over) på gulvet, og en vekt.</li>
+    <li>Vernebriller. Ingen står foran kanonen når den er spent.</li>
+  </ul>
+
+  <h2 data-tid="10 min">Teorien</h2>
+  <p><strong>Kastet.</strong> Kula forlater kanonen horisontalt i høyden h over gulvet. Falltiden er t = √(2h/g), og farten er v = x/t = x · √(g/(2h)), der x er kastlengden.</p>
+  <p><strong>Pendelen.</strong> I støtet er bevegelsesmengden bevart: mv = (m + M)V, der m er massen til kula, M massen til pendelen og V farten rett etter støtet. Etterpå svinger pendelen opp, og mekanisk energi er bevart: ½(m + M)V² = (m + M)g · L(1 − cos θ). Her er L avstanden fra opphenget til tyngdepunktet til pendelen med kula i, og θ er det største utslaget. Det gir V = √(2gL(1 − cos θ)) og v = (m + M)/m · V.</p>
+
+  <h2 data-tid="30 min">Framgangsmåte</h2>
+  <ol>
+    <li>Vei kula og pendelen (uten kula). Sett kula inn i pendelen og finn tyngdepunktet ved å balansere pendelen på en kant. Mål L fra aksen til tyngdepunktet.</li>
+    <li><strong>Kastet:</strong> Vipp pendelen til side. Mål høyden h fra underkanten av kula i kanonen til gulvet. Skyt én gang for å se hvor kula lander, og legg karbonpapiret der. Skyt fem ganger på samme spenning, og mål kastlengden x fra rett under kanonmunningen til hvert merke.</li>
+    <li><strong>Pendelen:</strong> Heng pendelen ned igjen, sett vinkelviseren på null og skyt fem ganger på samme spenning. Les av det største utslaget θ hver gang.</li>
+    <li>Skriv målingene inn i tabellen. Hver rad er ett skudd med hver metode.</li>
+  </ol>
+</div>
+
+<figure id="bp" class="sim egne-data">
+  <h2 data-tid="10 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="bp-m">Massen til kula m (g)<input id="bp-m" type="text" inputmode="decimal"></label>
+    <label for="bp-M">Massen til pendelen M (g)<input id="bp-M" type="text" inputmode="decimal"></label>
+    <label for="bp-L">Opphenget til tyngdepunktet L (cm)<input id="bp-L" type="text" inputmode="decimal"></label>
+    <label for="bp-h">Utskytningshøyde h (cm)<input id="bp-h" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>v fra kastet</dt><dd id="bp-vk"></dd></div>
+    <div><dt>v fra pendelen</dt><dd id="bp-vp"></dd></div>
+    <div><dt>forskjell mellom metodene</dt><dd id="bp-diff"></dd></div>
+    <div><dt>Ek igjen rett etter støtet, m/(m + M)</dt><dd id="bp-andel"></dd></div>
+    <div><dt>energi tapt i støtet</dt><dd id="bp-tap"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Usikkerheten er anslått som halve spredningen (største minus minste delt på to). Energitapet regnes ut fra farten fra kastet. Eksemplet er oppdiktede tall, ikke ekte målinger. Tabellen lagres bare i denne nettleseren.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="20 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvor stor del av den kinetiske energien til kula tror dere er igjen rett etter at den har satt seg fast i pendelen?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken fart får dere med hver metode? Stemmer metodene innenfor usikkerheten?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Vis at den kinetiske energien rett etter støtet er m/(m + M) av energien før støtet. Hvor mye energi går tapt i eksemplet?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor kan vi bruke bevaring av bevegelsesmengde i selve støtet, men ikke bevaring av mekanisk energi? Hvorfor kan vi bruke energibevaring når pendelen svinger opp?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvor mye endres farten fra pendelen hvis dere leser av θ én grad for stort? Hvor mye endres farten fra kastet hvis x er 1 cm for langt? Hvilken måling er viktigst å gjøre nøyaktig?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Tenk dere at kula i stedet sprettet rett tilbake fra pendelen. Ville pendelen svingt høyere eller lavere enn når kula setter seg fast? Forklar med bevegelsesmengde.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Mange gjetter at det meste av energien er igjen. Med en lett kule og en tung pendel er bare en liten del igjen, se oppgave 3.</li>
+      <li>Eksemplet gir v = 4,59 ± 0,07 m/s fra kastet og 4,59 ± 0,09 m/s fra pendelen. Forskjellen er under 0,1 %, godt innenfor usikkerheten. Ekte målinger gir ofte noen få prosent forskjell.</li>
+      <li>Før: E = ½mv². Etter: E′ = ½(m + M)V², der V = mv/(m + M). Da blir E′ = ½m²v²/(m + M) = E · m/(m + M). I eksemplet er m/(m + M) = 28/274 = 10,2 %. Med v = 4,59 m/s er E = ½ · 0,028 · 4,59² = 0,295 J, og 0,265 J går tapt, mest til varme og deformasjon.</li>
+      <li>Under støtet virker store indre krefter mellom kula og pendelen, og de ytre kreftene (tyngden og snorkraften) er loddrette og virker i svært kort tid. Derfor er bevegelsesmengden horisontalt bevart. Men kula deformeres og friksjon lager varme, så mekanisk energi er ikke bevart. Når pendelen svinger opp, virker bare tyngden og en kraft fra opphenget som står vinkelrett på bevegelsen, så mekanisk energi er bevart.</li>
+      <li>Farten fra pendelen er proporsjonal med √(1 − cos θ), og det er nesten proporsjonalt med θ for små vinkler. Fra 15,9° til 16,9° øker farten med 6,2 %. Kastlengden går inn lineært, så 1 cm av 212 cm gir bare 0,5 %. Vinkelen er den kritiske målingen. Det er også viktig å finne L til tyngdepunktet og ikke til midten av kula.</li>
+      <li>Høyere. Spretter kula tilbake, endrer bevegelsesmengden til kula seg mer (fra mv til en verdi i motsatt retning). Pendelen får hele denne endringen, så den får større bevegelsesmengde og svinger høyere.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 60–90 minutter. Med bare ett apparat kan forsøket gjøres som demonstrasjon der hver gruppe gjør sine egne utregninger. Bruk samme spenning på kanonen i begge delene. Simuleringen <a href="../sim/ballistisk-pendel.html">Ballistisk pendel</a> passer som forberedelse.</p>
+  </details>
+</section>

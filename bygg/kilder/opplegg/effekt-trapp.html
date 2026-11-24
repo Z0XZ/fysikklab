@@ -1,0 +1,87 @@
+tittel: Effekten din i trappa – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: Løp og gå opp en trapp, mål tiden og høyden, og regn ut arbeidet mot tyngdekraften og effekten din i watt og hestekrefter.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Mekanisk energi
+script: maaletabell.js,trappforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Effekten din i trappa</h1>
+<p class="ingress">Når du løper opp en trapp, gjør du et arbeid mot tyngdekraften. Hvor stor effekt klarer du å yte i noen sekunder? Er du sterkere enn en hårføner? Alt dere trenger, er en trapp, en stoppeklokke og en linjal.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>30–45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 3: én løper, én tar tiden, én skriver</dd></div>
+    <div><dt>Utstyr</dt><dd>En trapp med minst 12 trinn, stoppeklokke (mobil), linjal eller målebånd</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/trappelop.html">Trappeløp</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Regne ut endringen i potensiell energi og effekten når du går og løper opp en trapp.</li>
+    <li>Skille mellom energi (hvor mye arbeid) og effekt (hvor fort arbeidet gjøres).</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En trapp, en stoppeklokke og en linjal eller et målebånd.</li>
+    <li>Massen trenger ingen å si høyt. Bruk din egen masse bare for deg selv, eller regn med 60 kg.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Når du går opp høyden h, øker den potensielle energien med E<sub>p</sub> = mgh. Effekten er arbeid per tid: P = E<sub>p</sub>/t. 1 hestekraft er omtrent 746 W.</p>
+
+  <h2 data-tid="20 min">Framgangsmåte</h2>
+  <ol>
+    <li>Tell trinnene og mål høyden på ett trinn. Mål gjerne flere trinn og ta gjennomsnittet, eller mål hele høyden med et målebånd.</li>
+    <li>Løperen står med begge føttene på gulvet nedenfor første trinn. Tidtakeren sier «klar, ferdig, gå» og starter klokka på «gå».</li>
+    <li>Løp opp så fort det er trygt, gjerne to trinn om gangen. Stopp klokka når begge føttene er på øverste trinn.</li>
+    <li>Gjør det samme én gang til der den samme personen går i vanlig tempo.</li>
+    <li>Bytt roller, og skriv alle løpene inn i tabellen.</li>
+  </ol>
+  <p>Løp bare i en trapp med rekkverk og uten folk, og ikke løp ned igjen.</p>
+</div>
+
+<figure id="tr" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="tr-n">Antall trinn<input id="tr-n" type="text" inputmode="decimal"></label>
+    <label for="tr-trinn">Høyde på ett trinn (cm)<input id="tr-trinn" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>høyden h</dt><dd id="tr-h"></dd></div>
+    <div><dt>største effekt</dt><dd id="tr-maks"></dd></div>
+    <div><dt>gjennomsnittlig effekt</dt><dd id="tr-snitt"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Hver rad er ett løp. I eksemplet er rad 4 den samme personen som rad 1, men gående. Eksemplet er oppdiktede tall, ikke ekte målinger. Tabellen lagres bare i denne nettleseren.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvor stor effekt tror du at du kan yte når du løper opp trappa? Mer eller mindre enn en lyspære (10 W), en hårføner (2000 W) eller en hest (746 W)?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hva var den største effekten i gruppa?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Sammenlign løpet og gåturen til samme person. Hvorfor er energien den samme, mens effekten er forskjellig?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Kroppen har en virkningsgrad på omtrent 25 % når den gjør arbeid med musklene. Hvor mye kjemisk energi brukte personen i rad 1? Hvor mange ganger må personen gå opp trappa for å bruke energien i en sjokolade på 250 kcal (1 kcal = 4184 J)?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvilke energiformer og hvilket arbeid har dere sett bort fra? Hvor stor betydning har reaksjonstiden til tidtakeren?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Hvor lang tid ville en person på 62 kg bruke på å gå opp 500 høydemeter hvis personen kunne holde 600 W hele veien? Hvorfor tar det mye lenger tid i virkeligheten?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Mange gjetter for lavt. Unge og spreke elever yter ofte 500–1000 W i noen sekunder.</li>
+      <li>Eksemplet: h = 18 · 0,175 m = 3,15 m. Den største effekten er 618 W (62 kg på 3,1 s), og gjennomsnittet for alle fem radene er 506 W.</li>
+      <li>Endringen i potensiell energi avhenger bare av m og h, ikke av hvor fort det går: 62 · 9,81 · 3,15 ≈ 1916 J i begge tilfellene. Gående bruker personen 9,5 s i stedet for 3,1 s, så effekten blir omtrent tre ganger mindre, 202 W.</li>
+      <li>Kjemisk energi: 1916 J / 0,25 ≈ 7700 J ≈ 1,8 kcal. En sjokolade på 250 kcal tilsvarer da omtrent 140 turer opp trappa.</li>
+      <li>Vi ser bort fra kinetisk energi på toppen, arbeidet med å flytte seg horisontalt og å bevege armer og bein, og varmen kroppen lager. Reaksjonstiden er rundt 0,2 s. Hvis tidtakeren starter for sent og stopper for sent, går det delvis opp, men en feil på 0,2 s av 3 s er nesten 7 %.</li>
+      <li>E = 62 · 9,81 · 500 ≈ 304 kJ, og t = E/P ≈ 507 s, altså under 9 minutter. Ingen klarer å holde 600 W lenge. Over flere timer klarer de fleste mye mindre, i tillegg til at kroppen må bære seg framover og ofte bremse.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 30–45 minutter, gjerne som avslutning på timen om arbeid og effekt. Vær varsom med kroppsvekt: La elevene regne med sin egen masse for seg selv eller bruke 60 kg, og ikke lag en klasseliste over masse. Se også simuleringen <a href="../sim/trappelop.html">Trappeløp</a>.</p>
+  </details>
+</section>

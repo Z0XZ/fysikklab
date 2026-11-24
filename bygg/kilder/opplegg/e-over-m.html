@@ -9,6 +9,16 @@ meny: undervisningsopplegg.html
 <h1>Forsøk: e/m for elektronet</h1>
 <p class="ingress">Et klassisk forsøk: Elektroner går i en lysende sirkel inne i en glasskule. Fra spenningen, strømmen i spolene og diameteren på sirkelen kan dere bestemme forholdet mellom ladningen og massen til elektronet. Har ikke skolen et fintrådrør (fine beam tube), kan dere gjøre forsøket i <a href="../sim/e-over-m.html">simuleringen</a>.</p>
 
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Demonstrasjon eller grupper ved apparatet</dd></div>
+    <div><dt>Utstyr</dt><dd>Fintrådrør med Helmholtz-spoler, spenningskilder, amperemeter og et mørkt rom</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/e-over-m.html">e/m for elektronet</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
 <div class="tekst opplegg">
   <h2>Hensikt</h2>
   <ul>
@@ -31,7 +41,7 @@ meny: undervisningsopplegg.html
   </ul>
   <p>Sjekk N og R for deres apparat. De står vanligvis på spolene eller i bruksanvisningen. Verktøyet under bruker 130 vindinger og 15,0 cm hvis dere ikke endrer tallene.</p>
 
-  <h2>Framgangsmåte</h2>
+  <h2 data-tid="20 min">Framgangsmåte</h2>
   <ol>
     <li>Læreren kobler opp apparatet etter bruksanvisningen. Skru på glødespenningen og vent et minutt.</li>
     <li>Still akselerasjonsspenningen på for eksempel 250 V. Øk strømmen i spolene til strålen går i en hel sirkel. Går strålen i en spiral, kan røret dreies litt slik at strålen står vinkelrett på feltet.</li>
@@ -44,7 +54,7 @@ meny: undervisningsopplegg.html
 </div>
 
 <figure id="emforsok" class="sim egne-data">
-  <h2>Resultater</h2>
+  <h2 data-tid="10 min">Resultater</h2>
   <div class="sim-styring mange uten-topp">
     <label for="em-n">Vindinger N i hver spole<input id="em-n" type="text" inputmode="decimal" value="130"></label>
     <label for="em-r">Radius R til spolene i cm<input id="em-r" type="text" inputmode="decimal" value="15,0"></label>
@@ -59,7 +69,7 @@ meny: undervisningsopplegg.html
 </figure>
 
 <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
   <ol class="oppgaveliste">
   <li><span class="fase tipp">Gjett</span><div><p>Hvordan endres diameteren hvis dere dobler strømmen i spolene? Hva om dere dobler spenningen?</p></div></li>
   <li><span class="fase test">Regn</span><div><p>Regn ut magnetfeltet mellom spolene når I = 1,40 A. Hvor mange ganger sterkere er det enn jordas magnetfelt, som er omtrent 50 µT?</p></div></li>

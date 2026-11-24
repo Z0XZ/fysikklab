@@ -14,7 +14,7 @@ Kjør `--sjekk` først. Hvis den viser endringer du ikke har gjort i kildene, er
 
 | Kilde | Sider |
 |---|---|
-| `kilder/opplegg/*.html` | Forsøkene: sentripetalakselerasjon og heis med mobilen, e/m, videoanalyse av skrått kast |
+| `kilder/opplegg/*.html` | Forsøkene: sentripetalakselerasjon og heis med mobilen, e/m, videoanalyse av skrått kast, pendelens svingetid, g med mobilen, følg grafen med bevegelsessensor, Newtons andre lov med vogn og lodd, effekt i trappa, energitap i sprettball, energibevaring på skråplan, ballistisk pendel, rekyl med to vogner og ballstabelen |
 | `kilder/sim/*.html` | Simuleringene e/m for elektronet og Millikans oljedråpeforsøk |
 | `kilder/programmering/*.html` og `kilder/py/*.py` | Programmeringssidene grunnkurs, regresjon, satellittbane, elektrisk felt, energi med friksjon, rakett, Monte Carlo og Biot–Savart. `@@fil.py@@` i kilden byttes med koden i `kilder/py/`. |
 | `begrep.py` | Begrepstestene `opplegg/begrep-*.html`. Spørsmålene står i skriptet. Alternativene stokkes, men i samme rekkefølge hver gang. |
@@ -50,3 +50,7 @@ meny: undervisningsopplegg.html
 - **Kort:** Kortene på oversiktssidene ble satt inn med `kort.py`. Det er ikke en del av byggingen. Skriptet hopper over kort som allerede finnes, så det kan brukes som mal for nye kort.
 
 Test alltid sidene i nettleseren etterpå, og sjekk tall i nye fasiter med Python.
+
+## Forsøkssidene
+
+Hvert forsøk har en faktaboks rett etter ingressen (`<aside class="forsok-info">`) med tidsbruk, arbeidsform, utstyr og simulering, og en tom `<nav class="innholdsliste">`. `felles.js` fyller innholdslisten med alle h2 på siden. Skriv `data-tid="15 min"` på en h2 for å vise tidsbruken til den delen, både i lista og ved overskriften. På undervisningsopplegg.html har hvert kort `data-type` (`forsok`, `okt`, `repetisjon` eller `begrepstest`) og et synlig typemerke, og filteret lager en egen rad for typene.

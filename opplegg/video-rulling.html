@@ -32,6 +32,16 @@
         <h1>Videoanalyse av rulling</h1>
         <p class="ingress">En vogn som triller ned et skråplan, akselererer jevnt. En ball som ruller bortover gulvet, bremser sakte. Med videoanalyse kan dere måle akselerasjonen og sammenligne med det Newtons 2. lov gir uten friksjon.</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Vogn og skrå bane, ball, mobil på stativ, målestokk og Tracker</dd></div>
+            <div><dt>Simuleringer</dt><dd><a href="../sim/videoanalyse.html">Videoanalyse uten video</a>, <a href="../sim/skraaplan.html">Skråplan med friksjon</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Hensikt</h2>
           <ul>
@@ -47,7 +57,7 @@
             <li>Mobil eller kamera på stativ, en målestokk langs banen, og Tracker.</li>
           </ul>
 
-          <h2>Framgangsmåte</h2>
+          <h2 data-tid="25 min">Framgangsmåte</h2>
           <ol>
             <li>Del A: Still planken skrått, og mål vinkelen θ (eller høyden h og lengden L, sin θ = h/L). Legg målestokken langs planken.</li>
             <li>Slipp vogna fra ro og film den mens den triller ned. Kameraet skal stå vinkelrett på planken.</li>
@@ -59,7 +69,7 @@
         </div>
 
         <figure id="va" class="sim egne-data" data-mal="[[&quot;rull-a&quot;, &quot;Sett inn som a på skråplanet&quot;, &quot;a&quot;], [&quot;gulv-a&quot;, &quot;Sett inn som a langs gulvet&quot;, &quot;a&quot;]]">
-          <h2>Analyse av data fra Tracker</h2>
+          <h2 data-tid="20 min">Analyse av data fra Tracker</h2>
           <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
           <div class="sim-styring mange uten-topp">
             <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
@@ -86,7 +96,7 @@
         </figure>
 
         <figure class="sim egne-data">
-          <h2>Resultater</h2>
+          <h2 data-tid="5 min">Resultater</h2>
           <div class="sim-styring mange uten-topp">
             <label for="rull-vinkel">Helning θ (grader)<input id="rull-vinkel" type="text" inputmode="decimal" value="5"></label>
             <label for="rull-a">Målt a på skråplanet (m/s²)<input id="rull-a" type="text" inputmode="decimal"></label>
@@ -100,7 +110,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="20 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/video-rulling.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase forklar">Forklar</span><div><p>Kraften som drar vogna nedover langs planet, er tyngdens komponent langs planet: mg sin θ. Bruk Newtons 2. lov til å vise at a = g sin θ uten friksjon.</p></div></li>

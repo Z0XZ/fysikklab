@@ -32,6 +32,16 @@
         <h1>Friksjonstall med friksjonskloss</h1>
         <p class="ingress">Friksjonskraften er R = μN. Dere skal finne friksjonstallet μ på to måter: ved å dra en kloss med en kraftsensor, og ved å filme en kloss som glir til den stopper. Gir metodene samme svar?</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Friksjonskloss, lodd, kraftsensor eller fjærvekt, mobil på stativ og Tracker</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/friksjon.html">Friksjon</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Utstyr</h2>
           <ul>
@@ -40,7 +50,7 @@
             <li>Del B: mobil eller kamera på stativ, en målestokk langs underlaget, og Tracker.</li>
           </ul>
 
-          <h2>Del A: Med kraftsensor</h2>
+          <h2 data-tid="25 min">Del A: Med kraftsensor</h2>
           <ol>
             <li>Vei klossen. Nullstill kraftsensoren mens den henger vannrett uten belastning.</li>
             <li>Fest sensoren i klossen og dra vannrett, først sakte og jevnt økende. Les av den største kraften før klossen glipper. Den gir største hvilefriksjon.</li>
@@ -51,7 +61,7 @@
         </div>
 
         <figure class="sim egne-data">
-          <h2>Del A: Resultater med kraftsensor</h2>
+          <h2 data-tid="5 min">Del A: Resultater med kraftsensor</h2>
           <div class="tabell-ramme">
             <table class="sim-tabell alle">
               <thead><tr><th scope="col">Nr.</th><th scope="col">Masse (kg)</th><th scope="col">N = mg (N)</th><th scope="col">Største kraft før glipp (N)</th><th scope="col">Kraft ved jevn fart (N)</th><th scope="col">μ<sub>s</sub></th><th scope="col">μ<sub>k</sub></th></tr></thead>
@@ -74,7 +84,7 @@
         </figure>
 
         <div class="tekst opplegg">
-          <h2>Del B: Med videoanalyse</h2>
+          <h2 data-tid="20 min">Del B: Med videoanalyse</h2>
           <ol>
             <li>Legg målestokken langs underlaget, og sett kameraet vinkelrett på bevegelsen.</li>
             <li>Gi klossen et kort, raskt dytt slik at den glir et stykke og stopper av seg selv. Film fra rett etter dyttet til klossen står stille.</li>
@@ -85,7 +95,7 @@
         </div>
 
         <figure id="va" class="sim egne-data" data-mal="[[&quot;fr-a&quot;, &quot;Sett inn akselerasjonen&quot;, &quot;a&quot;]]">
-          <h2>Del B: Analyse av videoen</h2>
+          <h2 data-tid="15 min">Del B: Analyse av videoen</h2>
           <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
           <div class="sim-styring mange uten-topp">
             <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
@@ -122,7 +132,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/friksjonsforsok.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase tipp">Gjett</span><div><p>Hvordan tror du friksjonskraften endrer seg når dere dobler massen? Når dere legger klossen på en side med mindre areal?</p></div></li>

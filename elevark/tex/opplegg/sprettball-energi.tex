@@ -1,0 +1,54 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/sprettball-energi.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Mekanisk energi}{Energitap i en sprettball}{https://fysikklab.no/opplegg/sprettball-energi.html}{Opplegget på nett}
+
+En ball som spretter, kommer litt lavere for hvert sprett. Høyden er vanskelig å måle, men lyden av sprettene er lett å ta tiden på. Fra tiden mellom to sprett kan dere regne ut hvor høyt ballen var, og hvor mye energi den mister hver gang den treffer gulvet.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bruke bevegelseslikningene til å finne høyden fra tiden ballen er i lufta.
+\item Finne hvor stor del av den mekaniske energien som er igjen etter hvert sprett.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Mobil med appen phyphox (gratis). Eksperimentet «(In)elastic collision» (under mekanikk) lytter etter sprettene og viser tiden mellom dem. Uten phyphox kan dere ta opp lyden og lese av tidene i et lydprogram som Audacity.
+\item En sprettball, og gjerne en pingpongball, en tennisball og en golfball til sammenligning. Et hardt bord eller gulv, og en meterstokk.
+\end{itemize}
+
+\section*{Teorien}
+
+Mellom to sprett går ballen rett opp og ned igjen. Det tar like lang tid opp som ned, så ballen faller fritt fra toppen i tiden $Δt/2$. Da er høyden $h = \tfrac{1}{2}g(Δt/2)^{2} = gΔt^{2}/8$. Den potensielle energien på toppen er mgh, så andelen av høyden som er igjen etter et sprett, er også andelen av energien som er igjen.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Legg mobilen på bordet eller gulvet rett ved der ballen skal treffe. Start eksperimentet i phyphox.
+\item Hold ballen med underkanten 100~cm over underlaget, og slipp den uten å gi den fart.
+\item La den sprette minst sju ganger. Les av tidene mellom sprettene. Plukker phyphox opp falske sprett eller mister noen, kan dere justere terskelen.
+\item Skriv tidene inn i tabellen i rekkefølge: først tiden mellom første og andre sprett, så mellom andre og tredje, og så videre.
+\item Gjenta med andre baller eller et annet underlag.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Ballen slippes fra 1~m. Hvor høyt tror dere den kommer etter første sprett? Mister den like mange centimeter, eller like stor del av høyden, for hvert sprett?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor stor del av energien er igjen etter hvert sprett? Er andelen omtrent den samme hver gang?
+\svar
+\oppgave \fase{forklar}{Forklar}Vis at $h = gΔt^{2}/8$. Hvorfor trenger dere ikke å kjenne massen til ballen?
+\svar
+\oppgave \fase{test}{Regn}Bruk andelen fra eksemplet. Etter hvor mange sprett er ballen lavere enn 1~cm? Tiden mellom sprettene blir kortere og kortere. Hvorfor kan ballen likevel slutte å sprette etter en endelig tid?
+\svar
+\oppgave \fase{forklar}{Vurder}Sammenlign ulike baller og underlag. Hvilken ball mister minst energi? Hvor blir det av energien som går tapt?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Støttallet $e$ er forholdet mellom farten rett etter og rett før et sprett. Vis at $e = \sqrt{h_{\mathrm{etter}}/h_{\mathrm{før}}}$, og finn $e$ for ballen i eksemplet.
+\svar
+\end{oppgaveliste}
+
+\end{document}

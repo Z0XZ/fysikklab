@@ -11,6 +11,10 @@
   --knapp-tekst: #fffdf8;
   --merke: #ffe58a;
   --merke-tekst: #16213a;
+  --t-forsok: #2a5db0;
+  --t-okt: #7a3fa0;
+  --t-rep: #6e5d0c;
+  --t-begrep: #a3305b;
   --serif: "Iowan Old Style", Charter, "Bitstream Charter", Cambria, Georgia, serif;
   --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -32,6 +36,10 @@
     --knapp-tekst: #10151f;
     --merke: #6b5a12;
     --merke-tekst: #fff6cf;
+    --t-forsok: #8fb4ff;
+    --t-okt: #cfa0f0;
+    --t-rep: #dcc76a;
+    --t-begrep: #f29abd;
   }
 }
 
@@ -47,6 +55,10 @@
   --knapp-tekst: #10151f;
   --merke: #6b5a12;
   --merke-tekst: #fff6cf;
+  --t-forsok: #8fb4ff;
+  --t-okt: #cfa0f0;
+  --t-rep: #dcc76a;
+  --t-begrep: #f29abd;
 }
 
 :root[data-tema="lys"] { color-scheme: light; }
@@ -596,3 +608,35 @@ h1, h2 { overflow-wrap: break-word; hyphens: auto; }
 /* Merke på kort som passer i begge fagene */
 .fag-merke { display: inline-block; justify-self: start; align-self: start; width: fit-content; margin-top: .4rem; padding: .05rem .45rem; font-family: var(--mono); font-size: .75rem; color: var(--dempet); border: 1px solid var(--rute-sterk); border-radius: 3px; }
 .filter-merknad { font-size: .875rem; color: var(--dempet); }
+
+/* Type på kortene i undervisningsopplegg (forsøk, økt, repetisjon, begrepstest) */
+.type-merke { --t: var(--dempet); align-self: flex-start; display: inline-flex; align-items: center; gap: .35rem; padding: .05rem .5rem; font-family: var(--mono); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--t); background: color-mix(in srgb, var(--t) 12%, transparent); border: 1px solid color-mix(in srgb, var(--t) 45%, transparent); border-radius: 3px; }
+.type-merke::before { content: ""; width: .5rem; height: .5rem; border-radius: 50%; background: var(--t); }
+.forsok { --t: var(--t-forsok); }
+.okt { --t: var(--t-okt); }
+.repetisjon { --t: var(--t-rep); }
+.begrepstest { --t: var(--t-begrep); }
+li[data-type=forsok] { --t: var(--t-forsok); }
+li[data-type=okt] { --t: var(--t-okt); }
+li[data-type=repetisjon] { --t: var(--t-rep); }
+li[data-type=begrepstest] { --t: var(--t-begrep); }
+.sim-kort-liste > li[data-type] > .sim-kort { border-left: 4px solid var(--t, var(--rute-sterk)); }
+.filter-knapp[data-type]:not([data-type=""]) { border-left: 3px solid var(--t); }
+.filter-knapp[data-type]:not([data-type=""])[aria-pressed="true"] { background: var(--t); border-color: var(--t); color: var(--papir); }
+
+/* Faktaboks og innholdsliste øverst på forsøkssidene */
+.forsok-info { max-width: 48rem; margin-top: 1.75rem; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1rem 2rem; padding: 1rem 1.25rem; background: var(--flate); border: 1px solid var(--rute-sterk); border-left: 4px solid var(--t-forsok); border-radius: 6px; }
+.forsok-info:not(:has(.innholdsliste:not([hidden]))) { grid-template-columns: minmax(0, 1fr); }
+.forsok-fakta { margin: 0; display: grid; gap: .6rem; align-content: start; }
+.forsok-fakta dt { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .02em; color: var(--dempet); }
+.forsok-fakta dd { margin: 0; font-size: .9375rem; }
+.forsok-fakta .tid-totalt dd { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; }
+.innholdsliste-tittel { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .02em; color: var(--dempet); }
+.innholdsliste ol { margin: .35rem 0 0; padding-left: 1.3rem; font-size: .9375rem; }
+.innholdsliste li { padding: .1rem 0; }
+.innholdsliste li::marker { color: var(--dempet); font-family: var(--mono); font-size: .8125rem; }
+.innholdsliste a { text-underline-offset: 3px; }
+.innholdsliste .tid { margin-left: .5rem; padding: 0 .35rem; font-family: var(--mono); font-size: .75rem; color: var(--t-forsok); border: 1px solid color-mix(in srgb, var(--t-forsok) 45%, transparent); border-radius: 3px; white-space: nowrap; }
+h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-align: middle; margin-left: .6rem; padding: 0 .4rem; font-family: var(--mono); font-size: .8rem; font-weight: 400; color: var(--t-forsok); border: 1px solid color-mix(in srgb, var(--t-forsok) 45%, transparent); border-radius: 3px; }
+@media (max-width: 640px) { .forsok-info { grid-template-columns: minmax(0, 1fr); } }
+@media print { .innholdsliste { display: none; } .forsok-info { grid-template-columns: 1fr; } }

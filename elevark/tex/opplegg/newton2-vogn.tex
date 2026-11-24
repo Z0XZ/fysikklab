@@ -1,0 +1,61 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/newton2-vogn.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Krefter}{Newtons andre lov med vogn og lodd}{https://fysikklab.no/opplegg/newton2-vogn.html}{Opplegget på nett}
+
+En vogn på en vannrett bane trekkes av et lodd som henger i en snor over en trinse. Hvordan endrer akselerasjonen seg når dere drar hardere, og når vogna blir tyngre? Fra grafene kan dere finne massen til systemet og friksjonen.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Vise at akselerasjonen er proporsjonal med kraftsummen når massen er fast (del A).
+\item Vise at akselerasjonen er omvendt proporsjonal med massen når kraften er fast (del B).
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Vogn, vannrett bane med trinse i enden, snor og en loddholder med lodd på 10~g.
+\item Vekt, målebånd og stoppeklokke. Fotoporter eller en bevegelsessensor gir mer nøyaktige tider.
+\end{itemize}
+
+\section*{Teorien}
+
+Vogna og loddet beveger seg sammen og har samme akselerasjon. Ser vi på dem som ett system med total masse $M$, er den ytre kraften som drar $m_{\mathrm{h}}g$ (tyngden av loddet), og friksjonen $R$ bremser. Newtons andre lov gir $m_{\mathrm{h}}g - R = Ma$. Starter vogna fra ro og kjører strekningen $s$ på tiden $t$, er $a = 2s/t^{2}$.
+
+\section*{Del A: Samme masse, ulik kraft}
+
+\begin{enumerate}
+\item Legg alle loddene unntatt ett på vogna, og heng det siste på loddholderen. Vei vogna med alle loddene og loddholderen. Det er den totale massen $M$, og den skal være den samme i hele del A.
+\item Mål strekningen $s$ fra startstedet til et merke på banen, for eksempel 80~cm.
+\item Slipp vogna fra ro og ta tiden til den passerer merket. Gjør det tre ganger og bruk gjennomsnittet.
+\item Flytt ett lodd fra vogna til loddholderen og gjenta. Fortsett til dere har seks målinger.
+\end{enumerate}
+
+\section*{Del B: Samme kraft, ulik masse}
+
+\begin{enumerate}
+\item Heng et fast lodd på loddholderen, for eksempel 50~g til sammen.
+\item Mål tiden over samme strekning $s$ med vogna tom, og så med mer og mer last på vogna.
+\item Den totale massen $M$ er vogna, lasten, loddholderen og loddet til sammen.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva skjer med akselerasjonen hvis dere dobler loddet som henger? Hva skjer hvis dere dobler massen til hele systemet?
+\svar
+\oppgave \fase{test}{Mål}Gjør del A, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvilken masse gir stigningstallet, og stemmer den med den veide massen?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor flytter vi loddene fra vogna til loddholderen i stedet for å hente nye lodd? Hvorfor må massen til det hengende loddet regnes med i $M$?
+\svar
+\oppgave \fase{test}{Regn}Hvor stor er friksjonen ifølge grafen i del A? Hvorfor går ikke linjen gjennom origo?
+\svar
+\oppgave \fase{test}{Mål}Gjør del B, eller fyll inn eksemplet. Er akselerasjonen omvendt proporsjonal med massen? Sammenlign stigningstallet med tyngden av loddet, og forklar forskjellen.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Snordraget $S$ er ikke lik tyngden av loddet når systemet akselererer. Bruk Newtons andre lov på loddet alene og regn ut $S$ for den siste målingen i del A. Når blir $S$ nesten lik $m_{\mathrm{h}}g$?
+\svar
+\end{oppgaveliste}
+
+\end{document}

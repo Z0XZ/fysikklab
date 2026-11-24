@@ -32,8 +32,18 @@
         <h1>Reaksjonstid</h1>
         <p class="ingress">Hvor raskt reagerer du? Mål reaksjonstiden din på to måter: med en test her på skjermen og med en linjal som faller. Hvor stor er usikkerheten, og gir metodene samme svar?</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>30–45 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+            <div><dt>Utstyr</dt><dd>Datamaskin eller mobil, og en linjal på 30–50 cm</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/maaleusikkerhet.html">Måleusikkerhet</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <figure class="sim egne-data">
-          <h2>Test i nettleseren</h2>
+          <h2 data-tid="10 min">Test i nettleseren</h2>
           <p class="del-inngang">Klikk i feltet for å starte. Når feltet blir blågrønt, klikker du så raskt du kan. Gjør minst ti forsøk.</p>
           <div id="test-felt" class="reaksjon-felt" role="button" tabindex="0" aria-live="polite"><span id="test-tekst"></span></div>
           <p class="sim-hint uten-marg" style="padding: 0 1rem .5rem">Siste forsøk: <span id="klikk-liste"></span></p>
@@ -49,13 +59,13 @@
         </figure>
 
         <div class="tekst opplegg">
-          <h2>Linjalmetoden</h2>
+          <h2 data-tid="10 min">Linjalmetoden</h2>
           <p>Du trenger en linjal på 30 cm og en partner. Partneren holder linjalen loddrett, med nullpunktet mellom tommelen og pekefingeren din, uten at du rører den. Uten forvarsel slipper partneren linjalen, og du klyper den så fort du kan. Les av hvor langt linjalen falt, i centimeter.</p>
           <p>Linjalen faller fritt fra ro, så strekningen er s = ½gt². Da er reaksjonstiden t = √(2s/g).</p>
         </div>
 
         <figure class="sim egne-data">
-          <h2>Målinger med linjal</h2>
+          <h2 data-tid="5 min">Målinger med linjal</h2>
           <div class="tabell-ramme">
             <table class="sim-tabell alle">
               <thead><tr><th scope="col">Forsøk</th><th scope="col">Falt (cm)</th><th scope="col">Reaksjonstid (ms)</th></tr></thead>
@@ -75,7 +85,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/reaksjonstid.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase test">Mål</span><div><p>Gjør minst ti forsøk med hver metode. Skriv reaksjonstiden din på formen t = (middelverdi ± usikkerhet) ms, med det største avviket fra middelverdien som usikkerhet.</p></div></li>

@@ -32,6 +32,16 @@
         <h1>Videoanalyse av støt</h1>
         <p class="ingress">To vogner støter på en rett bane. Med en video og Tracker kan dere finne farten til begge vognene før og etter støtet, og undersøke om den samlede bevegelsesmengden er den samme. Alt skjer langs én linje, så vi trenger bare x-koordinaten.</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>To vogner med magneter eller borrelås, lodd, vekt, mobil på stativ, målestokk og Tracker</dd></div>
+            <div><dt>Simuleringer</dt><dd><a href="../sim/vognstot.html">Støt mellom to vogner</a>, <a href="../sim/videoanalyse.html">Videoanalyse uten video</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Hensikt</h2>
           <ul>
@@ -47,7 +57,7 @@
             <li>Tracker (gratis fra physlets.org/tracker).</li>
           </ul>
 
-          <h2>Framgangsmåte</h2>
+          <h2 data-tid="25 min">Framgangsmåte</h2>
           <ol>
             <li>Vei vognene. Sett en tydelig prikk eller tape på hver vogn, slik at det er lett å klikke på samme punkt i hvert bilde.</li>
             <li>Sett kameraet på stativ, vinkelrett på banen og så langt unna at hele bevegelsen er med. Målestokken skal ligge langs banen, i samme avstand fra kameraet som vognene. Bruk høy bildefrekvens hvis mobilen har det.</li>
@@ -60,7 +70,7 @@
         </div>
 
         <figure id="va" class="sim egne-data" data-mal="[[&quot;st-vA&quot;, &quot;Sett inn som v<sub>A</sub> før&quot;, &quot;v&quot;], [&quot;st-vB&quot;, &quot;Sett inn som v<sub>B</sub> før&quot;, &quot;v&quot;], [&quot;st-uA&quot;, &quot;Sett inn som v<sub>A</sub> etter&quot;, &quot;v&quot;], [&quot;st-uB&quot;, &quot;Sett inn som v<sub>B</sub> etter&quot;, &quot;v&quot;]]">
-          <h2>Analyse av data fra Tracker</h2>
+          <h2 data-tid="20 min">Analyse av data fra Tracker</h2>
           <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
           <div class="sim-styring mange uten-topp">
             <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
@@ -87,7 +97,7 @@
         </figure>
 
         <figure class="sim egne-data">
-          <h2>Bevegelsesmengde før og etter</h2>
+          <h2 data-tid="10 min">Bevegelsesmengde før og etter</h2>
           <p class="del-inngang">Fart med fortegn: positiv i positiv x-retning.</p>
           <div class="tabell-ramme">
             <table class="sim-tabell alle">
@@ -109,7 +119,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/videoanalyse-stot.pdf" download>Last ned elevark (PDF)</a></p>
           <p class="del-inngang">Oppgave 1–5 kan gjøres med eksempeldataene.</p>
           <ol class="oppgaveliste">

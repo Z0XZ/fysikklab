@@ -1,0 +1,53 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/g-med-mobil.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Rettlinjet bevegelse}{Mål $g$ med mobilen}{https://fysikklab.no/opplegg/g-med-mobil.html}{Opplegget på nett}
+
+En stålkule dyttes ut over kanten av et bord og faller i gulvet. Mobilen lytter: Klikket når kula dyttes, starter klokka, og smellet i gulvet stopper den. Med falltiden fra flere høyder kan dere bestemme tyngdeakselerasjonen $g$.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bestemme $g$ fra falltiden for flere høyder.
+\item Linearisere $h = \tfrac{1}{2}gt^{2}$ ved å plotte $h$ mot $t^{2}$, og bruke stigningstallet.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Mobil med appen phyphox (gratis) og eksperimentet «Akustisk stoppeklokke» («Acoustic Stopwatch»). Det starter på én lyd og stopper på den neste.
+\item En liten stålkule og en metallinjal. Et hardt gulv, et bord og gjerne en stol, en hylle eller en trappeavsats for andre høyder. Målebånd.
+\end{itemize}
+
+\section*{Teorien}
+
+Kula faller fra ro, så $h = \tfrac{1}{2}gt^{2}$. Horisontal startfart endrer ikke falltiden. Grafen av $h$ mot $t^{2}$ er en rett linje med stigningstall $g/2$, og hver måling gir også $g = 2h/t^{2}$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Legg kula helt ute på kanten av bordet. Mål høyden $h$ fra underkanten av kula til gulvet.
+\item Legg mobilen på bordet like ved kula. Start den akustiske stoppeklokka, og juster terskelen slik at vanlig prat ikke starter den.
+\item Slå lett på kula sidelengs med linjalen, slik at den ruller ut over kanten med lav fart. Klikket starter klokka, og smellet i gulvet stopper den.
+\item Gjør tre målinger fra hver høyde og bruk gjennomsnittet. Gjenta for minst fem høyder mellom 0,4~m og 1,5~m.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvor lang tid tror dere det tar for kula å falle 1~m? Hvor mye lengre tid tar det fra 2~m?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken verdi får dere for $g$?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor plotter vi $h$ mot $t^{2}$ og ikke mot $t$? Hvorfor er stigningstallet $g/2$?
+\svar
+\oppgave \fase{test}{Regn}Lyden går med omtrent 343~m/s. Mobilen ligger på bordet, så smellet fra gulvet bruker litt tid før det når mobilen. Hvor stor blir den forsinkelsen fra 1,0~m, og hvor mye endrer den $g$?
+\svar
+\oppgave \fase{forklar}{Vurder}Sammenlign $g$ fra stigningstallet med gjennomsnittet av enkeltmålingene. Hvilken metode stoler dere mest på? Hvordan kan dere plassere mobilen for å gjøre feilen fra lydforsinkelsen mindre?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Gjenta med en pingpongball fra den største høyden. Får dere samme $g$? Hva forteller det?
+\svar
+\end{oppgaveliste}
+
+\end{document}

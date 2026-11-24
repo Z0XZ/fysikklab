@@ -1,0 +1,82 @@
+tittel: Rekyl med to vogner – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: To vogner skytes fra hverandre med en fjær. Finn sammenhengen mellom massene og strekningene, og vis at bevegelsesmengden er bevart.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Bevegelsesmengde og støt
+script: maaletabell.js,rekylforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Rekyl med to vogner</h1>
+<p class="ingress">To vogner står i ro med en spent fjær mellom seg. Når fjæren løses ut, ruller de hver sin vei. Plasser vognene slik at de treffer hver sin endekloss samtidig. Hva sier strekningene om massene? Forsøket trenger ingen sensorer, bare øret og en linjal.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>To vogner (én med fjærstempel), bane, to endeklosser, lodd, vekt, linjal</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/rekyl.html">Rekyl</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Bruke bevaring av bevegelsesmengde på en «eksplosjon» der alt starter i ro.</li>
+    <li>Se at forholdet mellom strekningene er det omvendte av forholdet mellom massene.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>To vogner, der minst én har et fjærstempel som kan spennes og løses ut.</li>
+    <li>En rett bane med en endekloss i hver ende, lodd til vognene, vekt og linjal eller målebånd.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Før utløsningen er bevegelsesmengden null. Rett etterpå er den fortsatt null: m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub> (som størrelser, i hver sin retning). Hvis vognene bruker like lang tid t til hver sin endekloss, er v<sub>1</sub> = d<sub>1</sub>/t og v<sub>2</sub> = d<sub>2</sub>/t. Da blir m<sub>1</sub>d<sub>1</sub> = m<sub>2</sub>d<sub>2</sub>, altså d<sub>1</sub>/d<sub>2</sub> = m<sub>2</sub>/m<sub>1</sub>.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Sjekk at banen er vannrett: En vogn skal bli stående i ro hvor som helst på banen.</li>
+    <li>Vei vognene. Kall vognen med fjærstempelet vogn 1.</li>
+    <li>Spenn fjæren og sett vognene inntil hverandre et sted på banen. Løs ut fjæren ved å slå lett på utløseren ovenfra med en linjal, slik at dere ikke dytter vognene.</li>
+    <li>Lytt: Hører dere ett smell eller to? Flytt startstedet mot den vognen som kom fram først, og prøv igjen til dere hører ett smell.</li>
+    <li>Mål strekningene d<sub>1</sub> og d<sub>2</sub> fra fronten av hver vogn til endeklossen den treffer.</li>
+    <li>Legg lodd på vogn 2 og gjenta, slik at dere får minst fem ulike masseforhold.</li>
+  </ol>
+</div>
+
+<figure id="rk" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div data-tabell></div>
+  <dl class="sim-tall">
+    <div><dt>stigningstall (bør være 1)</dt><dd id="rk-stig"></dd></div>
+    <div><dt>avvik fra 1</dt><dd id="rk-avvik"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Hvis bevegelsesmengden er bevart, ligger punktene på linjen d₁/d₂ = m₂/m₁, altså en rett linje gjennom origo med stigningstall 1. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Vogn 2 har dobbelt så stor masse som vogn 1. Hvor må vognene starte for å treffe endeklossene samtidig, når banen mellom klossene er 100 cm lengre enn de to vognene til sammen?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene nær linjen med stigningstall 1?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor betyr «ett smell» at farten til hver vogn er proporsjonal med strekningen den kjører?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Vogn 1 har masse 0,50 kg og vogn 2 har masse 1,50 kg. Hvilken vogn får mest kinetisk energi, og hvor mange ganger så mye?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Friksjonen bremser begge vognene. Hvorfor ødelegger ikke det metoden helt? Når blir feilen størst?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Du står på et skateboard (du og brettet har til sammen 60 kg) og kaster en medisinball på 3,0 kg rett fram med 4,0 m/s. Hvor fort ruller du bakover? Hvorfor kjennes det likevel ikke som du får mye fart?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>d<sub>1</sub>/d<sub>2</sub> = m<sub>2</sub>/m<sub>1</sub> = 2, og d<sub>1</sub> + d<sub>2</sub> = 100 cm. Da er d<sub>1</sub> ≈ 67 cm og d<sub>2</sub> ≈ 33 cm. Den lette vognen må kjøre dobbelt så langt.</li>
+      <li>Eksemplet gir stigningstall 0,993, under 1 % fra 1. De enkelte punktene avviker opptil 3–4 %.</li>
+      <li>Vognene starter samtidig og treffer samtidig, så de har brukt like lang tid. Med (tilnærmet) konstant fart er v = d/t, og når t er lik, er v proporsjonal med d.</li>
+      <li>Bevegelsesmengdene er like store: p = m<sub>1</sub>v<sub>1</sub> = m<sub>2</sub>v<sub>2</sub>. Med E<sub>k</sub> = p²/(2m) får den lette vognen mest energi, og forholdet er m<sub>2</sub>/m<sub>1</sub> = 3. Vogn 1 får tre ganger så mye kinetisk energi.</li>
+      <li>Med samme friksjonstall får begge vognene omtrent samme retardasjon. Begge bruker da litt lenger tid enn uten friksjon, men forholdet mellom strekningene endres lite. Feilen blir størst når den ene vognen er mye lettere og fortere enn den andre, eller når hjulene har ulik friksjon. Kort bane og godt vannrett underlag gir minst feil.</li>
+      <li>60 kg · v = 3,0 kg · 4,0 m/s gir v = 0,20 m/s. Det er lite fordi massen din er mye større. Bevegelsesmengden er like stor, men den kinetiske energien din er bare 1,2 J, mot 24 J for ballen.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Forsøket passer rett etter bevaring av bevegelsesmengde, og elevene liker å «høre» når de har funnet riktig sted. Har dere ikke vogner med fjærstempel, kan en strikk eller en fjær holdes spent med en tråd som brennes over. Se også simuleringen <a href="../sim/rekyl.html">Rekyl</a>.</p>
+  </details>
+</section>

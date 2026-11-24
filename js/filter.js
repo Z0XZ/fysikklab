@@ -6,7 +6,8 @@
 // Et kort kan høre til flere temaer med data-tema="Elektriske felt og krefter|Magnetiske felt og krefter",
 // og til begge fagene med data-fag="begge".
 // Faget er det samme valget som i nedfallsmenyen øverst (window.Fag i js/tema.js), så det følger med fra side til side.
-// Valgene står også i adressen (?fag=f2&tema=sirkelbevegelse&sok=mobil), så en filtrert side kan deles som lenke.
+// Valgene står også i adressen (?fag=f2&tema=sirkelbevegelse&type=forsok&sok=mobil), så en filtrert side kan deles som lenke.
+// Kort med data-type="forsok|okt|repetisjon|begrepstest" gir en ekstra rad med typer (på undervisningsopplegg).
 
 (function () {
   const blokker = [...document.querySelectorAll(".tema-blokk")];
@@ -30,12 +31,13 @@
     if (navn && !temaer.some((t) => t.id === slug(navn) && t.fag === fag)) temaer.push({ navn, fag, id: slug(navn) });
     for (const li of b.querySelectorAll(".sim-kort-liste > li")) {
       const egne = (li.dataset.tema || "").split("|").map((s) => s.trim()).filter(Boolean);
-      kort.push({ li, blokk: b, fag: li.dataset.fag === "begge" ? null : fag, tema: egne.length ? egne.map(slug) : navn ? [slug(navn)] : [], tekst: normal(li.textContent) });
+      kort.push({ li, blokk: b, type: li.dataset.type || "", fag: li.dataset.fag === "begge" ? null : fag, tema: egne.length ? egne.map(slug) : navn ? [slug(navn)] : [], tekst: normal(li.textContent) });
     }
     return { b, fag, generell };
   });
   const fagFinnes = new Set(info.map((x) => x.fag).filter(Boolean));
   const visFag = !sideFag && fagFinnes.size > 1;
+  const TYPER = [["forsok", "Forsøk"], ["okt", "Økter"], ["repetisjon", "Repetisjon"], ["begrepstest", "Begrepstester"]].filter(([t]) => kort.some((k) => k.type === t));
 
   // ---------- Bygg filteret ----------
   const ramme = document.createElement("div");
@@ -45,6 +47,7 @@
   ramme.innerHTML =
     (visFag ? `<div class="filter-rad" role="group" aria-label="Fag"><span class="filter-etikett">Fag</span><button type="button" class="filter-knapp" data-fag="">Alle</button>${[...fagFinnes].sort().map((f) => `<button type="button" class="filter-knapp ${f}" data-fag="${f}">${FAGNAVN[f]}</button>`).join("")}<span class="filter-merknad">Valget huskes på alle sidene og kan også endres i menyen øverst.</span></div>` : "") +
     `<div class="filter-rad" role="group" aria-label="Tema"><span class="filter-etikett">Tema</span><button type="button" class="filter-knapp" data-tema="">Alle</button>${temaer.map((t) => `<button type="button" class="filter-knapp ${t.fag || ""}" data-tema="${t.id}" data-temafag="${t.fag || ""}">${t.navn}</button>`).join("")}</div>` +
+    (TYPER.length > 1 ? `<div class="filter-rad" role="group" aria-label="Type"><span class="filter-etikett">Type</span><button type="button" class="filter-knapp" data-type="">Alle</button>${TYPER.map(([t, n]) => `<button type="button" class="filter-knapp ${t}" data-type="${t}">${n}</button>`).join("")}</div>` : "") +
     `<div class="filter-rad"><label class="filter-etikett" for="filter-sok">Søk</label><input id="filter-sok" class="filter-sok" type="search" placeholder="For eksempel friksjon, mobil eller Python" autocomplete="off"><span class="filter-antall" aria-live="polite"></span></div>`;
   blokker[0].parentNode.insertBefore(ramme, blokker[0]);
   const sok = ramme.querySelector("#filter-sok");
@@ -58,7 +61,8 @@
   // ---------- Tilstand ----------
   const q = new URLSearchParams(location.search);
   const globaltFag = () => { const f = window.Fag ? window.Fag.hent() : q.get("fag"); return visFag && fagFinnes.has(f) ? f : ""; };
-  let valgt = { fag: globaltFag(), tema: q.get("tema") || "", sok: q.get("sok") || "" };
+  let valgt = { fag: globaltFag(), tema: q.get("tema") || "", type: q.get("type") || "", sok: q.get("sok") || "" };
+  if (valgt.type && !TYPER.some(([t]) => t === valgt.type)) valgt.type = "";
   if (valgt.tema && !temaer.some((t) => t.id === valgt.tema)) valgt.tema = "";
   // En lenke til et tema i det andre faget (for eksempel fra brødsmulestien på en simulering) bytter faget
   const lenketTema = temaer.filter((t) => t.id === valgt.tema);
@@ -75,28 +79,32 @@
       k.setAttribute("aria-pressed", String(k.dataset.tema === valgt.tema));
     }
     for (const k of ramme.querySelectorAll("[data-fag]")) k.setAttribute("aria-pressed", String(k.dataset.fag === valgt.fag));
+    for (const k of ramme.querySelectorAll("[data-type]")) k.setAttribute("aria-pressed", String(k.dataset.type === valgt.type));
     const ord = normal(valgt.sok).split(" ").filter(Boolean);
     let vist = 0;
     for (const k of kort) {
       const ok = (!valgt.fag || !k.fag || k.fag === valgt.fag)
         && (!valgt.tema || k.tema.includes(valgt.tema))
+        && (!valgt.type || k.type === valgt.type)
         && ord.every((o) => k.tekst.includes(o));
       k.li.hidden = !ok;
       if (ok) vist++;
     }
     for (const x of info) {
       const synlige = [...x.b.querySelectorAll(".sim-kort-liste > li")].some((li) => !li.hidden);
-      x.b.hidden = !synlige || (x.generell && !!valgt.tema);
-      if (x.generell && valgt.tema) for (const li of x.b.querySelectorAll(".sim-kort-liste > li")) if (!li.hidden) { li.hidden = true; vist--; }
+      const smalt = !!(valgt.tema || valgt.type);
+      x.b.hidden = !synlige || (x.generell && smalt);
+      if (x.generell && smalt) for (const li of x.b.querySelectorAll(".sim-kort-liste > li")) if (!li.hidden) { li.hidden = true; vist--; }
       // Merknader under kortene (forsøk og lenker) vises bare uten søk, siden de ikke er en del av søket
-      for (const p of x.b.querySelectorAll(".tema-merknad")) p.hidden = ord.length > 0;
+      for (const p of x.b.querySelectorAll(".tema-merknad")) p.hidden = ord.length > 0 || !!valgt.type;
     }
-    const filtrert = valgt.fag || valgt.tema || ord.length;
+    const filtrert = valgt.fag || valgt.tema || valgt.type || ord.length;
     antall.textContent = filtrert ? `Viser ${vist} av ${kort.length}` : "";
     tom.hidden = vist > 0;
     const ny = new URLSearchParams();
     if (valgt.fag) ny.set("fag", valgt.fag);
     if (valgt.tema) ny.set("tema", valgt.tema);
+    if (valgt.type) ny.set("type", valgt.type);
     if (valgt.sok) ny.set("sok", valgt.sok);
     const s = ny.toString();
     history.replaceState(null, "", location.pathname + (s ? "?" + s : "") + location.hash);
@@ -112,12 +120,13 @@
       if (t && valgt.fag && t.fag && t.fag !== valgt.fag) valgt.tema = "";
     }
     if ("tema" in k.dataset) valgt.tema = valgt.tema === k.dataset.tema ? "" : k.dataset.tema;
+    if ("type" in k.dataset) valgt.type = valgt.type === k.dataset.type ? "" : k.dataset.type;
     oppdater();
   });
   sok.addEventListener("input", () => { valgt.sok = sok.value.trim(); oppdater(); });
   tom.addEventListener("click", (e) => {
     if (!e.target.closest("button")) return;
-    valgt = { fag: "", tema: "", sok: "" }; sok.value = "";
+    valgt = { fag: "", tema: "", type: "", sok: "" }; sok.value = "";
     if (window.Fag) window.Fag.sett("");
     oppdater();
   });

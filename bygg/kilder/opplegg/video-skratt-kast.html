@@ -9,6 +9,16 @@ meny: undervisningsopplegg.html
 <h1>Videoanalyse av skrått kast</h1>
 <p class="ingress">Et skrått kast er to bevegelser på én gang: jevn fart bortover og fritt fall opp og ned. Film et kast, og la Tracker gi dere x og y for hvert bilde. Stemmer det at vₓ er konstant og at a<sub>y</sub> = −g?</p>
 
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>Ball, mobil på stativ, meterstokk og Tracker</dd></div>
+    <div><dt>Simuleringer</dt><dd><a href="../sim/skratt-kast.html">Skrått kast</a>, <a href="../sim/videoanalyse.html">Videoanalyse uten video</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
 <div class="tekst opplegg">
   <h2>Hensikt</h2>
   <ul>
@@ -25,7 +35,7 @@ meny: undervisningsopplegg.html
     <li>Tracker (gratis fra physlets.org/tracker).</li>
   </ul>
 
-  <h2>Framgangsmåte</h2>
+  <h2 data-tid="20 min">Framgangsmåte</h2>
   <ol>
     <li>Sett kameraet på stativ 3–4 m fra veggen, slik at hele banen kommer med. Kameraet skal stå vinkelrett på veggen, med linsa omtrent midt i banen.</li>
     <li>Legg meterstokken langs veggen i samme avstand fra kameraet som kastet. Den er målestokken i Tracker.</li>
@@ -37,7 +47,7 @@ meny: undervisningsopplegg.html
 </div>
 
 <figure id="va" class="sim egne-data" data-mal="[[&quot;kast-vx&quot;, &quot;Sett inn som vₓ&quot;, &quot;v&quot;], [&quot;kast-vy&quot;, &quot;Sett inn som v₀y&quot;, &quot;v&quot;], [&quot;kast-ay&quot;, &quot;Sett inn som aᵧ&quot;, &quot;a&quot;]]">
-  <h2>Analyse av data fra Tracker</h2>
+  <h2 data-tid="20 min">Analyse av data fra Tracker</h2>
   <p class="del-inngang">Lim inn t, x og y fra Tracker. Velg kolonnen x og modellen rett linje for å finne vₓ. Velg så kolonnen y og andregradsfunksjon for å finne v₀y og aᵧ.</p>
   <div class="sim-styring mange uten-topp">
     <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;x&#9;y&#10;0,000&#9;0,000&#9;0,850&#10;0,033&#9;0,074&#9;0,939"></textarea></label>
@@ -64,7 +74,7 @@ meny: undervisningsopplegg.html
 </figure>
 
 <figure class="sim egne-data">
-  <h2>Startfart og kastvinkel</h2>
+  <h2 data-tid="10 min">Startfart og kastvinkel</h2>
   <div class="sim-styring mange uten-topp">
     <label for="kast-vx">vₓ (m/s)<input id="kast-vx" type="text" inputmode="decimal"></label>
     <label for="kast-vy">v₀y (m/s)<input id="kast-vy" type="text" inputmode="decimal"></label>
@@ -78,7 +88,7 @@ meny: undervisningsopplegg.html
 </figure>
 
 <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
   <ol class="oppgaveliste">
   <li><span class="fase tipp">Gjett</span><div><p>Skisser hvordan x(t) og y(t) ser ut for et skrått kast. Hvordan ser vₓ(t) og v<sub>y</sub>(t) ut?</p></div></li>
   <li><span class="fase test">Mål</span><div><p>Film et kast og analyser det i Tracker, eller bruk eksempeldataene. Er x(t) en rett linje? Hva er vₓ?</p></div></li>

@@ -1,0 +1,90 @@
+tittel: Følg grafen med bevegelsessensor – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: Gå foran en bevegelsessensor og prøv å lage en gitt x(t)-graf. Lim inn målingene og se hvor godt dere traff.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Rettlinjet bevegelse
+script: maaletabell.js,folggrafen.js
+meny: undervisningsopplegg.html
+---
+<h1>Følg grafen med bevegelsessensor</h1>
+<p class="ingress">En bevegelsessensor måler hvor langt unna du står. Klarer du å gå slik at grafen for posisjon mot tid blir lik en gitt målgraf? Her må du oversette fra graf til bevegelse med hele kroppen: Hva betyr en vannrett linje, en bratt linje eller en krum kurve?</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3, eller stasjon der elevene går etter tur</dd></div>
+    <div><dt>Utstyr</dt><dd>Bevegelsessensor (ultralyd) med logger og programvare, 3 m fri gulvplass, en stor bok eller papp</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/bevegelsesgrafer.html">Bevegelsesgrafer</a> (delen «Følg grafen»)</dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Koble formen på en x(t)-graf til hvordan man faktisk beveger seg.</li>
+    <li>Kjenne forskjellen på konstant fart og konstant akselerasjon i kroppen.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En bevegelsessensor (ultralyd) koblet til en logger eller datamaskin, med programvare som viser posisjonen mot tiden mens dere går. Sett målingen til 10 s.</li>
+    <li>Omtrent 3 m fri gulvplass rett foran sensoren, og en stor bok eller et pappstykke som den som går, holder foran magen. Da får sensoren en jevn flate å måle mot.</li>
+    <li>Uten sensor: Film den som går fra siden med en målestokk på gulvet, og analyser videoen i Tracker. Da tar det lengre tid.</li>
+  </ul>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Velg en målgraf i verktøyet under. Skriv først ned med ord hvordan dere skal gå: hvor dere starter, hvilken vei, hvor fort og når dere stopper.</li>
+    <li>Still dere opp på startposisjonen. Én starter målingen, og den som går, prøver å følge grafen.</li>
+    <li>Kopier tabellen med tid og posisjon fra programvaren (eller Tracker), og lim den inn i verktøyet. Se hvor dere bommet.</li>
+    <li>Prøv igjen og forsøk å få avviket ned. Bytt så rolle og målgraf.</li>
+  </ol>
+</div>
+
+<figure id="fg" class="sim egne-data">
+  <h2 data-tid="5 min">Målgraf og målingene deres</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="fg-maal">Målgraf<select id="fg-maal"></select></label>
+    <label for="fg-data" class="bred-felt">Målingene (t og x, i sekunder og meter)<textarea id="fg-data" rows="5" spellcheck="false" placeholder="t&#9;x&#10;0,00&#9;1,02&#10;0,05&#9;1,02"></textarea></label>
+  </div>
+  <canvas id="fg-graf" class="statisk forhold-lav" role="img" aria-label="Målgrafen som et bredt bånd, og målingene som en linje oppå."></canvas>
+  <ul class="forklaring graf-forklaring">
+    <li><span class="linje f2"></span><span>Målgraf</span></li>
+    <li><span class="linje f1"></span><span>Målingene deres</span></li>
+  </ul>
+  <dl class="sim-tall tre">
+    <div><dt>gjennomsnittlig avvik</dt><dd id="fg-avvik"></dd></div>
+    <div><dt>målepunkter mellom 0 og 10 s</dt><dd id="fg-n"></dd></div>
+    <div><dt>vurdering</dt><dd id="fg-dom"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <div class="sim-knapper"><button id="fg-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button><button id="fg-tom" class="knapp lys" type="button">Tøm</button></div>
+  </div>
+  <figcaption class="sim-hint">Desimalkomma og desimalpunktum går begge bra, og en overskriftslinje blir hoppet over. Avviket er gjennomsnittet av avstanden mellom målingene og målgrafen. Under 8 cm er svært godt. Eksempeldataene er laget med en modell og litt tilfeldig støy, og er ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Se på målgraf B før dere prøver. Beskriv med ord hvordan dere må gå. Hvor fort må dere gå i hver del?</p></div></li>
+  <li><span class="fase test">Test</span><div><p>Prøv målgraf A, B og E. Hvilken del av grafene var vanskeligst å treffe?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hva betyr det når grafen er vannrett? Når den er bratt? Hva betyr det at grafen går nedover?</p></div></li>
+  <li><span class="fase test">Test</span><div><p>Prøv målgraf C og D. Hvordan må farten endre seg underveis? Hva er forskjellen på dem?</p></div></li>
+  <li><span class="fase test">Tegn</span><div><p>Tegn v(t)-grafen som hører til målgraf E. Hvor stor er farten i hver del?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Kan noen gå slik at x(t)-grafen får en loddrett del? Lag en egen målgraf på papir som en annen gruppe skal prøve å følge.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>B: Start 2,5 m fra sensoren. Gå mot sensoren med jevn fart 0,30 m/s i 5 s, til 1,0 m. Stå stille i 2 s. Gå bort fra sensoren med 0,33 m/s i 3 s, til 2,0 m.</li>
+      <li>Vanligvis er det overgangene som er vanskeligst: å starte og stoppe brått og å holde helt jevn fart. Mange starter for sent.</li>
+      <li>Vannrett graf: Du står stille. Bratt graf: Du går fort. Grafen går nedover når du går mot sensoren, fordi avstanden blir mindre. Stigningstallet er farten.</li>
+      <li>C: Start i ro 0,6 m fra sensoren og gå bort med jevnt økende fart (a = 0,04 m/s²), til 2,6 m med 0,40 m/s etter 10 s. D: Start med 0,40 m/s bort fra sensoren og brems jevnt til du står stille ved 2,6 m etter 10 s. Begge grafene er krumme, men C blir brattere og D blir slakere.</li>
+      <li>E: 0,25 m/s i 6 s (bort fra sensoren), så −0,50 m/s i 3 s (mot sensoren), så 0 m/s. v(t) blir tre vannrette linjestykker.</li>
+      <li>Nei. En loddrett del betyr at du er to steder samtidig, eller uendelig stor fart. En graf kan være bratt, men aldri loddrett.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter som stasjon, eller som en kort, aktiv start på kapitlet om bevegelse. Eksempeldataene følger målgraf A og gir et avvik på omtrent 7 cm. Sensoren måler til det nærmeste den «ser», så hold boka rett foran dere, og ikke gå nærmere enn omtrent 0,5 m. Simuleringen <a href="../sim/bevegelsesgrafer.html">Bevegelsesgrafer</a> har en «Følg grafen»-modus med piltastene, som passer som oppvarming.</p>
+  </details>
+</section>

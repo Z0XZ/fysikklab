@@ -1,0 +1,83 @@
+tittel: Pendelens svingetid – fysikklab.no
+beskrivelse: Forsøk i Fysikk 1: Mål svingetiden til en pendel for ulike lengder, linearisér med T² mot L, og bestem tyngdeakselerasjonen med usikkerhet.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 1 · Introduksjon til fysikk
+script: maaletabell.js,pendelforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Pendelens svingetid</h1>
+<p class="ingress">Hvor lang tid bruker en pendel på én svingning, og hva avhenger det av? Dere skal teste modellen T = 2π√(L/g), gjøre grafen om til en rett linje, og bruke stigningstallet til å bestemme g. Underveis ser dere hvordan man kan gjøre en måling mer nøyaktig enn reaksjonstiden.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45–60 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+    <div><dt>Utstyr</dt><dd>Stativ, tynn snor, tungt lodd eller kule, målebånd, stoppeklokke (mobil)</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/linearisering.html">Linearisering og modeller</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Undersøke hvordan svingetiden avhenger av lengden, massen og utslaget.</li>
+    <li>Linearisere en modell og bestemme g fra stigningstallet.</li>
+    <li>Redusere usikkerheten ved å måle mange svingninger samtidig.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Stativ med klemme, tynn snor og et tungt lodd eller en metallkule.</li>
+    <li>Målebånd og stoppeklokke.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>For små utslag er svingetiden T = 2π√(L/g), der L er lengden fra opphengspunktet til tyngdepunktet i loddet. Svingetiden er tiden for én hel svingning, fram og tilbake. Kvadrerer vi, får vi T² = (4π²/g) · L. Grafen av T² mot L er en rett linje gjennom origo med stigningstall 4π²/g.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Heng opp loddet, og mål L fra opphengspunktet til midten av loddet.</li>
+    <li>Trekk loddet ut til siden med et lite utslag, under 15°, og slipp. Vent til pendelen svinger rolig.</li>
+    <li>Start klokka når loddet passerer det nederste punktet, og tell ti hele svingninger. Stopp klokka på den tiende passeringen i samme retning.</li>
+    <li>Gjenta for seks lengder mellom 20 cm og 120 cm.</li>
+    <li>Ekstra: Prøv samme lengde med et annet lodd og med et større utslag.</li>
+  </ol>
+</div>
+
+<figure id="pe" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>stigningstall = 4π²/g</dt><dd id="pe-stig"></dd></div>
+    <div><dt>g = 4π² / stigningstall</dt><dd id="pe-g"></dd></div>
+    <div><dt>avvik fra 9,81 m/s²</dt><dd id="pe-avvik"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Linjen er tilpasset gjennom origo. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med svingetiden hvis dere gjør snora dobbelt så lang? Hvis dere bruker et dobbelt så tungt lodd?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje gjennom origo? Hvilken verdi får dere for g?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Reaksjonstiden er omtrent 0,2 s. Hvorfor måler vi ti svingninger i stedet for én? Hvor stor blir usikkerheten i T da?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor plotter vi T² mot L og ikke T mot L? Hvordan ser grafen av T mot L ut?</p></div></li>
+  <li><span class="fase test">Test</span><div><p>Prøv et annet lodd og et større utslag. Hva påvirker svingetiden, og hva gjør det ikke?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>En «sekundpendel» bruker nøyaktig 1 s på hver halve svingning, altså T = 2,0 s. Hvor lang må den være?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>T er proporsjonal med √L, så svingetiden blir √2 ≈ 1,4 ganger så lang. Massen er ikke med i modellen, så et tyngre lodd gir samme svingetid.</li>
+      <li>Eksemplet gir stigningstall 4,037 s²/m og g = 9,78 m/s², 0,3 % under 9,81 m/s².</li>
+      <li>Reaksjonstiden gir omtrent samme feil enten vi måler én eller ti svingninger, fordi den bare kommer inn ved start og stopp. Fordelt på ti svingninger blir usikkerheten i T omtrent 0,02 s i stedet for 0,2 s.</li>
+      <li>T mot L blir en krum kurve (en rotkurve), og det er vanskelig å se om punktene følger modellen. T² mot L blir en rett linje, og stigningstallet gir g direkte: g = 4π²/stigningstall.</li>
+      <li>Massen betyr nesten ingenting. Utslaget betyr lite så lenge det er under 15–20°. Ved store utslag blir svingetiden litt lengre enn modellen gir. Lengden er det som betyr mest.</li>
+      <li>L = gT²/(4π²) = 9,81 · 2,0² / (4π²) ≈ 0,99 m.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45–60 minutter. Forsøket passer tidlig i Fysikk 1, sammen med måleusikkerhet og linearisering. Modellen T = 2π√(L/g) blir gitt og trenger ikke å utledes. Se også <a href="../sim/linearisering.html">Linearisering og modeller</a> og <a href="../sim/maaleusikkerhet.html">Måleusikkerhet</a>.</p>
+  </details>
+</section>

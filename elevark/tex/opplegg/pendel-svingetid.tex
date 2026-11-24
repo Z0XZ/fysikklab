@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/pendel-svingetid.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Introduksjon til fysikk}{Pendelens svingetid}{https://fysikklab.no/opplegg/pendel-svingetid.html}{Opplegget på nett}
+
+Hvor lang tid bruker en pendel på én svingning, og hva avhenger det av? Dere skal teste modellen $T = 2π\sqrt{L/g}$, gjøre grafen om til en rett linje, og bruke stigningstallet til å bestemme $g$. Underveis ser dere hvordan man kan gjøre en måling mer nøyaktig enn reaksjonstiden.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Undersøke hvordan svingetiden avhenger av lengden, massen og utslaget.
+\item Linearisere en modell og bestemme $g$ fra stigningstallet.
+\item Redusere usikkerheten ved å måle mange svingninger samtidig.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Stativ med klemme, tynn snor og et tungt lodd eller en metallkule.
+\item Målebånd og stoppeklokke.
+\end{itemize}
+
+\section*{Teorien}
+
+For små utslag er svingetiden $T = 2π\sqrt{L/g}$, der $L$ er lengden fra opphengspunktet til tyngdepunktet i loddet. Svingetiden er tiden for én hel svingning, fram og tilbake. Kvadrerer vi, får vi $T^{2} = (4π^{2}/g) \cdot L$. Grafen av $T^{2}$ mot $L$ er en rett linje gjennom origo med stigningstall $4π^{2}/g$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Heng opp loddet, og mål $L$ fra opphengspunktet til midten av loddet.
+\item Trekk loddet ut til siden med et lite utslag, under 15°, og slipp. Vent til pendelen svinger rolig.
+\item Start klokka når loddet passerer det nederste punktet, og tell ti hele svingninger. Stopp klokka på den tiende passeringen i samme retning.
+\item Gjenta for seks lengder mellom 20~cm og 120~cm.
+\item Ekstra: Prøv samme lengde med et annet lodd og med et større utslag.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva skjer med svingetiden hvis dere gjør snora dobbelt så lang? Hvis dere bruker et dobbelt så tungt lodd?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje gjennom origo? Hvilken verdi får dere for $g$?
+\svar
+\oppgave \fase{forklar}{Forklar}Reaksjonstiden er omtrent 0,2~s. Hvorfor måler vi ti svingninger i stedet for én? Hvor stor blir usikkerheten i $T$ da?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor plotter vi $T^{2}$ mot $L$ og ikke $T$ mot $L$? Hvordan ser grafen av $T$ mot $L$ ut?
+\svar
+\oppgave \fase{test}{Test}Prøv et annet lodd og et større utslag. Hva påvirker svingetiden, og hva gjør det ikke?
+\svar
+\oppgave \fase{utfordring}{Utfordring}En «sekundpendel» bruker nøyaktig 1~s på hver halve svingning, altså $T = 2{,}0\,\mathrm{s}$. Hvor lang må den være?
+\svar
+\end{oppgaveliste}
+
+\end{document}

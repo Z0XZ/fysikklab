@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Energibevaring på skråplan – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 1: En vogn ruller ned et skråplan og gjennom en fotoport. Sammenlign mgh med ½mv², og finn friksjonskraften fra energitapet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Mekanisk energi</p>
+        <h1>Energibevaring på skråplan</h1>
+        <p class="ingress">En vogn slippes fra ulike steder på et skråplan og ruller gjennom en fotoport nederst. Blir all den potensielle energien til kinetisk energi? Hvor mye går tapt, og hvor stor er friksjonen?</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Bane, vogn med flagg, fotoport med logger, klosser, linjal, vekt</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/berg-og-dal.html">Berg-og-dal-bane</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Sammenligne tapet i potensiell energi med økningen i kinetisk energi.</li>
+            <li>Bruke energitapet til å finne friksjonsarbeidet og friksjonskraften.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>En bane som hviler på en kloss i den ene enden, og en vogn med et flagg (en smal plate) på toppen. Mål bredden b på flagget.</li>
+            <li>En fotoport koblet til en logger eller en datamaskin som måler hvor lenge flagget blokkerer lysstrålen. Uten fotoport kan dere filme vogna og bruke videoanalyse.</li>
+            <li>Linjal, målebånd og en vekt.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>Farten gjennom fotoporten er v = b/Δt. Uten friksjon er mgh = ½mv², så v² = 2gh. Med friksjon går en del av energien til friksjonsarbeid: mgh = ½mv² + Rd, der R er friksjonskraften og d er strekningen langs banen.</p>
+
+          <h2 data-tid="25 min">Framgangsmåte</h2>
+          <ol>
+            <li>Vei vogna. Fest fotoporten nær den nederste enden av banen, slik at flagget går gjennom strålen.</li>
+            <li>Merk av et startpunkt 20 cm opp langs banen fra fotoporten. Mål høydeforskjellen h: Mål høyden til et fast punkt på vogna over bordet når vogna står ved startpunktet og når den står ved fotoporten, og trekk fra.</li>
+            <li>Slipp vogna fra ro, uten å dytte. Les av tiden Δt.</li>
+            <li>Gjenta for 40, 60, 80 og 100 cm. Ta gjerne tre slipp fra hvert sted og bruk gjennomsnittet.</li>
+          </ol>
+        </div>
+
+        <figure id="sk" class="sim egne-data">
+          <h2 data-tid="10 min">Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="sk-m">Massen til vogna m (g)<input id="sk-m" type="text" inputmode="decimal"></label>
+            <label for="sk-b">Bredden på flagget b (cm)<input id="sk-b" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall">
+            <div><dt>stigningstall for v² mot h</dt><dd id="sk-stig"></dd></div>
+            <div><dt>stigningstall / 2 (9,81 uten friksjon)</dt><dd id="sk-g"></dd></div>
+            <div><dt>energi igjen i snitt</dt><dd id="sk-andel"></dd></div>
+            <div><dt>friksjonskraft i snitt</dt><dd id="sk-R"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Friksjonskraften regnes ut fra energitapet: R = (mgh − ½mv²)/d. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="20 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/energi-skraaplan.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med farten nederst hvis dere slipper vogna fra dobbelt så stor høyde?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor stor del av den potensielle energien blir til kinetisk energi?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor skal grafen av v² mot h bli en rett linje gjennom origo, og hvorfor skal stigningstallet være 2g uten friksjon?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bruk friksjonskraften fra eksemplet og regn ut et friksjonstall μ = R/N. Banen er så slak at dere kan regne med at N ≈ mg. Hva sier tallet om rullefriksjonen?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke målinger gir mest usikkerhet? Hva betyr det at fotoporten egentlig måler gjennomsnittsfarten mens flagget passerer? Hvilken energi har vi sett bort fra i hjulene?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Friksjonen tar energi, men grafen går likevel gjennom origo. Forklar hvorfor, når helningen er den samme i alle målingene. Hva ville skjedd med grafen hvis dere endret helningen i stedet for startpunktet?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>v er proporsjonal med √h, så farten blir √2 ≈ 1,4 ganger så stor, ikke dobbelt så stor.</li>
+              <li>I eksemplet er 81–86 % igjen, i snitt 83 %.</li>
+              <li>mgh = ½mv² gir v² = 2g · h, som er en rett linje gjennom origo med stigningstall 2g ≈ 19,6 m/s². Eksemplet gir 16,6 m/s², og halvparten er 8,28 m/s². At det er mindre enn 9,81, viser at energi går tapt.</li>
+              <li>R ≈ 0,082 N og N ≈ 0,500 · 9,81 = 4,91 N gir μ ≈ 0,017. Det er mye mindre enn glidefriksjon (0,2–0,5), slik vi venter for hjul.</li>
+              <li>Høyden h er liten (2–10 cm), så noen millimeter feil gir flere prosent. Flaggbredden b går inn i v², så 1 mm feil på 2,0 cm gir 10 % feil i E<sub>k</sub>. Farten fra fotoporten er gjennomsnittet over flaggbredden, men det betyr lite når b er liten. Hjulene roterer også, og den rotasjonsenergien kommer ikke med i ½mv². Med lette hjul er den liten.</li>
+              <li>Med samme helning er d proporsjonal med h (her d ≈ 10h). Friksjonsarbeidet Rd er da også proporsjonalt med h, så v² = (2g − 2R · d/(mh)) · h blir en rett linje gjennom origo, bare med mindre stigningstall. Hvis helningen endres og h holdes fast, blir d lengre for slakere bane, og farten blir mindre jo slakere banen er.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60 minutter. Forsøket passer etter friksjonsarbeid. Klipp gjerne flagget av en stiv plate og mål bredden med skyvelære. Se også simuleringen <a href="../sim/berg-og-dal.html">Berg-og-dal-bane</a>, der friksjonen kan slås av og på.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/skraaplanforsok.js"></script>
+</body>
+</html>

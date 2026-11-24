@@ -1,0 +1,54 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/energi-skraaplan.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Mekanisk energi}{Energibevaring på skråplan}{https://fysikklab.no/opplegg/energi-skraaplan.html}{Opplegget på nett}
+
+En vogn slippes fra ulike steder på et skråplan og ruller gjennom en fotoport nederst. Blir all den potensielle energien til kinetisk energi? Hvor mye går tapt, og hvor stor er friksjonen?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Sammenligne tapet i potensiell energi med økningen i kinetisk energi.
+\item Bruke energitapet til å finne friksjonsarbeidet og friksjonskraften.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En bane som hviler på en kloss i den ene enden, og en vogn med et flagg (en smal plate) på toppen. Mål bredden $b$ på flagget.
+\item En fotoport koblet til en logger eller en datamaskin som måler hvor lenge flagget blokkerer lysstrålen. Uten fotoport kan dere filme vogna og bruke videoanalyse.
+\item Linjal, målebånd og en vekt.
+\end{itemize}
+
+\section*{Teorien}
+
+Farten gjennom fotoporten er $v = b/Δt$. Uten friksjon er $mgh = \tfrac{1}{2}mv^{2}$, så $v^{2} = 2gh$. Med friksjon går en del av energien til friksjonsarbeid: $mgh = \tfrac{1}{2}mv^{2} + Rd$, der $R$ er friksjonskraften og $d$ er strekningen langs banen.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Vei vogna. Fest fotoporten nær den nederste enden av banen, slik at flagget går gjennom strålen.
+\item Merk av et startpunkt 20~cm opp langs banen fra fotoporten. Mål høydeforskjellen $h$: Mål høyden til et fast punkt på vogna over bordet når vogna står ved startpunktet og når den står ved fotoporten, og trekk fra.
+\item Slipp vogna fra ro, uten å dytte. Les av tiden $Δt$.
+\item Gjenta for 40, 60, 80 og 100~cm. Ta gjerne tre slipp fra hvert sted og bruk gjennomsnittet.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva skjer med farten nederst hvis dere slipper vogna fra dobbelt så stor høyde?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor stor del av den potensielle energien blir til kinetisk energi?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor skal grafen av $v^{2}$ mot $h$ bli en rett linje gjennom origo, og hvorfor skal stigningstallet være $2g$ uten friksjon?
+\svar
+\oppgave \fase{test}{Regn}Bruk friksjonskraften fra eksemplet og regn ut et friksjonstall $μ = R/N$. Banen er så slak at dere kan regne med at $N \approx mg$. Hva sier tallet om rullefriksjonen?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke målinger gir mest usikkerhet? Hva betyr det at fotoporten egentlig måler gjennomsnittsfarten mens flagget passerer? Hvilken energi har vi sett bort fra i hjulene?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Friksjonen tar energi, men grafen går likevel gjennom origo. Forklar hvorfor, når helningen er den samme i alle målingene. Hva ville skjedd med grafen hvis dere endret helningen i stedet for startpunktet?
+\svar
+\end{oppgaveliste}
+
+\end{document}

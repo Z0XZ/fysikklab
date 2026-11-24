@@ -32,6 +32,16 @@
         <h1>Impuls med kraftsensor</h1>
         <p class="ingress">En vogn kjører inn i en kraftsensor og spretter tilbake. Er arealet under grafen for kraft mot tid lik endringen i bevegelsesmengden til vogna?</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45–60 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Dynamikkbane, vogn med kraftsensor, støtfangere, bevegelsessensor og logger</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/impuls.html">Myk landing</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Hensikt</h2>
           <ul>
@@ -48,7 +58,7 @@
             <li>Vekt og datamaskin med Capstone, SPARKvue eller et annet program som logger målingene.</li>
           </ul>
 
-          <h2>Framgangsmåte</h2>
+          <h2 data-tid="20 min">Framgangsmåte</h2>
           <ol>
             <li>Vei vogna. Juster banen slik at den står vannrett: Vogna skal bli stående i ro når du slipper den.</li>
             <li>Still loggefrekvensen for kraftsensoren høyt, minst 500 Hz. Støtet varer bare noen titalls millisekunder.</li>
@@ -61,7 +71,7 @@
         </div>
 
         <figure class="sim egne-data">
-          <h2>Regn ut impulsen</h2>
+          <h2 data-tid="10 min">Regn ut impulsen</h2>
           <p class="del-inngang">Lim inn to kolonner: tid i sekunder og kraft i newton. Overskrifter og tomme linjer blir hoppet over. Både desimalkomma og desimalpunktum fungerer.</p>
           <div class="sim-styring mange">
             <label for="k-data" class="bred-felt">Målinger (tid og kraft)<textarea id="k-data" rows="7" spellcheck="false" placeholder="0,000&#9;0,02&#10;0,005&#9;0,01&#10;…"></textarea></label>
@@ -86,7 +96,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/kraftsensor.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase tipp">Før</span><div><p>Skisser hvordan du tror grafen for kraft mot tid ser ut for en fjærstøtfanger og for en myk støtfanger. Vogna har samme fart begge gangene.</p></div></li>

@@ -378,6 +378,7 @@ def legg_inn_lenke(mappe, navn):
     open(sti, "w", encoding="utf-8").write(s)
 
 RETTELSER = {
+    "opplegg/ballistisk-pendel": [("$I$ støtet", "I støtet"), ("$mv = (m$ + M)V", "$mv = (m + M)V$"), ("= (m$ + M)g · $L(1 - \\cos  θ)$", "= (m + M)g \\cdot L(1 - \\cos θ)$")],
     "opplegg/eggslipp": [("poeng = 10 · høyde i cm / masse i gram",
         "$\\displaystyle \\text{poeng} = 10 \\cdot \\frac{\\text{høyde i cm}}{\\text{masse i gram}}$")],
     "*": [("verktøyet under", "verktøyet på nettsiden"), ("\\section*{Oppgaver til elevene}", "\\section*{Oppgaver}")],

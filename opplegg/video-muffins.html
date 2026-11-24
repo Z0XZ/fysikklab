@@ -32,6 +32,16 @@
         <h1>Videoanalyse av muffinsformer</h1>
         <p class="ingress">En muffinsform når fort terminalfarten, der luftmotstanden er like stor som tyngden. Når dere legger flere former i hverandre, blir massen større, men formen den samme. Da kan dere teste modellen L = kv² og bestemme luftmotstandstallet k.</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Muffinsformer, vekt med 0,1 g nøyaktighet, mobil på stativ, målestokk og Tracker</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/luftmotstand.html">Fall med luftmotstand</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Hensikt</h2>
           <ul>
@@ -47,7 +57,7 @@
             <li>Slipp fra omtrent 2 m høyde, for eksempel fra en stol eller trapp.</li>
           </ul>
 
-          <h2>Framgangsmåte</h2>
+          <h2 data-tid="25 min">Framgangsmåte</h2>
           <ol>
             <li>Vei én muffinsform. Vei gjerne ti former og del på ti for å få mer nøyaktig masse.</li>
             <li>Film én form som slippes fra ro foran målestokken. Hold formen med åpningen opp, og slipp den uten å dytte.</li>
@@ -57,12 +67,12 @@
           </ol>
           <p>Uten egen video: Tracker-eksemplet «CupsClips» viser muffinsformer med ulikt antall binders. Ifølge beskrivelsen i fila veier formen med to binders omtrent 1,4 g og formen med seks binders omtrent 3,1 g. Dere kan også øve med simuleringen <a href="../sim/videoanalyse.html">Videoanalyse uten video</a>.</p>
 
-          <h2>Teorien</h2>
+          <h2 data-tid="10 min">Teorien</h2>
           <p>Ved terminalfarten er L = G, altså kv<sub>t</sub>² = mg. Da er k = mg / v<sub>t</sub>². Hvis modellen stemmer, er v<sub>t</sub>² proporsjonal med m, og grafen av v<sub>t</sub>² mot m blir en rett linje gjennom origo med stigningstall g/k.</p>
         </div>
 
         <figure id="va" class="sim egne-data" data-mal="[[&quot;muf-v1&quot;, &quot;Sett inn som v<sub>t</sub> for 1 form&quot;, &quot;v&quot;], [&quot;muf-v2&quot;, &quot;Sett inn som v<sub>t</sub> for 2 former&quot;, &quot;v&quot;], [&quot;muf-v3&quot;, &quot;Sett inn som v<sub>t</sub> for 3 former&quot;, &quot;v&quot;], [&quot;muf-v4&quot;, &quot;Sett inn som v<sub>t</sub> for 4 former&quot;, &quot;v&quot;]]">
-          <h2>Analyse av data fra Tracker</h2>
+          <h2 data-tid="20 min">Analyse av data fra Tracker</h2>
           <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
           <div class="sim-styring mange uten-topp">
             <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
@@ -89,7 +99,7 @@
         </figure>
 
         <figure class="sim egne-data">
-          <h2>Luftmotstandstallet</h2>
+          <h2 data-tid="5 min">Luftmotstandstallet</h2>
           <div class="tabell-ramme">
             <table class="sim-tabell alle">
               <thead><tr><th scope="col">Antall former</th><th scope="col">Masse (g)</th><th scope="col">Terminalfart v<sub>t</sub> (m/s)</th><th scope="col">k = mg/v<sub>t</sub>² (kg/m)</th></tr></thead>
@@ -107,7 +117,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/video-muffins.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase tipp">Gjett</span><div><p>Last inn eksempeldataene for én form. Hvor lang tid tar det før formen har nådd terminalfarten? Hvordan ser du det?</p></div></li>

@@ -294,5 +294,34 @@ const Sim = (() => {
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fullskjerm);
   else fullskjerm();
 
+  // ---------- Innholdsliste på forsøkssidene ----------
+  // <nav class="innholdsliste" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav> i <aside class="forsok-info">
+  // fylles med alle h2 på siden. data-tid="10 min" på en h2 vises som tidsbruk ved siden av lenken.
+  // Løsningsforslaget (details.fasit) kommer sist og åpnes når man trykker på lenken.
+  function innholdsliste() {
+    const nav = document.querySelector(".innholdsliste");
+    if (!nav) return;
+    const ol = nav.querySelector("ol");
+    const slug = (t) => t.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/æ/g, "ae").replace(/ø/g, "o").replace(/å/g, "a").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const brukt = new Set([...document.querySelectorAll("[id]")].map((e) => e.id));
+    const unik = (t) => { let id = slug(t) || "del", n = 2; while (brukt.has(id)) id = slug(t) + "-" + n++; brukt.add(id); return id; };
+    const punkter = [...document.querySelectorAll("main h2")].filter((h) => !h.closest(".forsok-info")).map((h) => {
+      if (!h.id) h.id = unik(h.textContent.trim());
+      return { id: h.id, tekst: h.textContent.trim(), tid: h.dataset.tid || "" };
+    });
+    const fasit = document.querySelector("details.fasit");
+    if (fasit) {
+      if (!fasit.id) fasit.id = unik("losningsforslag");
+      punkter.push({ id: fasit.id, tekst: "Løsningsforslag og tips til læreren", tid: "", fasit: true });
+    }
+    if (!punkter.length) return;
+    ol.innerHTML = punkter.map((p) => `<li><a href="#${p.id}"${p.fasit ? " data-fasit" : ""}>${p.tekst}</a>${p.tid ? `<span class="tid">${p.tid}</span>` : ""}</li>`).join("");
+    ol.addEventListener("click", (e) => { if (e.target.closest("[data-fasit]")) fasit.open = true; });
+    if (location.hash === "#" + fasit?.id) fasit.open = true;
+    nav.hidden = false;
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", innholdsliste);
+  else innholdsliste();
+
   return { MONO, SANS, $, komma, tall, farger, verdi, lerret, avspiller, akser, steglengde, hent, lagre, kopier, lastNed, tekstskala, punkt };
 })();

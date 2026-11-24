@@ -32,6 +32,16 @@
         <h1>Videoanalyse av fall</h1>
         <p class="ingress">Slipp en ball og film fallet. I Tracker får dere posisjonen i hvert bilde. Er bevegelsen jevnt akselerert, og hvor stor er tyngdeakselerasjonen?</p>
 
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45–60 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par eller grupper på 3</dd></div>
+            <div><dt>Utstyr</dt><dd>Liten, tung ball, mobil på stativ, målestokk og Tracker</dd></div>
+            <div><dt>Simuleringer</dt><dd><a href="../sim/videoanalyse.html">Videoanalyse uten video</a>, <a href="../sim/fritt-fall.html">Fritt fall</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
         <div class="tekst opplegg">
           <h2>Hensikt</h2>
           <ul>
@@ -48,7 +58,7 @@
             <li>Tracker (gratis fra physlets.org/tracker).</li>
           </ul>
 
-          <h2>Framgangsmåte</h2>
+          <h2 data-tid="15 min">Framgangsmåte</h2>
           <ol>
             <li>Heng målestokken loddrett. Sett kameraet på stativ et par meter unna, med linsa omtrent midt på fallhøyden og vinkelrett på veggen.</li>
             <li>Slipp ballen fra ro rett foran målestokken, i samme avstand fra kameraet. Film hele fallet.</li>
@@ -60,7 +70,7 @@
         </div>
 
         <figure id="va" class="sim egne-data" data-mal="[[&quot;fall-a&quot;, &quot;Sett inn akselerasjonen&quot;, &quot;a&quot;]]">
-          <h2>Analyse av data fra Tracker</h2>
+          <h2 data-tid="15 min">Analyse av data fra Tracker</h2>
           <p class="del-inngang">Kopier tabellen fra Tracker (t og posisjon) og lim den inn. Velg tidsrommet du vil tilpasse, og om bevegelsen har konstant fart (rett linje) eller konstant akselerasjon (andregradsfunksjon).</p>
           <div class="sim-styring mange uten-topp">
             <label for="va-data" class="bred-felt">Data fra Tracker<textarea id="va-data" rows="6" spellcheck="false" placeholder="t&#9;y&#10;0,000&#9;1,600&#10;0,033&#9;1,595"></textarea></label>
@@ -87,7 +97,7 @@
         </figure>
 
         <figure class="sim egne-data">
-          <h2>Tyngdeakselerasjonen</h2>
+          <h2 data-tid="5 min">Tyngdeakselerasjonen</h2>
           <div class="sim-styring mange uten-topp">
             <label for="fall-a">Målt akselerasjon a (m/s²)<input id="fall-a" type="text" inputmode="decimal"></label>
           </div>
@@ -98,7 +108,7 @@
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
-          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/video-fall.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
           <li><span class="fase tipp">Gjett</span><div><p>Hvordan tror du grafene for posisjon og fart ser ut? Last inn eksempeldataene og sjekk. Bruk «Vis fart».</p></div></li>

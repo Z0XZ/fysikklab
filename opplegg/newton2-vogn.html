@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Newtons andre lov med vogn og lodd – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 1: En vogn trekkes av et lodd over en trinse. Undersøk hvordan akselerasjonen avhenger av kraften og av massen, og finn friksjonen fra grafen.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Krefter</p>
+        <h1>Newtons andre lov med vogn og lodd</h1>
+        <p class="ingress">En vogn på en vannrett bane trekkes av et lodd som henger i en snor over en trinse. Hvordan endrer akselerasjonen seg når dere drar hardere, og når vogna blir tyngre? Fra grafene kan dere finne massen til systemet og friksjonen.</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+            <div><dt>Utstyr</dt><dd>Vogn, bane, trinse, snor, lodd på 10 g, vekt, stoppeklokke eller fotoporter</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/vogn-og-lodd.html">Vogn trukket av lodd</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Vise at akselerasjonen er proporsjonal med kraftsummen når massen er fast (del A).</li>
+            <li>Vise at akselerasjonen er omvendt proporsjonal med massen når kraften er fast (del B).</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Vogn, vannrett bane med trinse i enden, snor og en loddholder med lodd på 10 g.</li>
+            <li>Vekt, målebånd og stoppeklokke. Fotoporter eller en bevegelsessensor gir mer nøyaktige tider.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>Vogna og loddet beveger seg sammen og har samme akselerasjon. Ser vi på dem som ett system med total masse M, er den ytre kraften som drar m<sub>h</sub>g (tyngden av loddet), og friksjonen R bremser. Newtons andre lov gir m<sub>h</sub>g − R = Ma. Starter vogna fra ro og kjører strekningen s på tiden t, er a = 2s/t².</p>
+
+          <h2 data-tid="25 min">Del A: Samme masse, ulik kraft</h2>
+          <ol>
+            <li>Legg alle loddene unntatt ett på vogna, og heng det siste på loddholderen. Vei vogna med alle loddene og loddholderen. Det er den totale massen M, og den skal være den samme i hele del A.</li>
+            <li>Mål strekningen s fra startstedet til et merke på banen, for eksempel 80 cm.</li>
+            <li>Slipp vogna fra ro og ta tiden til den passerer merket. Gjør det tre ganger og bruk gjennomsnittet.</li>
+            <li>Flytt ett lodd fra vogna til loddholderen og gjenta. Fortsett til dere har seks målinger.</li>
+          </ol>
+        </div>
+
+        <figure id="n2a" class="sim egne-data">
+          <h2 data-tid="5 min">Del A: Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="n2-s">Strekning s (cm)<input id="n2-s" type="text" inputmode="decimal"></label>
+            <label for="n2-M">Total masse M (g)<input id="n2-M" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall">
+            <div><dt>stigningstall = 1/M</dt><dd id="n2-stig"></dd></div>
+            <div><dt>masse fra stigningstallet</dt><dd id="n2-masse"></dd></div>
+            <div><dt>veid masse</dt><dd id="n2-veid"></dd></div>
+            <div><dt>friksjon (der linjen krysser F-aksen)</dt><dd id="n2-R"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Linjen er tilpasset med konstantledd. Der linjen krysser F-aksen, er a = 0, og trekkraften er akkurat like stor som friksjonen. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <div class="tekst opplegg">
+          <h2 data-tid="15 min">Del B: Samme kraft, ulik masse</h2>
+          <ol>
+            <li>Heng et fast lodd på loddholderen, for eksempel 50 g til sammen.</li>
+            <li>Mål tiden over samme strekning s med vogna tom, og så med mer og mer last på vogna.</li>
+            <li>Den totale massen M er vogna, lasten, loddholderen og loddet til sammen.</li>
+          </ol>
+        </div>
+
+        <figure id="n2b" class="sim egne-data">
+          <h2 data-tid="5 min">Del B: Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="n2-mh">Hengende masse m<sub>h</sub> (g)<input id="n2-mh" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall">
+            <div><dt>stigningstall = kraftsummen</dt><dd id="n2b-stig"></dd></div>
+            <div><dt>tyngden av loddet m<sub>h</sub>g</dt><dd id="n2b-F"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Strekningen s er den samme som i del A. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="20 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/newton2-vogn.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med akselerasjonen hvis dere dobler loddet som henger? Hva skjer hvis dere dobler massen til hele systemet?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør del A, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvilken masse gir stigningstallet, og stemmer den med den veide massen?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor flytter vi loddene fra vogna til loddholderen i stedet for å hente nye lodd? Hvorfor må massen til det hengende loddet regnes med i M?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor stor er friksjonen ifølge grafen i del A? Hvorfor går ikke linjen gjennom origo?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør del B, eller fyll inn eksemplet. Er akselerasjonen omvendt proporsjonal med massen? Sammenlign stigningstallet med tyngden av loddet, og forklar forskjellen.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Snordraget S er ikke lik tyngden av loddet når systemet akselererer. Bruk Newtons andre lov på loddet alene og regn ut S for den siste målingen i del A. Når blir S nesten lik m<sub>h</sub>g?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Med fast total masse og liten friksjon blir akselerasjonen omtrent dobbelt så stor når kraften dobles. Med fast kraft blir den halvparten når massen dobles.</li>
+              <li>Eksemplet gir stigningstall 1,012 1/kg, og massen fra stigningstallet er 0,99 kg. Den veide massen er 1,00 kg, så det stemmer godt.</li>
+              <li>Ved å flytte loddene endrer vi kraften uten å endre den totale massen, så vi endrer bare én variabel om gangen. Loddet akselererer sammen med vogna, så kraften må sette fart på det også. Derfor hører det med i M.</li>
+              <li>Linjen krysser F-aksen ved 0,051 N. Så stor må trekkraften være før vogna akselererer i det hele tatt. Det er friksjonen. Den gjør at a = (F − R)/M, og derfor går linjen ikke gjennom origo.</li>
+              <li>Grafen av a mot 1/M blir en rett linje gjennom origo, så a er omvendt proporsjonal med M. Stigningstallet er 0,433 N, mens tyngden av loddet er 0,491 N. Forskjellen på 0,058 N er omtrent friksjonen fra del A.</li>
+              <li>For loddet alene: m<sub>h</sub>g − S = m<sub>h</sub>a. Siste måling: a = 2 · 0,80 / 1,72² = 0,541 m/s² og S = 0,060 · (9,81 − 0,541) = 0,556 N, mot m<sub>h</sub>g = 0,589 N. S er nesten lik m<sub>h</sub>g når a er mye mindre enn g, altså når loddet er lett i forhold til vogna.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter, gjerne fordelt på to økter (del A og del B). Med stoppeklokke bør strekningen være minst 80 cm og tidene over 1,5 s. Stasjon 7 i <a href="kraftsensorer.html">Kraftsensorer og Newtons lover</a> måler F og a med sensorer og passer som et raskere alternativ. Se også simuleringen <a href="../sim/vogn-og-lodd.html">Vogn trukket av lodd</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/newton2forsok.js"></script>
+</body>
+</html>

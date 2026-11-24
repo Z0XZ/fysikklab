@@ -1,0 +1,57 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/ballistisk-pendel.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 1 · Bevegelsesmengde og støt}{Ballistisk pendel}{https://fysikklab.no/opplegg/ballistisk-pendel.html}{Opplegget på nett}
+
+En kule skytes inn i en pendel og blir sittende fast. Hvor fort gikk kula? Dere skal finne farten på to uavhengige måter: fra hvor langt kula flyr når den skytes horisontalt ut over gulvet, og fra hvor høyt pendelen svinger. Gir metodene samme svar?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bestemme farten til en kule med horisontalt kast og med bevaring av bevegelsesmengde og energi.
+\item Vurdere om metodene stemmer innenfor usikkerheten.
+\item Finne ut hvor stor del av den kinetiske energien som går tapt i et fullstendig uelastisk støt.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Ballistisk pendel med fjærkanon og kule, og en vinkelviser som blir stående i det største utslaget.
+\item Målebånd, karbonpapir (eller et ark med kopipapir over) på gulvet, og en vekt.
+\item Vernebriller. Ingen står foran kanonen når den er spent.
+\end{itemize}
+
+\section*{Teorien}
+
+\textbf{Kastet.} Kula forlater kanonen horisontalt i høyden $h$ over gulvet. Falltiden er $t = \sqrt{2h/g}$, og farten er $v = x/t = x \cdot \sqrt{g/(2h)}$, der $x$ er kastlengden.
+
+\textbf{Pendelen.} I støtet er bevegelsesmengden bevart: $mv = (m + M)V$, der $m$ er massen til kula, $M$ massen til pendelen og $V$ farten rett etter støtet. Etterpå svinger pendelen opp, og mekanisk energi er bevart: $\tfrac{1}{2}(m + M)V^{2} = (m + M)g \cdot L(1 - \cos θ)$. Her er $L$ avstanden fra opphenget til tyngdepunktet til pendelen med kula i, og $θ$ er det største utslaget. Det gir $V = \sqrt{2gL(1 - \cos  θ)}$ og $v = (m + M)/m \cdot V$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Vei kula og pendelen (uten kula). Sett kula inn i pendelen og finn tyngdepunktet ved å balansere pendelen på en kant. Mål $L$ fra aksen til tyngdepunktet.
+\item \textbf{Kastet:} Vipp pendelen til side. Mål høyden $h$ fra underkanten av kula i kanonen til gulvet. Skyt én gang for å se hvor kula lander, og legg karbonpapiret der. Skyt fem ganger på samme spenning, og mål kastlengden $x$ fra rett under kanonmunningen til hvert merke.
+\item \textbf{Pendelen:} Heng pendelen ned igjen, sett vinkelviseren på null og skyt fem ganger på samme spenning. Les av det største utslaget $θ$ hver gang.
+\item Skriv målingene inn i tabellen. Hver rad er ett skudd med hver metode.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvor stor del av den kinetiske energien til kula tror dere er igjen rett etter at den har satt seg fast i pendelen?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken fart får dere med hver metode? Stemmer metodene innenfor usikkerheten?
+\svar
+\oppgave \fase{test}{Regn}Vis at den kinetiske energien rett etter støtet er $m/(m + M)$ av energien før støtet. Hvor mye energi går tapt i eksemplet?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor kan vi bruke bevaring av bevegelsesmengde i selve støtet, men ikke bevaring av mekanisk energi? Hvorfor kan vi bruke energibevaring når pendelen svinger opp?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvor mye endres farten fra pendelen hvis dere leser av $θ$ én grad for stort? Hvor mye endres farten fra kastet hvis $x$ er 1~cm for langt? Hvilken måling er viktigst å gjøre nøyaktig?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Tenk dere at kula i stedet sprettet rett tilbake fra pendelen. Ville pendelen svingt høyere eller lavere enn når kula setter seg fast? Forklar med bevegelsesmengde.
+\svar
+\end{oppgaveliste}
+
+\end{document}
