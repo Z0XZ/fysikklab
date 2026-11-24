@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: elektromagnetisk induksjon – fysikklab.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om fluks, Faradays lov, Lenz&#x27; lov, generator og transformator. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektromagnetisk induksjon</p>
+        <h1>Begrepstest: elektromagnetisk induksjon</h1>
+        <p class="ingress">Åtte spørsmål om induksjon. Det viktigste er å skille mellom fluks og endring i fluks, og å bruke Lenz' lov riktig.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="1">
+            <p>En sterk magnet ligger i ro midt inne i en spole. Hva viser et voltmeter koblet til spolen?</p>
+            <ol class="bt-valg">
+              <li>Null.</li>
+              <li data-hvorfor="Det er endringen i fluks som gir spenning.">En stor spenning, fordi feltet er sterkt.</li>
+              <li>En liten spenning.</li>
+              <li data-hvorfor="Retningen betyr noe for fortegnet, men bare når fluksen endrer seg.">Det kommer an på hvilken vei magneten peker.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Faradays lov: ε = −NΔΦ/Δt. En magnet i ro gir konstant fluks, og da er ΔΦ = 0. Det blir bare indusert spenning når fluksen endrer seg.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En nordpol skyves mot enden av en spole. Hvilken pol blir den enden av spolen?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Farten bestemmer hvor sterk strømmen blir, ikke retningen.">Det avhenger av hvor fort magneten skyves.</li>
+              <li data-hvorfor="Da ville spolen trukket magneten til seg, og vi kunne fått energi gratis.">En sørpol.</li>
+              <li>En nordpol.</li>
+              <li data-hvorfor="Strømmen i spolen gjør den til en elektromagnet.">Ingen pol, fordi spolen ikke er en magnet.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Lenz' lov: Den induserte strømmen motvirker endringen. Spolen lager en nordpol som frastøter magneten som nærmer seg. Du må gjøre et arbeid for å skyve magneten inn, og det arbeidet blir til elektrisk energi.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>En magnet trekkes bort fra en ring av kobber. Hvilken retning har magnetfeltet fra den induserte strømmen inne i ringen?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Fluksen gjennom ringen avtar, så det blir strøm.">Det blir ingen indusert strøm.</li>
+              <li>I samme retning som magnetens felt.</li>
+              <li data-hvorfor="Det gjelder når fluksen øker.">Motsatt av magnetens felt.</li>
+              <li>Vinkelrett på magnetens felt.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Fluksen avtar når magneten trekkes bort. Den induserte strømmen motvirker endringen, altså avtakingen, og lager et felt i samme retning som magnetens felt. Det er endringen som motvirkes, ikke feltet.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>En rektangulær sløyfe beveges med konstant fart sidelengs helt inne i et homogent magnetfelt. Blir det indusert strøm?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det er ikke farten, men fluksen, som avgjør.">Nei, fordi farten er konstant.</li>
+              <li>Nei, fordi fluksen gjennom sløyfa ikke endrer seg.</li>
+              <li data-hvorfor="Bevegelse alene gir ikke strøm i en lukket sløyfe.">Ja, fordi sløyfa beveger seg i feltet.</li>
+              <li data-hvorfor="Begge sidene får like stor spenning, og de opphever hverandre.">Ja, men bare i den fremre siden.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Fluksen gjennom sløyfa er den samme hele tiden så lenge den er helt inne i et homogent felt. Det blir indusert spenning i begge sidene som krysser feltet, men de er like store og motsatt rettet rundt sløyfa. Strøm blir det først når sløyfa er på vei inn eller ut av feltet.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>En metallstang glir på to skinner i et magnetfelt, og det går en indusert strøm. Hvilken retning har den magnetiske kraften på stanga?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det går strøm i stanga i et magnetfelt, så F = BIL.">Det virker ingen kraft på stanga.</li>
+              <li>Vinkelrett på skinnene.</li>
+              <li>Mot fartsretningen.</li>
+              <li data-hvorfor="Da ville stanga akselerert av seg selv, og energien ville ikke vært bevart.">I fartsretningen.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Lenz' lov: Kraften fra feltet på den induserte strømmen bremser bevegelsen. Skal stanga holde konstant fart, må du dra med en like stor kraft. Arbeidet du gjør, blir til elektrisk energi.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>En generator roterer dobbelt så fort. Hva skjer med toppspenningen og frekvensen?</p>
+            <ol class="bt-valg">
+              <li>Toppspenningen firedobles.</li>
+              <li>Begge dobles.</li>
+              <li data-hvorfor="Fluksen endrer seg dobbelt så raskt.">Frekvensen dobles, toppspenningen er uendret.</li>
+              <li data-hvorfor="Frekvensen er antall omdreininger per sekund.">Toppspenningen dobles, frekvensen er uendret.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> ε = NBAω sin(ωt). Dobbelt så stor ω gir dobbelt så stor toppspenning NBAω og dobbelt så høy frekvens. Derfor må kraftverk holde turtallet konstant for å holde 50 Hz.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>En transformator kobles til et 12 V batteri (likespenning). Hva blir sekundærspenningen?</p>
+            <ol class="bt-valg">
+              <li>Uendelig stor.</li>
+              <li data-hvorfor="Det gjelder bare for vekselspenning.">12 V ganger forholdet mellom vindingstallene.</li>
+              <li>12 V.</li>
+              <li>Null (etter at strømmen er slått på).</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Med likespenning blir strømmen i primærspolen konstant, og fluksen i kjernen endrer seg ikke. Da blir det ikke indusert noen spenning i sekundærspolen. Bare i øyeblikket når strømmen slås på eller av, blir det en kort puls.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Hvorfor sendes elektrisk energi over lange avstander med svært høy spenning?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Effekten er den samme, P = UI.">Fordi høy spenning gir større effekt.</li>
+              <li>Fordi transformatorer bare virker med høy spenning.</li>
+              <li>Fordi strømmen går fortere ved høy spenning.</li>
+              <li>Fordi høy spenning gir lav strøm og lite varmetap i linjene.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Med samme effekt P = UI gir høy spenning liten strøm. Varmetapet i linja er RI², så tapet blir mye mindre. Transformatorer gjør det mulig å bruke høy spenning i linjene og lav spenning hjemme.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for fysikklab.no. Se også <a href="../sim/magnet-og-spole.html">Magnet og spole</a> og <a href="../sim/generator.html">Generator</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/repetisjon-induksjon.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Elektromagnetisk induksjon}{Repetisjon: elektromagnetisk induksjon}{https://fysikklab.no/opplegg/repetisjon-induksjon.html}{Opplegget på nett}
+
+Induksjon er grunnlaget for nesten all produksjon av elektrisk energi. Her er en oversikt over fluks, Faradays og Lenz' lov, generatoren og transformatoren, med blandede oppgaver og løsningsforslag.
+
+\section*{Hovedidéene}
+
+\begin{itemize}
+\item \textbf{Fluks:} $Φ = BA \cos  θ$ måler hvor mye av feltet som går gjennom en flate.
+\item \textbf{Faradays lov:} Det blir indusert en spenning bare når fluksen gjennom en krets endrer seg.
+\item \textbf{Lenz' lov:} Den induserte strømmen motvirker endringen som skaper den. Det er energibevaring: Du må gjøre et arbeid for å få elektrisk energi.
+\item \textbf{Vekselspenning:} En spole som roterer i et felt gir $ε = NBAω \sin (ωt)$. Transformatorer endrer spenningen, og høy spenning gir lite tap i linjene.
+\end{itemize}
+
+\section*{Formler}
+
+\begin{itemize}
+\item Fluks: $Φ = BA \cos  θ$ (enhet weber, $Wb = T$ $m^{2}$).
+\item Faradays lov: $ε = -NΔΦ/Δt$, eller $ε = -NΦ′(t)$.
+\item Leder som beveges vinkelrett på feltet: $ε = Blv$. Kraft på leder: $F = BIL$.
+\item Generator: $ε = NBAω \sin (ωt)$, toppspenning $NBAω$, effektivverdi = toppverdi/√2.
+\item Ideell transformator: $U_{\mathrm{s}}/U_{\mathrm{p}} = N_{\mathrm{s}}/N_{\mathrm{p}}$ og $U_{\mathrm{p}}I_{\mathrm{p}} = U_{\mathrm{s}}I_{\mathrm{s}}$. Effekttap i en linje: $P = RI^{2}$.
+\end{itemize}
+
+\section*{Oppgaver}
+
+Finn retningen på strømmen med Lenz' lov, og regn med absoluttverdier i Faradays lov.
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Begrep}Er påstandene sanne eller usanne? Begrunn svaret.
+
+a) En sterk magnet som ligger i ro inne i en spole, induserer en stor spenning.\newline b) Den induserte strømmen lager alltid et felt som er motsatt rettet av magnetens felt.\newline c) En transformator virker ikke med likestrøm.\newline d) Hvis du dobler antall vindinger i en generator, dobles toppspenningen.\newline e) Høy spenning i kraftlinjene gir mindre tap.
+\svar
+\oppgave \fase{test}{Regn}En sirkulær sløyfe med arealet 50~cm² står i et felt på 0,20~T. Normalen danner 60° med feltet. Regn ut fluksen.
+\svar
+\oppgave \fase{test}{Regn}En spole med 200 vindinger og arealet 20~cm² står vinkelrett på et felt som avtar jevnt fra 0,30~T til null på 0,15~s. Finn den induserte spenningen. Se Magnet og spole.\footnote{\url{fysikklab.no/sim/magnet-og-spole.html}}
+\svar
+\oppgave \fase{test}{Regn}En metallstang på 0,50~m glir med 3,0~m/s på to skinner vinkelrett på et felt på 0,40~T. Kretsen har resistansen 2,0~Ω. Finn spenningen, strømmen og kraften som trengs for å holde farten konstant. Vis at $Fv = εI$.
+\svar
+\oppgave \fase{test}{Regn}En generator har 150 vindinger med arealet 0,012~m² og roterer 50 ganger per sekund i et felt på 0,25~T. Finn toppspenningen og effektivverdien. Sjekk med simuleringen.\footnote{\url{fysikklab.no/sim/generator.html}}
+\svar
+\oppgave \fase{test}{Regn}En lader skal gi 12~V fra 230~V, og primærspolen har 1150 vindinger. Hvor mange vindinger trengs på sekundærspolen? Laderen gir 36~W. Finn strømmen på hver side (ideell transformator).
+\svar
+\oppgave \fase{test}{Regn}Et kraftverk sender 100~MW gjennom en linje med resistansen 5,0~Ω. Regn ut effekttapet ved 400~kV og ved 20~kV.
+\svar
+\oppgave \fase{utfordring}{Sammensatt}En rektangulær sløyfe på 10~cm × 5,0~cm med resistansen 0,50~Ω trekkes med konstant fart 2,0~m/s ut av et felt på 0,80~T. Kortsiden på 5,0~cm står langs kanten av feltet. Finn spenningen, strømmen, kraften som trengs, og arbeidet som gjøres mens sløyfa går ut. Vis at arbeidet er lik varmen i sløyfa.
+\svar
+\end{oppgaveliste}
+
+\end{document}

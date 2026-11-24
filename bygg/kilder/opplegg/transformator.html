@@ -1,0 +1,87 @@
+tittel: Transformatoren – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Mål sekundærspenningen i en transformator for ulike antall vindinger, sammenlign med Us/Up = Ns/Np, og finn ut hvorfor strømnettet bruker høy spenning.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Elektromagnetisk induksjon
+script: maaletabell.js,transformator.js
+meny: undervisningsopplegg.html
+---
+<h1>Transformatoren</h1>
+<p class="ingress">En transformator er to spoler på en felles jernkjerne. Vekselstrøm i den ene spolen gir en fluks som hele tiden endrer seg, og den induserer en spenning i den andre. Med flere vindinger på sekundærspolen blir spenningen høyere. Stemmer forholdet U<sub>s</sub>/U<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub>?</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>Skole-transformatorsett med U-kjerne og spoler med ulike vindingstall, spenningskilde med lav vekselspenning, to voltmetre</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/generator.html">Generator</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Undersøke sammenhengen mellom spenningene og vindingstallene i en transformator.</li>
+    <li>Se at en transformator bare virker med vekselspenning.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Transformatorsett med U-formet jernkjerne og et lukkeåk, og spoler med for eksempel 100, 200, 400, 800 og 1600 vindinger.</li>
+    <li>Spenningskilde som gir lav vekselspenning (rundt 6 V), og to multimetre innstilt på vekselspenning (V~).</li>
+    <li>Bruk bare lav spenning. Sekundærspenningen kan bli høyere enn primærspenningen, så ikke ta på kontaktene mens spenningen er på.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Vekselstrømmen i primærspolen gir en fluks Φ i kjernen som endrer seg hele tiden. Den samme fluksen går gjennom begge spolene. I primærspolen er U<sub>p</sub> ≈ N<sub>p</sub>ΔΦ/Δt, og i sekundærspolen er U<sub>s</sub> = N<sub>s</sub>ΔΦ/Δt. Det gir U<sub>s</sub>/U<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub>. I en ideell transformator går ingen energi tapt, så U<sub>p</sub>I<sub>p</sub> = U<sub>s</sub>I<sub>s</sub>.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Sett primærspolen (for eksempel 400 vindinger) på den ene foten av kjernen og en sekundærspole på den andre. Legg på åket.</li>
+    <li>Koble primærspolen til vekselspenningen og mål U<sub>p</sub>. Mål U<sub>s</sub> over sekundærspolen.</li>
+    <li>Bytt sekundærspolen og gjenta for alle vindingstallene. Skriv inn i tabellen.</li>
+    <li>Ta av åket og mål på nytt. Hva skjer?</li>
+    <li>Bytt til likespenning med samme størrelse. Hva viser voltmeteret over sekundærspolen?</li>
+  </ol>
+</div>
+
+<figure id="tr2" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="tr-np">Vindinger primær N<sub>p</sub><input id="tr-np" type="text" inputmode="decimal"></label>
+    <label for="tr-up">Primærspenning U<sub>p</sub> (V)<input id="tr-up" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>stigningstall for U<sub>s</sub> mot N<sub>s</sub></dt><dd id="tr-stig"></dd></div>
+    <div><dt>ideell verdi U<sub>p</sub>/N<sub>p</sub></dt><dd id="tr-ideell"></dd></div>
+    <div><dt>målt i forhold til ideell</dt><dd id="tr-andel"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Linjen er tilpasset gjennom origo. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Primærspolen har 400 vindinger og 6,0 V. Hva tror du sekundærspenningen blir med 1600 vindinger?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvor stor del av den ideelle spenningen får dere?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor blir sekundærspenningen mye mindre når åket tas av? Hvorfor virker ikke transformatoren med likespenning?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>En lader omformer 230 V til 12 V og gir 36 W. Primærspolen har 1150 vindinger. Hvor mange vindinger har sekundærspolen, og hvor store er strømmene på hver side (ideell transformator)?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvor blir det av energien som går tapt i en ekte transformator?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Et kraftverk sender 100 MW gjennom en linje med resistans 5,0 Ω. Regn ut effekttapet i linja når spenningen er 400 kV, og når den er 20 kV. Hva forteller det om hvorfor strømnettet bruker transformatorer?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Ideelt 6,0 · 1600/400 = 24 V.</li>
+      <li>Eksemplet gir en rett linje med stigningstall 0,0138 V per vinding, mot 0,0150 ideelt. Det er 92 % av den ideelle verdien.</li>
+      <li>Uten åk går mye av fluksen gjennom lufta i stedet for gjennom sekundærspolen, så færre feltlinjer går gjennom den. Med likespenning er fluksen konstant (etter at strømmen er slått på), og da blir det ingen indusert spenning.</li>
+      <li>N<sub>s</sub> = 1150 · 12/230 = 60 vindinger. I<sub>s</sub> = 36/12 = 3,0 A og I<sub>p</sub> = 36/230 ≈ 0,16 A.</li>
+      <li>Varme i spolene (resistansen i kobbertråden), virvelstrømmer og omagnetisering i jernkjernen, og fluks som ikke går gjennom begge spolene. Kjernen er laget av tynne, isolerte plater for å redusere virvelstrømmene.</li>
+      <li>Ved 400 kV er strømmen 250 A, og tapet RI² = 5,0 · 250² ≈ 0,31 MW, bare 0,3 %. Ved 20 kV er strømmen 5000 A, og tapet ville blitt 125 MW, mer enn det som sendes. Høy spenning gir liten strøm og lite tap. Transformatorer gjør det mulig å bruke høy spenning i linjene og lav spenning hjemme.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter. Passer i delkapittelet om energiproduksjon (7.3 i Kraft 2). Hvis skolen har en demonstrasjonstransformator med et sekundær-«skrufat» (få vindinger, svært stor strøm), kan en spiker smelte foran klassen. Se også simuleringen <a href="../sim/generator.html">Generator</a>.</p>
+  </details>
+</section>

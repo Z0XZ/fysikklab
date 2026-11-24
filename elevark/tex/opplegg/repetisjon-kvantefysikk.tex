@@ -1,0 +1,62 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/repetisjon-kvantefysikk.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Kvantefysikk}{Repetisjon: kvantefysikk}{https://fysikklab.no/opplegg/repetisjon-kvantefysikk.html}{Opplegget på nett}
+
+Kvantefysikken beskriver de minste byggesteinene i naturen, der lys og partikler både er bølger og partikler. Her er en oversikt over de viktigste idéene og formlene, med blandede oppgaver og løsningsforslag.
+
+\section*{Klassiske objekter og kvanteobjekter}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{YYY}
+\toprule
+\textbf{} & \textbf{Klassisk objekt} & \textbf{Kvanteobjekt} \\
+\midrule
+Bane & Har en bestemt bane & Har ingen bestemt bane før det måles \\
+Dobbeltspalte & To striper bak spaltene & Interferensmønster, bygd opp treff for treff \\
+Energi & Kan ha alle verdier & Ofte kvantisert i bestemte nivåer \\
+Posisjon og fart & Kan måles nøyaktig samtidig & Begrenset av uskarphetsrelasjonen \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\section*{Formler}
+
+\begin{itemize}
+\item Fotonenergi: $E = hf = hc/λ$. Bevegelsesmengde til et foton: $p = h/λ$.
+\item Fotoelektrisk effekt: $E_{k,maks} = hf - W = eU_{\mathrm{b}}$. Grensefrekvens: $f_{0} = W/h$.
+\item Comptonstøt: $Δλ = λ_{\mathrm{C}}(1 - \cos  θ)$, der $λ_{\mathrm{C}} = h/(m_{\mathrm{e}}c) = 2{,}43 \cdot 10^{-12}\,\mathrm{m}$.
+\item de Broglie-bølgelengde: $λ = h/p = h/(mv)$.
+\item Uskarphetsrelasjonen: $Δx \cdot Δp \geq h/(4π)$.
+\item Hydrogen: $E_{n} = -13{,}6$ $eV/n^{2}$. Et foton som sendes ut, har energien $E_{\mathrm{øvre}} - E_{\mathrm{nedre}}$.
+\end{itemize}
+
+Konstanter: $h = 6{,}63 \cdot 10^{-34}\,\mathrm{Js} = 4{,}14 \cdot 10^{-15}\,\mathrm{eVs}$, $c = 3{,}00 \cdot 10^{8}\,\mathrm{m/s}$, $e = 1{,}60 \cdot 10^{-19}\,\mathrm{C}$, $m_{\mathrm{e}} = 9{,}11 \cdot 10^{-31}\,\mathrm{kg}$.
+
+\section*{Oppgaver}
+
+Skift mellom joule og elektronvolt med 1~eV = $1{,}60 \cdot 10^{-19}\,\mathrm{J}$.
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Begrep}Er påstandene sanne eller usanne? Begrunn svaret.
+
+a) Sterkere lys gir elektroner med større kinetisk energi i den fotoelektriske effekten.\newline b) Et foton med kortere bølgelengde har mer energi.\newline c) Elektroner kan lage interferensmønster.\newline d) En fotball har en de Broglie-bølgelengde vi kan måle.\newline e) Hvis vi måler hvilken spalte hvert foton går gjennom, forsvinner interferensmønsteret.
+\svar
+\oppgave \fase{test}{Regn}Regn ut energien til et foton med bølgelengde 550~nm, i joule og elektronvolt. Hvor mange fotoner per sekund sender en laser på 5,0 mW ut?
+\svar
+\oppgave \fase{test}{Regn}Natrium har løsrivingsenergi 2,3~eV og belyses med lys på 300~nm. Finn $E_{k,maks}$, bremsespenningen og grensebølgelengden. Sjekk med simuleringen.\footnote{\url{fysikklab.no/sim/fotoelektrisk.html}}
+\svar
+\oppgave \fase{test}{Regn}I et forsøk er bremsespenningen 0,18~V ved $6{,}0 \cdot 10^{14}\,\mathrm{Hz}$, 1,01~V ved $8{,}0 \cdot 10^{14}\,\mathrm{Hz}$ og 1,84~V ved $10{,}0 \cdot 10^{14}\,\mathrm{Hz}$. Finn $h$ og $W$.
+\svar
+\oppgave \fase{test}{Regn}Finn de Broglie-bølgelengden til et elektron som er akselerert gjennom 100~V, og til en baseball på 0,145~kg med farten 40~m/s. Se Dobbeltspalte med én partikkel om gangen.\footnote{\url{fysikklab.no/sim/dobbeltspalte.html}}
+\svar
+\oppgave \fase{test}{Regn}Finn bevegelsesmengden til et foton på 550~nm. Hvor fort må et elektron gå for å ha den samme bevegelsesmengden?
+\svar
+\oppgave \fase{test}{Regn}Et elektron er stengt inne i et atom med størrelse omtrent 0,10~nm. Bruk uskarphetsrelasjonen og finn den minste uskarpheten i farten.
+\svar
+\oppgave \fase{utfordring}{Sammensatt}Et elektron i hydrogen faller fra nivå $n = 3$ til $n = 2$. Finn energien og bølgelengden til fotonet som sendes ut. Hvilken farge har det?
+\svar
+\end{oppgaveliste}
+
+\end{document}

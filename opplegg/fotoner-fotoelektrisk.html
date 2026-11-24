@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fotoner og fotoelektrisk effekt – økt på 90 minutter – fysikklab.no</title>
+  <meta name="description" content="Undervisningsopplegg i Fysikk 2: En ferdig planlagt økt om fotoner, E = hf, fotoelektrisk effekt og Einsteins forklaring, med simuleringer, måling av Plancks konstant, oppgaver på tre nivåer og exit ticket.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Kvantefysikk</p>
+        <h1>Fotoner og fotoelektrisk effekt – økt på 90 minutter</h1>
+        <p class="ingress">En ferdig planlagt økt om starten på kvantefysikken for Fysikk 2. Elevene møter et resultat som bølgemodellen for lys ikke kan forklare, lærer Einsteins forklaring med fotoner, måler Plancks konstant i en simulering, og ser til slutt at lys likevel interfererer som en bølge. Økta avsluttes med oppgaver på tre nivåer og en exit ticket.</p>
+
+        <div class="tekst opplegg">
+          <h2>Kort oversikt</h2>
+          <ul>
+            <li><strong>Fag og tema:</strong> Fysikk 2, kvantefysikk, første del av delkapittel 9.1 i Kraft 2 (side 294–298, Lys – bølge eller partikkel?) med eksempel 9-1 og 9-2. Comptonspredning (resten av 9.1) og 9.2–9.3 er tema i økta <a href="kvanteobjekter.html">Bølger og partikler på samme tid</a>. Tilsvarende stoff står i kapittel 8 i ERGO 2.</li>
+            <li><strong>Varighet:</strong> 90 minutter. En kortere variant på 60 minutter står nederst.</li>
+            <li><strong>Forkunnskaper:</strong> Elektromagnetiske bølger, c = fλ, elektronvolt og arbeid i elektrisk felt (W = qU).</li>
+            <li><strong>Simuleringer:</strong> <a href="../sim/fotoelektrisk.html">Fotoelektrisk effekt</a> og <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>.</li>
+            <li><strong>Viten:</strong> Kapittel 1 «Behov for ny fysikk» (90 min) i læringsstien <a href="https://www.viten.no/kvantefysikk">Kvantefysikk</a> på viten.no passer som innledning før denne økta. Kapittel 2 «En partikkelmodell for lys» (90 min) har en egen simulering av fotoelektrisk effekt og comptonspredning, og kan brukes i stedet for del 2 og 4 eller som lekse. Viten kaller bremsespenningen sperrespenning.</li>
+            <li><strong>Forsøk som passer:</strong> <a href="planck-lysdioder.html">Plancks konstant med lysdioder</a> og <a href="laser-dobbeltspalte.html">Bølgelengden til laserlys med dobbeltspalte</a>.</li>
+          </ul>
+
+          <h2>Kompetansemål og læringsmål</h2>
+          <p>Kompetansemålet i Fysikk 2 er å gjøre rede for hva som skiller kvanteobjekter fra klassiske objekter, og beskrive situasjoner der kvanteeffekter observeres.</p>
+          <p>Etter økta skal elevene kunne:</p>
+          <ol>
+            <li>beskrive den fotoelektriske effekten og forklare hvorfor bølgemodellen ikke kan forklare den</li>
+            <li>regne med fotonenergien E = hf = hc/λ i joule og elektronvolt</li>
+            <li>bruke Einsteins likning E<sub>k,maks</sub> = hf − W og finne grensefrekvensen</li>
+            <li>bestemme h og W fra en graf av bremsespenningen mot frekvensen</li>
+            <li>forklare at lys både har bølgeegenskaper og partikkelegenskaper</li>
+          </ol>
+
+          <h2>Forberedelser</h2>
+          <ul>
+            <li>Har skolen et elektroskop med sinkplate og en UV-lampe, kan det brukes som demonstrasjon i del 1. Ellers holder simuleringen.</li>
+            <li>Sjekk at simuleringene virker på elevenes maskiner og på projektoren. Punktene i fotoelektrisk effekt lagres i nettleseren, så be elevene trykke «Tøm punktene» før de begynner.</li>
+            <li>Skriv på tavla: «Hvorfor kan sterkt rødt lys ikke slå løs elektroner fra sink, mens svakt UV-lys kan?»</li>
+          </ul>
+
+          <h2>Tidsplan</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Tid</th><th scope="col">Del</th><th scope="col">Arbeidsform</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">0–10</th><td>1. Oppstart: gåten med sinkplata</td><td>Demonstrasjon eller simulering, tenk-par-del</td></tr>
+                <tr><th scope="row">10–25</th><td>2. Hva sier bølgemodellen, og hva skjer?</td><td>Simulering i par</td></tr>
+                <tr><th scope="row">25–40</th><td>3. Fotoner og Einsteins likning</td><td>Tavle med elevinnspill</td></tr>
+                <tr><th scope="row">40–55</th><td>4. Mål Plancks konstant</td><td>Simulering i par</td></tr>
+                <tr><th scope="row">55–65</th><td>5. Men lys interfererer jo</td><td>Simulering i par, plenum</td></tr>
+                <tr><th scope="row">65–85</th><td>6. Oppgaveregning på tre nivåer</td><td>Individuelt eller i par</td></tr>
+                <tr><th scope="row">85–90</th><td>7. Exit ticket</td><td>Individuelt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>1. Oppstart: gåten med sinkplata (0–10 min)</h2>
+          <p><strong>Demonstrasjon:</strong> Lad elektroskopet med sinkplata negativt. Lys på plata med en sterk lyspære: Ingenting skjer. Lys med en svak UV-lampe: Elektroskopet utlades. Uten utstyret viser du det samme i <a href="../sim/fotoelektrisk.html">Fotoelektrisk effekt</a> med sink.</p>
+          <p><strong>Tenk alene, del i par:</strong> «Lys er bølger, og en sterkere bølge har mer energi. Hvorfor klarer ikke det sterke lyset å slå løs elektronene?» Eksempel 9-1 i Kraft 2 bruker også en sinkplate.</p>
+
+          <h2>2. Hva sier bølgemodellen, og hva skjer? (10–25 min)</h2>
+          <p><strong>Tavla:</strong> Bølgemodellen forutsier at (1) sterkere lys gir raskere elektroner, (2) alle farger virker hvis lyset er sterkt nok, og (3) det tar litt tid før elektronene har samlet nok energi.</p>
+          <p><strong>Simulering i par:</strong> Oppgave 1–3 på arbeidsarket. Elevene finner at alle de tre forutsigelsene slår feil.</p>
+
+          <h2>3. Fotoner og Einsteins likning (25–40 min)</h2>
+          <p><strong>Tavleplan:</strong> Lys kommer i fotoner med energien E = hf = hc/λ, der h = 6,63 · 10⁻³⁴ Js. Ett foton gir all energien sin til ett elektron. Elektronet må bruke løsrivingsenergien W for å komme ut, og resten blir kinetisk energi: E<sub>k,maks</sub> = hf − W. Grensefrekvensen er f<sub>min</sub> = W/h. Kraft 2 kaller W løsrivingsenergien og oppgir den ofte i attojoule (1 aJ = 10⁻¹⁸ J). ERGO 2 kaller den løsrivningsarbeidet.</p>
+          <ul>
+            <li>Intensitet betyr antall fotoner, ikke energien per foton.</li>
+            <li>Regn sammen: Et foton på 550 nm har 3,61 · 10⁻¹⁹ J = 2,25 eV. En laser på 5 mW sender ut 1,4 · 10¹⁶ fotoner per sekund.</li>
+            <li>Bremsespenningen U<sub>b</sub> stopper de raskeste elektronene: eU<sub>b</sub> = E<sub>k,maks</sub>.</li>
+          </ul>
+          <p><strong>Begrepsspørsmål:</strong> «Vi dobler intensiteten til lyset. Hva skjer med E<sub>k,maks</sub>? A) dobles, B) halveres, C) uendret, D) firedobles.» Riktig: C.</p>
+
+          <h2>4. Mål Plancks konstant (40–55 min)</h2>
+          <p><strong>Simulering i par:</strong> Oppgave 4–6 på arbeidsarket. Elevene lagrer punkter (f, eU<sub>b</sub>) for fem bølgelengder og leser av h fra stigningstallet og W fra konstantleddet. Dette er det klassiske forsøket Millikan gjorde i 1916, og som bekreftet Einsteins likning.</p>
+
+          <h2>5. Men lys interfererer jo (55–65 min)</h2>
+          <p><strong>Spør:</strong> «Hvis lys er partikler, hvordan kan det lage interferensstriper?» Elevene gjør oppgave 7 på arbeidsarket med <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>. Fotonene treffer ett og ett punkt, men mønsteret bygger seg opp som fra bølger. Det leder over til 9.2 i Kraft 2: bølge-partikkel-dualiteten.</p>
+
+          <h2>6. Oppgaveregning på tre nivåer (65–85 min)</h2>
+          <p>La elevene velge nivå selv, men be alle gjøre minst én oppgave fra nivå 1. Kraft 2-oppgavene står på side 322–323, og ERGO 2-oppgavene i kapittel 8.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Nivå</th><th scope="col">Kraft 2</th><th scope="col">ERGO 2</th><th scope="col">Arbeidsarket</th><th scope="col">Hva øver de på</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1 Begreper</th><td>9.04, 9.07</td><td>8.2, 8.27, 8.28, 8.42</td><td>1–3, 7</td><td>Hva bølgemodellen forutsier, og hva som skjer</td></tr>
+                <tr><th scope="row">2 Regning</th><td>9.05, 9.06, 9.08</td><td>8.1, 8.24, 8.25, 8.29, 8.43</td><td>4–5, 8</td><td>Fotonenergi, Einsteins likning, grensebølgelengde</td></tr>
+                <tr><th scope="row">3 Graf og sammensatt</th><td>9.09, 9.10</td><td>8.3, 8.31, 8.41</td><td>6, 9</td><td>h og W fra en graf, fotoner fra en laser</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>7. Exit ticket (85–90 min)</h2>
+          <p>Elevene svarer alene på en lapp eller digitalt:</p>
+          <ol>
+            <li>Natrium har løsrivingsenergi 2,3 eV. Lys med bølgelengde 300 nm treffer natrium. Hvor stor er den største kinetiske energien til elektronene, i eV?</li>
+            <li>Hvor stor bremsespenning trengs for å stoppe dem?</li>
+            <li>Skriv én setning om hvorfor sterkere rødt lys ikke slår løs elektroner fra sink.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1) hf = hc/λ = 4,13 eV, så E<sub>k,maks</sub> = 4,13 − 2,3 = 1,83 eV. 2) 1,83 V. 3) Hvert foton har for lite energi, og flere fotoner hjelper ikke fordi ett foton gir energi til ett elektron.</p>
+
+          <h2>Arbeidsark til simuleringene</h2>
+          <p>Oppgavene under kan kopieres til elevene, eller vises på tavla. Svarene står i løsningsforslaget nederst. Bruk h = 6,63 · 10⁻³⁴ Js = 4,14 · 10⁻¹⁵ eVs, c = 3,00 · 10⁸ m/s og 1 eV = 1,60 · 10⁻¹⁹ J.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver til elevene</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/fotoner-fotoelektrisk.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Oppgave 1–6 bruker <a href="../sim/fotoelektrisk.html">Fotoelektrisk effekt</a>, og oppgave 7 bruker <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>. Oppgave 8–9 er uten simulering. Bruk h = 6,63 · 10⁻³⁴ Js = 4,14 · 10⁻¹⁵ eVs og c = 3,00 · 10⁸ m/s.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Velg sink og rødt lys (650 nm). Skru intensiteten helt opp. Kommer det elektroner? Hva sier bølgemodellen?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Velg natrium og 400 nm. Endre intensiteten. Hva skjer med strømmen, og hva skjer med den største kinetiske energien?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Finn den lengste bølgelengden som slår løs elektroner fra natrium. Sammenlign med grensefrekvensen i simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut fotonenergien og den største kinetiske energien for natrium med 400 nm. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Med natrium og 400 nm: Øk bremsespenningen til strømmen akkurat blir null. Stemmer eU<sub>b</sub> med E<sub>k,maks</sub>?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Tøm punktene. Lagre punkter for 250, 300, 350, 400 og 450 nm, hver gang med bremsespenningen der strømmen akkurat blir null. Hvilke verdier får du for h og W?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Send fotoner gjennom dobbeltspalten med 10 per sekund. Hvordan kan hvert foton treffe ett punkt, samtidig som det til slutt blir striper?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor mange fotoner per sekund sender en grønn laser på 5,0 mW og 550 nm ut?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>I et forsøk ble bremsespenningen målt til 0,18 V ved 6,0 · 10¹⁴ Hz, 1,01 V ved 8,0 · 10¹⁴ Hz og 1,84 V ved 10,0 · 10¹⁴ Hz. Finn h og løsrivingsenergien. Hvilket metall kan det være?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Nei. Bølgemodellen sier at sterkt nok lys alltid skulle virke, men det kommer ingen elektroner uansett intensitet.</li>
+              <li>Strømmen øker med intensiteten, men E<sub>k,maks</sub> er den samme (0,80 eV). Intensiteten bestemmer antall fotoner, ikke energien per foton.</li>
+              <li>Omtrent 539 nm. Det tilsvarer grensefrekvensen 5,56 · 10¹⁴ Hz.</li>
+              <li>hf = hc/λ = 3,10 eV, og E<sub>k,maks</sub> = 3,10 − 2,3 = 0,80 eV.</li>
+              <li>Strømmen blir null ved 0,80 V, så eU<sub>b</sub> = 0,80 eV = E<sub>k,maks</sub>.</li>
+              <li>Punktene ligger på en rett linje. Stigningstallet gir h ≈ 6,6 · 10⁻³⁴ Js, og konstantleddet gir W ≈ 2,3 eV.</li>
+              <li>Hvert foton oppfører seg som en partikkel når det treffer skjermen. Sannsynligheten for hvor det treffer, er gitt av en bølge som går gjennom begge spaltene og interfererer. Mønsteret viser seg bare når mange fotoner har truffet.</li>
+              <li>E = hc/λ = 3,61 · 10⁻¹⁹ J. Antallet er 5,0 · 10⁻³ / 3,61 · 10⁻¹⁹ ≈ 1,4 · 10¹⁶ per sekund.</li>
+              <li>Stigningstallet er (1,84 − 0,18)/(4,0 · 10¹⁴) = 4,15 · 10⁻¹⁵ Vs, så h = e · 4,15 · 10⁻¹⁵ ≈ 6,6 · 10⁻³⁴ Js. Linjen krysser U-aksen ved −2,3 V, så W ≈ 2,3 eV. Det passer med natrium.</li>
+            </ol>
+            <p><strong>Svar på Kraft 2-oppgavene (kort):</strong> 9.05: a) λ = c/f ≈ 5,5 · 10⁶ m. b) 8,6 · 10¹⁴ Hz. c) 4,3 · 10¹⁴–7,5 · 10¹⁴ Hz. d) 7,5 · 10¹⁴–3,0 · 10¹⁶ Hz. e) 5,0 mm. 9.08: Grensefrekvensene er 1,03 · 10¹⁵ Hz (sølv), 1,23 · 10¹⁵ Hz (gull) og 5,55 · 10¹⁴ Hz (kalium), altså 292 nm, 243 nm og 540 nm. Med 250 nm (0,796 aJ) får sølv elektroner med 0,114 aJ og kalium 0,428 aJ, mens gull ikke gir elektroner. 9.10: En rett linje gjennom punktene gir h ≈ 6,5 · 10⁻³⁴ Js og løsrivingsenergi ≈ 0,45 aJ. Lengste bølgelengde blir omtrent 430 nm, fiolett lys.</p>
+            <p><strong>Svar på ERGO 2-oppgavene (kort):</strong> 8.1: W ≈ 0,69 aJ. 8.24: 0,663 aJ. 8.25: 5,91 · 10⁻²⁶ J per foton og 11,8 kW. 8.29: 0,553 aJ. 8.43: 475 THz og 0,315 aJ. Begrepsoppgavene 8.2, 8.27, 8.28 og 8.42 handler om at frekvensen bestemmer energien per foton og intensiteten antall fotoner.</p>
+            <p><strong>Bruk i timen:</strong> 90 minutter, som beskrevet over.</p>
+          </details>
+        </section>
+
+        <div class="tekst opplegg">
+          <h2>Vanlige misoppfatninger</h2>
+          <ul>
+            <li><strong>«Sterkere lys gir raskere elektroner.»</strong> Sterkere lys gir flere elektroner, men E<sub>k,maks</sub> avhenger bare av frekvensen.</li>
+            <li><strong>«Fotoner er små kuler.»</strong> Fotonet har ingen bestemt bane eller størrelse. Det er et kvanteobjekt med både bølge- og partikkelegenskaper.</li>
+            <li><strong>«Alle elektronene får E<sub>k,maks</sub>.»</strong> Mange elektroner taper energi på vei ut av metallet. Bare de raskeste har hf − W.</li>
+            <li><strong>Blander J og eV.</strong> Øv på å skifte mellom dem: 1 eV = 1,60 · 10⁻¹⁹ J.</li>
+          </ul>
+
+          <h2>Faglige merknader til læreren</h2>
+          <ul>
+            <li><strong>Løsrivingsenergi:</strong> Tabellverdiene varierer litt mellom kilder og avhenger av overflaten. Simuleringen bruker omtrentlige verdier.</li>
+            <li><strong>Historie:</strong> Einstein fikk Nobelprisen i 1921 for forklaringen av den fotoelektriske effekten, ikke for relativitetsteorien. Millikan målte sammenhengen nøyaktig og bekreftet den.</li>
+          </ul>
+
+          <h2>Differensiering</h2>
+          <ul>
+            <li><strong>Elever som trenger mer støtte:</strong> Arbeidsark-oppgave 1–5. Gi en hjelpelapp med E = hc/λ og E<sub>k,maks</sub> = hf − W, og en tabell for å skifte mellom J og eV.</li>
+            <li><strong>Elever som vil ha mer:</strong> Oppgave 9, og spør: «Hvorfor brukes cesium i fotoceller for synlig lys?»</li>
+          </ul>
+
+          <h2>Kortere variant (60 minutter)</h2>
+          <p>Gjør del 1–3 som før, men la måling av h (del 4) være lekse. Gjør del 5 som en kort demonstrasjon på projektoren.</p>
+
+          <h2>Refleksjon etter økta</h2>
+          <ul>
+            <li>Klarte elevene å forklare med egne ord hvorfor bølgemodellen ikke holder?</li>
+            <li>Fikk alle parene en rimelig verdi for h?</li>
+            <li>Hva viste exit ticketen om regning med eV?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

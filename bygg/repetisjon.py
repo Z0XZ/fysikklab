@@ -311,12 +311,12 @@ side("repetisjon-gravitasjon", "Repetisjon: gravitasjon og generell relativitets
     </table>
   </div>
   <p><strong>Ekvivalensprinsippet:</strong> Et tyngdefelt kan ikke skilles fra en akselerasjon ved forsøk i et lite, lukket rom. Et system i fritt fall kan ikke skilles fra et system uten tyngdekraft.</p>""",
-     ["Gravitasjonsloven: F = GMm/r². Gravitasjonsfeltstyrke: g = GM/r².",
-      "Potensiell energi (null uendelig langt unna): E<sub>p</sub> = −GMm/r. Samlet energi: E = ½mv² − GMm/r.",
-      "Unnslipningsfart: v = √(2GM/r). Sirkelbane: v = √(GM/r), T = 2πr/v, E = −GMm/(2r).",
-      "Keplers tredje lov: T² = (4π²/(GM)) · r³.",
-      "Schwarzschild-radius: r<sub>s</sub> = 2GM/c². Lysavbøyning: α = 4GM/(c²b)."],
-     "Konstanter: G = 6,674 · 10⁻¹¹ N m²/kg², c = 3,00 · 10⁸ m/s. Jorda: 5,97 · 10²⁴ kg, radius 6,37 · 10⁶ m. Månen: 7,35 · 10²² kg, radius 1,74 · 10⁶ m, avstand fra jorda 3,84 · 10⁸ m. Sola: 1,99 · 10³⁰ kg.",
+     ["Gravitasjonsloven: F = γMm/r². Gravitasjonsfeltstyrke: g = γM/r².",
+      "Potensiell energi (null uendelig langt unna): E<sub>p</sub> = −γMm/r. Samlet energi: E = ½mv² − γMm/r.",
+      "Unnslipningsfart: v = √(2γM/r). Sirkelbane: v = √(γM/r), T = 2πr/v, E = −γMm/(2r).",
+      "Keplers tredje lov: T² = (4π²/(γM)) · r³.",
+      "Schwarzschild-radius: r<sub>s</sub> = 2γM/c². Lysavbøyning: θ = 4γM/(Rc²), der R er den korteste avstanden fra sentrum."],
+     "Konstanter: γ = 6,674 · 10⁻¹¹ N m²/kg², c = 3,00 · 10⁸ m/s. Jorda: 5,97 · 10²⁴ kg, radius 6,37 · 10⁶ m. Månen: 7,35 · 10²² kg, radius 1,74 · 10⁶ m, avstand fra jorda 3,84 · 10⁸ m. Sola: 1,99 · 10³⁰ kg.",
      "Oppgavene følger rekkefølgen i kapitlet: kraft og felt, energi, satellitter og generell relativitetsteori.",
      [("forklar", "Begrep", "Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Astronautene på romstasjonen svever fordi det ikke er tyngdekraft der oppe.<br>b) Jorda trekker like hardt på månen som månen trekker på jorda.<br>c) Unnslipningsfarten er større for en tung rakett enn for en lett.<br>d) En satellitt i lav bane har større fart enn en satellitt i høy bane.<br>e) Lys påvirkes ikke av tyngdekraften fordi fotoner ikke har masse."),
       ("test", "Regn", "Regn ut gravitasjonskraften mellom jorda og månen."),
@@ -327,12 +327,92 @@ side("repetisjon-gravitasjon", "Repetisjon: gravitasjon og generell relativitets
       ("test", "Regn", "En romsonde går i sirkelbane 300 km over overflaten til månen. Finn farten og omløpstiden."),
       ("utfordring", "Sammensatt", "Regn ut Schwarzschild-radien til jorda og til sola. Hvor stor ville massetettheten til jorda blitt hvis den ble presset sammen til en kule med denne radien? Forklar med ekvivalensprinsippet hvorfor lys også må bøyes av tyngdekraften. <a href=\"../sim/lysavboyning.html\">Se Lys som bøyes av tyngdekraften.</a>"),
      ],
-     ["a) Usann. Tyngdekraften er omtrent 90 % av den på bakken. Astronautene og stasjonen faller fritt sammen. b) Sann (Newtons tredje lov). c) Usann. Massen til raketten forsvinner fra likningen. d) Sann. v = √(GM/r) avtar med r. e) Usann. Lys bøyes av tyngdekraften, og det er målt.",
-      "F = GMm/r² = 6,674 · 10⁻¹¹ · 5,97 · 10²⁴ · 7,35 · 10²² / (3,84 · 10⁸)² ≈ 2,0 · 10²⁰ N.",
-      "g = GM/r² med r = 6,77 · 10⁶ m gir 8,69 N/kg. Halvparten av verdien ved bakken krever r = R√2, altså h = 0,414R ≈ 2640 km.",
-      "GM/r² = Gm/(d − r)² gir r/(d − r) = √(M/m) ≈ 9,0, så r ≈ 0,90d ≈ 3,46 · 10⁸ m fra sentrum av jorda.",
-      "½v² − GM/R = −GM/r gir r = 1/(1/R − v²/(2GM)). Høyden blir omtrent 2570 km (mgh ville gitt 1830 km).",
-      "r = (GMT²/(4π²))<sup>1/3</sup> ≈ 4,22 · 10⁷ m, så høyden er omtrent 35 800 km. v = 2πr/T ≈ 3,07 km/s.",
-      "r = 1,74 · 10⁶ + 3,0 · 10⁵ = 2,04 · 10⁶ m. v = √(GM/r) ≈ 1,55 km/s, og T = 2πr/v ≈ 8,3 · 10³ s ≈ 2,3 h.",
-      "r<sub>s</sub> = 2GM/c² gir 8,9 mm for jorda og 2,95 km for sola. Tettheten blir M/(4/3 · πr<sub>s</sub>³) ≈ 2 · 10³⁰ kg/m³. I en rakett som akselererer, treffer en lyspuls som sendes tvers over, lavere på motsatt vegg, så lyset følger en krum bane. Når akselerasjon og tyngdefelt ikke kan skilles fra hverandre, må lyset bøyes på samme måte i et tyngdefelt."],
+     ["a) Usann. Tyngdekraften er omtrent 90 % av den på bakken. Astronautene og stasjonen faller fritt sammen. b) Sann (Newtons tredje lov). c) Usann. Massen til raketten forsvinner fra likningen. d) Sann. v = √(γM/r) avtar med r. e) Usann. Lys bøyes av tyngdekraften, og det er målt.",
+      "F = γMm/r² = 6,674 · 10⁻¹¹ · 5,97 · 10²⁴ · 7,35 · 10²² / (3,84 · 10⁸)² ≈ 2,0 · 10²⁰ N.",
+      "g = γM/r² med r = 6,77 · 10⁶ m gir 8,69 N/kg. Halvparten av verdien ved bakken krever r = R√2, altså h = 0,414R ≈ 2640 km.",
+      "γM/r² = γm/(d − r)² gir r/(d − r) = √(M/m) ≈ 9,0, så r ≈ 0,90d ≈ 3,46 · 10⁸ m fra sentrum av jorda.",
+      "½v² − γM/R = −γM/r gir r = 1/(1/R − v²/(2γM)). Høyden blir omtrent 2570 km (mgh ville gitt 1830 km).",
+      "r = (γMT²/(4π²))<sup>1/3</sup> ≈ 4,22 · 10⁷ m, så høyden er omtrent 35 800 km. v = 2πr/T ≈ 3,07 km/s.",
+      "r = 1,74 · 10⁶ + 3,0 · 10⁵ = 2,04 · 10⁶ m. v = √(γM/r) ≈ 1,55 km/s, og T = 2πr/v ≈ 8,3 · 10³ s ≈ 2,3 h.",
+      "r<sub>s</sub> = 2γM/c² gir 8,9 mm for jorda og 2,95 km for sola. Tettheten blir M/(4/3 · πr<sub>s</sub>³) ≈ 2 · 10³⁰ kg/m³. I en rakett som akselererer, treffer en lyspuls som sendes tvers over, lavere på motsatt vegg, så lyset følger en krum bane. Når akselerasjon og tyngdefelt ikke kan skilles fra hverandre, må lyset bøyes på samme måte i et tyngdefelt."],
      BRUK.format(bt="begrep-gravitasjon.html", btnavn="Gravitasjon og generell relativitetsteori"))
+
+# ---------- Fysikk 2: Elektromagnetisk induksjon ----------
+side("repetisjon-induksjon", "Repetisjon: elektromagnetisk induksjon", "Fysikk 2 · Elektromagnetisk induksjon",
+     "Repetisjon i Fysikk 2: magnetisk fluks, Faradays lov, Lenz' lov, bevegelsesindusert spenning, generator, transformator og overføring av elektrisk energi, med blandede oppgaver og løsningsforslag.",
+     "Induksjon er grunnlaget for nesten all produksjon av elektrisk energi. Her er en oversikt over fluks, Faradays og Lenz' lov, generatoren og transformatoren, med blandede oppgaver og løsningsforslag.",
+     """  <h2>Hovedidéene</h2>
+  <ul>
+    <li><strong>Fluks:</strong> Φ = BA cos θ måler hvor mye av feltet som går gjennom en flate.</li>
+    <li><strong>Faradays lov:</strong> Det blir indusert en spenning bare når fluksen gjennom en krets endrer seg.</li>
+    <li><strong>Lenz' lov:</strong> Den induserte strømmen motvirker endringen som skaper den. Det er energibevaring: Du må gjøre et arbeid for å få elektrisk energi.</li>
+    <li><strong>Vekselspenning:</strong> En spole som roterer i et felt gir ε = NBAω sin(ωt). Transformatorer endrer spenningen, og høy spenning gir lite tap i linjene.</li>
+  </ul>""",
+     ["Fluks: Φ = BA cos θ (enhet weber, Wb = T m²).",
+      "Faradays lov: ε = −NΔΦ/Δt, eller ε = −NΦ′(t).",
+      "Leder som beveges vinkelrett på feltet: ε = Blv. Kraft på leder: F = BIL.",
+      "Generator: ε = NBAω sin(ωt), toppspenning NBAω, effektivverdi = toppverdi/√2.",
+      "Ideell transformator: U<sub>s</sub>/U<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub> og U<sub>p</sub>I<sub>p</sub> = U<sub>s</sub>I<sub>s</sub>. Effekttap i en linje: P = RI²."],
+     "",
+     "Finn retningen på strømmen med Lenz' lov, og regn med absoluttverdier i Faradays lov.",
+     [("forklar", "Begrep", "Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) En sterk magnet som ligger i ro inne i en spole, induserer en stor spenning.<br>b) Den induserte strømmen lager alltid et felt som er motsatt rettet av magnetens felt.<br>c) En transformator virker ikke med likestrøm.<br>d) Hvis du dobler antall vindinger i en generator, dobles toppspenningen.<br>e) Høy spenning i kraftlinjene gir mindre tap."),
+      ("test", "Regn", "En sirkulær sløyfe med arealet 50 cm² står i et felt på 0,20 T. Normalen danner 60° med feltet. Regn ut fluksen."),
+      ("test", "Regn", "En spole med 200 vindinger og arealet 20 cm² står vinkelrett på et felt som avtar jevnt fra 0,30 T til null på 0,15 s. Finn den induserte spenningen. <a href=\"../sim/magnet-og-spole.html\">Se Magnet og spole.</a>"),
+      ("test", "Regn", "En metallstang på 0,50 m glir med 3,0 m/s på to skinner vinkelrett på et felt på 0,40 T. Kretsen har resistansen 2,0 Ω. Finn spenningen, strømmen og kraften som trengs for å holde farten konstant. Vis at Fv = εI."),
+      ("test", "Regn", "En generator har 150 vindinger med arealet 0,012 m² og roterer 50 ganger per sekund i et felt på 0,25 T. Finn toppspenningen og effektivverdien. <a href=\"../sim/generator.html\">Sjekk med simuleringen.</a>"),
+      ("test", "Regn", "En lader skal gi 12 V fra 230 V, og primærspolen har 1150 vindinger. Hvor mange vindinger trengs på sekundærspolen? Laderen gir 36 W. Finn strømmen på hver side (ideell transformator)."),
+      ("test", "Regn", "Et kraftverk sender 100 MW gjennom en linje med resistansen 5,0 Ω. Regn ut effekttapet ved 400 kV og ved 20 kV."),
+      ("utfordring", "Sammensatt", "En rektangulær sløyfe på 10 cm × 5,0 cm med resistansen 0,50 Ω trekkes med konstant fart 2,0 m/s ut av et felt på 0,80 T. Kortsiden på 5,0 cm står langs kanten av feltet. Finn spenningen, strømmen, kraften som trengs, og arbeidet som gjøres mens sløyfa går ut. Vis at arbeidet er lik varmen i sløyfa."),
+     ],
+     ["a) Usann. Det er endringen i fluks som gir spenning. b) Usann. Den motvirker endringen. Når fluksen avtar, er det induserte feltet i samme retning. c) Sann. Likestrøm gir konstant fluks og ingen indusert spenning. d) Sann. e) Sann. Lavere strøm gir mindre tap, RI².",
+      "Φ = BA cos θ = 0,20 · 50 · 10⁻⁴ · cos 60° = 5,0 · 10⁻⁴ Wb.",
+      "ε = NAΔB/Δt = 200 · 20 · 10⁻⁴ · 0,30/0,15 = 0,80 V.",
+      "ε = Blv = 0,60 V, I = 0,30 A og F = BIL = 0,060 N. Fv = 0,18 W og εI = 0,18 W.",
+      "ε<sub>maks</sub> = NBAω = 150 · 0,25 · 0,012 · 2π · 50 ≈ 141 V. Effektivverdien er 141/√2 ≈ 100 V.",
+      "N<sub>s</sub> = 1150 · 12/230 = 60. I<sub>s</sub> = 36/12 = 3,0 A og I<sub>p</sub> = 36/230 ≈ 0,16 A.",
+      "Ved 400 kV: I = 250 A og P<sub>tap</sub> = 5,0 · 250² ≈ 0,31 MW (0,3 %). Ved 20 kV: I = 5000 A og P<sub>tap</sub> = 125 MW, mer enn det som sendes. Derfor brukes høy spenning.",
+      "ε = Blv = 2,0 · 0,80 · 0,050 = 0,080 V og I = 0,16 A. F = BIL = 0,80 · 0,16 · 0,050 = 6,4 · 10⁻³ N. Sløyfa bruker 0,10 m/(2,0 m/s) = 0,050 s på å gå ut, og W = F · s = 6,4 · 10⁻⁴ J. Varmen er RI²t = 0,50 · 0,16² · 0,050 = 6,4 · 10⁻⁴ J, det samme."],
+     BRUK.format(bt="begrep-induksjon.html", btnavn="Elektromagnetisk induksjon"))
+
+# ---------- Fysikk 2: Kvantefysikk ----------
+side("repetisjon-kvantefysikk", "Repetisjon: kvantefysikk", "Fysikk 2 · Kvantefysikk",
+     "Repetisjon i Fysikk 2: fotoner, fotoelektrisk effekt, bølge-partikkel-dualitet, de Broglie-bølgelengde, uskarphet og energinivåer, med blandede oppgaver og løsningsforslag.",
+     "Kvantefysikken beskriver de minste byggesteinene i naturen, der lys og partikler både er bølger og partikler. Her er en oversikt over de viktigste idéene og formlene, med blandede oppgaver og løsningsforslag.",
+     """  <h2>Klassiske objekter og kvanteobjekter</h2>
+  <div class="tabell-ramme">
+    <table class="sim-tabell alle tekst-tabell">
+      <thead><tr><th scope="col"></th><th scope="col">Klassisk objekt</th><th scope="col">Kvanteobjekt</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Bane</th><td>Har en bestemt bane</td><td>Har ingen bestemt bane før det måles</td></tr>
+        <tr><th scope="row">Dobbeltspalte</th><td>To striper bak spaltene</td><td>Interferensmønster, bygd opp treff for treff</td></tr>
+        <tr><th scope="row">Energi</th><td>Kan ha alle verdier</td><td>Ofte kvantisert i bestemte nivåer</td></tr>
+        <tr><th scope="row">Posisjon og fart</th><td>Kan måles nøyaktig samtidig</td><td>Begrenset av uskarphetsrelasjonen</td></tr>
+      </tbody>
+    </table>
+  </div>""",
+     ["Fotonenergi: E = hf = hc/λ. Bevegelsesmengde til et foton: p = h/λ.",
+      "Fotoelektrisk effekt: E<sub>k,maks</sub> = hf − W = eU<sub>b</sub>. Grensefrekvens: f<sub>0</sub> = W/h.",
+      "Comptonstøt: Δλ = λ<sub>C</sub>(1 − cos θ), der λ<sub>C</sub> = h/(m<sub>e</sub>c) = 2,43 · 10⁻¹² m.",
+      "de Broglie-bølgelengde: λ = h/p = h/(mv).",
+      "Uskarphetsrelasjonen: Δx · Δp ≥ h/(4π).",
+      "Hydrogen: E<sub>n</sub> = −13,6 eV/n². Et foton som sendes ut, har energien E<sub>øvre</sub> − E<sub>nedre</sub>."],
+     "Konstanter: h = 6,63 · 10⁻³⁴ Js = 4,14 · 10⁻¹⁵ eVs, c = 3,00 · 10⁸ m/s, e = 1,60 · 10⁻¹⁹ C, m<sub>e</sub> = 9,11 · 10⁻³¹ kg.",
+     "Skift mellom joule og elektronvolt med 1 eV = 1,60 · 10⁻¹⁹ J.",
+     [("forklar", "Begrep", "Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Sterkere lys gir elektroner med større kinetisk energi i den fotoelektriske effekten.<br>b) Et foton med kortere bølgelengde har mer energi.<br>c) Elektroner kan lage interferensmønster.<br>d) En fotball har en de Broglie-bølgelengde vi kan måle.<br>e) Hvis vi måler hvilken spalte hvert foton går gjennom, forsvinner interferensmønsteret."),
+      ("test", "Regn", "Regn ut energien til et foton med bølgelengde 550 nm, i joule og elektronvolt. Hvor mange fotoner per sekund sender en laser på 5,0 mW ut?"),
+      ("test", "Regn", "Natrium har løsrivingsenergi 2,3 eV og belyses med lys på 300 nm. Finn E<sub>k,maks</sub>, bremsespenningen og grensebølgelengden. <a href=\"../sim/fotoelektrisk.html\">Sjekk med simuleringen.</a>"),
+      ("test", "Regn", "I et forsøk er bremsespenningen 0,18 V ved 6,0 · 10¹⁴ Hz, 1,01 V ved 8,0 · 10¹⁴ Hz og 1,84 V ved 10,0 · 10¹⁴ Hz. Finn h og W."),
+      ("test", "Regn", "Finn de Broglie-bølgelengden til et elektron som er akselerert gjennom 100 V, og til en baseball på 0,145 kg med farten 40 m/s. <a href=\"../sim/dobbeltspalte.html\">Se Dobbeltspalte med én partikkel om gangen.</a>"),
+      ("test", "Regn", "Finn bevegelsesmengden til et foton på 550 nm. Hvor fort må et elektron gå for å ha den samme bevegelsesmengden?"),
+      ("test", "Regn", "Et elektron er stengt inne i et atom med størrelse omtrent 0,10 nm. Bruk uskarphetsrelasjonen og finn den minste uskarpheten i farten."),
+      ("utfordring", "Sammensatt", "Et elektron i hydrogen faller fra nivå n = 3 til n = 2. Finn energien og bølgelengden til fotonet som sendes ut. Hvilken farge har det?"),
+     ],
+     ["a) Usann. Bare antallet elektroner øker. b) Sann, E = hc/λ. c) Sann. d) Usann. Bølgelengden er rundt 10⁻³⁴ m, altfor liten til å måles. e) Sann.",
+      "E = hc/λ = 3,61 · 10⁻¹⁹ J = 2,25 eV. Antall fotoner: 5,0 · 10⁻³ / 3,61 · 10⁻¹⁹ ≈ 1,4 · 10¹⁶ per sekund.",
+      "hf = hc/λ = 4,13 eV. E<sub>k,maks</sub> = 4,13 − 2,3 = 1,83 eV, og bremsespenningen er 1,83 V. Grensebølgelengden er hc/W ≈ 539 nm.",
+      "Stigningstallet er (1,84 − 0,18)/(4,0 · 10¹⁴) = 4,15 · 10⁻¹⁵ Vs, så h = e · stigningstallet ≈ 6,6 · 10⁻³⁴ Js. Linjen krysser U-aksen ved −2,3 V, så W ≈ 2,3 eV.",
+      "Elektronet: p = √(2meU), og λ = h/p = 0,123 nm, omtrent like stort som et atom. Baseballen: λ = h/(mv) = 1,1 · 10⁻³⁴ m.",
+      "p = h/λ = 1,20 · 10⁻²⁷ kg m/s. Elektronet: v = p/m = 1,3 · 10³ m/s, altså 1,3 km/s.",
+      "Δp ≥ h/(4πΔx) = 5,3 · 10⁻²⁵ kg m/s, og Δv = Δp/m ≈ 5,8 · 10⁵ m/s. Elektronet i et atom kan ikke ligge i ro.",
+      "ΔE = 13,6 · (1/4 − 1/9) = 1,89 eV. λ = hc/ΔE ≈ 656 nm, rødt lys (den røde linjen i hydrogenspekteret)."],
+     BRUK.format(bt="begrep-kvantefysikk.html", btnavn="Kvantefysikk"))

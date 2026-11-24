@@ -34,7 +34,7 @@ meny: undervisningsopplegg.html
   </ul>
 
   <h2 data-tid="5 min">Teorien</h2>
-  <p>En måne med massen m går i en tilnærmet sirkelbane med radius a rundt Jupiter, som har massen M. Gravitasjonskraften gir sentripetalkraften: GMm/a² = m(2π/T)²a. Det gir T² = (4π²/(GM)) · a³. Grafen av T² mot a³ er en rett linje gjennom origo, og stigningstallet k gir massen M = 4π²/(Gk). Massen til månen forsvinner.</p>
+  <p>En måne med massen m går i en tilnærmet sirkelbane med radius a rundt Jupiter, som har massen M. Gravitasjonskraften gir sentripetalkraften: γMm/a² = m(2π/T)²a. Det gir T² = (4π²/(γM)) · a³. Grafen av T² mot a³ er en rett linje gjennom origo, og stigningstallet k gir massen M = 4π²/(γk). Massen til månen forsvinner.</p>
 
   <h2 data-tid="20 min">Del A: Observer månene</h2>
   <ol>
@@ -50,9 +50,9 @@ meny: undervisningsopplegg.html
   <div data-tabell></div>
   <dl class="sim-tall">
     <div><dt>stigningstall k for T² mot a³</dt><dd id="ju-stig"></dd></div>
-    <div><dt>massen til Jupiter M = 4π²/(Gk)</dt><dd id="ju-M"></dd></div>
+    <div><dt>massen til Jupiter M = 4π²/(γk)</dt><dd id="ju-M"></dd></div>
   </dl>
-  <figcaption class="sim-hint">«Fyll inn eksempel» bruker omtrentlige tabellverdier for Io, Europa, Ganymedes og Callisto. Linjen er tilpasset gjennom origo, og G = 6,674 · 10⁻¹¹ N m²/kg².</figcaption>
+  <figcaption class="sim-hint">«Fyll inn eksempel» bruker omtrentlige tabellverdier for Io, Europa, Ganymedes og Callisto. Linjen er tilpasset gjennom origo, og γ = 6,674 · 10⁻¹¹ N m²/kg².</figcaption>
 </figure>
 
 <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -60,7 +60,7 @@ meny: undervisningsopplegg.html
   <ol class="oppgaveliste">
   <li><span class="fase tipp">Gjett</span><div><p>Callisto er omtrent 4,5 ganger så langt unna Jupiter som Io. Hvor mange ganger så lang omløpstid tror du den har?</p></div></li>
   <li><span class="fase test">Mål</span><div><p>Fyll inn egne observasjoner eller eksemplet. Ligger punktene på en rett linje gjennom origo? Hvilken masse får dere for Jupiter?</p></div></li>
-  <li><span class="fase forklar">Forklar</span><div><p>Utled T² = (4π²/(GM)) · a³. Hvorfor kan vi finne massen til Jupiter, men ikke massen til månene?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Utled T² = (4π²/(γM)) · a³. Hvorfor kan vi finne massen til Jupiter, men ikke massen til månene?</p></div></li>
   <li><span class="fase test">Regn</span><div><p>Hvor mange ganger større enn jordas masse (5,97 · 10²⁴ kg) er Jupiters masse?</p></div></li>
   <li><span class="fase forklar">Vurder</span><div><p>Hvilke feilkilder er det i egne observasjoner? Hvorfor er det lurt å bruke grafen og ikke bare én måne?</p></div></li>
   <li><span class="fase utfordring">Utfordring</span><div><p>Månen vår har baneradius 3,84 · 10⁸ m og omløpstid 27,3 døgn. Bruk det samme til å finne jordas masse.</p></div></li>
@@ -71,10 +71,10 @@ meny: undervisningsopplegg.html
     <ol>
       <li>T er proporsjonal med a<sup>3/2</sup>, så T blir 4,5<sup>1,5</sup> ≈ 9,5 ganger så lang. Med tabellverdiene: 16,7 døgn mot 1,77 døgn.</li>
       <li>Punktene ligger svært nær linjen. Eksemplet gir stigningstall 3,12 · 10⁻¹⁶ s²/m³ og M = 1,90 · 10²⁷ kg.</li>
-      <li>GMm/a² = m · 4π²a/T². Massen m til månen står på begge sider og forsvinner. Bevegelsen avhenger bare av massen til det sentrale legemet.</li>
+      <li>γMm/a² = m · 4π²a/T². Massen m til månen står på begge sider og forsvinner. Bevegelsen avhenger bare av massen til det sentrale legemet.</li>
       <li>1,90 · 10²⁷ / 5,97 · 10²⁴ ≈ 318 ganger.</li>
       <li>Månene ligger nesten aldri helt ute på siden når vi observerer, så største avstand blir ofte for liten. Avstandene anslås på øyet, og omløpstiden krever mange observasjoner. Grafen bruker alle månene og jevner ut tilfeldige feil, og en linje gjennom origo sjekker samtidig at modellen stemmer.</li>
-      <li>M = 4π²a³/(GT²) = 4π² · (3,84 · 10⁸)³ / (6,674 · 10⁻¹¹ · (27,3 · 86 400)²) ≈ 6,0 · 10²⁴ kg.</li>
+      <li>M = 4π²a³/(γT²) = 4π² · (3,84 · 10⁸)³ / (6,674 · 10⁻¹¹ · (27,3 · 86 400)²) ≈ 6,0 · 10²⁴ kg.</li>
     </ol>
     <p><strong>Bruk i timen:</strong> 45 minutter med tabellverdiene. Egne observasjoner kan gis som et prosjekt over en uke når Jupiter er synlig om kvelden. Stellarium gjør det mulig å «observere» i timen. Se også simuleringen <a href="../sim/satellittbaner.html">Satellittbaner</a>.</p>
   </details>

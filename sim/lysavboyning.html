@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lys som bøyes av tyngdekraften – fysikklab.no</title>
-  <meta name="description" content="Simulering med oppgaver i Fysikk 2: En lysstråle passerer sola, en hvit dverg, en nøytronstjerne eller et svart hull. Avbøyningsvinkelen 4GM/(c²b), Eddingtons solformørkelse i 1919 og gravitasjonslinser.">
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: En lysstråle passerer sola, en hvit dverg, en nøytronstjerne eller et svart hull. Avbøyningsvinkelen 4γM/(c²b), Eddingtons solformørkelse i 1919 og gravitasjonslinser.">
   <script src="../js/tema.js"></script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -35,9 +35,9 @@
         <figure class="sim sim-bred">
           <canvas id="la-scene" class="statisk forhold-lav" role="img" aria-label="En lysstråle fra en stjerne bøyes når den passerer et himmellegeme, og observatøren ser stjernen et annet sted enn der den er."></canvas>
           <dl class="sim-tall tre">
-            <div><dt>avbøyning α = 4GM/(c²b)</dt><dd id="la-alfa"></dd></div>
+            <div><dt>avbøyning α = 4γM/(c²b)</dt><dd id="la-alfa"></dd></div>
             <div><dt>newtonsk lyspartikkel (halvparten)</dt><dd id="la-newton"></dd></div>
-            <div><dt>Schwarzschild-radius 2GM/c²</dt><dd id="la-rs"></dd></div>
+            <div><dt>Schwarzschild-radius 2γM/c²</dt><dd id="la-rs"></dd></div>
             <div><dt>avstand fra sentrum b</dt><dd id="la-bkm"></dd></div>
             <div><dt>svakt felt (formelen gjelder)?</dt><dd id="la-svak"></dd></div>
           </dl>
@@ -50,7 +50,7 @@
             <li><span class="linje f1"></span><span>Generell relativitetsteori</span></li>
             <li><span class="linje f2 stiplet"></span><span>Newtonsk lyspartikkel</span></li>
           </ul>
-          <figcaption class="sim-hint">Avstanden b er målt fra sentrum av legemet, i radier (for det svarte hullet i Schwarzschild-radier). Formelen α = 4GM/(c²b) gjelder når b er mye større enn Schwarzschild-radien. Den hvite dvergen har her radius 6400 km og nøytronstjernen 12 km. Tegningen forstørrer vinkelen så den synes.</figcaption>
+          <figcaption class="sim-hint">Avstanden b er målt fra sentrum av legemet, i radier (for det svarte hullet i Schwarzschild-radier). Formelen α = 4γM/(c²b) gjelder når b er mye større enn Schwarzschild-radien. I Kraft 2 heter vinkelen θ og avstanden R: θ = 4γM/(Rc²). Den hvite dvergen har her radius 6400 km og nøytronstjernen 12 km. Tegningen forstørrer vinkelen så den synes.</figcaption>
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -72,7 +72,7 @@
               <li>α = 4 · 6,674 · 10<sup>−11</sup> · 1,989 · 10<sup>30</sup> / ((3,00 · 10<sup>8</sup>)² · 6,96 · 10<sup>8</sup>) = 8,49 · 10<sup>−6</sup> rad = 1,75″. I dobbel avstand blir den halvparten, 0,88″, fordi α er omvendt proporsjonal med b.</li>
               <li>Stjernene nær sola synes bare når sollyset er blokkert. Eddington sammenlignet bilder tatt under formørkelsen med bilder av de samme stjernene om natta et halvt år senere. En lyspartikkel med Newtons gravitasjonslov gir halvparten, 0,87″. Resultatet nær 1,75″ støttet Einstein og ikke Newton.</li>
               <li>Ved overflaten: jorda 0,00057″, sola 1,75″ og hvit dverg omtrent 190″. For nøytronstjernen gir formelen 39°, men så nær er feltet for sterkt til at formelen gjelder. Avbøyningen er uansett svært stor. Det som avgjør, er forholdet M/b, altså hvor kompakt legemet er.</li>
-              <li>r<sub>s</sub> = 2GM/c² gir 2,95 km for sola og 8,9 mm for jorda. Presset sammen til denne radien ville legemet blitt et svart hull: Ikke engang lys kan unnslippe innenfor r<sub>s</sub>.</li>
+              <li>r<sub>s</sub> = 2γM/c² gir 2,95 km for sola og 8,9 mm for jorda. Presset sammen til denne radien ville legemet blitt et svart hull: Ikke engang lys kan unnslippe innenfor r<sub>s</sub>.</li>
               <li>Galaksehopen virker som en linse. Vi kan se flere bilder av den samme galaksen, buer, eller en hel ring (Einsteinring) når alt står på linje. Gravitasjonslinser brukes til å finne mørk materie og til å se svært fjerne galakser.</li>
             </ol>
             <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer etter <a href="ekvivalensprinsippet.html">Ekvivalensprinsippet</a>. Formelen gjelder i svakt felt. Nær et svart hull blir avbøyningen mye større, og lyset kan til og med gå i sirkel rundt hullet (fotonsfæren ved 1,5 r<sub>s</sub>).</p>

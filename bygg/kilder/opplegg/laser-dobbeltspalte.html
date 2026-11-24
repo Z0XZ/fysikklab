@@ -1,0 +1,84 @@
+tittel: Bølgelengden til laserlys med dobbeltspalte – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Send laserlys gjennom en dobbeltspalte, mål avstanden mellom stripene for ulike avstander til veggen, og bestem bølgelengden.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Kvantefysikk
+script: maaletabell.js,laserspalte.js
+meny: undervisningsopplegg.html
+---
+<h1>Bølgelengden til laserlys med dobbeltspalte</h1>
+<p class="ingress">Lys som går gjennom to smale spalter, lager et mønster av lyse og mørke striper på veggen. Det er interferens, og det viser at lys oppfører seg som en bølge. Fra avstanden mellom stripene kan dere bestemme bølgelengden til laseren.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>Laserpeker (klasse 2), dobbeltspalte med kjent spalteavstand, stativ, målebånd, linjal, ark på veggen</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Se interferens fra en dobbeltspalte.</li>
+    <li>Bestemme bølgelengden til laserlyset fra avstanden mellom stripene.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En laserpeker i klasse 2, og en dobbeltspalte med oppgitt spalteavstand d (for eksempel 0,25 mm).</li>
+    <li>Stativ til laseren og spalten, et hvitt ark på veggen, målebånd og linjal.</li>
+    <li>Se aldri inn i laserstrålen, og pass på refleksene fra blanke flater.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Lys fra de to spaltene går ulik vei til et punkt på veggen. Der veiforskjellen er et helt antall bølgelengder, blir det lyst. For små vinkler er avstanden mellom to lyse striper Δy = λL/d, der L er avstanden fra spalten til veggen. Grafen av Δy mot L er en rett linje med stigningstall λ/d.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Fest laseren og spalten slik at strålen treffer spalten vinkelrett. Rett strålen mot arket på veggen.</li>
+    <li>Mål avstanden L fra spalten til veggen, for eksempel 1,00 m.</li>
+    <li>Marker midten av stripene med blyant, og mål avstanden over 10 striper (fra stripe 0 til stripe 10). Det gir mer nøyaktig Δy enn å måle én stripe.</li>
+    <li>Gjenta for fem ulike avstander L.</li>
+  </ol>
+</div>
+
+<figure id="ls" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="ls-d">Spalteavstand d (mm)<input id="ls-d" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall">
+    <div><dt>stigningstall Δy/L</dt><dd id="ls-stig"></dd></div>
+    <div><dt>bølgelengde λ = d · stigningstall</dt><dd id="ls-lam"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Linjen er tilpasset gjennom origo. Eksemplet er oppdiktede tall for en rød laser, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva skjer med stripene når veggen flyttes dobbelt så langt unna? Når spalteavstanden dobles?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken bølgelengde får dere? Sammenlign med det som står på laseren.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor blir det mørke striper? Forklar med veiforskjell.</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvorfor måler vi over 10 striper i stedet for én? Hvilken måling bidrar mest til usikkerheten?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Regn ut energien til ett foton fra laseren, og hvor mange fotoner laseren sender ut per sekund når effekten er 1,0 mW.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Hvis vi skrur ned lyset så mye at det bare er ett foton om gangen i apparatet, blir det fortsatt striper? Prøv i simuleringen <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>, og forklar hva det sier om lys.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Δy = λL/d. Dobbel L gir dobbelt så stor avstand mellom stripene. Dobbel d gir halvparten så stor avstand.</li>
+      <li>Eksemplet gir stigningstall 2,61 mm/m og λ ≈ 652 nm. Røde laserpekere har ofte 630–670 nm.</li>
+      <li>Der veiforskjellen er et halvt antall bølgelengder (½λ, 1½λ …), møtes en bølgetopp fra den ene spalten og en bølgebunn fra den andre. De slukker hverandre ut.</li>
+      <li>Usikkerheten i avlesningen (rundt 1 mm) fordeles på 10 striper, så Δy blir mer nøyaktig. Ofte er det avlesningen av stripemidtene og den oppgitte spalteavstanden som betyr mest. L kan måles nøyaktig.</li>
+      <li>E = hc/λ ≈ 3,0 · 10⁻¹⁹ J (1,9 eV) for 650 nm. Antall fotoner per sekund: 1,0 · 10⁻³ / 3,0 · 10⁻¹⁹ ≈ 3 · 10¹⁵.</li>
+      <li>Ja. Hvert foton treffer ett punkt, men etter mange fotoner bygger stripemønsteret seg opp. Lys oppfører seg som partikler når det treffer, og som bølger på veien. Det er bølge-partikkel-dualiteten.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter, gjerne som innledning til delkapittelet om dobbeltspalteforsøket (9.2 i Kraft 2). Uten dobbeltspalte kan et optisk gitter eller en CD brukes, men da må formelen for gitter brukes. Se også simuleringen <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>.</p>
+  </details>
+</section>

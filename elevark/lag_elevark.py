@@ -26,6 +26,12 @@ KUN_OPPGAVER = {
     "opplegg/intro-bevegelsesmengde": "Bevegelsesmengde og impuls – arbeidsark",
     "opplegg/generell-relativitet": "Generell relativitetsteori – arbeidsark",
     "opplegg/energi-gravitasjonsfelt": "Energi i gravitasjonsfeltet – arbeidsark",
+    "opplegg/faraday-lenz": "Faradays og Lenz' lov – arbeidsark",
+    "opplegg/fotoner-fotoelektrisk": "Fotoner og fotoelektrisk effekt – arbeidsark",
+    "opplegg/gravitasjonsloven": "Newtons gravitasjonslov og gravitasjonsfelt – arbeidsark",
+    "opplegg/generator-transformator": "Generatoren, transformatoren og strømnettet – arbeidsark",
+    "opplegg/kvanteobjekter": "Bølger og partikler på samme tid – arbeidsark",
+    "opplegg/kvantetilstander": "Konsekvenser av kvantetilstander – arbeidsark",
 }
 # QR-koden på arbeidsarkene peker til simuleringen, ikke til lærersiden
 QR = {
@@ -34,6 +40,12 @@ QR = {
     "opplegg/intro-bevegelsesmengde": ("sim/impuls", "Myk landing"),
     "opplegg/generell-relativitet": ("sim/ekvivalensprinsippet", "Ekvivalensprinsippet"),
     "opplegg/energi-gravitasjonsfelt": ("sim/unnslipningsfart", "Unnslipningsfart"),
+    "opplegg/faraday-lenz": ("sim/magnet-og-spole", "Magnet og spole"),
+    "opplegg/fotoner-fotoelektrisk": ("sim/fotoelektrisk", "Fotoelektrisk effekt"),
+    "opplegg/gravitasjonsloven": ("sim/satellittbaner", "Satellittbaner"),
+    "opplegg/generator-transformator": ("sim/generator", "Generator"),
+    "opplegg/kvanteobjekter": ("sim/dobbeltspalte", "Dobbeltspalte"),
+    "opplegg/kvantetilstander": ("opplegg/kvantetilstander", "Opplegget på nett"),
 }
 SVARHOYDE = {"programmering": "1.4cm"}
 
@@ -385,7 +397,7 @@ RETTELSER = {
     "opplegg/ballistisk-pendel": [("$I$ støtet", "I støtet"), ("$mv = (m$ + M)V", "$mv = (m + M)V$"), ("= (m$ + M)g · $L(1 - \\cos  θ)$", "= (m + M)g \\cdot L(1 - \\cos θ)$")],
     "opplegg/eggslipp": [("poeng = 10 · høyde i cm / masse i gram",
         "$\\displaystyle \\text{poeng} = 10 \\cdot \\frac{\\text{høyde i cm}}{\\text{masse i gram}}$")],
-    "*": [("verktøyet under", "verktøyet på nettsiden"), (" $km/s$", "~km/s"), ("\\section*{Oppgaver til elevene}", "\\section*{Oppgaver}")],
+    "*": [("verktøyet under", "verktøyet på nettsiden"), (" $km/s$", "~km/s"), ("10^{-34}$ $Js = 4{,}14 \\cdot 10^{-15}$ eVs", "10^{-34}\\,\\mathrm{Js} = 4{,}14 \\cdot 10^{-15}\\,\\mathrm{eVs}$"), ("\\section*{Oppgaver til elevene}", "\\section*{Oppgaver}")],
     "opplegg/repetisjon-felt": [("blandede oppgaver med løsningsforslag.", "blandede oppgaver."),
         ("Hver oppgave har en lenke til en simulering der du kan sjekke svaret.", "Simuleringene i fotnotene kan du bruke til å sjekke svarene.")],
     "opplegg/kraftsensorer": [("Skriv inn i tabellen under.", r"""Skriv inn i tabellen.

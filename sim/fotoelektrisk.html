@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fotoelektrisk effekt – fysikklab.no</title>
-  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Lys slår løs elektroner fra en metallplate. Endre bølgelengde, intensitet og metall, mål bremsespenningen og bestem Plancks konstant og løsrivningsarbeidet.">
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Lys slår løs elektroner fra en metallplate. Endre bølgelengde, intensitet og metall, mål bremsespenningen og bestem Plancks konstant og løsrivingsenergien.">
   <script src="../js/tema.js"></script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -61,7 +61,7 @@
             <label class="avkrysning" for="fe-teori"><input id="fe-teori" type="checkbox"> Vis teorilinjen</label>
             <div class="sim-knapper"><button id="fe-lagre" class="knapp" type="button">Lagre punkt (f, eU)</button><button id="fe-tom" class="knapp lys" type="button">Tøm punktene</button></div>
           </div>
-          <figcaption class="sim-hint">Øk bremsespenningen til strømmen akkurat blir null, og lagre punktet. Da er eU lik den største kinetiske energien. Løsrivningsarbeidene er omtrentlige tabellverdier: cesium 2,1 eV, natrium 2,3 eV, kalsium 2,9 eV, sink 4,3 eV og kobber 4,7 eV. I modellen er energien til elektronene jevnt fordelt mellom null og den største verdien. Punktene lagres bare i denne nettleseren.</figcaption>
+          <figcaption class="sim-hint">Øk bremsespenningen (på viten.no kalt sperrespenning) til strømmen akkurat blir null, og lagre punktet. Da er eU lik den største kinetiske energien. Løsrivingsenergiene (i ERGO 2: løsrivningsarbeid) er omtrentlige tabellverdier: cesium 2,1 eV, natrium 2,3 eV, kalsium 2,9 eV, sink 4,3 eV og kobber 4,7 eV. I modellen er energien til elektronene jevnt fordelt mellom null og den største verdien. Punktene lagres bare i denne nettleseren.</figcaption>
         </figure>
 
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
@@ -82,10 +82,10 @@
             <ol>
               <li>Det svake blå lyset slår løs elektroner, det sterke røde ikke. Det blå lyset gir også størst fart. Hvor mange elektroner det blir, avhenger av intensiteten, men bare hvis fotonene har nok energi.</li>
               <li>Bølgelengden (frekvensen) avgjør om det kommer elektroner. Intensiteten avgjør hvor mange, altså strømmen.</li>
-              <li>Hvert elektron får energi fra ett foton. Et foton med rødt lys har mindre energi enn løsrivningsarbeidet, uansett hvor mange fotoner det er. Mer intensitet betyr bare flere fotoner med for lite energi.</li>
+              <li>Hvert elektron får energi fra ett foton. Et foton med rødt lys har mindre energi enn løsrivingsenergien, uansett hvor mange fotoner det er. Mer intensitet betyr bare flere fotoner med for lite energi.</li>
               <li>hf = hc/λ = 3,10 eV. E<sub>k,maks</sub> = 3,10 − 2,3 = 0,80 eV, og v = √(2E<sub>k</sub>/m) ≈ 530 km/s.</li>
               <li>Punktene bør gi h ≈ 6,6 · 10<sup>−34</sup> Js og W ≈ 2,3 eV. For eksempel gir 250 nm eU = 2,66 V, 300 nm 1,83 V og 400 nm 0,80 V. Ved 550 nm eller mer kommer det ingen elektroner fra natrium.</li>
-              <li>Linjen for sink er parallell med linjen for natrium (samme stigningstall h), men forskjøvet nedover. Den krysser f-aksen ved 10,4 · 10<sup>14</sup> Hz i stedet for 5,6 · 10<sup>14</sup> Hz. Stigningstallet er det samme for alle metaller, mens løsrivningsarbeidet er forskjellig.</li>
+              <li>Linjen for sink er parallell med linjen for natrium (samme stigningstall h), men forskjøvet nedover. Den krysser f-aksen ved 10,4 · 10<sup>14</sup> Hz i stedet for 5,6 · 10<sup>14</sup> Hz. Stigningstallet er det samme for alle metaller, mens løsrivingsenergien er forskjellig.</li>
               <li>λ<sub>0</sub> = hc/W gir 590 nm for cesium og 288 nm for sink. Cesium reagerer på nesten hele det synlige spekteret, mens sink bare reagerer på ultrafiolett lys.</li>
             </ol>
             <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 5 tilsvarer det klassiske forsøket der man måler bremsespenningen for ulike farger. Se også forsøket <a href="../opplegg/planck-lysdioder.html">Plancks konstant med lysdioder</a>, der energien går den andre veien: fra elektroner til fotoner.</p>

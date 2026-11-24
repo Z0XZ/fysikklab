@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/transformator.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Elektromagnetisk induksjon}{Transformatoren}{https://fysikklab.no/opplegg/transformator.html}{Opplegget på nett}
+
+En transformator er to spoler på en felles jernkjerne. Vekselstrøm i den ene spolen gir en fluks som hele tiden endrer seg, og den induserer en spenning i den andre. Med flere vindinger på sekundærspolen blir spenningen høyere. Stemmer forholdet $U_{\mathrm{s}}/U_{\mathrm{p}} = N_{\mathrm{s}}/N_{\mathrm{p}}$?
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Undersøke sammenhengen mellom spenningene og vindingstallene i en transformator.
+\item Se at en transformator bare virker med vekselspenning.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Transformatorsett med U-formet jernkjerne og et lukkeåk, og spoler med for eksempel 100, 200, 400, 800 og 1600 vindinger.
+\item Spenningskilde som gir lav vekselspenning (rundt 6~V), og to multimetre innstilt på vekselspenning (V\textasciitilde{}).
+\item Bruk bare lav spenning. Sekundærspenningen kan bli høyere enn primærspenningen, så ikke ta på kontaktene mens spenningen er på.
+\end{itemize}
+
+\section*{Teorien}
+
+Vekselstrømmen i primærspolen gir en fluks $Φ$ i kjernen som endrer seg hele tiden. Den samme fluksen går gjennom begge spolene. I primærspolen er $U_{\mathrm{p}} \approx N_{\mathrm{p}}ΔΦ/Δt$, og i sekundærspolen er $U_{\mathrm{s}} = N_{\mathrm{s}}ΔΦ/Δt$. Det gir $U_{\mathrm{s}}/U_{\mathrm{p}} = N_{\mathrm{s}}/N_{\mathrm{p}}$. I en ideell transformator går ingen energi tapt, så $U_{\mathrm{p}}I_{\mathrm{p}} = U_{\mathrm{s}}I_{\mathrm{s}}$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Sett primærspolen (for eksempel 400 vindinger) på den ene foten av kjernen og en sekundærspole på den andre. Legg på åket.
+\item Koble primærspolen til vekselspenningen og mål $U_{\mathrm{p}}$. Mål $U_{\mathrm{s}}$ over sekundærspolen.
+\item Bytt sekundærspolen og gjenta for alle vindingstallene. Skriv inn i tabellen.
+\item Ta av åket og mål på nytt. Hva skjer?
+\item Bytt til likespenning med samme størrelse. Hva viser voltmeteret over sekundærspolen?
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Primærspolen har 400 vindinger og 6,0~V. Hva tror du sekundærspenningen blir med 1600 vindinger?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvor stor del av den ideelle spenningen får dere?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor blir sekundærspenningen mye mindre når åket tas av? Hvorfor virker ikke transformatoren med likespenning?
+\svar
+\oppgave \fase{test}{Regn}En lader omformer 230~V til 12~V og gir 36~W. Primærspolen har 1150 vindinger. Hvor mange vindinger har sekundærspolen, og hvor store er strømmene på hver side (ideell transformator)?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvor blir det av energien som går tapt i en ekte transformator?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Et kraftverk sender 100~MW gjennom en linje med resistans 5,0~Ω. Regn ut effekttapet i linja når spenningen er 400~kV, og når den er 20~kV. Hva forteller det om hvorfor strømnettet bruker transformatorer?
+\svar
+\end{oppgaveliste}
+
+\end{document}

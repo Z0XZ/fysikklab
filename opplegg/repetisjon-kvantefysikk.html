@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: kvantefysikk – fysikklab.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: fotoner, fotoelektrisk effekt, bølge-partikkel-dualitet, de Broglie-bølgelengde, uskarphet og energinivåer, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Kvantefysikk</p>
+        <h1>Repetisjon: kvantefysikk</h1>
+        <p class="ingress">Kvantefysikken beskriver de minste byggesteinene i naturen, der lys og partikler både er bølger og partikler. Her er en oversikt over de viktigste idéene og formlene, med blandede oppgaver og løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Klassiske objekter og kvanteobjekter</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col"></th><th scope="col">Klassisk objekt</th><th scope="col">Kvanteobjekt</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Bane</th><td>Har en bestemt bane</td><td>Har ingen bestemt bane før det måles</td></tr>
+                <tr><th scope="row">Dobbeltspalte</th><td>To striper bak spaltene</td><td>Interferensmønster, bygd opp treff for treff</td></tr>
+                <tr><th scope="row">Energi</th><td>Kan ha alle verdier</td><td>Ofte kvantisert i bestemte nivåer</td></tr>
+                <tr><th scope="row">Posisjon og fart</th><td>Kan måles nøyaktig samtidig</td><td>Begrenset av uskarphetsrelasjonen</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Fotonenergi: E = hf = hc/λ. Bevegelsesmengde til et foton: p = h/λ.</li>
+            <li>Fotoelektrisk effekt: E<sub>k,maks</sub> = hf − W = eU<sub>b</sub>. Grensefrekvens: f<sub>0</sub> = W/h.</li>
+            <li>Comptonstøt: Δλ = λ<sub>C</sub>(1 − cos θ), der λ<sub>C</sub> = h/(m<sub>e</sub>c) = 2,43 · 10⁻¹² m.</li>
+            <li>de Broglie-bølgelengde: λ = h/p = h/(mv).</li>
+            <li>Uskarphetsrelasjonen: Δx · Δp ≥ h/(4π).</li>
+            <li>Hydrogen: E<sub>n</sub> = −13,6 eV/n². Et foton som sendes ut, har energien E<sub>øvre</sub> − E<sub>nedre</sub>.</li>
+          </ul>
+          <p>Konstanter: h = 6,63 · 10⁻³⁴ Js = 4,14 · 10⁻¹⁵ eVs, c = 3,00 · 10⁸ m/s, e = 1,60 · 10⁻¹⁹ C, m<sub>e</sub> = 9,11 · 10⁻³¹ kg.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-kvantefysikk.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Skift mellom joule og elektronvolt med 1 eV = 1,60 · 10⁻¹⁹ J.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Sterkere lys gir elektroner med større kinetisk energi i den fotoelektriske effekten.<br>b) Et foton med kortere bølgelengde har mer energi.<br>c) Elektroner kan lage interferensmønster.<br>d) En fotball har en de Broglie-bølgelengde vi kan måle.<br>e) Hvis vi måler hvilken spalte hvert foton går gjennom, forsvinner interferensmønsteret.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut energien til et foton med bølgelengde 550 nm, i joule og elektronvolt. Hvor mange fotoner per sekund sender en laser på 5,0 mW ut?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Natrium har løsrivingsenergi 2,3 eV og belyses med lys på 300 nm. Finn E<sub>k,maks</sub>, bremsespenningen og grensebølgelengden. <a href="../sim/fotoelektrisk.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>I et forsøk er bremsespenningen 0,18 V ved 6,0 · 10¹⁴ Hz, 1,01 V ved 8,0 · 10¹⁴ Hz og 1,84 V ved 10,0 · 10¹⁴ Hz. Finn h og W.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Finn de Broglie-bølgelengden til et elektron som er akselerert gjennom 100 V, og til en baseball på 0,145 kg med farten 40 m/s. <a href="../sim/dobbeltspalte.html">Se Dobbeltspalte med én partikkel om gangen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Finn bevegelsesmengden til et foton på 550 nm. Hvor fort må et elektron gå for å ha den samme bevegelsesmengden?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et elektron er stengt inne i et atom med størrelse omtrent 0,10 nm. Bruk uskarphetsrelasjonen og finn den minste uskarpheten i farten.</p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Et elektron i hydrogen faller fra nivå n = 3 til n = 2. Finn energien og bølgelengden til fotonet som sendes ut. Hvilken farge har det?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Bare antallet elektroner øker. b) Sann, E = hc/λ. c) Sann. d) Usann. Bølgelengden er rundt 10⁻³⁴ m, altfor liten til å måles. e) Sann.</li>
+              <li>E = hc/λ = 3,61 · 10⁻¹⁹ J = 2,25 eV. Antall fotoner: 5,0 · 10⁻³ / 3,61 · 10⁻¹⁹ ≈ 1,4 · 10¹⁶ per sekund.</li>
+              <li>hf = hc/λ = 4,13 eV. E<sub>k,maks</sub> = 4,13 − 2,3 = 1,83 eV, og bremsespenningen er 1,83 V. Grensebølgelengden er hc/W ≈ 539 nm.</li>
+              <li>Stigningstallet er (1,84 − 0,18)/(4,0 · 10¹⁴) = 4,15 · 10⁻¹⁵ Vs, så h = e · stigningstallet ≈ 6,6 · 10⁻³⁴ Js. Linjen krysser U-aksen ved −2,3 V, så W ≈ 2,3 eV.</li>
+              <li>Elektronet: p = √(2meU), og λ = h/p = 0,123 nm, omtrent like stort som et atom. Baseballen: λ = h/(mv) = 1,1 · 10⁻³⁴ m.</li>
+              <li>p = h/λ = 1,20 · 10⁻²⁷ kg m/s. Elektronet: v = p/m = 1,3 · 10³ m/s, altså 1,3 km/s.</li>
+              <li>Δp ≥ h/(4πΔx) = 5,3 · 10⁻²⁵ kg m/s, og Δv = Δp/m ≈ 5,8 · 10⁵ m/s. Elektronet i et atom kan ikke ligge i ro.</li>
+              <li>ΔE = 13,6 · (1/4 − 1/9) = 1,89 eV. λ = hc/ΔE ≈ 656 nm, rødt lys (den røde linjen i hydrogenspekteret).</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for fysikklab.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-kvantefysikk.html">Kvantefysikk</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -21,8 +21,8 @@ meny: simuleringer.html
     <li><span class="linje"></span><span>Samlet energi</span></li>
   </ul>
   <dl class="sim-tall tre">
-    <div><dt>sirkelbanefart √(GM/r)</dt><dd id="sa-vc"></dd></div>
-    <div><dt>unnslipningsfart √(2GM/r)</dt><dd id="sa-ve"></dd></div>
+    <div><dt>sirkelbanefart √(γM/r)</dt><dd id="sa-vc"></dd></div>
+    <div><dt>unnslipningsfart √(2γM/r)</dt><dd id="sa-ve"></dd></div>
     <div><dt>banetype</dt><dd id="sa-type"></dd></div>
     <div><dt>omløpstid</dt><dd id="sa-T"></dd></div>
     <div><dt>laveste høyde</dt><dd id="sa-hmin"></dd></div>
@@ -34,14 +34,14 @@ meny: simuleringer.html
     <label for="sa-v">Fart <output id="sa-v-ut" for="sa-v"></output><input id="sa-v" type="range" min="0.7" max="1.5" step="0.01" value="1"></label>
     <div class="sim-knapper"><button id="sa-start" class="knapp" type="button">Start</button><button id="sa-nullstill" class="knapp lys" type="button">Nullstill</button></div>
   </div>
-  <figcaption class="sim-hint">Satellitten skytes ut vinkelrett på radien. Banen er regnet ut steg for steg med Newtons gravitasjonslov, uten luftmotstand. Omløpstiden og høydene er regnet ut fra energien: Store halvakse a = −GM/(2E) og T = 2π√(a³/GM). Én omløpstid varer omtrent 8 s i animasjonen.</figcaption>
+  <figcaption class="sim-hint">Satellitten skytes ut vinkelrett på radien. Banen er regnet ut steg for steg med Newtons gravitasjonslov, uten luftmotstand. Omløpstiden og høydene er regnet ut fra energien: Store halvakse a = −γM/(2E) og T = 2π√(a³/γM). Én omløpstid varer omtrent 8 s i animasjonen.</figcaption>
 </figure>
 
 <section class="oppgaver" aria-labelledby="oppgaver-tittel">
   <h2 id="oppgaver-tittel">Oppgaver</h2>
   <ol class="oppgaveliste">
   <li><span class="fase tipp">Gjett</span><div><p>En satellitt i 400 km høyde får 10 % større fart enn sirkelbanefarten. Hva skjer med banen? Hva skjer med 10 % mindre fart?</p></div></li>
-  <li><span class="fase test">Regn</span><div><p>Vis at sirkelbanefarten er v = √(GM/r). Regn ut farten og omløpstiden for romstasjonen i 400 km høyde.</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Vis at sirkelbanefarten er v = √(γM/r). Regn ut farten og omløpstiden for romstasjonen i 400 km høyde.</p></div></li>
   <li><span class="fase test">Undersøk</span><div><p>Velg geostasjonær bane. Hvor lang er omløpstiden? Hvorfor er det praktisk for TV-satellitter?</p></div></li>
   <li><span class="fase forklar">Forklar</span><div><p>Se på energigrafen for en sirkelbane og for en ellipse. Hva skjer med E<sub>k</sub> og E<sub>p</sub> rundt banen, og hva skjer med den samlede energien?</p></div></li>
   <li><span class="fase test">Regn</span><div><p>Vis at for en sirkelbane er E<sub>k</sub> = −½E<sub>p</sub> og E = ½E<sub>p</sub>. Sjekk med tallene for romstasjonen.</p></div></li>
@@ -53,11 +53,11 @@ meny: simuleringer.html
     <summary>Løsningsforslag og tips til læreren</summary>
     <ol>
       <li>Med 10 % mer fart blir banen en ellipse som går ut til omtrent 4000 km høyde på motsatt side, og omløpstiden øker fra 1,54 h til 2,19 h. Med 10 % mindre fart blir banen en ellipse som går ned under bakken, så satellitten treffer jorda.</li>
-      <li>Gravitasjonskraften gir sentripetalkraften: GMm/r² = mv²/r, så v = √(GM/r). I 400 km høyde er r = 6771 km, v = 7,67 km/s og T = 2πr/v = 1,54 h (92 minutter).</li>
+      <li>Gravitasjonskraften gir sentripetalkraften: γMm/r² = mv²/r, så v = √(γM/r). I 400 km høyde er r = 6771 km, v = 7,67 km/s og T = 2πr/v = 1,54 h (92 minutter).</li>
       <li>Omløpstiden er 23,9 h, altså ett døgn (et stjernedøgn). Satellitten følger jordrotasjonen og står fast over samme sted på ekvator, så parabolantennene kan peke fast mot den.</li>
       <li>I sirkelbanen er E<sub>k</sub> og E<sub>p</sub> konstante. I ellipsen er E<sub>k</sub> størst og E<sub>p</sub> minst nær jorda, og omvendt langt ute. Den samlede energien er konstant hele tiden, fordi gravitasjonen er den eneste kraften.</li>
-      <li>Fra v² = GM/r er E<sub>k</sub> = ½mv² = GMm/(2r) = −½E<sub>p</sub>, og E = E<sub>k</sub> + E<sub>p</sub> = ½E<sub>p</sub>. For romstasjonen per kg: E<sub>p</sub> = −58,9 MJ, E<sub>k</sub> = 29,4 MJ og E = −29,4 MJ.</li>
-      <li>Unnslipningsfarten er √(2GM/r) = √2 · √(GM/r), altså 141 % av sirkelbanefarten. Forholdet √2 er det samme i alle høyder.</li>
+      <li>Fra v² = γM/r er E<sub>k</sub> = ½mv² = γMm/(2r) = −½E<sub>p</sub>, og E = E<sub>k</sub> + E<sub>p</sub> = ½E<sub>p</sub>. For romstasjonen per kg: E<sub>p</sub> = −58,9 MJ, E<sub>k</sub> = 29,4 MJ og E = −29,4 MJ.</li>
+      <li>Unnslipningsfarten er √(2γM/r) = √2 · √(γM/r), altså 141 % av sirkelbanefarten. Forholdet √2 er det samme i alle høyder.</li>
       <li>Friksjonen tar energi, så E blir mer negativ, og satellitten synker. I en lavere bane er sirkelbanefarten større. Siden E = −E<sub>k</sub> i sirkelbane, øker den kinetiske energien når den samlede energien minker: Satellitten taper dobbelt så mye potensiell energi som den mister i friksjon.</li>
     </ol>
     <p><strong>Bruk i timen:</strong> 30–45 minutter. Passer til sirkelbevegelse og til kompetansemålet om energibevaring i gravitasjonelle sentralfelt. Se også <a href="unnslipningsfart.html">Unnslipningsfart</a>, <a href="gps.html">GPS-klokkene</a> og programmeringsoppgaven <a href="../programmering/python-satellittbane.html">Satellittbane</a>.</p>

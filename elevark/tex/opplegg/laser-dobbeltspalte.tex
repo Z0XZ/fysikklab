@@ -1,0 +1,54 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/laser-dobbeltspalte.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Kvantefysikk}{Bølgelengden til laserlys med dobbeltspalte}{https://fysikklab.no/opplegg/laser-dobbeltspalte.html}{Opplegget på nett}
+
+Lys som går gjennom to smale spalter, lager et mønster av lyse og mørke striper på veggen. Det er interferens, og det viser at lys oppfører seg som en bølge. Fra avstanden mellom stripene kan dere bestemme bølgelengden til laseren.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Se interferens fra en dobbeltspalte.
+\item Bestemme bølgelengden til laserlyset fra avstanden mellom stripene.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En laserpeker i klasse 2, og en dobbeltspalte med oppgitt spalteavstand $d$ (for eksempel 0,25~mm).
+\item Stativ til laseren og spalten, et hvitt ark på veggen, målebånd og linjal.
+\item Se aldri inn i laserstrålen, og pass på refleksene fra blanke flater.
+\end{itemize}
+
+\section*{Teorien}
+
+Lys fra de to spaltene går ulik vei til et punkt på veggen. Der veiforskjellen er et helt antall bølgelengder, blir det lyst. For små vinkler er avstanden mellom to lyse striper $Δy = λL/d$, der $L$ er avstanden fra spalten til veggen. Grafen av $Δy$ mot $L$ er en rett linje med stigningstall $λ/d$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Fest laseren og spalten slik at strålen treffer spalten vinkelrett. Rett strålen mot arket på veggen.
+\item Mål avstanden $L$ fra spalten til veggen, for eksempel 1,00~m.
+\item Marker midten av stripene med blyant, og mål avstanden over 10 striper (fra stripe 0 til stripe 10). Det gir mer nøyaktig $Δy$ enn å måle én stripe.
+\item Gjenta for fem ulike avstander $L$.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hva skjer med stripene når veggen flyttes dobbelt så langt unna? Når spalteavstanden dobles?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken bølgelengde får dere? Sammenlign med det som står på laseren.
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor blir det mørke striper? Forklar med veiforskjell.
+\svar
+\oppgave \fase{forklar}{Vurder}Hvorfor måler vi over 10 striper i stedet for én? Hvilken måling bidrar mest til usikkerheten?
+\svar
+\oppgave \fase{test}{Regn}Regn ut energien til ett foton fra laseren, og hvor mange fotoner laseren sender ut per sekund når effekten er 1,0 mW.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hvis vi skrur ned lyset så mye at det bare er ett foton om gangen i apparatet, blir det fortsatt striper? Prøv i simuleringen Dobbeltspalte med én partikkel om gangen\footnote{\url{fysikklab.no/sim/dobbeltspalte.html}}, og forklar hva det sier om lys.
+\svar
+\end{oppgaveliste}
+
+\end{document}

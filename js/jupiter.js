@@ -4,7 +4,7 @@ const G_JU = 6.674e-11;
 Maaletabell({
   rot: "ju", nokkel: "lektorbo-jupiter", csv: "jupiters-maner.csv", startRader: 4,
   kolonner: [{ k: "a", navn: "Baneradius a (km)" }, { k: "T", navn: "Omløpstid T (døgn)" }],
-  beregnet: ["a³ (10²⁴ m³)", "T² (10¹⁰ s²)", "M = 4π²a³/(GT²) (10²⁷ kg)"],
+  beregnet: ["a³ (10²⁴ m³)", "T² (10¹⁰ s²)", "M = 4π²a³/(γT²) (10²⁷ kg)"],
   linje: "origo",
   graf: { xTekst: "a³ / 10²⁴ m³", yTekst: "T² / 10¹⁰ s²", xMaks: 7000, yMaks: 220, beskrivelse: "Graf over T² mot a³ med en rett linje gjennom origo." },
   analyser(rader) {

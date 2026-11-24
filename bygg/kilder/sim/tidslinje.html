@@ -1,0 +1,62 @@
+tittel: Fysikkens historie – fysikklab.no
+beskrivelse: Interaktiv tidslinje for Fysikk 1 og Fysikk 2: Dra og zoom gjennom over 2000 år med fysikk, fra Arkimedes til gravitasjonsbølger, med korte forklaringer, animasjoner og lenker til simuleringer og forsøk.
+fagside: simuleringer.html
+fag: Simuleringer
+tema: <a href="../simuleringer.html?tema=introduksjon-til-fysikk">Fysikk 1 og 2 · Fysikkens historie</a>
+script: tidslinje-data.js,tidslinje.js
+meny: simuleringer.html
+---
+<h1>Fysikkens historie</h1>
+<p class="ingress">Fra Arkimedes i badekaret til gravitasjonsbølger fra svarte hull. Dra i tidslinjen, zoom inn der det skjer mye, og klikk på en hendelse for å lese om den, se en liten animasjon og finne simuleringer og forsøk som hører til. Noen hendelser er pensum i Fysikk 1 eller Fysikk 2, andre går utenfor.</p>
+
+<figure class="sim sim-bred tl">
+  <div class="sim-styring mange uten-topp">
+    <div class="tl-kat" id="tl-kat" role="group" aria-label="Fagområder"></div>
+    <label for="tl-niva">Vis<select id="tl-niva"><option value="">Alle hendelser</option><option value="f1">Pensum i Fysikk 1</option><option value="f2">Pensum i Fysikk 2</option><option value="ingen">Utenfor pensum</option></select></label>
+    <p class="sim-hint uten-marg" id="tl-antall"></p>
+  </div>
+  <canvas id="tl-linje" class="forhold-tidslinje" tabindex="0" role="img" aria-label="Tidslinje med fysikkhendelser. Dra for å flytte, zoom med musehjulet, og bruk piltastene for forrige og neste hendelse."></canvas>
+  <div class="sim-styring mange">
+    <div class="sim-knapper"><button id="tl-forrige" class="knapp" type="button">← Forrige</button><button id="tl-neste" class="knapp" type="button">Neste →</button><button id="tl-inn" class="knapp lys" type="button">Zoom inn</button><button id="tl-ut" class="knapp lys" type="button">Zoom ut</button><button id="tl-alt" class="knapp lys" type="button">Vis alt</button></div>
+    <label for="tl-hopp">Gå til hendelse<select id="tl-hopp"></select></label>
+  </div>
+  <div class="tl-info" aria-live="polite">
+    <div class="tl-tekst">
+      <h2 id="tl-tittel"></h2>
+      <p class="tl-meta" id="tl-meta"></p>
+      <p class="tl-merker" id="tl-merker"></p>
+      <p id="tl-tekst"></p>
+      <h3>Prøv selv</h3>
+      <ul class="tl-lenker" id="tl-lenker"></ul>
+    </div>
+    <canvas id="tl-anim" class="statisk forhold-tlanim" role="img" aria-label="En liten animasjon som illustrerer hendelsen."></canvas>
+  </div>
+  <figcaption class="sim-hint">Animasjonene er forenklede illustrasjoner, ikke modeller i riktig målestokk. Årstallene er de vanlige i lærebøker. Der en oppdagelse strakk seg over flere år, sier teksten fra. Lenker merket «ekstern» går til viten.no.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Før du ser på tidslinjen: Hvilken kom først, Newtons gravitasjonslov eller oppdagelsen av elektronet? Hvor mange år tror du det gikk mellom dem?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Zoom inn på årene 1895–1935. Hvor mange hendelser finner du? Hvorfor tror du det skjedde så mye i fysikken akkurat da?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Finn de to hendelsene fra 1905. Hva har de til felles, og hvem stod bak?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Finn to hendelser der en måling avgjorde mellom to teorier. Hvilke teorier sto mot hverandre, og hva viste målingen?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Velg «Utenfor pensum». Velg én hendelse og forklar med egne ord hvorfor den var viktig for fysikken.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Finn tre hendelser der nordiske forskere var med. Hva oppdaget de?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Mange av de nyeste hendelsene ble gjort av tusenvis av forskere i store samarbeid. Finn eksempler på tidslinjen, og diskuter hvorfor moderne fysikk ofte krever internasjonalt samarbeid.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Newtons Principia kom i 1687, og elektronet ble oppdaget i 1897, 210 år senere.</li>
+      <li>Det er 17 hendelser i dette tidsrommet, fra røntgenstrålingen i 1895 til nøytronet i 1932. Klassisk fysikk kunne ikke forklare nye målinger av atomer, stråling og lys. Det førte både til relativitetsteorien og til kvantefysikken.</li>
+      <li>Begge er fra Einsteins «mirakelår»: forklaringen av den fotoelektriske effekten med fotoner, og den spesielle relativitetsteorien med E = mc².</li>
+      <li>For eksempel Youngs dobbeltspalte (1801: lys som bølger), Michelson og Morley (1887: ingen eter), Eddington (1919: Einstein mot Newton om lysavbøyning) og Aspect (1982: kvantefysikk mot skjulte variabler).</li>
+      <li>Her finnes ingen fasit. Se etter at eleven forklarer hva som var nytt, og hva det førte til.</li>
+      <li>Ole Rømer (1676, lysets fart), Hans Christian Ørsted (1820, strøm lager magnetfelt), Kristian Birkeland (ca. 1903, nordlyset) og Niels Bohr (1913, atommodellen).</li>
+      <li>For eksempel Higgs-bosonet ved CERN (2012), gravitasjonsbølgene fra LIGO (2015), nøytronstjernekollisjonen (2017) og bildet av et svart hull (2019). Utstyret er for stort og dyrt for ett land, og målingene krever detektorer og teleskoper mange steder på jorda samtidig. Dette passer til kompetansemålet om internasjonalt forskningssamarbeid i Fysikk 2.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 20–45 minutter, for eksempel i starten av Fysikk 1, som oppsummering på slutten av Fysikk 2, eller når et nytt tema starter. La elevene gjerne velge én hendelse hver og presentere den for klassen. Tidslinjen passer også på projektoren med «Fullskjerm».</p>
+  </details>
+</section>

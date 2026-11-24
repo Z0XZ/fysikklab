@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: kvantefysikk – fysikklab.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om fotoner, fotoelektrisk effekt, bølge-partikkel-dualitet og uskarphet. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Kvantefysikk</p>
+        <h1>Begrepstest: kvantefysikk</h1>
+        <p class="ingress">Åtte spørsmål om kvantefysikk. Mange av dem handler om det som skiller kvanteobjekter fra klassiske objekter.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="4">
+            <p>Sink belyses med svært sterkt rødt lys, men det kommer ingen elektroner. Hva må endres for å få elektroner?</p>
+            <ol class="bt-valg">
+              <li>Bruke en større sinkplate.</li>
+              <li data-hvorfor="Hvert foton har for lite energi, uansett hvor mange det er.">Enda sterkere rødt lys.</li>
+              <li data-hvorfor="Elektronene kan ikke samle energi fra flere fotoner.">Belyse lenger tid.</li>
+              <li>Lys med kortere bølgelengde.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Ett foton gir energien sin til ett elektron. Fotonet må ha hf > W. Kortere bølgelengde betyr høyere frekvens og mer energi per foton.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Vi dobler intensiteten til lyset i et forsøk med fotoelektrisk effekt. Hva skjer?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Den kinetiske energien avhenger bare av frekvensen.">Elektronene får dobbelt så stor kinetisk energi.</li>
+              <li>Ingenting skjer.</li>
+              <li data-hvorfor="Grensefrekvensen er en egenskap ved metallet.">Grensefrekvensen halveres.</li>
+              <li>Det kommer dobbelt så mange elektroner, med samme største kinetiske energi.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Intensiteten bestemmer hvor mange fotoner som treffer per sekund. Flere fotoner gir flere elektroner og større strøm, men E<sub>k,maks</sub> = hf − W er uendret.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>Hvilket foton har mest energi?</p>
+            <ol class="bt-valg">
+              <li>Rødt lys.</li>
+              <li>Blått lys.</li>
+              <li>Grønt lys.</li>
+              <li data-hvorfor="Alle har farten c, men energien er hf.">Alle har samme energi, fordi de går like fort.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> E = hf = hc/λ. Blått lys har kortest bølgelengde og høyest frekvens av de tre, og dermed mest energi per foton.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Elektroner sendes én og én mot to spalter. Hva ser vi på skjermen etter mange elektroner?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det ville skjedd hvis elektronene var klassiske partikler.">To striper bak spaltene, som for klinkekuler.</li>
+              <li>En jevn flekk.</li>
+              <li>Ingenting, fordi ett elektron ikke kan gå gjennom to spalter.</li>
+              <li>Et interferensmønster med mange striper.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Hvert elektron treffer ett punkt, men sannsynligheten er gitt av en bølge som går gjennom begge spaltene og interfererer. Etter mange elektroner ser vi et interferensmønster. Dette er gjort i virkeligheten.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>Vi måler hvilken spalte hvert elektron går gjennom. Hva skjer med mønsteret?</p>
+            <ol class="bt-valg">
+              <li>Interferensstripene forsvinner.</li>
+              <li>Det blir tydeligere.</li>
+              <li>Elektronene stopper.</li>
+              <li data-hvorfor="Målingen påvirker kvantetilstanden.">Ingenting.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Når vi vet hvilken vei elektronet tok, er det ingen interferens mellom veiene. Mønsteret blir som summen av to enkeltspalter. Måling påvirker kvanteobjekter.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Hvorfor ser vi aldri interferens med en fotball som sparkes mot to åpninger?</p>
+            <ol class="bt-valg">
+              <li>Fordi åpningene er for store.</li>
+              <li data-hvorfor="Lavere fart gir lengre bølgelengde, men den er fortsatt bitte liten.">Fordi fotballer går for sakte.</li>
+              <li>Fordi de Broglie-bølgelengden er altfor liten.</li>
+              <li data-hvorfor="Alt som har bevegelsesmengde, har en de Broglie-bølgelengde.">Fordi fotballer ikke har noen bølgelengde.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> λ = h/(mv). For en fotball er λ rundt 10⁻³⁴ m, mange størrelsesordener mindre enn et atom. Interferensstripene ville vært umulig tette. For elektroner er λ rundt 10⁻¹⁰ m, som atomavstandene i krystaller.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Hva sier uskarphetsrelasjonen Δx · Δp ≥ h/(4π)?</p>
+            <ol class="bt-valg">
+              <li>Partikler beveger seg tilfeldig.</li>
+              <li data-hvorfor="Det er en egenskap ved naturen, ikke ved instrumentene.">Måleinstrumentene våre er for dårlige.</li>
+              <li>Den gjelder bare for lys.</li>
+              <li>En partikkel kan ikke samtidig ha helt bestemt posisjon og bevegelsesmengde.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Uskarpheten kommer av at partikler beskrives med bølger. En bølge som er samlet på et lite sted, må bestå av mange bølgelengder, altså mange verdier for p. Jo mer bestemt posisjonen er, desto mer uskarp er bevegelsesmengden.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>Hvorfor sender hydrogengass ut lys med bare noen bestemte farger?</p>
+            <ol class="bt-valg">
+              <li>Fordi elektronet bare kan ha bestemte energinivåer, og fotonet får energiforskjellen.</li>
+              <li>Fordi lyset blir filtrert av glasset.</li>
+              <li>Fordi gassen er farget.</li>
+              <li>Fordi hydrogenatomer har ulike størrelser.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> Energien til elektronet i atomet er kvantisert. Når det faller fra et høyere til et lavere nivå, sendes det ut et foton med energien hf = E<sub>øvre</sub> − E<sub>nedre</sub>. Bare bestemte forskjeller er mulig, og derfor bare bestemte bølgelengder.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for fysikklab.no. Se også <a href="../sim/fotoelektrisk.html">Fotoelektrisk effekt</a> og <a href="../sim/dobbeltspalte.html">Dobbeltspalte med én partikkel om gangen</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

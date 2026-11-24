@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: elektromagnetisk induksjon – fysikklab.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: magnetisk fluks, Faradays lov, Lenz&#x27; lov, bevegelsesindusert spenning, generator, transformator og overføring av elektrisk energi, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektromagnetisk induksjon</p>
+        <h1>Repetisjon: elektromagnetisk induksjon</h1>
+        <p class="ingress">Induksjon er grunnlaget for nesten all produksjon av elektrisk energi. Her er en oversikt over fluks, Faradays og Lenz' lov, generatoren og transformatoren, med blandede oppgaver og løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Hovedidéene</h2>
+          <ul>
+            <li><strong>Fluks:</strong> Φ = BA cos θ måler hvor mye av feltet som går gjennom en flate.</li>
+            <li><strong>Faradays lov:</strong> Det blir indusert en spenning bare når fluksen gjennom en krets endrer seg.</li>
+            <li><strong>Lenz' lov:</strong> Den induserte strømmen motvirker endringen som skaper den. Det er energibevaring: Du må gjøre et arbeid for å få elektrisk energi.</li>
+            <li><strong>Vekselspenning:</strong> En spole som roterer i et felt gir ε = NBAω sin(ωt). Transformatorer endrer spenningen, og høy spenning gir lite tap i linjene.</li>
+          </ul>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Fluks: Φ = BA cos θ (enhet weber, Wb = T m²).</li>
+            <li>Faradays lov: ε = −NΔΦ/Δt, eller ε = −NΦ′(t).</li>
+            <li>Leder som beveges vinkelrett på feltet: ε = Blv. Kraft på leder: F = BIL.</li>
+            <li>Generator: ε = NBAω sin(ωt), toppspenning NBAω, effektivverdi = toppverdi/√2.</li>
+            <li>Ideell transformator: U<sub>s</sub>/U<sub>p</sub> = N<sub>s</sub>/N<sub>p</sub> og U<sub>p</sub>I<sub>p</sub> = U<sub>s</sub>I<sub>s</sub>. Effekttap i en linje: P = RI².</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-induksjon.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Finn retningen på strømmen med Lenz' lov, og regn med absoluttverdier i Faradays lov.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) En sterk magnet som ligger i ro inne i en spole, induserer en stor spenning.<br>b) Den induserte strømmen lager alltid et felt som er motsatt rettet av magnetens felt.<br>c) En transformator virker ikke med likestrøm.<br>d) Hvis du dobler antall vindinger i en generator, dobles toppspenningen.<br>e) Høy spenning i kraftlinjene gir mindre tap.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En sirkulær sløyfe med arealet 50 cm² står i et felt på 0,20 T. Normalen danner 60° med feltet. Regn ut fluksen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En spole med 200 vindinger og arealet 20 cm² står vinkelrett på et felt som avtar jevnt fra 0,30 T til null på 0,15 s. Finn den induserte spenningen. <a href="../sim/magnet-og-spole.html">Se Magnet og spole.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En metallstang på 0,50 m glir med 3,0 m/s på to skinner vinkelrett på et felt på 0,40 T. Kretsen har resistansen 2,0 Ω. Finn spenningen, strømmen og kraften som trengs for å holde farten konstant. Vis at Fv = εI.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En generator har 150 vindinger med arealet 0,012 m² og roterer 50 ganger per sekund i et felt på 0,25 T. Finn toppspenningen og effektivverdien. <a href="../sim/generator.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En lader skal gi 12 V fra 230 V, og primærspolen har 1150 vindinger. Hvor mange vindinger trengs på sekundærspolen? Laderen gir 36 W. Finn strømmen på hver side (ideell transformator).</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et kraftverk sender 100 MW gjennom en linje med resistansen 5,0 Ω. Regn ut effekttapet ved 400 kV og ved 20 kV.</p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>En rektangulær sløyfe på 10 cm × 5,0 cm med resistansen 0,50 Ω trekkes med konstant fart 2,0 m/s ut av et felt på 0,80 T. Kortsiden på 5,0 cm står langs kanten av feltet. Finn spenningen, strømmen, kraften som trengs, og arbeidet som gjøres mens sløyfa går ut. Vis at arbeidet er lik varmen i sløyfa.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Det er endringen i fluks som gir spenning. b) Usann. Den motvirker endringen. Når fluksen avtar, er det induserte feltet i samme retning. c) Sann. Likestrøm gir konstant fluks og ingen indusert spenning. d) Sann. e) Sann. Lavere strøm gir mindre tap, RI².</li>
+              <li>Φ = BA cos θ = 0,20 · 50 · 10⁻⁴ · cos 60° = 5,0 · 10⁻⁴ Wb.</li>
+              <li>ε = NAΔB/Δt = 200 · 20 · 10⁻⁴ · 0,30/0,15 = 0,80 V.</li>
+              <li>ε = Blv = 0,60 V, I = 0,30 A og F = BIL = 0,060 N. Fv = 0,18 W og εI = 0,18 W.</li>
+              <li>ε<sub>maks</sub> = NBAω = 150 · 0,25 · 0,012 · 2π · 50 ≈ 141 V. Effektivverdien er 141/√2 ≈ 100 V.</li>
+              <li>N<sub>s</sub> = 1150 · 12/230 = 60. I<sub>s</sub> = 36/12 = 3,0 A og I<sub>p</sub> = 36/230 ≈ 0,16 A.</li>
+              <li>Ved 400 kV: I = 250 A og P<sub>tap</sub> = 5,0 · 250² ≈ 0,31 MW (0,3 %). Ved 20 kV: I = 5000 A og P<sub>tap</sub> = 125 MW, mer enn det som sendes. Derfor brukes høy spenning.</li>
+              <li>ε = Blv = 2,0 · 0,80 · 0,050 = 0,080 V og I = 0,16 A. F = BIL = 0,80 · 0,16 · 0,050 = 6,4 · 10⁻³ N. Sløyfa bruker 0,10 m/(2,0 m/s) = 0,050 s på å gå ut, og W = F · s = 6,4 · 10⁻⁴ J. Varmen er RI²t = 0,50 · 0,16² · 0,050 = 6,4 · 10⁻⁴ J, det samme.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for fysikklab.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-induksjon.html">Elektromagnetisk induksjon</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

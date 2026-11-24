@@ -641,3 +641,27 @@ h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-a
 @media (max-width: 640px) { .forsok-info { grid-template-columns: minmax(0, 1fr); } }
 @media print { .innholdsliste { display: none; } .forsok-info { grid-template-columns: 1fr; } }
 .fyll-blekk { fill: var(--blekk); stroke: none; }
+.km-beskr { display: block; font-size: .875rem; color: var(--dempet); }
+
+/* Tidslinjen: Fysikkens historie */
+.sim canvas.forhold-tidslinje { aspect-ratio: 16 / 6; cursor: grab; touch-action: none; }
+.sim canvas.forhold-tidslinje:active { cursor: grabbing; }
+.sim canvas.forhold-tlanim { aspect-ratio: 16 / 10; }
+@media (max-width: 700px) { .sim canvas.forhold-tidslinje { aspect-ratio: 16 / 12; } }
+.tl-kat { display: flex; flex-wrap: wrap; gap: .35rem; grid-column: 1 / -1; }
+.tl-chip { position: relative; display: inline-flex; cursor: pointer; }
+.tl-chip input { position: absolute; inset: 0; width: 1px; height: 1px; margin: 0; opacity: 0; pointer-events: none; }
+.tl-chip span { font-size: .8125rem; padding: .15rem .55rem; border: 1px solid var(--c); border-left-width: 4px; border-radius: 3px; color: var(--blekk); opacity: .55; }
+.tl-chip input:checked + span { opacity: 1; background: color-mix(in srgb, var(--c) 14%, transparent); }
+.tl-chip input:focus-visible + span { outline: 3px solid var(--f1); outline-offset: 2px; }
+.tl-info { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 1.25rem; padding: 1rem 1.25rem 1.25rem; border-top: 1px solid var(--rute); }
+.tl-info h2 { font-size: clamp(1.3rem, 2.4vw, 1.7rem); }
+.tl-info h3 { font-size: 1rem; margin-top: 1rem; }
+.tl-meta { color: var(--dempet); margin-top: .25rem; }
+.tl-merker { display: flex; flex-wrap: wrap; gap: .35rem; margin: .5rem 0 .6rem; }
+.tl-merke { --c: var(--dempet); font-family: var(--mono); font-size: .75rem; padding: .05rem .5rem; border: 1px solid var(--c); border-radius: 3px; color: var(--c); background: color-mix(in srgb, var(--c) 10%, transparent); }
+.tl-merke.tl-niva { --c: var(--blekk); }
+.tl-lenker { margin: .4rem 0 0; padding-left: 1.2rem; }
+.tl-lenker li + li { margin-top: .2rem; }
+.tl-ingen { color: var(--dempet); list-style: none; margin-left: -1.2rem; }
+@media (max-width: 760px) { .tl-info { grid-template-columns: minmax(0, 1fr); } }

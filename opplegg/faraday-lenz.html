@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Faradays og Lenz' lov – økt på 90 minutter – fysikklab.no</title>
+  <meta name="description" content="Undervisningsopplegg i Fysikk 2: En ferdig planlagt økt om magnetisk fluks, Faradays lov, Lenz&#x27; lov og bevegelsesindusert spenning, med demonstrasjoner, simuleringer, oppgaver fra ERGO 2 og exit ticket.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektromagnetisk induksjon</p>
+        <h1>Faradays og Lenz' lov – økt på 90 minutter</h1>
+        <p class="ingress">En ferdig planlagt økt om induksjon for Fysikk 2. Elevene starter med en magnet som faller overraskende sakte gjennom et kobberrør, lærer begrepet magnetisk fluks, finner Faradays lov i en simulering, og bruker Lenz' lov til å forklare hva de så i starten. Økta avsluttes med bevegelsesindusert spenning, oppgaver på tre nivåer og en exit ticket.</p>
+
+        <div class="tekst opplegg">
+          <h2>Kort oversikt</h2>
+          <ul>
+            <li><strong>Fag og tema:</strong> Fysikk 2, induksjon, delkapittel 7.1 og 7.2 i Kraft 2 (side 209–220: indusert elektromotorisk spenning og strøm, rektangulær ledersløyfe), med eksempel 7-1 til 7-7. Tilsvarende stoff står i kapittel 7 i ERGO 2.</li>
+            <li><strong>Varighet:</strong> 90 minutter. En kortere variant på 60 minutter står nederst.</li>
+            <li><strong>Forkunnskaper:</strong> Magnetfelt rundt ledere og spoler, kraft på strømførende leder (F = BIL) og høyrehåndsregelen.</li>
+            <li><strong>Simulering:</strong> <a href="../sim/magnet-og-spole.html">Magnet og spole</a>.</li>
+            <li><strong>Forsøk som passer:</strong> <a href="fallende-magnet.html">Induksjon med fallende magnet</a>. Neste økt kan være om generatoren og energiproduksjon (7.3), med simuleringen <a href="../sim/generator.html">Generator</a> og forsøket <a href="transformator.html">Transformatoren</a>.</li>
+          </ul>
+
+          <h2>Kompetansemål og læringsmål</h2>
+          <p>Kompetansemålet i Fysikk 2 er å utforske ulike måter å indusere elektromotorisk spenning og strøm, og analysere resultatene.</p>
+          <p>Etter økta skal elevene kunne:</p>
+          <ol>
+            <li>regne ut magnetisk fluks Φ = BA cos θ</li>
+            <li>forklare at det bare blir indusert spenning når fluksen endrer seg, og bruke ε = −NΔΦ/Δt</li>
+            <li>bruke Lenz' lov til å finne retningen på den induserte strømmen</li>
+            <li>regne ut bevegelsesindusert spenning ε = Blv og forklare den med kraft på ladninger</li>
+            <li>forklare hvorfor Lenz' lov henger sammen med energibevaring</li>
+          </ol>
+
+          <h2>Forberedelser</h2>
+          <ul>
+            <li>Ta med en sterk sylindermagnet, et kobberrør (gjerne ca. 1 m) og en umagnetisk metallbit med samme størrelse.</li>
+            <li>Har skolen en spole med galvanometer (eller spenningssensor), og en stavmagnet, sett det fram til del 3.</li>
+            <li>Sjekk at simuleringen virker på elevenes maskiner og på projektoren.</li>
+          </ul>
+
+          <h2>Tidsplan</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Tid</th><th scope="col">Del</th><th scope="col">Arbeidsform</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">0–10</th><td>1. Oppstart: magneten i kobberrøret</td><td>Demonstrasjon, tenk alene, del i par</td></tr>
+                <tr><th scope="row">10–20</th><td>2. Magnetisk fluks</td><td>Lærerstyrt med elevinnspill</td></tr>
+                <tr><th scope="row">20–35</th><td>3. Faradays lov</td><td>Demonstrasjon og simulering i par</td></tr>
+                <tr><th scope="row">35–50</th><td>4. Lenz' lov</td><td>Simulering i par, begrepsspørsmål</td></tr>
+                <tr><th scope="row">50–60</th><td>5. Bevegelsesindusert spenning ε = Blv</td><td>Tavle</td></tr>
+                <tr><th scope="row">60–85</th><td>6. Oppgaveregning på tre nivåer</td><td>Individuelt eller i par</td></tr>
+                <tr><th scope="row">85–90</th><td>7. Exit ticket</td><td>Individuelt</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>1. Oppstart: magneten i kobberrøret (0–10 min)</h2>
+          <p><strong>Lærer:</strong> Vis at magneten ikke fester seg til kobberrøret. Slipp først metallbiten gjennom røret, så magneten. Spør før du slipper magneten: «Kommer den ut fortere, like fort eller saktere?»</p>
+          <p><strong>Tenk alene, del i par:</strong> «Kobber er ikke magnetisk. Hvorfor bremses magneten likevel?» Skriv opp forslagene på tavla uten å avgjøre. Elevene skal kunne forklare det selv i del 4. Dette er muntlig oppgave 7.44 i Kraft 2.</p>
+
+          <h2>2. Magnetisk fluks (10–20 min)</h2>
+          <p><strong>Tavla:</strong> Fluks er «hvor mange feltlinjer som går gjennom en flate»: Φ = BA cos θ, der θ er vinkelen mellom feltet og arealvektoren til flaten (Kraft 2 bruker ordet arealvektor). Enheten er weber, 1 Wb = 1 T m². Derfor kalles B også magnetisk flukstetthet.</p>
+          <p><strong>Begrepsspørsmål:</strong> «En ring ligger i et homogent felt. Hvilken endring gir IKKE endret fluks? A) Ringen dreies, B) ringen klemmes sammen, C) ringen flyttes sidelengs inne i feltet, D) feltet skrus ned.» Riktig: C.</p>
+          <p><strong>Øving:</strong> Kraft 2-oppgave 7.05 a–c (største og minste fluks gjennom en sløyfe), eventuelt ERGO 2-oppgave 7.7.</p>
+
+          <h2>3. Faradays lov (20–35 min)</h2>
+          <p><strong>Demonstrasjon:</strong> Stikk stavmagneten inn i spolen og ta den ut igjen, først sakte og så fort. Hold den i ro inne i spolen. Elevene noterer når galvanometeret gir utslag.</p>
+          <p><strong>Simulering i par:</strong> Oppgave 1–3 på arbeidsarket med <a href="../sim/magnet-og-spole.html">Magnet og spole</a>.</p>
+          <p><strong>Oppsummer:</strong> Faradays induksjonslov: ε = −NΔΦ/Δt. Se eksempel 7-1 til 7-3 i Kraft 2. Det er endringen i fluks som gir spenning, ikke fluksen selv. Raskere endring gir større spenning, og flere vindinger gir mer.</p>
+
+          <h2>4. Lenz' lov (35–50 min)</h2>
+          <p><strong>Tavla:</strong> Den induserte strømmen har en retning som motvirker endringen i fluks som skaper den.</p>
+          <p><strong>Simulering i par:</strong> Oppgave 4–5 på arbeidsarket. Se på de induserte polene når magneten nærmer seg og fjerner seg.</p>
+          <p><strong>Tilbake til kobberrøret:</strong> Elevene forklarer selv: Når magneten faller, endres fluksen gjennom ringene av kobber rundt den. Det induseres strømmer som etter Lenz' lov lager poler som bremser magneten.</p>
+          <p><strong>Energibevaring:</strong> Spør: «Hva ville skjedd om strømmen gikk andre veien?» Da ville magneten blitt trukket fortere og fortere, og vi ville fått energi gratis. Lenz' lov er energibevaring.</p>
+
+          <h2>5. Bevegelsesindusert spenning ε = Blv (50–60 min)</h2>
+          <p><strong>Tavleplan:</strong> En leder med lengden l beveges med farten v vinkelrett på et felt B. Ladningene i lederen får kraften F = qvB langs lederen og hoper seg opp i den ene enden, til det elektriske feltet balanserer: qE = qvB. Spenningen blir ε = El = Blv. Samme svar fra fluksen: Arealet øker med lv per sekund, så ΔΦ/Δt = Blv. Kraft 2 utleder dette i 7.2, med eksempel 7-5 til 7-7.</p>
+          <p><strong>Øving:</strong> Kraft 2-oppgave 7.20 b–d i plenum, eventuelt ERGO 2-oppgave 7.2.</p>
+
+          <h2>6. Oppgaveregning på tre nivåer (60–85 min)</h2>
+          <p>La elevene velge nivå selv, men be alle gjøre minst én oppgave fra nivå 1. Kraft 2-oppgavene står på side 232–236, og oppgavene fra ERGO 2 i kapittel 7.</p>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Nivå</th><th scope="col">Kraft 2</th><th scope="col">ERGO 2</th><th scope="col">Arbeidsarket</th><th scope="col">Hva øver de på</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">1 Begreper</th><td>7.02, 7.03, 7.15, 7.17, 7.19</td><td>7.1, 7.8, 7.17, 7.22</td><td>1–5</td><td>Når det induseres strøm, og retningen etter Lenz' lov</td></tr>
+                <tr><th scope="row">2 Regning</th><td>7.05, 7.07, 7.08, 7.09, 7.20, 7.22</td><td>7.2, 7.7, 7.10, 7.19, 7.26</td><td>6–7</td><td>Fluks, ε = −NΔΦ/Δt og ε = Blv</td></tr>
+                <tr><th scope="row">3 Grafer og sammensatt</th><td>7.10, 7.13, 7.14, 7.21, 7.23</td><td>7.28, 7.32, 7.45</td><td>8</td><td>ε fra en Φ(t)-graf, spoler i varierende felt, energi</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>7. Exit ticket (85–90 min)</h2>
+          <p>Elevene svarer alene på en lapp eller digitalt:</p>
+          <ol>
+            <li>En spole med 200 vindinger og arealet 20 cm² står vinkelrett på et felt som går fra 0,30 T til null på 0,15 s. Hvor stor blir den induserte spenningen?</li>
+            <li>En nordpol skyves mot enden av en spole. Blir den enden en nordpol eller en sørpol?</li>
+            <li>Skriv én setning om hvorfor magneten faller sakte i kobberrøret.</li>
+          </ol>
+          <p><strong>Svar:</strong> 1) ε = NAΔB/Δt = 200 · 0,0020 · 0,30/0,15 = 0,80 V. 2) En nordpol, som frastøter magneten. 3) Fluksendringen induserer strømmer i røret som etter Lenz' lov motvirker bevegelsen.</p>
+
+          <h2>Arbeidsark til simuleringen</h2>
+          <p>Oppgavene under kan kopieres til elevene, eller vises på tavla. Svarene står i løsningsforslaget nederst.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver til elevene</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/faraday-lenz.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Oppgave 1–5 bruker <a href="../sim/magnet-og-spole.html">Magnet og spole</a>. Oppgave 6–8 er uten simulering.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Magneten ligger i ro midt inne i spolen. Blir det indusert en spenning? Dra magneten dit og sjekk.</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Trykk Start. Når er spenningen størst, og når er den null? Sammenlign med fluksen (den stiplede kurven).</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Hvordan endrer toppverdien av spenningen seg når du dobler farten? Når du dobler antall vindinger?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på polene i spolen når magneten nærmer seg og når den fjerner seg. Forklar med Lenz' lov hvorfor spolen alltid motvirker bevegelsen.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Snu magneten. Hva skjer med fortegnet på spenningen og med polene? Hvorfor?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kvadratisk sløyfe med sider 10 cm står i et felt på 0,20 T. Normalen danner 60° med feltet. Regn ut fluksen. Sløyfa dreies til normalen er parallell med feltet på 0,10 s. Hvor stor er den gjennomsnittlige induserte spenningen?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En metallstang på 0,50 m glir med 3,0 m/s på to skinner, vinkelrett på et felt på 0,40 T. Skinnene er koblet sammen med en motstand på 2,0 Ω. Finn den induserte spenningen, strømmen og kraften som trengs for å holde farten konstant.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Vis at effekten du må tilføre stanga i oppgave 7 (F · v) er lik den elektriske effekten i motstanden. Hva forteller det om Lenz' lov?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Nei. Fluksen endrer seg ikke når magneten ligger i ro, så spenningen er null.</li>
+              <li>Spenningen er størst der fluksen endrer seg raskest, like før og like etter at magneten er midt i spolen. Midt i spolen er fluksen størst og endrer seg ikke et øyeblikk, så ε = 0.</li>
+              <li>Dobbel fart gir dobbelt så høy topp (1,37 V blir 2,75 V med N = 200 og sterk magnet), og dobbelt så mange vindinger gir også dobbel topp.</li>
+              <li>Når nordpolen nærmer seg, blir den nærmeste enden av spolen en nordpol som frastøter magneten. Når magneten fjerner seg, blir den enden en pol som tiltrekker den. Spolen motvirker alltid endringen i fluks.</li>
+              <li>Fortegnet på spenningen og polene snur, fordi fluksen nå peker motsatt vei. Spolen motvirker fortsatt bevegelsen.</li>
+              <li>Φ = BA cos 60° = 0,20 · 0,010 · 0,50 = 1,0 mWb. Etterpå er Φ = 0,20 · 0,010 = 2,0 mWb. ε = ΔΦ/Δt = 1,0 · 10⁻³ / 0,10 = 10 mV.</li>
+              <li>ε = Blv = 3,0 · 0,40 · 0,50 = 0,60 V. I = ε/R = 0,30 A. Kraften fra feltet på stanga er F = BIL = 0,40 · 0,30 · 0,50 = 0,060 N, og den virker mot bevegelsen. Like stor kraft må til for å holde farten konstant.</li>
+              <li>F · v = 0,060 · 3,0 = 0,18 W, og εI = 0,60 · 0,30 = 0,18 W. Arbeidet du gjør mot den magnetiske kraften blir til elektrisk energi og varme i motstanden. Lenz' lov sørger for at energien er bevart.</li>
+            </ol>
+            <p><strong>Svar på Kraft 2-oppgavene (kort):</strong> 7.05: Φ<sub>maks</sub> = 0,32 · π · 0,040² ≈ 1,6 mWb når arealvektoren er parallell med feltet, null når den står vinkelrett, og −1,6 mWb når den er motsatt rettet. 30 % av maksimal fluks gir cos θ = 0,30, altså θ ≈ 73°. 7.07: ΔΦ = 0,15 · 0,12 = 0,018 Wb og ε = 400 · 0,018/2,4 = 3,0 V. 7.08: 0,34 mWb, 0,29 mWb og ε ≈ 0,23 mV. 7.09: ΔΦ = 0,10 · 0,050² = 2,5 · 10⁻⁴ Wb og ε = 0,50 mV. 7.10: ΔΦ/Δt = 0,040 Wb/s, B ≈ 16 T (urealistisk), og med 0,01 T må endringen skje på 0,31 ms. 7.20: ε = 0,75 · 0,45 · 0,46 ≈ 0,16 V og I ≈ 1,3 mA. 7.22: ε = IR = 72 mV, v = ε/(Bl) = 0,080 m/s, F = BIl ≈ 1,6 mN, og arbeidet per sekund (Fv) er lik effekttapet RI² ≈ 0,13 mW. 7.23: ε = Blv = 60 · 10⁻⁶ · 60 · 256 ≈ 0,92 V.</p>
+            <p><strong>Svar på ERGO 2-oppgavene (kort):</strong> 7.2: 60 mV. 7.7: Størst 0,38 mWb, minst 0. 7.10: 0,13 V. 7.19: 72 mV og 0,40 A. 7.26: 0,75 V. 7.32: 42 mV og 8,4 mA. 7.45: 0,16 V og 0,52 A. Begrepsoppgavene 7.1, 7.8, 7.17 og 7.22 handler om retningen etter Lenz' lov, og om at det bare induseres strøm når fluksen gjennom kretsen endrer seg.</p>
+            <p><strong>Bruk i timen:</strong> 90 minutter, som beskrevet over.</p>
+          </details>
+        </section>
+
+        <div class="tekst opplegg">
+          <h2>Vanlige misoppfatninger</h2>
+          <ul>
+            <li><strong>«Et sterkt felt gir stor spenning.»</strong> Det er endringen i fluks som teller. En magnet i ro inne i spolen gir ingen spenning.</li>
+            <li><strong>«Den induserte strømmen motvirker feltet.»</strong> Den motvirker endringen. Når magneten fjerner seg, er det induserte feltet i samme retning som magnetens felt.</li>
+            <li><strong>«Kobber er magnetisk.»</strong> Kobberrøret virker bare når magneten beveger seg. En magnet i ro i røret blir ikke holdt fast.</li>
+            <li><strong>Fortegnet i Faradays lov:</strong> Minustegnet er Lenz' lov. Mange elever regner med absoluttverdier og finner retningen med Lenz' lov etterpå. Det er helt greit.</li>
+          </ul>
+
+          <h2>Faglige merknader til læreren</h2>
+          <ul>
+            <li><strong>To måter å se det samme på:</strong> ε = Blv kan forklares med kraft på ladninger (qvB) og med endring av fluks. Begge gir samme svar for en rett leder, og det er verdt å vise begge.</li>
+            <li><strong>Terminalfart i røret:</strong> Bremsekraften øker med farten, så magneten når raskt en konstant fart der bremsekraften er like stor som tyngden. Da går all potensiell energi til varme i røret.</li>
+          </ul>
+
+          <h2>Differensiering</h2>
+          <ul>
+            <li><strong>Elever som trenger mer støtte:</strong> Arbeidsark-oppgave 1–5 og ERGO 2-oppgave 7.1 og 7.22. Gi en hjelpelapp med Φ = BA cos θ og en figur av Lenz' lov.</li>
+            <li><strong>Elever som vil ha mer:</strong> Arbeidsark-oppgave 8 og ERGO 2-oppgave 7.28 og 7.45. Spør også: «Hvorfor faller magneten saktere i et tykt kobberrør enn i et tynt?»</li>
+          </ul>
+
+          <h2>Kortere variant (60 minutter)</h2>
+          <p>Behold oppstarten, fluksen, Faradays lov og Lenz' lov, men ta bevegelsesindusert spenning i neste økt. Gi oppgaveregningen i lekse.</p>
+
+          <h2>Refleksjon etter økta</h2>
+          <ul>
+            <li>Klarte elevene å forklare kobberrøret selv i del 4?</li>
+            <li>Skilte de mellom fluks og endring i fluks i exit ticketen?</li>
+            <li>Hvilke feil var vanligst med retningen etter Lenz' lov?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
