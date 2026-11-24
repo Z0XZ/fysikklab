@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: gravitasjon og generell relativitetsteori – fysikklab.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 2: Newtons gravitasjonslov, gravitasjonsfelt, energi og unnslipningsfart, satellittbaner, ekvivalensprinsippet og svarte hull, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Gravitasjon</p>
+        <h1>Repetisjon: gravitasjon og generell relativitetsteori</h1>
+        <p class="ingress">Gravitasjonen styrer alt fra eplet som faller til satellittene og galaksene. Her er en oversikt over Newtons gravitasjonsteori, energibevaring i gravitasjonsfelt og hovedidéene i Einsteins generelle relativitetsteori, med blandede oppgaver og løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Newton og Einstein</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col"></th><th scope="col">Newtons gravitasjonsteori</th><th scope="col">Einsteins generelle relativitetsteori</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Hva er gravitasjon?</th><td>En kraft mellom masser</td><td>Masse krummer tidrommet, og legemer følger den «retteste» veien</td></tr>
+                <tr><th scope="row">Lys</th><td>Påvirkes ikke (eller halvparten så mye, som en partikkel)</td><td>Bøyes av masse: 1,75″ ved solranden</td></tr>
+                <tr><th scope="row">Tid</th><td>Går likt overalt</td><td>Går saktere i sterkere tyngdefelt (GPS må korrigeres)</td></tr>
+                <tr><th scope="row">Når trengs den?</th><td>Nesten alltid godt nok i solsystemet</td><td>Presisjonsmålinger, GPS, kompakte stjerner, svarte hull og gravitasjonsbølger</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Ekvivalensprinsippet:</strong> Et tyngdefelt kan ikke skilles fra en akselerasjon ved forsøk i et lite, lukket rom. Et system i fritt fall kan ikke skilles fra et system uten tyngdekraft.</p>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Gravitasjonsloven: F = GMm/r². Gravitasjonsfeltstyrke: g = GM/r².</li>
+            <li>Potensiell energi (null uendelig langt unna): E<sub>p</sub> = −GMm/r. Samlet energi: E = ½mv² − GMm/r.</li>
+            <li>Unnslipningsfart: v = √(2GM/r). Sirkelbane: v = √(GM/r), T = 2πr/v, E = −GMm/(2r).</li>
+            <li>Keplers tredje lov: T² = (4π²/(GM)) · r³.</li>
+            <li>Schwarzschild-radius: r<sub>s</sub> = 2GM/c². Lysavbøyning: α = 4GM/(c²b).</li>
+          </ul>
+          <p>Konstanter: G = 6,674 · 10⁻¹¹ N m²/kg², c = 3,00 · 10⁸ m/s. Jorda: 5,97 · 10²⁴ kg, radius 6,37 · 10⁶ m. Månen: 7,35 · 10²² kg, radius 1,74 · 10⁶ m, avstand fra jorda 3,84 · 10⁸ m. Sola: 1,99 · 10³⁰ kg.</p>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-gravitasjon.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Oppgavene følger rekkefølgen i kapitlet: kraft og felt, energi, satellitter og generell relativitetsteori.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Astronautene på romstasjonen svever fordi det ikke er tyngdekraft der oppe.<br>b) Jorda trekker like hardt på månen som månen trekker på jorda.<br>c) Unnslipningsfarten er større for en tung rakett enn for en lett.<br>d) En satellitt i lav bane har større fart enn en satellitt i høy bane.<br>e) Lys påvirkes ikke av tyngdekraften fordi fotoner ikke har masse.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut gravitasjonskraften mellom jorda og månen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor stor er gravitasjonsfeltstyrken i 400 km høyde? I hvilken høyde er den halvparten av verdien ved bakken?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Mellom jorda og månen er det et punkt der gravitasjonsfeltet fra jorda og fra månen er like sterke. Hvor langt fra sentrum av jorda ligger det?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Et prosjektil skytes rett opp med 6,0 km/s uten luftmotstand. Bruk energibevaring og finn største høyde over bakken. <a href="../sim/unnslipningsfart.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En geostasjonær satellitt går rundt jorda på et stjernedøgn (86 164 s). Finn radien og høyden over bakken, og farten. <a href="../sim/satellittbaner.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En romsonde går i sirkelbane 300 km over overflaten til månen. Finn farten og omløpstiden.</p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>Regn ut Schwarzschild-radien til jorda og til sola. Hvor stor ville massetettheten til jorda blitt hvis den ble presset sammen til en kule med denne radien? Forklar med ekvivalensprinsippet hvorfor lys også må bøyes av tyngdekraften. <a href="../sim/lysavboyning.html">Se Lys som bøyes av tyngdekraften.</a></p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Tyngdekraften er omtrent 90 % av den på bakken. Astronautene og stasjonen faller fritt sammen. b) Sann (Newtons tredje lov). c) Usann. Massen til raketten forsvinner fra likningen. d) Sann. v = √(GM/r) avtar med r. e) Usann. Lys bøyes av tyngdekraften, og det er målt.</li>
+              <li>F = GMm/r² = 6,674 · 10⁻¹¹ · 5,97 · 10²⁴ · 7,35 · 10²² / (3,84 · 10⁸)² ≈ 2,0 · 10²⁰ N.</li>
+              <li>g = GM/r² med r = 6,77 · 10⁶ m gir 8,69 N/kg. Halvparten av verdien ved bakken krever r = R√2, altså h = 0,414R ≈ 2640 km.</li>
+              <li>GM/r² = Gm/(d − r)² gir r/(d − r) = √(M/m) ≈ 9,0, så r ≈ 0,90d ≈ 3,46 · 10⁸ m fra sentrum av jorda.</li>
+              <li>½v² − GM/R = −GM/r gir r = 1/(1/R − v²/(2GM)). Høyden blir omtrent 2570 km (mgh ville gitt 1830 km).</li>
+              <li>r = (GMT²/(4π²))<sup>1/3</sup> ≈ 4,22 · 10⁷ m, så høyden er omtrent 35 800 km. v = 2πr/T ≈ 3,07 km/s.</li>
+              <li>r = 1,74 · 10⁶ + 3,0 · 10⁵ = 2,04 · 10⁶ m. v = √(GM/r) ≈ 1,55 km/s, og T = 2πr/v ≈ 8,3 · 10³ s ≈ 2,3 h.</li>
+              <li>r<sub>s</sub> = 2GM/c² gir 8,9 mm for jorda og 2,95 km for sola. Tettheten blir M/(4/3 · πr<sub>s</sub>³) ≈ 2 · 10³⁰ kg/m³. I en rakett som akselererer, treffer en lyspuls som sendes tvers over, lavere på motsatt vegg, så lyset følger en krum bane. Når akselerasjon og tyngdefelt ikke kan skilles fra hverandre, må lyset bøyes på samme måte i et tyngdefelt.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for fysikklab.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-gravitasjon.html">Gravitasjon og generell relativitetsteori</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

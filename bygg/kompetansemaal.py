@@ -39,7 +39,7 @@ F1 = [
 ]
 F2 = [
  ("planlegge, gjennomføre og videreutvikle forsøk, og analysere data og beregne usikkerhet for å vurdere gyldigheten av funn",
-  s("usikkerhet-beregning", "linearisering", "maaleusikkerhet", "videoanalyse") + o("sentripetal-mobil", "video-skratt-kast", "treff-koppen", "sentripetalkraft-snor", "elektrisk-felt-vannbad", "stromvekt", "magnetfelt-mobil", "e-over-m", "fallende-magnet", "planck-lysdioder", "reaksjonstid") + p("regresjon", "monte-carlo")),
+  s("usikkerhet-beregning", "linearisering", "maaleusikkerhet", "videoanalyse") + o("sentripetal-mobil", "video-skratt-kast", "treff-koppen", "sentripetalkraft-snor", "elektrisk-felt-vannbad", "stromvekt", "magnetfelt-mobil", "e-over-m", "fallende-magnet", "planck-lysdioder", "jupiters-maner", "fritt-fall-mobil", "reaksjonstid") + p("regresjon", "monte-carlo")),
  ("presentere sentrale elementer i ny viten i fysikk som er et resultat av internasjonalt forskningssamarbeid, og vurdere hvordan slikt samarbeid bidrar i kunnskapsutviklingen", []),
  ("bruke numeriske metoder og programmering til å utforske og modellere fysiske fenomener",
   p("grunnkurs", "horisontalt-kast", "bil-luftmotstand", "sirkelbevegelse", "satellittbane", "regresjon", "monte-carlo", "elektrisk-felt", "partikkelbane", "biot-savart", "ekte-data") + s("luftmotstand")),
@@ -50,11 +50,11 @@ F2 = [
  ("beskrive elektriske og magnetiske felt og gjøre rede for krefter på objekter med masse og ladning i slike felt",
   s("elektrisk-felt", "ladd-kule", "avboyning", "elektrostatisk-pingpong", "millikan", "magnetfelt-bane", "fartsvelger", "syklotron", "e-over-m", "stromhuske", "magnetfelt-ledere") + o("elektrisk-felt-vannbad", "stromvekt", "magnetfelt-mobil", "e-over-m", "repetisjon-felt", "begrep-felt") + p("elektrisk-felt", "partikkelbane", "biot-savart")),
  ("gjøre rede for energibevaring i gravitasjonelle sentralfelt og bruke dette til å beregne bevegelse i slike felt",
-  s("unnslipningsfart", "satellittbaner") + p("satellittbane")),
+  s("unnslipningsfart", "satellittbaner") + o("energi-gravitasjonsfelt", "jupiters-maner", "repetisjon-gravitasjon", "begrep-gravitasjon") + p("satellittbane")),
  ("utforske ulike måter å indusere elektromotorisk spenning og strøm, og analysere resultatene", s("magnet-og-spole", "generator") + o("fallende-magnet")),
  ("forklare hvordan induksjon kan inngå i bærekraftig energiproduksjon og vurdere anvendelser av induksjon i dagliglivet", s("generator")),
  ("beskrive de sentrale prinsippene i den spesielle og generelle relativitetsteorien og gjøre rede for hvordan disse har endret vår forståelse av tid, rom og felt",
-  s("lysklokke", "myoner", "samtidighet", "tog-og-tunnel", "romreise", "relativistisk-bevegelsesmengde", "elektron", "gps", "ekvivalensprinsippet", "lysavboyning") + o("lengdekontraksjon", "relativistisk-bevegelsesmengde", "repetisjon-relativitet", "begrep-relativitet")),
+  s("lysklokke", "myoner", "samtidighet", "tog-og-tunnel", "romreise", "relativistisk-bevegelsesmengde", "elektron", "gps", "ekvivalensprinsippet", "lysavboyning") + o("lengdekontraksjon", "relativistisk-bevegelsesmengde", "repetisjon-relativitet", "begrep-relativitet", "generell-relativitet", "fritt-fall-mobil", "repetisjon-gravitasjon", "begrep-gravitasjon")),
  ("gjøre rede for hva som skiller kvanteobjekter fra klassiske objekter, og beskrive situasjoner der kvanteeffekter observeres", s("fotoelektrisk", "dobbeltspalte") + o("planck-lysdioder")),
  ("utforske og analysere en selvvalgt teoretisk eller praktisk problemstilling i fysikk, og presentere viktige prinsipper, sammenhenger og konsekvenser",
   p("ekte-data", "grunnkurs")),

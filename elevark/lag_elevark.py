@@ -24,12 +24,16 @@ KUN_OPPGAVER = {
     "opplegg/lengdekontraksjon": "Lengdekontraksjon – arbeidsark",
     "opplegg/relativistisk-bevegelsesmengde": "Relativistisk bevegelsesmengde og energi – arbeidsark",
     "opplegg/intro-bevegelsesmengde": "Bevegelsesmengde og impuls – arbeidsark",
+    "opplegg/generell-relativitet": "Generell relativitetsteori – arbeidsark",
+    "opplegg/energi-gravitasjonsfelt": "Energi i gravitasjonsfeltet – arbeidsark",
 }
 # QR-koden på arbeidsarkene peker til simuleringen, ikke til lærersiden
 QR = {
     "opplegg/lengdekontraksjon": ("sim/tog-og-tunnel", "Tog og tunnel"),
     "opplegg/relativistisk-bevegelsesmengde": ("sim/relativistisk-bevegelsesmengde", "Simuleringen"),
     "opplegg/intro-bevegelsesmengde": ("sim/impuls", "Myk landing"),
+    "opplegg/generell-relativitet": ("sim/ekvivalensprinsippet", "Ekvivalensprinsippet"),
+    "opplegg/energi-gravitasjonsfelt": ("sim/unnslipningsfart", "Unnslipningsfart"),
 }
 SVARHOYDE = {"programmering": "1.4cm"}
 
@@ -381,7 +385,7 @@ RETTELSER = {
     "opplegg/ballistisk-pendel": [("$I$ støtet", "I støtet"), ("$mv = (m$ + M)V", "$mv = (m + M)V$"), ("= (m$ + M)g · $L(1 - \\cos  θ)$", "= (m + M)g \\cdot L(1 - \\cos θ)$")],
     "opplegg/eggslipp": [("poeng = 10 · høyde i cm / masse i gram",
         "$\\displaystyle \\text{poeng} = 10 \\cdot \\frac{\\text{høyde i cm}}{\\text{masse i gram}}$")],
-    "*": [("verktøyet under", "verktøyet på nettsiden"), ("\\section*{Oppgaver til elevene}", "\\section*{Oppgaver}")],
+    "*": [("verktøyet under", "verktøyet på nettsiden"), (" $km/s$", "~km/s"), ("\\section*{Oppgaver til elevene}", "\\section*{Oppgaver}")],
     "opplegg/repetisjon-felt": [("blandede oppgaver med løsningsforslag.", "blandede oppgaver."),
         ("Hver oppgave har en lenke til en simulering der du kan sjekke svaret.", "Simuleringene i fotnotene kan du bruke til å sjekke svarene.")],
     "opplegg/kraftsensorer": [("Skriv inn i tabellen under.", r"""Skriv inn i tabellen.

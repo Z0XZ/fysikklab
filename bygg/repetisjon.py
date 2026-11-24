@@ -293,3 +293,46 @@ side("repetisjon-relativitet", "Repetisjon: spesiell relativitetsteori", "Fysikk
       "γ = 1,667. p = γmv = 1,667 · 1,673 · 10⁻²⁷ · 0,80 · 3,00 · 10⁸ ≈ 6,7 · 10⁻¹⁹ kg m/s. Det er γ ≈ 1,67 ganger den klassiske verdien.",
       "Δm/Δt = P/c² = 3,83 · 10²⁶/(3,00 · 10⁸)² ≈ 4,3 · 10⁹ kg/s, over fire millioner tonn per sekund. På 10 milliarder år (3,16 · 10¹⁷ s) blir det 1,3 · 10²⁷ kg, som er 0,07 % av massen."],
      BRUK.format(bt="begrep-relativitet.html", btnavn="Spesiell relativitetsteori"))
+
+# ---------- Fysikk 2: Gravitasjon og generell relativitetsteori ----------
+side("repetisjon-gravitasjon", "Repetisjon: gravitasjon og generell relativitetsteori", "Fysikk 2 · Gravitasjon",
+     "Repetisjon i Fysikk 2: Newtons gravitasjonslov, gravitasjonsfelt, energi og unnslipningsfart, satellittbaner, ekvivalensprinsippet og svarte hull, med blandede oppgaver og løsningsforslag.",
+     "Gravitasjonen styrer alt fra eplet som faller til satellittene og galaksene. Her er en oversikt over Newtons gravitasjonsteori, energibevaring i gravitasjonsfelt og hovedidéene i Einsteins generelle relativitetsteori, med blandede oppgaver og løsningsforslag.",
+     """  <h2>Newton og Einstein</h2>
+  <div class="tabell-ramme">
+    <table class="sim-tabell alle tekst-tabell">
+      <thead><tr><th scope="col"></th><th scope="col">Newtons gravitasjonsteori</th><th scope="col">Einsteins generelle relativitetsteori</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Hva er gravitasjon?</th><td>En kraft mellom masser</td><td>Masse krummer tidrommet, og legemer følger den «retteste» veien</td></tr>
+        <tr><th scope="row">Lys</th><td>Påvirkes ikke (eller halvparten så mye, som en partikkel)</td><td>Bøyes av masse: 1,75″ ved solranden</td></tr>
+        <tr><th scope="row">Tid</th><td>Går likt overalt</td><td>Går saktere i sterkere tyngdefelt (GPS må korrigeres)</td></tr>
+        <tr><th scope="row">Når trengs den?</th><td>Nesten alltid godt nok i solsystemet</td><td>Presisjonsmålinger, GPS, kompakte stjerner, svarte hull og gravitasjonsbølger</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><strong>Ekvivalensprinsippet:</strong> Et tyngdefelt kan ikke skilles fra en akselerasjon ved forsøk i et lite, lukket rom. Et system i fritt fall kan ikke skilles fra et system uten tyngdekraft.</p>""",
+     ["Gravitasjonsloven: F = GMm/r². Gravitasjonsfeltstyrke: g = GM/r².",
+      "Potensiell energi (null uendelig langt unna): E<sub>p</sub> = −GMm/r. Samlet energi: E = ½mv² − GMm/r.",
+      "Unnslipningsfart: v = √(2GM/r). Sirkelbane: v = √(GM/r), T = 2πr/v, E = −GMm/(2r).",
+      "Keplers tredje lov: T² = (4π²/(GM)) · r³.",
+      "Schwarzschild-radius: r<sub>s</sub> = 2GM/c². Lysavbøyning: α = 4GM/(c²b)."],
+     "Konstanter: G = 6,674 · 10⁻¹¹ N m²/kg², c = 3,00 · 10⁸ m/s. Jorda: 5,97 · 10²⁴ kg, radius 6,37 · 10⁶ m. Månen: 7,35 · 10²² kg, radius 1,74 · 10⁶ m, avstand fra jorda 3,84 · 10⁸ m. Sola: 1,99 · 10³⁰ kg.",
+     "Oppgavene følger rekkefølgen i kapitlet: kraft og felt, energi, satellitter og generell relativitetsteori.",
+     [("forklar", "Begrep", "Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Astronautene på romstasjonen svever fordi det ikke er tyngdekraft der oppe.<br>b) Jorda trekker like hardt på månen som månen trekker på jorda.<br>c) Unnslipningsfarten er større for en tung rakett enn for en lett.<br>d) En satellitt i lav bane har større fart enn en satellitt i høy bane.<br>e) Lys påvirkes ikke av tyngdekraften fordi fotoner ikke har masse."),
+      ("test", "Regn", "Regn ut gravitasjonskraften mellom jorda og månen."),
+      ("test", "Regn", "Hvor stor er gravitasjonsfeltstyrken i 400 km høyde? I hvilken høyde er den halvparten av verdien ved bakken?"),
+      ("test", "Regn", "Mellom jorda og månen er det et punkt der gravitasjonsfeltet fra jorda og fra månen er like sterke. Hvor langt fra sentrum av jorda ligger det?"),
+      ("test", "Regn", "Et prosjektil skytes rett opp med 6,0 km/s uten luftmotstand. Bruk energibevaring og finn største høyde over bakken. <a href=\"../sim/unnslipningsfart.html\">Sjekk med simuleringen.</a>"),
+      ("test", "Regn", "En geostasjonær satellitt går rundt jorda på et stjernedøgn (86 164 s). Finn radien og høyden over bakken, og farten. <a href=\"../sim/satellittbaner.html\">Sjekk med simuleringen.</a>"),
+      ("test", "Regn", "En romsonde går i sirkelbane 300 km over overflaten til månen. Finn farten og omløpstiden."),
+      ("utfordring", "Sammensatt", "Regn ut Schwarzschild-radien til jorda og til sola. Hvor stor ville massetettheten til jorda blitt hvis den ble presset sammen til en kule med denne radien? Forklar med ekvivalensprinsippet hvorfor lys også må bøyes av tyngdekraften. <a href=\"../sim/lysavboyning.html\">Se Lys som bøyes av tyngdekraften.</a>"),
+     ],
+     ["a) Usann. Tyngdekraften er omtrent 90 % av den på bakken. Astronautene og stasjonen faller fritt sammen. b) Sann (Newtons tredje lov). c) Usann. Massen til raketten forsvinner fra likningen. d) Sann. v = √(GM/r) avtar med r. e) Usann. Lys bøyes av tyngdekraften, og det er målt.",
+      "F = GMm/r² = 6,674 · 10⁻¹¹ · 5,97 · 10²⁴ · 7,35 · 10²² / (3,84 · 10⁸)² ≈ 2,0 · 10²⁰ N.",
+      "g = GM/r² med r = 6,77 · 10⁶ m gir 8,69 N/kg. Halvparten av verdien ved bakken krever r = R√2, altså h = 0,414R ≈ 2640 km.",
+      "GM/r² = Gm/(d − r)² gir r/(d − r) = √(M/m) ≈ 9,0, så r ≈ 0,90d ≈ 3,46 · 10⁸ m fra sentrum av jorda.",
+      "½v² − GM/R = −GM/r gir r = 1/(1/R − v²/(2GM)). Høyden blir omtrent 2570 km (mgh ville gitt 1830 km).",
+      "r = (GMT²/(4π²))<sup>1/3</sup> ≈ 4,22 · 10⁷ m, så høyden er omtrent 35 800 km. v = 2πr/T ≈ 3,07 km/s.",
+      "r = 1,74 · 10⁶ + 3,0 · 10⁵ = 2,04 · 10⁶ m. v = √(GM/r) ≈ 1,55 km/s, og T = 2πr/v ≈ 8,3 · 10³ s ≈ 2,3 h.",
+      "r<sub>s</sub> = 2GM/c² gir 8,9 mm for jorda og 2,95 km for sola. Tettheten blir M/(4/3 · πr<sub>s</sub>³) ≈ 2 · 10³⁰ kg/m³. I en rakett som akselererer, treffer en lyspuls som sendes tvers over, lavere på motsatt vegg, så lyset følger en krum bane. Når akselerasjon og tyngdefelt ikke kan skilles fra hverandre, må lyset bøyes på samme måte i et tyngdefelt."],
+     BRUK.format(bt="begrep-gravitasjon.html", btnavn="Gravitasjon og generell relativitetsteori"))

@@ -1,0 +1,54 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/jupiters-maner.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Gravitasjon}{Jupiters måner og Keplers tredje lov}{https://fysikklab.no/opplegg/jupiters-maner.html}{Opplegget på nett}
+
+I 1610 oppdaget Galileo fire måner som gikk rundt Jupiter. Med en god kikkert kan du se dem selv, som små prikker på rad ved siden av planeten. Fra baneradiene og omløpstidene kan dere veie Jupiter: Newtons gravitasjonslov gir massen fra stigningstallet til en rett linje.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Vise at $T^{2}$ er proporsjonal med $a^{3}$ for månene til Jupiter (Keplers tredje lov).
+\item Bestemme massen til Jupiter fra stigningstallet.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Del A: En kikkert ($10 \times 50$ eller bedre) på stativ, eller et lite teleskop, og noen klare kvelder når Jupiter er synlig.
+\item Del A, alternativ: Stellarium eller et annet planetariumsprogram, der dere kan stille klokka fram time for time.
+\item Del B: Bare verktøyet på nettsiden, med tabellverdier.
+\end{itemize}
+
+\section*{Teorien}
+
+En måne med massen $m$ går i en tilnærmet sirkelbane med radius $a$ rundt Jupiter, som har massen $M$. Gravitasjonskraften gir sentripetalkraften: $GMm/a^{2} = m(2π/T)^{2}a$. Det gir $T^{2} = (4π^{2}/(GM)) \cdot a^{3}$. Grafen av $T^{2}$ mot $a^{3}$ er en rett linje gjennom origo, og stigningstallet $k$ gir massen $M = 4π^{2}/(Gk)$. Massen til månen forsvinner.
+
+\section*{Del A: Observer månene}
+
+\begin{enumerate}
+\item Finn Jupiter og tegn posisjonen til månene som prikker på en linje gjennom planeten. Mål avstanden fra Jupiter i jupiterdiametre. Noter dato og klokkeslett.
+\item Gjenta samme tid hver kveld, eller flere ganger i løpet av en kveld. I Stellarium kan dere gjøre dette for hver time over flere døgn.
+\item For hver måne: Den største avstanden fra Jupiter er baneradien $a$. Tiden fra den er lengst ut på én side til den er lengst ut på samme side igjen, er omløpstiden $T$.
+\item Gjør om $a$ fra jupiterdiametre til kilometer. Jupiters diameter er omtrent 143 000~km.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Callisto er omtrent 4,5 ganger så langt unna Jupiter som Io. Hvor mange ganger så lang omløpstid tror du den har?
+\svar
+\oppgave \fase{test}{Mål}Fyll inn egne observasjoner eller eksemplet. Ligger punktene på en rett linje gjennom origo? Hvilken masse får dere for Jupiter?
+\svar
+\oppgave \fase{forklar}{Forklar}Utled $T^{2} = (4π^{2}/(GM)) \cdot a^{3}$. Hvorfor kan vi finne massen til Jupiter, men ikke massen til månene?
+\svar
+\oppgave \fase{test}{Regn}Hvor mange ganger større enn jordas masse ($5{,}97 \cdot 10^{24}\,\mathrm{kg}$) er Jupiters masse?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke feilkilder er det i egne observasjoner? Hvorfor er det lurt å bruke grafen og ikke bare én måne?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Månen vår har baneradius $3{,}84 \cdot 10^{8}\,\mathrm{m}$ og omløpstid 27,3 døgn. Bruk det samme til å finne jordas masse.
+\svar
+\end{oppgaveliste}
+
+\end{document}

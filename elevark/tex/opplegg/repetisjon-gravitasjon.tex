@@ -1,0 +1,63 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/repetisjon-gravitasjon.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Gravitasjon}{Repetisjon: gravitasjon og generell relativitetsteori}{https://fysikklab.no/opplegg/repetisjon-gravitasjon.html}{Opplegget på nett}
+
+Gravitasjonen styrer alt fra eplet som faller til satellittene og galaksene. Her er en oversikt over Newtons gravitasjonsteori, energibevaring i gravitasjonsfelt og hovedidéene i Einsteins generelle relativitetsteori, med blandede oppgaver og løsningsforslag.
+
+\section*{Newton og Einstein}
+
+\begin{center}\small
+\begin{tabularx}{\linewidth}{YYY}
+\toprule
+\textbf{} & \textbf{Newtons gravitasjonsteori} & \textbf{Einsteins generelle relativitetsteori} \\
+\midrule
+Hva er gravitasjon? & En kraft mellom masser & Masse krummer tidrommet, og legemer følger den «retteste» veien \\
+Lys & Påvirkes ikke (eller halvparten så mye, som en partikkel) & Bøyes av masse: 1,75″ ved solranden \\
+Tid & Går likt overalt & Går saktere i sterkere tyngdefelt (GPS må korrigeres) \\
+Når trengs den? & Nesten alltid godt nok i solsystemet & Presisjonsmålinger, GPS, kompakte stjerner, svarte hull og gravitasjonsbølger \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{Ekvivalensprinsippet:} Et tyngdefelt kan ikke skilles fra en akselerasjon ved forsøk i et lite, lukket rom. Et system i fritt fall kan ikke skilles fra et system uten tyngdekraft.
+
+\section*{Formler}
+
+\begin{itemize}
+\item Gravitasjonsloven: $F = GMm/r^{2}$. Gravitasjonsfeltstyrke: $g = GM/r^{2}$.
+\item Potensiell energi (null uendelig langt unna): $E_{\mathrm{p}} = -GMm/r$. Samlet energi: $E = \tfrac{1}{2}mv^{2} - GMm/r$.
+\item Unnslipningsfart: $v = \sqrt{2GM/r}$. Sirkelbane: $v = \sqrt{GM/r}$, $T = 2πr/v$, $E = -GMm/(2r)$.
+\item Keplers tredje lov: $T^{2} = (4π^{2}/(GM)) \cdot r^{3}$.
+\item Schwarzschild-radius: $r_{\mathrm{s}} = 2GM/c^{2}$. Lysavbøyning: $α = 4GM/(c^{2}b)$.
+\end{itemize}
+
+Konstanter: $G = 6{,}674 \cdot 10^{-11}\,\mathrm{N\,m^{2}/kg^{2}}$, $c = 3{,}00 \cdot 10^{8}\,\mathrm{m/s}$. Jorda: $5{,}97 \cdot 10^{24}\,\mathrm{kg}$, radius $6{,}37 \cdot 10^{6}\,\mathrm{m}$. Månen: $7{,}35 \cdot 10^{22}\,\mathrm{kg}$, radius $1{,}74 \cdot 10^{6}\,\mathrm{m}$, avstand fra jorda $3{,}84 \cdot 10^{8}\,\mathrm{m}$. Sola: $1{,}99 \cdot 10^{30}\,\mathrm{kg}$.
+
+\section*{Oppgaver}
+
+Oppgavene følger rekkefølgen i kapitlet: kraft og felt, energi, satellitter og generell relativitetsteori.
+
+\begin{oppgaveliste}
+\oppgave \fase{forklar}{Begrep}Er påstandene sanne eller usanne? Begrunn svaret.
+
+a) Astronautene på romstasjonen svever fordi det ikke er tyngdekraft der oppe.\newline b) Jorda trekker like hardt på månen som månen trekker på jorda.\newline c) Unnslipningsfarten er større for en tung rakett enn for en lett.\newline d) En satellitt i lav bane har større fart enn en satellitt i høy bane.\newline e) Lys påvirkes ikke av tyngdekraften fordi fotoner ikke har masse.
+\svar
+\oppgave \fase{test}{Regn}Regn ut gravitasjonskraften mellom jorda og månen.
+\svar
+\oppgave \fase{test}{Regn}Hvor stor er gravitasjonsfeltstyrken i 400~km høyde? I hvilken høyde er den halvparten av verdien ved bakken?
+\svar
+\oppgave \fase{test}{Regn}Mellom jorda og månen er det et punkt der gravitasjonsfeltet fra jorda og fra månen er like sterke. Hvor langt fra sentrum av jorda ligger det?
+\svar
+\oppgave \fase{test}{Regn}Et prosjektil skytes rett opp med 6,0~km/s uten luftmotstand. Bruk energibevaring og finn største høyde over bakken. Sjekk med simuleringen.\footnote{\url{fysikklab.no/sim/unnslipningsfart.html}}
+\svar
+\oppgave \fase{test}{Regn}En geostasjonær satellitt går rundt jorda på et stjernedøgn (86 164~s). Finn radien og høyden over bakken, og farten. Sjekk med simuleringen.\footnote{\url{fysikklab.no/sim/satellittbaner.html}}
+\svar
+\oppgave \fase{test}{Regn}En romsonde går i sirkelbane 300~km over overflaten til månen. Finn farten og omløpstiden.
+\svar
+\oppgave \fase{utfordring}{Sammensatt}Regn ut Schwarzschild-radien til jorda og til sola. Hvor stor ville massetettheten til jorda blitt hvis den ble presset sammen til en kule med denne radien? Forklar med ekvivalensprinsippet hvorfor lys også må bøyes av tyngdekraften. Se Lys som bøyes av tyngdekraften.\footnote{\url{fysikklab.no/sim/lysavboyning.html}}
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Begrepstest: gravitasjon og generell relativitetsteori – fysikklab.no</title>
+  <meta name="description" content="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om gravitasjon, satellitter, energi i gravitasjonsfelt og generell relativitetsteori. Tilbakemelding med en gang.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Gravitasjon</p>
+        <h1>Begrepstest: gravitasjon og generell relativitetsteori</h1>
+        <p class="ingress">Åtte spørsmål om gravitasjon og generell relativitetsteori. Mange av dem handler om vanlige misoppfatninger, for eksempel at det ikke er tyngdekraft i rommet.</p>
+
+        <ol class="bt-liste">
+          <li class="bt" data-riktig="3">
+            <p>Astronautene på romstasjonen, 400 km over bakken, svever. Hvor stor er tyngdekraften fra jorda på dem?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Tyngdekraften når uendelig langt, og avtar bare med 1/r².">Null, for det er ingen tyngdekraft i rommet.</li>
+              <li data-hvorfor="400 km er lite i forhold til jordradien på 6370 km.">Omtrent 10 % av den på bakken.</li>
+              <li>Omtrent 90 % av den på bakken.</li>
+              <li data-hvorfor="Tyngdekraften avtar litt med høyden.">Like stor som på bakken.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> g = GM/r² er omtrent 8,7 N/kg i 400 km høyde, rundt 90 % av verdien ved bakken. Astronautene svever fordi de og romstasjonen faller fritt sammen rundt jorda.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Jorda har 81 ganger så stor masse som månen. Hvordan er kraften jorda trekker på månen med, sammenlignet med kraften månen trekker på jorda med?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det er akselerasjonen til månen som blir 81 ganger så stor, ikke kraften.">81 ganger så stor.</li>
+              <li>9 ganger så stor.</li>
+              <li data-hvorfor="Månen lager tidevannet på jorda.">Månen trekker ikke på jorda.</li>
+              <li>Like stor.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Newtons tredje lov: Kreftene er like store og motsatt rettet, F = GMm/r². Månen får mye større akselerasjon fordi den har mindre masse.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>To satellitter går i sirkelbane rundt jorda, den ene i 400 km høyde og den andre i 20 000 km høyde. Hvilken har størst fart?</p>
+            <ol class="bt-valg">
+              <li>Den laveste.</li>
+              <li data-hvorfor="Massen til satellitten forsvinner fra likningen.">Det avhenger av massen til satellittene.</li>
+              <li data-hvorfor="Den har lengre vei, men mye lengre omløpstid.">Den høyeste, for den må gå en lengre vei rundt.</li>
+              <li>De har samme fart.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> GMm/r² = mv²/r gir v = √(GM/r). Farten avtar med avstanden. Romstasjonen har 7,7 km/s, mens GPS-satellittene har omtrent 3,9 km/s.</p></details>
+          </li>
+          <li class="bt" data-riktig="1">
+            <p>En lett og en tung rakett skal skytes opp fra jorda uten motor etter oppskytingen. Hvilken trenger størst startfart for å slippe unna for godt?</p>
+            <ol class="bt-valg">
+              <li>De trenger samme fart, 11,2 km/s.</li>
+              <li>Den lette.</li>
+              <li data-hvorfor="Med stor nok startfart er den samlede energien null eller positiv.">Ingen av dem kan slippe unna uten motor.</li>
+              <li data-hvorfor="Den trenger også mer energi, men den har like mye mer kinetisk energi per fart.">Den tunge, fordi tyngdekraften er størst på den.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: A.</strong> ½mv² − GMm/R = 0 gir v = √(2GM/R). Massen m til raketten forsvinner, så unnslipningsfarten er den samme for alle.</p></details>
+          </li>
+          <li class="bt" data-riktig="2">
+            <p>Et legeme i gravitasjonsfeltet til jorda har samlet energi E = E<sub>k</sub> + E<sub>p</sub> = −5 MJ. Hva kan du si?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Det slipper bare unna hvis den samlede energien er null eller positiv.">Det vil slippe unna, fordi det har kinetisk energi.</li>
+              <li>Det er bundet til jorda og kan ikke slippe unna.</li>
+              <li data-hvorfor="Da ville E vært mye mer negativ, omtrent −62,6 MJ per kg.">Det ligger i ro på bakken.</li>
+              <li data-hvorfor="Fortegnet kommer av at vi har valgt E<sub>p</sub> = 0 uendelig langt unna.">Det er umulig, energi kan ikke være negativ.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: B.</strong> Med E<sub>p</sub> = −GMm/r er E<sub>p</sub> negativ overalt, og går mot null langt unna. Negativ samlet energi betyr at legemet ikke kan komme uendelig langt unna. Det er bundet, for eksempel i en ellipsebane.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Du våkner i et lukket rom uten vinduer og står på gulvet med vanlig vekt. Kan du med forsøk inne i rommet avgjøre om du er på jorda, eller i en rakett som akselererer med 9,81 m/s² ute i rommet?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Lyset bøyes like mye i begge tilfellene.">Ja, ved å sende en lysstråle tvers over rommet.</li>
+              <li data-hvorfor="Vekta viser det samme i begge tilfellene.">Ja, ved å veie deg selv.</li>
+              <li data-hvorfor="Ballen faller med 9,81 m/s² mot gulvet i begge tilfellene.">Ja, ved å slippe en ball og se om den faller.</li>
+              <li>Nei, ikke i et lite rom.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Det er ekvivalensprinsippet: Et tyngdefelt og en akselerasjon kan ikke skilles fra hverandre ved forsøk i et lite, lukket rom. Bare i et svært stort rom kan små forskjeller i tyngdekraften (tidevannskrefter) avsløre jorda.</p></details>
+          </li>
+          <li class="bt" data-riktig="3">
+            <p>Under en solformørkelse ses en stjerne like ved kanten av sola. Hvor ser den ut til å være, sammenlignet med der den egentlig er?</p>
+            <ol class="bt-valg">
+              <li data-hvorfor="Stjernen er like ved siden av sola, ikke bak den.">Den kan ikke ses, fordi sola er i veien.</li>
+              <li data-hvorfor="Lyset bøyes inn mot sola, så det ser ut til å komme fra lenger ut.">Litt nærmere sola.</li>
+              <li>Litt lenger ut fra sola.</li>
+              <li data-hvorfor="Eddington målte forskyvningen i 1919.">Akkurat der den er, for lys påvirkes ikke av tyngdekraften.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: C.</strong> Lyset bøyes inn mot sola. Når det kommer fram, ser det ut til å komme fra en retning lenger ut. Ved solranden er avbøyningen 1,75″, dobbelt så mye som en newtonsk lyspartikkel ville fått.</p></details>
+          </li>
+          <li class="bt" data-riktig="4">
+            <p>Klokkene i GPS-satellittene påvirkes av både farten og tyngdefeltet. Hvilken effekt har tyngdefeltet alene?</p>
+            <ol class="bt-valg">
+              <li>Klokkene stopper.</li>
+              <li data-hvorfor="Tyngdefeltet gir den største effekten for GPS.">Ingen effekt. Bare farten betyr noe.</li>
+              <li data-hvorfor="Det er omvendt.">Klokkene går saktere, fordi de er høyt oppe.</li>
+              <li>Klokkene går fortere, fordi tyngdefeltet er svakere der oppe.</li>
+            </ol>
+            <details class="bt-forklaring"><summary>Svar og forklaring</summary><p><strong>Riktig svar: D.</strong> Tiden går saktere jo sterkere tyngdefeltet er. Satellittklokkene er i et svakere felt og går 45,7 µs per døgn for fort. Farten gjør at de går 7,2 µs for sakte, så til sammen går de 38,5 µs per døgn for fort.</p></details>
+          </li>
+        </ol>
+
+        <div class="tekst opplegg">
+          <h2>Til læreren</h2>
+          <p>Spørsmålene passer som oppstart, underveis i timen eller som exit ticket. Hvert feil svar gir en kort tilbakemelding om hvorfor det er feil. Ingenting lagres, og ingen svar sendes noe sted. Poengsummen teller bare første svar på hvert spørsmål.</p>
+          <p>Til klassediskusjon: Vis ett spørsmål på tavla, la elevene svare med fingrene (1–4) eller på lapp, la dem diskutere to og to, og stem på nytt. Spørsmålene er laget for fysikklab.no. Se også <a href="../sim/satellittbaner.html">Satellittbaner</a>, <a href="../sim/unnslipningsfart.html">Unnslipningsfart</a>, <a href="../sim/ekvivalensprinsippet.html">Ekvivalensprinsippet</a> og <a href="../sim/lysavboyning.html">Lys som bøyes av tyngdekraften</a>.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/begrepstest.js"></script>
+</body>
+</html>

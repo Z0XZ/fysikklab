@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jupiters måner og Keplers tredje lov – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 2: Observer Jupiters fire store måner, eller bruk tabellverdier, plott T² mot a³ og bestem massen til Jupiter med Newtons gravitasjonslov.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Gravitasjon</p>
+        <h1>Jupiters måner og Keplers tredje lov</h1>
+        <p class="ingress">I 1610 oppdaget Galileo fire måner som gikk rundt Jupiter. Med en god kikkert kan du se dem selv, som små prikker på rad ved siden av planeten. Fra baneradiene og omløpstidene kan dere veie Jupiter: Newtons gravitasjonslov gir massen fra stigningstallet til en rett linje.</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter med tabellverdier, eller noen kvelder med egne observasjoner</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+            <div><dt>Utstyr</dt><dd>Kikkert på stativ eller lite teleskop, eller et planetariumsprogram som Stellarium (gratis)</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/satellittbaner.html">Satellittbaner</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Vise at T² er proporsjonal med a³ for månene til Jupiter (Keplers tredje lov).</li>
+            <li>Bestemme massen til Jupiter fra stigningstallet.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Del A: En kikkert (10 × 50 eller bedre) på stativ, eller et lite teleskop, og noen klare kvelder når Jupiter er synlig.</li>
+            <li>Del A, alternativ: Stellarium eller et annet planetariumsprogram, der dere kan stille klokka fram time for time.</li>
+            <li>Del B: Bare verktøyet under, med tabellverdier.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>En måne med massen m går i en tilnærmet sirkelbane med radius a rundt Jupiter, som har massen M. Gravitasjonskraften gir sentripetalkraften: GMm/a² = m(2π/T)²a. Det gir T² = (4π²/(GM)) · a³. Grafen av T² mot a³ er en rett linje gjennom origo, og stigningstallet k gir massen M = 4π²/(Gk). Massen til månen forsvinner.</p>
+
+          <h2 data-tid="20 min">Del A: Observer månene</h2>
+          <ol>
+            <li>Finn Jupiter og tegn posisjonen til månene som prikker på en linje gjennom planeten. Mål avstanden fra Jupiter i jupiterdiametre. Noter dato og klokkeslett.</li>
+            <li>Gjenta samme tid hver kveld, eller flere ganger i løpet av en kveld. I Stellarium kan dere gjøre dette for hver time over flere døgn.</li>
+            <li>For hver måne: Den største avstanden fra Jupiter er baneradien a. Tiden fra den er lengst ut på én side til den er lengst ut på samme side igjen, er omløpstiden T.</li>
+            <li>Gjør om a fra jupiterdiametre til kilometer. Jupiters diameter er omtrent 143 000 km.</li>
+          </ol>
+        </div>
+
+        <figure id="ju" class="sim egne-data">
+          <h2 data-tid="10 min">Del B: Resultater</h2>
+          <div data-tabell></div>
+          <dl class="sim-tall">
+            <div><dt>stigningstall k for T² mot a³</dt><dd id="ju-stig"></dd></div>
+            <div><dt>massen til Jupiter M = 4π²/(Gk)</dt><dd id="ju-M"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">«Fyll inn eksempel» bruker omtrentlige tabellverdier for Io, Europa, Ganymedes og Callisto. Linjen er tilpasset gjennom origo, og G = 6,674 · 10⁻¹¹ N m²/kg².</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/jupiters-maner.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Callisto er omtrent 4,5 ganger så langt unna Jupiter som Io. Hvor mange ganger så lang omløpstid tror du den har?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Fyll inn egne observasjoner eller eksemplet. Ligger punktene på en rett linje gjennom origo? Hvilken masse får dere for Jupiter?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Utled T² = (4π²/(GM)) · a³. Hvorfor kan vi finne massen til Jupiter, men ikke massen til månene?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Hvor mange ganger større enn jordas masse (5,97 · 10²⁴ kg) er Jupiters masse?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke feilkilder er det i egne observasjoner? Hvorfor er det lurt å bruke grafen og ikke bare én måne?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Månen vår har baneradius 3,84 · 10⁸ m og omløpstid 27,3 døgn. Bruk det samme til å finne jordas masse.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>T er proporsjonal med a<sup>3/2</sup>, så T blir 4,5<sup>1,5</sup> ≈ 9,5 ganger så lang. Med tabellverdiene: 16,7 døgn mot 1,77 døgn.</li>
+              <li>Punktene ligger svært nær linjen. Eksemplet gir stigningstall 3,12 · 10⁻¹⁶ s²/m³ og M = 1,90 · 10²⁷ kg.</li>
+              <li>GMm/a² = m · 4π²a/T². Massen m til månen står på begge sider og forsvinner. Bevegelsen avhenger bare av massen til det sentrale legemet.</li>
+              <li>1,90 · 10²⁷ / 5,97 · 10²⁴ ≈ 318 ganger.</li>
+              <li>Månene ligger nesten aldri helt ute på siden når vi observerer, så største avstand blir ofte for liten. Avstandene anslås på øyet, og omløpstiden krever mange observasjoner. Grafen bruker alle månene og jevner ut tilfeldige feil, og en linje gjennom origo sjekker samtidig at modellen stemmer.</li>
+              <li>M = 4π²a³/(GT²) = 4π² · (3,84 · 10⁸)³ / (6,674 · 10⁻¹¹ · (27,3 · 86 400)²) ≈ 6,0 · 10²⁴ kg.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter med tabellverdiene. Egne observasjoner kan gis som et prosjekt over en uke når Jupiter er synlig om kvelden. Stellarium gjør det mulig å «observere» i timen. Se også simuleringen <a href="../sim/satellittbaner.html">Satellittbaner</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/jupiter.js"></script>
+</body>
+</html>

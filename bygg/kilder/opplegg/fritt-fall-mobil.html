@@ -1,0 +1,85 @@
+tittel: Fritt fall og ekvivalensprinsippet med mobilen – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Slipp en mobil ned på en pute og se at akselerometeret viser null i fritt fall. Mål falltiden, bestem g, og koble resultatet til ekvivalensprinsippet.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Generell relativitetsteori
+script: maaletabell.js,frittfallmobil.js
+meny: undervisningsopplegg.html
+---
+<h1>Fritt fall og ekvivalensprinsippet med mobilen</h1>
+<p class="ingress">Når mobilen ligger på bordet, viser akselerometeret 9,8 m/s². Når den faller fritt, viser det nesten null, selv om mobilen akselererer nedover med g. Mobilen kan ikke skille fritt fall fra å sveve i rommet. Det er ekvivalensprinsippet, og dere kan måle det i klasserommet.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+    <div><dt>Utstyr</dt><dd>Mobil med phyphox, en tykk pute eller madrass, målebånd, gjerne en vannflaske med hull</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/ekvivalensprinsippet.html">Ekvivalensprinsippet</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Se at et akselerometer i fritt fall viser null, og forklare hvorfor.</li>
+    <li>Bestemme g fra falltiden.</li>
+    <li>Knytte resultatet til ekvivalensprinsippet i generell relativitetsteori.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Mobil med appen phyphox (gratis) og eksperimentet «Akselerasjon med g».</li>
+    <li>En tykk pute, madrass eller dyne å slippe mobilen ned på. Slipp aldri mobilen på gulvet.</li>
+    <li>Målebånd. Til demonstrasjonen: en plastflaske med et par små hull nær bunnen, full av vann.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Et akselerometer måler kraften som skal til for å holde en liten masse inni sensoren på plass, delt på massen. På bordet må mobilen dytte massen oppover med en kraft som er like stor som tyngden, og sensoren viser 9,8 m/s². I fritt fall faller sensoren og massen like fort, og ingenting trenger å dytte. Sensoren viser 0. Inne i mobilen er det ingen forskjell på fritt fall og å sveve i et rom uten tyngdekraft. Ekvivalensprinsippet sier at ingen forsøk kan avgjøre forskjellen lokalt.</p>
+
+  <h2 data-tid="5 min">Demonstrasjon: vannflaska</h2>
+  <p>Hold flaska over en bøtte eller ute. Vannet spruter ut av hullene. Slipp flaska: Mens den faller, slutter vannet å renne. Vannet og flaska faller like fort, og vannet «veier» ingenting i forhold til flaska.</p>
+
+  <h2 data-tid="20 min">Framgangsmåte</h2>
+  <ol>
+    <li>Start «Akselerasjon med g» og legg mobilen på bordet. Hva viser den? Hold den i hånda og løft den raskt opp og ned.</li>
+    <li>Hold mobilen flatt med skjermen opp 50 cm over puta. Start målingen og slipp. Se på grafen for den totale akselerasjonen: Den faller til nesten null mens mobilen faller, og får en topp når den treffer puta.</li>
+    <li>Les av hvor lenge akselerasjonen er nær null. Det er falltiden t. Mål fallhøyden fra undersiden av mobilen til toppen av puta.</li>
+    <li>Gjenta fra 70, 90 og 110 cm. Skriv inn i tabellen.</li>
+    <li>Ekstra: Kast mobilen forsiktig rett opp noen centimeter og ta den imot. Er akselerasjonen også null på vei opp?</li>
+  </ol>
+</div>
+
+<figure id="ff" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div data-tabell></div>
+  <dl class="sim-tall">
+    <div><dt>g fra stigningstallet (2 · stigningstall)</dt><dd id="ff-g"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">h = ½gt², så grafen av h mot t² er en rett linje gjennom origo med stigningstall g/2. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="10 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hva viser akselerometeret mens mobilen faller: 9,8 m/s², 0 eller noe annet? Hva viser det når mobilen er kastet opp og er på vei oppover?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvilken verdi får dere for g?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Mobilen akselererer med g nedover, men akselerometeret viser null. Forklar hvordan det henger sammen.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor slutter vannet å renne ut av flaska mens den faller? Hva har det med astronautene i romstasjonen å gjøre?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Mobilen viser sjelden helt null i fallet. Hva kan være grunnen? Hvordan påvirker det avlesningen av falltiden?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Ekvivalensprinsippet sier at fritt fall i et tyngdefelt og å sveve i rommet ikke kan skilles fra hverandre. En astronaut i et lukket romskip i fritt fall rundt jorda har en svært nøyaktig akselerometer i hver ende av romskipet. Kan hun likevel finne ut at hun er nær jorda?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Nær null, både på vei ned og på vei opp. Mobilen er i fritt fall så lenge den ikke berøres, også når den går oppover.</li>
+      <li>Eksemplet gir g = 9,83 m/s² fra grafen. Enkeltmålingene gir mellom 9,70 og 9,96 m/s².</li>
+      <li>Sensoren måler ikke akselerasjonen direkte, men kraften som trengs for å holde den lille massen inni sensoren på plass. I fritt fall faller massen og resten av mobilen med samme akselerasjon, så ingen kraft trengs. På bordet viser den 9,8 m/s² fordi bordet dytter mobilen oppover. phyphox-eksperimentet «uten g» trekker fra 9,8 m/s² og viser derfor −9,8 m/s² i fritt fall.</li>
+      <li>Vannet og flaska faller like fort, så vannet trykker ikke på bunnen og presses ikke ut. Astronautene og romstasjonen faller like fort rundt jorda, så de svever i forhold til stasjonen, selv om tyngdekraften der oppe er omtrent 90 % av den på bakken.</li>
+      <li>Mobilen roterer litt eller slippes ikke helt rent, og luftmotstanden er ikke helt null. Overgangene i grafen er ikke skarpe, så det er vanskelig å se nøyaktig når fallet starter og slutter. Noen hundredels sekund feil gir noen prosent feil i g.</li>
+      <li>Ja, i prinsippet. Tyngdekraften er litt sterkere i den enden som er nærmest jorda, så de to akselerometrene vil vise en svært liten forskjell (tidevannskraft). Ekvivalensprinsippet gjelder bare i et lite område der feltet er tilnærmet homogent.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45 minutter, gjerne som starten på generell relativitetsteori, før eller etter simuleringen <a href="../sim/ekvivalensprinsippet.html">Ekvivalensprinsippet</a>. Hold fallhøyden lav og ha en tykk pute, så mobilene ikke blir skadet. Flaskedemonstrasjonen gjøres best ute eller over en bøtte.</p>
+  </details>
+</section>
