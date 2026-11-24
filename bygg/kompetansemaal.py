@@ -21,7 +21,7 @@ VITEN_KV = v("https://www.viten.no/kvantefysikk", "Kvantefysikk (viten.no)", "Be
 
 F1 = [
  ("planlegge og gjennomføre forsøk, analysere data og trekke konklusjoner",
-  o("reaksjonstid", "pendel-svingetid", "video-fall", "g-med-mobil", "video-rulling", "video-muffins", "friksjonsforsok", "kraftsensorer", "newton2-vogn", "kraftsensor", "heis-mobil", "effekt-trapp", "sprettball-energi", "energi-skraaplan", "ballistisk-pendel", "rekyl-vogner", "ballstabel", "videoanalyse-stot", "eggslipp") + s("maaleusikkerhet", "videoanalyse", "usikkerhet-beregning", "linearisering") + p("regresjon", "monte-carlo")),
+  o("reaksjonstid", "pendel-svingetid", "video-fall", "g-med-mobil", "video-rulling", "video-muffins", "friksjonsforsok", "kraftsensorer", "newton2-vogn", "kraftsensor", "heis-mobil", "effekt-trapp", "sprettball-energi", "energi-skraaplan", "ballistisk-pendel", "rekyl-vogner", "ballstabel", "videoanalyse-stot", "eggslipp", "statisk-elektrisitet") + s("maaleusikkerhet", "videoanalyse", "usikkerhet-beregning", "linearisering") + p("regresjon", "monte-carlo")),
  ("vurdere, bruke og lage modeller til å beskrive og forutsi fysiske fenomener",
   s("luftmotstand", "fritt-fall", "linearisering") + o("video-muffins", "pendel-svingetid", "ballstabel") + p("bevegelse-maledata", "variable-krefter")),
  ("vurdere ulike påstander og argumenter om energi og klima i samfunnsaktuelle problemsstillinger", []),
@@ -35,7 +35,7 @@ F1 = [
   s("vognstot", "bakkestot", "impuls", "ballistisk-pendel", "kuler-i-snorer", "ballstabel", "rekyl") + o("intro-bevegelsesmengde", "kraftsensor", "eggslipp", "ballistisk-pendel", "rekyl-vogner", "ballstabel", "videoanalyse-stot", "repetisjon-bevegelsesmengde", "begrep-bevegelsesmengde") + p("vognstot", "rakett")),
  ("utforske hvordan energi kan gå fra en form til en annen, og vurdere energikvalitet og virkningsgrad i slike overganger",
   s("sprettball", "trappelop", "berg-og-dal") + o("effekt-trapp", "sprettball-energi", "energi-skraaplan", "repetisjon-energi") + p("energi-friksjon")),
- ("gjøre rede for sammenhengene mellom ladning, spenning og elektrisk energi og utforske effektomsetning i elektriske kretser", []),
+ ("gjøre rede for sammenhengene mellom ladning, spenning og elektrisk energi og utforske effektomsetning i elektriske kretser", o("statisk-elektrisitet")),
  ("forstå begrepet temperatur og forklare hvordan tilført varme til et system fører til temperaturendring i dette systemet", []),
  ("utforske, sammenligne og beskrive stråling fra legemer med ulik temperatur og overflate", []),
  ("bruke modeller av strålingsbalansen til jorda til å gjøre beregninger, og vurdere hvordan endringer på jordoverflaten og i atmosfæren påvirker denne balansen", []),
@@ -53,7 +53,7 @@ F2 = [
  ("gjøre rede for hvordan krefter kan forårsake krumlinjet bevegelse, og bruke dette i beregninger",
   s("sirkelbevegelse", "dosert-sving", "loddrett-sirkel", "satellittbaner") + o("gravitasjonsloven", "sentripetal-mobil", "sentripetalkraft-snor", "repetisjon-mekanikk-2", "begrep-kast-sirkel") + p("sirkelbevegelse")),
  ("beskrive elektriske og magnetiske felt og gjøre rede for krefter på objekter med masse og ladning i slike felt",
-  s("elektrisk-felt", "ladd-kule", "avboyning", "elektrostatisk-pingpong", "millikan", "magnetfelt-bane", "fartsvelger", "syklotron", "e-over-m", "stromhuske", "magnetfelt-ledere") + o("elektrisk-felt-vannbad", "stromvekt", "magnetfelt-mobil", "e-over-m", "repetisjon-felt", "begrep-felt") + p("elektrisk-felt", "partikkelbane", "biot-savart")),
+  s("elektrisk-felt", "ladd-kule", "avboyning", "elektrostatisk-pingpong", "millikan", "magnetfelt-bane", "fartsvelger", "syklotron", "e-over-m", "stromhuske", "magnetfelt-ledere") + o("statisk-elektrisitet", "elektrisk-felt-vannbad", "stromvekt", "magnetfelt-mobil", "e-over-m", "repetisjon-felt", "begrep-felt") + p("elektrisk-felt", "partikkelbane", "biot-savart")),
  ("gjøre rede for energibevaring i gravitasjonelle sentralfelt og bruke dette til å beregne bevegelse i slike felt",
   s("unnslipningsfart", "satellittbaner") + o("gravitasjonsloven", "energi-gravitasjonsfelt", "jupiters-maner", "repetisjon-gravitasjon", "begrep-gravitasjon") + p("satellittbane")),
  ("utforske ulike måter å indusere elektromotorisk spenning og strøm, og analysere resultatene", s("magnet-og-spole", "generator") + o("faraday-lenz", "generator-transformator", "fallende-magnet", "transformator", "repetisjon-induksjon", "begrep-induksjon")),
