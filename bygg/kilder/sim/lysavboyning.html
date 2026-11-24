@@ -1,0 +1,56 @@
+tittel: Lys som bøyes av tyngdekraften – fysikklab.no
+beskrivelse: Simulering med oppgaver i Fysikk 2: En lysstråle passerer sola, en hvit dverg, en nøytronstjerne eller et svart hull. Avbøyningsvinkelen 4GM/(c²b), Eddingtons solformørkelse i 1919 og gravitasjonslinser.
+fagside: simuleringer.html
+fag: Simuleringer
+tema: <a href="../simuleringer.html?tema=generell-relativitetsteori">Fysikk 2 · Generell relativitetsteori</a>
+script: lysavboyning.js
+meny: simuleringer.html
+---
+<h1>Lys som bøyes av tyngdekraften</h1>
+<p class="ingress">Ifølge generell relativitetsteori krummer masse rommet, og lys som går forbi en stjerne, får banen sin bøyd. Under solformørkelsen i 1919 målte Arthur Eddington at stjerner nær solranden så ut til å være flyttet litt, akkurat så mye som Einstein hadde forutsagt. Hvor stor blir avbøyningen ved andre himmellegemer?</p>
+
+<figure class="sim sim-bred">
+  <canvas id="la-scene" class="statisk forhold-lav" role="img" aria-label="En lysstråle fra en stjerne bøyes når den passerer et himmellegeme, og observatøren ser stjernen et annet sted enn der den er."></canvas>
+  <dl class="sim-tall tre">
+    <div><dt>avbøyning α = 4GM/(c²b)</dt><dd id="la-alfa"></dd></div>
+    <div><dt>newtonsk lyspartikkel (halvparten)</dt><dd id="la-newton"></dd></div>
+    <div><dt>Schwarzschild-radius 2GM/c²</dt><dd id="la-rs"></dd></div>
+    <div><dt>avstand fra sentrum b</dt><dd id="la-bkm"></dd></div>
+    <div><dt>svakt felt (formelen gjelder)?</dt><dd id="la-svak"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <label for="la-legeme">Himmellegeme<select id="la-legeme"><option value="jorda">Jorda</option><option value="sola" selected>Sola</option><option value="dverg">Hvit dverg (1 solmasse)</option><option value="noytron">Nøytronstjerne (1,4 solmasser)</option><option value="hull">Svart hull (10 solmasser)</option></select></label>
+    <label for="la-b">Avstand b <output id="la-b-ut" for="la-b"></output><input id="la-b" type="range" min="1" max="20" step="0.5" value="1"></label>
+  </div>
+  <canvas id="la-graf" class="statisk forhold-lav" role="img" aria-label="Avbøyningsvinkelen mot avstanden fra sentrum, med generell relativitetsteori og en newtonsk modell."></canvas>
+  <ul class="forklaring graf-forklaring">
+    <li><span class="linje f1"></span><span>Generell relativitetsteori</span></li>
+    <li><span class="linje f2 stiplet"></span><span>Newtonsk lyspartikkel</span></li>
+  </ul>
+  <figcaption class="sim-hint">Avstanden b er målt fra sentrum av legemet, i radier (for det svarte hullet i Schwarzschild-radier). Formelen α = 4GM/(c²b) gjelder når b er mye større enn Schwarzschild-radien. Den hvite dvergen har her radius 6400 km og nøytronstjernen 12 km. Tegningen forstørrer vinkelen så den synes.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>En stjerne står nesten bak sola. Ser den ut til å være nærmere sola eller lenger unna enn den egentlig er?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Regn ut avbøyningen for lys som streifer solranden (b = 6,96 · 10<sup>8</sup> m). Sjekk med simuleringen. Hvor stor blir den i dobbel avstand?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor kunne Eddington bare måle dette under en total solformørkelse? Hvorfor var det viktig at resultatet var 1,75″ og ikke 0,87″?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Sammenlign avbøyningen ved overflaten av jorda, sola, en hvit dverg og en nøytronstjerne. Hva er det som avgjør hvor stor avbøyningen blir?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Regn ut Schwarzschild-radien til sola og til jorda. Hva ville skjedd om sola ble presset sammen til en kule med denne radien?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Lys fra en fjern galakse går forbi en galaksehop på begge sider og kommer fram til oss. Hva ser vi? Søk opp «gravitasjonslinse» eller «Einsteinring».</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Lenger unna. Lyset bøyes inn mot sola, så når det kommer fram til oss, ser det ut til å komme fra en retning lenger ut fra sola.</li>
+      <li>α = 4 · 6,674 · 10<sup>−11</sup> · 1,989 · 10<sup>30</sup> / ((3,00 · 10<sup>8</sup>)² · 6,96 · 10<sup>8</sup>) = 8,49 · 10<sup>−6</sup> rad = 1,75″. I dobbel avstand blir den halvparten, 0,88″, fordi α er omvendt proporsjonal med b.</li>
+      <li>Stjernene nær sola synes bare når sollyset er blokkert. Eddington sammenlignet bilder tatt under formørkelsen med bilder av de samme stjernene om natta et halvt år senere. En lyspartikkel med Newtons gravitasjonslov gir halvparten, 0,87″. Resultatet nær 1,75″ støttet Einstein og ikke Newton.</li>
+      <li>Ved overflaten: jorda 0,00057″, sola 1,75″ og hvit dverg omtrent 190″. For nøytronstjernen gir formelen 39°, men så nær er feltet for sterkt til at formelen gjelder. Avbøyningen er uansett svært stor. Det som avgjør, er forholdet M/b, altså hvor kompakt legemet er.</li>
+      <li>r<sub>s</sub> = 2GM/c² gir 2,95 km for sola og 8,9 mm for jorda. Presset sammen til denne radien ville legemet blitt et svart hull: Ikke engang lys kan unnslippe innenfor r<sub>s</sub>.</li>
+      <li>Galaksehopen virker som en linse. Vi kan se flere bilder av den samme galaksen, buer, eller en hel ring (Einsteinring) når alt står på linje. Gravitasjonslinser brukes til å finne mørk materie og til å se svært fjerne galakser.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer etter <a href="ekvivalensprinsippet.html">Ekvivalensprinsippet</a>. Formelen gjelder i svakt felt. Nær et svart hull blir avbøyningen mye større, og lyset kan til og med gå i sirkel rundt hullet (fotonsfæren ved 1,5 r<sub>s</sub>).</p>
+  </details>
+</section>

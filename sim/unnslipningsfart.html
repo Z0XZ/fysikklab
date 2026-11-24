@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Unnslipningsfart – fysikklab.no</title>
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Skyt et prosjektil rett opp fra jorda, månen eller Mars. Energibevaring i gravitasjonsfeltet, Ep = −GMm/r, største høyde og unnslipningsfart.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=gravitasjon">Fysikk 2 · Gravitasjon</a></p>
+        <h1>Unnslipningsfart</h1>
+        <p class="ingress">Hvor fort må noe skytes opp for at det aldri skal komme ned igjen? Nær bakken kan vi bruke E<sub>p</sub> = mgh, men langt ute blir tyngdekraften svakere. Da må vi bruke E<sub>p</sub> = −GMm/r. Skyt rett opp, uten luftmotstand, og se hvor langt prosjektilet kommer.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="un-scene" class="forhold-lav" role="img" aria-label="En planet til venstre og et prosjektil som går rett ut fra overflaten, med avstander i planetradier."></canvas>
+          <canvas id="un-graf" class="statisk forhold-lav" role="img" aria-label="Potensiell energi per kilogram mot avstanden fra sentrum, med den samlede energien som en vannrett linje."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f2"></span><span>E<sub>p</sub> = −GM/r (per kg)</span></li>
+            <li><span class="linje stiplet"></span><span>Tilnærmingen E<sub>p</sub> ≈ gh</span></li>
+            <li><span class="linje f1"></span><span>Samlet energi E</span></li>
+          </ul>
+          <dl class="sim-tall tre">
+            <div><dt>unnslipningsfart √(2GM/R)</dt><dd id="un-ve"></dd></div>
+            <div><dt>største høyde</dt><dd id="un-hmaks"></dd></div>
+            <div><dt>største høyde med E<sub>p</sub> = mgh</dt><dd id="un-hgh"></dd></div>
+            <div><dt>høyde nå</dt><dd id="un-h"></dd></div>
+            <div><dt>fart nå</dt><dd id="un-fart"></dd></div>
+            <div><dt>samlet energi per kg</dt><dd id="un-E"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="un-legeme">Himmellegeme<select id="un-legeme"><option value="jorda" selected>Jorda</option><option value="manen">Månen</option><option value="mars">Mars</option></select></label>
+            <label for="un-v">Startfart v₀ <output id="un-v-ut" for="un-v"></output><input id="un-v" type="range" min="0" max="15" step="0.1" value="5"></label>
+            <div class="sim-knapper"><button id="un-start" class="knapp" type="button">Start</button><button id="un-nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Bevegelsen er regnet ut steg for steg med a = −GM/r². Simuleringen stopper når prosjektilet er 12 planetradier fra sentrum. Animasjonen varer omtrent 10 s, uansett hvor lang tid turen tar i virkeligheten. Den loddrette streken i grafen er den kinetiske energien, avstanden mellom E<sub>p</sub> og E.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/sim/unnslipningsfart.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Et prosjektil skytes opp fra jorda med 5 km/s. Gir E<sub>p</sub> = mgh for stor eller for liten største høyde?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Prøv 3, 5, 8 og 10 km/s. Sammenlign største høyde med tilnærmingen mgh. Når er forskjellen liten?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er E<sub>p</sub> = −GMm/r negativ? Hva betyr det at den samlede energien er negativ, null eller positiv?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Vis at unnslipningsfarten er v = √(2GM/R), og regn den ut for jorda, månen og Mars. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Bruk energibevaring og regn ut hvor høyt et prosjektil kommer når det skytes opp fra jorda med 8,0 km/s.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Månen har ingen atmosfære, mens jorda har det. Bruk unnslipningsfarten og farten til gassmolekyler (noen hundre meter per sekund) til å forklare hvorfor.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>For liten. Tyngdekraften blir svakere med høyden, så prosjektilet kommer høyere enn mgh forutsier.</li>
+              <li>Største høyde (simulering mot mgh): 3 km/s gir 494 km mot 458 km, 5 km/s 1590 km mot 1270 km, 8 km/s 6670 km mot 3260 km, og 10 km/s 25 400 km mot 5090 km. Forskjellen er liten så lenge høyden er liten i forhold til jordradien.</li>
+              <li>Nullpunktet er valgt uendelig langt unna, og der er E<sub>p</sub> = 0. Nærmere må man gjøre et arbeid for å komme ut dit, så E<sub>p</sub> er negativ. Negativ samlet energi betyr at prosjektilet er bundet og kommer tilbake. Null eller positiv energi betyr at det slipper unna.</li>
+              <li>½mv² − GMm/R = 0 gir v = √(2GM/R). Jorda 11,2 km/s, månen 2,38 km/s og Mars 5,03 km/s.</li>
+              <li>½v² − GM/R = −GM/r gir r = 1/(1/R − v²/(2GM)) = 13 040 km fra sentrum, altså omtrent 6670 km over bakken.</li>
+              <li>Unnslipningsfarten fra månen er bare 2,4 km/s. En del av gassmolekylene får høyere fart enn det, og over milliarder av år lekker gassen ut. Fra jorda må molekylene ha 11,2 km/s, og nesten ingen tunge molekyler kommer så fort. De letteste gassene, hydrogen og helium, lekker likevel sakte ut fra jorda også.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer til kompetansemålet om energibevaring i gravitasjonelle sentralfelt. Se også <a href="satellittbaner.html">Satellittbaner</a> og programmeringsoppgaven <a href="../programmering/python-satellittbane.html">Satellittbane</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/unnslipning.js"></script>
+</body>
+</html>

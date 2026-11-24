@@ -1,0 +1,62 @@
+tittel: Generator – fysikklab.no
+beskrivelse: Simulering med oppgaver i Fysikk 2: En spole roterer i et magnetfelt. Se fluksen og vekselspenningen, endre frekvens, vindinger, felt og areal, og finn ut hva som trengs for 230 V.
+fagside: simuleringer.html
+fag: Simuleringer
+tema: <a href="../simuleringer.html?tema=elektromagnetisk-induksjon">Fysikk 2 · Elektromagnetisk induksjon</a>
+script: generator.js
+meny: simuleringer.html
+---
+<h1>Generator</h1>
+<p class="ingress">Nesten all elektrisk energi lages i generatorer: En spole roterer i et magnetfelt, enten den drives av vann, vind eller damp. Fluksen gjennom spolen endrer seg hele tiden, og det blir indusert en vekselspenning. Hva bestemmer hvor stor spenningen blir?</p>
+
+<figure class="sim sim-bred">
+  <canvas id="gen-scene" class="forhold-lav" role="img" aria-label="En rektangulær spole roterer mellom en nordpol og en sørpol, med normalvektoren tegnet inn og en lyspære som lyser når spenningen er stor."></canvas>
+  <canvas id="gen-graf" class="statisk forhold-lav" role="img" aria-label="Den induserte spenningen og fluksen mot tiden over to perioder."></canvas>
+  <ul class="forklaring graf-forklaring">
+    <li><span class="linje f1"></span><span>Indusert spenning ε</span></li>
+    <li><span class="linje f2 stiplet"></span><span>Fluks NΦ (skalert)</span></li>
+  </ul>
+  <dl class="sim-tall tre">
+    <div><dt>toppspenning NBAω</dt><dd id="gen-emaks"></dd></div>
+    <div><dt>effektivverdi</dt><dd id="gen-eeff"></dd></div>
+    <div><dt>spenning nå</dt><dd id="gen-e"></dd></div>
+    <div><dt>største fluks NBA</dt><dd id="gen-phi"></dd></div>
+    <div><dt>periode</dt><dd id="gen-T"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <label for="gen-f">Omdreininger per sekund f <output id="gen-f-ut" for="gen-f"></output><input id="gen-f" type="range" min="0.5" max="60" step="0.5" value="2"></label>
+    <label for="gen-n">Antall vindinger N <output id="gen-n-ut" for="gen-n"></output><input id="gen-n" type="range" min="10" max="500" step="10" value="100"></label>
+    <label for="gen-b">Magnetfelt B <output id="gen-b-ut" for="gen-b"></output><input id="gen-b" type="range" min="0.05" max="1" step="0.05" value="0.2"></label>
+    <label for="gen-a">Areal A <output id="gen-a-ut" for="gen-a"></output><input id="gen-a" type="range" min="10" max="400" step="10" value="100"></label>
+    <label class="avkrysning" for="gen-komm"><input id="gen-komm" type="checkbox"> Kommutator (likestrøm)</label>
+    <div class="sim-knapper"><button id="gen-start" class="knapp" type="button">Start</button><button id="gen-nullstill" class="knapp lys" type="button">Nullstill</button></div>
+  </div>
+  <figcaption class="sim-hint">Fluksen er NΦ = NBA cos(ωt), der ω = 2πf er vinkelen mellom normalvektoren n og feltet per tid. Den induserte spenningen er ε = NBAω sin(ωt). Effektivverdien er toppspenningen delt på √2. Ved høy frekvens går animasjonen i sakte film, men tallene og grafen bruker den virkelige tiden.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>I hvilken stilling er spenningen størst: når spoleplanet står vinkelrett på feltet, eller når det er parallelt med feltet?</p></div></li>
+  <li><span class="fase test">Test</span><div><p>Trykk Start og sammenlign spolen med grafen. Hvor er fluksen størst, og hvor er spenningen størst? Stemmer det du gjettet?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Vis at ε = NBAω sin(ωt) når NΦ = NBA cos(ωt). Hvorfor blir spenningen størst når fluksen er null?</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Hva skjer med toppspenningen og med perioden når du dobler f? Når du dobler N, B eller A?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Et strømnett har 50 Hz og effektivverdi 230 V. Hvor stor må NBA være? Finn en kombinasjon i simuleringen som gir omtrent dette.</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Kryss av for «Kommutator». Hva gjør den med spenningen? Hvorfor trenger en sykkeldynamo eller et kraftverk ikke kommutator?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Når lyspæra er koblet til, går det strøm i spolen. Hvorfor blir det tyngre å dreie generatoren da? Hva betyr det for et vannkraftverk når mange slår på ovnen samtidig?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Spenningen er størst når spoleplanet er parallelt med feltet. Da er fluksen null, men den endrer seg raskest.</li>
+      <li>Fluksen er størst når normalvektoren peker langs feltet (spoleplanet står vinkelrett på feltet). Spenningen er størst en kvart periode senere.</li>
+      <li>ε = −d(NΦ)/dt = −NBA · (−ω sin(ωt)) = NBAω sin(ωt). Den deriverte av cosinus er størst i nullpunktene, så spenningen er størst når fluksen er null.</li>
+      <li>Dobbel f gir dobbel toppspenning og halv periode. Dobbel N, B eller A gir dobbel toppspenning, men samme periode. Med startverdiene (N = 100, B = 0,20 T, A = 100 cm², f = 2 Hz) er toppspenningen 2,51 V.</li>
+      <li>Toppspenningen er 230 · √2 ≈ 325 V, og ω = 2π · 50 = 314 s⁻¹. Da må NBA = 325/314 ≈ 1,04 Wb. Eksempel: N = 500, B = 0,55 T, A = 40 cm² gir NBA = 1,1 Wb og omtrent 345 V i topp, 244 V effektivt.</li>
+      <li>Kommutatoren snur tilkoblingen hver halve omdreining, så spenningen aldri skifter fortegn: Den blir pulserende likespenning. Dynamoer og kraftverk lager vekselspenning, og strømnettet bruker vekselstrøm, så de trenger ikke kommutator.</li>
+      <li>Strømmen i spolen gir en kraft fra magnetfeltet som etter Lenz' lov motvirker rotasjonen. Jo mer strøm, desto større arbeid må turbinen gjøre. Når forbruket øker, må kraftverket slippe mer vann gjennom turbinene for å holde farten og frekvensen oppe.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer etter Faradays lov og som grunnlag for kompetansemålet om induksjon i bærekraftig energiproduksjon. Se også <a href="magnet-og-spole.html">Magnet og spole</a>.</p>
+  </details>
+</section>

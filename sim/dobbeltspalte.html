@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dobbeltspalte med én partikkel om gangen – fysikklab.no</title>
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Send fotoner, elektroner eller klinkekuler én og én gjennom to spalter, og se interferensmønsteret bygge seg opp. Hva skjer når vi måler hvilken spalte partikkelen går gjennom?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=kvantefysikk">Fysikk 2 · Kvantefysikk</a></p>
+        <h1>Dobbeltspalte med én partikkel om gangen</h1>
+        <p class="ingress">Send partikler én og én mot en vegg med to smale spalter. Hver partikkel treffer skjermen i ett bestemt punkt, som en partikkel. Men etter tusenvis av treff dukker det opp et stripemønster, som fra bølger. Hva skjer med klinkekuler, og hva skjer hvis vi sjekker hvilken spalte hver partikkel går gjennom?</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="ds-scene" class="forhold-lav" role="img" aria-label="En kilde sender partikler mot en vegg med spalter. Treffene samles som prikker på en skjerm."></canvas>
+          <canvas id="ds-graf" class="statisk forhold-lav" role="img" aria-label="Fordelingen av treff på skjermen, med teorikurven."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>antall treff</dt><dd id="ds-n"></dd></div>
+            <div><dt>bølgelengde</dt><dd id="ds-lambda"></dd></div>
+            <div><dt>avstand mellom striper λL/d</dt><dd id="ds-dy"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="ds-type">Partikler<select id="ds-type"><option value="foton" selected>Fotoner</option><option value="elektron">Elektroner</option><option value="kule">Klinkekuler</option></select></label>
+            <label for="ds-oppsett" id="rad-oppsett">Spalter<select id="ds-oppsett"><option value="to" selected>To spalter</option><option value="en">Én spalte</option><option value="maal" id="rad-oppsett-hvem">To spalter, mål hvilken spalte</option></select></label>
+            <label for="ds-lam" id="rad-lam">Bølgelengde <output id="ds-lam-ut" for="ds-lam"></output><input id="ds-lam" type="range" min="400" max="700" step="10" value="550"></label>
+            <label for="ds-u" id="rad-u" hidden>Akselerasjonsspenning <output id="ds-u-ut" for="ds-u"></output><input id="ds-u" type="range" min="20" max="500" step="10" value="100"></label>
+            <label for="ds-d">Spalteavstand d <output id="ds-d-ut" for="ds-d"></output><input id="ds-d" type="range" min="0.1" max="0.5" step="0.05" value="0.25"></label>
+            <label for="ds-rate">Partikler per sekund<select id="ds-rate"><option value="10">10</option><option value="100" selected>100</option><option value="1000">1000</option></select></label>
+            <label class="avkrysning" for="ds-teori"><input id="ds-teori" type="checkbox"> Vis teorikurven</label>
+            <div class="sim-knapper"><button id="ds-start" class="knapp" type="button">Start</button><button id="ds-nullstill" class="knapp lys" type="button">Tøm skjermen</button></div>
+          </div>
+          <figcaption class="sim-hint">Avstanden til skjermen er L = 1,0 m. Spaltebredden er 0,08 mm for lys og 0,08 µm for elektroner, og spalteavstanden er i mm for lys og i µm for elektroner. Bølgelengden til elektronene er de Broglie-bølgelengden λ = h/p. Spaltene er tegnet mye større enn i virkeligheten. Hvert treff trekkes tilfeldig etter intensiteten fra bølgemodellen.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/sim/dobbeltspalte.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Vi sender klinkekuler gjennom to spalter. Hvordan ser mønsteret på skjermen ut? Hva tror du skjer med fotoner som sendes én og én?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Velg klinkekuler og trykk Start. Bytt så til fotoner med 10 partikler per sekund. Kan du se et mønster etter 50 treff? Etter 2000?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvert foton treffer ett punkt. Hvordan kan et enkelt foton «vite» om stripene? Hva er det som har bølgeegenskaper?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut avstanden mellom stripene for lys med λ = 550 nm og d = 0,25 mm. Sjekk med simuleringen. Hva skjer når du øker d eller λ?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Velg elektroner med akselerasjonsspenning 100 V. Regn ut de Broglie-bølgelengden. Hva skjer med stripene når spenningen økes til 400 V?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Velg «To spalter, mål hvilken spalte». Hva skjer med mønsteret? Sammenlign med én spalte.</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hvorfor ser vi aldri interferens med klinkekuler? Regn ut de Broglie-bølgelengden til en klinkekule på 5 g som triller med 1 m/s.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Klinkekulene gir to striper rett bak spaltene. Mange gjetter det samme for fotoner, men de gir mange striper.</li>
+              <li>Klinkekulene lager to striper. Fotonene ser tilfeldige ut i starten, men etter noen hundre treff kommer stripemønsteret fram, og etter et par tusen er det tydelig.</li>
+              <li>Det enkelte fotonet treffer ett punkt, men sannsynligheten for hvor det treffer, er gitt av en bølge som går gjennom begge spaltene og interfererer. Mønsteret viser seg først når vi har mange treff. Det er sannsynlighetsbølgen som har bølgeegenskaper.</li>
+              <li>Δy = λL/d = 550 · 10<sup>−9</sup> · 1,0 / 0,25 · 10<sup>−3</sup> = 2,2 mm. Større d gir tettere striper, og større λ gir bredere avstand.</li>
+              <li>p = √(2meU) og λ = h/p = 0,123 nm ved 100 V. Med d = 0,25 µm blir Δy = 0,49 mm. Ved 400 V blir λ halvparten (0,061 nm), og stripene kommer dobbelt så tett.</li>
+              <li>Stripene forsvinner. Mønsteret blir som summen av to enkeltspalter, nesten likt det fra én spalte. Når vi vet hvilken vei partikkelen gikk, er det ingen interferens mellom veiene.</li>
+              <li>λ = h/(mv) = 6,63 · 10<sup>−34</sup> / (0,005 · 1) ≈ 1,3 · 10<sup>−31</sup> m. Det er umulig små striper, mange størrelsesordener mindre enn et atom. Kulen oppfører seg derfor som en klassisk partikkel.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, gjerne i starten av kvantefysikken. Dobbeltspalteforsøket med enkeltelektroner er gjort i virkeligheten, og videoer av mønsteret som bygger seg opp, finnes på nettet. Modellen bruker Fraunhofer-tilnærmingen for to like spalter.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/dobbeltspalte.js"></script>
+</body>
+</html>

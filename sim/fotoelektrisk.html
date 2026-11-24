@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fotoelektrisk effekt – fysikklab.no</title>
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: Lys slår løs elektroner fra en metallplate. Endre bølgelengde, intensitet og metall, mål bremsespenningen og bestem Plancks konstant og løsrivningsarbeidet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=kvantefysikk">Fysikk 2 · Kvantefysikk</a></p>
+        <h1>Fotoelektrisk effekt</h1>
+        <p class="ingress">Når lys treffer en metallplate, kan det slå løs elektroner. Men sterkt rødt lys slår ikke løs et eneste elektron fra sink, mens svakt ultrafiolett lys gjør det. Dette kunne ikke forklares med lys som bølger. Einstein forklarte det med at lys kommer i fotoner med energien hf.</p>
+
+        <figure class="sim sim-bred">
+          <canvas id="fe-scene" class="forhold-lav" role="img" aria-label="Lys treffer en metallplate i et vakuumrør, og elektroner flyr mot en samleplate."></canvas>
+          <dl class="sim-tall tre">
+            <div><dt>fotonenergi hf</dt><dd id="fe-ef"></dd></div>
+            <div><dt>største kinetiske energi</dt><dd id="fe-ek"></dd></div>
+            <div><dt>største fart</dt><dd id="fe-v"></dd></div>
+            <div><dt>grensefrekvens</dt><dd id="fe-f0"></dd></div>
+            <div><dt>strøm</dt><dd id="fe-i"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="fe-lam">Bølgelengde λ <output id="fe-lam-ut" for="fe-lam"></output><input id="fe-lam" type="range" min="200" max="700" step="5" value="400"></label>
+            <label for="fe-int">Intensitet <output id="fe-int-ut" for="fe-int"></output><input id="fe-int" type="range" min="0" max="100" step="5" value="60"></label>
+            <label for="fe-u">Bremsespenning U <output id="fe-u-ut" for="fe-u"></output><input id="fe-u" type="range" min="0" max="5" step="0.02" value="0"></label>
+            <label for="fe-metall">Metall<select id="fe-metall"><option value="cesium">Cesium</option><option value="natrium" selected>Natrium</option><option value="kalsium">Kalsium</option><option value="sink">Sink</option><option value="kobber">Kobber</option></select></label>
+            <div class="sim-knapper"><button id="fe-start" class="knapp" type="button">Start</button></div>
+          </div>
+          <canvas id="fe-graf" class="statisk forhold-lav" role="img" aria-label="Graf over eU mot frekvensen med punktene du har lagret, og en linje gjennom dem."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f1"></span><span>Dine punkter og linje gjennom dem</span></li>
+            <li><span class="linje f2 stiplet"></span><span>Teori: E<sub>k,maks</sub> = hf − W</span></li>
+          </ul>
+          <dl class="sim-tall">
+            <div><dt>h fra stigningstallet</dt><dd id="fe-h"></dd></div>
+            <div><dt>W fra konstantleddet</dt><dd id="fe-w"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label class="avkrysning" for="fe-teori"><input id="fe-teori" type="checkbox"> Vis teorilinjen</label>
+            <div class="sim-knapper"><button id="fe-lagre" class="knapp" type="button">Lagre punkt (f, eU)</button><button id="fe-tom" class="knapp lys" type="button">Tøm punktene</button></div>
+          </div>
+          <figcaption class="sim-hint">Øk bremsespenningen til strømmen akkurat blir null, og lagre punktet. Da er eU lik den største kinetiske energien. Løsrivningsarbeidene er omtrentlige tabellverdier: cesium 2,1 eV, natrium 2,3 eV, kalsium 2,9 eV, sink 4,3 eV og kobber 4,7 eV. I modellen er energien til elektronene jevnt fordelt mellom null og den største verdien. Punktene lagres bare i denne nettleseren.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/sim/fotoelektrisk.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Natrium belyses med svakt blått lys og sterkt rødt lys. Hvilket lys slår løs flest elektroner? Hvilket gir elektroner med størst fart?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Prøv rødt og blått lys med ulik intensitet. Hva bestemmer om det kommer elektroner, og hva bestemmer hvor mange det kommer?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Forklar resultatet med fotoner. Hvorfor hjelper det ikke å skru opp intensiteten på rødt lys?</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Natrium belyses med lys på 400 nm. Regn ut fotonenergien, den største kinetiske energien og den største farten til elektronene. Sjekk med simuleringen.</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Velg natrium. For fem bølgelengder mellom 250 nm og 500 nm: Øk bremsespenningen til strømmen akkurat er null, og lagre punktet. Hvilke verdier får du for h og W?</p></div></li>
+          <li><span class="fase test">Undersøk</span><div><p>Bytt til sink. Hva skjer med grafen? Hva har linjene for ulike metaller felles, og hva er forskjellig?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hvilken grensebølgelengde har cesium og sink? Hvorfor brukes cesium i fotoceller som skal reagere på synlig lys?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Det svake blå lyset slår løs elektroner, det sterke røde ikke. Det blå lyset gir også størst fart. Hvor mange elektroner det blir, avhenger av intensiteten, men bare hvis fotonene har nok energi.</li>
+              <li>Bølgelengden (frekvensen) avgjør om det kommer elektroner. Intensiteten avgjør hvor mange, altså strømmen.</li>
+              <li>Hvert elektron får energi fra ett foton. Et foton med rødt lys har mindre energi enn løsrivningsarbeidet, uansett hvor mange fotoner det er. Mer intensitet betyr bare flere fotoner med for lite energi.</li>
+              <li>hf = hc/λ = 3,10 eV. E<sub>k,maks</sub> = 3,10 − 2,3 = 0,80 eV, og v = √(2E<sub>k</sub>/m) ≈ 530 km/s.</li>
+              <li>Punktene bør gi h ≈ 6,6 · 10<sup>−34</sup> Js og W ≈ 2,3 eV. For eksempel gir 250 nm eU = 2,66 V, 300 nm 1,83 V og 400 nm 0,80 V. Ved 550 nm eller mer kommer det ingen elektroner fra natrium.</li>
+              <li>Linjen for sink er parallell med linjen for natrium (samme stigningstall h), men forskjøvet nedover. Den krysser f-aksen ved 10,4 · 10<sup>14</sup> Hz i stedet for 5,6 · 10<sup>14</sup> Hz. Stigningstallet er det samme for alle metaller, mens løsrivningsarbeidet er forskjellig.</li>
+              <li>λ<sub>0</sub> = hc/W gir 590 nm for cesium og 288 nm for sink. Cesium reagerer på nesten hele det synlige spekteret, mens sink bare reagerer på ultrafiolett lys.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 30–45 minutter. Oppgave 5 tilsvarer det klassiske forsøket der man måler bremsespenningen for ulike farger. Se også forsøket <a href="../opplegg/planck-lysdioder.html">Plancks konstant med lysdioder</a>, der energien går den andre veien: fra elektroner til fotoner.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/fotoelektrisk.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+tittel: Magnet og spole – fysikklab.no
+beskrivelse: Simulering med oppgaver i Fysikk 2: Beveg en magnet gjennom en spole og se fluksen og den induserte spenningen. Faradays lov, Lenz' lov og induserte poler.
+fagside: simuleringer.html
+fag: Simuleringer
+tema: <a href="../simuleringer.html?tema=elektromagnetisk-induksjon">Fysikk 2 · Elektromagnetisk induksjon</a>
+script: magnetspole.js
+meny: simuleringer.html
+---
+<h1>Magnet og spole</h1>
+<p class="ingress">Dra magneten inn og ut av spolen, eller la den kjøre gjennom med jevn fart. Når fluksen gjennom spolen endrer seg, blir det indusert en spenning. Hvilken vei går strømmen, og hvorfor blir det to pulser med motsatt fortegn?</p>
+
+<figure class="sim sim-bred">
+  <canvas id="ms-scene" class="forhold-lav" role="img" aria-label="En stavmagnet på aksen til en spole, med et voltmeter under. Magneten kan dras med musa."></canvas>
+  <canvas id="ms-graf" class="statisk forhold-lav" role="img" aria-label="Den induserte spenningen og fluksen gjennom spolen mot tiden."></canvas>
+  <ul class="forklaring graf-forklaring">
+    <li><span class="linje f1"></span><span>Indusert spenning ε</span></li>
+    <li><span class="linje f2 stiplet"></span><span>Fluks NΦ (skalert)</span></li>
+  </ul>
+  <dl class="sim-tall tre">
+    <div><dt>posisjon (midten av spolen er 0)</dt><dd id="ms-z"></dd></div>
+    <div><dt>fart</dt><dd id="ms-fart"></dd></div>
+    <div><dt>fluks NΦ</dt><dd id="ms-phi"></dd></div>
+    <div><dt>indusert spenning ε</dt><dd id="ms-e"></dd></div>
+    <div><dt>største |ε| så langt</dt><dd id="ms-topp"></dd></div>
+    <div><dt>induserte poler i spolen</dt><dd id="ms-pol"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <label for="ms-n">Antall vindinger N <output id="ms-n-ut" for="ms-n"></output><input id="ms-n" type="range" min="50" max="500" step="50" value="200"></label>
+    <label for="ms-v">Fart gjennom spolen <output id="ms-v-ut" for="ms-v"></output><input id="ms-v" type="range" min="0.2" max="3" step="0.1" value="1"></label>
+    <label for="ms-magnet">Magnet<select id="ms-magnet"><option value="sterk" selected>Sterk</option><option value="svak">Svak</option></select></label>
+    <label for="ms-tempo">Avspilling<select id="ms-tempo"><option value="0.1" selected>Sakte film (1/10)</option><option value="0.25">Sakte (1/4)</option><option value="1">Sanntid</option></select></label>
+    <label class="avkrysning" for="ms-snu"><input id="ms-snu" type="checkbox"> Snu magneten</label>
+    <div class="sim-knapper"><button id="ms-start" class="knapp" type="button">Start</button><button id="ms-nullstill" class="knapp lys" type="button">Nullstill</button></div>
+  </div>
+  <figcaption class="sim-hint">Fluksen gjennom én vinding er modellert som Φ = Φ₀ / (1 + (z/a)²)^(3/2), med a = 2,5 cm. Den sterke magneten gir Φ₀ = 0,20 mWb, den svake 0,08 mWb. Positiv ε betyr at strømmen går ned på forsiden av spolen. Pilen viser strømretningen, og bokstavene over spolen viser hvilke poler den induserte strømmen lager.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Magneten ligger i ro midt inne i spolen. Blir det indusert en spenning? Hva om den ligger i ro rett utenfor?</p></div></li>
+  <li><span class="fase test">Test</span><div><p>Dra magneten sakte inn i spolen, og så fort. Hva skjer med spenningen? Hold den i ro inne i spolen. Hva viser voltmeteret?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Trykk Start. Forklar hvorfor spenningen har motsatt fortegn når magneten er på vei inn og på vei ut. Hvorfor er ε = 0 akkurat når magneten er midt i spolen?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Se på polene til spolen når magneten nærmer seg og når den fjerner seg. Bruk Lenz' lov og forklar hvorfor spolen alltid motvirker bevegelsen.</p></div></li>
+  <li><span class="fase test">Undersøk</span><div><p>Hvordan avhenger toppverdien av ε av farten og av antall vindinger? Hva skjer med arealet under hver puls når farten dobles?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Med N = 200 og sterk magnet er største fluks NΦ = 40 mWb. Med farten 1,0 m/s bruker magneten 19 ms fra fluksen er halvparten av den største til den er størst. Regn ut gjennomsnittsspenningen i dette tidsrommet, og sammenlign med toppverdien.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Spolen er koblet til en lyspære som lyser når magneten går gjennom. Hvor kommer energien fra? Hvorfor ville det vært umulig om strømmen gikk motsatt vei?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Nei. Det blir bare indusert spenning når fluksen endrer seg. En magnet i ro gir konstant fluks, uansett hvor den er.</li>
+      <li>Jo fortere magneten beveges, desto større spenning. Når magneten holdes i ro, går spenningen til null.</li>
+      <li>På vei inn øker fluksen, og på vei ut avtar den. ε = −N dΦ/dt skifter fortegn når dΦ/dt gjør det. Midt i spolen er fluksen størst, og der endrer den seg ikke et øyeblikk (toppunkt), så ε = 0.</li>
+      <li>Når nordpolen nærmer seg, blir enden av spolen som vender mot magneten, også en nordpol. Den frastøter magneten. Når magneten fjerner seg, blir den enden en pol som tiltrekker magneten. Spolen motvirker alltid endringen i fluksen, og dermed bevegelsen.</li>
+      <li>Toppverdien er proporsjonal med farten og med N. Med N = 200, sterk magnet og 1,0 m/s blir toppen omtrent 1,37 V, og med 2,0 m/s omtrent 2,75 V. Arealet under hver puls er NΔΦ = 40 mV·s, uavhengig av farten: Pulsen blir dobbelt så høy, men halvparten så lang.</li>
+      <li>ΔNΦ = 20 mWb på 0,019 s gir ε ≈ 0,020 / 0,019 ≈ 1,05 V i gjennomsnitt. Toppverdien er 1,37 V, litt større fordi fluksen endrer seg raskest et sted midt i tidsrommet.</li>
+      <li>Energien kommer fra den som beveger magneten. På grunn av Lenz' lov må du gjøre et arbeid mot kraften fra spolen. Gikk strømmen motsatt vei, ville spolen trukket magneten med seg, og vi kunne fått energi gratis. Det ville brutt med energibevaringen.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 20–30 minutter. Passer som innledning til Faradays og Lenz' lov, og sammen med forsøket <a href="../opplegg/fallende-magnet.html">Induksjon med fallende magnet</a>. Fortegnet på ε avhenger av hvordan voltmeteret er koblet. Her er positiv ε valgt slik at strømmen går ned på forsiden av spolen.</p>
+  </details>
+</section>

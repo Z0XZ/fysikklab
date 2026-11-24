@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ekvivalensprinsippet – fysikklab.no</title>
+  <meta name="description" content="Simulering med oppgaver i Fysikk 2: En ball og en lyspuls i en heis på jorda, i en akselererende rakett, i fritt fall og i rommet. Kan du skille tyngdekraft fra akselerasjon?">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=generell-relativitetsteori">Fysikk 2 · Generell relativitetsteori</a></p>
+        <h1>Ekvivalensprinsippet</h1>
+        <p class="ingress">Du våkner i en lukket heis uten vinduer og kjenner at du står på gulvet. Står heisen på jorda, eller er den i en rakett som akselererer ute i rommet? Einstein mente at ingen forsøk inne i heisen kan avgjøre det. Det kalles ekvivalensprinsippet, og det fører til at lys må bøyes av tyngdekraften.</p>
+
+        <figure class="sim sim-bred">
+          <div class="sim-styring mange uten-topp">
+            <div class="snarveier">Heisen: <button class="knapp lys liten" type="button" data-ek="jord">I ro på jorda</button><button class="knapp lys liten" type="button" data-ek="rakett">Akselererer i rommet</button><button class="knapp lys liten" type="button" data-ek="fall">Faller fritt</button><button class="knapp lys liten" type="button" data-ek="rom">Svever i rommet</button></div>
+            <p id="ek-tekst" class="sim-hint uten-marg"></p>
+          </div>
+          <canvas id="ek-scene" class="forhold-lav" role="img" aria-label="En heis sett innenfra og utenfra, med banen til en kastet ball og en lyspuls."></canvas>
+          <ul class="forklaring graf-forklaring">
+            <li><span class="linje f2"></span><span>Ball</span></li>
+            <li><span class="linje" style="border-color:#e0a400"></span><span>Lyspuls</span></li>
+          </ul>
+          <dl class="sim-tall">
+            <div><dt>tid</dt><dd id="ek-t"></dd></div>
+            <div><dt>ballen har falt (i heisen)</dt><dd id="ek-ball"></dd></div>
+            <div><dt>lyset har falt (med lysfarten i tegningen)</dt><dd id="ek-lys"></dd></div>
+            <div><dt>lyset faller over 3,0 m med ekte lysfart</dt><dd id="ek-ekte"></dd></div>
+          </dl>
+          <div class="sim-styring mange">
+            <label for="ek-vb">Fart til ballen <output id="ek-vb-ut" for="ek-vb"></output><input id="ek-vb" type="range" min="2" max="10" step="0.5" value="5"></label>
+            <label for="ek-c">Lysfart i tegningen <output id="ek-c-ut" for="ek-c"></output><input id="ek-c" type="range" min="5" max="50" step="1" value="10"></label>
+            <label for="ek-tempo">Avspilling<select id="ek-tempo"><option value="1">Sanntid</option><option value="0.5" selected>Halv fart</option><option value="0.25">Kvart fart</option></select></label>
+            <div class="sim-knapper"><button id="ek-start" class="knapp" type="button">Start</button><button id="ek-nullstill" class="knapp lys" type="button">Nullstill</button></div>
+          </div>
+          <figcaption class="sim-hint">Heisen er 3,0 m bred og 2,5 m høy, og ballen og lyspulsen starter 1,6 m over gulvet. Lysfarten i tegningen er satt ned til noen meter per sekund, så du kan se at lyset bøyes. Med den ekte lysfarten (3,00 · 10⁸ m/s) faller lyset bare 4,9 · 10⁻¹⁶ m over heisbredden. Vi ser bort fra luftmotstand.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/sim/ekvivalensprinsippet.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>En ball kastes vannrett i en rakett som akselererer med 9,81 m/s² langt ute i rommet. Følger ballen en rett linje eller en krum bane, sett fra en astronaut inne i raketten?</p></div></li>
+          <li><span class="fase test">Test</span><div><p>Sammenlign «I ro på jorda» og «Akselererer i rommet». Er det noen forskjell på banene sett innenfra? Hva er forskjellen sett utenfra?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Sammenlign «Faller fritt» og «Svever i rommet». Hvorfor kan astronautene i romstasjonen sveve, selv om tyngdekraften der oppe er nesten like sterk som på bakken?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Se på lyspulsen i raketten, sett utenfra. Hvorfor bøyer lyset seg, sett innenfra? Bruk ekvivalensprinsippet til å forklare hvorfor lys også må bøyes av tyngdekraften på jorda.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Regn ut hvor mye lyset faller på vei over heisen på 3,0 m med ekte lysfart. Hvorfor merker vi aldri dette i hverdagen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Ekvivalensprinsippet sier at «svevende» og «uten tyngdekraft» ikke kan skilles fra hverandre lokalt. Hvorfor gjelder det bare i et lite område? Tenk på en svært stor heis som faller mot jorda.</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>En krum bane, nøyaktig som på jorda. Sett utenfra går ballen rett fram, men gulvet akselererer opp mot den.</li>
+              <li>Innenfra er banene helt like: Med 5,0 m/s treffer ballen gulvet etter 0,57 s, 2,9 m fra veggen, i begge tilfellene. Utenfra er det forskjellig: På jorda faller ballen, mens i raketten går ballen rett fram og heisen tar den igjen.</li>
+              <li>I fritt fall faller heisen og alt i den like fort, så ingenting faller i forhold til heisen. Det ser ut akkurat som i rommet uten tyngdekraft. Romstasjonen er i fritt fall rundt jorda hele tiden.</li>
+              <li>Utenfra går lyset rett fram, men raketten akselererer oppover mens lyset krysser den. Innenfra treffer lyset derfor veggen lavere enn der det ble sendt ut, og banen krummer. Når en akselererende heis og en heis på jorda ikke kan skilles fra hverandre, må lyset bøyes på samme måte på jorda. Tyngdekraften påvirker altså lys.</li>
+              <li>t = 3,0 / 3,00 · 10<sup>8</sup> = 1,0 · 10<sup>−8</sup> s, og Δy = ½gt² ≈ 4,9 · 10<sup>−16</sup> m, mindre enn en atomkjerne. Lyset er så raskt at det nesten ikke rekker å falle. Avbøyningen kan bare måles over store avstander og nær tunge legemer, se <a href="lysavboyning.html">Lys som bøyes av tyngdekraften</a>.</li>
+              <li>Tyngdekraften peker mot sentrum av jorda og blir svakere med høyden. I en svært stor heis vil to baller på hver sin side nærme seg hverandre litt mens de faller, og en ball øverst faller saktere enn en nederst. Slike tidevannseffekter avslører tyngdekraften. Derfor gjelder ekvivalensprinsippet bare lokalt.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 20–30 minutter, som innledning til generell relativitetsteori. Tankeeksperimentet med heisen er Einsteins eget. Se også <a href="gps.html">GPS-klokkene</a>, der tyngdekraften påvirker hvor fort tiden går.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/ekvivalens.js"></script>
+</body>
+</html>
