@@ -180,7 +180,7 @@ SETT["begrep-kast-sirkel"] = dict(
     tema="Fysikk 2 · Sirkelbevegelse",
     beskr="Begrepstest i Fysikk 2 med åtte flervalgsspørsmål om skrått kast, sentripetalakselerasjon og krefter i sirkelbevegelse. Tilbakemelding med en gang.",
     ingress="Åtte spørsmål om bevegelse i to dimensjoner og sirkelbevegelse. Husk: Akselerasjonen er en vektor, og den kan peke en annen vei enn farten.",
-    lenker='<a href="../sim/skratt-kast.html">Skrått kast</a>, <a href="../sim/sirkelbevegelse.html">Sirkelbevegelse</a> og <a href="../sim/loddrett-sirkel.html">Loddrett sirkel</a>',
+    lenker='<a href="../sim/skratt-kast.html">Skrått kast</a>, <a href="../sim/sirkelbevegelse.html">Sirkelbevegelse</a> og <a href="../sim/loddrett-sirkel.html">Vertikal sirkelbevegelse</a>',
     sp=[
         ("En ball kastes skrått oppover. Hva er akselerasjonen på toppen av banen? Se bort fra luftmotstand.",
          [("Null, fordi ballen snur.", "Det er bare den loddrette farten som er null på toppen."),
@@ -224,7 +224,7 @@ SETT["begrep-kast-sirkel"] = dict(
           ("B har dobbelt så stor banefart, men samme akselerasjon.", "a = ω²r øker med r."),
           ("B har fire ganger så stor akselerasjon.", "a = ω²r er proporsjonal med r når ω er fast.")], 2,
          "Begge har samme vinkelfart ω. Banefarten er v = ωr og akselerasjonen a = ω²r, så begge er dobbelt så store for B. (Skrevet som a = v²/r ser det ut som at a øker med v² og minker med r, men begge endrer seg.)"),
-        ("En bøtte med vann svinges i en loddrett sirkel. Hvorfor renner ikke vannet ut på toppen?",
+        ("En bøtte med vann svinges i en vertikal sirkel. Hvorfor renner ikke vannet ut på toppen?",
          [("Sentrifugalkraften presser vannet mot bunnen.", "Det er ingen kraft utover."),
           ("Vannet trenger en større akselerasjon enn g mot sentrum, og bunnen av bøtta gir resten.", ""),
           ("Lufttrykket holder vannet i bøtta.", ""),

@@ -7,6 +7,16 @@ const Sim = (() => {
 
   const $ = (id) => document.getElementById(id);
 
+  // Tavlemodus (knappen står i menyen, se js/tema.js) gir større tekst. Lerretene zoomes: simuleringen tegnes
+  // som om lerretet var mindre og skaleres opp, så tekst, linjer og piler i figurene blir større.
+  const TEKST_ZOOM = 1.35;
+  const tekstskala = () => (document.documentElement.classList.contains("tavlemodus") ? TEKST_ZOOM : 1);
+  // Punktet til en peker i lerretets koordinater (de samme som l.b og l.h)
+  function punkt(el, e) {
+    const r = el.getBoundingClientRect(), z = tekstskala();
+    return [(e.clientX - r.left) / z, (e.clientY - r.top) / z];
+  }
+
   // 3.14159 → "3,14". Bruker ekte minustegn og unngår "−0,00".
   function komma(n, d = 0) {
     if (!isFinite(n)) return "–";
@@ -47,11 +57,11 @@ const Sim = (() => {
     const ctx = el.getContext("2d");
     const l = { el, ctx, b: 0, h: 0, f: farger(), tegn };
     l.tilpass = () => {
-      const r = el.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      const r = el.getBoundingClientRect(), dpr = window.devicePixelRatio || 1, z = tekstskala();
       el.width = Math.round(r.width * dpr);
       el.height = Math.round(r.height * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      l.b = r.width; l.h = r.height;
+      ctx.setTransform(dpr * z, 0, 0, dpr * z, 0, 0);
+      l.b = r.width / z; l.h = r.height / z;
       if (l.b > 0) l.tegn();
     };
     l.tom = () => ctx.clearRect(0, 0, l.b, l.h);
@@ -59,6 +69,7 @@ const Sim = (() => {
     const forny = () => { l.f = farger(); if (l.b > 0) l.tegn(); };
     matchMedia("(prefers-color-scheme: dark)").addEventListener("change", forny);
     window.addEventListener("temaendring", forny);
+    window.addEventListener("tekstendring", l.tilpass);
     return l;
   }
 
@@ -78,6 +89,14 @@ const Sim = (() => {
     }
     function start() {
       if (tilstand === "ferdig" && nullstill) nullstill();
+      // Er toppen av lerretet rullet ut av skjermen, rulles det inn igjen, så starten av simuleringen synes
+      if (el && !el.closest(".fullskjerm")) {
+        const r = el.getBoundingClientRect();
+        if (r.top < 0 && r.height < innerHeight) {
+          const rolig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+          el.scrollIntoView({ behavior: rolig ? "auto" : "smooth", block: "nearest" });
+        }
+      }
       sett("kjorer");
       forrige = null;
       id = id || requestAnimationFrame(bilde);
@@ -168,5 +187,112 @@ const Sim = (() => {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   }
 
-  return { MONO, SANS, $, komma, tall, farger, verdi, lerret, avspiller, akser, steglengde, hent, lagre, kopier, lastNed };
+  // ---------- Fullskjerm ----------
+  // Hver simulering (figure.sim med lerret) får en knapp for fullskjerm, nyttig på projektoren i klasserommet.
+  // I fullskjerm ligger lerretene til venstre og tall, styring og forklaringer til høyre
+  // (under hverandre på stående skjermer). Lerretene skaleres slik at de får plass i høyden.
+  // Bruker Fullscreen API der det finnes. Ellers (for eksempel på iPhone) fyller figuren hele vinduet.
+  function fullskjerm() {
+    const IKON = {
+      inn: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></svg>',
+      ut: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5"/></svg>',
+    };
+    const rot = document.documentElement;
+    const kanAPI = !!(rot.requestFullscreen || rot.webkitRequestFullscreen);
+    const iFullskjerm = () => document.fullscreenElement || document.webkitFullscreenElement || null;
+    const avsluttAPI = () => (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+
+    for (const fig of document.querySelectorAll(".sim-side figure.sim")) {
+      if (!fig.querySelector("canvas")) continue;
+      const knapp = document.createElement("button");
+      knapp.type = "button";
+      knapp.className = "knapp lys fullskjerm-knapp";
+      const vis = (aktiv) => {
+        knapp.innerHTML = aktiv ? IKON.ut + "Avslutt fullskjerm" : IKON.inn + "Fullskjerm";
+        knapp.setAttribute("aria-pressed", String(aktiv));
+        knapp.title = aktiv ? "Avslutt fullskjerm (Esc)" : "Vis simuleringen i fullskjerm, for eksempel på projektoren";
+      };
+      vis(false);
+      let rad = fig.querySelector(".sim-knapper");
+      if (!rad) {
+        rad = document.createElement("div");
+        rad.className = "sim-knapper";
+        (fig.querySelector(".sim-styring") || fig).append(rad);
+      }
+      rad.append(knapp);
+
+      let aktiv = false, viaAPI = false, barn = [], venstre = null, hoyre = null;
+      function inn() {
+        aktiv = true;
+        barn = [...fig.children];
+        // Størrelsen måles før flyttingen. Hver del til venstre består av lerret, som vokser med bredden, og
+        // eventuelt tekst og forklaringer med fast høyde. Den faste høyden trekkes fra skjermhøyden, og resten
+        // deles mellom lerretene. Alle delene skaleres med samme faktor, så de får plass i høyden sammen.
+        const visuelle = barn.filter((b) => b.matches("canvas") || b.querySelector("canvas"));
+        const maal = new Map(visuelle.map((b) => {
+          const r = b.getBoundingClientRect();
+          const lr = b.matches("canvas") ? [r] : [...b.querySelectorAll("canvas")].map((c) => c.getBoundingClientRect()).filter((c) => c.height);
+          const lerretH = lr.length ? Math.max(...lr.map((c) => c.bottom)) - Math.min(...lr.map((c) => c.top)) : r.height;
+          return [b, { b: r.width, lerretH, fast: Math.max(0, r.height - lerretH) }];
+        }));
+        const sumLerret = visuelle.reduce((s, b) => s + maal.get(b).lerretH, 0) || 1;
+        const sumFast = visuelle.reduce((s, b) => s + maal.get(b).fast, 0);
+        venstre = document.createElement("div"); venstre.className = "fs-lerret";
+        venstre.style.setProperty("--fs-fast", `calc(${(visuelle.length - 1)}rem + ${Math.ceil(sumFast)}px)`);
+        hoyre = document.createElement("div"); hoyre.className = "fs-panel";
+        for (const b of barn) {
+          const m = maal.get(b);
+          (m ? venstre : hoyre).append(b);
+          if (m && m.b) b.style.setProperty("--fs-skala", (m.b / sumLerret).toFixed(4));
+        }
+        // Linje øverst i panelet med navnet på simuleringen og en knapp for å avslutte
+        const topp = document.createElement("div");
+        topp.className = "fs-topp";
+        const navn = document.createElement("strong");
+        navn.textContent = (document.querySelector("main h1") || {}).textContent || "";
+        const lukk = document.createElement("button");
+        lukk.type = "button"; lukk.className = "knapp lys";
+        lukk.innerHTML = IKON.ut + "Avslutt";
+        lukk.title = "Avslutt fullskjerm (Esc)";
+        lukk.addEventListener("click", () => knapp.click());
+        topp.append(navn, lukk);
+        hoyre.prepend(topp);
+        fig.append(venstre, hoyre);
+        fig.classList.add("fullskjerm");
+        rot.classList.add("har-fullskjerm");
+        vis(true);
+      }
+      function ut() {
+        if (!aktiv) return;
+        aktiv = false; viaAPI = false;
+        for (const b of barn) { b.style.removeProperty("--fs-skala"); fig.append(b); }
+        venstre.remove(); hoyre.remove();
+        fig.classList.remove("fullskjerm");
+        rot.classList.remove("har-fullskjerm");
+        vis(false);
+        fig.scrollIntoView({ block: "nearest" });
+        knapp.focus({ preventScroll: true });
+      }
+      knapp.addEventListener("click", () => {
+        if (aktiv) { if (iFullskjerm() === fig) avsluttAPI(); else ut(); return; }
+        inn();
+        if (kanAPI) {
+          const be = fig.requestFullscreen || fig.webkitRequestFullscreen;
+          try { Promise.resolve(be.call(fig)).catch(() => {}); } catch (e) { /* bruker vindusvarianten */ }
+        }
+      });
+      const endret = () => {
+        if (iFullskjerm() === fig) viaAPI = true;
+        else if (aktiv && viaAPI) ut();
+      };
+      document.addEventListener("fullscreenchange", endret);
+      document.addEventListener("webkitfullscreenchange", endret);
+      // Esc i vindusvarianten (i ekte fullskjerm håndterer nettleseren Esc selv)
+      document.addEventListener("keydown", (e) => { if (e.key === "Escape" && aktiv && !viaAPI) ut(); });
+    }
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fullskjerm);
+  else fullskjerm();
+
+  return { MONO, SANS, $, komma, tall, farger, verdi, lerret, avspiller, akser, steglengde, hent, lagre, kopier, lastNed, tekstskala, punkt };
 })();

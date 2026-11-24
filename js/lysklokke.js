@@ -67,11 +67,12 @@ const gamma = (u) => 1 / Math.sqrt(1 - (u / C) ** 2);
   }
 
   function tilpass() {
-    const r = lerret.getBoundingClientRect();
+    const r0 = lerret.getBoundingClientRect(), z = Sim.tekstskala();
+    const r = { width: r0.width / z, height: r0.height / z };
     const dpr = window.devicePixelRatio || 1;
-    lerret.width = Math.round(r.width * dpr);
-    lerret.height = Math.round(r.height * dpr);
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    lerret.width = Math.round(r0.width * dpr);
+    lerret.height = Math.round(r0.height * dpr);
+    ctx.setTransform(dpr * z, 0, 0, dpr * z, 0, 0);
     skala = Math.min(r.width / BREDDE, r.height / (2 * RAD_H));
     venstre = (r.width - BREDDE * skala) / 2;
     topp = (r.height - 2 * RAD_H * skala) / 2;
@@ -216,6 +217,7 @@ const gamma = (u) => 1 / Math.sqrt(1 - (u / C) ** 2);
     if (!e.isIntersecting && kjorer) $("start").click();
   }).observe(lerret);
   new ResizeObserver(tilpass).observe(lerret);
+  window.addEventListener("tekstendring", tilpass);
   const fornyFarger = () => { lesFarger(); tegn(); };
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", fornyFarger);
   window.addEventListener("temaendring", fornyFarger);

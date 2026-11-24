@@ -225,8 +225,7 @@ function nyVogn(v0) { return { x: 0, v: v0, w: 0, t: 0, status: "klar" }; }
   // Dra i toppene for å endre høyden
   let dras = null;
   function pekerPunkt(e) {
-    const r = el.getBoundingClientRect();
-    return [e.clientX - r.left, e.clientY - r.top];
+    return Sim.punkt(el, e);
   }
   el.addEventListener("pointerdown", (e) => {
     if (avspiller.kjorer) return;

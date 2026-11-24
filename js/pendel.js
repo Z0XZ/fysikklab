@@ -227,8 +227,8 @@ function stegPendel(p, dt) {
   // Dra kula for å velge startvinkel
   let drar = false;
   function vinkelFraPeker(e) {
-    const r = el.getBoundingClientRect();
-    const x = (e.clientX - r.left - ox) / skala, y = (oy - (e.clientY - r.top)) / skala;
+    const [X, Y] = Sim.punkt(el, e);
+    const x = (X - ox) / skala, y = (oy - Y) / skala;
     const v = Math.round(Math.abs(Math.atan2(x, -y)) * 180 / Math.PI);
     $("vinkel").value = Math.min(90, Math.max(5, v));
     nullstill();

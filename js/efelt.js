@@ -212,7 +212,7 @@ const OPPSETT = {
 
   // Dra ladninger og P. Posisjonen festes til nærmeste halve cm.
   let dras = null;
-  const iVerden = (e) => { const r = el.getBoundingClientRect(), sk = l.b / BREDDE; return { x: (e.clientX - r.left) / sk, y: (l.h - (e.clientY - r.top)) / sk }; };
+  const iVerden = (e) => { const [X, Y] = Sim.punkt(el, e), sk = l.b / BREDDE; return { x: X / sk, y: (l.h - Y) / sk }; };
   el.addEventListener("pointerdown", (e) => {
     const p = iVerden(e), grense = Math.max(1, 16 / (l.b / BREDDE));
     let best = null, bestAvst = grense;

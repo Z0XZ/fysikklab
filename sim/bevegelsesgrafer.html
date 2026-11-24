@@ -71,12 +71,13 @@
 
         <figure class="sim egne-data">
           <h2>Følg grafen</h2>
-          <p class="del-inngang">Den stiplede grafen viser hvordan posisjonen skal endre seg. Trykk på «Start» og styr farten med glidebryteren, slik at din graf følger den stiplede. Du har 12 sekunder.</p>
+          <p class="del-inngang">Den stiplede grafen viser hvordan posisjonen skal endre seg. Velg gjerne en startfart med glidebryteren før du trykker «Start». Styr så farten slik at din graf følger den stiplede. Du har 12 sekunder.</p>
           <canvas id="folg" class="statisk forhold-lav" role="img" aria-label="En stiplet posisjonsgraf som skal følges, og grafen du lager selv."></canvas>
           <div class="sim-styring mange">
             <label for="f-fart" class="bred-felt">Fart <output id="f-fart-ut" for="f-fart"></output><input id="f-fart" type="range" min="-2" max="2" step="0.1" value="0"></label>
             <div class="sim-knapper"><button id="f-start" class="knapp" type="button">Start</button><button id="f-ny" class="knapp lys" type="button">Ny graf</button></div>
             <p class="sim-hint uten-marg">Avvik: <strong id="f-poeng">–</strong></p>
+            <p class="sim-hint uten-marg">Piltastene endrer farten med 0,2 m/s, eller 0,5 m/s med Shift.</p>
           </div>
         </figure>
 

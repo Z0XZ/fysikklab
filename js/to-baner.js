@@ -119,10 +119,11 @@ function simulerFerdig(baneId, h, mu) {
   // Scene
   let skala, ox, oy;
   function tilpassScene() {
-    const r = scene.getBoundingClientRect();
+    const r0 = scene.getBoundingClientRect(), z = Sim.tekstskala();
+    const r = { width: r0.width / z, height: r0.height / z };
     const dpr = window.devicePixelRatio || 1;
-    scene.width = Math.round(r.width * dpr); scene.height = Math.round(r.height * dpr);
-    sc.setTransform(dpr, 0, 0, dpr, 0, 0);
+    scene.width = Math.round(r0.width * dpr); scene.height = Math.round(r0.height * dpr);
+    sc.setTransform(dpr * z, 0, 0, dpr * z, 0, 0);
     const xMin = -0.3, xMax = BANE_L + 0.45, yMin = -0.15, yMax = H_MAKS + 0.12;
     skala = Math.min(r.width / (xMax - xMin), r.height / (yMax - yMin));
     ox = (r.width - (xMax - xMin) * skala) / 2 - xMin * skala;
@@ -190,10 +191,11 @@ function simulerFerdig(baneId, h, mu) {
   let gb, gh;
   const gm = { v: 46, h: 12, o: 12, n: 34 };
   function tilpassGraf() {
-    const r = graf.getBoundingClientRect();
+    const r0 = graf.getBoundingClientRect(), z = Sim.tekstskala();
+    const r = { width: r0.width / z, height: r0.height / z };
     const dpr = window.devicePixelRatio || 1;
-    graf.width = Math.round(r.width * dpr); graf.height = Math.round(r.height * dpr);
-    gc.setTransform(dpr, 0, 0, dpr, 0, 0);
+    graf.width = Math.round(r0.width * dpr); graf.height = Math.round(r0.height * dpr);
+    gc.setTransform(dpr * z, 0, 0, dpr * z, 0, 0);
     gb = r.width; gh = r.height;
   }
   const gx = (t) => gm.v + t / tMaks * (gb - gm.v - gm.h);
@@ -305,6 +307,7 @@ function simulerFerdig(baneId, h, mu) {
 
   function tilpass() { tilpassScene(); tilpassGraf(); tegnAlt(); }
   new ResizeObserver(tilpass).observe(scene);
+  window.addEventListener("tekstendring", tilpass);
   new ResizeObserver(tilpass).observe(graf);
   const fornyFarger = () => { lesFarger(); tegnAlt(); };
   matchMedia("(prefers-color-scheme: dark)").addEventListener("change", fornyFarger);

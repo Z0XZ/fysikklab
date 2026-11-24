@@ -1,4 +1,4 @@
-// Loddrett sirkel: en ball i snor eller en vogn på innsiden av en loop. θ måles fra bunnen.
+// Vertikal sirkelbevegelse: en ball i snor eller en vogn på innsiden av en loop. θ måles fra bunnen.
 // Mens snora er stram: S = m v²/r + m g cos θ. Blir S negativ, går ballen over i et kast,
 // og snora strammes igjen når ballen er like langt fra sentrum som snorlengden.
 

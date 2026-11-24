@@ -140,10 +140,22 @@ const varighet = (o) => o.deler.reduce((s, [dt]) => s + dt, 0);
 })();
 
 // Følg grafen
+// Farten velges med glidebryteren før start (startfart) og beholdes når man trykker Start.
+// Piltastene styrer farten (opp/høyre øker, ned/venstre minker, Shift gir større steg) mens spillet går,
+// og når fokus er inne i figuren. Da ruller ikke siden.
 (function () {
   const $ = Sim.$, komma = Sim.komma;
   const el = $("folg");
   if (!el) return;
+  const fig = el.closest("figure");
+  const fart = $("f-fart"), STEG = 0.2, STORT_STEG = 0.5;
+  const visFart = () => { $("f-fart-ut").textContent = komma(Number(fart.value), 1) + " m/s"; };
+  function settFart(v) {
+    const min = Number(fart.min), maks = Number(fart.max);
+    fart.value = String(Math.round(Math.max(min, Math.min(maks, v)) * 10) / 10);
+    visFart();
+    if (!kjører) tegn();
+  }
   const l = Sim.lerret(el, tegn);
   const T = 12, XMAKS = 8;
   let mål = [], spor = [], x = 2, tid = 0, kjører = false, forrige = null;
@@ -166,10 +178,9 @@ const varighet = (o) => o.deler.reduce((s, [dt]) => s + dt, 0);
     if (!kjører) return;
     const dt = forrige === null ? 0 : Math.min(0.05, (naa - forrige) / 1000);
     forrige = naa;
-    const v = Number($("f-fart").value);
+    const v = Number(fart.value);
     x = Math.max(0, Math.min(XMAKS, x + v * dt));
     tid += dt; spor.push([tid, x]);
-    $("f-fart-ut").textContent = komma(v, 1) + " m/s";
     if (tid >= T) {
       kjører = false; $("f-start").textContent = "Prøv igjen";
       const avvik = spor.reduce((s, [t, xx]) => s + Math.abs(xx - målX(t)), 0) / spor.length;
@@ -189,16 +200,33 @@ const varighet = (o) => o.deler.reduce((s, [dt]) => s + dt, 0);
     c.strokeStyle = f.f1; c.lineWidth = 2.5; c.beginPath();
     spor.forEach(([t, xx], k) => (k ? c.lineTo(px(t), py(xx)) : c.moveTo(px(t), py(xx)))); c.stroke();
     c.fillStyle = f.f1; c.beginPath(); c.arc(px(tid), py(x), 5, 0, 2 * Math.PI); c.fill();
+    // Før start: en kort pil fra startpunktet viser hvilken startfart som er valgt
+    if (!kjører && !spor.length) {
+      const v = Number(fart.value), dt = 1.5;
+      c.strokeStyle = f.f1; c.lineWidth = 2; c.setLineDash([2, 4]);
+      c.beginPath(); c.moveTo(px(0), py(x)); c.lineTo(px(dt), py(Math.max(0, Math.min(XMAKS, x + v * dt)))); c.stroke();
+      c.setLineDash([]);
+    }
   }
 
   $("f-start").addEventListener("click", () => {
     if (kjører) return;
-    spor = [[0, 2]]; x = 2; tid = 0; $("f-fart").value = 0; $("f-poeng").textContent = "–";
+    spor = [[0, 2]]; x = 2; tid = 0; $("f-poeng").textContent = "–";
     kjører = true; forrige = null; $("f-start").textContent = "Kjører …";
     requestAnimationFrame(bilde);
   });
   $("f-ny").addEventListener("click", () => { kjører = false; $("f-start").textContent = "Start"; nyttMål(); });
-  $("f-fart").addEventListener("input", () => { $("f-fart-ut").textContent = komma(Number($("f-fart").value), 1) + " m/s"; });
-  $("f-fart-ut").textContent = "0,0 m/s";
+  fart.addEventListener("input", () => { visFart(); if (!kjører) tegn(); });
+  document.addEventListener("keydown", (e) => {
+    const retning = { ArrowUp: 1, ArrowRight: 1, ArrowDown: -1, ArrowLeft: -1 }[e.key];
+    if (!retning || e.altKey || e.ctrlKey || e.metaKey) return;
+    const aktiv = document.activeElement;
+    const iFigur = fig.contains(aktiv);
+    if (!kjører && !iFigur) return;                                  // ellers vanlig rulling av siden
+    if (aktiv && aktiv.matches("input:not([type=range]), select, textarea")) return;
+    e.preventDefault();
+    settFart(Number(fart.value) + retning * (e.shiftKey ? STORT_STEG : STEG));
+  });
+  visFart();
   nyttMål();
 })();

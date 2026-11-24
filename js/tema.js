@@ -85,3 +85,38 @@
     oppdaterSide();
   });
 })();
+
+// Tavlemodus: større tekst på hele nettstedet, for projektor og tavle. Knappen står i menyen øverst,
+// og valget huskes fra side til side. Settes i <head>, så siden tegnes riktig med en gang.
+// Simuleringene (js/felles.js) lytter på «tekstendring» og zoomer lerretene, så teksten i figurene også blir større.
+(function () {
+  const NOKKEL = "fysikklab-tavlemodus";
+  const rot = document.documentElement;
+  try { if (localStorage.getItem(NOKKEL) === "1") rot.classList.add("tavlemodus"); } catch (e) { /* standard */ }
+  const IKON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18M4.5 4v11h15V4M12 15v3.5M8 21l4-2.5 4 2.5"/><path d="M8 11.5l2.5-3 2 2 3-3.5"/></svg>';
+  document.addEventListener("DOMContentLoaded", () => {
+    const temaKnapp = document.getElementById("tema-knapp");
+    if (!temaKnapp) return;
+    const knapp = document.createElement("button");
+    knapp.type = "button";
+    knapp.id = "tavle-knapp";
+    knapp.className = "tema-knapp tavle-knapp";
+    knapp.innerHTML = IKON;
+    const oppdater = () => {
+      const på = rot.classList.contains("tavlemodus");
+      knapp.setAttribute("aria-pressed", String(på));
+      const tekst = på ? "Slå av tavlemodus" : "Tavlemodus: større tekst for projektor og tavle";
+      knapp.setAttribute("aria-label", tekst);
+      knapp.title = tekst;
+    };
+    oppdater();
+    knapp.addEventListener("click", () => {
+      const på = !rot.classList.contains("tavlemodus");
+      rot.classList.toggle("tavlemodus", på);
+      try { localStorage.setItem(NOKKEL, på ? "1" : "0"); } catch (e) { /* gjelder bare denne siden */ }
+      oppdater();
+      window.dispatchEvent(new Event("tekstendring"));
+    });
+    temaKnapp.before(knapp);
+  });
+})();

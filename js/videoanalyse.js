@@ -299,7 +299,7 @@ function tilpass(pkt, grad) {
   }
 
   el.addEventListener("pointerdown", (e) => {
-    const r = el.getBoundingClientRect(), [x, y] = fraSkjerm(e.clientX - r.left, e.clientY - r.top);
+    const [x, y] = fraSkjerm(...Sim.punkt(el, e));
     const id = sc.objekter.length > 1 ? $("vv-objekt").value : "A";
     (merker[id] = merker[id] || {})[bilde] = [x, y];
     bilde = Math.min(antall() - 1, bilde + Number($("vv-hopp").value));

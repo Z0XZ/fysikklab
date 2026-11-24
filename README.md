@@ -27,7 +27,7 @@ Ren HTML, CSS og JavaScript uten byggesteg. Åpne `index.html` i en nettleser fo
 | `js/heis.js`, `js/friksjon.js`, `js/luftmotstand.js`, `js/vognlodd.js` | Fysikk 1: heis, friksjon, luftmotstand, vogn og lodd |
 | `js/usikkerhet2.js`, `js/linearisering.js` | Fysikk 2: usikkerhet i beregnede størrelser, linearisering |
 | `js/skrattkast.js`, `js/skraaplan.js`, `js/snorer.js` | Fysikk 2: skrått kast, skråplan, lodd i to snorer |
-| `js/sirkel.js`, `js/dosert.js`, `js/loddrett.js` | Fysikk 2: sirkelbevegelse, dosert sving, loddrett sirkel |
+| `js/sirkel.js`, `js/dosert.js`, `js/loddrett.js` | Fysikk 2: sirkelbevegelse, dosert sving, vertikal sirkelbevegelse |
 | `js/bakkestot.js` | Fysikk 1: vogn ned bakke og støt |
 | `opplegg/`, `js/kraftsensor.js`, `js/eggslipp.js` | Undervisningsopplegg: impuls med kraftsensor, eggslippkonkurranse |
 | `js/videoanalyse.js` | Videoanalyse: felles verktøy for Tracker-data, resultattabeller og simuleringen «Videoanalyse uten video» |
