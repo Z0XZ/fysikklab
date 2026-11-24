@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/stromvekt.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Magnetiske felt og krefter}{Kraft på en strømførende leder}{https://fysikklab.no/opplegg/stromvekt.html}{Opplegget på nett}
+
+En hesteskomagnet står på en digital vekt, og en ledning går gjennom feltet uten å røre magneten. Når det går strøm i ledningen, endrer vekta seg. Det er Newtons tredje lov i praksis: Lederen dyttes av magneten, og magneten dyttes like mye tilbake. Fra vekta kan dere finne kraften $F = BIL$ og magnetfeltet $B$.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Vise at kraften på en leder i et magnetfelt er proporsjonal med strømmen.
+\item Bestemme magnetfeltet $B$ mellom polene til en magnet.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En hesteskomagnet, eller to flate magneter på et U-formet jernåk, og en digital vekt med 0,01~g oppløsning.
+\item En stiv, rett ledning holdt fast i et stativ, slik at den går vannrett gjennom feltet uten å røre magneten.
+\item Spenningskilde som kan gi 3~A, gjerne med strømbegrensning, en reostat eller motstand, et amperemeter og en linjal.
+\end{itemize}
+
+\section*{Teorien}
+
+En rett leder med strømmen $I$ og lengden $L$ i et homogent magnetfelt $B$, vinkelrett på lederen, får kraften $F = BIL$. Retningen finnes med høyrehåndsregelen. Magneten får like stor kraft motsatt vei. Vekta måler i gram, så kraften er $F = Δm \cdot g$, der $Δm$ er endringen i det vekta viser. Her er $L$ lengden av lederen som er inne i feltet, omtrent bredden på polene.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Sett magneten på vekta og ledningen gjennom feltet, vinkelrett på feltlinjene. Lederen må ikke røre magneten.
+\item Mål bredden $L$ på polene langs lederen.
+\item Les av vekta uten strøm $(m_{0})$.
+\item Slå på strømmen og øk den i trinn på 0,5~A opp til 3~A. Les av vekta for hvert trinn. Slå av strømmen mellom målingene, så ledningen ikke blir varm.
+\item Snu strømretningen og gjør én måling til. Hva skjer?
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Vil vekta vise mer eller mindre når strømmen slås på? Hva skjer når dere snur strømmen?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Er kraften proporsjonal med strømmen? Hvor stor er $B$?
+\svar
+\oppgave \fase{forklar}{Forklar}Vekta måler kraften på magneten, men formelen $F = BIL$ gjelder kraften på lederen. Hvorfor kan vi likevel bruke den?
+\svar
+\oppgave \fase{forklar}{Forklar}Bruk høyrehåndsregelen. Hvilken retning har strømmen i lederen når vekta viser mer $enn m_{0}$, gitt at nordpolen er til venstre for lederen?
+\svar
+\oppgave \fase{forklar}{Vurder}Feltet er ikke helt homogent, og det strekker seg litt utenfor polene. Hvordan påvirker det $L$ og verdien dere får for $B$?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hvor stor strøm må gå gjennom lederen i eksemplet for at kraften skal bli like stor som tyngden av en binders på 0,50~g?
+\svar
+\end{oppgaveliste}
+
+\end{document}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kraft på en strømførende leder – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 2: En magnet står på en digital vekt, og en leder med strøm går gjennom feltet. Vekta viser kraften F = BIL, og fra grafen finner dere B.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Magnetiske felt og krefter</p>
+        <h1>Kraft på en strømførende leder</h1>
+        <p class="ingress">En hesteskomagnet står på en digital vekt, og en ledning går gjennom feltet uten å røre magneten. Når det går strøm i ledningen, endrer vekta seg. Det er Newtons tredje lov i praksis: Lederen dyttes av magneten, og magneten dyttes like mye tilbake. Fra vekta kan dere finne kraften F = BIL og magnetfeltet B.</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par eller grupper på 3</dd></div>
+            <div><dt>Utstyr</dt><dd>Hesteskomagnet, digital vekt (0,01 g), stiv ledning på stativ, spenningskilde til 3 A, amperemeter, linjal</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/stromhuske.html">Strømhuske</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Vise at kraften på en leder i et magnetfelt er proporsjonal med strømmen.</li>
+            <li>Bestemme magnetfeltet B mellom polene til en magnet.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>En hesteskomagnet, eller to flate magneter på et U-formet jernåk, og en digital vekt med 0,01 g oppløsning.</li>
+            <li>En stiv, rett ledning holdt fast i et stativ, slik at den går vannrett gjennom feltet uten å røre magneten.</li>
+            <li>Spenningskilde som kan gi 3 A, gjerne med strømbegrensning, en reostat eller motstand, et amperemeter og en linjal.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>En rett leder med strømmen I og lengden L i et homogent magnetfelt B, vinkelrett på lederen, får kraften F = BIL. Retningen finnes med høyrehåndsregelen. Magneten får like stor kraft motsatt vei. Vekta måler i gram, så kraften er F = Δm · g, der Δm er endringen i det vekta viser. Her er L lengden av lederen som er inne i feltet, omtrent bredden på polene.</p>
+
+          <h2 data-tid="20 min">Framgangsmåte</h2>
+          <ol>
+            <li>Sett magneten på vekta og ledningen gjennom feltet, vinkelrett på feltlinjene. Lederen må ikke røre magneten.</li>
+            <li>Mål bredden L på polene langs lederen.</li>
+            <li>Les av vekta uten strøm (m<sub>0</sub>).</li>
+            <li>Slå på strømmen og øk den i trinn på 0,5 A opp til 3 A. Les av vekta for hvert trinn. Slå av strømmen mellom målingene, så ledningen ikke blir varm.</li>
+            <li>Snu strømretningen og gjør én måling til. Hva skjer?</li>
+          </ol>
+        </div>
+
+        <figure id="sv" class="sim egne-data">
+          <h2 data-tid="5 min">Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="sv-m0">Vekta uten strøm m<sub>0</sub> (g)<input id="sv-m0" type="text" inputmode="decimal"></label>
+            <label for="sv-L">Lengden av lederen i feltet L (cm)<input id="sv-L" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall">
+            <div><dt>stigningstall = BL</dt><dd id="sv-stig"></dd></div>
+            <div><dt>magnetfeltet B</dt><dd id="sv-B"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Linjen er tilpasset gjennom origo. Snur dere strømmen, blir Δm negativ. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/stromvekt.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Vil vekta vise mer eller mindre når strømmen slås på? Hva skjer når dere snur strømmen?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Er kraften proporsjonal med strømmen? Hvor stor er B?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Vekta måler kraften på magneten, men formelen F = BIL gjelder kraften på lederen. Hvorfor kan vi likevel bruke den?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Bruk høyrehåndsregelen. Hvilken retning har strømmen i lederen når vekta viser mer enn m<sub>0</sub>, gitt at nordpolen er til venstre for lederen?</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Feltet er ikke helt homogent, og det strekker seg litt utenfor polene. Hvordan påvirker det L og verdien dere får for B?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Hvor stor strøm må gå gjennom lederen i eksemplet for at kraften skal bli like stor som tyngden av en binders på 0,50 g?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Det avhenger av strømretningen. Vekta viser mer hvis lederen dyttes oppover (da dyttes magneten nedover), og mindre hvis lederen dyttes nedover. Snur dere strømmen, snur kraften.</li>
+              <li>Eksemplet gir en rett linje gjennom origo med stigningstall 4,03 mN/A. Med L = 0,050 m blir B = 0,00403 / 0,050 ≈ 81 mT.</li>
+              <li>Newtons tredje lov: Lederen påvirker magneten med en like stor og motsatt rettet kraft. Endringen i det vekta viser, er derfor like stor som kraften på lederen.</li>
+              <li>Feltet går fra nordpolen til sørpolen, altså mot høyre. Vekta viser mer når kraften på lederen peker oppover. Med F = IL × B og B mot høyre må strømmen da gå ut av arket, mot den som ser på oppsettet. La elevene sjekke det med høyrehåndsregelen og så teste det.</li>
+              <li>Feltet er svakere ved kantene og strekker seg litt utenfor polene. Den effektive lengden er derfor litt større enn polbredden, og B regnet ut med polbredden blir litt for stor. B er en slags gjennomsnittsverdi over lengden.</li>
+              <li>F = 0,50 · 10<sup>−3</sup> · 9,81 = 4,9 mN. Med 4,03 mN/A trengs I = 4,9/4,03 ≈ 1,2 A.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 45 minutter. Ledningen blir varm ved store strømmer, så slå av strømmen mellom målingene. Pass på at ledningen ikke berører magneten eller vekta, og at ledningene til spenningskilden ikke drar i oppsettet. Se også simuleringen <a href="../sim/stromhuske.html">Strømhuske</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/stromvekt.js"></script>
+</body>
+</html>

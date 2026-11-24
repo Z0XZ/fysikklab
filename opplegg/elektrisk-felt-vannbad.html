@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elektrisk felt i et vannbad – fysikklab.no</title>
+  <meta name="description" content="Forsøk i Fysikk 2: Mål potensialet i et grunt vannbad mellom to elektroder, tegn ekvipotensiallinjer og feltlinjer, og finn feltstyrken mellom to parallelle plater.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektriske felt og krefter</p>
+        <h1>Elektrisk felt i et vannbad</h1>
+        <p class="ingress">Et elektrisk felt kan ikke ses, men potensialet kan måles. I et grunt vannbad med spenning mellom to elektroder kan dere måle potensialet punkt for punkt med et voltmeter, tegne ekvipotensiallinjer og finne feltlinjene som står vinkelrett på dem.</p>
+
+        <aside class="forsok-info" aria-label="Om forsøket">
+          <dl class="forsok-fakta">
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+            <div><dt>Utstyr</dt><dd>Grunt plastbrett med vann, to metallstriper og to metallstaver, spenningskilde 6 V, multimeter, millimeterpapir</dd></div>
+            <div><dt>Simulering</dt><dd><a href="../sim/elektrisk-felt.html">Elektrisk felt</a></dd></div>
+          </dl>
+          <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+        </aside>
+
+        <div class="tekst opplegg">
+          <h2>Hensikt</h2>
+          <ul>
+            <li>Kartlegge ekvipotensiallinjer og tegne feltlinjer for to ulike elektrodeoppsett.</li>
+            <li>Vise at feltet mellom to parallelle plater er tilnærmet homogent, med E = U/d.</li>
+          </ul>
+
+          <h2>Utstyr</h2>
+          <ul>
+            <li>Et grunt plastbrett med omtrent 1 cm vanlig springvann, og millimeterpapir under brettet (i en plastlomme).</li>
+            <li>To rette metallstriper (for eksempel kobberbånd) som elektroder i del A, og to metallstaver eller skruer i del B.</li>
+            <li>Spenningskilde på omtrent 6 V (vekselspenning gir minst problemer med gassbobler ved elektrodene), ledninger og et multimeter med en spiss målepinne.</li>
+          </ul>
+
+          <h2 data-tid="5 min">Teorien</h2>
+          <p>Multimeteret måler potensialforskjellen mellom minuspolen og punktet der målepinnen står. Linjer med samme potensial kalles ekvipotensiallinjer. Feltlinjene står vinkelrett på dem og peker mot lavere potensial. Feltstyrken er hvor fort potensialet endrer seg: E = ΔV/Δx. Mellom to parallelle plater med spenningen U og avstanden d er feltet tilnærmet homogent, og E = U/d.</p>
+
+          <h2 data-tid="30 min">Del A: To parallelle plater</h2>
+          <ol>
+            <li>Legg de to stripene parallelt i vannet med avstanden d = 20 cm. Koble dem til spenningskilden, og mål spenningen U mellom dem.</li>
+            <li>Koble multimeterets COM til minuspolen. Mål potensialet hver andre centimeter langs en linje rett fra minuspolen til plusspolen, og skriv det inn i tabellen.</li>
+            <li>Mål også et par punkter ved siden av linjen. Har punkter med samme avstand fra minuspolen samme potensial?</li>
+          </ol>
+        </div>
+
+        <figure id="vb" class="sim egne-data">
+          <h2 data-tid="5 min">Del A: Resultater</h2>
+          <div class="sim-styring mange uten-topp">
+            <label for="vb-U">Spenning mellom platene U (V)<input id="vb-U" type="text" inputmode="decimal"></label>
+            <label for="vb-d">Avstand mellom platene d (cm)<input id="vb-d" type="text" inputmode="decimal"></label>
+          </div>
+          <div data-tabell></div>
+          <dl class="sim-tall tre">
+            <div><dt>E fra stigningstallet</dt><dd id="vb-E"></dd></div>
+            <div><dt>U/d</dt><dd id="vb-Ud"></dd></div>
+            <div><dt>konstantledd</dt><dd id="vb-b"></dd></div>
+          </dl>
+          <figcaption class="sim-hint">Linjen er tilpasset med konstantledd. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+        </figure>
+
+        <div class="tekst opplegg">
+          <h2 data-tid="20 min">Del B: To punktelektroder</h2>
+          <ol>
+            <li>Bytt stripene med to staver som står loddrett i vannet, omtrent 15 cm fra hverandre.</li>
+            <li>Finn punkter med potensial 1 V, 2 V, 3 V, 4 V og 5 V. Flytt målepinnen til multimeteret viser den samme verdien, og merk punktene på et eget ark med samme rutenett.</li>
+            <li>Trekk ekvipotensiallinjene gjennom punktene. Tegn feltlinjer som står vinkelrett på dem, fra plusspolen til minuspolen.</li>
+          </ol>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/elektrisk-felt-vannbad.pdf" download>Last ned elevark (PDF)</a></p>
+          <ol class="oppgaveliste">
+          <li><span class="fase tipp">Gjett</span><div><p>Hvordan tror dere potensialet endrer seg fra minuspolen til plusspolen i del A? Jevnt, eller raskest nær en av platene?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør del A, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Sammenlign E fra stigningstallet med U/d.</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hvorfor står feltlinjene vinkelrett på ekvipotensiallinjene? Hvor mye arbeid gjør feltet på en ladning som flyttes langs en ekvipotensiallinje?</p></div></li>
+          <li><span class="fase test">Tegn</span><div><p>Gjør del B. Hvor ligger ekvipotensiallinjene tettest, og hva betyr det for feltstyrken der? Sammenlign tegningen med simuleringen for to motsatte ladninger.</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Linjen i del A går ikke gjennom 0 V og U ved platene. Hva kan være grunnen?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Et elektron befinner seg i et homogent felt på 27 V/m. Hvor stor kraft virker på det, og hvor stor akselerasjon får det? Hvorfor er dette forsøket likevel ikke farlig?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag og tips til læreren</summary>
+            <ol>
+              <li>Mellom to parallelle plater øker potensialet jevnt, så grafen blir en rett linje.</li>
+              <li>Eksemplet gir en rett linje med E = 26,8 V/m, mens U/d = 6,0 V / 0,20 m = 30,0 V/m. Feltet er homogent, men litt svakere enn U/d.</li>
+              <li>Langs en ekvipotensiallinje er ΔV = 0, så feltet gjør ikke noe arbeid: W = qΔV = 0. Da kan feltet ikke ha noen komponent langs linjen, og feltlinjene må stå vinkelrett på den.</li>
+              <li>Linjene ligger tettest nær elektrodene og mellom dem. Der er feltet sterkest, fordi potensialet endrer seg mest over kort avstand. Mønsteret ligner feltet rundt to motsatte punktladninger, men i to dimensjoner.</li>
+              <li>Konstantleddet på 0,32 V viser at en del av spenningen ligger over grenseflaten mellom metallet og vannet ved hver elektrode, slik at spenningen gjennom selve vannet er mindre enn U. Det er derfor E blir mindre enn U/d. Dårlig kontakt og ujevn vanndybde gir også avvik.</li>
+              <li>F = eE = 1,60 · 10<sup>−19</sup> · 27 = 4,3 · 10<sup>−18</sup> N og a = F/m = 4,3 · 10<sup>−18</sup> / 9,11 · 10<sup>−31</sup> ≈ 4,7 · 10<sup>12</sup> m/s². Akselerasjonen er stor fordi massen er liten, men spenningen er bare 6 V, så strømmen og energien er små.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> 60–90 minutter, gjerne fordelt på to økter. Med likespenning danner det seg gassbobler ved elektrodene, og målingene driver. Vekselspenning (og multimeteret på V~) gir mer stabile målinger. Ledende papir (teledeltos) kan brukes i stedet for vann. Se også simuleringen <a href="../sim/elektrisk-felt.html">Elektrisk felt</a>.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/maaletabell.js"></script>
+  <script src="../js/vannbad.js"></script>
+</body>
+</html>

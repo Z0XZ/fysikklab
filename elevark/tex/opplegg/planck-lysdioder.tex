@@ -1,0 +1,55 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/planck-lysdioder.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Kvantefysikk}{Plancks konstant med lysdioder}{https://fysikklab.no/opplegg/planck-lysdioder.html}{Opplegget på nett}
+
+En lysdiode sender ut fotoner når elektroner faller over et energigap. Hvert elektron får energien eU fra spenningen, og hvert foton har energien hf. En blå lysdiode trenger derfor høyere spenning enn en rød før den begynner å lyse. Fra spenningen og fargen kan dere bestemme Plancks konstant.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Se at energien til et foton øker med frekvensen.
+\item Bestemme Plancks konstant fra terskelspenningen til lysdioder med ulik farge.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item Lysdioder i fire eller fem farger, fra rød til fiolett. Bølgelengden står i databladet til lysdioden, eller den kan måles med et gitter eller et spektroskop.
+\item En motstand på omtrent 470~Ω i serie med lysdioden, slik at strømmen ikke blir for stor.
+\item En regulerbar spenningskilde (0–6~V) eller et batteri med potensiometer, et voltmeter over lysdioden, og et pappør eller en hånd rundt lysdioden for å se svakt lys.
+\end{itemize}
+
+\section*{Teorien}
+
+Et foton med bølgelengden $λ$ har frekvensen $f = c/λ$ og energien $E = hf$. Et elektron som går gjennom spenningen $U$, får energien eU. Lysdioden begynner å lyse når eU er omtrent lik fotonenergien: $eU \approx hf$. Da er $U \approx (h/e) \cdot f$, så grafen av $U$ mot $f$ blir en rett linje med stigningstall $h/e$.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Koble lysdioden i serie med motstanden til spenningskilden. Lysdioden må stå riktig vei: Det lange beinet går mot plusspolen. Koble voltmeteret over lysdioden alene.
+\item Gjør rommet så mørkt som mulig. Skru spenningen sakte opp fra null og se ned i pappøret.
+\item Les av spenningen over lysdioden akkurat når den begynner å lyse svakt. Det er terskelspenningen $U$.
+\item Gjør det tre ganger for hver lysdiode og bruk gjennomsnittet. Bytt rolle, så flere ser etter.
+\item Skriv inn bølgelengden og terskelspenningen for hver farge.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Hvilken lysdiode tror dere begynner å lyse ved lavest spenning: rød, grønn eller blå? Hvorfor?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvilken verdi får dere for $h$?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er stigningstallet $h/e$? Hvorfor er det bedre å bruke stigningstallet enn å regne $h = eU/f$ for én lysdiode?
+\svar
+\oppgave \fase{test}{Regn}Hvor stor energi har et foton fra den røde lysdioden (630~nm), i joule og i elektronvolt? Hvor mange fotoner sender en rød lysdiode med lyseffekt 10 mW ut per sekund?
+\svar
+\oppgave \fase{forklar}{Vurder}Det er vanskelig å se akkurat når en lysdiode begynner å lyse. Hvilken vei trekker det målingene? Hvorfor kan lysdioder av ulike materialer gi punkter som ikke ligger helt på linjen?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Hvorfor ville en klassisk bølgemodell for lys ikke forutsi en bestemt terskelspenning som avhenger av fargen? Sammenlign med den fotoelektriske effekten.
+\svar
+\end{oppgaveliste}
+
+\end{document}

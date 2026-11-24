@@ -14,7 +14,7 @@ Kjør `--sjekk` først. Hvis den viser endringer du ikke har gjort i kildene, er
 
 | Kilde | Sider |
 |---|---|
-| `kilder/opplegg/*.html` | Forsøkene: sentripetalakselerasjon og heis med mobilen, e/m, videoanalyse av skrått kast, pendelens svingetid, g med mobilen, følg grafen med bevegelsessensor, Newtons andre lov med vogn og lodd, effekt i trappa, energitap i sprettball, energibevaring på skråplan, ballistisk pendel, rekyl med to vogner og ballstabelen |
+| `kilder/opplegg/*.html` | Forsøkene: sentripetalakselerasjon og heis med mobilen, e/m, videoanalyse av skrått kast, pendelens svingetid, g med mobilen, følg grafen med bevegelsessensor, Newtons andre lov med vogn og lodd, effekt i trappa, energitap i sprettball, energibevaring på skråplan, ballistisk pendel, rekyl med to vogner og ballstabelen. Fysikk 2: treff koppen, sentripetalkraft med snor, elektrisk felt i vannbad, strømvekt, induksjon med fallende magnet og Plancks konstant med lysdioder |
 | `kilder/sim/*.html` | Simuleringene e/m for elektronet og Millikans oljedråpeforsøk |
 | `kilder/programmering/*.html` og `kilder/py/*.py` | Programmeringssidene grunnkurs, regresjon, satellittbane, elektrisk felt, energi med friksjon, rakett, Monte Carlo og Biot–Savart. `@@fil.py@@` i kilden byttes med koden i `kilder/py/`. |
 | `begrep.py` | Begrepstestene `opplegg/begrep-*.html`. Spørsmålene står i skriptet. Alternativene stokkes, men i samme rekkefølge hver gang. |

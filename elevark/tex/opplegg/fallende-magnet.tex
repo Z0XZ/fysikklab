@@ -1,0 +1,62 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/fallende-magnet.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Elektromagnetisk induksjon}{Induksjon med fallende magnet}{https://fysikklab.no/opplegg/fallende-magnet.html}{Opplegget på nett}
+
+Når en magnet faller gjennom en spole, endrer den magnetiske fluksen seg, og det blir indusert en spenning. Dere skal måle spenningen og se hvorfor den har to topper med motsatt fortegn. Etterpå slipper dere magneten gjennom et kobberrør, der den bruker overraskende lang tid.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Måle den induserte spenningen når en magnet faller gjennom en spole, og forklare formen på grafen med Faradays lov.
+\item Bruke Lenz' lov til å forklare hvorfor en magnet faller sakte gjennom et rør av metall.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En sterk sylindermagnet (neodym) som passer gjennom spolen og rørene. Magneten er sprø og kan klemme fingrene, så hold den unna andre magneter og elektronikk.
+\item En spole med noen hundre vindinger, og en spenningssensor med logger som måler minst 1000 ganger i sekundet.
+\item Rør på omtrent 1~m av plast, aluminium og kobber, med litt større indre diameter enn magneten. Stoppeklokke og målebånd.
+\end{itemize}
+
+\section*{Teorien}
+
+Faradays lov: Den induserte spenningen er $ε = -NΔΦ/Δt$, der $N$ er antall vindinger og $Φ$ er fluksen gjennom én vinding. Når magneten nærmer seg spolen, øker fluksen. Når den har passert, avtar fluksen. Spenningen får derfor motsatt fortegn før og etter. Arealet under grafen for $ε(t)$ er lik $-NΔΦ$, så de to pulsene har like stort areal med motsatt fortegn. Lenz' lov: Den induserte strømmen motvirker endringen som skaper den.
+
+\section*{Del A: Magnet gjennom spole}
+
+\begin{enumerate}
+\item Fest spolen i et stativ med åpningen opp, og koble spenningssensoren til spolen. Still loggeren på minst 1000 målinger per sekund.
+\item Start målingen og slipp magneten fra 20~cm over spolen, slik at den faller rett gjennom. Ta imot den med et mykt underlag.
+\item Kopier $t$ og $U$ fra loggeren og lim inn i verktøyet. Se på toppene og arealene.
+\item Gjenta fra 40~cm og 80~cm, og med magneten snudd.
+\end{enumerate}
+
+\section*{Del B: Magnet gjennom rør}
+
+\begin{enumerate}
+\item Hold et rør loddrett og slipp magneten i den øverste åpningen. Ta tiden til den kommer ut nederst.
+\item Gjør det med plastrøret, aluminiumsrøret og kobberrøret, tre ganger hver. Bruk gjennomsnittet.
+\item Slipp også en umagnetisk metallbit med samme størrelse gjennom kobberrøret.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Skisser hvordan dere tror grafen for spenningen ser ut når magneten faller gjennom spolen. Hvilken puls blir høyest?
+\svar
+\oppgave \fase{test}{Mål}Gjør del A, eller last inn eksempeldataene. Hvorfor har pulsene motsatt fortegn? Hvorfor er den andre pulsen høyere og smalere enn den første?
+\svar
+\oppgave \fase{forklar}{Forklar}Sammenlign arealene over og under null. Hvorfor er de like store? Hva skjer med arealene og toppene når dere slipper fra større høyde?
+\svar
+\oppgave \fase{test}{Mål}Gjør del B, eller fyll inn eksemplet. Hvor mange ganger lengre tid bruker magneten i kobberrøret enn i fritt fall?
+\svar
+\oppgave \fase{forklar}{Forklar}Bruk Lenz' lov til å forklare hvorfor magneten faller sakte i kobberrøret, men ikke i plastrøret. Hvorfor faller den saktere i kobber enn i aluminium?
+\svar
+\oppgave \fase{utfordring}{Utfordring}Magneten i kobberrøret faller med nesten konstant fart. Hva betyr det for kreftene på den? Hvor blir det av den potensielle energien den mister?
+\svar
+\end{oppgaveliste}
+
+\end{document}

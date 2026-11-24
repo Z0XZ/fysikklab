@@ -1,0 +1,86 @@
+tittel: Sentripetalkraft med snor og rør – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Sving en gummipropp rundt i en snor som går gjennom et rør ned til et lodd. Sammenlign tyngden av loddet med sentripetalkraften mω²L.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Sirkelbevegelse
+script: maaletabell.js,sentripetalsnor.js
+meny: undervisningsopplegg.html
+---
+<h1>Sentripetalkraft med snor og rør</h1>
+<p class="ingress">En gummipropp er bundet i en snor som går gjennom et rør. I den andre enden henger et lodd. Sving proppen rundt over hodet slik at loddet holder seg i ro. Da er det tyngden av loddet som holder proppen i sirkelbanen. Stemmer det med F = mω²L?</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45–60 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 3: én svinger, én tar tiden, én skriver</dd></div>
+    <div><dt>Utstyr</dt><dd>Gummipropp, snor, glatt rør, lodd og loddholder, binders, stoppeklokke, vekt, vernebriller</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/sirkelbevegelse.html">Sirkelbevegelse</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Undersøke sammenhengen mellom kraften og vinkelfarten i en sirkelbevegelse.</li>
+    <li>Sammenligne snordraget med sentripetalkraften mω²L.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En gummipropp, omtrent 1,5 m tynn, sterk snor og et glatt rør (for eksempel en plastpenn uten innmat eller et glassrør med tape rundt).</li>
+    <li>Loddholder og lodd (50–250 g), en binders eller tape som merke på snora, stoppeklokke og vekt.</li>
+    <li>Vernebriller. Hold god avstand til andre, og sving over hodehøyde.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Proppen går i en vannrett sirkel, men snora heller litt nedover fra røret til proppen. Kall snorlengden fra røret til proppen L, og vinkelen under vannrett α. Radien er da r = L cos α. Den vannrette komponenten av snordraget S gir sentripetalkraften: S cos α = mω²r = mω²L cos α. Vinkelen forsvinner, og S = mω²L. Når loddet henger i ro, er S = Mg. Altså skal Mg = mω²L.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Vei proppen. Tre snora gjennom røret og fest proppen i den ene enden og loddholderen i den andre.</li>
+    <li>Velg L, for eksempel 60 cm fra toppen av røret til midten av proppen. Sett en binders på snora rett under røret som merke.</li>
+    <li>Hold røret loddrett og sving proppen rundt. Juster farten til bindersen holder seg rett under røret, slik at L holder seg fast.</li>
+    <li>Ta tiden for 20 runder når farten er jevn.</li>
+    <li>Gjenta med fem ulike lodd, og samme L.</li>
+  </ol>
+</div>
+
+<figure id="ss" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="ss-m">Massen til proppen m (g)<input id="ss-m" type="text" inputmode="decimal"></label>
+    <label for="ss-L">Snorlengden L (cm)<input id="ss-L" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall">
+    <div><dt>stigningstall (bør være 1)</dt><dd id="ss-stig"></dd></div>
+    <div><dt>avvik fra 1</dt><dd id="ss-avvik"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">M er massen til loddet og loddholderen til sammen. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Dere firedobler loddet og holder L fast. Hvor mye fortere må proppen gå rundt?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene nær linjen med stigningstall 1?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Vis at snordraget er S = mω²L, uansett hvor mye snora heller. Hvorfor kan snora aldri være helt vannrett?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Med m = 25 g og L = 60 cm: Hvor lang tid bruker proppen på én runde når loddet er 100 g? Hvor stor er farten til proppen?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvorfor blir mω²L ofte litt mindre enn Mg? Tenk på røret, snora og hvordan dere måler L.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Hvor stor vinkel α heller snora med når loddet er 100 g? Bruk den loddrette komponenten av snordraget.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Mg = mω²L, så ω² er proporsjonal med M. Med fire ganger så stort lodd blir ω dobbelt så stor, og proppen går dobbelt så fort rundt.</li>
+      <li>Eksemplet gir stigningstall 0,956: mω²L er omtrent 4 % mindre enn Mg.</li>
+      <li>Se teorien. Den loddrette komponenten S sin α må bære tyngden mg av proppen. Hvis snora var vannrett, ville den loddrette komponenten vært null, og ingenting ville holdt proppen oppe.</li>
+      <li>ω = √(Mg/(mL)) = √(0,100 · 9,81 / (0,025 · 0,60)) = 8,09 rad/s. T = 2π/ω = 0,78 s. Radien er r = L cos α ≈ 0,58 m (se oppgave 6), så v = ωr ≈ 4,7 m/s.</li>
+      <li>Friksjonen mellom snora og røret gjør at snordraget ved proppen ikke er helt lik Mg. Det er vanskelig å holde L helt fast, og det er lett å måle L til kanten og ikke til midten av proppen. Den som svinger, beveger også røret i en liten sirkel. Snora har også litt masse.</li>
+      <li>S sin α = mg gir sin α = mg/(Mg) = m/M = 25/100 = 0,25, altså α ≈ 14°.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45–60 minutter. Det tar litt tid å få jevn fart, så la elevene øve et par minutter før de tar tiden. Ute eller i gymsalen er tryggest. Se også simuleringen <a href="../sim/sirkelbevegelse.html">Sirkelbevegelse</a>.</p>
+  </details>
+</section>

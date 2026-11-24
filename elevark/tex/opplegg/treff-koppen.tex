@@ -1,0 +1,56 @@
+% Laget automatisk av elevark/lag_elevark.py fra opplegg/treff-koppen.html. Endringer her blir overskrevet.
+\documentclass[11pt]{article}
+\usepackage{elevark}
+\begin{document}
+\elevarkhode{Fysikk 2 · Bevegelse og krefter i to dimensjoner}{Horisontalt kast: treff koppen}{https://fysikklab.no/opplegg/treff-koppen.html}{Opplegget på nett}
+
+En kule ruller ned en renne, ut over bordkanten og ned på gulvet. Dere måler farten ved kanten, regner ut hvor kula lander, og setter en kopp der før dere slipper. Treffer dere? Med flere farter kan dere til slutt bestemme $g$.
+
+\section*{Hensikt}
+
+\begin{itemize}
+\item Bruke at horisontal og vertikal bevegelse er uavhengige av hverandre til å forutsi hvor en kule lander.
+\item Bestemme $g$ fra kastlengden og farten ved bordkanten.
+\end{itemize}
+
+\section*{Utstyr}
+
+\begin{itemize}
+\item En stålkule eller klinkekule, og en renne (for eksempel en profil eller en linjal med fure) som ender vannrett ved bordkanten.
+\item En fotoport ved bordkanten koblet til logger eller datamaskin. Uten fotoport kan dere filme kula over bordet og finne farten med videoanalyse.
+\item Skyvelære, målebånd, loddsnor, en papirkopp og et ark med kopipapir eller karbonpapir.
+\end{itemize}
+
+\section*{Teorien}
+
+Kula forlater bordet med vannrett fart $v_{0}$. Loddrett faller den fra ro, så falltiden er $t = \sqrt{2h/g}$, der $h$ er høyden fra underkanten av kula til gulvet. Vannrett er farten konstant, så kastlengden blir $x = v_{0}t = v_{0} \cdot \sqrt{2h/g}$. Fotoporten måler tiden $Δt$ kula bruker gjennom lysstrålen, og $v_{0} = b/Δt$, der $b$ er diameteren til kula.
+
+\section*{Framgangsmåte}
+
+\begin{enumerate}
+\item Mål diameteren $b$ til kula med skyvelære. Fest renna slik at den siste biten er vannrett og ender ved bordkanten.
+\item Sett fotoporten rett ved bordkanten, slik at lysstrålen går gjennom midten av kula.
+\item Bruk loddsnora til å merke punktet på gulvet rett under kanten. Mål høyden $h$.
+\item Slipp kula fra et merke på renna, og les av $Δt$. Ta kula i hånda før den faller ned, eller la den lande på et mykt underlag.
+\item \textbf{Treff koppen:} Regn ut hvor kula vil lande, og sett koppen der. Slipp kula fra samme merke. Traff dere?
+\item Legg kopipapiret der kula lander, og mål kastlengden $x$ fra merket på gulvet. Gjenta fra fem ulike merker på renna.
+\end{enumerate}
+
+\section*{Oppgaver}
+
+\begin{oppgaveliste}
+\oppgave \fase{gjett}{Gjett}Kula ruller dobbelt så fort ut over kanten. Hva skjer med falltiden, og hva skjer med kastlengden?
+\svar
+\oppgave \fase{test}{Mål}Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor godt stemmer forutsagt og målt kastlengde?
+\svar
+\oppgave \fase{forklar}{Forklar}Hvorfor er stigningstallet for $x$ mot $v_{0}$ lik falltiden? Hvilken verdi for $g$ gir det?
+\svar
+\oppgave \fase{test}{Regn}Lysstrålen går 3~mm under midten av en kule med diameter 2,50~cm. Hvor lang korde skjærer strålen gjennom kula, og hvor stor feil gir det i $v_{0}$?
+\svar
+\oppgave \fase{forklar}{Vurder}Hvilke feilkilder gjør at kula lander for kort eller for langt? Tenk på renna, fotoporten og luftmotstanden.
+\svar
+\oppgave \fase{utfordring}{Utfordring}Flytt koppen opp på en stabel bøker 20~cm over gulvet. Hvor må den stå for at kula med $v_{0} = 1{,}60\,\mathrm{m/s}$ skal treffe? Mål med kanten av koppen, ikke bunnen.
+\svar
+\end{oppgaveliste}
+
+\end{document}

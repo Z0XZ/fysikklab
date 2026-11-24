@@ -640,3 +640,4 @@ li[data-type=begrepstest] { --t: var(--t-begrep); }
 h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-align: middle; margin-left: .6rem; padding: 0 .4rem; font-family: var(--mono); font-size: .8rem; font-weight: 400; color: var(--t-forsok); border: 1px solid color-mix(in srgb, var(--t-forsok) 45%, transparent); border-radius: 3px; }
 @media (max-width: 640px) { .forsok-info { grid-template-columns: minmax(0, 1fr); } }
 @media print { .innholdsliste { display: none; } .forsok-info { grid-template-columns: 1fr; } }
+.fyll-blekk { fill: var(--blekk); stroke: none; }

@@ -1,0 +1,83 @@
+tittel: Plancks konstant med lysdioder – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Mål spenningen der lysdioder med ulik farge begynner å lyse, plott spenningen mot frekvensen og bestem Plancks konstant.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Kvantefysikk
+script: maaletabell.js,planck.js
+meny: undervisningsopplegg.html
+---
+<h1>Plancks konstant med lysdioder</h1>
+<p class="ingress">En lysdiode sender ut fotoner når elektroner faller over et energigap. Hvert elektron får energien eU fra spenningen, og hvert foton har energien hf. En blå lysdiode trenger derfor høyere spenning enn en rød før den begynner å lyse. Fra spenningen og fargen kan dere bestemme Plancks konstant.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>45–60 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Par</dd></div>
+    <div><dt>Utstyr</dt><dd>Lysdioder i 4–5 farger med kjent bølgelengde, motstand på 470 Ω, regulerbar spenningskilde, voltmeter, et pappør</dd></div>
+    <div><dt>Simulering</dt><dd>Ingen ennå</dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Se at energien til et foton øker med frekvensen.</li>
+    <li>Bestemme Plancks konstant fra terskelspenningen til lysdioder med ulik farge.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>Lysdioder i fire eller fem farger, fra rød til fiolett. Bølgelengden står i databladet til lysdioden, eller den kan måles med et gitter eller et spektroskop.</li>
+    <li>En motstand på omtrent 470 Ω i serie med lysdioden, slik at strømmen ikke blir for stor.</li>
+    <li>En regulerbar spenningskilde (0–6 V) eller et batteri med potensiometer, et voltmeter over lysdioden, og et pappør eller en hånd rundt lysdioden for å se svakt lys.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Et foton med bølgelengden λ har frekvensen f = c/λ og energien E = hf. Et elektron som går gjennom spenningen U, får energien eU. Lysdioden begynner å lyse når eU er omtrent lik fotonenergien: eU ≈ hf. Da er U ≈ (h/e) · f, så grafen av U mot f blir en rett linje med stigningstall h/e.</p>
+
+  <h2 data-tid="25 min">Framgangsmåte</h2>
+  <ol>
+    <li>Koble lysdioden i serie med motstanden til spenningskilden. Lysdioden må stå riktig vei: Det lange beinet går mot plusspolen. Koble voltmeteret over lysdioden alene.</li>
+    <li>Gjør rommet så mørkt som mulig. Skru spenningen sakte opp fra null og se ned i pappøret.</li>
+    <li>Les av spenningen over lysdioden akkurat når den begynner å lyse svakt. Det er terskelspenningen U.</li>
+    <li>Gjør det tre ganger for hver lysdiode og bruk gjennomsnittet. Bytt rolle, så flere ser etter.</li>
+    <li>Skriv inn bølgelengden og terskelspenningen for hver farge.</li>
+  </ol>
+</div>
+
+<figure id="pl" class="sim egne-data">
+  <h2 data-tid="5 min">Resultater</h2>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>stigningstall = h/e</dt><dd id="pl-stig"></dd></div>
+    <div><dt>Plancks konstant h</dt><dd id="pl-h"></dd></div>
+    <div><dt>avvik fra 6,63 · 10⁻³⁴ Js</dt><dd id="pl-avvik"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Linjen er tilpasset med konstantledd. h regnes ut fra stigningstallet, h = e · stigningstall, med e = 1,602 · 10⁻¹⁹ C. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Hvilken lysdiode tror dere begynner å lyse ved lavest spenning: rød, grønn eller blå? Hvorfor?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Ligger punktene på en rett linje? Hvilken verdi får dere for h?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er stigningstallet h/e? Hvorfor er det bedre å bruke stigningstallet enn å regne h = eU/f for én lysdiode?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Hvor stor energi har et foton fra den røde lysdioden (630 nm), i joule og i elektronvolt? Hvor mange fotoner sender en rød lysdiode med lyseffekt 10 mW ut per sekund?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Det er vanskelig å se akkurat når en lysdiode begynner å lyse. Hvilken vei trekker det målingene? Hvorfor kan lysdioder av ulike materialer gi punkter som ikke ligger helt på linjen?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Hvorfor ville en klassisk bølgemodell for lys ikke forutsi en bestemt terskelspenning som avhenger av fargen? Sammenlign med den fotoelektriske effekten.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Den røde. Rødt lys har lavest frekvens, så hvert foton har minst energi, og elektronene trenger minst spenning.</li>
+      <li>Eksemplet gir stigningstall 4,25 · 10<sup>−15</sup> V·s og h = 6,82 · 10<sup>−34</sup> Js, 3 % over tabellverdien 6,63 · 10<sup>−34</sup> Js. Ekte målinger avviker ofte mer.</li>
+      <li>eU = hf gir U = (h/e) · f. Én lysdiode gir en verdi som påvirkes av at terskelen ikke er nøyaktig hf/e. Stigningstallet bruker forskjellene mellom lysdiodene, så en fast forskyvning (konstantleddet) påvirker det ikke.</li>
+      <li>E = hc/λ = 6,63 · 10<sup>−34</sup> · 3,00 · 10<sup>8</sup> / 630 · 10<sup>−9</sup> = 3,16 · 10<sup>−19</sup> J = 1,97 eV. Antall fotoner per sekund er 0,010 / 3,16 · 10<sup>−19</sup> ≈ 3,2 · 10<sup>16</sup>.</li>
+      <li>Øyet ser ikke det aller svakeste lyset, så U blir litt for høy. Det trekker alle punktene omtrent likt og påvirker mest konstantleddet. Lysdioder av ulike halvledermaterialer har ulike tap og en spredning i bølgelengdene, så punktene spres rundt linjen.</li>
+      <li>I bølgemodellen avhenger energien av intensiteten, ikke av fargen. Da burde svakt blått og svakt rødt lys kreve det samme. At terskelen øker med frekvensen, viser at lys kommer i fotoner med energien hf. Det er den samme sammenhengen som i den fotoelektriske effekten, bare motsatt vei: Der gir fotoner energi til elektroner, her gir elektroner energi til fotoner.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 45–60 minutter. Kjøp lysdioder med oppgitt bølgelengde, og bruk gjerne klare lysdioder (ikke matte), så det er lettere å se når de tenner. Infrarøde lysdioder kan tas med hvis dere har et mobilkamera som viser IR-lyset. Fysikk 2 har ingen simulering om kvantefysikk på fysikklab.no ennå.</p>
+  </details>
+</section>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Repetisjon: bevegelsesmengde og støt – fysikklab.no</title>
+  <meta name="description" content="Repetisjon i Fysikk 1: bevegelsesmengde, impuls, bevaringsloven, elastiske og uelastiske støt og rekyl, med blandede oppgaver og løsningsforslag.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html" aria-current="page">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 1 · Bevegelsesmengde og støt</p>
+        <h1>Repetisjon: bevegelsesmengde og støt</h1>
+        <p class="ingress">I et støt er kreftene store og kortvarige, og vanskelige å måle. Men bevegelsesmengden er bevart, og det gjør støt enkle å regne på. Her er en oversikt og blandede oppgaver med løsningsforslag.</p>
+
+        <div class="tekst opplegg">
+          <h2>Tre typer støt</h2>
+          <div class="tabell-ramme">
+            <table class="sim-tabell alle tekst-tabell">
+              <thead><tr><th scope="col">Støt</th><th scope="col">Bevegelsesmengde</th><th scope="col">Kinetisk energi</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Elastisk</th><td>bevart</td><td>bevart</td></tr>
+                <tr><th scope="row">Uelastisk</th><td>bevart</td><td>noe blir til varme, lyd og deformasjon</td></tr>
+                <tr><th scope="row">Fullstendig uelastisk (henger sammen etterpå)</th><td>bevart</td><td>størst mulig tap</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>Bevegelsesmengden er bevart når de ytre kreftene er små i forhold til kreftene i støtet. Husk at bevegelsesmengde er en vektor. Velg en positiv retning, og gi farten minus når den peker motsatt vei.</p>
+
+          <h2>Formler</h2>
+          <ul>
+            <li>Bevegelsesmengde: p = mv.</li>
+            <li>Impuls: I = FΔt = Δp. Med varierende kraft er impulsen arealet under F,t-grafen.</li>
+            <li>Bevaring: m₁v₁ + m₂v₂ = m₁u₁ + m₂u₂.</li>
+            <li>Kinetisk energi: E<sub>k</sub> = ½mv² = p²/(2m).</li>
+          </ul>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="oppgaver-tittel">
+          <h2 id="oppgaver-tittel">Oppgaver</h2>
+          <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/repetisjon-bevegelsesmengde.pdf" download>Last ned elevark (PDF)</a></p>
+          <p class="del-inngang">Bruk g = 9,81 m/s². Velg positiv retning i den første fartsretningen.</p>
+          <ol class="oppgaveliste">
+          <li><span class="fase forklar">Begrep</span><div><p>Er påstandene sanne eller usanne? Begrunn svaret.</p><p>a) Bevegelsesmengden er bare bevart i elastiske støt.<br>b) En ball som spretter rett tilbake fra en vegg, får større endring i bevegelsesmengde enn en ball som stopper.<br>c) En kollisjonspute gjør at impulsen på hodet blir mindre.<br>d) Når et gevær skytes, får geværet og kula like stor bevegelsesmengde.<br>e) I et fullstendig uelastisk støt forsvinner all kinetisk energi.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En bil på 1500 kg i 20 m/s kjører inn i en bil på 1000 kg som står i ro. Bilene henger sammen etterpå. Finn farten rett etter støtet og hvor stor del av den kinetiske energien som går tapt. <a href="../sim/vognstot.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En fotball på 0,43 kg ligger i ro og blir sparket. Den får farten 25 m/s, og foten er i kontakt med ballen i 8,0 ms. Finn impulsen og den gjennomsnittlige kraften. <a href="../sim/impuls.html">Se Myk landing.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>Vogn A på 0,50 kg med farten 0,60 m/s støter elastisk mot vogn B på 0,25 kg som står i ro. Etter støtet har A farten 0,20 m/s i samme retning. Finn farten til B, og vis at den kinetiske energien er bevart.</p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kanon på 800 kg står fritt og skyter en kule på 5,0 kg med farten 300 m/s. Hvilken fart får kanonen? Hvor mye kinetisk energi får kula og kanonen? <a href="../sim/rekyl.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase test">Regn</span><div><p>En kule på 10 g blir skutt inn i en trekloss på 2,0 kg som henger i snorer. Klossen og kula svinger opp 5,0 cm. Finn farten til klossen rett etter støtet og farten til kula. Hvorfor kan vi ikke bruke energibevaring for selve støtet? <a href="../sim/ballistisk-pendel.html">Sjekk med simuleringen.</a></p></div></li>
+          <li><span class="fase utfordring">Sammensatt</span><div><p>En ball på 0,15 kg ligger i ro og blir slått med et balltre. Kraften stiger jevnt fra 0 til 600 N og faller jevnt til 0 igjen. Hele slaget varer 0,020 s. Skisser F,t-grafen. Finn impulsen og farten til ballen. Hvor stor er den gjennomsnittlige kraften?</p></div></li>
+          </ol>
+
+          <details class="fasit">
+            <summary>Løsningsforslag</summary>
+            <ol>
+              <li>a) Usann. Den er bevart i alle støt når de ytre kreftene er små. Det er den kinetiske energien som bare er bevart i elastiske støt. b) Sann. Δp = 2mv mot mv. c) Usann. Impulsen er den samme, men den varer lenger, så kraften blir mindre. d) Sann for størrelsen, men retningene er motsatte, så summen er null. e) Usann. Den kinetiske energien til tyngdepunktet er igjen, for eksempel 60 % i oppgave 2.</li>
+              <li>1500 · 20 = 2500 · v gir v = 12 m/s. E<sub>k</sub> før: ½ · 1500 · 20² = 300 kJ. Etter: ½ · 2500 · 12² = 180 kJ. 120 kJ, altså 40 %, går tapt.</li>
+              <li>I = Δp = 0,43 · 25 ≈ 10,8 N s. F = I/Δt = 10,75/0,0080 ≈ 1,3 kN.</li>
+              <li>0,50 · 0,60 = 0,50 · 0,20 + 0,25 · u<sub>B</sub> gir u<sub>B</sub> = 0,80 m/s. E<sub>k</sub> før: ½ · 0,50 · 0,60² = 0,090 J. Etter: ½ · 0,50 · 0,20² + ½ · 0,25 · 0,80² = 0,010 + 0,080 = 0,090 J.</li>
+              <li>0 = 5,0 · 300 + 800 · v gir v ≈ −1,9 m/s, bakover. Kula får ½ · 5,0 · 300² = 225 kJ, og kanonen ½ · 800 · 1,875² ≈ 1,4 kJ. Den letteste får mest energi.</li>
+              <li>Etter støtet: ½v² = gh gir v = √(2 · 9,81 · 0,050) ≈ 0,99 m/s. Bevegelsesmengde i støtet: 0,010 · v<sub>kule</sub> = 2,01 · 0,99 gir v<sub>kule</sub> ≈ 199 m/s. Støtet er fullstendig uelastisk: Kula har 198 J før, og klossen og kula har bare 0,99 J etter. Resten blir til varme og deformasjon i treet.</li>
+              <li>Grafen er en trekant. Impulsen er arealet: ½ · 0,020 · 600 = 6,0 N s. v = I/m = 6,0/0,15 = 40 m/s. Gjennomsnittskraften er I/Δt = 300 N.</li>
+            </ol>
+            <p><strong>Bruk i timen:</strong> Passer som repetisjon før en vurdering, som lekse eller som stasjoner i timen. Oppgavene er laget for fysikklab.no og er ikke hentet fra lærebøker eller prøver. Begrepstesten <a href="begrep-bevegelsesmengde.html">Bevegelsesmengde og støt</a> passer som oppvarming.</p>
+          </details>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

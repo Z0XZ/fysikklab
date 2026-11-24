@@ -1,0 +1,88 @@
+tittel: Horisontalt kast: treff koppen – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Mål farten til en kule ved bordkanten med fotoport, regn ut hvor den lander, og sett en kopp der før dere slipper. Bestem g fra kastlengdene.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Bevegelse og krefter i to dimensjoner
+script: maaletabell.js,kastforsok.js
+meny: undervisningsopplegg.html
+---
+<h1>Horisontalt kast: treff koppen</h1>
+<p class="ingress">En kule ruller ned en renne, ut over bordkanten og ned på gulvet. Dere måler farten ved kanten, regner ut hvor kula lander, og setter en kopp der før dere slipper. Treffer dere? Med flere farter kan dere til slutt bestemme g.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>Stålkule, renne, fotoport med logger, papirkopp, målebånd, skyvelære</dd></div>
+    <div><dt>Simulering</dt><dd><a href="../sim/skratt-kast.html">Skrått kast</a></dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Bruke at horisontal og vertikal bevegelse er uavhengige av hverandre til å forutsi hvor en kule lander.</li>
+    <li>Bestemme g fra kastlengden og farten ved bordkanten.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En stålkule eller klinkekule, og en renne (for eksempel en profil eller en linjal med fure) som ender vannrett ved bordkanten.</li>
+    <li>En fotoport ved bordkanten koblet til logger eller datamaskin. Uten fotoport kan dere filme kula over bordet og finne farten med videoanalyse.</li>
+    <li>Skyvelære, målebånd, loddsnor, en papirkopp og et ark med kopipapir eller karbonpapir.</li>
+  </ul>
+
+  <h2 data-tid="5 min">Teorien</h2>
+  <p>Kula forlater bordet med vannrett fart v<sub>0</sub>. Loddrett faller den fra ro, så falltiden er t = √(2h/g), der h er høyden fra underkanten av kula til gulvet. Vannrett er farten konstant, så kastlengden blir x = v<sub>0</sub>t = v<sub>0</sub> · √(2h/g). Fotoporten måler tiden Δt kula bruker gjennom lysstrålen, og v<sub>0</sub> = b/Δt, der b er diameteren til kula.</p>
+
+  <h2 data-tid="30 min">Framgangsmåte</h2>
+  <ol>
+    <li>Mål diameteren b til kula med skyvelære. Fest renna slik at den siste biten er vannrett og ender ved bordkanten.</li>
+    <li>Sett fotoporten rett ved bordkanten, slik at lysstrålen går gjennom midten av kula.</li>
+    <li>Bruk loddsnora til å merke punktet på gulvet rett under kanten. Mål høyden h.</li>
+    <li>Slipp kula fra et merke på renna, og les av Δt. Ta kula i hånda før den faller ned, eller la den lande på et mykt underlag.</li>
+    <li><strong>Treff koppen:</strong> Regn ut hvor kula vil lande, og sett koppen der. Slipp kula fra samme merke. Traff dere?</li>
+    <li>Legg kopipapiret der kula lander, og mål kastlengden x fra merket på gulvet. Gjenta fra fem ulike merker på renna.</li>
+  </ol>
+</div>
+
+<figure id="hk" class="sim egne-data">
+  <h2 data-tid="10 min">Resultater</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="hk-b">Diameteren til kula b (cm)<input id="hk-b" type="text" inputmode="decimal"></label>
+    <label for="hk-h">Høyden over gulvet h (cm)<input id="hk-h" type="text" inputmode="decimal"></label>
+  </div>
+  <div data-tabell></div>
+  <dl class="sim-tall tre">
+    <div><dt>falltid √(2h/g)</dt><dd id="hk-tf"></dd></div>
+    <div><dt>stigningstall for x mot v₀</dt><dd id="hk-stig"></dd></div>
+    <div><dt>g fra stigningstallet</dt><dd id="hk-g"></dd></div>
+  </dl>
+  <figcaption class="sim-hint">Stigningstallet for x mot v₀ er falltiden. Da er g = 2h/(stigningstall)². Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Kula ruller dobbelt så fort ut over kanten. Hva skjer med falltiden, og hva skjer med kastlengden?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør målingene, eller trykk på «Fyll inn eksempel». Hvor godt stemmer forutsagt og målt kastlengde?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Hvorfor er stigningstallet for x mot v<sub>0</sub> lik falltiden? Hvilken verdi for g gir det?</p></div></li>
+  <li><span class="fase test">Regn</span><div><p>Lysstrålen går 3 mm under midten av en kule med diameter 2,50 cm. Hvor lang korde skjærer strålen gjennom kula, og hvor stor feil gir det i v<sub>0</sub>?</p></div></li>
+  <li><span class="fase forklar">Vurder</span><div><p>Hvilke feilkilder gjør at kula lander for kort eller for langt? Tenk på renna, fotoporten og luftmotstanden.</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Flytt koppen opp på en stabel bøker 20 cm over gulvet. Hvor må den stå for at kula med v<sub>0</sub> = 1,60 m/s skal treffe? Mål med kanten av koppen, ikke bunnen.</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Falltiden avhenger bare av høyden, så den er den samme. Kastlengden blir dobbelt så lang.</li>
+      <li>I eksemplet er avviket mellom −1,4 % og +2,3 %, altså under 2 cm. Koppen bør treffes hvis den er 6–7 cm bred.</li>
+      <li>x = v<sub>0</sub> · t, der t er den samme for alle kastene. Grafen av x mot v<sub>0</sub> er en rett linje gjennom origo med stigningstall t. Eksemplet gir 0,428 s, mot √(2 · 0,900/9,81) = 0,428 s, og g = 2 · 0,900 / 0,428² = 9,83 m/s².</li>
+      <li>Avstanden fra midten er 0,3 cm og radien 1,25 cm. Korden er 2√(1,25² − 0,3²) = 2,43 cm i stedet for 2,50 cm. Kula skjuler strålen kortere tid, så den målte farten blir 3,0 % for stor (2,50/2,43 = 1,030) hvis vi regner med b = 2,50 cm.</li>
+      <li>Hvis den siste biten av renna heller nedover, får kula en loddrett fart nedover og lander før det forutsagte punktet. Heller den litt oppover, blir kastet som regel lengre. Fotoporten må stå helt ved kanten, ellers bremses kula litt på veien. Luftmotstanden er liten for en stålkule over så korte avstander. Merket på gulvet og kopipapiret gir usikkerhet på noen millimeter.</li>
+      <li>Fallhøyden blir h − 20 cm = 70 cm i eksemplet, og t = √(2 · 0,70/9,81) = 0,378 s. Kanten av koppen må da stå 1,60 · 0,378 = 0,60 m ut fra bordkanten.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 60 minutter. «Treff koppen» fungerer godt som en konkurranse mellom gruppene: Hver gruppe får én sjanse, og koppen settes ut før slippet. Kula bør være tung og liten, så luftmotstanden er liten. Se også simuleringen <a href="../sim/skratt-kast.html">Skrått kast</a>.</p>
+  </details>
+</section>

@@ -1,0 +1,105 @@
+tittel: Induksjon med fallende magnet – fysikklab.no
+beskrivelse: Forsøk i Fysikk 2: Slipp en magnet gjennom en spole og mål den induserte spenningen. Slipp den så gjennom rør av plast, aluminium og kobber, og se Lenz' lov i praksis.
+fagside: undervisningsopplegg.html
+fag: Undervisningsopplegg
+tema: Fysikk 2 · Elektromagnetisk induksjon
+script: maaletabell.js,fallendemagnet.js
+meny: undervisningsopplegg.html
+---
+<h1>Induksjon med fallende magnet</h1>
+<p class="ingress">Når en magnet faller gjennom en spole, endrer den magnetiske fluksen seg, og det blir indusert en spenning. Dere skal måle spenningen og se hvorfor den har to topper med motsatt fortegn. Etterpå slipper dere magneten gjennom et kobberrør, der den bruker overraskende lang tid.</p>
+
+<aside class="forsok-info" aria-label="Om forsøket">
+  <dl class="forsok-fakta">
+    <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter</dd></div>
+    <div><dt>Arbeidsform</dt><dd>Grupper på 2–3</dd></div>
+    <div><dt>Utstyr</dt><dd>Sterk sylindermagnet, spole, spenningssensor med logger, rør av plast, aluminium og kobber, stoppeklokke</dd></div>
+    <div><dt>Simulering</dt><dd>Ingen ennå</dd></div>
+  </dl>
+  <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
+</aside>
+
+<div class="tekst opplegg">
+  <h2>Hensikt</h2>
+  <ul>
+    <li>Måle den induserte spenningen når en magnet faller gjennom en spole, og forklare formen på grafen med Faradays lov.</li>
+    <li>Bruke Lenz' lov til å forklare hvorfor en magnet faller sakte gjennom et rør av metall.</li>
+  </ul>
+
+  <h2>Utstyr</h2>
+  <ul>
+    <li>En sterk sylindermagnet (neodym) som passer gjennom spolen og rørene. Magneten er sprø og kan klemme fingrene, så hold den unna andre magneter og elektronikk.</li>
+    <li>En spole med noen hundre vindinger, og en spenningssensor med logger som måler minst 1000 ganger i sekundet.</li>
+    <li>Rør på omtrent 1 m av plast, aluminium og kobber, med litt større indre diameter enn magneten. Stoppeklokke og målebånd.</li>
+  </ul>
+
+  <h2 data-tid="10 min">Teorien</h2>
+  <p>Faradays lov: Den induserte spenningen er ε = −NΔΦ/Δt, der N er antall vindinger og Φ er fluksen gjennom én vinding. Når magneten nærmer seg spolen, øker fluksen. Når den har passert, avtar fluksen. Spenningen får derfor motsatt fortegn før og etter. Arealet under grafen for ε(t) er lik −NΔΦ, så de to pulsene har like stort areal med motsatt fortegn. Lenz' lov: Den induserte strømmen motvirker endringen som skaper den.</p>
+
+  <h2 data-tid="25 min">Del A: Magnet gjennom spole</h2>
+  <ol>
+    <li>Fest spolen i et stativ med åpningen opp, og koble spenningssensoren til spolen. Still loggeren på minst 1000 målinger per sekund.</li>
+    <li>Start målingen og slipp magneten fra 20 cm over spolen, slik at den faller rett gjennom. Ta imot den med et mykt underlag.</li>
+    <li>Kopier t og U fra loggeren og lim inn i verktøyet. Se på toppene og arealene.</li>
+    <li>Gjenta fra 40 cm og 80 cm, og med magneten snudd.</li>
+  </ol>
+</div>
+
+<figure id="fm" class="sim egne-data">
+  <h2 data-tid="10 min">Del A: Indusert spenning</h2>
+  <div class="sim-styring mange uten-topp">
+    <label for="fm-data" class="bred-felt">Målingene (t i sekunder og U i volt)<textarea id="fm-data" rows="5" spellcheck="false" placeholder="t&#9;U&#10;0,100&#9;0,002&#10;0,101&#9;−0,003"></textarea></label>
+  </div>
+  <canvas id="fm-graf" class="statisk forhold-lav" role="img" aria-label="Den induserte spenningen mot tiden, med arealet under den positive og den negative pulsen fargelagt."></canvas>
+  <dl class="sim-tall tre">
+    <div><dt>største spenning</dt><dd id="fm-maks"></dd></div>
+    <div><dt>minste spenning</dt><dd id="fm-min"></dd></div>
+    <div><dt>tid mellom toppene</dt><dd id="fm-dt"></dd></div>
+    <div><dt>areal over null</dt><dd id="fm-pos"></dd></div>
+    <div><dt>areal under null</dt><dd id="fm-neg"></dd></div>
+  </dl>
+  <div class="sim-styring mange">
+    <div class="sim-knapper"><button id="fm-eksempel" class="knapp lys" type="button">Last inn eksempeldata</button><button id="fm-tom" class="knapp lys" type="button">Tøm</button></div>
+  </div>
+  <figcaption class="sim-hint">Arealene er regnet ut med trapesmetoden, og 1 mV·s = 1 mWb. Eksempeldataene er laget med en enkel modell for fluksen fra en magnet som faller 20 cm, med litt tilfeldig støy. De er ikke ekte målinger.</figcaption>
+</figure>
+
+<div class="tekst opplegg">
+  <h2 data-tid="15 min">Del B: Magnet gjennom rør</h2>
+  <ol>
+    <li>Hold et rør loddrett og slipp magneten i den øverste åpningen. Ta tiden til den kommer ut nederst.</li>
+    <li>Gjør det med plastrøret, aluminiumsrøret og kobberrøret, tre ganger hver. Bruk gjennomsnittet.</li>
+    <li>Slipp også en umagnetisk metallbit med samme størrelse gjennom kobberrøret.</li>
+  </ol>
+</div>
+
+<figure id="fr" class="sim egne-data">
+  <h2 data-tid="5 min">Del B: Resultater</h2>
+  <div data-tabell></div>
+  <figcaption class="sim-hint">Én rad per rør. I eksemplet er rad 1 plast, rad 2 aluminium og rad 3 kobber. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
+</figure>
+
+<section class="oppgaver" aria-labelledby="oppgaver-tittel">
+  <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
+  <ol class="oppgaveliste">
+  <li><span class="fase tipp">Gjett</span><div><p>Skisser hvordan dere tror grafen for spenningen ser ut når magneten faller gjennom spolen. Hvilken puls blir høyest?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør del A, eller last inn eksempeldataene. Hvorfor har pulsene motsatt fortegn? Hvorfor er den andre pulsen høyere og smalere enn den første?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Sammenlign arealene over og under null. Hvorfor er de like store? Hva skjer med arealene og toppene når dere slipper fra større høyde?</p></div></li>
+  <li><span class="fase test">Mål</span><div><p>Gjør del B, eller fyll inn eksemplet. Hvor mange ganger lengre tid bruker magneten i kobberrøret enn i fritt fall?</p></div></li>
+  <li><span class="fase forklar">Forklar</span><div><p>Bruk Lenz' lov til å forklare hvorfor magneten faller sakte i kobberrøret, men ikke i plastrøret. Hvorfor faller den saktere i kobber enn i aluminium?</p></div></li>
+  <li><span class="fase utfordring">Utfordring</span><div><p>Magneten i kobberrøret faller med nesten konstant fart. Hva betyr det for kreftene på den? Hvor blir det av den potensielle energien den mister?</p></div></li>
+  </ol>
+
+  <details class="fasit">
+    <summary>Løsningsforslag og tips til læreren</summary>
+    <ol>
+      <li>Grafen har to pulser med motsatt fortegn, og den andre pulsen er høyest fordi magneten har større fart når den forlater spolen.</li>
+      <li>Fluksen øker når magneten nærmer seg og avtar når den forlater spolen, så ΔΦ/Δt skifter fortegn. Når magneten forlater spolen, har den falt litt lenger og har større fart. Fluksen endrer seg da fortere, så spenningen blir høyere og pulsen kortere. I eksemplet er toppene −0,96 V og +1,00 V, bare 8 ms fra hverandre.</li>
+      <li>Arealet er −NΔΦ. Fluksen øker fra nesten null til en største verdi og går tilbake til nesten null, så de to endringene er like store med motsatt fortegn. I eksemplet er arealene omtrent ±8,8 mV·s, altså NΔΦ ≈ 8,8 mWb. Fra større høyde blir toppene høyere og pulsene smalere, men arealene blir de samme, fordi fluksendringen ikke avhenger av farten.</li>
+      <li>Fritt fall gjennom 1,00 m tar √(2 · 1,00/9,81) = 0,45 s. I eksemplet bruker magneten 0,47 s i plastrøret, 2,1 s i aluminium og 4,3 s i kobber. Det er nesten ti ganger så lang tid som fritt fall.</li>
+      <li>Når magneten faller, endres fluksen gjennom ringene av metall i røret rundt den. Det induseres strømmer (virvelstrømmer) som etter Lenz' lov lager et magnetfelt som motvirker endringen. De bremser magneten. Plast leder ikke strøm, så der blir det ingen strøm. Kobber leder bedre enn aluminium, så strømmene og bremsingen blir større.</li>
+      <li>Konstant fart betyr at kraftsummen er null: Den magnetiske bremsekraften er like stor som tyngden. Den potensielle energien blir ikke til kinetisk energi, men til elektrisk energi i virvelstrømmene, og så til varme i røret.</li>
+    </ol>
+    <p><strong>Bruk i timen:</strong> 60–90 minutter. Del B kan også gjøres alene som en rask demonstrasjon på 10 minutter. Har dere ikke spenningssensor, kan et oscilloskop eller et voltmeter med visere vise utslagene, men ikke arealene. Fysikk 2 har ingen simulering om induksjon på fysikklab.no ennå.</p>
+  </details>
+</section>
