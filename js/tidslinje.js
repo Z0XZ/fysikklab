@@ -321,17 +321,57 @@ const ANIM = {
     tekst(c, paa ? "Strøm på: nåla dreier" : "Ingen strøm: nåla peker mot nord", B / 2, H - 12, f.dempet, 12);
   },
   induksjon(c, B, H, t, f, k) {
-    const cx = B * 0.55, cy = H * 0.42, x = cx - 110 + 70 * Math.sin(t * 1.5), v = Math.cos(t * 1.5);
-    c.fillStyle = "#c0392b"; c.fillRect(x - 30, cy - 9, 30, 18); c.fillStyle = "#2f7fd1"; c.fillRect(x - 60, cy - 9, 30, 18);
-    for (let i = 0; i < 8; i++) { c.strokeStyle = k; c.lineWidth = 2; c.beginPath(); c.ellipse(cx + i * 8, cy, 6, 26, 0, 0, 2 * Math.PI); c.stroke(); }
-    const mx = B * 0.55 + 28, my = H * 0.9; c.strokeStyle = f.blekk; c.lineWidth = 1.5; c.beginPath(); c.arc(mx, my, 30, Math.PI, 0); c.stroke();
-    const vk = -Math.PI / 2 + 0.9 * v; strek(c, mx, my, mx + 26 * Math.cos(vk), my + 26 * Math.sin(vk), f.blekk, 2);
+    // Spolen sett fra siden. Magneten går inn og ut langs aksen, og måleren viser den induserte spenningen.
+    const cx = B * 0.5, cy = H * 0.36, L = Math.min(130, B * 0.26), R = Math.min(34, H * 0.13), vind = 9;
+    const amp = Math.min(1.5 * L, B / 2 - 0.35 * L - 12), z = amp * Math.sin(t * 1.4), vz = amp * 1.4 * Math.cos(t * 1.4);   // magnetens midtpunkt i forhold til spolens midte
+    const a = L * 0.45, u = z / a, eps = -(-3 * u / a) * Math.pow(1 + u * u, -2.5) * vz * a;  // ∝ −dΦ/dt
+    const mL = L * 0.7, mH = R * 0.9, mx = cx + z;
+    // Bakre halvdel av vindingene
+    for (let i = 0; i < vind; i++) { const x = cx - L / 2 + L * i / (vind - 1); c.strokeStyle = f["rute-sterk"]; c.lineWidth = 2; c.beginPath(); c.ellipse(x, cy, R * 0.28, R, 0, Math.PI / 2, 3 * Math.PI / 2); c.stroke(); }
+    // Magneten
+    c.fillStyle = "#2f7fd1"; c.fillRect(mx - mL / 2, cy - mH / 2, mL / 2, mH);
+    c.fillStyle = "#c0392b"; c.fillRect(mx, cy - mH / 2, mL / 2, mH);
+    tekst(c, "S", mx - mL / 4, cy, "#fff", 13); tekst(c, "N", mx + mL / 4, cy, "#fff", 13);
+    // Fremre halvdel, farget når det går strøm
+    const styrke = Math.min(1, Math.abs(eps) / 5);
+    for (let i = 0; i < vind; i++) { const x = cx - L / 2 + L * i / (vind - 1); c.strokeStyle = styrke > 0.1 ? k : f.blekk; c.lineWidth = 2; c.beginPath(); c.ellipse(x, cy, R * 0.28, R, 0, -Math.PI / 2, Math.PI / 2); c.stroke(); }
+    // Ledninger ned til måleren
+    const gx = cx, gy = H * 0.84, gr = Math.min(34, H * 0.13);
+    c.strokeStyle = f.blekk; c.lineWidth = 1.5; c.beginPath();
+    c.moveTo(cx - L / 2, cy + R); c.lineTo(cx - L / 2, gy); c.lineTo(gx - gr, gy);
+    c.moveTo(cx + L / 2, cy + R); c.lineTo(cx + L / 2, gy); c.lineTo(gx + gr, gy); c.stroke();
+    c.fillStyle = f.flate; c.beginPath(); c.arc(gx, gy, gr, Math.PI, 0); c.closePath(); c.fill(); c.stroke();
+    for (let i = -2; i <= 2; i++) { const v = -Math.PI / 2 + i * 0.35; strek(c, gx + gr * 0.8 * Math.cos(v), gy + gr * 0.8 * Math.sin(v), gx + gr * 0.95 * Math.cos(v), gy + gr * 0.95 * Math.sin(v), f.dempet, 1); }
+    const vn = -Math.PI / 2 + Math.max(-1, Math.min(1, eps / 6)) * 0.75;
+    strek(c, gx, gy, gx + gr * 0.85 * Math.cos(vn), gy + gr * 0.85 * Math.sin(vn), "#c0392b", 2); sirkel(c, gx, gy, 3, f.blekk);
+    tekst(c, Math.abs(vz) < 0.15 * amp * 1.4 || Math.abs(z) > L * 1.3 ? "Magneten står nesten stille eller er langt unna: ingen strøm" : "Magneten beveger seg: indusert strøm", B / 2, 14, f.dempet, 12);
   },
   joule(c, B, H, t, f, k) {
-    const cx = B * 0.45, cy = H * 0.62; c.fillStyle = "#4a90c2"; c.globalAlpha = 0.3; c.fillRect(cx - 60, cy - 40, 120, 80); c.globalAlpha = 1;
-    const v = t * 2; for (let i = 0; i < 4; i++) { const a = v + i * Math.PI / 2; strek(c, cx, cy, cx + 34 * Math.cos(a), cy + 18 * Math.sin(a), f.blekk, 3); }
-    const T = t % 6, y = 20 + T * 12; strek(c, cx + 70, 10, cx + 70, y, f.blekk, 1); c.fillStyle = f.dempet; c.fillRect(cx + 60, y, 20, 20);
-    const tx = B * 0.85; c.strokeStyle = f.blekk; c.strokeRect(tx - 5, 20, 10, H - 50); c.fillStyle = "#c0392b"; const nivå = 10 + T * (H - 70) / 6; c.fillRect(tx - 3, H - 30 - nivå, 6, nivå);
+    // Joules forsøk: Et lodd synker og drar i en snor som snurrer et skovlhjul i vann. Vannet blir varmere.
+    const T = t % 7, synk = Math.min(1, T / 6);                       // loddet synker i 6 s, så heises det opp
+    const kx = B * 0.36, ky = H * 0.62, kb = Math.min(150, B * 0.32), kh = H * 0.42;
+    // Kar med vann
+    c.fillStyle = "#4a90c2"; c.globalAlpha = 0.3; c.fillRect(kx - kb / 2, ky - kh / 2 + 10, kb, kh - 10); c.globalAlpha = 1;
+    c.strokeStyle = f.blekk; c.lineWidth = 2; c.strokeRect(kx - kb / 2, ky - kh / 2, kb, kh);
+    // Aksling og skovler (sett fra siden: bredden varierer når de roterer)
+    const topp = ky - kh / 2 - 26; strek(c, kx, topp, kx, ky + kh / 2 - 8, f.blekk, 3);
+    c.fillStyle = "#9aa0a6"; c.fillRect(kx - 12, topp - 7, 24, 14);                    // trommel snora er viklet på
+    const v = synk * 14;
+    for (let j = 0; j < 3; j++) for (let i = 0; i < 4; i++) {
+      const a = v + i * Math.PI / 2, w = 38 * Math.cos(a), y = ky - kh / 4 + j * kh / 4;
+      c.fillStyle = Math.sin(a) > 0 ? f.dempet : f["rute-sterk"]; c.fillRect(kx + Math.min(0, w), y - 5, Math.abs(w), 10);
+    }
+    // Snor over trinsa og ned til loddet
+    const px = kx + kb / 2 + 40, py = topp + 7, lengde = 30 + synk * (H * 0.55);
+    sirkel(c, px, py, 8, null, f.blekk); strek(c, kx + 12, topp - 1, px, topp - 1, f.blekk, 1.2);
+    const ly = py + lengde; strek(c, px + 8, py, px + 8, ly, f.blekk, 1.2);
+    c.fillStyle = k; c.fillRect(px - 6, ly, 28, 22); tekst(c, "m", px + 8, ly + 11, "#fff", 12);
+    if (synk < 1) pil(c, px + 32, ly, px + 32, ly + 24, f.dempet, 1.5);
+    // Termometer i vannet
+    const tx = kx - kb / 2 + 16, tb = ky + kh / 2 - 10, th = kh + 10;
+    c.strokeStyle = f.blekk; c.lineWidth = 1; c.strokeRect(tx - 4, tb - th, 8, th); sirkel(c, tx, tb + 4, 6, "#c0392b");
+    c.fillStyle = "#c0392b"; const niv = th * (0.25 + 0.55 * synk); c.fillRect(tx - 2, tb - niv, 4, niv);
+    tekst(c, synk < 1 ? "mgh blir til varme i vannet" : "Loddet heises opp igjen", B * 0.5, 14, f.dempet, 12);
   },
   emboelge(c, B, H, t, f) {
     const cy = H / 2; strek(c, 10, cy, B - 10, cy, f["rute-sterk"], 1);
