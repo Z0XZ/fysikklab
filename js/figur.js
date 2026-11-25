@@ -1170,6 +1170,25 @@
     }
   }
   const PARTIKLER = { elektron: { m: 9.109e-31, q: -1.602e-19 }, proton: { m: 1.673e-27, q: 1.602e-19 }, alfapartikkel: { m: 6.645e-27, q: 3.204e-19 } };
+  // Bil på toppen av en bakke (topp = true) eller i bunnen av en dump. Veien er en sirkelbue med radius r.
+  // Toppen: G − N = mv²/r. Dumpen: N − G = mv²/r. ΣF peker mot sentrum av sirkelen.
+  function lagBakke(v, topp) {
+    const G = v.m * g0, SF = v.m * v.v ** 2 / v.r, N = topp ? Math.max(0, G - SF) : G + SF, sg = topp ? 1 : -1;
+    const R = 340, C = topp ? [500, 600] : [500, 50], yTopp = C[1] - sg * R;
+    ny("bue", { x: C[0], y: C[1], r: R, fra: topp ? 35 : -145, til: topp ? 145 : -35, pil: "ingen", lw: 2.5 });
+    ny("punkt", { x: C[0], y: Math.min(C[1], 615), r: 3, navn: C[1] > 615 ? "" : "C", lx: 16, ly: 0 });
+    const a = topp ? 58 : -122, Pr = [C[0] + R * Math.cos(rad(a)), C[1] - R * Math.sin(rad(a))];
+    ny("maal", { p: [C, Pr], tekst: nv("r", gittTekst(v.r), "m") });
+    const bil = ny("vogn", { b: 130, h: 40, tekst: "", tekstPos: "midt" });
+    bil.x = C[0]; bil.y = yTopp - T.vogn.hh(bil); bil.rot = 0;
+    const kontakt = [C[0], yTopp];
+    kr({ x: bil.x, y: bil.y, F: G, vinkel: -90, navn: nv("G", G), lx: vt("G", 0, 0) });
+    if (N > 0) kr({ x: kontakt[0] + 26, y: kontakt[1], F: N, vinkel: 90, navn: nv("N", N), lx: vt("N", 16, 50), ly: 4 });
+    if (SF > 0) kr({ ...xy(lok(bil, -bil.b / 4, 0)), F: Math.min(SF, G * (topp ? 1 : 10)), vinkel: topp ? -90 : 90, navn: nv("\\Sigma F", topp ? Math.min(SF, G) : SF), stiplet: true, farge: "blå", lx: vt("\\Sigma F", -26, -70) });
+    kr({ ...xy(lok(bil, bil.b / 2, 0)), pxL: 80, vinkel: 0, navn: nv("v", gittTekst(v.v), "m/s"), farge: "blå", ly: -18 });
+    gitt(500, topp ? 40 : 600, [["m", `*m* = ${gittTekst(v.m)} kg`]]);
+    if (topp && SF >= G) ny("tekst", { x: 500, y: topp ? 80 : 560, tekst: SF > G ? "*v*^2 > *gr*: bilen mister kontakten med veien (N = 0)" : "*v*^2 = *gr*: N = 0", str: 18 });
+  }
   const MALER = {
     bord: { navn: "Kloss på bord, med friksjon",
       param: [P("m", "Masse", 2, 0.1, 0.001, 1e6, "kg"), P("F", "Trekkraft F", 10, 1, 0, 1e9, "N"), P("mu", "Friksjonstall μ", 0.3, 0.05, 0, 10)],
@@ -1261,19 +1280,36 @@
         if (v.x !== 0) ny("maal", { p: [[420, 330], [420 + xpx, 330]], tekst: nv("x", gittTekst(v.x), "cm") });
         if (F !== 0) kr({ ...xy(lok(k, -k.b / 2, -k.h / 4)), F: Math.abs(F), vinkel: F > 0 ? 180 : 0, navn: nv("F", Math.abs(F)), ly: -2 });
       } },
-    kast: { navn: "Skrått kast",
-      param: [P("v0", "Startfart v₀", 15, 1, 0.1, 1e4, "m/s"), P("theta", "Utgangsvinkel θ", 50, 1, 5, 85, "grader")],
+    kast: { navn: "Skrått kast (med starthøyde)",
+      param: [P("v0", "Startfart v₀", 15, 1, 0.1, 1e4, "m/s"), P("theta", "Utgangsvinkel θ (0 gir vannrett kast)", 50, 1, -80, 89, "grader"), P("h0", "Starthøyde h₀ over bakken", 0, 0.5, 0, 1e5, "m")],
       lag(v) {
-        const th = rad(v.theta), Rm = v.v0 ** 2 * Math.sin(2 * th) / g0, Hm = (v.v0 * Math.sin(th)) ** 2 / (2 * g0);
-        const sc = Math.min(680 / Rm, 380 / Hm), y0 = 506, x0 = 500 - Rm * sc / 2, xe = x0 + Rm * sc, xm = x0 + Rm * sc / 2;
-        ny("flate", { x: 500, y: 520, b: 880 });
-        ny("kurve", { p: [[x0, y0], [xm, y0 - 2 * Hm * sc], [xe, y0]] });
-        ny("kule", { x: x0, y: y0, r: 14 });
-        kr({ x: x0, y: y0, pxL: 110, vinkel: v.theta, navn: nv("v_0", v.v0, "m/s"), farge: "blå", lx: vt("v_0", -32, -70), ly: 0 });
-        ny("vinkel", { x: x0, y: y0, r: 50, fra: 0, til: v.theta, navn: vv("\\theta", v.theta), lx: vt("\\theta", 0, 22) });
-        ny("maal", { p: [[xm, y0], [xm, y0 - Hm * sc]], tekst: nv("h", Hm, "m") });
-        ny("maal", { p: [[x0, 570], [xe, 570]], tekst: nv("s", Rm, "m") });
+        const th = rad(v.theta), vx = v.v0 * Math.cos(th), vy = v.v0 * Math.sin(th), h0 = v.h0;
+        const T = (vy + Math.sqrt(vy * vy + 2 * g0 * h0)) / g0, s0 = vx * T;
+        const H = vy > 0 ? h0 + vy * vy / (2 * g0) : h0, tTopp = vy > 0 ? vy / g0 : 0;
+        if (!(T > 0) || !(s0 > 0)) { ny("tekst", { x: 500, y: 300, tekst: "Med disse tallene kommer ikke ballen ut i lufta.", str: 18 }); return; }
+        // Samme målestokk vannrett og loddrett, så banen får riktig form
+        const kant = h0 > 0 ? 110 : 0, sc = Math.min((720 - kant) / s0, 400 / Math.max(H, 1e-9)), yg = 540;
+        const x0 = 500 - (s0 * sc - kant) / 2, y0 = yg - h0 * sc, xe = x0 + s0 * sc;
+        ny("flate", { x: (x0 - kant - 40 + xe + 60) / 2, y: yg, b: xe - x0 + kant + 100 });
+        if (h0 > 0) ny("kloss", { x: x0 - kant / 2, y: (y0 + 9 + yg) / 2, b: kant, h: yg - y0 - 9, tekst: "", fyll: "lys grå" });
+        ny("kurve", { p: [[x0, y0], [x0 + vx * T / 2 * sc, y0 - vy * T / 2 * sc], [xe, yg]] });
+        ny("kule", { x: x0, y: y0, r: 9 });
+        kr({ x: x0, y: y0, pxL: 110, vinkel: v.theta, navn: nv("v_0", gittTekst(v.v0), "m/s"), farge: "blå", lx: v.theta < 0 ? 30 : vt("v_0", -32, -70), ly: v.theta < 0 ? -12 : v.theta < 20 ? -22 : 0 });
+        if (Math.abs(v.theta) >= 1) {
+          ny("linje", { p: [[x0, y0], [x0 + 80, y0]] });
+          ny("vinkel", { x: x0, y: y0, r: 50, fra: Math.min(0, v.theta), til: Math.max(0, v.theta), navn: vv("\\theta", Math.abs(v.theta)), lx: vt("\\theta", 6, 30) });
+        }
+        if (h0 > 0) ny("maal", { p: [[x0 - kant - 22, yg], [x0 - kant - 22, y0]], tekst: nv("h_0", gittTekst(h0), "m"), lx: vt("h_0", -26, -66) });
+        if (vy > 0) { const xm = x0 + vx * tTopp * sc; ny("maal", { p: [[xm, yg], [xm, yg - H * sc]], tekst: nv("h", H, "m") }); }
+        ny("maal", { p: [[x0, yg + 40], [xe, yg + 40]], tekst: nv("s", s0, "m") });
+        gitt(500, 40, [["t", `*t* = ${tallTekst(T)} s (tid i lufta)`]]);
       } },
+    bakketopp: { navn: "Bil over en bakketopp", maksPx: 160,
+      param: [P("m", "Masse", 1200, 10, 0.001, 1e9, "kg"), P("v", "Fart", 15, 1, 0, 1e4, "m/s"), P("r", "Krumningsradius", 40, 1, 0.1, 1e6, "m")],
+      lag(v) { lagBakke(v, true); } },
+    dump: { navn: "Bil i en dump", maksPx: 160,
+      param: [P("m", "Masse", 1200, 10, 0.001, 1e9, "kg"), P("v", "Fart", 15, 1, 0, 1e4, "m/s"), P("r", "Krumningsradius", 40, 1, 0.1, 1e6, "m")],
+      lag(v) { lagBakke(v, false); } },
     pendel: { navn: "Kule i snor (pendel) i ytterstilling",
       param: [P("m", "Masse", 0.5, 0.1, 0.001, 1e6, "kg"), P("theta", "Utslag θ", 30, 1, 0, 80, "grader")],
       lag(v) {
