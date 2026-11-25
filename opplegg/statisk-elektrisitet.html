@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Statisk elektrisitet – fysikklab.no</title>
-  <meta name="description" content="Forsøk i Fysikk 1 og Fysikk 2: Gni staver med kluter, finn fortegnet på ladningen, se influens med ballonger og vannstråler, bruk et elektroskop, og mål ladningen på to frastøtende kuler med Coulombs lov.">
+  <meta name="description" content="Forsøk i Fysikk 1 og Fysikk 2 med elektrostatisk sett: Gni staver av ebonitt, glass og pleksiglass, finn fortegnet på ladningen, undersøk ledere og isolatorer, lad en elektrostatisk pendel, mål ladningen på to kuler av aluminiumsfolie og se en Van de Graaff-generator i aksjon.">
   <script src="../js/tema.js"></script>
   <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -30,13 +30,13 @@
       <div class="ramme">
         <p class="brodsmuler"><a href="../undervisningsopplegg.html">Undervisningsopplegg</a> / Fysikk 2 · Elektriske felt og krefter</p>
         <h1>Statisk elektrisitet</h1>
-        <p class="ingress">Gni en ballong mot håret, og den klistrer seg til veggen. Gni en plaststav med en ullklut, og den bøyer en vannstråle. Her skal dere finne ut hvilke gjenstander som blir positive og hvilke som blir negative, hvorfor også nøytrale ting tiltrekkes, og til slutt måle hvor stor ladningen faktisk er.</p>
+        <p class="ingress">Gni en ebonittstav med skinnduken og en glasstav med silkeduken, og se hvordan stavene tiltrekker eller frastøter hverandre. Her skal dere finne ut hvilke staver som blir positive og hvilke som blir negative, hva som skiller ledere fra isolatorer, hvorfor nøytrale ting tiltrekkes, og til slutt måle hvor stor ladningen faktisk er. Til slutt viser læreren hva som skjer med mye større ladninger i en Van de Graaff-generator.</p>
 
         <aside class="forsok-info" aria-label="Om forsøket">
           <dl class="forsok-fakta">
-            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>60–90 minutter (stasjoner)</dd></div>
-            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3 som roterer mellom stasjonene</dd></div>
-            <div><dt>Utstyr</dt><dd>Staver av glass og plast, kluter av silke og ull (eller pels), ballonger, sugerør, små lette kuler eller kuler av aluminiumsfolie på tråd, papirbiter, et elektroskop, linjal</dd></div>
+            <div class="tid-totalt"><dt>Tidsbruk</dt><dd>75–90 minutter (stasjoner og demonstrasjon)</dd></div>
+            <div><dt>Arbeidsform</dt><dd>Grupper på 2–3 med hvert sitt elektrostatiske sett, og en felles demonstrasjon til slutt</dd></div>
+            <div><dt>Utstyr</dt><dd>Elektrostatisk sett (stativ med dreibar holder, elektrostatisk pendel, skinnduk, silkeduk, staver av ebonitt, glass og pleksiglass og to delte staver), aluminiumsfolie, sytråd, papirbiter, linjal. Van de Graaff-generator til demonstrasjonen</dd></div>
             <div><dt>Simuleringer</dt><dd><a href="../sim/elektrisk-felt.html">Elektrisk felt</a>, <a href="../sim/elektrostatisk-pingpong.html">Elektrostatisk ping-pong</a></dd></div>
           </dl>
           <nav class="innholdsliste" aria-label="Innhold på siden" hidden><p class="innholdsliste-tittel">Innhold</p><ol></ol></nav>
@@ -46,60 +46,64 @@
           <h2>Hensikt</h2>
           <ul>
             <li>Vise at gniing flytter elektroner fra en gjenstand til en annen, og at det finnes to typer ladning.</li>
-            <li>Forklare hvorfor ladde gjenstander også tiltrekker nøytrale gjenstander (influens og polarisering).</li>
+            <li>Skille mellom ledere og isolatorer.</li>
+            <li>Forklare hvorfor ladde gjenstander også tiltrekker nøytrale gjenstander (polarisering og influens).</li>
             <li>Bruke Coulombs lov og kraftbalanse til å anslå ladningen på to kuler.</li>
           </ul>
 
           <h2>Utstyr</h2>
           <ul>
-            <li>Staver av glass (eller akryl) og av plast (PVC, ebonitt eller en plastlinjal), og kluter av silke og ull (eller pels).</li>
-            <li>Ballonger, sugerør, små papirbiter og en vannkran med tynn, jevn stråle.</li>
-            <li>Et elektroskop (kjøpt eller hjemmelaget av en glasskrukke, en spiker og to strimler aluminiumsfolie).</li>
-            <li>Til stasjon 5: to like, lette kuler (for eksempel isopor dekket med aluminiumsfolie, eller kuler av sammenklemt folie) på tynne tråder, et stativ og en linjal. En vekt som måler hundredels gram, eller kjent masse.</li>
-            <li>Forsøkene virker best når lufta er tørr, for eksempel om vinteren. Er det fuktig, lekker ladningen raskt bort.</li>
+            <li><strong>Elektrostatisk sett</strong> til hver gruppe: et stativ med en holder for stavene som kan dreie fritt (kulelager), en elektrostatisk pendel (en lett isoporball i en silketråd), en skinnduk og en silkeduk, en ebonittstav, en glasstav, en pleksiglasstav, en delt stav av messing og pleksiglass, og en delt stav av glass og pleksiglass.</li>
+            <li>Aluminiumsfolie, tynn sytråd, tape, små papirbiter, linjal og saks. En vekt som måler hundredels gram, gjerne felles for klassen.</li>
+            <li>Til demonstrasjonen: Van de Graaff-generator med utladningskule, og litt aluminiumsfolie.</li>
+            <li>Forsøkene virker best når lufta er tørr. Er det fuktig, lekker ladningen raskt bort. Hold stavene i enden, og tørk dem gjerne med silkeduken før dere starter.</li>
           </ul>
 
-          <h2 data-tid="10 min">Stasjon 1: Positiv eller negativ?</h2>
+          <h2 data-tid="15 min">Stasjon 1: Positiv eller negativ?</h2>
+          <p>Holderen i stativet kan dreie fritt. Legger dere en ladd stav i holderen, viser den om en annen stav tiltrekker eller frastøter den.</p>
           <ol>
-            <li>Heng et sugerør i en tråd. Gni sugerøret med ullkluten, så det blir negativt ladd. Det er testgjenstanden deres.</li>
-            <li>Gni en plaststav med ull, og hold den nær sugerøret. Tiltrekkes eller frastøtes det?</li>
-            <li>Gni en glassstav med silke, og gjør det samme.</li>
-            <li>Prøv andre kombinasjoner: ballong og hår, plastlinjal og silke, kluten selv. Skriv i en tabell hvilken ladning hver gjenstand får.</li>
+            <li>Gni ebonittstaven med skinnduken, og legg den i holderen. Lån en ebonittstav fra en annen gruppe, gni den med skinnduken, og hold den nær. Tiltrekkes eller frastøtes den dreibare staven?</li>
+            <li>Gni pleksiglasstaven med silkeduken og hold den nær den ladde ebonittstaven i holderen. Hva skjer?</li>
+            <li>Gjør det samme med glasstaven gnidd med silke.</li>
+            <li>Legg glasstaven gnidd med silke i holderen, og hold pleksiglasstaven gnidd med silke nær. Hva skjer?</li>
+            <li>Hold også duken dere gned med, nær staven i holderen. Har duken ladning? Hvilket fortegn?</li>
+            <li>Lag en tabell over hvilke staver og duker som blir positive og negative. Utgangspunktet er at ebonitt gnidd med skinnduken blir negativ.</li>
           </ol>
 
-          <h2 data-tid="10 min">Stasjon 2: Nøytrale ting tiltrekkes</h2>
+          <h2 data-tid="10 min">Stasjon 2: Ledere og isolatorer</h2>
           <ol>
-            <li>Gni en ballong mot håret eller en ullgenser, og hold den mot veggen. Hvorfor blir den hengende?</li>
-            <li>Hold den ladde staven over noen små papirbiter. Hva skjer når bitene har vært borti staven en stund?</li>
-            <li>Hold den ladde staven nær en tynn vannstråle. Prøv både den positive og den negative staven. Bøyer strålen seg samme vei?</li>
+            <li>Legg den delte staven av glass og pleksiglass i holderen. Gni den ene halvdelen med silke, og før en ladd stav nær hver av halvdelene. Er begge halvdelene ladd?</li>
+            <li>Gjør det samme med den delte staven av messing og pleksiglass. Gni pleksiglasshalvdelen og messinghalvdelen hver for seg. Hva skjer hvis dere tar på messinghalvdelen med fingeren etterpå?</li>
+            <li>Brett en strimmel aluminiumsfolie rundt den ene enden av glasstaven. Gni den andre enden med silke. Hold en ladd stav nær foliebiten. Er folien ladd? Rør så den ladde enden med folien mot en ladd stav, og prøv igjen.</li>
           </ol>
 
-          <h2 data-tid="15 min">Stasjon 3: Elektroskopet</h2>
+          <h2 data-tid="10 min">Stasjon 3: Nøytrale ting tiltrekkes</h2>
           <ol>
-            <li>Før en ladd stav nær kula på toppen av elektroskopet, uten å røre. Hva skjer med bladene? Hva skjer når staven fjernes?</li>
-            <li>Rør kula med den ladde staven. Hva skjer nå når staven fjernes?</li>
-            <li>Før staven nær uten å røre, og rør kula med en finger samtidig. Fjern fingeren først og så staven. Hvilken ladning har elektroskopet nå? Test med den andre staven.</li>
+            <li>Klipp noen svært små papirbiter og noen bittesmå biter aluminiumsfolie. Hold en ladd stav over dem. Hva skjer? Hva skjer med foliebitene etter at de har vært borti staven?</li>
+            <li>Hold den ladde ebonittstaven nær den nøytrale isoporballen i pendelen uten å røre den. Fjern staven igjen. Ta på ballen for å utlade den, og gjør det samme med den ladde glass- eller pleksiglasstaven.</li>
+            <li>Ekstra: Hold en ladd stav nær en tynn vannstråle fra kranen. Prøv både ebonitt og glass. Bøyer strålen seg samme vei?</li>
           </ol>
 
-          <h2 data-tid="10 min">Stasjon 4: Like og ulike kuler</h2>
+          <h2 data-tid="10 min">Stasjon 4: Lad pendelen</h2>
           <ol>
-            <li>Heng de to kulene ved siden av hverandre. Lad begge med den samme staven. Hva skjer?</li>
-            <li>Lad den ene med plaststaven og den andre med glassstaven. Hva skjer nå?</li>
-            <li>Ta på den ene kula med fingeren. Hva skjer da?</li>
+            <li><strong>Ved berøring:</strong> Før den ladde ebonittstaven helt inntil isoporballen og fjern den igjen. Nærm deg så sakte med samme stav uten å komme like nær. Før deretter den ladde glass- eller pleksiglasstaven nær. Noter hva som skjer. Ta på ballen for å utlade den.</li>
+            <li>Gjør det samme med den ladde glass- eller pleksiglasstaven først, og ebonittstaven etterpå.</li>
+            <li><strong>Ved influens:</strong> Hold den ladde ebonittstaven nær ballen uten å røre. Ta samtidig på ballen med en finger. Fjern fingeren først, og så staven. Hvilken ladning har ballen nå? Test med begge stavene. Isopor leder dårlig, så virker det svakt, kan dere pakke ballen inn i et tynt lag aluminiumsfolie og prøve igjen.</li>
           </ol>
 
           <h2 data-tid="20 min">Stasjon 5: Mål ladningen</h2>
           <ol>
-            <li>Vei kulene, eller bruk oppgitt masse. Heng dem i like lange tråder fra samme punkt, og mål trådlengden L fra festepunktet til midten av kulene.</li>
-            <li>Lad begge kulene med samme stav og like mye gniing, slik at de får tilnærmet like stor ladning. Rør dem gjerne mot hverandre etterpå, så ladningen fordeler seg likt.</li>
-            <li>Mål avstanden d mellom midtpunktene til kulene, raskt, med linjalen bak kulene. Gjenta målingen hvert halve minutt mens ladningen lekker ut.</li>
+            <li>Lag to like, små kuler av aluminiumsfolie, omtrent 1 cm i diameter. Bruk like store biter folie, så massene blir like. Vei begge kulene sammen og del på to (eller vei flere like kuler og del).</li>
+            <li>Fest hver kule i en sytråd, og heng begge trådene fra samme punkt, for eksempel armen på pendelstativet eller en blyant teipet til bordkanten. Trådene skal være like lange. Mål lengden L fra festepunktet til midten av kulene.</li>
+            <li>Gni ebonittstaven godt, og rør begge kulene med staven. Kulene er ledere, så ladningen fordeler seg over dem. La dem gjerne røre hverandre et øyeblikk, så ladningen blir lik.</li>
+            <li>Mål avstanden d mellom midtpunktene på kulene med linjalen holdt bak dem. Gjenta hvert halve minutt mens ladningen lekker bort.</li>
           </ol>
         </div>
 
         <figure id="st" class="sim egne-data">
           <h2 data-tid="5 min">Resultater fra stasjon 5</h2>
           <div class="sim-styring mange uten-topp">
-            <label for="st-m">Massen til én kule m (g)<input id="st-m" type="text" inputmode="decimal"></label>
+            <label for="st-m">Massen til én foliekule m (g)<input id="st-m" type="text" inputmode="decimal"></label>
             <label for="st-L">Trådlengde L (cm)<input id="st-L" type="text" inputmode="decimal"></label>
           </div>
           <div data-tabell></div>
@@ -111,33 +115,46 @@
           <figcaption class="sim-hint">Hver tråd danner vinkelen θ med loddlinja, der sin θ = (d/2)/L. Kraftbalansen gir F<sub>e</sub> = mg tan θ, og Coulombs lov med like store ladninger gir q = d · √(F<sub>e</sub>/k), med k = 8,99 · 10⁹ N m²/C². Modellen regner kulene som punktladninger. Eksemplet er oppdiktede tall, ikke ekte målinger.</figcaption>
         </figure>
 
+        <div class="tekst opplegg">
+          <h2 data-tid="10 min">Lærerdemonstrasjon: Van de Graaff-generatoren</h2>
+          <p>Van de Graaff-generatoren bygger opp en mye større ladning enn stavene. Den passer som avslutning, der elevene bruker det de har lært på stasjonene til å forklare det de ser.</p>
+          <ol>
+            <li><strong>Fortegnet:</strong> Lad den elektrostatiske pendelen ved å røre den mot kula på generatoren. Test ballen med den ladde ebonittstaven. Hvilket fortegn har generatoren?</li>
+            <li><strong>Foliestrimler:</strong> Legg noen strimler eller små former av aluminiumsfolie på toppen av kula før generatoren slås på. Hvorfor reiser de seg og flyr av?</li>
+            <li><strong>Elektrostatisk ping-pong:</strong> Heng en kule av aluminiumsfolie i en tråd mellom generatorkula og utladningskula. Hvorfor pendler den fram og tilbake? Sammenlign med simuleringen <a href="../sim/elektrostatisk-pingpong.html">Elektrostatisk ping-pong</a>.</li>
+            <li><strong>Gnister:</strong> Før utladningskula sakte mot generatorkula, og mål avstanden når det slår over en gnist. Gjennomslagsfeltet i tørr luft er omtrent 3 · 10⁶ V/m. Hvor stor spenning tilsvarer gnisten omtrent?</li>
+            <li><strong>Hår som reiser seg:</strong> En frivillig elev som står på et isolerende underlag, legger hånda på kula før generatoren slås på. Hvorfor reiser håret seg?</li>
+          </ol>
+          <p><strong>Sikkerhet:</strong> Personer med pacemaker eller annet elektronisk medisinsk utstyr skal ikke delta i demonstrasjonen og bør holde avstand. Hold mobiltelefoner og annen elektronikk unna generatoren. Utlad kula med utladningskula før noen tar i den, og la eleven som står på isolerende underlag, slippe kula først etter at generatoren er slått av og utladet. Gnistene er ufarlige for friske personer, men ubehagelige.</p>
+        </div>
+
         <section class="oppgaver" aria-labelledby="oppgaver-tittel">
           <h2 id="oppgaver-tittel" data-tid="15 min">Oppgaver</h2>
           <p class="elevark-lenke"><a class="knapp lys" href="../elevark/opplegg/statisk-elektrisitet.pdf" download>Last ned elevark (PDF)</a></p>
           <ol class="oppgaveliste">
-          <li><span class="fase tipp">Gjett</span><div><p>Du gnir en plaststav med en ullklut. Får staven og kluten samme ladning, motsatt ladning, eller blir bare staven ladd?</p></div></li>
-          <li><span class="fase forklar">Forklar</span><div><p>Lag en tabell over gjenstandene fra stasjon 1 og ladningen de fikk. Hva skjer egentlig når to gjenstander gnis mot hverandre? Hva er det som flytter seg?</p></div></li>
-          <li><span class="fase forklar">Forklar</span><div><p>Ballongen henger på veggen, og vannstrålen bøyer seg mot staven uansett fortegn. Forklar med influens og polarisering. Tegn ladningene.</p></div></li>
-          <li><span class="fase forklar">Forklar</span><div><p>Forklar det dere så med elektroskopet i stasjon 3. Hvorfor får elektroskopet motsatt ladning av staven når dere lader det ved influens?</p></div></li>
-          <li><span class="fase test">Mål</span><div><p>Gjør stasjon 5, eller trykk på «Fyll inn eksempel». Hvor stor er ladningen, og hvor mange elektroner tilsvarer den? Hvor raskt lekker ladningen ut?</p></div></li>
-          <li><span class="fase test">Regn</span><div><p>Tegn kreftene på én kule (tyngde, snordrag og elektrisk kraft), og vis at F<sub>e</sub> = mg tan θ og q = d · √(F<sub>e</sub>/k).</p></div></li>
-          <li><span class="fase forklar">Vurder</span><div><p>Hvilke forenklinger bygger beregningen på? Når blir de dårligst? Hvorfor er det vanskelig å gjøre målingen med ballonger?</p></div></li>
-          <li><span class="fase utfordring">Utfordring</span><div><p>Dere går over et teppe og får et støt når dere tar i dørhåndtaket. Anta at kroppen har fått ladningen 1 µC. Hvor mange elektroner er det, og hvor stor del av elektronene i kroppen er det omtrent? (Kroppen har i størrelsesorden 10²⁸ elektroner.)</p></div></li>
+          <li><span class="fase tipp">Gjett</span><div><p>Du gnir ebonittstaven med skinnduken. Får staven og duken samme ladning, motsatt ladning, eller blir bare staven ladd?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Lag en tabell over stavene og dukene fra stasjon 1 og ladningen de fikk. Hva skjer egentlig når to gjenstander gnis mot hverandre? Hva er det som flytter seg?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Hva viste de delte stavene og foliestrimmelen i stasjon 2 om forskjellen på ledere og isolatorer?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Den nøytrale isoporballen og papirbitene tiltrekkes av både positive og negative staver. Forklar med polarisering. Hvorfor blir foliebitene kastet bort etter at de har vært borti staven?</p></div></li>
+          <li><span class="fase forklar">Forklar</span><div><p>Forklar det dere så i stasjon 4. Hvorfor får pendelen samme ladning som staven ved berøring, men motsatt ladning ved influens?</p></div></li>
+          <li><span class="fase test">Mål</span><div><p>Gjør stasjon 5, eller trykk på «Fyll inn eksempel». Hvor stor er ladningen, og hvor mange elektroner tilsvarer den? Hvor raskt lekker ladningen ut? Vis at F<sub>e</sub> = mg tan θ og q = d · √(F<sub>e</sub>/k).</p></div></li>
+          <li><span class="fase forklar">Vurder</span><div><p>Hvilke forenklinger bygger beregningen på? Hvordan påvirker det resultatet at kulene ikke er punktladninger, og at ladningen lekker ut mens dere måler?</p></div></li>
+          <li><span class="fase utfordring">Utfordring</span><div><p>Det slår en gnist på 3,0 cm fra Van de Graaff-generatoren. Anslå spenningen. Generatorkula har radius 10 cm. Hvor stor ladning har den omtrent, når potensialet på overflaten av en ladd kule er V = kQ/r? Sammenlign med ladningen på foliekulene.</p></div></li>
           </ol>
 
           <details class="fasit">
             <summary>Løsningsforslag og tips til læreren</summary>
             <ol>
               <li>Motsatt ladning. Elektroner flyttes fra den ene gjenstanden til den andre, så den ene får like mye negativ ladning som den andre får positiv ladning. Ladning er bevart.</li>
-              <li>Vanlige resultater: Plast (PVC, ebonitt) gnidd med ull blir negativ, og ullen blir positiv. Glass gnidd med silke blir positivt, og silken negativ. En ballong gnidd mot hår blir negativ. Det er elektroner som flytter seg. Hvilke stoffer som gir fra seg elektroner, avhenger av materialene (den triboelektriske rekken), og resultatene kan variere med fuktighet og overflate.</li>
-              <li>Den ladde gjenstanden skyver eller trekker på elektronene i den nøytrale gjenstanden eller i vannmolekylene. Den nærmeste siden får motsatt ladning av staven, og den fjerneste siden får samme ladning. Tiltrekningen på den nære siden er sterkere enn frastøtningen fra den fjerne, fordi kraften avtar med avstanden. Derfor tiltrekkes nøytrale ting av både positive og negative staver.</li>
-              <li>Når staven føres nær, flyttes ladning i elektroskopet slik at bladene får samme ladning og frastøter hverandre. Fjernes staven, går de tilbake. Rører staven kula, går ladning over, og bladene blir stående ute. Ved influens med finger på kula skyver (eller trekker) staven elektroner gjennom kroppen. Når fingeren fjernes først, blir elektroskopet sittende igjen med motsatt ladning av staven.</li>
-              <li>Eksemplet gir 3,2–5,6 nC, i gjennomsnitt omtrent 4,4 nC, som er omtrent 3 · 10¹⁰ elektroner. Ladningen falt med 42 % mellom første og siste måling. Selv en ladning på noen få nanocoulomb er milliarder av elektroner.</li>
-              <li>Kreftene på én kule: tyngden mg ned, snordraget S langs tråden og den elektriske kraften F<sub>e</sub> vannrett. Loddrett: S cos θ = mg. Vannrett: S sin θ = F<sub>e</sub>. Det gir F<sub>e</sub> = mg tan θ. Coulombs lov: F<sub>e</sub> = kq²/d², så q = d · √(F<sub>e</sub>/k).</li>
-              <li>Kulene regnes som punktladninger med like stor ladning, og tråden som vektløs. Ladningen er ikke jevnt fordelt, og den fordeler seg på nytt når kulene nærmer seg hverandre. Ballonger er store i forhold til avstanden mellom dem, så punktladningsmodellen passer dårlig. Ladningen lekker også ut, særlig i fuktig luft.</li>
-              <li>1 µC / 1,6 · 10⁻¹⁹ C ≈ 6 · 10¹² elektroner, som er omtrent 10⁻¹⁵ av elektronene i kroppen. En bitte liten ubalanse gir merkbare krefter og gnister.</li>
+              <li>Ebonitt gnidd med skinnduk blir negativ, og skinnduken positiv. Glass og pleksiglass gnidd med silke blir positive, og silken negativ. Derfor tiltrekker en ladd glass- eller pleksiglasstav den ladde ebonittstaven, mens glass og pleksiglass gnidd med silke frastøter hverandre. Det er elektronene som flytter seg. Resultatene kan variere med fuktighet og hvor rene stavene er.</li>
+              <li>En isolator holder ladningen der den ble gnidd. På den delte staven av glass og pleksiglass er derfor bare den gnidde halvdelen ladd. Messing er en leder: Ladning som havner på messinghalvdelen, fordeler seg over hele metallet, og den forsvinner gjennom kroppen når dere tar på det. Foliestrimmelen er også en leder. Den får ladning først når den rører en ladd gjenstand.</li>
+              <li>Den ladde staven trekker eller skyver på elektronene i ballen og papirbitene, så den nære siden får motsatt ladning av staven og den fjerne siden samme ladning. Tiltrekningen på den nære siden er sterkest, fordi kraften avtar med avstanden. Foliebitene er ledere. Når de rører staven, får de ladning med samme fortegn, og da frastøtes de.</li>
+              <li>Ved berøring går ladning over fra staven, så ballen får samme fortegn og frastøtes av samme stav, men tiltrekkes av den andre. Ved influens skyver staven elektroner gjennom fingeren (ebonitt) eller trekker elektroner inn fra fingeren (glass). Fjernes fingeren før staven, blir ballen sittende igjen med motsatt ladning av staven. Isoporballen leder dårlig, så dette virker best på en ball av eller dekket med aluminiumsfolie.</li>
+              <li>Eksemplet gir 3,2–5,6 nC, i gjennomsnitt omtrent 4,4 nC, som er omtrent 3 · 10¹⁰ elektroner. Ladningen falt med 42 % mellom første og siste måling. Kreftene på én kule er tyngden mg, snordraget S og den elektriske kraften F<sub>e</sub>. S cos θ = mg og S sin θ = F<sub>e</sub> gir F<sub>e</sub> = mg tan θ, og Coulombs lov gir q = d · √(F<sub>e</sub>/k).</li>
+              <li>Kulene regnes som punktladninger med like stor ladning, og trådene som vektløse. Ladningen omfordeler seg når kulene nærmer seg hverandre, og den lekker ut mellom målingene. Resultatet er derfor et anslag på størrelsesordenen.</li>
+              <li>V ≈ 3 · 10⁶ V/m · 0,030 m ≈ 90 kV. Q = Vr/k ≈ 90 000 · 0,10 / 8,99 · 10⁹ ≈ 1 µC, omtrent hundre ganger mer enn på foliekulene. Gnistlengden gir bare et grovt anslag, fordi feltet mellom kulene ikke er homogent.</li>
             </ol>
-            <p><strong>Bruk i timen:</strong> 60–90 minutter som stasjoner. Stasjon 1–4 passer i Fysikk 1 som innledning til elektrisitet, og stasjon 5 i Fysikk 2 sammen med Coulombs lov. Har dere ikke silke, kan glass gnis med plastfolie eller papir. Hvis resultatene blir uklare, er lufta trolig for fuktig. Simuleringene <a href="../sim/elektrisk-felt.html">Elektrisk felt</a> og <a href="../sim/elektrostatisk-pingpong.html">Elektrostatisk ping-pong</a> passer godt etterpå, og tidslinjen <a href="../sim/tidslinje.html">Fysikkens historie</a> viser Franklin og Coulomb.</p>
+            <p><strong>Bruk i timen:</strong> 75–90 minutter. Stasjon 1–4 følger forsøkene i bruksanvisningen til det elektrostatiske settet og passer i Fysikk 1 som innledning til elektrisitet. Stasjon 5 og regneoppgavene til Van de Graaff-generatoren passer i Fysikk 2 sammen med Coulombs lov og elektrisk potensial. Er ebonittstaven vanskelig å lade, kan dere gni lenger og raskere, og holde staven i enden. Simuleringene <a href="../sim/elektrisk-felt.html">Elektrisk felt</a> og <a href="../sim/elektrostatisk-pingpong.html">Elektrostatisk ping-pong</a> passer godt etterpå, og tidslinjen <a href="../sim/tidslinje.html">Fysikkens historie</a> viser Franklin og Coulomb.</p>
           </details>
         </section>
       </div>
