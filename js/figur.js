@@ -377,6 +377,57 @@
     anker: () => [], handtak: () => [],
     felt: [fN("antall", "Linjer per ladningsenhet", 1, 1), fN("rekkevidde", "Rekkevidde utenfor ladningene", 10, 30), fA("piler", "Pilspisser"), fN("lw", "Tykkelse", 0.1, 0.3), fFarge],
   };
+  // Magnetfelt: et område med × (inn i arket) eller ⊙ (ut av arket)
+  T.bfelt = {
+    navn: "Magnetfelt",
+    ny: () => ({ b: 300, h: 220, retning: "inn", avstand: 40, ramme: true, farge: "grå" }),
+    svg(e, red) {
+      const c = farge(e), x0 = e.x - e.b / 2, y0 = e.y - e.h / 2;
+      let s = `<rect x="${f(x0)}" y="${f(y0)}" width="${f(e.b)}" height="${f(e.h)}" fill="${red ? "transparent" : "none"}" stroke="${e.ramme ? c : "none"}" stroke-width="1.2"${e.ramme ? ' stroke-dasharray="6 4"' : ""}/>`;
+      const n = Math.max(1, Math.round(e.b / e.avstand)), m = Math.max(1, Math.round(e.h / e.avstand)), dx = e.b / n, dy = e.h / m;
+      let d = "", prikker = "";
+      for (let i = 0; i < n; i++) for (let j = 0; j < m; j++) {
+        const cx = x0 + dx * (i + 0.5), cy = y0 + dy * (j + 0.5);
+        if (e.retning === "inn") d += `M${f(cx - 5)} ${f(cy - 5)}L${f(cx + 5)} ${f(cy + 5)}M${f(cx + 5)} ${f(cy - 5)}L${f(cx - 5)} ${f(cy + 5)}`;
+        else { d += `M${f(cx + 6)} ${f(cy)}A6 6 0 1 0 ${f(cx - 6)} ${f(cy)}A6 6 0 1 0 ${f(cx + 6)} ${f(cy)}`; prikker += `<circle cx="${f(cx)}" cy="${f(cy)}" r="2" fill="${c}"/>`; }
+      }
+      return s + `<path d="${d}" stroke="${c}" stroke-width="1.4" fill="none"/>` + prikker;
+    },
+    anker: (e) => [[e.x, e.y], [e.x - e.b / 2, e.y - e.h / 2], [e.x + e.b / 2, e.y - e.h / 2], [e.x - e.b / 2, e.y + e.h / 2], [e.x + e.b / 2, e.y + e.h / 2], [e.x - e.b / 2, e.y], [e.x + e.b / 2, e.y], [e.x, e.y - e.h / 2], [e.x, e.y + e.h / 2]],
+    handtak: (e) => [{ h: "str", p: [e.x + e.b / 2, e.y + e.h / 2] }],
+    dra(e, o, h, p) {
+      const b = 2 * Math.abs(p[0] - o.x), hh = 2 * Math.abs(p[1] - o.y);
+      e.b = Math.max(20, fig.fest ? rund(b, 10) : b); e.h = Math.max(20, fig.fest ? rund(hh, 10) : hh);
+    },
+    felt: [fV("retning", "Retning", ["inn", "ut"]), fN("avstand", "Avstand mellom symbolene", 5, 15), fN("b", "Bredde", 10, 20), fN("h", "Høyde", 10, 20), fA("ramme", "Stiplet ramme"), fFarge],
+  };
+  // Sirkelbue (for eksempel en bane), tegnet mot klokka fra «fra» til «til», med valgfri pilspiss
+  const bueEnde = (e, v) => [e.x + e.r * Math.cos(rad(v)), e.y - e.r * Math.sin(rad(v))];
+  T.bue = {
+    navn: "Sirkelbue (bane)",
+    ny: () => ({ r: 80, fra: 0, til: 120, pil: "til", stiplet: false, lw: 1.5, farge: "svart" }),
+    svg(e, red) {
+      const c = farge(e), d = bueSti(e.x, e.y, e.r, e.fra, e.til);
+      if (!d) return "";
+      let s = treff(d, red) + `<path d="${d}" stroke="${c}" stroke-width="${e.lw}" fill="none"${e.stiplet ? ` stroke-dasharray="${f(e.lw * 3)} ${f(e.lw * 2.2)}"` : ""}/>`;
+      if (e.pil === "til" || e.pil === "fra") {
+        const v = e.pil === "til" ? e.til : e.fra, [px, py] = bueEnde(e, v), sg = e.pil === "til" ? 1 : -1;
+        const ux = -Math.sin(rad(v)) * sg, uy = -Math.cos(rad(v)) * sg;
+        s += pil(px - ux * 2, py - uy * 2, px, py, { farge: c, lw: e.lw });
+      }
+      return s;
+    },
+    anker: (e) => [[e.x, e.y], bueEnde(e, e.fra), bueEnde(e, e.til)],
+    handtak: (e) => [{ h: "fra", p: bueEnde(e, e.fra) }, { h: "til", p: bueEnde(e, e.til) }],
+    dra(e, o, h, p) {
+      let a = vinkelTil(p[0] - o.x, p[1] - o.y);
+      if (fig.fest) a = rund(a, 5);
+      e[h] = norm180(a);
+      const r = Math.hypot(p[0] - o.x, p[1] - o.y);
+      e.r = Math.max(5, fig.fest ? rund(r, 5) : r);
+    },
+    felt: [fN("r", "Radius", 5, 5), fN("fra", "Fra (grader)", 5, -360), fN("til", "Til (grader)", 5, -360), fV("pil", "Pilspiss", ["ingen", "til", "fra"]), fA("stiplet", "Stiplet"), fN("lw", "Tykkelse", 0.5, 0.5), fFarge],
+  };
   const planP = (e) => { const s = e.speil ? -1 : 1, hy = e.b * Math.tan(rad(e.vinkel)); return [[e.x, e.y], [e.x + s * e.b, e.y], [e.x + s * e.b, e.y - hy]]; };
   T.skraaplan = {
     navn: "Skråplan",
@@ -919,6 +970,7 @@
     if (mk && fig.mal) {
       const p = (MALER[fig.mal.k].param || []).find((x) => x.k === mk);
       if (ev.target.type === "checkbox") fig.mal.v[mk] = ev.target.checked;
+      else if (ev.target.tagName === "SELECT") fig.mal.v[mk] = ev.target.value;
       else {
         const v = Number(String(ev.target.value).replace(",", "."));
         if (!Number.isFinite(v) || ev.target.value === "") return;
@@ -1097,6 +1149,7 @@
   const vv = (navn, verdi) => (synlig(navn) ? `${navn} = ${gradTekst(verdi)}°` : navn);
   const P = (k, navn, std, step, min, max, enhet = "") => ({ k, navn, std, step, min, max, enhet });
   const PA = (k, navn, std) => ({ k, navn, std, av: true });
+  const PV = (k, navn, std, valg) => ({ k, navn, std, valg });
   const kr = (props) => ny("kraft", props);
   function skaler(maksPx = 150) {
     const krefter = fig.el.filter((e) => e.type === "kraft" && e.pxL == null);
@@ -1116,6 +1169,7 @@
       if (Math.hypot(ex, ey) > 0) kr({ x: 500, y: 200, pxL: 60, vinkel: vinkelTil(ex, ey), navn: "E", vektor: true, farge: "blå" });
     }
   }
+  const PARTIKLER = { elektron: { m: 9.109e-31, q: -1.602e-19 }, proton: { m: 1.673e-27, q: 1.602e-19 }, alfapartikkel: { m: 6.645e-27, q: 3.204e-19 } };
   const MALER = {
     bord: { navn: "Kloss på bord, med friksjon",
       param: [P("m", "Masse", 2, 0.1, 0.001, 1e6, "kg"), P("F", "Trekkraft F", 10, 1, 0, 1e9, "N"), P("mu", "Friksjonstall μ", 0.3, 0.05, 0, 10)],
@@ -1323,6 +1377,115 @@
         ny("maal", { p: [[xv + 7, 595], [xh - 7, 595]], tekst: nv("d", gittTekst(v.d), "cm") });
         gitt(500, 25, [["m", `*m* = ${gittTekst(v.m)} g`], ["q", `*q* = ${gittTekst(v.q)} nC`], ["U", `*U* = ${gittTekst(v.U)} V`]]);
       } },
+    avboyning: { navn: "Ladd partikkel som avbøyes mellom plater",
+      param: [PV("partikkel", "Partikkel", "elektron", ["elektron", "proton", "alfapartikkel"]), P("v0", "Startfart (·10⁶ m/s)", 20, 1, 0.001, 3e2, ""),
+        P("U", "Spenning mellom platene", 200, 10, 0, 1e9, "V"), P("d", "Avstand mellom platene", 4, 0.5, 0.01, 1e4, "cm"), P("L", "Lengde på platene", 10, 1, 0.01, 1e4, "cm")],
+      lag(v) {
+        const pt = PARTIKLER[v.partikkel] || PARTIKLER.elektron, v0 = v.v0 * 1e6, d = v.d / 100, L = v.L / 100;
+        const E = v.U / d, Fe = Math.abs(pt.q) * E, a = Fe / pt.m, retn = pt.q > 0 ? 1 : -1;   // øvre plate er +, så E peker nedover
+        const yTreff = d / 2, xTreff = a > 0 ? v0 * Math.sqrt(2 * yTreff / a) : Infinity, treffer = xTreff < L;
+        const l = treffer ? xTreff : L, t = l / v0, y = 0.5 * a * t * t, vy = a * t, phi = grad(Math.atan2(vy, v0));
+        // Platene skaleres slik at L og d får riktig forhold; avbøyningen tegnes i samme målestokk
+        const sk = Math.min(540 / L, 300 / d), Lpx = L * sk, dpx = d * sk, x0 = 500 - Lpx / 2, yc = 330, yo = yc - dpx / 2, yu = yc + dpx / 2;
+        for (let i = 1; i <= 5; i++) {
+          const x = x0 + Lpx * i / 6;
+          ny("linje", { p: [[x, yo + 7], [x, yu - 7]], stiplet: false, pil: "ende", lw: 1, farge: "grå" });
+        }
+        ny("kloss", { x: x0 + Lpx / 2, y: yo, b: Lpx, h: 10, tekst: "", fyll: "mørk grå" });
+        ny("kloss", { x: x0 + Lpx / 2, y: yu, b: Lpx, h: 10, tekst: "", fyll: "mørk grå" });
+        ny("tekst", { x: x0 + Lpx + 22, y: yo, tekst: "+", str: 28 });
+        ny("tekst", { x: x0 + Lpx + 22, y: yu, tekst: "−", str: 28 });
+        const xs = Math.max(40, x0 - 190), ende = [x0 + l * sk, yc + retn * y * sk];
+        ny("linje", { p: [[xs, yc], [x0, yc]], stiplet: false, lw: 1.5 });
+        ny("kurve", { p: [[x0, yc], [x0 + l * sk / 2, yc], ende], stiplet: false, lw: 1.5 });
+        ny("linje", { p: [[x0, yc], [Math.max(x0 + Lpx + 60, ende[0] + 60), yc]], stiplet: true, lw: 1 });
+        if (!treffer) {
+          const rest = Math.min(960, x0 + Lpx + 200) - ende[0], ut = [ende[0] + rest, ende[1] + retn * rest * Math.tan(rad(phi))];
+          ny("linje", { p: [ende, ut], stiplet: false, pil: "ende", lw: 1.5 });
+          ny("vinkel", { x: ende[0], y: ende[1], r: 60, fra: retn > 0 ? -phi : 0, til: retn > 0 ? 0 : phi, navn: vv("\\phi", phi), lx: vt("\\phi", 12, 44), ly: retn * 14 });
+          if (y * sk > 6) ny("maal", { p: [[ende[0] + 4, yc], [ende[0] + 4, ende[1]]].map((q) => [q[0], q[1]]), tekst: nv("y", y * 100, "cm"), lx: 6 });
+          ny("linje", { p: [ende, [ende[0] + 120, ende[1]]], stiplet: true, lw: 1 });
+        } else {
+          ny("punkt", { x: ende[0], y: ende[1], r: 4, navn: "", lx: 0, ly: 0 });
+          ny("tekst", { x: Math.max(x0 + 150, ende[0]), y: yc - retn * dpx / 4, tekst: synlig("x") ? `treffer plata etter *x* = ${tallTekst(xTreff * 100)} cm` : "treffer plata", str: 18 });
+        }
+        ny("ladning", { x: xs + 30, y: yc, q: retn, r: 11 });
+        kr({ x: xs + 30, y: yc, pxL: 80, vinkel: 0, navn: nv("v_0", tallTekst(v0), "m/s"), farge: "blå", ly: 22, lx: vt("v_0", -26, -64) });
+        const midt = [x0 + l * sk * 0.5, yc + retn * 0.25 * y * sk];
+        kr({ x: midt[0], y: midt[1], pxL: 55, vinkel: retn > 0 ? -90 : 90, navn: nv("F_e", Fe), lx: vt("F_e", 16, 82), ly: -retn * 40 });
+        // E-pila står på motsatt side av banen, så den ikke kolliderer med φ og y
+        const ey = retn > 0 ? yo + 12 : yu - 72;
+        kr({ x: x0 + Lpx + 50, y: ey, pxL: 60, vinkel: -90, navn: nv("E", E, "V/m"), vektor: true, farge: "blå", lx: vt("E", 14, 62), ly: -30 });
+        ny("maal", { p: [[x0, yo - 32], [x0 + Lpx, yo - 32]], tekst: nv("L", gittTekst(v.L), "cm") });
+        ny("maal", { p: [[x0 - 25, yu], [x0 - 25, yo]], tekst: nv("d", gittTekst(v.d), "cm"), lx: vt("d", -36, -82), ly: -22 });
+        gitt(500, 60, [["partikkel", v.partikkel], ["U", `*U* = ${gittTekst(v.U)} V`], ["a", `*a* = ${tallTekst(a)} m/s^2`]]);
+      } },
+    magnetfelt: { navn: "Ladd partikkel i magnetfelt",
+      param: [PV("partikkel", "Partikkel", "elektron", ["elektron", "proton", "alfapartikkel"]), P("v", "Fart (·10⁶ m/s)", 2, 0.1, 0.001, 300, ""),
+        P("B", "Magnetisk flukstetthet B", 1, 0.1, 0.0001, 1e6, "mT"), PV("retning", "Retning på B", "inn i arket", ["inn i arket", "ut av arket"]), P("W", "Bredde på feltområdet", 4, 0.5, 0.01, 1e4, "cm")],
+      lag(v) {
+        const pt = PARTIKLER[v.partikkel] || PARTIKLER.elektron, fart = v.v * 1e6, B = v.B / 1000, W = v.W / 100;
+        const r = pt.m * fart / (Math.abs(pt.q) * B), F = Math.abs(pt.q) * fart * B, Tp = 2 * Math.PI * pt.m / (Math.abs(pt.q) * B);
+        const s = Math.sign(pt.q) * (v.retning === "inn i arket" ? 1 : -1);   // F = qv × B: +1 bøyer banen oppover
+        const halv = r <= W, D = halv ? 180 : grad(Math.asin(W / r));
+        const ss = halv ? Math.min(440 / W, 205 / r) : 440 / W, Wpx = W * ss, rpx = r * ss;
+        const xr0 = 330, yt = 70, yb = 570, yE = s > 0 ? 530 : 110;
+        ny("bfelt", { x: xr0 + Wpx / 2, y: (yt + yb) / 2, b: Wpx, h: yb - yt, retning: v.retning === "inn i arket" ? "inn" : "ut", avstand: Math.max(30, Math.min(45, Wpx / 6)) });
+        const C = [xr0, yE - s * rpx], start = s > 0 ? -90 : 90, fra = s > 0 ? start : start - D, til = s > 0 ? start + D : start;
+        const pkt = (a) => [C[0] + rpx * Math.cos(rad(a)), C[1] - rpx * Math.sin(rad(a))];
+        const retn = (a) => (s > 0 ? [-Math.sin(rad(a)), -Math.cos(rad(a))] : [Math.sin(rad(a)), Math.cos(rad(a))]);
+        ny("linje", { p: [[xr0 - 210, yE], [xr0, yE]], stiplet: false, lw: 1.5 });
+        ny("bue", { x: C[0], y: C[1], r: rpx, fra, til, pil: "ingen", lw: 1.5 });
+        const ve = s > 0 ? til : fra, ut = pkt(ve), du = retn(ve);
+        ny("linje", { p: [ut, [ut[0] + du[0] * 130, ut[1] + du[1] * 130]], stiplet: false, lw: 1.5, pil: "ende" });
+        // Partikkelen før feltet, og et punkt på banen med fart og kraft
+        ny("ladning", { x: xr0 - 170, y: yE, q: Math.sign(pt.q), r: 11 });
+        kr({ x: xr0 - 170, y: yE, pxL: 70, vinkel: 0, navn: nv("v", tallTekst(fart), "m/s"), farge: "blå", lx: vt("v", -20, -84), ly: 24 * s });
+        const andel = halv ? 0.5 : 0.4, vm = s > 0 ? fra + D * andel : til - D * andel, Pm = pkt(vm), dm = retn(vm);
+        // Radien måles langs kanten av feltet (fra sentrum til inngangspunktet) når sentrum er med i figuren
+        if (halv) {
+          ny("punkt", { x: C[0], y: C[1], r: 3, navn: "", lx: 0, ly: 0 });
+          ny("maal", { p: [C, [xr0, yE]], tekst: nv("r", r * 100, "cm"), lx: vt("r", -44, -92) });
+        }
+        ny("ladning", { x: Pm[0], y: Pm[1], q: Math.sign(pt.q), r: 9 });
+        kr({ x: Pm[0], y: Pm[1], pxL: 60, vinkel: vinkelTil(dm[0], dm[1]), navn: "v", farge: "blå" });
+        kr({ x: Pm[0], y: Pm[1], pxL: 55, vinkel: vinkelTil(C[0] - Pm[0], C[1] - Pm[1]), navn: nv("F_B", F), lx: halv ? vt("F_B", 0, 34) : 0, ly: halv ? -24 * s : 0 });
+        ny("tekst", { x: xr0 + Wpx / 2, y: yt - 22, tekst: `${nv("*B*", gittTekst(v.B), "mT")}, ${v.retning}`, str: 18 });
+        ny("maal", { p: [[xr0, yb + 25], [xr0 + Wpx, yb + 25]], tekst: nv("d", gittTekst(v.W), "cm") });
+        gitt(150, 40, [["partikkel", v.partikkel], ["T", `*T* = ${tallTekst(Tp)} s`]].concat(halv ? [] : [["r", `*r* = ${tallTekst(r * 100)} cm`]]));
+      } },
+    treKlosser: { navn: "Tre klosser: to henger over trinser på hver side av bordet", maksPx: 100,
+      param: [P("m1", "Masse m₁ (henger til venstre)", 2, 0.1, 0.001, 1e6, "kg"), P("m2", "Masse m₂ (på bordet)", 3, 0.1, 0.001, 1e6, "kg"), P("m3", "Masse m₃ (henger til høyre)", 4, 0.1, 0.001, 1e6, "kg"), P("mu", "Friksjonstall μ", 0.2, 0.05, 0, 10)],
+      lag(v) {
+        const G1 = v.m1 * g0, G2 = v.m2 * g0, G3 = v.m3 * g0, d = Math.sign(v.m3 - v.m1), driv = Math.abs(G3 - G1), Rmaks = v.mu * G2;
+        let a = 0, S1 = G1, S2 = G3, R = driv;   // i ro: friksjonen tar opp forskjellen
+        if (driv > Rmaks) { a = (driv - Rmaks) / (v.m1 + v.m2 + v.m3); S1 = v.m1 * (g0 + d * a); S2 = v.m3 * (g0 - d * a); R = Rmaks; }
+        const bord = ny("kloss", { x: 500, y: 420, b: 520, h: 220, tekst: "", fyll: "lys grå" });
+        const m2 = paa(ny("kloss", { b: 120, h: 70, tekst: "m_2", tekstPos: "venstre" }), bord, 0.5);
+        const Rt = 26, hjV = lok(bord, -bord.b / 2, -bord.h / 2), hjH = lok(bord, bord.b / 2, -bord.h / 2);
+        const trinse = (hj, sx) => {
+          const t = ny("trinse", { x: hj[0] + sx * 30, y: m2.y + Rt, r: Rt, oppheng: "stang" });
+          t.retning = vinkelTil(hj[0] - t.x, hj[1] - t.y); t.stang = Math.hypot(hj[0] - t.x, hj[1] - t.y);
+          return t;
+        };
+        const trV = trinse(hjV, -1), trH = trinse(hjH, 1);
+        const m1 = ny("kloss", { x: trV.x - Rt, y: 430, b: 80, h: 90, tekst: "m_1", tekstPos: "venstre" });
+        const m3 = ny("kloss", { x: trH.x + Rt, y: 430, b: 80, h: 90, tekst: "m_3", tekstPos: "høyre" });
+        ny("snor", { p: [lok(m2, -m2.b / 2, 0), [trV.x, trV.y - Rt]] });
+        ny("snor", { p: [[trV.x - Rt, trV.y], [m1.x, m1.y - m1.h / 2]] });
+        ny("snor", { p: [lok(m2, m2.b / 2, 0), [trH.x, trH.y - Rt]] });
+        ny("snor", { p: [[trH.x + Rt, trH.y], [m3.x, m3.y - m3.h / 2]] });
+        kr({ x: m2.x, y: m2.y, F: G2, vinkel: -90, navn: nv("G_2", G2) });
+        kr({ ...xy(lok(m2, m2.b / 4, m2.h / 2)), F: G2, vinkel: 90, navn: nv("N", G2), lx: vt("N", 6, 30) });
+        kr({ ...xy(lok(m2, -m2.b / 2, 0)), F: S1, vinkel: 180, navn: nv("S_1", S1), ly: -22 });
+        kr({ ...xy(lok(m2, m2.b / 2, 0)), F: S2, vinkel: 0, navn: nv("S_2", S2), ly: -22 });
+        if (R > 1e-9 && d !== 0) kr({ ...xy(lok(m2, -d * m2.b / 4, m2.h / 2)), F: R, vinkel: d > 0 ? 180 : 0, navn: nv("R", R), ly: 20 });
+        kr({ x: m1.x, y: m1.y - m1.h / 2, F: S1, vinkel: 90, navn: nv("S_1", S1), lx: vt("S_1", -22, -58), ly: 14 });
+        kr({ x: m1.x, y: m1.y, F: G1, vinkel: -90, navn: nv("G_1", G1) });
+        kr({ x: m3.x, y: m3.y - m3.h / 2, F: S2, vinkel: 90, navn: nv("S_2", S2), lx: vt("S_2", 22, 58), ly: 14 });
+        kr({ x: m3.x, y: m3.y, F: G3, vinkel: -90, navn: nv("G_3", G3) });
+        gitt(500, 70, [["m_1", `*m*_1 = ${gittTekst(v.m1)} kg`], ["m_2", `*m*_2 = ${gittTekst(v.m2)} kg`], ["m_3", `*m*_3 = ${gittTekst(v.m3)} kg`], ["\\mu", `*μ* = ${gittTekst(v.mu)}`], ["a", `*a* = ${tallTekst(a)} m/s^2`]]);
+      } },
     dipol: { navn: "Ladde kuler (+ og −) med feltlinjer",
       param: [P("q1", "Ladning til venstre (i enheter av Q)", 1, 1, -5, 5), P("q2", "Ladning til høyre (i enheter av Q)", -1, 1, -5, 5)],
       lag(v) { lagLadninger(v, true); } },
@@ -1363,7 +1526,8 @@
     let h = `<h3>${m.navn}</h3><p>Skriv inn tallene fra oppgaven. Figuren tegnes på nytt med riktige vinkler og riktige forhold mellom kreftene.</p>`;
     for (const p of m.param) {
       const id = "fg-m-" + p.k;
-      h += p.av ? `<label class="avkrysning" for="${id}"><input id="${id}" data-m="${p.k}" type="checkbox"${v[p.k] ? " checked" : ""}>${p.navn}</label>`
+      h += p.valg ? `<label for="${id}">${p.navn}<select id="${id}" data-m="${p.k}">${p.valg.map((o) => `<option${o === v[p.k] ? " selected" : ""}>${o}</option>`).join("")}</select></label>`
+        : p.av ? `<label class="avkrysning" for="${id}"><input id="${id}" data-m="${p.k}" type="checkbox"${v[p.k] ? " checked" : ""}>${p.navn}</label>`
         : `<label for="${id}">${p.navn}${p.enhet ? ` (${p.enhet})` : ""}<input id="${id}" data-m="${p.k}" type="number" step="${p.step}" min="${p.min}" max="${p.max}" value="${v[p.k]}"></label>`;
     }
     const nokler = finnNokler();
