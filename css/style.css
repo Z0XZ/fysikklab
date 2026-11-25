@@ -665,3 +665,42 @@ h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-a
 .tl-lenker li + li { margin-top: .2rem; }
 .tl-ingen { color: var(--dempet); list-style: none; margin-left: -1.2rem; }
 @media (max-width: 760px) { .tl-info { grid-template-columns: minmax(0, 1fr); } }
+
+/* Figurgenerator */
+.fg-app { display: grid; grid-template-columns: minmax(0, 1fr) 15rem; gap: .9rem 1rem; margin-top: 2rem; align-items: start; }
+.fg-verktoy { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .35rem; }
+.fg-verktoy h2 { display: none; }
+.fg-verktoy button { display: flex; align-items: center; gap: .45rem; font: inherit; font-size: .875rem; line-height: 1.2; padding: .35rem .5rem; border: 1px solid var(--rute-sterk); border-radius: 6px; background: var(--flate); color: var(--blekk); cursor: pointer; }
+.fg-verktoy button:hover { border-color: var(--f1); color: var(--f1); }
+.fg-verktoy svg { width: 24px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.fg-lerret { border: 1px solid var(--rute-sterk); border-radius: 8px; overflow: hidden; background: #ffffff; }
+.fg-lerret svg { display: block; width: 100%; height: auto; touch-action: none; user-select: none; -webkit-user-select: none; }
+#fg-innhold [data-id] { cursor: move; }
+#fg-valg [data-h] { cursor: grab; }
+.fg-linje { display: flex; flex-wrap: wrap; gap: .45rem .6rem; align-items: center; font-size: .875rem; margin: .55rem 0; }
+.fg-linje .knapp { padding: .3rem .75rem; font-size: .8125rem; }
+.fg-linje .knapp:disabled { opacity: .4; cursor: default; }
+.fg-linje label { display: inline-flex; align-items: center; gap: .35rem; }
+.fg-linje select, .fg-linje input[type="number"], .fg-egenskaper input[type="text"], .fg-egenskaper input[type="number"], .fg-egenskaper select {
+  font: inherit; font-size: .875rem; padding: .25rem .4rem; border: 1px solid var(--rute-sterk); border-radius: 4px; background: var(--flate); color: var(--blekk);
+}
+.fg-linje input[type="number"] { width: 4.5rem; }
+.fg-linje .skille { width: 1px; align-self: stretch; background: var(--rute-sterk); }
+.fg-status { font-size: .8125rem; color: var(--dempet); min-height: 1.3em; margin: 0; }
+.fg-egenskaper { border: 1px solid var(--rute); border-radius: 8px; background: var(--flate); padding: .8rem .9rem; font-size: .875rem; }
+.fg-egenskaper h3 { font-size: 1.1rem; margin-bottom: .25rem; }
+.fg-egenskaper p { margin: .5rem 0 0; }
+.fg-egenskaper label { display: block; margin-top: .55rem; }
+.fg-egenskaper label input[type="text"], .fg-egenskaper label input[type="number"], .fg-egenskaper label select { display: block; width: 100%; margin-top: .2rem; }
+.fg-egenskaper label.avkrysning { display: flex; align-items: center; gap: .45rem; }
+.fg-egenskaper input[type="checkbox"] { accent-color: var(--f1); }
+.fg-hjelp { display: block; font-size: .78rem; color: var(--dempet); margin-top: .2rem; }
+.fg-knapperad { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .8rem; }
+.fg-dekomp { margin-top: .8rem; padding-top: .3rem; border-top: 1px solid var(--rute); }
+.fg-dekomp .knapp { margin-top: .4rem; }
+@media (max-width: 760px) {
+  .fg-app { grid-template-columns: minmax(0, 1fr); }
+}
+.fg-egenskaper h4.fg-under { font-family: var(--sans); font-size: .875rem; font-weight: 600; margin: 1rem 0 0; padding-top: .6rem; border-top: 1px solid var(--rute); }
+.fg-visliste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 .5rem; }
+.fg-visliste label.avkrysning { margin-top: .4rem; font-family: var(--serif); font-size: .95rem; }

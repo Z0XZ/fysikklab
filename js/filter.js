@@ -3,6 +3,7 @@
 //   <div class="tema-blokk"><h2>Fysikk 1 · Krefter</h2> <ul class="sim-kort-liste"><li>…</li></ul> </div>
 // Faget hentes fra «Fysikk 1 · » / «Fysikk 2 · » i overskriften (eller fra <h1 class="kurs-tittel f1"> hvis siden bare har ett fag).
 // Blokker uten fag (for eksempel «Til læreren») vises alltid når ingen tema er valgt.
+// En blokk uten fag med data-kategori (for eksempel «Lærerverktøy») får i tillegg sin egen knapp i temaraden.
 // Et kort kan høre til flere temaer med data-tema="Elektriske felt og krefter|Magnetiske felt og krefter",
 // og til begge fagene med data-fag="begge".
 // Faget er det samme valget som i nedfallsmenyen øverst (window.Fag i js/tema.js), så det følger med fra side til side.
@@ -26,14 +27,15 @@
     const tekst = h2 ? h2.textContent.trim() : "";
     const m = tekst.match(/^Fysikk ([12]) · (.+)$/);
     const fag = m ? "f" + m[1] : sideFag && tekst ? sideFag : null;
-    const navn = m ? m[2] : sideFag ? tekst : null;
+    const egen = "kategori" in b.dataset;
+    const navn = m ? m[2] : sideFag || egen ? tekst : null;
     const generell = !fag;
     if (navn && !temaer.some((t) => t.id === slug(navn) && t.fag === fag)) temaer.push({ navn, fag, id: slug(navn) });
     for (const li of b.querySelectorAll(".sim-kort-liste > li")) {
       const egne = (li.dataset.tema || "").split("|").map((s) => s.trim()).filter(Boolean);
       kort.push({ li, blokk: b, type: li.dataset.type || "", fag: li.dataset.fag === "begge" ? null : fag, tema: egne.length ? egne.map(slug) : navn ? [slug(navn)] : [], tekst: normal(li.textContent) });
     }
-    return { b, fag, generell };
+    return { b, fag, generell, egen };
   });
   const fagFinnes = new Set(info.map((x) => x.fag).filter(Boolean));
   const visFag = !sideFag && fagFinnes.size > 1;
@@ -93,8 +95,9 @@
     for (const x of info) {
       const synlige = [...x.b.querySelectorAll(".sim-kort-liste > li")].some((li) => !li.hidden);
       const smalt = !!(valgt.tema || valgt.type);
-      x.b.hidden = !synlige || (x.generell && smalt);
-      if (x.generell && smalt) for (const li of x.b.querySelectorAll(".sim-kort-liste > li")) if (!li.hidden) { li.hidden = true; vist--; }
+      const skjulGenerell = x.generell && smalt && !x.egen;
+      x.b.hidden = !synlige || skjulGenerell;
+      if (skjulGenerell) for (const li of x.b.querySelectorAll(".sim-kort-liste > li")) if (!li.hidden) { li.hidden = true; vist--; }
       // Merknader under kortene (forsøk og lenker) vises bare uten søk, siden de ikke er en del av søket
       for (const p of x.b.querySelectorAll(".tema-merknad")) p.hidden = ord.length > 0 || !!valgt.type;
     }

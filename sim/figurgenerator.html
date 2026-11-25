@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Figurgenerator – fysikklab.no</title>
+  <meta name="description" content="Lag fysikkfigurer til oppgaver og prøver: klosser, skråplan, trinser, snorer, fjærer, kraftpiler, vinkler og mål. Lagre som SVG eller PNG, eller kopier rett inn i Word.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html" aria-current="page">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../simuleringer.html">Simuleringer</a> / <a href="../simuleringer.html?tema=laererverktoy">Lærerverktøy</a></p>
+        <h1>Figurgenerator</h1>
+        <p class="ingress">Lag figurer til oppgaver, prøver og tavla. Legg inn klosser, skråplan, trinser og snorer, og tegn kreftene med riktig retning og lengde. Lagre figuren som SVG (vektor) eller PNG, eller kopier den rett inn i Word.</p>
+
+        <div id="fg-app" class="fg-app">
+          <div class="fg-verktoy" role="toolbar" aria-label="Legg til i figuren">
+            <h2>Legemer</h2>
+            <button type="button" data-ny="kloss"><svg viewBox="0 0 24 16" aria-hidden="true"><rect x="4" y="3" width="16" height="10"/></svg>Kloss</button>
+            <button type="button" data-ny="kule"><svg viewBox="0 0 24 16" aria-hidden="true"><circle cx="12" cy="8" r="6"/></svg>Kule</button>
+            <button type="button" data-ny="bil"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M5 7L7 2H17L19 7"/><rect x="3" y="7" width="18" height="5" rx="1"/><rect x="4" y="11" width="3" height="4" fill="currentColor"/><rect x="17" y="11" width="3" height="4" fill="currentColor"/></svg>Bil (bakfra)</button>
+            <button type="button" data-ny="vogn"><svg viewBox="0 0 24 16" aria-hidden="true"><rect x="3" y="2" width="18" height="8" rx="1"/><circle cx="7.5" cy="12" r="2.5"/><circle cx="16.5" cy="12" r="2.5"/></svg>Vogn</button>
+            <h2>Underlag</h2>
+            <button type="button" data-ny="flate"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 6H22M6 6L3 10M10 6L7 10M14 6L11 10M18 6L15 10M22 6L19 10"/></svg>Gulv, tak, vegg</button>
+            <button type="button" data-ny="skraaplan"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 14H22V3Z"/></svg>Skråplan</button>
+            <h2>Elektrisitet</h2>
+            <button type="button" data-ny="ladning"><svg viewBox="0 0 24 16" aria-hidden="true"><circle cx="12" cy="8" r="6.5"/><path d="M9 8H15M12 5V11"/></svg>Ladning</button>
+            <button type="button" data-ny="feltlinjer"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M3 8H21M4 6Q12 -2 20 6M4 10Q12 18 20 10M11 6L13 8L11 10"/></svg>Feltlinjer</button>
+            <h2>Koblinger</h2>
+            <button type="button" data-ny="trinse"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M12 1V9"/><circle cx="12" cy="9" r="5.5"/></svg>Trinse</button>
+            <button type="button" data-ny="snor"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M3 13L21 3"/></svg>Snor</button>
+            <button type="button" data-ny="fjaer"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M1 8H4L6 3L9 13L12 3L15 13L18 3L20 8H23"/></svg>Fjær</button>
+            <h2>Piler og mål</h2>
+            <button type="button" data-ny="kraft"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8H20M15 3L21 8L15 13"/></svg>Kraftpil</button>
+            <button type="button" data-ny="vinkel"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M3 14H22M3 14L18 2M11 14A8 8 0 0 0 9.3 9"/></svg>Vinkel</button>
+            <button type="button" data-ny="maal"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 3V13M22 3V13M3 8H21M6 5L3 8L6 11M18 5L21 8L18 11"/></svg>Mål</button>
+            <button type="button" data-ny="akser"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M4 14H22M4 14V1M19 11L22 14L19 17M1 4L4 1L7 4"/></svg>Akser</button>
+            <h2>Linjer og tekst</h2>
+            <button type="button" data-ny="linje"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 8H22" stroke-dasharray="3 2.5"/></svg>Linje</button>
+            <button type="button" data-ny="ellipse"><svg viewBox="0 0 24 16" aria-hidden="true"><ellipse cx="12" cy="8" rx="10" ry="4.5" stroke-dasharray="3 2.5"/></svg>Ellipse (bane)</button>
+            <button type="button" data-ny="kurve"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M2 14Q12 -6 22 14" stroke-dasharray="3 2.5"/></svg>Kurve (bane)</button>
+            <button type="button" data-ny="punkt"><svg viewBox="0 0 24 16" aria-hidden="true"><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="M14 7L17 2L20 7M15 5.5H19"/></svg>Punkt</button>
+            <button type="button" data-ny="tekst"><svg viewBox="0 0 24 16" aria-hidden="true"><path d="M5 3H19M12 3V14"/></svg>Tekst</button>
+          </div>
+
+          <div class="fg-midt">
+            <div class="fg-linje">
+              <select id="fg-mal" aria-label="Start fra en mal"><option value="">Start fra en mal …</option></select>
+              <button id="fg-angre" class="knapp lys" type="button" title="Angre (Ctrl/Cmd + Z)">Angre</button>
+              <button id="fg-gjorom" class="knapp lys" type="button" title="Gjør om (Ctrl/Cmd + Shift + Z)">Gjør om</button>
+              <button id="fg-tom" class="knapp lys" type="button">Tøm</button>
+            </div>
+            <div class="fg-lerret">
+              <svg id="fg-svg" viewBox="0 0 1000 625" role="img" aria-label="Tegneflate for figuren">
+                <defs>
+                  <pattern id="fg-rute-liten" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#eeeeee" stroke-width="1"/></pattern>
+                  <pattern id="fg-rute" width="100" height="100" patternUnits="userSpaceOnUse"><rect width="100" height="100" fill="url(#fg-rute-liten)"/><path d="M100 0H0V100" fill="none" stroke="#dddddd" stroke-width="1"/></pattern>
+                </defs>
+                <rect width="1000" height="625" fill="#ffffff"/>
+                <rect id="fg-rutenett" width="1000" height="625" fill="url(#fg-rute)" pointer-events="none"/>
+                <g id="fg-innhold"></g>
+                <g id="fg-valg"></g>
+              </svg>
+            </div>
+            <p id="fg-status" class="fg-status" aria-live="polite"></p>
+            <div class="fg-linje">
+              <label><input id="fg-vis-rutenett" type="checkbox" checked> Rutenett</label>
+              <label><input id="fg-fest" type="checkbox" checked> Fest til punkter og flater</label>
+              <label for="fg-skala">Pillengde per enhet <input id="fg-skala" type="number" min="0.1" step="0.5" value="2"></label>
+              <button id="fg-svart" class="knapp lys" type="button">Gjør alt svart</button>
+            </div>
+            <div class="fg-linje">
+              <button id="fg-last-svg" class="knapp" type="button">Last ned SVG</button>
+              <button id="fg-last-png" class="knapp" type="button">Last ned PNG</button>
+              <button id="fg-kopier" class="knapp" type="button">Kopier bilde</button>
+              <label for="fg-pngskala">Oppløsning <select id="fg-pngskala"><option value="2">2×</option><option value="3" selected>3×</option><option value="4">4×</option></select></label>
+              <label><input id="fg-hvit" type="checkbox" checked> Hvit bakgrunn</label>
+              <span class="skille" aria-hidden="true"></span>
+              <button id="fg-lagre" class="knapp lys" type="button">Lagre figur</button>
+              <button id="fg-apne" class="knapp lys" type="button">Åpne figur</button>
+              <input id="fg-fil" type="file" accept=".json,application/json" hidden>
+            </div>
+          </div>
+
+          <aside id="fg-egenskaper" class="fg-egenskaper" aria-label="Egenskaper"></aside>
+        </div>
+
+        <section class="oppgaver" aria-labelledby="bruk-tittel">
+          <h2 id="bruk-tittel">Slik bruker du figurgeneratoren</h2>
+          <ul>
+            <li><strong>Legg til</strong> fra listen til venstre, eller start fra en mal. Klikk på noe for å endre det i panelet til høyre. Dra de blå håndtakene for å endre størrelse, vinkel og lengde.</li>
+            <li><strong>Maler med tall fra oppgaven:</strong> Når du velger en mal, kan du skrive inn masse, vinkler, friksjonstall, fart og lignende. Figuren tegnes med riktige vinkler, og kreftene regnes ut med g = 9,81 m/s² og får riktige lengder i forhold til hverandre. Kryss av for «Skriv tallverdiene inn i figuren» for å få verdiene på pilene. Knappen «Endre tallene i malen» åpner tallene igjen senere.</li>
+            <li><strong>Ting som er festet, følger med.</strong> Dra en kloss, kule eller bil ned på et gulv, et skråplan eller en annen kloss, så legger den seg oppå med riktig helning. Kraftpiler, snorer, mål og vinkler som er festet til et punkt på noe annet, flytter seg sammen med det. Endrer du vinkelen på et skråplan, følger klossen og kreftene med, og N står fortsatt vinkelrett på planet. Dra noe bort fra festepunktet for å løsne det.</li>
+            <li><strong>Kraftpiler</strong> festes til midten, kantene og hjørnene på legemene. Når du drar spissen, retter pila seg inn vinkelrett på eller langs underlaget, langs snora, eller blir like lang som en annen pil. Lengden er størrelsen ganger «pillengde per enhet», så forholdene mellom kreftene blir riktige. Med «Lag komponenter» deler du en kraft i to stiplede komponenter.</li>
+            <li><strong>Navn og tekst:</strong> Skriv <code>F_N</code> for F<sub>N</sub>, <code>v^2</code> for v², <code>F_{N,x}</code> for flere tegn, <code>\alpha</code> for α og <code>\theta</code> for θ. I tekstfelt gir <code>*m*</code> kursiv.</li>
+            <li><strong>Lagre:</strong> SVG er en vektorfil som blir skarp i alle størrelser. Den kan settes inn i Word, PowerPoint og Inkscape. PNG passer overalt, også i Google Dokumenter. «Kopier bilde» legger figuren på utklippstavla. Figuren beholdes i nettleseren til neste gang, og med «Lagre figur» får du en fil du kan åpne og endre senere.</li>
+            <li>Slå av «Fest til punkter og flater» når du vil plassere noe helt fritt.</li>
+          </ul>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/figur.js"></script>
+</body>
+</html>
