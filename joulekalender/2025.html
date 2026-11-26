@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joulekalender 2025 – fysikklab.no</title>
+  <meta name="description" content="Oppgavene fra joulekalenderen 2025 i Fysikk 1 og Fysikk 2, med fasit og løsningsforslag. Krefter, energi, bevegelsesmengde, sirkelbevegelse, elektriske felt og relativitet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../joulekalender/index.html">Joulekalender</a> / 2025</p>
+        <h1>Joulekalender 2025</h1>
+        <p class="ingress">Joulenissens verksted er i krise! Maskiner har stoppet opp, sleder har veltet, pakker akselererer ukontrollert og reinsdyrene er nær lysets hastighet. Her er de seks lukene for Fysikk 1 og Fysikk 2 fra i fjor, med fasit og løsningsforslag. Bruk dem gjerne i timene.</p>
+        <p class="jk-dempet">Vi bruker g = 9,81 m/s². Svarene er avrundet, men mellomregningene er gjort med flere siffer.</p>
+
+        <nav class="jk-hopp" aria-label="Lukene">
+          <a href="#fysikk-1">Fysikk 1</a>
+          <a href="#fysikk-2">Fysikk 2</a>
+        </nav>
+
+        <h2 class="jk-h2" id="fysikk-1">Fysikk 1</h2>
+
+        <article class="jk-oppg" id="f1-1">
+          <h3><span class="jk-nr">1</span> Det merkelige transportbåndet</h3>
+          <p>Nissen har et litt merkelig horisontalt transportbånd. I enden av båndet går presangene over på et skråplan, og de skal helt opp til toppen av det. Joulius, nissens ape, setter alltid presangene ned i begynnelsen av båndet. Friksjonen mellom båndet og presangene er så stor at presangene aldri glir på båndet.</p>
+          <div class="jk-to-kol">
+            <div class="jk-data">
+              <h4>Transportbåndet</h4>
+              <ul>
+                <li>Lengde 20 m</li>
+                <li>Konstant fart 2,0 m/s når det ikke ligger noen presang på båndet</li>
+                <li>Når en presang legges på, øker farten med en konstant akselerasjon</li>
+                <li>Frakter én presang om gangen</li>
+              </ul>
+              <h4>Skråplanet</h4>
+              <ul>
+                <li>Lengde 18 m</li>
+                <li>Vinkel med horisontalplanet 14°</li>
+                <li>Friksjonstall 0,18</li>
+              </ul>
+              <h4>Presangene</h4>
+              <ul><li>Masse 2,3 kg</li></ul>
+            </div>
+            <figure class="jk-fig">
+              <svg viewBox="0 0 360 170" role="img" aria-label="Transportbånd som går over i et skråplan med vinkel 14 grader">
+                <rect x="20" y="118" width="190" height="22" rx="11" class="strek"/>
+                <circle cx="32" cy="129" r="7" class="strek"/><circle cx="198" cy="129" r="7" class="strek"/>
+                <rect x="70" y="88" width="30" height="30" class="strek"/><path d="M85 88V118M70 100H100" class="tynn"/>
+                <path d="M110 103H140M134 98L140 103L134 108" class="pil"/>
+                <path d="M210 118L345 84" class="strek"/>
+                <path d="M210 118H345" class="stiplet"/>
+                <path d="M265 118A55 55 0 0 0 263.5 105" class="tynn"/>
+                <text x="272" y="113" class="tekst">14°</text>
+                <path d="M20 155H210M20 150V160M210 150V160" class="tynn"/><text x="115" y="168" class="tekst" text-anchor="middle">20 m</text>
+                <text x="290" y="88" class="tekst" text-anchor="middle" transform="rotate(-14 290 88)">18 m</text>
+              </svg>
+            </figure>
+          </div>
+          <p class="jk-spm">Hvor stor må akselerasjonen til transportbåndet være for at presangene akkurat skal klare å komme seg til toppen av skråplanet?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">a ≈ 3,6 m/s² (3,58 m/s²)</p>
+            <ol>
+              <li>På skråplanet bremser både tyngdekraften og friksjonen: a<sub>s</sub> = g(sin 14° + μ cos 14°) = 9,81 · (0,242 + 0,18 · 0,970) = 4,09 m/s².</li>
+              <li>Presangen skal akkurat stoppe på toppen, så farten i bunnen av skråplanet må være v² = 2a<sub>s</sub>s = 2 · 4,09 · 18 = 147 m²/s², altså v = 12,1 m/s.</li>
+              <li>Presangen starter med båndets fart 2,0 m/s og følger båndet uten å gli: v² = v<sub>0</sub>² + 2aL gir a = (147,1 − 2,0²) / (2 · 20) = 3,58 m/s².</li>
+              <li>Massen på 2,3 kg spiller ingen rolle, fordi både tyngdekraften og friksjonen er proporsjonale med massen.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f1-2">
+          <h3><span class="jk-nr">2</span> Den nye sleden</h3>
+          <p>Joulenissen skal teste hvor godt den nye motordrevne sleden bremser av seg selv. Sleden testes på en rett, islagt strekning foran verkstedet, og den er laget av et magisk materiale som ikke blir påvirket av luftmotstand.</p>
+          <div class="jk-data">
+            <h4>Sleden</h4>
+            <ul>
+              <li>Motorkraft 4,80 kN</li>
+              <li>Friksjonstall mot isen 0,08</li>
+              <li>Masse uten last 180 kg</li>
+              <li>Avstand fra verkstedet 1 km</li>
+            </ul>
+          </div>
+          <p>Sleden står i ro. Nissen skrur på motoren og lar den gå i 10 sekunder før han slår den av. Når motoren slås av, øker friksjonstallet mellom sleden og isen på magisk vis til 0,94, og bare friksjonskraften bremser sleden.</p>
+          <p>Nissen er redd for å krasje i verkstedet. Han tror han kan endre hvor raskt sleden bremser ved å fylle den med presanger, og han har selvsagt uendelig mange. Presangene har massen 0,30 kg, 2,0 kg, 10 kg eller 20 kg. Den totale massen bør bli så liten som mulig, men nissen vil teste alle presangene i praksis, så minst én av hver må være med.</p>
+          <p class="jk-spm">Hvor mange julepresanger, og hvilke, må være med på sleden for at totalmassen skal være minst mulig uten at sleden kolliderer med verkstedet?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">30 presanger: 15 på 0,30 kg, 1 på 2,0 kg, 1 på 10 kg og 13 på 20 kg. Det er 276,5 kg presanger, og sleden veier da 456,5 kg til sammen.</p>
+            <ol>
+              <li>Med motor: a<sub>1</sub> = F/M − μ<sub>1</sub>g. Etter 10 s er farten v = 10a<sub>1</sub>, og sleden har kjørt s<sub>1</sub> = ½a<sub>1</sub> · 10² = 50a<sub>1</sub>.</li>
+              <li>Uten motor bremser sleden med a<sub>2</sub> = μ<sub>2</sub>g = 0,94 · 9,81 = 9,22 m/s². Bremselengden er s<sub>2</sub> = v²/(2a<sub>2</sub>) = (10a<sub>1</sub>)²/(2 · 9,22) = 5,42a<sub>1</sub>².</li>
+              <li>s<sub>1</sub> + s<sub>2</sub> ≤ 1000 m gir 5,42a<sub>1</sub>² + 50a<sub>1</sub> − 1000 ≤ 0, altså a<sub>1</sub> ≤ 9,73 m/s².</li>
+              <li>M ≥ F/(a<sub>1</sub> + μ<sub>1</sub>g) = 4800 / (9,73 + 0,785) = 456,45 kg. Presangene må altså veie minst 276,45 kg.</li>
+              <li>Den minste totalen vi kan lage, er 276,5 kg. Fra 2,0 kg, 10 kg og 20 kg får vi bare partall, så 0,30 kg-presangene må til sammen gi 4,5 kg. Det betyr 15 stykker. Resten, 272 kg, blir 1 · 2,0 + 1 · 10 + 13 · 20 kg med færrest mulig presanger.</li>
+              <li>Kontroll: M = 456,5 kg gir a<sub>1</sub> = 9,73 m/s², og sleden stopper etter 999,8 m.</li>
+            </ol>
+            <p>Svaret er svært følsomt for verdien av g. Med g = 9,80 m/s² må presangene veie minst 276,63 kg, og da blir svaret 276,7 kg med 25 presanger: 9 på 0,30 kg, 2 på 2,0 kg, 1 på 10 kg og 13 på 20 kg.</p>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f1-3">
+          <h3><span class="jk-nr">3</span> Pakkefordeleren</h3>
+          <p>På lageret til Joulenissen står det lange rader med hyller fulle av presanger. Langs midten går et smalt, horisontalt bord der presanger skyves bort til to store innsamlingskasser, én på hver side: én for østlageret og én for vestlageret. For å slippe å dytte presanger for hånd har nissen bygget et enkelt, mekanisk fordelingssystem han kaller pakkefordeleren.</p>
+          <div class="jk-to-kol">
+            <div class="jk-data">
+              <h4>Slik fungerer pakkefordeleren</h4>
+              <ul>
+                <li>En kloss A er festet i to tau, ett på hver side.</li>
+                <li>Hvert tau går over en trinse og ned til en hengende kasse, B og C.</li>
+                <li>Når systemet slippes, trekker den tyngste kassen A bortover bordet, og A skyver en pakke ned i den tyngste kassen.</li>
+                <li>Kassene er magiske. Når det kommer en pakke i en kasse, bytter kassene masse, så den kassen som får pakker, alltid blir den letteste. Klossen går derfor fram og tilbake over bordet.</li>
+              </ul>
+              <h4>Teknisk informasjon</h4>
+              <ul>
+                <li>Bordet er 8,0 m langt.</li>
+                <li>Friksjonstallet mellom bordet og kloss A er 0,10. Pakkene som skyves, påvirkes ikke av friksjon.</li>
+                <li>Massen til A er 10,0 kg.</li>
+                <li>Før massen fordeles, er begge kassene 8,0 kg.</li>
+                <li>Kloss A er ved enden av bordet hver gang kassene bytter masse.</li>
+              </ul>
+            </div>
+            <figure class="jk-fig">
+              <svg viewBox="0 0 360 200" role="img" aria-label="Kloss A på et bord med en trinse i hver ende og en hengende kasse på hver side">
+                <path d="M40 70H320" class="strek"/><path d="M60 70V170M300 70V170" class="strek"/>
+                <circle cx="36" cy="64" r="9" class="strek"/><circle cx="324" cy="64" r="9" class="strek"/>
+                <rect x="60" y="44" width="32" height="26" class="strek"/><text x="76" y="62" class="tekst" text-anchor="middle">A</text>
+                <path d="M92 55H315M60 55H45M27 64V120M333 64V110" class="tynn"/>
+                <rect x="104" y="58" width="12" height="12" class="strek"/>
+                <rect x="12" y="120" width="30" height="30" class="strek"/><text x="27" y="140" class="tekst" text-anchor="middle">B</text>
+                <rect x="318" y="110" width="30" height="30" class="strek"/><text x="333" y="130" class="tekst" text-anchor="middle">C</text>
+                <path d="M60 190H300M60 185V195M300 185V195" class="tynn"/><text x="180" y="186" class="tekst" text-anchor="middle">8,0 m</text>
+              </svg>
+            </figure>
+          </div>
+          <p>Kassene har lik masse i utgangspunktet. Endrer man massen til den ene kassen, må man endre den andre like mye motsatt vei. Eksempel: Hvis Δm er 0,5 kg, får den ene kassen 8,25 kg og den andre 7,75 kg. Når klossen har flyttet en pakke i den tyngste kassen, bytter kassene masse, og slik fortsetter det. Nissen vil at maskinen skal sortere pakker så raskt som mulig, men sluttfarten til pakkene kan ikke være større enn 5,0 m/s, for da treffer de ikke oppi kassene.</p>
+          <p class="jk-spm">Hva må masseforskjellen mellom kassene være for at dette skal være mulig?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">Δm ≈ 5,1 kg (5,14 kg), altså kasser på 10,57 kg og 5,43 kg. Med mindre enn 1,0 kg i forskjell beveger ikke klossen seg i det hele tatt.</p>
+            <ol>
+              <li>Kassene veier alltid 16,0 kg til sammen, så hele systemet har massen 10,0 + 16,0 = 26,0 kg.</li>
+              <li>Kraftsum langs tauet: ΣF = Δm · g − μm<sub>A</sub>g = g(Δm − 1,0 kg). Klossen begynner bare å gli hvis Δm &gt; 1,0 kg.</li>
+              <li>Sluttfarten etter 8,0 m må være høyst 5,0 m/s: a ≤ v²/(2s) = 5,0² / (2 · 8,0) = 1,56 m/s².</li>
+              <li>g(Δm − 1,0)/26,0 ≤ 1,56 gir Δm ≤ 26,0 · 1,5625/9,81 + 1,0 = 5,14 kg. Den raskeste sorteringen får vi med den største tillatte forskjellen.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f1-4">
+          <h3><span class="jk-nr">4</span> Jouletoget som (forhåpentligvis) stopper før veggen</h3>
+          <p>Bak verkstedet har Joulenissen bygget et lite jernbanesystem for å frakte tunge presanger fra fjellageret og ned til sorteringshallen. En lasteslede A starter i ro høyt oppe i fjellet og glir ned en lang, islagt bakke som er tilnærmet friksjonsfri. I bunnen av bakken går skinnene over i en horisontal strekning med snø, der friksjonstallet er 0,10. Litt lenger borte står en svært tung slede B stille på sporet. Når A treffer B, kobles sledene sammen i et fullstendig uelastisk støt og fortsetter som ett tog. Litt lenger fremme står veggen til sorteringshallen, og hvis toget ikke stopper i tide, blir det fullt kaos.</p>
+          <p>Slede B skal fungere som en naturlig brems for slede A, men den har blitt altfor tung etter at alvene har brukt den som lager for reservemaskiner og gamle oppfinnelser. Uten hjelp kommer ikke toget fram til sorteringshallen, så Joulenissen har montert en motor på slede A. Motoren skyver toget ned bakken med konstant kraft, men den er gammel og langt fra perfekt: Bare 80 % av energien motoren bruker, blir til bevegelse. Resten blir til varme i motoren, og blir motoren for varm, blir den ødelagt.</p>
+          <figure class="jk-fig jk-bred">
+            <svg viewBox="0 0 640 190" role="img" aria-label="Slede A på toppen av en 80 meter lang bakke som er 40 meter høy. Etter 120 meter flatt står slede B, og 80 meter etter B står veggen. mA er 200 kg og mB er 300 kg.">
+              <path d="M20 40H90L230 150H600" class="strek"/><path d="M600 150V60" class="strek tykk"/>
+              <rect x="68" y="24" width="22" height="16" class="fyll-a"/><text x="79" y="36" class="tekst hvit" text-anchor="middle">A</text>
+              <rect x="430" y="134" width="22" height="16" class="fyll-b"/><text x="441" y="146" class="tekst hvit" text-anchor="middle">B</text>
+              <path d="M90 40V150" class="stiplet"/><text x="82" y="100" class="tekst" text-anchor="end">40 m</text>
+              <text x="170" y="86" class="tekst">80 m</text>
+              <path d="M230 168H430M230 163V173M430 163V173" class="tynn"/><text x="330" y="184" class="tekst" text-anchor="middle">120 m</text>
+              <path d="M452 168H600M452 163V173M600 163V173" class="tynn"/><text x="526" y="184" class="tekst" text-anchor="middle">80 m</text>
+              <text x="380" y="70" class="tekst">m<tspan class="sub" dy="4">A</tspan><tspan dy="-4"> = 200 kg</tspan></text>
+              <text x="380" y="92" class="tekst">m<tspan class="sub" dy="4">B</tspan><tspan dy="-4"> = 300 kg</tspan></text>
+            </svg>
+          </figure>
+          <p class="jk-spm">Hvor stor må akselerasjonen til slede A i bakken være for at begge sledene akkurat skal komme bort til sorteringshallen uten å kollidere med veggen? Og hvor mye energi blir da omgjort til varme i motoren på vei ned bakken?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">a ≈ 7,6 m/s² (7,60 m/s²). Det blir omtrent 10,8 kJ varme i motoren.</p>
+            <p>Vi regner baklengs fra veggen:</p>
+            <ol>
+              <li>Etter støtet skal toget (500 kg) stoppe akkurat ved veggen etter 80 m med friksjon: v<sub>etter</sub>² = 2μgs = 2 · 0,10 · 9,81 · 80 gir v<sub>etter</sub> = 12,5 m/s.</li>
+              <li>Bevegelsesmengden er bevart i støtet: m<sub>A</sub>v<sub>A</sub> = (m<sub>A</sub> + m<sub>B</sub>)v<sub>etter</sub> gir v<sub>A</sub> = 500 · 12,53 / 200 = 31,3 m/s like før støtet.</li>
+              <li>På de 120 m før støtet bremser friksjonen A, så farten i bunnen av bakken må ha vært større: v<sub>bunn</sub>² = v<sub>A</sub>² + 2μgs = 31,32² + 2 · 0,10 · 9,81 · 120 gir v<sub>bunn</sub> = 34,9 m/s.</li>
+              <li>Bakken er 80 m og A starter i ro: a = v<sub>bunn</sub>² / (2 · 80) = 1216 / 160 = 7,60 m/s².</li>
+              <li>Bakken har sin θ = 40/80 = 0,5. Tyngdekraften gir alene g sin θ = 4,91 m/s², så motoren må skyve med F = m<sub>A</sub>(a − g sin θ) = 200 · (7,60 − 4,91) = 540 N.</li>
+              <li>Arbeidet motoren gjør på sleden: W = Fs = 540 · 80 = 43,2 kJ. Det er 80 % av energien motoren bruker, så motoren bruker 43,2 / 0,80 = 54,0 kJ. Varmen er differansen, 54,0 − 43,2 = 10,8 kJ.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f1-5">
+          <h3><span class="jk-nr">5</span> Sprettsortereren</h3>
+          <p>Joulenissen har bygget en ny sorteringsmaskin han kaller sprettsortereren. To små sleder sklir på et helt rett gulv i sorteringshallen. Slede A er en skyveslede som kommer inn og treffer en annen slede. Slede B er en utløserslede som skal skytes videre og aktivere en mekanisme.</p>
+          <p>For at systemet skal tåle mange runder, er støtfangeren laget av superelastisk julegummi, så støtet kan regnes som fullstendig elastisk. Støtet skjer så raskt at vi kan se bort fra friksjon under selve støtet.</p>
+          <p>Problemet er at slede B har fått nye meier av et annet materiale enn A, og nissen aner ikke hvilken friksjon den har. Bremser B for raskt, rekker den ikke fram til utløseren. Nissen har gjort én test og notert dette:</p>
+          <div class="jk-data">
+            <ul>
+              <li>Masse slede A: 8,0 kg</li>
+              <li>Masse slede B: 2,0 kg</li>
+              <li>Slede B står i ro før støtet.</li>
+              <li>Friksjonstallet for A mot gulvet er 0,12.</li>
+              <li>Slede A passerer en fotocelle med farten 4,0 m/s.</li>
+              <li>Avstanden fra fotocellen til slede B er 5,0 m.</li>
+              <li>Etter støtet glir slede B videre og stopper etter 2,50 m.</li>
+            </ul>
+          </div>
+          <p class="jk-spm">Finn friksjonstallet mellom slede B og underlaget.</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">μ<sub>B</sub> ≈ 0,22</p>
+            <ol>
+              <li>A bremser fram til B: v<sub>A</sub>² = 4,0² − 2 · 0,12 · 9,81 · 5,0 = 4,23 m²/s², altså v<sub>A</sub> = 2,06 m/s.</li>
+              <li>Fullstendig elastisk støt der B står i ro: v<sub>B</sub> = 2m<sub>A</sub>/(m<sub>A</sub> + m<sub>B</sub>) · v<sub>A</sub> = 16/10 · 2,06 = 3,29 m/s. Dette følger av at både bevegelsesmengden og den kinetiske energien er bevart.</li>
+              <li>B bremses av friksjonen til den stopper: μ<sub>B</sub>g · s = ½v<sub>B</sub>² gir μ<sub>B</sub> = 3,29² / (2 · 9,81 · 2,50) = 0,22.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f1-6">
+          <h3><span class="jk-nr">6</span> Buffersleden</h3>
+          <p>I år har Joulenissen laget et nytt system for å flytte tunge presanger raskt mellom to deler av verkstedet. Midt i gangen står et langt, horisontalt bord. På bordet ligger slede A, som er festet i to tau, ett på hver side. Tauene går over hver sin trinse og ned til to hengende kasser: B til venstre og C til høyre. Når systemet slippes, trekker den tyngste siden A bortover bordet.</p>
+          <p>Men nissen oppdager et problem: Ved enden av bordet står en bufferslede D foran veggen til sorteringshallen. Treffer A slede D med for høy fart, kan de sammenkoblede sledene krasje i veggen, og da blir det fullt kaos. Buffersleden kan lastes med bremsepresanger for å gjøre den tyngre og dermed redusere farten etter støtet.</p>
+          <div class="jk-to-kol">
+            <div class="jk-data">
+              <h4>Teknisk informasjon</h4>
+              <ul>
+                <li>m<sub>A</sub> = 8,0 kg, m<sub>B</sub> = 10,0 kg, m<sub>C</sub> = 3,0 kg, m<sub>D</sub> = 1,0 kg</li>
+                <li>Friksjonstallet for A mot bordet er μ<sub>A</sub> = 0,12.</li>
+                <li>Friksjonstallet for de sammenkoblede sledene A og D er μ<sub>AD</sub> = 0,20.</li>
+                <li>A starter i ro, 1,5 m fra D.</li>
+                <li>Når A og D kolliderer, henger de sammen etter støtet.</li>
+                <li>Avstanden fra D til veggen er 1,0 m.</li>
+              </ul>
+              <h4>Bremsepresanger</h4>
+              <p>Nissen har 15 stykker av hver: 0,23 kg, 1,3 kg og 2,31 kg. Pakkene brukes opp hver gang de er brukt.</p>
+            </div>
+            <figure class="jk-fig">
+              <svg viewBox="0 0 360 200" role="img" aria-label="Slede A på et bord med trinser i hver ende, kasse B henger til venstre og C til høyre. Bufferslede D står ved veggen.">
+                <path d="M40 70H320" class="strek"/><path d="M60 70V170M300 70V170" class="strek"/>
+                <circle cx="36" cy="64" r="9" class="strek"/><circle cx="324" cy="64" r="9" class="strek"/>
+                <rect x="120" y="48" width="30" height="22" class="strek"/><text x="135" y="64" class="tekst" text-anchor="middle">A</text>
+                <rect x="236" y="54" width="20" height="16" class="strek"/><text x="246" y="66" class="tekst" text-anchor="middle">D</text>
+                <path d="M282 70V20" class="strek tykk"/>
+                <path d="M120 58H45M150 58H315M27 64V130M333 64V100" class="tynn"/>
+                <rect x="10" y="130" width="34" height="34" class="strek"/><text x="27" y="152" class="tekst" text-anchor="middle">B</text>
+                <rect x="320" y="100" width="26" height="26" class="strek"/><text x="333" y="118" class="tekst" text-anchor="middle">C</text>
+                <path d="M150 88H236M150 83V93M236 83V93" class="tynn"/><text x="193" y="104" class="tekst" text-anchor="middle">1,5 m</text>
+                <path d="M256 88H282M256 83V93M282 83V93" class="tynn"/><text x="269" y="118" class="tekst" text-anchor="middle">1,0 m</text>
+              </svg>
+            </figure>
+          </div>
+          <p class="jk-spm">Hvor mange runder kan nissens system kjøre uten at buffersleden kolliderer i veggen, når pakkene brukes opp hver gang og nissen bare har 15 av hver?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">1 runde. Hver runde krever minst 41,1 kg bremsepresanger, og nissen har bare 57,6 kg til sammen.</p>
+            <ol>
+              <li>Før støtet trekker B og C i hver sin retning: a = ((m<sub>B</sub> − m<sub>C</sub>)g − μ<sub>A</sub>m<sub>A</sub>g) / (m<sub>A</sub> + m<sub>B</sub> + m<sub>C</sub>) = (7,0 − 0,96) · 9,81 / 21,0 = 2,82 m/s². Etter 1,5 m er farten v = √(2 · 2,82 · 1,5) = 2,91 m/s.</li>
+              <li>B og C beveger seg sammen med A, så alle tre er med i støtet. Med P kg presanger i D: v′ = 21,0 · 2,91 / (22,0 + P).</li>
+              <li>Etter støtet trekker B og C fortsatt, med nettokraften (m<sub>B</sub> − m<sub>C</sub>)g = 68,7 N framover. Friksjonen på A og D er μ<sub>AD</sub>(9,0 + P)g. Toget bremser bare hvis 0,20(9,0 + P) &gt; 7,0, altså P &gt; 26 kg.</li>
+              <li>Bremselengden v′²/(2a′) skal være høyst 1,0 m, der a′ = (0,20(9,0 + P) − 7,0)g / (22,0 + P). Det gir P ≥ 41,1 kg.</li>
+              <li>Alle pakkene veier til sammen 15 · (0,23 + 1,3 + 2,31) = 57,6 kg. Det holder til én runde, men ikke til to.</li>
+            </ol>
+          </details>
+        </article>
+
+        <h2 class="jk-h2" id="fysikk-2">Fysikk 2</h2>
+
+        <article class="jk-oppg" id="f2-1">
+          <h3><span class="jk-nr">1</span> Den vindfulle juleleveransen</h3>
+          <p>Joulenissen har leid et lasteskip … i lufta. Et gigantisk luftskip krysser Nordpolen i konstant fart, men denne gangen er det ingen autopilot, bare et nervøst nissecrew og tunge pakker. Pakkene skal fraktes fra verkstedet til lageret ved at de slippes fra luftskipet.</p>
+          <p>Denne dagen flyr luftskipet horisontalt med konstant fart 16 m/s i x-retning, 90 m over bakken.</p>
+          <p>Som om ikke dette var vanskelig nok, virker en merkelig, magisk medvind bakfra på presangene. Etter at en presang er sluppet, dytter vinden den videre framover, så den får en konstant horisontal akselerasjon 1,4 m/s² i samme retning som luftskipet. Rett under luftskipets bane ligger lageret. Lageret er 10 m høyt, og taket er flatt og 22 m langt i horisontal retning. Presangene må lande på taket, som er dekket av puter, for ikke å bli ødelagt.</p>
+          <p>Oppdraget hadde ikke vært så vanskelig om det var mulig å måle avstander nøyaktig, men luftskipet har et veldig enkelt målesystem. Det kan bare fortelle når skipet er akkurat 100 m horisontalt fra kanten av taket. Da lyser det opp i luftskipet, og en stoppeklokke starter.</p>
+          <figure class="jk-fig jk-bred">
+            <svg viewBox="0 0 640 220" role="img" aria-label="Luftskip 90 meter over bakken, 100 meter horisontalt fra kanten av et 10 meter høyt lager med 22 meter langt tak">
+              <ellipse cx="70" cy="40" rx="42" ry="16" class="strek"/><rect x="60" y="56" width="20" height="8" class="strek"/>
+              <path d="M115 40H170M162 35L170 40L162 45" class="pil"/><text x="142" y="32" class="tekst" text-anchor="middle">16 m/s</text>
+              <path d="M20 200H620" class="strek"/>
+              <rect x="440" y="178" width="110" height="22" class="strek"/>
+              <path d="M440 178H550" class="strek tykk"/>
+              <path d="M70 64V200" class="stiplet"/><text x="62" y="140" class="tekst" text-anchor="end">90 m</text>
+              <path d="M70 120H440M70 115V125M440 115V125" class="tynn"/><text x="255" y="114" class="tekst" text-anchor="middle">100 m</text>
+              <path d="M440 165H550M440 160V170M550 160V170" class="tynn"/><text x="495" y="158" class="tekst" text-anchor="middle">22 m</text>
+              <text x="560" y="194" class="tekst">10 m</text>
+            </svg>
+          </figure>
+          <p class="jk-spm">Regn ut tidsintervallet etter at stoppeklokka starter, der alvene kan slippe pakker fra luftskipet slik at de lander hele på taket.</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">Pakkene må slippes mellom 1,50 s og 2,87 s etter at stoppeklokka starter.</p>
+            <ol>
+              <li>Fallhøyden ned til taket er 90 − 10 = 80 m. Loddrett er det fritt fall: t = √(2 · 80 / 9,81) = 4,04 s.</li>
+              <li>Vannrett starter pakken med luftskipets fart og får i tillegg akselerasjonen fra vinden: x = 16 · 4,04 + ½ · 1,4 · 4,04² = 64,6 + 11,4 = 76,0 m. Så langt flytter pakken seg framover før den lander.</li>
+              <li>Slippes pakken ved tiden T, er luftskipet 100 − 16T meter fra takkanten. Pakken treffer taket når 100 − 16T ≤ 76,0 ≤ 122 − 16T.</li>
+              <li>Det gir T ≥ (100 − 76,0)/16 = 1,50 s og T ≤ (122 − 76,0)/16 = 2,87 s.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f2-2">
+          <h3><span class="jk-nr">2</span> Nissependelen</h3>
+          <p>I år har Joulenissen investert i et helt nytt, helmekanisk sorteringssystem: nissependelen, en stor arm som svinger fram og tilbake fra taket og sender presanger rett i sekker.</p>
+          <div class="jk-to-kol">
+            <div class="jk-data">
+              <h4>Systemet fungerer slik</h4>
+              <ul>
+                <li>Nissependelen svinger fram og tilbake uten energitap.</li>
+                <li>Nederst på pendelarmen henger en sugemekanisme som plukker opp én presang hver gang armen er i toppen av pendelbevegelsen på venstre side.</li>
+                <li>Ved en bestemt vinkel på høyre side slipper en automatisk mekanisme presangen.</li>
+                <li>Presangen flyr i en bue gjennom lufta og lander (forhåpentligvis!) i en stor sekk på gulvet.</li>
+              </ul>
+              <h4>Tekniske data</h4>
+              <ul>
+                <li>Pendelen er 2,5 m lang.</li>
+                <li>Opphenget er 3,0 m over gulvet.</li>
+                <li>Pendelarmen med pakke har massen 5,0 kg.</li>
+                <li>I toppen av pendelbevegelsen er armen 40° fra loddlinja.</li>
+                <li>Pakken slippes når armen er 20° fra loddlinja på høyre side.</li>
+                <li>Pakken er magisk og påvirkes ikke av luftmotstand.</li>
+              </ul>
+            </div>
+            <figure class="jk-fig">
+              <svg viewBox="0 0 330 235" role="img" aria-label="Pendel festet 3,0 meter over gulvet. Armen er 40 grader til venstre i toppen og slipper pakken 20 grader til høyre. En sekk står på gulvet.">
+                <path d="M110 20H190" class="strek tykk"/>
+                <path d="M150 20V200" class="stiplet"/>
+                <path d="M150 20L48 141" class="tynn stiplet2"/><circle cx="48" cy="141" r="7" class="strek"/>
+                <path d="M150 20L204 168" class="strek"/><circle cx="204" cy="168" r="6" class="fyll-a"/>
+                <path d="M150 70A50 50 0 0 1 118 58" class="tynn"/><text x="122" y="84" class="tekst">40°</text>
+                <path d="M150 80A60 60 0 0 0 170.5 76.4" class="tynn"/><text x="176" y="72" class="tekst">20°</text>
+                <path d="M204 168Q228 158 247 174" class="stiplet"/>
+                <path d="M20 210H320" class="strek"/>
+                <path d="M232 174H262L258 210H236Z" class="strek"/>
+                <path d="M150 222H247M150 217V227M247 217V227" class="tynn"/><text x="198" y="218" class="tekst" text-anchor="middle">?</text>
+                <text x="268" y="196" class="tekst">0,60 m</text>
+              </svg>
+            </figure>
+          </div>
+          <p>Sekken står i et stativ, slik at åpningen er 0,60 m over gulvet. Problemet er at systemet aldri har vært testet, og det finnes ingen prøvepresanger som kan ofres. Alle pakkene må treffe riktig første gang, så alvene må bruke fysikk for å finne ut hvor sekken må stå.</p>
+          <p class="jk-spm">Hvor langt unna likevektspunktet i horisontal retning må midten av sekken stå for at pakkene skal treffe oppi?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">Omtrent 1,53 m fra likevektspunktet, målt horisontalt.</p>
+            <ol>
+              <li>Energibevaring fra 40° til 20°: v² = 2gL(cos 20° − cos 40°) = 2 · 9,81 · 2,5 · (0,9397 − 0,7660) gir v = 2,92 m/s. Massen spiller ingen rolle.</li>
+              <li>Pakken slippes i x<sub>0</sub> = L sin 20° = 0,855 m til høyre for likevektspunktet og i høyden y<sub>0</sub> = 3,0 − L cos 20° = 0,651 m over gulvet.</li>
+              <li>Farten er vinkelrett på armen, altså 20° over horisontalen på vei oppover: v<sub>x</sub> = v cos 20° = 2,74 m/s og v<sub>y</sub> = v sin 20° = 0,998 m/s.</li>
+              <li>Pakken skal ned til 0,60 m, altså 0,051 m lavere: 0,60 = 0,651 + 0,998t − ½ · 9,81t² gir t = 0,246 s.</li>
+              <li>x = x<sub>0</sub> + v<sub>x</sub>t = 0,855 + 2,74 · 0,246 = 1,53 m.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f2-3">
+          <h3><span class="jk-nr">3</span> Joulesvingen</h3>
+          <p>Joulenissen har bygget en ny høyhastighetsbane som alvene kan leke i. Banen går fra fjellageret og inn mot sorteringshallen, og den består av en lang, rett bakke ned fra fjellet, en horisontal flate og en dosert sving inn mot hallen.</p>
+          <p>Sleden er naturligvis magisk. Den holder alltid konstant fart gjennom svinger og blir aldri påvirket av luftmotstand. Banefarten i svingen er altså alltid lik farten sleden har idet den går inn i svingen. Sleden har ingen motor, så det eneste som avgjør farten, er arbeidet som tyngdekraften og friksjonskraften gjør på sleden.</p>
+          <div class="jk-data">
+            <h4>Teknisk info om banen</h4>
+            <ul>
+              <li>Bakken har helningsvinkelen 30°.</li>
+              <li>Friksjonstallet fra toppen av bakken og helt fram til den doserte svingen er 0,10.</li>
+              <li>Avstanden fra bunnen av bakken til den doserte svingen er 50 m.</li>
+              <li>Den doserte svingen er en sirkelbane med radius 120 m, doseringsvinkel 25° og friksjonstall 0,20.</li>
+            </ul>
+          </div>
+          <p>Joulenissen skal ha en testkjøring av løypa og lar apen sin, Joulius, få æren av å kjøre sleden. Joulius veier 60 kg, og sleden har massen 340 kg. Joulenissen vil at Joulius skal klare å fullføre løypa.</p>
+          <p class="jk-spm">Finn et intervall for starthøyder der sleden klarer å ta svingen uten å skli oppover eller nedover i banen.</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">Starthøyden må være mellom omtrent 23,7 m og 59,4 m over den horisontale flaten.</p>
+            <ol>
+              <li>Laveste fart i svingen (friksjonen peker oppover langs doseringen): v<sub>min</sub>² = rg(sin 25° − μ cos 25°)/(cos 25° + μ sin 25°) = 287 m²/s², altså v<sub>min</sub> = 16,9 m/s.</li>
+              <li>Høyeste fart (friksjonen peker nedover langs doseringen): v<sub>maks</sub>² = rg(sin 25° + μ cos 25°)/(cos 25° − μ sin 25°) = 865 m²/s², altså v<sub>maks</sub> = 29,4 m/s.</li>
+              <li>Fra starthøyden h: Bakken er h/sin 30° = 2h lang, og friksjonsarbeidet der er μmg cos 30° · 2h. På flaten er friksjonsarbeidet μmg · 50 m. Energien gir ½v² = gh − μg cos 30° · 2h − μg · 50, altså v² = 2g(0,827h − 5,0 m).</li>
+              <li>Løs for h: h = (v²/(2g) + 5,0)/0,827. Med v<sub>min</sub> blir h = 23,7 m, og med v<sub>maks</sub> blir h = 59,4 m.</li>
+              <li>Massene til Joulius og sleden spiller ingen rolle, fordi alle leddene er proporsjonale med massen.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f2-4">
+          <h3><span class="jk-nr">4</span> The Joule is a lie!</h3>
+          <p>Joulenissen har fått konstruert en helt ny slede for å rekke over alle pakkeleveringene i jula. Sleden kan kjøre i ekstreme hastigheter, og nissen har kjørt en test for å se hvor raskt den faktisk klarer å kjøre. Under testkjøringen gikk fartsmåleren i stykker, men alvene klarte å gjøre noen energimålinger. De fant ut at den kinetiske energien som ble målt, ikke var den samme som om den hadde blitt regnet ut med klassisk fysikk. Den var faktisk 3,70 ganger større!</p>
+          <p class="jk-spm">Hjelp Joulenissen med å finne ut hva farten til sleden var, både i m/s og som et forhold til lysfarten.</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">v ≈ 0,921c ≈ 2,76 · 10⁸ m/s</p>
+            <ol>
+              <li>Relativistisk kinetisk energi er E<sub>k</sub> = (γ − 1)mc². Klassisk er E<sub>k</sub> = ½mv².</li>
+              <li>(γ − 1)mc² = 3,70 · ½mv². Med β = v/c blir det 1/√(1 − β²) − 1 = 1,85β².</li>
+              <li>Likningen løses numerisk, for eksempel med Python eller på en grafisk kalkulator: β = 0,921.</li>
+              <li>v = 0,921 · 3,00 · 10⁸ m/s = 2,76 · 10⁸ m/s. Kontroll: γ = 2,57, så (γ − 1)/(½β²) = 1,57/0,424 = 3,70.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f2-5">
+          <h3><span class="jk-nr">5</span> Joulenissens elektronkanon</h3>
+          <p>I kjelleren under verkstedet har Joulenissen bygget en elektronkanon for å kalibrere nytt, elektrisk leketøy. Kanonen skyter elektroner mot en skjerm, og ved å justere spenningen mellom to horisontale plater kan nissen styre nøyaktig hvor elektronene treffer på skjermen.</p>
+          <ol class="jk-trinn">
+            <li>Et elektron starter i ro.</li>
+            <li>Det akselereres horisontalt mellom to vertikale plater med spenningsforskjellen U<sub>V</sub>.</li>
+            <li>Deretter går elektronet inn mellom to horisontale styreplater, som bøyer banen.</li>
+            <li>Etter platene flyr elektronet fritt videre og treffer en skjerm.</li>
+          </ol>
+          <p>Nissen er avhengig av at strålen treffer skjermen 15,0° fra midtlinja, målt fra slutten av de horisontale platene. Nå har alvene flyttet skjermen, så spenningen mellom de horisontale platene må justeres.</p>
+          <figure class="jk-fig jk-bred">
+            <svg viewBox="0 0 640 230" role="img" aria-label="Akselerasjonsplater 1,50 cm fra hverandre med 1800 V. Styreplater 6,00 cm lange og 2,00 cm fra hverandre med ukjent spenning. Skjermen er 15,0 cm etter platene, og strålen går ut med vinkelen 15,0 grader.">
+              <path d="M40 30V200M90 30V100M90 130V200" class="strek tykk"/>
+              <text x="65" y="22" class="tekst" text-anchor="middle">U<tspan class="sub" dy="4">V</tspan><tspan dy="-4"> = 1800 V</tspan></text>
+              <path d="M40 215H90M40 210V220M90 210V220" class="tynn"/><text x="65" y="228" class="tekst" text-anchor="middle">1,50 cm</text>
+              <circle cx="44" cy="115" r="3" class="fyll-a"/>
+              <path d="M110 75H340M110 155H340" class="strek tykk"/>
+              <text x="225" y="66" class="tekst" text-anchor="middle">U<tspan class="sub" dy="4">H</tspan><tspan dy="-4"> = ?</tspan></text>
+              <text x="225" y="88" class="tekst f1" text-anchor="middle">+ + + + + + +</text>
+              <text x="225" y="150" class="tekst f2" text-anchor="middle">− − − − − − −</text>
+              <path d="M44 115H600" class="stiplet"/>
+              <path d="M44 115H110Q225 115 340 106" class="strek f1"/>
+              <path d="M340 106L600 36" class="strek f1"/>
+              <path d="M600 20V210" class="strek"/>
+              <path d="M340 106H440" class="stiplet"/><path d="M400 106A60 60 0 0 0 398 90.5" class="tynn"/><text x="408" y="100" class="tekst">θ = 15,0°</text>
+              <path d="M350 75H360V155H350" class="tynn"/><text x="366" y="140" class="tekst">2,00 cm</text>
+              <path d="M110 180H340M110 175V185M340 175V185" class="tynn"/><text x="225" y="196" class="tekst" text-anchor="middle">6,00 cm</text>
+              <path d="M340 180H600M340 175V185M600 175V185" class="tynn"/><text x="470" y="196" class="tekst" text-anchor="middle">15,0 cm</text>
+            </svg>
+          </figure>
+          <p class="jk-spm">Hva må spenningen mellom de horisontale platene justeres til for at elektronet skal treffe skjermen riktig?</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">U<sub>H</sub> ≈ 322 V</p>
+            <ol>
+              <li>Akselerasjonen gir ½mv<sub>x</sub>² = eU<sub>V</sub>.</li>
+              <li>Mellom styreplatene er feltet E = U<sub>H</sub>/d, og elektronet får den loddrette akselerasjonen a = eU<sub>H</sub>/(md). Tiden mellom platene er t = L/v<sub>x</sub>, så v<sub>y</sub> = at = eU<sub>H</sub>L/(mdv<sub>x</sub>).</li>
+              <li>Etter platene går elektronet rett fram med vinkelen tan θ = v<sub>y</sub>/v<sub>x</sub> = eU<sub>H</sub>L/(mdv<sub>x</sub>²) = U<sub>H</sub>L/(2dU<sub>V</sub>). Massen og ladningen forsvinner.</li>
+              <li>U<sub>H</sub> = 2dU<sub>V</sub> tan θ / L = 2 · 0,0200 · 1800 · tan 15,0° / 0,0600 = 322 V.</li>
+              <li>Avstanden til skjermen trengs ikke, fordi vinkelen er målt fra enden av platene. Kontroll: Elektronet er bøyd av ½L tan θ = 0,80 cm når det forlater platene. Det er mindre enn 1,00 cm, så det treffer ikke platene.</li>
+            </ol>
+          </details>
+        </article>
+
+        <article class="jk-oppg" id="f2-6">
+          <h3><span class="jk-nr">6</span> Jouletunnelen og supersleden</h3>
+          <p>Den nye sleden til Joulenissen, som kan kjøre i relativistiske hastigheter, skal testes litt mer. For å teste den uten å krasje i verkstedet har alvene laget en rett sikkerhetstunnel med to automatiske porter: port 1 ved inngangen og port 2 ved utgangen. Portene kan lukkes samtidig i verkstedets referansesystem, men bare i et veldig kort tidsrom før de må åpnes igjen.</p>
+          <div class="jk-data">
+            <ul>
+              <li>Tunnelens hvilelengde er 120 m.</li>
+              <li>Sledens hvilelengde er 150 m.</li>
+              <li>Portene kan være lukket i 0,20 µs før de åpnes igjen.</li>
+            </ul>
+          </div>
+          <p>Nissen vil kjøre sleden gjennom tunnelen slik at hele sleden, i verkstedets referansesystem, er inni tunnelen mens begge portene er lukket samtidig, uten at sleden stikker ut gjennom noen av portene i det tidsrommet. I tillegg vil Joulenissen at sleden skal gjøre dette med lavest mulig fart, så den er inne i verkstedet så lenge som mulig.</p>
+          <p class="jk-spm">Finn den minste farten v, som brøkdel av c, som gjør at hele sleden kan være inni tunnelen mens portene er lukket.</p>
+          <details class="fasit">
+            <summary>Fasit og løsningsforslag</summary>
+            <p class="jk-svar">v ≈ 0,897c</p>
+            <ol>
+              <li>I verkstedets system er sleden lengdekontrahert: L = 150 m · √(1 − β²).</li>
+              <li>Mens portene er lukket, flytter sleden seg vΔt = β · c · 0,20 µs = β · 60,0 m. Hele denne bevegelsen må skje inni tunnelen, så L + vΔt ≤ 120 m.</li>
+              <li>150√(1 − β²) + 60,0β ≤ 120. Likningen løses numerisk, og den minste farten som oppfyller kravet, er β = 0,897.</li>
+              <li>Kontroll: γ = 2,27, så sleden er 150/2,27 = 66,2 m lang. Den flytter seg 0,897 · 60,0 = 53,8 m mens portene er lukket, og 66,2 + 53,8 = 120 m.</li>
+              <li>Uten kravet om 0,20 µs ville det holdt at sleden var kortere enn tunnelen, altså β = 0,6. Det er tidsvinduet som gjør oppgaven vanskelig.</li>
+            </ol>
+          </details>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+    </div>
+  </footer>
+
+</body>
+</html>

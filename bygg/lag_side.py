@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Lager en side for fysikklab.no fra en kildefil med et lite hode, skilt fra innholdet med en linje med ---:
 #   tittel, beskrivelse, fagside (lenken i brødsmulene), fag, tema, script (kommaseparert, - for ingen) og meny (aktiv side i menyen).
-#   Valgfritt: robots (for eksempel noindex, så søkemotorer ikke tar med siden).
+#   Valgfritt: robots (for eksempel noindex, så søkemotorer ikke tar med siden) og bunn (teksten nederst til høyre).
 # Brukes av bygg.py, men kan også kjøres alene: python3 bygg/lag_side.py <kildemappe> <utmappe>
 import sys, os, html, re
 
@@ -62,7 +62,7 @@ def lag(tekst):
   <footer class="bunn">
     <div class="ramme">
       <span>© 2026 fysikklab.no</span>
-      <span>Ingen innlogging, informasjonskapsler eller sporing.</span>
+      <span>{f.get("bunn", "Ingen innlogging, informasjonskapsler eller sporing.")}</span>
     </div>
   </footer>
 {skript}

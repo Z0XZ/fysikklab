@@ -20,6 +20,7 @@ Kjør `--sjekk` først. Hvis den viser endringer du ikke har gjort i kildene, er
 | `begrep.py` | Begrepstestene `opplegg/begrep-*.html`. Spørsmålene står i skriptet. Alternativene stokkes, men i samme rekkefølge hver gang. |
 | `repetisjon.py` | Repetisjonssidene `opplegg/repetisjon-*.html` |
 | `kilder/utdanningsvalg/*.html` | Opplegget for 10. klasse på fysikklab.no/utdanningsvalg. Sidene er ikke lenket fra resten av nettstedet og har `robots: noindex`. Robotbilen ligger i `utdanningsvalg/robot.py` og redigeres direkte der. |
+| `kilder/joulekalender/*.html` | Joulekalenderen på fysikklab.no/joulekalender. Serverkallene står i `js/jk-api.js`. Påmeldinger, svar, oppgavebilder og fasit ligger i Supabase og aldri i repoet. |
 | `kompetansemaal.py` | Lærersiden `opplegg/kompetansemaal.html`. Bygges sist, fordi den henter titlene fra de andre sidene. Legg nye sider inn i listene `F1` og `F2`. |
 
 De andre sidene på fysikklab.no er ikke med her og redigeres direkte.

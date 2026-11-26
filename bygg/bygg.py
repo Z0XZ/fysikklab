@@ -13,6 +13,7 @@ Hva som bygges:
     repetisjon.py                                repetisjonssidene (opplegg/repetisjon-*.html)
     kompetansemaal.py                            lærersiden opplegg/kompetansemaal.html (bygges sist, leser titlene fra de andre sidene)
     kilder/utdanningsvalg/*.html                 opplegget for 10. klasse på fysikklab.no/utdanningsvalg (ikke lenket fra resten av sida)
+    kilder/joulekalender/*.html                  joulekalenderen på fysikklab.no/joulekalender (data og fasit ligger i Supabase, ikke her)
 
 Etterpå: Kodeblokkene på programmeringssidene gjøres om til kjørbare Python-bokser (PY_SIDER under),
 og knappen «Last ned elevark (PDF)» settes inn hvis PDF-en finnes i elevark/.
@@ -87,7 +88,7 @@ def modul(navn):
 def kilder(tmp):
     """Alle kildefilene som (mappe, navn, sti til kilde)."""
     ut = []
-    for mappe in ["opplegg", "sim", "programmering", "utdanningsvalg"]:
+    for mappe in ["opplegg", "sim", "programmering", "utdanningsvalg", "joulekalender"]:
         for f in sorted(os.listdir(os.path.join(HER, "kilder", mappe))):
             if f.endswith(".html"):
                 ut.append((mappe, f[:-5], os.path.join(HER, "kilder", mappe, f)))

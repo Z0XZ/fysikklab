@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Joulekalender 2026 – fysikklab.no</title>
+  <meta name="description" content="Joulekalender med fysikkoppgaver for Fysikk 1 og Fysikk 2. Klassene løser seks luker i desember og konkurrerer med skoler fra hele landet.">
+  <script src="../js/tema.js"></script>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a class="hopp" href="#innhold">Hopp til innholdet</a>
+  <header class="topp">
+    <div class="ramme">
+      <a class="logo" href="../index.html">fysikklab<span>.no</span></a>
+      <nav aria-label="Hovedmeny"><ul class="meny">
+        <li><a href="../simuleringer.html">Simuleringer</a></li>
+        <li><a href="../undervisningsopplegg.html">Undervisningsopplegg</a></li>
+        <li><a href="../programmering.html">Programmering</a></li>
+        <li><a href="../om-meg.html">Om meg</a></li>
+      </ul></nav>
+      <button id="tema-knapp" class="tema-knapp" type="button" aria-label="Bytt mellom lys og mørk modus">
+        <svg class="ikon-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9L7 7M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></svg>
+        <svg class="ikon-mane" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg>
+      </button>
+    </div>
+  </header>
+  <main id="innhold">
+    <section class="side sim-side">
+      <div class="ramme">
+        <p class="brodsmuler"><a href="../index.html">fysikklab.no</a> / Joulekalender</p>
+        <h1>Joulekalender 2026</h1>
+        <p class="ingress">Seks luker med fysikkoppgaver i desember, for Fysikk 1 og Fysikk 2. Klassen løser oppgavene sammen, og læreren leverer ett svar for hele klassen. Dere konkurrerer mot klasser fra hele landet.</p>
+
+        <div id="jk-app" class="jk-app">
+          <div id="jk-melding" class="jk-melding" role="status" hidden></div>
+          <section id="jk-klasse" class="jk-klasse" aria-label="Klassen din"></section>
+          <div class="jk-faner" role="tablist" aria-label="Fag">
+            <button type="button" role="tab" data-fag="F1">Fysikk 1</button>
+            <button type="button" role="tab" data-fag="F2">Fysikk 2</button>
+          </div>
+          <div id="jk-hvem" class="jk-hvem" hidden></div>
+          <div id="jk-luker" class="jk-luker"></div>
+          <section id="jk-luke" class="jk-luke" hidden></section>
+          <h2 class="jk-h2">Poengtavle</h2>
+          <div id="jk-tavle"></div>
+        </div>
+        <noscript><p>Joulekalenderen trenger JavaScript.</p></noscript>
+
+        <h2 class="jk-h2">Tidligere kalendere</h2>
+        <ul class="jk-tidligere">
+          <li><a href="2025.html">Joulekalender 2025</a>: seks luker for Fysikk 1 og seks for Fysikk 2, med fasit og løsningsforslag.</li>
+        </ul>
+
+        <h2 class="jk-h2">Slik fungerer det</h2>
+        <ul class="jk-regler">
+          <li><strong>Datoer:</strong> To luker åpner hver mandag i uke 49, 50 og 51 (30. november, 7. desember og 14. desember). Klassen kan gjøre dem når det passer den uka. Fristen er søndag kl. 23.59 samme uke.</li>
+          <li><strong>Ett svar per klasse:</strong> Læreren melder på klassen og får en klassekode. Med koden leverer læreren klassens svar. Svaret kan endres fram til fristen, og det siste som er levert, teller.</li>
+          <li><strong>Fasit og poeng</strong> vises når fristen er ute. Da oppdateres også poengtavlen.</li>
+          <li><strong>Tallsvar:</strong> Skriv bare tallet, i enheten som står ved feltet. Både komma og punktum går, og standardform kan skrives som 2,4·10^5 eller 2,4e5.</li>
+          <li><strong>Flervalg:</strong> Velg alle alternativene som er riktige. Hvert galt valg trekker like mye som et riktig valg gir, men aldri under 0.</li>
+          <li><strong>Rangering:</strong> Poengene regnes ut fra hvor mange par som står i riktig rekkefølge. En tilfeldig rekkefølge gir i snitt 0 poeng.</li>
+        </ul>
+
+        <h3 class="jk-h3">Poeng for tallsvar</h3>
+        <p>Hver del gir 0–10 poeng etter hvor nær fasit svaret er. Avrunding underveis gir altså ikke trekk.</p>
+        <div class="tabell-ramme jk-smal"><table class="sim-tabell">
+          <thead><tr><th>Avvik fra fasit</th><th>Poeng</th></tr></thead>
+          <tbody>
+            <tr><td>høyst 1 %</td><td>10</td></tr>
+            <tr><td>høyst 2 %</td><td>8</td></tr>
+            <tr><td>høyst 5 %</td><td>6</td></tr>
+            <tr><td>høyst 10 %</td><td>4</td></tr>
+            <tr><td>høyst 25 %</td><td>2</td></tr>
+            <tr><td>mer enn 25 %</td><td>0</td></tr>
+          </tbody>
+        </table></div>
+
+        <h2 class="jk-h2" id="personvern">Personvern</h2>
+        <ul class="jk-regler">
+          <li><strong>Hva som lagres:</strong> navnet og e-postadressen til læreren, skolen, lagnavnet og svarene klassen leverer. Det lagres ingen opplysninger om elevene. Ikke bruk elevnavn i lagnavnet.</li>
+          <li><strong>Hva det brukes til:</strong> å gjennomføre konkurransen og å kontakte deg om den. Lagnavn, skole og poeng vises på poengtavlen. Navnet ditt og e-postadressen vises ikke.</li>
+          <li><strong>Hvor det lagres:</strong> i en database hos Supabase, på servere i EU (Frankfurt).</li>
+          <li><strong>I nettleseren din</strong> lagres klassekodene, og skolen, navnet og e-posten fra siste påmelding, så du slipper å skrive dem inn på nytt. Logger du ut alle klassene, fjernes alt dette fra nettleseren.</li>
+          <li><strong>Sletting:</strong> Opplysningene slettes når konkurransen er avsluttet. Vil du ha dem slettet før, kan du <a href="../om-meg.html">ta kontakt</a>.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer class="bunn">
+    <div class="ramme">
+      <span>© 2026 fysikklab.no</span>
+      <span>Ingen informasjonskapsler eller sporing. Se personvernet nederst på siden.</span>
+    </div>
+  </footer>
+  <script src="../js/felles.js"></script>
+  <script src="../js/jk-api.js"></script>
+  <script src="../js/joulekalender.js"></script>
+</body>
+</html>

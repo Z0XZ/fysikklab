@@ -704,3 +704,133 @@ h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-a
 .fg-egenskaper h4.fg-under { font-family: var(--sans); font-size: .875rem; font-weight: 600; margin: 1rem 0 0; padding-top: .6rem; border-top: 1px solid var(--rute); }
 .fg-visliste { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 .5rem; }
 .fg-visliste label.avkrysning { margin-top: .4rem; font-family: var(--serif); font-size: .95rem; }
+
+/* Joulekalender */
+.jk-app { margin-top: 2rem; }
+.jk-h2 { margin-top: 2.5rem; font-size: 1.5rem; }
+.jk-h3 { margin-top: 1.5rem; font-size: 1.15rem; }
+.jk-dempet { color: var(--dempet); font-size: .9375rem; }
+.jk-melding { margin-bottom: 1rem; padding: .7rem 1rem; border-radius: 6px; border: 1px solid var(--rute-sterk); background: var(--flate); }
+.jk-melding.feil { border-color: var(--f1); color: var(--f1); }
+.jk-melding.ok { border-color: var(--f2); }
+.jk-to { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.25rem; align-items: start; }
+.jk-skjema { display: grid; gap: .65rem; padding: 1rem 1.25rem 1.25rem; border: 1px solid var(--rute-sterk); border-radius: 6px; background: var(--flate); }
+.jk-skjema h2 { font-size: 1.2rem; margin-bottom: .25rem; }
+.jk-skjema label { display: grid; gap: .2rem; font-size: .9375rem; font-weight: 600; }
+.jk-skjema .jk-avkryss { display: flex; gap: .5rem; align-items: baseline; font-weight: 400; }
+.jk-skjema button { justify-self: start; }
+.jk-app input[type="text"], .jk-app input[type="email"], .jk-app input:not([type]), .jk-app select {
+  font: inherit; font-weight: 400; padding: .45rem .6rem; border: 1px solid var(--rute-sterk); border-radius: 4px; background: var(--papir); color: var(--blekk); min-width: 0;
+}
+.jk-app input[type="checkbox"] { accent-color: var(--f2); }
+.jk-ny-kode { margin-bottom: 1rem; padding: 1rem 1.25rem; border: 2px solid var(--f2); border-radius: 6px; background: var(--flate); }
+.jk-ny-kode p { margin: .25rem 0; }
+.jk-kode { font-family: var(--mono); font-size: 1.8rem; font-weight: 700; letter-spacing: .08em; }
+.jk-innlogget { padding: .9rem 1.1rem; border: 1px solid var(--rute-sterk); border-radius: 6px; background: var(--flate); }
+.jk-innlogget h2 { font-size: 1.15rem; }
+.jk-innlogget ul { margin: .5rem 0 0; padding: 0; list-style: none; }
+.jk-innlogget li { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: center; padding: .45rem 0; border-top: 1px solid var(--rute); }
+.jk-innlogget li > span:first-child { flex: 1 1 16rem; }
+.jk-flere { margin-top: .75rem; }
+.jk-flere summary { cursor: pointer; font-weight: 600; color: var(--f2); }
+.jk-flere .jk-to { margin-top: .75rem; }
+.jk-hvem { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin-top: 1rem; }
+.jk-hvem[hidden] { display: none; }
+.jk-hvem label { font-weight: 600; }
+.jk-faner { display: flex; gap: .25rem; margin-top: 1.75rem; border-bottom: 1px solid var(--rute-sterk); }
+.jk-faner button { font: inherit; font-weight: 600; padding: .55rem 1.1rem; border: 1px solid transparent; border-bottom: 0; border-radius: 6px 6px 0 0; background: none; color: var(--dempet); cursor: pointer; margin-bottom: -1px; }
+.jk-faner button[aria-selected="true"] { color: var(--blekk); background: var(--papir); border-color: var(--rute-sterk); border-bottom: 1px solid var(--papir); }
+.jk-luker { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1.25rem; }
+.jk-luker[aria-busy="true"] { opacity: .6; }
+.jk-rute { position: relative; display: grid; align-content: start; gap: .2rem; min-height: 9rem; padding: 1rem 1.1rem; text-align: left; font: inherit; color: var(--blekk);
+  border: 1.5px solid var(--rute-sterk); border-radius: 8px; background: var(--flate); cursor: pointer; }
+.jk-rute:hover:not(:disabled), .jk-rute.valgt { border-color: var(--f2); }
+.jk-rute.valgt { box-shadow: 0 0 0 2px var(--f2); }
+.jk-rute:disabled { cursor: default; background: repeating-linear-gradient(135deg, transparent 0 10px, var(--rute) 10px 11px); color: var(--dempet); }
+.jk-rute.aapen { border-color: var(--f1); }
+.jk-nr { font-family: var(--serif); font-size: 2.6rem; font-weight: 700; line-height: 1; color: var(--f1); }
+.jk-rute:disabled .jk-nr { color: var(--dempet); }
+.jk-rute.levert .jk-nr, .jk-rute.ferdig .jk-nr { color: var(--f2); }
+.jk-tittel { font-weight: 600; }
+.jk-status { font-size: .875rem; color: var(--dempet); }
+.jk-merke { justify-self: start; margin-top: .3rem; padding: .1rem .55rem; border-radius: 999px; font-size: .8125rem; font-weight: 600; background: var(--merke); color: var(--merke-tekst); }
+.jk-luke { margin-top: 1.5rem; padding: 1.25rem; border: 1.5px solid var(--f2); border-radius: 8px; background: var(--flate); scroll-margin-top: 1rem; }
+.jk-luke h2 { font-size: 1.5rem; }
+.jk-bilder { display: grid; gap: .75rem; margin: 1rem 0; }
+.jk-bilder img { display: block; width: 100%; height: auto; border-radius: 6px; border: 1px solid var(--rute); }
+.jk-svar { display: grid; gap: 1rem; margin-top: 1rem; }
+.jk-svar .knapp { justify-self: start; }
+.jk-del { margin: 0; padding: .9rem 1rem; border: 1px solid var(--rute-sterk); border-radius: 6px; }
+.jk-del legend, .jk-del h3 { font-family: var(--sans); font-size: 1rem; font-weight: 600; padding: 0 .3rem; }
+.jk-fasit { display: grid; gap: 1rem; margin-top: 1rem; }
+.jk-del dl { display: grid; grid-template-columns: max-content 1fr; gap: .2rem 1rem; margin: .6rem 0 0; }
+.jk-del dt { color: var(--dempet); }
+.jk-del dd { margin: 0; font-variant-numeric: tabular-nums; }
+.jk-tallfelt { display: flex; gap: .5rem; align-items: center; margin-top: .4rem; }
+.jk-tallfelt input { width: 12rem; font-family: var(--mono); }
+.jk-tolkning { margin: .3rem 0 0; min-height: 1.4em; font-size: .875rem; color: var(--dempet); }
+.jk-tolkning.feil { color: var(--f1); }
+.jk-valg { display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: .3rem 1rem; margin: .4rem 0 0; padding: 0; list-style: none; }
+.jk-valg label { display: flex; gap: .45rem; align-items: baseline; cursor: pointer; }
+.jk-alt { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .9375rem; color: var(--dempet); list-style: none; }
+.jk-rangering { margin: .4rem 0 0; padding-left: 1.6rem; }
+.jk-rangering li { padding: .3rem 0; border-bottom: 1px solid var(--rute); }
+.jk-rangering li > span:first-child { display: inline-block; min-width: 12rem; }
+.jk-pil { display: inline-flex; gap: .3rem; margin-left: .5rem; }
+.jk-levert { margin: .5rem 0 0; font-size: .8125rem; color: var(--f2); }
+.jk-merknad { margin: 0; padding: .6rem .9rem; border-left: 3px solid var(--f1); background: var(--papir); }
+.jk-forklaring { margin: .6rem 0 0; font-size: .9375rem; }
+.jk-tabell td, .jk-tabell th { text-align: center; }
+.jk-tabell th[scope="row"], .jk-tabell .jk-skole { text-align: left; }
+.jk-tabell .jk-skole { font-family: var(--sans); color: var(--dempet); }
+.jk-tabell tr.egen { background: var(--merke); color: var(--merke-tekst); }
+.jk-regler { margin-top: .75rem; padding-left: 1.2rem; max-width: 46em; }
+.jk-regler li { margin-bottom: .5rem; }
+.jk-smal { max-width: 22rem; margin-top: .75rem; }
+@media (max-width: 760px) {
+  .jk-to { grid-template-columns: minmax(0, 1fr); }
+  .jk-luker { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jk-rute { min-height: 7.5rem; }
+  .jk-tabell .jk-skole { display: none; }
+}
+
+/* Joulekalender: tidligere luker */
+.jk-hopp { display: flex; gap: .75rem; margin-top: 1.25rem; }
+.jk-hopp a { font-weight: 600; }
+.jk-oppg { margin-top: 1.5rem; padding: 1.25rem 1.4rem 1.4rem; border: 1px solid var(--rute-sterk); border-radius: 8px; background: var(--flate); max-width: 56rem; scroll-margin-top: 1rem; }
+.jk-oppg h3 { display: flex; align-items: baseline; gap: .7rem; font-size: 1.45rem; margin-bottom: .75rem; }
+.jk-oppg h3 .jk-nr { font-size: 2.2rem; }
+.jk-oppg > p { max-width: 46em; margin: .6rem 0; }
+.jk-oppg .fasit { margin-top: 1.25rem; }
+.jk-to-kol { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.25rem; align-items: center; margin: .75rem 0; }
+.jk-data { padding: .75rem 1rem; border-left: 3px solid var(--f2); background: var(--papir); border-radius: 0 6px 6px 0; margin: .75rem 0; }
+.jk-to-kol .jk-data { margin: 0; }
+.jk-data h4 { margin: .4rem 0 .2rem; font-size: .9375rem; }
+.jk-data ul { margin: 0 0 .3rem; padding-left: 1.2rem; }
+.jk-data p { margin: .2rem 0; }
+.jk-trinn { margin: .5rem 0; }
+.jk-spm { padding: .7rem 1rem; border-left: 3px solid var(--f1); background: var(--papir); font-weight: 600; border-radius: 0 6px 6px 0; }
+.jk-svar { padding: 0 1rem; font-weight: 700; font-size: 1.05rem; color: var(--blekk) !important; }
+.jk-fig { margin: .75rem 0; }
+.jk-fig svg { display: block; width: 100%; height: auto; max-height: 20rem; }
+.jk-fig.jk-bred svg { max-width: 44rem; }
+.jk-fig .strek, .jk-fig .tynn, .jk-fig .stiplet, .jk-fig .pil { fill: none; stroke: currentColor; stroke-linejoin: round; }
+.jk-fig .strek { stroke-width: 2; }
+.jk-fig .tynn { stroke-width: 1.1; }
+.jk-fig .tykk { stroke-width: 4; }
+.jk-fig .stiplet { stroke-width: 1.2; stroke-dasharray: 5 4; opacity: .8; }
+.jk-fig .stiplet2 { stroke-dasharray: 4 3; }
+.jk-fig .pil { stroke-width: 2; stroke: var(--f1); }
+.jk-fig .tekst { fill: currentColor; stroke: none; font-family: var(--sans); font-size: 13px; }
+.jk-fig .tekst.hvit { fill: #fff; font-weight: 700; font-size: 11px; }
+.jk-fig .sub { font-size: 10px; }
+.jk-fig .fyll-a { fill: var(--f1); stroke: none; }
+.jk-fig .fyll-b { fill: var(--t-forsok); stroke: none; }
+.jk-fig .strek.f1 { stroke: var(--f1); }
+.jk-fig .tekst.f1 { fill: var(--f1); }
+.jk-fig .tekst.f2 { fill: var(--f2); }
+.jk-tidligere { margin-top: .75rem; padding-left: 1.2rem; }
+@media (max-width: 760px) {
+  .jk-to-kol { grid-template-columns: minmax(0, 1fr); }
+  .jk-oppg { padding: 1rem; }
+}
