@@ -25,6 +25,16 @@
       </button>
     </div>
   </header>
+  <aside class="sesong" id="sesong" hidden>
+    <div class="ramme"><a href="joulekalender/index.html"><span class="sesong-merke">Joulekalender</span> <span id="sesong-tekst">Konkurranse i desember for Fysikk 1 og 2. Meld på klassen</span> <span aria-hidden="true">→</span></a></div>
+  </aside>
+  <script>
+    // Stripa om joulekalenderen vises fra 15. november til 6. januar.
+    (() => { const d = new Date(), m = d.getMonth(), n = d.getDate();
+      const ute = m === 0 || (m === 11 && n > 20);
+      if ((m === 10 && n >= 15) || m === 11 || (m === 0 && n <= 6)) document.getElementById("sesong").hidden = false;
+      if (ute) document.getElementById("sesong-tekst").textContent = "Kalenderen er ferdig for i år. Se poengtavla og fasit"; })();
+  </script>
   <main id="innhold">
     <section class="helt">
       <div class="ramme">

@@ -217,7 +217,9 @@
     const bilder = l.bilder.map((b, i) => `<a href="${esc(b)}" target="_blank" rel="noopener"><img src="${esc(b)}" alt="Oppgaveteksten til luke ${l.nr}${l.bilder.length > 1 ? ", side " + (i + 1) : ""}" loading="lazy"></a>`).join("");
     let html = `<h2>Luke ${l.nr}${l.tittel ? ": " + esc(l.tittel) : ""}</h2>
       <p class="jk-dempet">${l.status === "aapen" ? "Frist " + datoKl(l.frist) + ". Svaret kan endres fram til fristen." : "Fristen var " + datoKl(l.frist) + "."}</p>
+      ${l.innhold ? (l.status === "ferdig" ? `<details class="jk-oppgavetekst"><summary>Vis oppgaveteksten</summary><div class="jk-innhold">${l.innhold}</div></details>` : `<div class="jk-innhold">${l.innhold}</div>`) : ""}
       ${bilder ? `<div class="jk-bilder">${bilder}</div>` : ""}`;
+    // innhold er HTML som bare kan skrives i databasen av deg (via Supabase-dashbordet), så den settes inn som den er
 
     if (l.status === "ferdig") {
       html += `<div class="jk-fasit">${l.oppgaver.map((o) => `<div class="jk-del">

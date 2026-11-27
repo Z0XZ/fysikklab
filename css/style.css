@@ -834,3 +834,23 @@ h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-a
   .jk-to-kol { grid-template-columns: minmax(0, 1fr); }
   .jk-oppg { padding: 1rem; }
 }
+
+/* Joulekalender: oppgavetekst fra databasen */
+.jk-innhold { margin-top: 1rem; max-width: 50rem; }
+.jk-innhold > p { margin: .6rem 0; }
+.jk-innhold .jk-data { background: var(--papir); }
+.jk-figur { margin: 1rem 0; padding: .75rem; background: #fff; border-radius: 6px; border: 1px solid var(--rute); }
+.jk-figur svg { display: block; width: 100%; height: auto; max-height: 22rem; }
+.jk-visste { margin: 1rem 0 0; padding: .8rem 1rem; border: 1px dashed var(--f2); border-radius: 6px; font-size: .9375rem; }
+.jk-visste strong { color: var(--f2); }
+.jk-oppgavetekst { margin-top: .75rem; }
+.jk-oppgavetekst summary { cursor: pointer; font-weight: 600; color: var(--f2); }
+.jk-univers { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: .75rem; margin: .75rem 0 0; padding: 0; list-style: none; max-width: 56rem; }
+.jk-univers li { padding: .75rem 1rem; border: 1px solid var(--rute-sterk); border-radius: 6px; background: var(--flate); font-size: .9375rem; }
+.jk-univers strong { display: block; font-family: var(--serif); font-size: 1.1rem; }
+
+/* Sesongstripe på forsiden (joulekalenderen) */
+.sesong { border-bottom: 1px solid var(--rute-sterk); background: color-mix(in srgb, var(--f1) 8%, var(--papir)); font-size: .95rem; }
+.sesong a { display: block; padding-block: .55rem; color: var(--blekk); text-decoration: none; }
+.sesong a:hover #sesong-tekst, .sesong a:focus-visible #sesong-tekst { text-decoration: underline; text-underline-offset: 3px; }
+.sesong-merke { margin-right: .4rem; font-family: var(--mono); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--f1); }
