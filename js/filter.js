@@ -8,6 +8,7 @@
 // og til begge fagene med data-fag="begge".
 // Faget er det samme valget som i nedfallsmenyen øverst (window.Fag i js/tema.js), så det følger med fra side til side.
 // Valgene står også i adressen (?fag=f2&tema=sirkelbevegelse&type=forsok&sok=mobil), så en filtrert side kan deles som lenke.
+// Formelsamlingen bruker samme filter med <ul class="fm-liste"> i stedet for kortlista, og data-sokhint for teksten i søkefeltet.
 // Kort med data-type="forsok|okt|repetisjon|begrepstest" gir en ekstra rad med typer (på undervisningsopplegg).
 
 (function () {
@@ -18,6 +19,9 @@
   const FAGNAVN = { f1: "Fysikk 1", f2: "Fysikk 2" };
   const slug = (t) => t.toLowerCase().normalize("NFKD").replace(/[̀-ͯ]/g, "").replace(/æ/g, "ae").replace(/ø/g, "o").replace(/å/g, "a").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   const normal = (t) => t.toLowerCase().replace(/\s+/g, " ");
+  const LI = ".sim-kort-liste > li, .fm-liste > li";
+  const hint = document.querySelector("[data-sokhint]");
+  const sokhint = hint ? hint.dataset.sokhint : "For eksempel friksjon, mobil eller Python";
 
   // ---------- Les blokker og kort ----------
   const temaer = [];   // { navn, fag, id }
@@ -31,7 +35,7 @@
     const navn = m ? m[2] : sideFag || egen ? tekst : null;
     const generell = !fag;
     if (navn && !temaer.some((t) => t.id === slug(navn) && t.fag === fag)) temaer.push({ navn, fag, id: slug(navn) });
-    for (const li of b.querySelectorAll(".sim-kort-liste > li")) {
+    for (const li of b.querySelectorAll(LI)) {
       const egne = (li.dataset.tema || "").split("|").map((s) => s.trim()).filter(Boolean);
       kort.push({ li, blokk: b, type: li.dataset.type || "", fag: li.dataset.fag === "begge" ? null : fag, tema: egne.length ? egne.map(slug) : navn ? [slug(navn)] : [], tekst: normal(li.textContent) });
     }
@@ -50,7 +54,7 @@
     (visFag ? `<div class="filter-rad" role="group" aria-label="Fag"><span class="filter-etikett">Fag</span><button type="button" class="filter-knapp" data-fag="">Alle</button>${[...fagFinnes].sort().map((f) => `<button type="button" class="filter-knapp ${f}" data-fag="${f}">${FAGNAVN[f]}</button>`).join("")}<span class="filter-merknad">Valget huskes på alle sidene og kan også endres i menyen øverst.</span></div>` : "") +
     `<div class="filter-rad" role="group" aria-label="Tema"><span class="filter-etikett">Tema</span><button type="button" class="filter-knapp" data-tema="">Alle</button>${temaer.map((t) => `<button type="button" class="filter-knapp ${t.fag || ""}" data-tema="${t.id}" data-temafag="${t.fag || ""}">${t.navn}</button>`).join("")}</div>` +
     (TYPER.length > 1 ? `<div class="filter-rad" role="group" aria-label="Type"><span class="filter-etikett">Type</span><button type="button" class="filter-knapp" data-type="">Alle</button>${TYPER.map(([t, n]) => `<button type="button" class="filter-knapp ${t}" data-type="${t}">${n}</button>`).join("")}</div>` : "") +
-    `<div class="filter-rad"><label class="filter-etikett" for="filter-sok">Søk</label><input id="filter-sok" class="filter-sok" type="search" placeholder="For eksempel friksjon, mobil eller Python" autocomplete="off"><span class="filter-antall" aria-live="polite"></span></div>`;
+    `<div class="filter-rad"><label class="filter-etikett" for="filter-sok">Søk</label><input id="filter-sok" class="filter-sok" type="search" placeholder="${sokhint}" autocomplete="off"><span class="filter-antall" aria-live="polite"></span></div>`;
   blokker[0].parentNode.insertBefore(ramme, blokker[0]);
   const sok = ramme.querySelector("#filter-sok");
   const antall = ramme.querySelector(".filter-antall");
@@ -93,11 +97,11 @@
       if (ok) vist++;
     }
     for (const x of info) {
-      const synlige = [...x.b.querySelectorAll(".sim-kort-liste > li")].some((li) => !li.hidden);
+      const synlige = [...x.b.querySelectorAll(LI)].some((li) => !li.hidden);
       const smalt = !!(valgt.tema || valgt.type);
       const skjulGenerell = x.generell && smalt && !x.egen;
       x.b.hidden = !synlige || skjulGenerell;
-      if (skjulGenerell) for (const li of x.b.querySelectorAll(".sim-kort-liste > li")) if (!li.hidden) { li.hidden = true; vist--; }
+      if (skjulGenerell) for (const li of x.b.querySelectorAll(LI)) if (!li.hidden) { li.hidden = true; vist--; }
       // Merknader under kortene (forsøk og lenker) vises bare uten søk, siden de ikke er en del av søket
       for (const p of x.b.querySelectorAll(".tema-merknad")) p.hidden = ord.length > 0 || !!valgt.type;
     }

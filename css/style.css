@@ -854,3 +854,79 @@ h2[data-tid]::after { content: attr(data-tid); display: inline-block; vertical-a
 .sesong a { display: block; padding-block: .55rem; color: var(--blekk); text-decoration: none; }
 .sesong a:hover #sesong-tekst, .sesong a:focus-visible #sesong-tekst { text-decoration: underline; text-underline-offset: 3px; }
 .sesong-merke { margin-right: .4rem; font-family: var(--mono); font-size: .75rem; font-weight: 600; letter-spacing: .02em; text-transform: uppercase; color: var(--f1); }
+
+/* Formelsamling (bygg/formelsamling.py). Filteret er js/filter.js. */
+.fm-topp { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem 2rem; }
+.fm-topp .ingress { margin-top: .75rem; max-width: 40em; }
+.fm-last-ned { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.fm-last-ned-tittel { width: 100%; font-size: .875rem; color: var(--dempet); }
+.fm-last-ned .knapp { padding: .35rem .9rem; font-size: .9375rem; }
+.fm-deler { margin-top: 2rem; columns: 2 24rem; column-gap: 3rem; }
+.fm-deler > .filter, .fm-deler > .filter-tom { column-span: all; margin-bottom: 1.75rem; }
+.fm-del { margin: 0 0 1.75rem; break-inside: avoid; }
+.fm-del h2 { font-size: 1.3rem; color: var(--blekk); padding-bottom: .3rem; margin-bottom: .2rem; border-bottom: 2px solid var(--rute-sterk); }
+.fm-f1 h2 { border-bottom-color: var(--f1); }
+.fm-f2 h2 { border-bottom-color: var(--f2); }
+.fm-liste { list-style: none; margin: 0; padding: 0; }
+.fm-liste > li { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); column-gap: 1rem; padding: .45rem 0; border-bottom: 1px solid var(--rute); }
+.fm-tabelldel .fm-liste > li, .ps-blokk .fm-liste > li { display: block; border-bottom: 0; }
+.fm-navn { grid-column: 1; font-size: .875rem; color: var(--dempet); padding-top: .2rem; }
+.fm-liste .fm-f { grid-column: 2; }
+.fm-forkl { grid-column: 2; font-size: .8125rem; color: var(--dempet); line-height: 1.45; margin-top: .1rem; }
+.fm-f, .fm-forkl i, .fm-merknad i, .fm-tabell i { font-family: var(--serif); }
+.fm-f { font-size: 1.125rem; line-height: 1.9; }
+.gr { font-family: "STIX Two Text", "Times New Roman", Times, serif; font-style: italic; }
+.fm-f sub, .fm-f sup, .fm-tabell sub, .fm-tabell sup { font-size: .7em; line-height: 0; }
+.br { display: inline-flex; flex-direction: column; vertical-align: middle; text-align: center; margin: 0 .12em; line-height: 1.25; font-size: .92em; }
+.br > span { padding: 0 .15em; }
+.br > span + span { border-top: 1px solid currentColor; }
+.rot { border-top: 1px solid currentColor; padding: 0 .1em; }
+.vek, .strek { position: relative; display: inline-block; }
+.strek { text-decoration: overline; text-decoration-thickness: 1px; }
+.vek::after { content: ""; position: absolute; left: 10%; right: 0; top: .02em; height: .32em; background: no-repeat right center / auto 100% url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M0 3H9M6 .5L9 3L6 5.5' fill='none' stroke='black' stroke-width='1'/%3E%3C/svg%3E"), linear-gradient(currentColor, currentColor) no-repeat left center / calc(100% - .2em) 1px; }
+:root[data-tema="mork"] .vek::after { filter: invert(1); }
+@media (prefers-color-scheme: dark) { :root:not([data-tema="lys"]) .vek::after { filter: invert(1); } }
+.fm-merknad { font-size: .8125rem; color: var(--dempet); margin: .5rem 0 0; line-height: 1.45; }
+.fm-rull { overflow-x: auto; }
+.fm-tabell { width: 100%; border-collapse: collapse; font-size: .875rem; }
+.fm-tabell th { text-align: left; font-weight: 600; font-size: .8125rem; color: var(--dempet); padding: .3rem .6rem .3rem 0; }
+.fm-tabell td { padding: .3rem .6rem .3rem 0; border-bottom: 1px solid var(--rute); vertical-align: baseline; }
+@media (max-width: 520px) {
+  .fm-liste > li { grid-template-columns: minmax(0, 1fr); }
+  .fm-navn, .fm-liste .fm-f, .fm-forkl { grid-column: 1; }
+  .fm-navn:empty { display: none; }
+}
+@media print {
+  .fm-last-ned { display: none; }
+  .fm-deler { columns: 2; }
+}
+.fm-bred { column-span: all; }
+.nuk { white-space: nowrap; }
+.nuk-tall { display: inline-flex; flex-direction: column; align-items: flex-end; vertical-align: middle; font-size: .68em; line-height: 1.05; margin-right: .08em; }
+.nuk-tall sup, .nuk-tall sub { font-size: 1em; line-height: inherit; vertical-align: baseline; }
+.fm-bred .fm-tabell { max-width: 46rem; }
+
+/* Periodesystemet i formelsamlingen (js/periodesystem.js) */
+.kat-alkali { --k: #d9534f; } .kat-jordalkali { --k: #e8913a; } .kat-overgang { --k: #c9a227; } .kat-lantanoid { --k: #7fae3e; }
+.kat-aktinoid { --k: #2f9e7e; } .kat-metall { --k: #4d8fd1; } .kat-halvmetall { --k: #8c6fd6; } .kat-ikkemetall { --k: #2a6fb0; }
+.kat-halogen { --k: #c45ab3; } .kat-edelgass { --k: #8a7f6a; }
+.ps-rull { overflow-x: auto; margin-top: .75rem; padding-bottom: .25rem; }
+.ps { display: grid; grid-template-columns: repeat(18, minmax(2.55rem, 1fr)); grid-template-rows: repeat(7, auto) .6rem auto auto; gap: 3px; min-width: 48rem; }
+.ps-c { display: flex; flex-direction: column; align-items: center; padding: .2rem .1rem .25rem; font: inherit; color: var(--blekk); cursor: pointer; border: 1px solid color-mix(in srgb, var(--k) 55%, transparent); border-radius: 4px; background: color-mix(in srgb, var(--k) 20%, var(--flate)); position: relative; line-height: 1.1; }
+.ps-c:hover { background: color-mix(in srgb, var(--k) 38%, var(--flate)); }
+.ps-c[aria-pressed="true"] { outline: 2px solid var(--blekk); outline-offset: 1px; background: color-mix(in srgb, var(--k) 45%, var(--flate)); }
+.ps-c:focus-visible { outline: 3px solid var(--f1); outline-offset: 1px; }
+.ps-merket::after { content: ""; position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; border-radius: 50%; background: var(--blekk); opacity: .6; }
+.ps-z { align-self: flex-start; padding-left: .15rem; font-size: .625rem; color: var(--dempet); }
+.ps-s { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; }
+.ps-m { font-size: .625rem; color: var(--dempet); }
+.ps-plass { display: flex; align-items: center; justify-content: center; font-size: .625rem; color: var(--dempet); border: 1px dashed var(--rute-sterk); border-radius: 4px; }
+.ps-forklaring { display: flex; flex-wrap: wrap; gap: .35rem .9rem; margin-top: .75rem; font-size: .8125rem; color: var(--dempet); }
+.ps-forkl::before { content: ""; display: inline-block; width: .8rem; height: .8rem; margin-right: .35rem; vertical-align: -.1rem; border-radius: 2px; background: color-mix(in srgb, var(--k) 35%, var(--flate)); border: 1px solid color-mix(in srgb, var(--k) 60%, transparent); }
+.ps-info { margin-top: 1rem; padding: 1rem 1.25rem; border: 1px solid var(--rute-sterk); border-radius: 6px; background: var(--flate); max-width: 48rem; }
+.ps-info p { margin: .5rem 0 0; font-size: .9375rem; line-height: 1.55; }
+.ps-info .ps-tom { margin: 0; color: var(--dempet); }
+.ps-hode { display: flex; gap: 1rem; align-items: center; }
+.ps-hode h3 { font-size: 1.4rem; }
+.ps-hode p { margin: .15rem 0 0; color: var(--dempet); font-size: .875rem; }
+.ps-stor { display: grid; place-items: center; min-width: 3.4rem; height: 3.4rem; padding: 0 .3rem; font-family: var(--serif); font-size: 1.6rem; font-weight: 600; border-radius: 6px; background: color-mix(in srgb, var(--k) 25%, var(--flate)); border: 1px solid color-mix(in srgb, var(--k) 60%, transparent); }

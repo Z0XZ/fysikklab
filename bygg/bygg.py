@@ -11,6 +11,7 @@ Hva som bygges:
     kilder/programmering/*.html                  programmeringssider. @@fil.py@@ byttes med koden i kilder/py/
     begrep.py                                    begrepstestene (opplegg/begrep-*.html)
     repetisjon.py                                repetisjonssidene (opplegg/repetisjon-*.html)
+    formelsamling.py                             formelsamlingen (opplegg/formelsamling.html). PDF-ene: python3 bygg/formelsamling_pdf.py
     kompetansemaal.py                            lærersiden opplegg/kompetansemaal.html (bygges sist, leser titlene fra de andre sidene)
     kilder/utdanningsvalg/*.html                 opplegget for 10. klasse på fysikklab.no/utdanningsvalg (ikke lenket fra resten av sida)
     kilder/joulekalender/*.html                  joulekalenderen på fysikklab.no/joulekalender (data og fasit ligger i Supabase, ikke her)
@@ -92,7 +93,7 @@ def kilder(tmp):
         for f in sorted(os.listdir(os.path.join(HER, "kilder", mappe))):
             if f.endswith(".html"):
                 ut.append((mappe, f[:-5], os.path.join(HER, "kilder", mappe, f)))
-    for mod in ["begrep", "repetisjon"]:
+    for mod in ["begrep", "repetisjon", "formelsamling"]:
         d = os.path.join(tmp, mod); os.makedirs(d)
         modul(mod).bygg(d)
         ut += [("opplegg", f[:-5], os.path.join(d, f)) for f in sorted(os.listdir(d))]
